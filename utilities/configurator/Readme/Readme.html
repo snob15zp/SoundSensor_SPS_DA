@@ -1,0 +1,131 @@
+
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>DA14531 Configurator &#8212; DA14531 Configurator 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/jquery-ui.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/style.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="https://s3.amazonaws.com/lpccsdocs/includes/iframeResizer.contentWindow.min.js"></script>
+    <script src="_static/jquery-ui.min.js"></script>
+    <script src="_static/myscript.js"></script>
+    <link rel="search" title="Search" href="search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="nav-item nav-item-0"><a href="#">DA14531 Configurator 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="da14531-configurator">
+<h1>DA14531 Configurator<a class="headerlink" href="#da14531-configurator" title="Permalink to this headline">¶</a></h1>
+<p>Configurator is a graphic user interface application in python to create/read/modify configuration structure files in binary format.
+The user should be able to:</p>
+<ul class="simple">
+<li><p>Open an existing configuration file and read the included elements and their values.</p></li>
+<li><p>Modify the configuration file by adding/removing elements or change the value of included elements. Save changes in the same file or in a new file</p></li>
+<li><p>Create a new configuration file, modify it, as described previous boolet, and save.</p></li>
+</ul>
+<p>The list of Groups, element IDs and types will be inserted to the application through an XML file, which describs all specified groups, element IDs and their corresponding types and maximum sizes.
+The application will open and read the XML file located in a predefined location on startup.</p>
+</div>
+<div class="section" id="requirements">
+<h1>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="pyhton">
+<h2>Pyhton<a class="headerlink" href="#pyhton" title="Permalink to this headline">¶</a></h2>
+<p>Required version is Python 3.7.3</p>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Download Python installer from <a class="reference external" href="https://www.python.org/ftp/python/3.7.3/python-3.7.3-amd64.exe">Python 3.7.3</a></p></li>
+<li><p>Add Python to PATH</p></li>
+</ol>
+</div>
+<div class="section" id="pyinstaller">
+<h2>PyInstaller<a class="headerlink" href="#pyinstaller" title="Permalink to this headline">¶</a></h2>
+<p>PyInstaller freezes (packages) Python applications into stand-alone executables.</p>
+</div>
+<div class="section" id="id1">
+<h2>Installation<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">`pip3</span> <span class="pre">install</span> <span class="pre">PyInstaller==3.6`</span></code></p></li>
+<li><p>rename pyinstaller.exe to pyinstaller37.exe</p></li>
+</ol>
+</div>
+<div class="section" id="create-the-executable-under-current-folder">
+<h2>Create the executable under current folder<a class="headerlink" href="#create-the-executable-under-current-folder" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Open any command prompt,</p></li>
+<li><p>navigate to the folder that contains configurator,</p></li>
+<li><p>build the executable</p></li>
+</ol>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">`pyinstaller37.exe</span> <span class="pre">-n</span> <span class="pre">configurator</span> <span class="pre">--onefile</span> <span class="pre">da14531_configurator.py</span> <span class="pre">--windowed</span> <span class="pre">-i</span> <span class="pre">Dialog_D-Symbol_Color_RGB_Small_icon.ico</span> <span class="pre">--add-data</span> <span class="pre">&quot;Dialog_D-Symbol_Color_RGB_Small_icon.ico;.&quot;</span> <span class="pre">--distpath</span> <span class="pre">.</span> <span class="pre">`</span></code></p>
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="#">
+              <img class="logo" src="_static/dslogoBlueSmall.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="#">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">DA14531 Configurator</a></li>
+<li><a class="reference internal" href="#requirements">Requirements</a><ul>
+<li><a class="reference internal" href="#pyhton">Pyhton</a></li>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#pyinstaller">PyInstaller</a></li>
+<li><a class="reference internal" href="#id1">Installation</a></li>
+<li><a class="reference internal" href="#create-the-executable-under-current-folder">Create the executable under current folder</a></li>
+</ul>
+</li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="nav-item nav-item-0"><a href="#">DA14531 Configurator 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Dialog Semiconductor.
+    </div>
+  </body>
+</html>

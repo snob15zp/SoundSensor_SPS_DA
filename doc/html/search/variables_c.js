@@ -1,0 +1,24 @@
+var searchData=
+[
+  ['sec_5flvl',['sec_lvl',['../structsps__server__enable__req.html#a6680b588261fd264d1dc5a7838ba77b9',1,'sps_server_enable_req']]],
+  ['seq_5fnum',['seq_num',['../structsps__client__data__tx__req.html#ad2c1e66fcdf24638f1e417280a0de64c',1,'sps_client_data_tx_req::seq_num()'],['../structsps__server__data__tx__req.html#a3def7654dd0e7be7827b331713664d3d',1,'sps_server_data_tx_req::seq_num()']]],
+  ['shdl',['shdl',['../structspsc__env__tag.html#a58e70772e436999bda8ee623a362b98f',1,'spsc_env_tag::shdl()'],['../structspss__env__tag.html#a92d55c0de06fa1c89e8b46ce9924bfbb',1,'spss_env_tag::shdl()']]],
+  ['signature',['signature',['../structuser__config__struct__header__t.html#a1cbaa4d01fe1eed987360173117fa9dd',1,'user_config_struct_header_t::signature()'],['../structconfig__product__header__t.html#afb3e4370a925fc6a841a5b8c0a195015',1,'config_product_header_t::signature()']]],
+  ['size',['size',['../structremote__config__val__ind.html#a746748d3d76afe407d8bbbf8000f1522',1,'remote_config_val_ind::size()'],['../structremote__discover__response__cmd.html#a271578fa2b7d763d13822dcb1be0852d',1,'remote_discover_response_cmd::size()'],['../structremote__read__response__cmd.html#ae1d50527979b539a4b63ec294e72f779',1,'remote_read_response_cmd::size()']]],
+  ['sps',['sps',['../structspsc__env__tag.html#a1b78b4f77341b560c285e3a1f1246805',1,'spsc_env_tag::sps()'],['../structsps__client__enable__cfm.html#ae8c74386f47fcdf4655429bc954abbe0',1,'sps_client_enable_cfm::sps()']]],
+  ['sps_5fatt_5fdb',['sps_att_db',['../group___s_p_s___s_e_r_v_e_r.html#ga2d2243c5627801529f7b4ce5ab96a38c',1,'user_sps_config.h']]],
+  ['sps_5fservice',['sps_service',['../group___s_p_s___s_e_r_v_e_r.html#gac072c5dc9cfef3f2c8604987b25bd64a',1,'user_sps_config.h']]],
+  ['spss_5fble_5frx_5fdata_5fbytes',['spss_ble_rx_data_bytes',['../structsps__counter.html#a36229bc8a300c8aeba2e4e68e9241cc4',1,'sps_counter']]],
+  ['spss_5fble_5ftx_5fcmp',['spss_ble_tx_cmp',['../structsps__counter.html#a3e20ed24e70a33315805a8d06b48a264',1,'sps_counter']]],
+  ['spss_5fble_5ftx_5fcmp_5fok',['spss_ble_tx_cmp_ok',['../structsps__counter.html#a454bcff69093f7cb7441d499961b91c8',1,'sps_counter']]],
+  ['spss_5fble_5ftx_5fcmp_5fother',['spss_ble_tx_cmp_other',['../structsps__counter.html#af6648c4a5d3f59044b85827cb806a831',1,'sps_counter']]],
+  ['spss_5fble_5ftx_5fdata_5fbytes',['spss_ble_tx_data_bytes',['../structsps__counter.html#ab76b8ff7965508f95a680f118bf0f8b1',1,'sps_counter']]],
+  ['spss_5fble_5ftx_5fntf_5ffail',['spss_ble_tx_ntf_fail',['../structsps__counter.html#a21140ff6671c59caaad9f0f9344f90ff',1,'sps_counter']]],
+  ['spss_5fble_5ftx_5fntf_5fok',['spss_ble_tx_ntf_ok',['../structsps__counter.html#af4c9ddb7d667157cd276813d5de6813b',1,'sps_counter']]],
+  ['spss_5fuart_5fto_5fble_5fbytes',['spss_uart_to_ble_bytes',['../structsps__counter.html#ae67beb088dc94ce4a935a5641fc56135',1,'sps_counter']]],
+  ['start_5fhdl',['start_hdl',['../structsps__server__create__db__req.html#aa087d0f8c237095d8cb136d938c6e14d',1,'sps_server_create_db_req']]],
+  ['state',['state',['../structspsc__env__tag.html#a899d0d34dcee4016e76c1d77c0729ec6',1,'spsc_env_tag::state()'],['../structspss__env__tag.html#ab5562ee62e948b71d035ff1890de9571',1,'spss_env_tag::state()']]],
+  ['status',['status',['../structsps__client__enable__cfm.html#ac5b4b37a585f4eced8ce3e0afb4ac0d7',1,'sps_client_enable_cfm::status()'],['../structsps__client__data__tx__cfm.html#afa4a752a1093ec8108e199fe832d45c4',1,'sps_client_data_tx_cfm::status()'],['../structsps__server__create__db__cfm.html#a0ffcb4bc8bd311ebeb87cda1f97c7321',1,'sps_server_create_db_cfm::status()'],['../structsps__server__enable__cfm.html#ab7a6d5e2af10ffe689f28701520c9562',1,'sps_server_enable_cfm::status()'],['../structsps__server__data__tx__cfm.html#a89654e785aa9d446a4ce1056c0fa2c85',1,'sps_server_data_tx_cfm::status()'],['../structremote__discover__response__cmd.html#ac346e9076d5345479fec5b9fe0b2161c',1,'remote_discover_response_cmd::status()'],['../structremote__discover__request__ind.html#a4b00543b8d50f9fab979208c6b37ac5e',1,'remote_discover_request_ind::status()'],['../structremote__write__response__cmd.html#a11a6b19b661352520e00ff04ec88b9ae',1,'remote_write_response_cmd::status()'],['../structremote__read__response__cmd.html#ae6a3464790416e2afdcc4e4dadea6863',1,'remote_read_response_cmd::status()']]],
+  ['struct_5fid',['struct_id',['../structuser__config__struct__header__t.html#acef537a4c450cb2e18b6027796f95e43',1,'user_config_struct_header_t']]],
+  ['svc',['svc',['../structspsc__sps__content.html#abc07ba7a818ab2899aac1702a2482432',1,'spsc_sps_content']]]
+];

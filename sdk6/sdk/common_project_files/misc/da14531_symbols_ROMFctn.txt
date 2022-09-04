@@ -1,0 +1,96 @@
+#<SYMDEFS># ARM Linker
+
+; Easy timer functions
+0x07f22f71 T app_timer_api_process_handler
+0x07f2303d T app_easy_timer
+0x07f2308d T app_easy_timer_cancel
+0x07f230f1 T app_easy_timer_modify
+0x07f2317d T app_easy_timer_cancel_all
+
+; Profile functions
+0x07f209e9 T prf_init_func
+0x07f20a69 T prf_add_profile_func
+0x07f20b0d T prf_create_func
+0x07f20b49 T prf_cleanup_func
+0x07f20b89 T prf_env_get
+0x07f20bc5 T prf_dst_task_get
+0x07f20bd9 T prf_get_id_from_task_func
+0x07f20c11 T prf_get_task_from_id_func
+0x07f20bb5 T prf_src_task_get
+0x07f20c49 T prf_reset_func
+0x07f20cb9 T prf_pack_char_pres_fmt
+0x07f20cd7 T prf_pack_date_time
+0x07f20cf7 T prf_unpack_date_time
+
+; DISS profile functions
+0x07f20d19 T diss_compute_cfg_flag
+0x07f20e85 T diss_prf_itf_get
+0x07f20deb T diss_handle_to_value
+0x07f20e1b T diss_value_to_handle
+0x07f20e4f T diss_check_val_len
+
+; BASS profile functions
+0x07f211e3 T bass_get_att_handle
+0x07f21405 T bass_prf_itf_get
+0x07f21299 T bass_get_att_idx
+0x07f21303 T bass_exe_operation
+
+;Custom profile functions
+0x07f22015 T check_client_char_cfg
+0x07f2203f T get_value_handle
+0x07f2208b T get_cfg_handle
+0x07f22119 T custs1_get_att_handle
+0x07f220ed T custs1_get_att_idx
+0x07f222e1 T custs1_prf_itf_get
+0x07f22393 T custs1_init_ccc_values
+0x07f223cb T custs1_set_ccc_value
+0x07f22831 T attm_svc_create_db_128
+
+;NVDS functions
+0x07f20441 T nvds_get_func
+0x07f20521 T nvds_init_func
+0x07f20525 T nvds_del_func
+0x07f20529 T nvds_put_func
+
+;CHAHCA20 functions
+0x07f205b9 T csprng_seed
+0x07f205e9 T csprng_get_next_uint32
+
+; APP functions
+0x07f22e75 T app_gap_process_handler
+0x07f22e91 T app_entry_point_handler
+0x07f22ed9 T app_std_process_event
+0x07f23221 T app_get_address_type
+0x07f2324d T app_fill_random_byte_array
+0x07f232e1 T app_db_init_start
+0x07f232fd T app_db_init
+0x07f23335 T append_device_name
+0x07f23309 T app_easy_gap_confirm
+0x07f234b9 T get_user_prf_srv_perm
+0x07f23511 T prf_init_srv_perm
+0x07f23359 T app_easy_gap_update_adv_data
+0x07f233f9 T active_conidx_to_conhdl
+0x07f23425 T active_conhdl_to_conidx
+0x07f23461 T app_timer_set
+0x07f2347d T app_easy_gap_set_data_packet_length
+0x07f234e1 T app_set_prf_srv_perm
+0x07f23535 T app_gattc_svc_changed_cmd_send
+0x07f233a1 T app_easy_gap_disconnect
+0x07f233dd T app_easy_gap_advertise_stop
+0x07f23f0c D app_default_handler
+
+; APPMISC functions
+0x07f235a1 T default_app_on_get_dev_slv_pref_params
+0x07f235b5 T default_app_on_set_dev_info
+0x07f235f5 T default_app_update_params_request
+0x07f23601 T default_app_generate_static_random_addr
+0x07f23631 T default_app_on_get_dev_name
+0x07f23655 T default_app_on_get_dev_appearance
+
+; arch_printf functions
+0x07f20265 T arch_printf_flush
+0x07f2031d T arch_printf
+0x07f20385 T arch_puts
+0x07f20395 T arch_printf_process
+0x07f200bd T arch_vsnprintf
+

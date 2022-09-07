@@ -97,7 +97,7 @@ struct dma_uart_tag{
 
     /* Holds buffers received by the UART and stored by the DMA */
     struct co_list rx_list_ready;
-    struct ke_msg *p_rx_ready_active;
+    struct ke_msg *p_rx_ready_active;//RDD pointer to element for with is in processing
     struct ke_msg *p_rx_active;
 
     /* Holds buffers waiting to be transmitted by the UART */

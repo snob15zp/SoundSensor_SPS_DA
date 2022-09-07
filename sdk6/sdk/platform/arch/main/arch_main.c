@@ -75,6 +75,11 @@
 #include "wlan_coex.h"
 #endif
 
+
+
+#include "SS_InterfaceToBLE.h"//RDD
+
+
 /**
  * @addtogroup DRIVERS
  * @{
@@ -166,6 +171,9 @@ int main(void)
     system_init();
 
     system_init_post();
+	
+	#include "SS_InterfaceToBLE.h"
+	  SS_InterfaceToBLE_init();
 
     /*
      ************************************************************************************

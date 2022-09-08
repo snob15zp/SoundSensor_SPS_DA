@@ -40,6 +40,8 @@
 #include "gpio.h"
 #include "user_periph_setup.h"
 #include "user_sps_utils.h"
+
+#include "SS_InterfaceToBLE.h"//RDD
 /*
  * FUNCTION DEFINITIONS
  ****************************************************************************************
@@ -74,6 +76,8 @@ void user_spss_create_db(void)
 
     // Send the message
     ke_msg_send(req);
+		
+		SS_InterfaceToBLE_init();
         
 }
 

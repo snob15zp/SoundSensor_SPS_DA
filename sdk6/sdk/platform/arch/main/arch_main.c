@@ -77,7 +77,7 @@
 
 
 
-#include "SS_InterfaceToBLE.h"//RDD
+
 
 
 /**
@@ -172,8 +172,7 @@ int main(void)
 
     system_init_post();
 	
-	#include "SS_InterfaceToBLE.h"
-	  SS_InterfaceToBLE_init();
+		  
 
     /*
      ************************************************************************************

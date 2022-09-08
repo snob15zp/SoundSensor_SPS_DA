@@ -341,9 +341,25 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
+          <LineNumber>98</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>0</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>0</BreakIfRCount>
+          <Filename>..\..\..\..\..\sdk6\sdk\platform\arch\main\arch_system.h</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression></Expression>
+        </Bp>
+        <Bp>
+          <Number>1</Number>
+          <Type>0</Type>
           <LineNumber>328</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>133956880</Address>
+          <Address>133956884</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -353,6 +369,38 @@
           <Filename>.\..\..\..\..\..\sdk6\sdk\platform\arch\main\jump_table.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\dsps_device_531\../../../../../sdk6/sdk/platform/arch/main/jump_table.c\328</Expression>
+        </Bp>
+        <Bp>
+          <Number>2</Number>
+          <Type>0</Type>
+          <LineNumber>18</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>133977964</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>..\src\SS_InterfaceToBLE\SS_InterfaceToBLE.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\dsps_device_531\../src/SS_InterfaceToBLE/SS_InterfaceToBLE.c\18</Expression>
+        </Bp>
+        <Bp>
+          <Number>3</Number>
+          <Type>0</Type>
+          <LineNumber>51</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>133978074</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>..\src\SS_InterfaceToBLE\SS_InterfaceToBLE.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\dsps_device_531\../src/SS_InterfaceToBLE/SS_InterfaceToBLE.c\51</Expression>
         </Bp>
       </Breakpoint>
       <Tracepoint>
@@ -634,7 +682,7 @@
 
   <Group>
     <GroupName>sdk_driver</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -994,7 +1042,7 @@
 
   <Group>
     <GroupName>sdk_app</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>

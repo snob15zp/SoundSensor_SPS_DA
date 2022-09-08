@@ -355,6 +355,13 @@
           <Expression>\\dsps_device_531\../../../../../sdk6/sdk/platform/arch/main/jump_table.c\328</Expression>
         </Bp>
       </Breakpoint>
+      <WatchWindow1>
+        <Ww>
+          <count>0</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>p_buff-&gt;data[1]</ItemText>
+        </Ww>
+      </WatchWindow1>
       <Tracepoint>
         <THDelay>0</THDelay>
       </Tracepoint>
@@ -1646,7 +1653,7 @@
 
   <Group>
     <GroupName>user_dsps_service</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>

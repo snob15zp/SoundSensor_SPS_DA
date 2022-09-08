@@ -124,6 +124,8 @@ struct dma_uart_tag{
     uint32_t tx_size;
 };
 
+extern struct dma_uart_tag dma_uart __attribute__((section("retention_mem_area0"),zero_init)); //@RETENTION MEMORY;
+
 /*
  * FUNCTION DEFINITIONS
  ****************************************************************************************

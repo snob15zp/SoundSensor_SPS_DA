@@ -5,6 +5,8 @@
 #include "gpio.h"
 //#include "uart.h"
 //#include "syscntl.h"
+#include "user_sps_utils.h"
+#include "dma_uart_sps.h"
 
 #define ITB_pause 100
 #define LED_PORT                GPIO_PORT_0
@@ -23,6 +25,7 @@ if (ITB_state)
 	 {GPIO_SetInactive(LED_PORT, LED_PIN); };
 	 ITB_state=!ITB_state;
     ITB_timer = app_easy_timer(ITB_pause, adv_data_update_timer_cb);
+	 SS_InterfaceToBLE_SendThreeBytes();
 }
 
 void user_app_adv_start(void)
@@ -53,4 +56,26 @@ GPIO_set_pad_latch_en(true);
 //	      GPIO_SetInactive(LED_PORT, LED_PIN);
 adv_data_update_timer_cb();
 }
+}
+
+void SS_InterfaceToBLE_SendThreeBytes(void)
+{	
+                                    //sps_client_data_tx_req
+//  struct UART_RX_STRUCT *p_buff = KE_MSG_ALLOC_DYN_NO_INIT(DATA_TX_REQ, //RDD id, dest, src, param_str,length
+//                                                             prf_get_task_from_id(DEST_TASK_ID), //RDD #define DEST_TASK_ID TASK_ID_SPS_CLIENT
+//                                                             TASK_APP,
+//                                                             UART_RX_STRUCT,
+//                                                             ELEMENT_SIZE_RX);
+
+//	
+
+//        p_buff->length = 3;
+//	      p_buff->data[1]=1;
+//	      p_buff->data[2]=2;
+//	      p_buff->data[3]=3;
+//        ASSERT_ERROR(p_buff);
+//        ke_msg_send(p_buff);
+	char a[]="012";
+	user_send_ble_data((uint8_t*)a,3);
+	
 }

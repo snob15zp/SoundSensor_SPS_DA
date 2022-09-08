@@ -48,6 +48,8 @@
 #include "user_sps_buffer_dma.h"
 #include "user_sps_schedule_dma.h"
 
+#include "SS_InterfaceToBLE.h"//RDD
+
 /// Struct dma_uart
 struct dma_uart_tag dma_uart __attribute__((section("retention_mem_area0"),zero_init)); //@RETENTION MEMORY;
 
@@ -214,6 +216,8 @@ void dma_uart_rx_activate(void)
 
     dma_uart_read((uint32_t *) (p_buff->data), EXPECTED_SIZE);
     dma_uart.rx_to_cnt = 0;
+	
+	 SS_InterfaceToBLE_init();//RDD
 }
 
 /**

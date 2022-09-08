@@ -77,7 +77,7 @@ void user_spss_create_db(void)
     // Send the message
     ke_msg_send(req);
 		
-		SS_InterfaceToBLE_init();
+		//SS_InterfaceToBLE_init();//RDD
         
 }
 

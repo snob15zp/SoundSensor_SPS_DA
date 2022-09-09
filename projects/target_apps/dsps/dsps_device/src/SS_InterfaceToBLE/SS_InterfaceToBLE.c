@@ -15,7 +15,7 @@
 static int8_t ITB_state;
 static int8_t ITB_initstatus=0;
 
-timer_hnd ITB_timer  __SECTION_ZERO("retention_mem_area0"); //@RETENTION MEMORY;
+timer_hnd ITB_timer;//  __SECTION_ZERO("retention_mem_area0"); //@RETENTION MEMORY;
 
 static void adv_data_update_timer_cb()
 {

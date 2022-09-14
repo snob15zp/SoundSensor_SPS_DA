@@ -51,6 +51,8 @@
 #include "user_spss.h"
 #include "user_sps_device_dma.h"
 #endif
+
+#include "SS_InterfaceToBLE.h"
  
 /*
 * GLOBAL VARIABLE DEFINITIONS
@@ -243,6 +245,7 @@ arch_main_loop_callback_ret_t user_on_ble_powered(void)
 //        break;
 //    }   
 //    
+    SS_InterfaceToBLE_init();
     return GOTO_SLEEP;
 }
 /// @} DSPS_SERVICE_COMMON

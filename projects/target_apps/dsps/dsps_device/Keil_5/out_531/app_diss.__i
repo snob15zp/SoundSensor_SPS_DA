@@ -2,5 +2,5 @@
 -I.\RTE\_dsps_531
 -IC:\Users\RD\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include
 -IC:\Keil_v5\ARM\CMSIS\Include
--D__UVISION_VERSION="528" -DARMCM0P -D__DA14531__
--o .\out_531\app_customs_common.o --omf_browse .\out_531\app_customs_common.crf --depend .\out_531\app_customs_common.d "..\..\..\..\..\sdk6\sdk\app_modules\src\app_custs\app_customs_common.c"
+-D__UVISION_VERSION="528" -DARMCM0P -D__DA14531__ -D__KIT__
+-o .\out_531\app_diss.o --omf_browse .\out_531\app_diss.crf --depend .\out_531\app_diss.d "..\..\..\..\..\sdk6\sdk\app_modules\src\app_diss\app_diss.c"

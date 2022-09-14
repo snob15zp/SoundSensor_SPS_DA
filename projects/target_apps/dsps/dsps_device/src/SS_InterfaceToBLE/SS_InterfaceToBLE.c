@@ -20,9 +20,17 @@ timer_hnd ITB_timer;//  __SECTION_ZERO("retention_mem_area0"); //@RETENTION MEMO
 static void adv_data_update_timer_cb()
 {
 if (ITB_state)
-  {GPIO_SetActive(LED_PORT, LED_PIN);}
+  {
+#ifdef __KIT__		
+	GPIO_SetActive(LED_PORT, LED_PIN);
+#endif	
+	;}
    else
-	 {GPIO_SetInactive(LED_PORT, LED_PIN); };
+	 {
+#ifdef __KIT__
+	 GPIO_SetInactive(LED_PORT, LED_PIN);
+#endif
+		 ;};
 	 ITB_state=!ITB_state;
     ITB_timer = app_easy_timer(ITB_pause, adv_data_update_timer_cb);
 	 SS_InterfaceToBLE_SendThreeBytes();
@@ -50,10 +58,12 @@ void SS_InterfaceToBLE_init(void)
 {
 if (ITB_initstatus==0)
 {ITB_initstatus=1;
+#ifdef __KIT__	
 GPIO_ConfigurePin(LED_PORT, LED_PIN, OUTPUT, PID_GPIO, false);
 GPIO_set_pad_latch_en(true);
 //				GPIO_SetActive(LED_PORT, LED_PIN);
 //	      GPIO_SetInactive(LED_PORT, LED_PIN);
+#endif	
 adv_data_update_timer_cb();
 }
 }

@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Tue Sep 13 00:39:50 2022
+;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Wed Sep 14 17:32:03 2022
 ;VERSION 0.2
 ;FILE adc_531.o
 adc_correct_sample <= USED 0
@@ -40,7 +40,6 @@ app_easy_wakeup <= USED 0
 app_easy_wakeup_free <= USED 0
 app_easy_wakeup_set <= USED 0
 ;FILE app_easy_timer.o
-app_easy_timer <= USED 0
 app_easy_timer_cancel <= USED 0
 app_easy_timer_cancel_all <= USED 0
 app_easy_timer_modify <= USED 0
@@ -158,8 +157,6 @@ spi_flash_write_status_config_reg <= USED 0
 spi_flash_write_status_reg <= USED 0
 ;FILE sps_server.o
 ;FILE ss_interfacetoble.o
-SS_InterfaceToBLE_SendThreeBytes <= USED 0
-SS_InterfaceToBLE_init <= USED 0
 user_app_adv_start <= USED 0
 ;FILE startup_da14531.o
 ;FILE syscntl.o
@@ -204,10 +201,8 @@ user_on_connect_failed <= USED 0
 ;FILE user_sps_schedule_dma.o
 user_dma_sps_sleep_check <= USED 0
 ;FILE user_sps_utils.o
-ke_msg_alloc_no_init <= USED 0
 user_rwip_sleep_check <= USED 0
 ;FILE user_spss.o
-user_send_ble_data <= USED 0
 user_send_ble_flow_ctrl <= USED 0
 user_send_dummy_ble_data <= USED 0
 ;FILE user_spss_task.o

@@ -66,7 +66,7 @@ extern bool rx_cb_done;
 
 extern uint8_t heap_usage;
 
-void user_dma_sps_sleep_check(void)
+void user_dma_sps_sleep_check(void) //RDD not call now
 {
 //    uint32_t rx_length;
 //    if (app_default_sleep_mode == ARCH_EXT_SLEEP_ON)
@@ -200,11 +200,11 @@ void user_dma_sps_sleep_check(void)
 //    __enable_irq(); 
 //    return false;
 //}
-
+static uint8_t power_on_state;
 arch_main_loop_callback_ret_t user_on_ble_powered(void)
 {
-//    uint8_t  sys_state;
-//    
+    uint8_t  sys_state;
+    
 //    if(rx_cb_done == true)
 //    {
 //        if( !user_check_set_flow_off())
@@ -214,38 +214,30 @@ arch_main_loop_callback_ret_t user_on_ble_powered(void)
 //        }
 //        rx_cb_done = false;
 //    }
-//    switch( dma_uart.power_on_state )
-//    {
-//        case PON_STATE_IDLE:
-//            sys_state=ke_state_get(TASK_APP);
-//            if( sys_state != APP_CONNECTED )
-//                break;
-//            if (app_default_sleep_mode == ARCH_EXT_SLEEP_ON)
-//            {
-//                if(dma_uart.lists_initialized == true)
-//                {
-//                    dma_uart_sps_init(cfg_uart_sps_baudrate, 3);
-//                    dma_uart_rx_activate();
-//                    dma_uart_assert_rts();
-//                    dma_uart.power_on_state = PON_STATE_WAIT_RTS;
-//                }   
-//            }
-//            else
-//            {
-//                dma_uart.power_on_state = PON_STATE_WAIT_RTS;
-//            }
-//        case PON_STATE_WAIT_RTS://RDD?!!!!!!!
-//           dma_uart_tx_async();
-//           user_check_dma_uart_rx_to();
-//           user_dma_uart_to_ble();
-//           dma_uart_rx_reactivate();
-//           dma_uart_test_tx_queue_for_flow_on();  
-//        break;
-//        default:
-//        break;
-//    }   
-//    
-    SS_InterfaceToBLE_init();
+    switch( power_on_state )
+    {
+        case PON_STATE_IDLE:
+            sys_state=ke_state_get(TASK_APP);
+            if( sys_state != APP_CONNECTED )
+                break;
+            if (app_default_sleep_mode == ARCH_EXT_SLEEP_ON)
+            {
+                    SS_InterfaceToBLE_init();
+                    power_on_state = PON_STATE_WAIT_RTS;
+            }
+            else
+            {
+							  SS_InterfaceToBLE_init(); 
+                power_on_state = PON_STATE_WAIT_RTS;
+            }
+        case PON_STATE_WAIT_RTS://RDD?!!!!!!!
+              ;
+        break;
+        default:
+        break;
+    }   
+    
+
     return GOTO_SLEEP;
 }
 /// @} DSPS_SERVICE_COMMON

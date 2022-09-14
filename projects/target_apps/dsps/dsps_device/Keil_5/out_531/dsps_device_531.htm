@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\out_531\dsps_device_531.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\out_531\dsps_device_531.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Wed Sep 14 17:32:03 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Wed Sep 14 18:56:59 2022
 <BR><P>
 <H3>Maximum Stack Usage =        364 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -664,7 +664,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[188]"></a>ke_state_get</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
-<BR><BR>[Called By]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gapc_disconnect_ind_handler
+<BR><BR>[Called By]<UL><LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_on_ble_powered
+<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gapc_disconnect_ind_handler
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gapc_connection_req_ind_handler
 <LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gapm_device_ready_ind_handler
 </UL>
@@ -2463,7 +2464,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> app.o(.constdata)
 </UL>
-<P><STRONG><a name="[1c4]"></a>user_send_ble_data</STRONG> (Thumb, 50 bytes, Stack size 16 bytes, user_spss.o(.text))
+<P><STRONG><a name="[1c4]"></a>user_send_ble_data</STRONG> (Thumb, 52 bytes, Stack size 16 bytes, user_spss.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = user_send_ble_data &rArr; ke_msg_alloc_no_init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
@@ -2706,10 +2707,11 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_sps_server_data_tx_cfm_handler
 </UL>
 
-<P><STRONG><a name="[fa]"></a>user_on_ble_powered</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, user_sps_schedule_dma.o(.text))
+<P><STRONG><a name="[fa]"></a>user_on_ble_powered</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, user_sps_schedule_dma.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = user_on_ble_powered &rArr; SS_InterfaceToBLE_init &rArr; adv_data_update_timer_cb &rArr; SS_InterfaceToBLE_SendThreeBytes &rArr; user_send_ble_data &rArr; ke_msg_alloc_no_init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SS_InterfaceToBLE_init
+<BR>[Calls]<UL><LI><a href="#[188]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_state_get
+<LI><a href="#[1d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SS_InterfaceToBLE_init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>

@@ -9,8 +9,8 @@
 #include "dma_uart_sps.h"
 
 #define ITB_pause 100
-#define LED_PORT                GPIO_PORT_0
-#define LED_PIN                 GPIO_PIN_9
+//#define LED_PORT                GPIO_PORT_0
+//#define LED_PIN                 GPIO_PIN_9
 
 static int8_t ITB_state;
 static int8_t ITB_initstatus=0;
@@ -20,9 +20,14 @@ timer_hnd ITB_timer  __SECTION_ZERO("retention_mem_area0"); //@RETENTION MEMORY;
 static void adv_data_update_timer_cb()
 {
 if (ITB_state)
-  {GPIO_SetActive(LED_PORT, LED_PIN);}
+  {//GPIO_SetActive(LED_PORT, LED_PIN)
+		;
+	}
    else
-	 {GPIO_SetInactive(LED_PORT, LED_PIN); };
+	 {
+	 //GPIO_SetInactive(LED_PORT, LED_PIN);
+		 ;
+	 };
 	 ITB_state=!ITB_state;
     ITB_timer = app_easy_timer(ITB_pause, adv_data_update_timer_cb);
 	 SS_InterfaceToBLE_SendThreeBytes();
@@ -50,8 +55,8 @@ void SS_InterfaceToBLE_init(void)
 {
 if (ITB_initstatus==0)
 {ITB_initstatus=1;
-GPIO_ConfigurePin(LED_PORT, LED_PIN, OUTPUT, PID_GPIO, false);
-GPIO_set_pad_latch_en(true);
+//GPIO_ConfigurePin(LED_PORT, LED_PIN, OUTPUT, PID_GPIO, false);
+//GPIO_set_pad_latch_en(true);
 //				GPIO_SetActive(LED_PORT, LED_PIN);
 //	      GPIO_SetInactive(LED_PORT, LED_PIN);
 adv_data_update_timer_cb();

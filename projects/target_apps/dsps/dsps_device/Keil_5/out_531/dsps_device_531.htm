@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\out_531\dsps_device_531.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\out_531\dsps_device_531.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Sep 08 21:13:32 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Wed Sep 14 13:06:47 2022
 <BR><P>
 <H3>Maximum Stack Usage =        364 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -297,8 +297,8 @@ Global Symbols
 <LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_remote_write_request_ind_handler
 <LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_remote_discover_val_ind_handler
 <LI><a href="#[1f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_rx_activate
-<LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_send_ble_flow_ctrl
-<LI><a href="#[1ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_send_ble_data
+<LI><a href="#[1ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_send_ble_flow_ctrl
+<LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_send_ble_data
 </UL>
 
 <P><STRONG><a name="[113]"></a>dia_rand</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
@@ -576,7 +576,7 @@ Global Symbols
 <LI><a href="#[21e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_read_configuration_struct
 <LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_remote_discover_val_ind_handler
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_config_init
-<LI><a href="#[1ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_alloc_no_init
+<LI><a href="#[1ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_alloc_no_init
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> patch.o(.constdata)
 </UL>
@@ -628,7 +628,7 @@ Global Symbols
 <LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_config_gattc_att_info_req_ind_handler
 <LI><a href="#[210]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_gattc_exc_mtu_cmd
 <LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_features
-<LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_send_ble_flow_ctrl
+<LI><a href="#[1ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_send_ble_flow_ctrl
 </UL>
 
 <P><STRONG><a name="[1ad]"></a>ke_msg_send</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
@@ -672,8 +672,8 @@ Global Symbols
 <LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_features
 <LI><a href="#[1f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_dma_uart_to_ble_confirm
 <LI><a href="#[1ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_dma_uart_to_ble
-<LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_send_ble_flow_ctrl
-<LI><a href="#[1ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_send_ble_data
+<LI><a href="#[1ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_send_ble_flow_ctrl
+<LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_send_ble_data
 </UL>
 
 <P><STRONG><a name="[241]"></a>ke_msg_send_basic</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE), UNUSED)
@@ -806,7 +806,7 @@ Global Symbols
 <LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_discover_rsp_cmd_handler
 <LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_config_gattc_write_req_ind_handler
 <LI><a href="#[20d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_remote_config_init
-<LI><a href="#[1ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_send_ble_data
+<LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_send_ble_data
 </UL>
 
 <P><STRONG><a name="[e9]"></a>__aeabi_memcpy4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
@@ -1420,13 +1420,11 @@ Global Symbols
 
 <P><STRONG><a name="[134]"></a>GPIO_SetInactive</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, gpio.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ConfigurePin
-<LI><a href="#[2d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;adv_data_update_timer_cb
 <LI><a href="#[1fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_assert_rts
 </UL>
 
 <P><STRONG><a name="[133]"></a>GPIO_SetActive</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, gpio.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ConfigurePin
-<LI><a href="#[2d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;adv_data_update_timer_cb
 <LI><a href="#[200]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_deassert_rts
 </UL>
 
@@ -1438,7 +1436,6 @@ Global Symbols
 <LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetPinFunction
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_spi_flash_init
-<LI><a href="#[1f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SS_InterfaceToBLE_init
 <LI><a href="#[1f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_pad_functions
 </UL>
 
@@ -2680,7 +2677,18 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> app.o(.constdata)
 </UL>
-<P><STRONG><a name="[1ec]"></a>user_send_ble_flow_ctrl</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, user_spss.o(.text))
+<P><STRONG><a name="[1ec]"></a>user_send_ble_data</STRONG> (Thumb, 52 bytes, Stack size 16 bytes, user_spss.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = user_send_ble_data &rArr; ke_msg_alloc_no_init
+</UL>
+<BR>[Calls]<UL><LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+<LI><a href="#[1ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prf_get_task_from_id
+<LI><a href="#[1ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_send
+<LI><a href="#[1ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_alloc_no_init
+</UL>
+<BR>[Called By]<UL><LI><a href="#[221]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SS_InterfaceToBLE_SendThreeBytes
+</UL>
+
+<P><STRONG><a name="[1ee]"></a>user_send_ble_flow_ctrl</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, user_spss.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = user_send_ble_flow_ctrl
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prf_get_task_from_id
@@ -2690,17 +2698,6 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[203]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_test_tx_queue_for_flow_on
 <LI><a href="#[207]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_force_tx_flow_off
 <LI><a href="#[204]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_test_tx_queue_for_flow_off
-</UL>
-
-<P><STRONG><a name="[1ed]"></a>user_send_ble_data</STRONG> (Thumb, 50 bytes, Stack size 16 bytes, user_spss.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = user_send_ble_data &rArr; ke_msg_alloc_no_init
-</UL>
-<BR>[Calls]<UL><LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
-<LI><a href="#[1ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prf_get_task_from_id
-<LI><a href="#[1ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_send
-<LI><a href="#[1ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_alloc_no_init
-</UL>
-<BR>[Called By]<UL><LI><a href="#[221]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SS_InterfaceToBLE_SendThreeBytes
 </UL>
 
 <P><STRONG><a name="[a5]"></a>user_spss_process_handler</STRONG> (Thumb, 24 bytes, Stack size 32 bytes, user_spss_task.o(.text))
@@ -2816,12 +2813,12 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[1f8]"></a>dma_uart_rx_activate</STRONG> (Thumb, 72 bytes, Stack size 8 bytes, dma_uart_sps.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = dma_uart_rx_activate &rArr; SS_InterfaceToBLE_init &rArr; adv_data_update_timer_cb &rArr; SS_InterfaceToBLE_SendThreeBytes &rArr; user_send_ble_data &rArr; ke_msg_alloc_no_init
+<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = dma_uart_rx_activate &rArr; SS_InterfaceToBLE_init &rArr; adv_data_update_timer_cb &rArr; SS_InterfaceToBLE_SendThreeBytes &rArr; user_send_ble_data &rArr; ke_msg_alloc_no_init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[15b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_receive
 <LI><a href="#[1ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prf_get_task_from_id
 <LI><a href="#[1f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SS_InterfaceToBLE_init
-<LI><a href="#[1ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_alloc_no_init
+<LI><a href="#[1ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_alloc_no_init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_on_ble_powered
 <LI><a href="#[1ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_timeout
@@ -2829,7 +2826,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[1fa]"></a>dma_uart_rx_reactivate</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, dma_uart_sps.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = dma_uart_rx_reactivate &rArr; dma_uart_rx_activate &rArr; SS_InterfaceToBLE_init &rArr; adv_data_update_timer_cb &rArr; SS_InterfaceToBLE_SendThreeBytes &rArr; user_send_ble_data &rArr; ke_msg_alloc_no_init
+<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = dma_uart_rx_reactivate &rArr; dma_uart_rx_activate &rArr; SS_InterfaceToBLE_init &rArr; adv_data_update_timer_cb &rArr; SS_InterfaceToBLE_SendThreeBytes &rArr; user_send_ble_data &rArr; ke_msg_alloc_no_init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_check_set_flow_on
 <LI><a href="#[1fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_assert_rts
@@ -2857,7 +2854,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[1ff]"></a>dma_uart_timeout</STRONG> (Thumb, 106 bytes, Stack size 16 bytes, dma_uart_sps.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = dma_uart_timeout &rArr; dma_uart_rx_activate &rArr; SS_InterfaceToBLE_init &rArr; adv_data_update_timer_cb &rArr; SS_InterfaceToBLE_SendThreeBytes &rArr; user_send_ble_data &rArr; ke_msg_alloc_no_init
+<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = dma_uart_timeout &rArr; dma_uart_rx_activate &rArr; SS_InterfaceToBLE_init &rArr; adv_data_update_timer_cb &rArr; SS_InterfaceToBLE_SendThreeBytes &rArr; user_send_ble_data &rArr; ke_msg_alloc_no_init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_channel_stop
 <LI><a href="#[1d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;co_list_push_back
@@ -2873,7 +2870,7 @@ Global Symbols
 <P><STRONG><a name="[203]"></a>dma_uart_test_tx_queue_for_flow_on</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, dma_uart_sps.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = dma_uart_test_tx_queue_for_flow_on &rArr; user_send_ble_flow_ctrl
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_send_ble_flow_ctrl
+<BR>[Calls]<UL><LI><a href="#[1ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_send_ble_flow_ctrl
 </UL>
 <BR>[Called By]<UL><LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_on_ble_powered
 <LI><a href="#[208]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_sps_init
@@ -3051,13 +3048,13 @@ Global Symbols
 <LI><a href="#[19d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_app_on_connection
 </UL>
 
-<P><STRONG><a name="[1ee]"></a>ke_msg_alloc_no_init</STRONG> (Thumb, 42 bytes, Stack size 24 bytes, user_sps_utils.o(.text))
+<P><STRONG><a name="[1ed]"></a>ke_msg_alloc_no_init</STRONG> (Thumb, 42 bytes, Stack size 24 bytes, user_sps_utils.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = ke_msg_alloc_no_init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_malloc
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_rx_activate
-<LI><a href="#[1ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_send_ble_data
+<LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_send_ble_data
 </UL>
 
 <P><STRONG><a name="[215]"></a>user_rwip_sleep_check</STRONG> (Thumb, 110 bytes, Stack size 24 bytes, user_sps_utils.o(.text))
@@ -3127,7 +3124,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[218]"></a>user_check_dma_uart_rx_to</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, user_sps_schedule_dma.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = user_check_dma_uart_rx_to &rArr; dma_uart_timeout &rArr; dma_uart_rx_activate &rArr; SS_InterfaceToBLE_init &rArr; adv_data_update_timer_cb &rArr; SS_InterfaceToBLE_SendThreeBytes &rArr; user_send_ble_data &rArr; ke_msg_alloc_no_init
+<BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = user_check_dma_uart_rx_to &rArr; dma_uart_timeout &rArr; dma_uart_rx_activate &rArr; SS_InterfaceToBLE_init &rArr; adv_data_update_timer_cb &rArr; SS_InterfaceToBLE_SendThreeBytes &rArr; user_send_ble_data &rArr; ke_msg_alloc_no_init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_timeout
 <LI><a href="#[201]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_rx_check_empty
@@ -3267,16 +3264,15 @@ Global Symbols
 <P><STRONG><a name="[221]"></a>SS_InterfaceToBLE_SendThreeBytes</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, ss_interfacetoble.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = SS_InterfaceToBLE_SendThreeBytes &rArr; user_send_ble_data &rArr; ke_msg_alloc_no_init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_send_ble_data
+<BR>[Calls]<UL><LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_send_ble_data
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;adv_data_update_timer_cb
 </UL>
 
-<P><STRONG><a name="[1f9]"></a>SS_InterfaceToBLE_init</STRONG> (Thumb, 46 bytes, Stack size 16 bytes, ss_interfacetoble.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = SS_InterfaceToBLE_init &rArr; adv_data_update_timer_cb &rArr; SS_InterfaceToBLE_SendThreeBytes &rArr; user_send_ble_data &rArr; ke_msg_alloc_no_init
+<P><STRONG><a name="[1f9]"></a>SS_InterfaceToBLE_init</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, ss_interfacetoble.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = SS_InterfaceToBLE_init &rArr; adv_data_update_timer_cb &rArr; SS_InterfaceToBLE_SendThreeBytes &rArr; user_send_ble_data &rArr; ke_msg_alloc_no_init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ConfigurePin
-<LI><a href="#[2d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;adv_data_update_timer_cb
+<BR>[Calls]<UL><LI><a href="#[2d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;adv_data_update_timer_cb
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_rx_activate
 </UL>
@@ -4018,7 +4014,7 @@ Local Symbols
 <P><STRONG><a name="[204]"></a>dma_uart_test_tx_queue_for_flow_off</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, dma_uart_sps.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = dma_uart_test_tx_queue_for_flow_off &rArr; user_send_ble_flow_ctrl
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_send_ble_flow_ctrl
+<BR>[Calls]<UL><LI><a href="#[1ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_send_ble_flow_ctrl
 </UL>
 <BR>[Called By]<UL><LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_tx_callback
 <LI><a href="#[1f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_tx_async
@@ -4027,7 +4023,7 @@ Local Symbols
 <P><STRONG><a name="[207]"></a>dma_uart_force_tx_flow_off</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, dma_uart_sps.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = dma_uart_force_tx_flow_off &rArr; user_send_ble_flow_ctrl
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_send_ble_flow_ctrl
+<BR>[Calls]<UL><LI><a href="#[1ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_send_ble_flow_ctrl
 </UL>
 <BR>[Called By]<UL><LI><a href="#[208]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_sps_init
 <LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_gpio_callback
@@ -4224,12 +4220,10 @@ Local Symbols
 <LI><a href="#[21e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_read_configuration_struct
 </UL>
 
-<P><STRONG><a name="[2d]"></a>adv_data_update_timer_cb</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, ss_interfacetoble.o(.text))
+<P><STRONG><a name="[2d]"></a>adv_data_update_timer_cb</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, ss_interfacetoble.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = adv_data_update_timer_cb &rArr; SS_InterfaceToBLE_SendThreeBytes &rArr; user_send_ble_data &rArr; ke_msg_alloc_no_init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetActive
-<LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetInactive
-<LI><a href="#[1b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_easy_timer
+<BR>[Calls]<UL><LI><a href="#[1b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_easy_timer
 <LI><a href="#[221]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SS_InterfaceToBLE_SendThreeBytes
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SS_InterfaceToBLE_init

@@ -87,7 +87,7 @@ int user_sps_server_enable_cfm_handler(ke_msg_id_t const msgid,
                                       ke_task_id_t const dest_id,
                                       ke_task_id_t const src_id)
 {
-    user_dma_uart_to_ble();
+    //user_dma_uart_to_ble();//RDD
 
     return (KE_MSG_CONSUMED);
 }
@@ -111,8 +111,8 @@ int user_sps_server_data_write_ind_handler(ke_msg_id_t const msgid,
                                            ke_task_id_t const dest_id,
                                            ke_task_id_t const src_id)
 {
-    user_ble_to_dma_uart( (void *)param ); 
-    dma_uart_tx_async();
+//    user_ble_to_dma_uart( (void *)param ); 
+//    dma_uart_tx_async();
     return (KE_MSG_NO_FREE);
 }
 
@@ -145,7 +145,7 @@ int user_on_updated_params_complete(ke_msg_id_t const msgid,
 int gattc_mtu_changed_ind_handler(ke_msg_id_t const msgid, const struct gattc_mtu_changed_ind *param,
                                       ke_task_id_t const dest_id, ke_task_id_t const src_id)
 {
-    dma_uart_set_tx_size(param->mtu);
+//    dma_uart_set_tx_size(param->mtu);RDD!!!
     return (KE_MSG_CONSUMED);
 };
 #endif //(BLE_SPS_SERVER)

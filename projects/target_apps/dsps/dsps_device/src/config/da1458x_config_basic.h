@@ -34,7 +34,7 @@
 /*                  BLE application through GTL protocol over a signalling iface (UART, SPI etc)               */
 /***************************************************************************************************************/
 #define CFG_APP
-#define DMA_UART 
+#undef DMA_UART //RDD
 
 /****************************************************************************************************************/
 /* Enables the BLE security functionality in TASK_APP. If not defined BLE security related code is compiled out.*/
@@ -82,7 +82,7 @@
 
 #undef  GPIO_DRV_PIN_ALLOC_MON_DISABLED
 #define USE_DLE
-#define CFG_UART_DMA_SUPPORT
+#undef CFG_UART_DMA_SUPPORT //RDD 
 
 #define CFG_SPI_FLASH_ENABLE
 #undef CFG_I2C_EEPROM_ENABLE

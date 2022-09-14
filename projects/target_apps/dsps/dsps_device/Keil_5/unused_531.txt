@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Fri Sep 09 08:46:19 2022
+;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Tue Sep 13 00:39:50 2022
 ;VERSION 0.2
 ;FILE adc_531.o
 adc_correct_sample <= USED 0
@@ -29,6 +29,7 @@ app_easy_gap_undirected_advertise_with_timeout_start <= USED 0
 default_advertise_operation <= USED 0
 default_app_generate_static_random_addr <= USED 0
 default_app_generate_unique_static_random_addr <= USED 0
+default_app_on_disconnect <= USED 0
 ;FILE app_diss.o
 ;FILE app_diss_task.o
 ;FILE app_easy_msg_utils.o
@@ -39,6 +40,7 @@ app_easy_wakeup <= USED 0
 app_easy_wakeup_free <= USED 0
 app_easy_wakeup_set <= USED 0
 ;FILE app_easy_timer.o
+app_easy_timer <= USED 0
 app_easy_timer_cancel <= USED 0
 app_easy_timer_cancel_all <= USED 0
 app_easy_timer_modify <= USED 0
@@ -59,19 +61,19 @@ arch_set_deep_sleep <= USED 0
 ;FILE arch_system.o
 arch_set_pxact_gpio <= USED 0
 arch_wkupct_tweak_deb_time <= USED 0
+check_sys_startup_period <= USED 0
 ;FILE ble_arp.o
 ;FILE crc32.o
 crc32 <= USED 0
-;FILE dma.o
-dma_channel_active <= USED 0
-dma_channel_cancel <= USED 0
-;FILE dma_uart_sps.o
 ;FILE gpio.o
 GPIO_ConfigurePinPower <= USED 0
 GPIO_DisablePorPin <= USED 0
+GPIO_EnableIRQ <= USED 0
 GPIO_GetIRQInputLevel <= USED 0
 GPIO_GetPinFunction <= USED 0
+GPIO_GetPinStatus <= USED 0
 GPIO_GetPorTime <= USED 0
+GPIO_RegisterCallback <= USED 0
 GPIO_SetIRQInputLevel <= USED 0
 GPIO_SetPorTime <= USED 0
 GPIO_is_valid <= USED 0
@@ -156,6 +158,8 @@ spi_flash_write_status_config_reg <= USED 0
 spi_flash_write_status_reg <= USED 0
 ;FILE sps_server.o
 ;FILE ss_interfacetoble.o
+SS_InterfaceToBLE_SendThreeBytes <= USED 0
+SS_InterfaceToBLE_init <= USED 0
 user_app_adv_start <= USED 0
 ;FILE startup_da14531.o
 ;FILE syscntl.o
@@ -170,24 +174,41 @@ syscntl_por_vbat_low_cfg <= USED 0
 SystemCoreClockUpdate <= USED 0
 ;FILE trng.o
 ;FILE uart.o
+uart_baudrate_setf <= USED 0
 uart_disable <= USED 0
 uart_disable_flow_control <= USED 0
+uart_enable <= USED 0
 uart_enable_flow_control <= USED 0
+uart_initialize <= USED 0
+uart_read_buffer <= USED 0
+uart_read_byte <= USED 0
+uart_receive <= USED 0
 uart_register_err_cb <= USED 0
 uart_register_rx_cb <= USED 0
 uart_register_tx_cb <= USED 0
+uart_send <= USED 0
 uart_wait_tx_finish <= USED 0
+uart_write_buffer <= USED 0
+uart_write_byte <= USED 0
 ;FILE user_config_storage.o
 ;FILE user_periph_setup.o
 ;FILE user_remote_config.o
 ;FILE user_remote_config_task.o
 ;FILE user_sps_buffer_dma.o
+user_ble_to_dma_uart <= USED 0
+user_init_queues <= USED 0
 ;FILE user_sps_device_config.o
+user_sps_apply_uart_baudrate <= USED 0
 ;FILE user_sps_device_dma.o
 user_on_connect_failed <= USED 0
 ;FILE user_sps_schedule_dma.o
+user_dma_sps_sleep_check <= USED 0
 ;FILE user_sps_utils.o
+ke_msg_alloc_no_init <= USED 0
+user_rwip_sleep_check <= USED 0
 ;FILE user_spss.o
+user_send_ble_data <= USED 0
+user_send_ble_flow_ctrl <= USED 0
 user_send_dummy_ble_data <= USED 0
 ;FILE user_spss_task.o
 ;FILE wkupct_quadec.o

@@ -1315,11 +1315,6 @@
               <FileType>1</FileType>
               <FilePath>.\..\src\platform\user_periph_setup.c</FilePath>
             </File>
-            <File>
-              <FileName>dma_uart_sps.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\common\src\driver\dma_uart_sps.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
@@ -2758,11 +2753,6 @@
               <FileName>user_periph_setup.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\..\src\platform\user_periph_setup.c</FilePath>
-            </File>
-            <File>
-              <FileName>dma_uart_sps.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\common\src\driver\dma_uart_sps.c</FilePath>
             </File>
           </Files>
         </Group>

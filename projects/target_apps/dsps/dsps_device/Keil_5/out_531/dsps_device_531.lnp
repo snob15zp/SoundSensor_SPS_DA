@@ -59,7 +59,6 @@
 ".\out_531\user_spss.o"
 ".\out_531\user_spss_task.o"
 ".\out_531\user_periph_setup.o"
-".\out_531\dma_uart_sps.o"
 ".\out_531\user_sps_device_dma.o"
 ".\out_531\user_sps_utils.o"
 ".\out_531\user_sps_buffer_dma.o"

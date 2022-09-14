@@ -74,7 +74,7 @@ void *ke_msg_alloc_no_init(ke_msg_id_t const id, ke_task_id_t const dest_id,
     return param_ptr;
 }
 
-#ifdef DMA_UART
+//#ifdef DMA_UART  //RDD
 sleep_mode_t user_rwip_sleep_check(void)
 {
     sleep_mode_t proc_sleep = mode_active;
@@ -167,5 +167,5 @@ sleep_mode_t user_rwip_sleep_check(void)
      
      return proc_sleep;
 }
-#endif
+//#endif
 /// @} DSPS_SERVICE_COMMON

@@ -42,7 +42,7 @@
 #ifdef DMA_UART
 #include "user_sps_device_dma.h"
 #else
-#include "user_sps_device.h"
+//#include "user_sps_device.h"//RDD
 #endif
 
 /*

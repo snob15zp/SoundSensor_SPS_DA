@@ -74,4 +74,4 @@
 --library_type=microlib --strict --scatter "..\..\..\..\..\sdk6\sdk\common_project_files\scatterfiles\DA14531_all_ram_ret.sct"
 --feedback=".\unused_531.txt" .\..\..\..\..\..\projects\target_apps\dsps\common\misc\da14531_symbols.txt --symdefs dsps_531_symdef.txt --any_placement=best_fit --datacompressor off --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
---list ".\out_531\dsps_device_531.map" -o .\out_531\dsps_device_531.axf
+--list ".\dsps_device_531.map" -o .\out_531\dsps_device_531.axf

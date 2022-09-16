@@ -135,7 +135,7 @@ static const spi_cfg_t spi_cfg = {
 
 void SPI_ADC_init(void)
 {
-user_spi_flash_init(SPI_FLASH_GPIO_MAP);	
+//user_spi_flash_init(SPI_FLASH_GPIO_MAP);	
 	
 	
 ////------------------------------------------------From main-------------------------	
@@ -168,7 +168,7 @@ user_spi_flash_init(SPI_FLASH_GPIO_MAP);
 	
 }
 
-#ifndef __KIT__
+#ifdef __SoundSensorFix__
 static tim0_2_clk_div_config_t clk_div_config =
 {
     .clk_div  = TIM0_2_CLK_DIV_8

@@ -24,6 +24,7 @@
 ".\out_531\spi_531.o"
 ".\out_531\hw_otpc_531.o"
 ".\out_531\adc_531.o"
+".\out_531\timer2.o"
 ".\out_531\rwble.o"
 ".\out_531\rwip.o"
 ".\out_531\ble_arp.o"

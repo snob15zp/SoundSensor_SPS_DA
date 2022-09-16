@@ -160,6 +160,8 @@ void periph_init(void)
 
     //Init pads
     set_pad_functions();
+	
+	 user_spi_flash_init(SPI_FLASH_GPIO_MAP);
 
     // Initialize UART2 controller
 #ifdef CFG_PRINTF_UART2

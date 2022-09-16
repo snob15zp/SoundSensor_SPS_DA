@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\out_531\dsps_device_531.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\out_531\dsps_device_531.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Wed Sep 14 18:56:59 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Fri Sep 16 00:34:29 2022
 <BR><P>
 <H3>Maximum Stack Usage =        364 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -46,7 +46,7 @@ Function Pointers
  <LI><a href="#[f]">RFCAL_Handler</a> from startup_da14531.o(.text) referenced from startup_da14531.o(RESET)
  <LI><a href="#[18]">RTC_Handler</a> from startup_da14531.o(.text) referenced from startup_da14531.o(RESET)
  <LI><a href="#[0]">Reset_Handler</a> from startup_da14531.o(.text) referenced from startup_da14531.o(RESET)
- <LI><a href="#[b]">SPI_Handler</a> from startup_da14531.o(.text) referenced from startup_da14531.o(RESET)
+ <LI><a href="#[b]">SPI_Handler</a> from spi_adc.o(.text) referenced from startup_da14531.o(RESET)
  <LI><a href="#[3]">SVC_Handler</a> from startup_da14531.o(.text) referenced from startup_da14531.o(RESET)
  <LI><a href="#[17]">SWTIM1_Handler</a> from startup_da14531.o(.text) referenced from startup_da14531.o(RESET)
  <LI><a href="#[15]">SWTIM_Handler</a> from startup_da14531.o(.text) referenced from startup_da14531.o(RESET)
@@ -335,11 +335,11 @@ Global Symbols
 <P><STRONG><a name="[6a]"></a>lld_data_tx_prog_func</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE), UNUSED)
 <BR>[Address Reference Count : 1]<UL><LI> jump_table.o(.constdata)
 </UL>
-<P><STRONG><a name="[1dc]"></a>lld_evt_elt_insert</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
+<P><STRONG><a name="[1dd]"></a>lld_evt_elt_insert</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
 <BR><BR>[Called By]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;JT_lld_test_mode_rx_func
 </UL>
 
-<P><STRONG><a name="[1da]"></a>lld_evt_adv_create</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
+<P><STRONG><a name="[1db]"></a>lld_evt_adv_create</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
 <BR><BR>[Called By]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;JT_lld_test_mode_rx_func
 </UL>
 
@@ -359,7 +359,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rwip_sleep
 </UL>
 
-<P><STRONG><a name="[1db]"></a>lld_util_freq2chnl</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
+<P><STRONG><a name="[1dc]"></a>lld_util_freq2chnl</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
 <BR><BR>[Called By]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;JT_lld_test_mode_rx_func
 </UL>
 
@@ -639,7 +639,7 @@ Global Symbols
 <LI><a href="#[1c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_send_ble_data
 </UL>
 
-<P><STRONG><a name="[1f3]"></a>ke_msg_send_basic</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE), UNUSED)
+<P><STRONG><a name="[1f4]"></a>ke_msg_send_basic</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE), UNUSED)
 <BR><BR>[Called By]<UL></UL>
 
 <P><STRONG><a name="[3f]"></a>ke_task_init_func</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE), UNUSED)
@@ -682,7 +682,7 @@ Global Symbols
 <LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_timer_api_process_handler
 </UL>
 
-<P><STRONG><a name="[1f0]"></a>ke_timer_clear</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE), UNUSED)
+<P><STRONG><a name="[1f1]"></a>ke_timer_clear</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE), UNUSED)
 <BR><BR>[Called By]<UL></UL>
 
 <P><STRONG><a name="[160]"></a>ke_timer_sleep_check</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
@@ -735,6 +735,7 @@ Global Symbols
 <LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;arch_rom_init
 <LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_init
 <LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rf_init_func
+<LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_conf_storage_init
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gattc_read_req_ind_handler
 <LI><a href="#[1b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sps_server_send_event
 <LI><a href="#[1b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sps_set_ccc_value
@@ -759,15 +760,14 @@ Global Symbols
 <LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_config_gattc_write_req_ind_handler
 <LI><a href="#[1cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_remote_config_init
 <LI><a href="#[1c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_send_ble_data
-<LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_conf_storage_init
 </UL>
 
 <P><STRONG><a name="[dd]"></a>__aeabi_memcpy4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
 <BR><BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ble_init_arp_func
 <LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;arch_rom_init
 <LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_flash_auto_detect
-<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_config_init
 <LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_conf_storage_init
+<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_config_init
 </UL>
 
 <P><STRONG><a name="[1a4]"></a>__aeabi_memset</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
@@ -971,7 +971,7 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 </UL>
 
-<P><STRONG><a name="[1dd]"></a>__main_after_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
+<P><STRONG><a name="[1de]"></a>__main_after_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
 <BR><BR>[Called By]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 </UL>
 
@@ -1067,9 +1067,6 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_da14531.o(RESET)
 </UL>
 <P><STRONG><a name="[18]"></a>RTC_Handler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_da14531.o(.text))
-<BR>[Address Reference Count : 1]<UL><LI> startup_da14531.o(RESET)
-</UL>
-<P><STRONG><a name="[b]"></a>SPI_Handler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_da14531.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_da14531.o(RESET)
 </UL>
 <P><STRONG><a name="[17]"></a>SWTIM1_Handler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_da14531.o(.text))
@@ -2387,10 +2384,10 @@ Global Symbols
 <P><STRONG><a name="[25]"></a>user_sps_apply_config</STRONG> (Thumb, 136 bytes, Stack size 24 bytes, user_sps_device_config.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 356<LI>Call Chain = user_sps_apply_config &rArr; user_conf_storage_init &rArr; user_spi_flash_init &rArr; spi_flash_auto_detect &rArr; spi_flash_read_jedec_id &rArr; spi_flash_is_busy &rArr; spi_flash_read_status_reg &rArr; spi_transaction &rArr; spi_access
 </UL>
-<BR>[Calls]<UL><LI><a href="#[19e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;platform_reset
-<LI><a href="#[187]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_easy_gap_param_update_start
-<LI><a href="#[1c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_storage_save_configuration
+<BR>[Calls]<UL><LI><a href="#[1c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_storage_save_configuration
 <LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_conf_storage_init
+<LI><a href="#[19e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;platform_reset
+<LI><a href="#[187]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_easy_gap_param_update_start
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> user_sps_device_dma.o(.text)
 </UL>
@@ -2535,11 +2532,12 @@ Global Symbols
 <LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_flash_configure_env
 <LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_flash_release_from_power_down
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_suotar_img_hdlr
+<BR>[Called By]<UL><LI><a href="#[1c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_storage_save_configuration
+<LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_conf_storage_init
+<LI><a href="#[1a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_suotar_img_hdlr
 <LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_set_image_valid_flag
 <LI><a href="#[194]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;on_suotar_status_change
-<LI><a href="#[1c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_storage_save_configuration
-<LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_conf_storage_init
+<LI><a href="#[1da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_ADC_init
 </UL>
 
 <P><STRONG><a name="[1c9]"></a>user_spi_flash_release</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, user_periph_setup.o(.text))
@@ -2595,9 +2593,9 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 348<LI>Call Chain = user_on_init &rArr; user_conf_storage_init &rArr; user_spi_flash_init &rArr; spi_flash_auto_detect &rArr; spi_flash_read_jedec_id &rArr; spi_flash_is_busy &rArr; spi_flash_read_status_reg &rArr; spi_transaction &rArr; spi_access
 </UL>
 <BR>[Calls]<UL><LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;periph_init
+<LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_conf_storage_init
 <LI><a href="#[172]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_app_on_init
 <LI><a href="#[1cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_remote_config_init
-<LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_conf_storage_init
 <LI><a href="#[1ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
 </UL>
 <BR>[Called By]<UL><LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;system_init_post
@@ -2827,12 +2825,21 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_on_ble_powered
 </UL>
 
+<P><STRONG><a name="[1da]"></a>SPI_ADC_init</STRONG> (Thumb, 58 bytes, Stack size 8 bytes, spi_adc.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[195]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_spi_flash_init
+</UL>
+
+<P><STRONG><a name="[b]"></a>SPI_Handler</STRONG> (Thumb, 78 bytes, Stack size 8 bytes, spi_adc.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = SPI_Handler
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> startup_da14531.o(RESET)
+</UL>
 <P><STRONG><a name="[4e]"></a>JT_lld_test_mode_rx_func</STRONG> (Thumb, 142 bytes, Stack size 24 bytes, lld.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = JT_lld_test_mode_rx_func
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lld_util_freq2chnl
-<LI><a href="#[1da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lld_evt_adv_create
-<LI><a href="#[1dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lld_evt_elt_insert
+<BR>[Calls]<UL><LI><a href="#[1dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lld_util_freq2chnl
+<LI><a href="#[1db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lld_evt_adv_create
+<LI><a href="#[1dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lld_evt_elt_insert
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> jump_table.o(.constdata)
 </UL>
@@ -2841,7 +2848,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[f2]"></a>__scatterload</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, init.o(.text))
-<BR><BR>[Calls]<UL><LI><a href="#[1dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main_after_scatterload
+<BR><BR>[Calls]<UL><LI><a href="#[1de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main_after_scatterload
 </UL>
 <BR>[Called By]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_main_scatterload
 </UL>
@@ -3525,9 +3532,9 @@ Local Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_flash_read_data
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_write_configuration_struct
+<BR>[Called By]<UL><LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_conf_storage_init
+<LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_write_configuration_struct
 <LI><a href="#[1d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_read_configuration_struct
-<LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_conf_storage_init
 </UL>
 
 <P><STRONG><a name="[26]"></a>adv_data_update_timer_cb</STRONG> (Thumb, 58 bytes, Stack size 8 bytes, ss_interfacetoble.o(.text))

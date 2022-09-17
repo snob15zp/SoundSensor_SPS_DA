@@ -156,7 +156,6 @@ void SPI_ADC_init(void)
 #endif	
 }
 
-<<<<<<< HEAD
 void SPITreeByts (void)
 {
 #ifdef __DA14531__		
@@ -178,10 +177,9 @@ static tim2_config_t config =
     .hw_pause = TIM2_HW_PAUSE_OFF
 };
 static tim2_pwm_config_t pwm_config;
+#endif
 
-=======
 #ifdef __SoundSensorFix__
->>>>>>> ebc1f25 (adds cmd_mux)
 
 void timer2_init(void)
 {

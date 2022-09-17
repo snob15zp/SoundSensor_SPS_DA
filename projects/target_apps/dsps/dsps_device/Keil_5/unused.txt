@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Sat Sep 17 20:23:29 2022
+;#<FEEDBACK># ARM Linker, 5060960: Last Updated: Sat Sep 17 23:10:51 2022
 ;VERSION 0.2
 ;FILE adc_58x.o
 adc_disable <= USED 0
@@ -42,6 +42,7 @@ app_easy_wakeup <= USED 0
 app_easy_wakeup_free <= USED 0
 app_easy_wakeup_set <= USED 0
 ;FILE app_easy_timer.o
+app_easy_timer <= USED 0
 app_easy_timer_cancel <= USED 0
 app_easy_timer_cancel_all <= USED 0
 app_easy_timer_modify <= USED 0
@@ -73,6 +74,8 @@ set_xtal16m_trim_value <= USED 0
 ;FILE attm_db_128.o
 ;FILE battery.o
 battery_get_lvl <= USED 0
+;FILE cmd_hnd.o
+;FILE cmd_mux.o
 ;FILE crc32.o
 crc32 <= USED 0
 ;FILE custom_common.o
@@ -196,7 +199,7 @@ spi_flash_write_status_config_reg <= USED 0
 spi_flash_write_status_reg <= USED 0
 ;FILE sps_server.o
 ;FILE ss_interfacetoble.o
-user_app_adv_start <= USED 0
+SS_InterfaceToBLE_init <= USED 0
 ;FILE startup_da14585_586.o
 ;FILE suotar.o
 ;FILE syscntl.o
@@ -209,6 +212,7 @@ systick_start <= USED 0
 systick_stop <= USED 0
 systick_value <= USED 0
 systick_wait <= USED 0
+;FILE test_hnd.o
 ;FILE timer2.o
 timer2_config <= USED 0
 timer2_pwm_freq_set <= USED 0
@@ -235,15 +239,11 @@ uart_write_byte <= USED 0
 ;FILE user_periph_setup.o
 ;FILE user_remote_config.o
 ;FILE user_remote_config_task.o
-;FILE user_sps_buffer_dma.o
-user_ble_to_dma_uart <= USED 0
-user_init_queues <= USED 0
 ;FILE user_sps_device_config.o
 user_sps_apply_uart_baudrate <= USED 0
 ;FILE user_sps_device_dma.o
 user_on_connect_failed <= USED 0
 ;FILE user_sps_schedule_dma.o
-user_dma_sps_sleep_check <= USED 0
 ;FILE user_sps_utils.o
 user_rwip_sleep_check <= USED 0
 ;FILE user_spss.o

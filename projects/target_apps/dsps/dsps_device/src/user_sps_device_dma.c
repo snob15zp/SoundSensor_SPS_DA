@@ -184,7 +184,6 @@ void user_on_init(void)
 void user_on_db_init_complete(void)
 {
     default_app_on_db_init_complete();
-    //user_init_queues();//RDD
 }  
 
 #if defined(CFG_BLE_METRICS) && defined(CFG_PRINTF)
@@ -213,7 +212,6 @@ void user_statistics(void){
  
 void user_before_sleep(void)
 {
-    //user_dma_sps_sleep_check();//RDD
 }
 
 void user_on_data_length_change(struct gapc_le_pkt_size_ind *param, uint16_t src_id) //RDD #ifdef USE_DLE

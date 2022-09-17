@@ -32,14 +32,7 @@
  * FUNCTION DECLARATIONS
  ****************************************************************************************
  */ 
-/**
- ****************************************************************************************
- * @brief  Initialize DMA queues
- * @return void
- ****************************************************************************************
- */ 
-void user_init_queues(void);
-
+ 
 /**
  ****************************************************************************************
  * @brief Places a buffer from BLE to DMA Uart TX queue
@@ -49,14 +42,6 @@ void user_init_queues(void);
  */
 void user_ble_to_dma_uart(void *msg);
 
-/**
- ****************************************************************************************
- * @brief  If there is confirmation message send another one or resend the same one
- * @param[in] success  true if the message has been confirmed, false if error occured
- * @return void
- ****************************************************************************************
- */   
-void user_dma_uart_to_ble_confirm(bool success);
 
 /**
  ****************************************************************************************

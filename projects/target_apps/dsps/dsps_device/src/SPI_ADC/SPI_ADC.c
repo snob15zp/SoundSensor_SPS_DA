@@ -131,44 +131,43 @@ static const spi_cfg_t spi_cfg = {
     0x5000122C SPI_TXBUFFER_FORCE_L_REG SPI TX buffer force low value
     0x50001230 SPI_TXBUFFER_FOR CE_H_REG SPI TX buffer force high value
 */
-
+#define ADC_SPI_WORD_LENGTH (7<<2)
+#define ADC_SPI_RX_TL (2<<4)
+#define ADC_SPI_TX_TL 0
 
 void SPI_ADC_init(void)
 {
+#ifdef __DA14531__	
 //user_spi_flash_init(SPI_FLASH_GPIO_MAP);	
-	
-	
-////------------------------------------------------From main-------------------------	
 
-////	Step	1 	SPI_MODE_8BIT
-////			spi_set_bitmode(SPI_MODE_8BIT);	
-////		SetBits16(&spi->SPI_CONFIG_REGF, SPI_WORD_LENGTH, 15);
-////    spi_env.incr = 2;	
-//      SetBits16(&spi->SPI_CONFIG_REGF, SPI_WORD_LENGTH, 7);	
-//      SetWord16(SPI_CTRL_REG, GetWord16(SPI_CTRL_REG) & (~SPI_FIFO_RESET)); 
-//	
-//	
-//	     // Set SPI FIFO threshold levels to 2
-//    SetWord16(&spi->SPI_FIFO_CONFIG_REGF, 2);//RDD???
-//	//----------------------------------------------------------------------------	
-////	Step	3 Control SPI  			
-////    SetBits16(&spi->SPI_CTRL_REGF, SPI_EN | SPI_TX_EN | SPI_RX_EN| SPI_DMA_TX_EN | SPI_DMA_RX_EN, 0);		
-//    SetWord16(SPI_CTRL_REG, 0x07);	//SPI_RX_EN SPI_TX_EN SPI_EN 
-//	
-//		  //----------------------------------------------------------------------------
-////    SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(SPI_FLASH_OP_RDSR << 8));
-////	Step	4 Init read 3 byte  
-//	  SetWord16(SPI_CS_CONFIG_REG, SPI_CS_0);	
-//	
-//    SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x55));	
-//    SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x33));
-//    SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x44));
-//		
-//		//SetWord16(SPI_CS_CONFIG_REG, SPI_CS_NONE);
+	SetWord16(SPI_CTRL_REG, SPI_FIFO_RESET|SPI_RX_EN|SPI_TX_EN|SPI_EN); 
+	SetWord16(SPI_CONFIG_REG, ADC_SPI_WORD_LENGTH);
+	//SetWord16(SPI_CLOCK_REG, );
+	SetWord16(SPI_FIFO_CONFIG_REG,ADC_SPI_RX_TL|ADC_SPI_TX_TL );
+	//SetWord16(SPI_IRQ_MASK_REG, );
+	SetWord16(SPI_CTRL_REG,                 SPI_RX_EN|SPI_TX_EN|SPI_EN); 
+	SetWord16(SPI_CS_CONFIG_REG,SPI_CS_0);
+ 
+	  //SetWord16(SPI_CS_CONFIG_REG, SPI_CS_0);	
 	
+    SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x55));	
+    SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x33));
+    SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x44));
+		
+		//SetWord16(SPI_CS_CONFIG_REG, SPI_CS_NONE);
+#endif	
 }
 
-#ifdef __SoundSensorFix__
+void SPITreeByts (void)
+{
+#ifdef __DA14531__		
+    SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x55));	
+    SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x33));
+    SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x44));	
+#endif	
+}
+
+#ifdef __SoundSensor__ 
 static tim0_2_clk_div_config_t clk_div_config =
 {
     .clk_div  = TIM0_2_CLK_DIV_8
@@ -184,36 +183,36 @@ static tim2_pwm_config_t pwm_config;
 
 void timer2_init(void)
 {
-//	//set_pad_functions
-//	GPIO_ConfigurePin(0, 6, OUTPUT, PID_PWM3, true);
-////    printf_string(UART, "\n\r\n\r***************");
-////    printf_string(UART, "\n\r* TIMER2 TEST *\n\r");
-////    printf_string(UART, "***************\n\r");
+	//set_pad_functions GPIO_PIN_6
+	GPIO_ConfigurePin(GPIO_PORT_0, GPIO_PIN_6, OUTPUT, PID_PWM3, true);
+//    printf_string(UART, "\n\r\n\r***************");
+//    printf_string(UART, "\n\r* TIMER2 TEST *\n\r");
+//    printf_string(UART, "***************\n\r");
 
-//    // Enable the Timer0/Timer2 input clock
-//    timer0_2_clk_enable();
-//    // Set the Timer0/Timer2 input clock division factor
-//    timer0_2_clk_div_set(&clk_div_config);
+    // Enable the Timer0/Timer2 input clock
+    timer0_2_clk_enable();
+    // Set the Timer0/Timer2 input clock division factor
+    timer0_2_clk_div_set(&clk_div_config);
 
-//    timer2_config(&config);
+    timer2_config(&config);
 
-//    // System clock, divided by 8, is the Timer2 input clock source (according
-//    // to the clk_div_config struct above).
-////    timer2_pwm_freq_set(PWM_FREQUENCY, 16000000 / 8);
-//    timer2_pwm_freq_set(4000000U, 16000000/2);
+    // System clock, divided by 8, is the Timer2 input clock source (according
+    // to the clk_div_config struct above).
+//    timer2_pwm_freq_set(PWM_FREQUENCY, 16000000 / 8);
+    timer2_pwm_freq_set(4000000U, 16000000/2);
 
-//    timer2_start();
-//	
-//	
-//        timer2_pause();
-//	
-//        // Set PWM3 duty cycle
-//        pwm_config.pwm_signal = TIM2_PWM_3;
-//        pwm_config.pwm_dc     = 50;
-//        timer2_pwm_signal_config(&pwm_config);
+    timer2_start();
+	
+	
+        timer2_pause();
+	
+        // Set PWM3 duty cycle
+        pwm_config.pwm_signal = TIM2_PWM_3;
+        pwm_config.pwm_dc     = 50;
+        timer2_pwm_signal_config(&pwm_config);
 
-//        // Release sw pause to let PWM2, PWM3, and PWM4 run
-//        timer2_resume();
+        // Release sw pause to let PWM2, PWM3, and PWM4 run
+        timer2_resume();
 }
 
 
@@ -224,7 +223,7 @@ void timer2_init(void)
 
 void SPI_Handler(void)
 {
-	
+#ifdef __SoundSensor__ 	
 	//----------------------------------------------------------------------------	
 //	Step	2 spi_cs_low();			
 	  
@@ -264,6 +263,6 @@ void SPI_Handler(void)
 
    	NVIC_ClearPendingIRQ(SPI_IRQn);
 	  //SetWord16(SPI_CS_CONFIG_REG, SPI_CS_NONE);	
-
+#endif
 }
 

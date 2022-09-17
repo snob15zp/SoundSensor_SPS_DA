@@ -35,6 +35,7 @@
 #include "spi_531.h"
 #endif
 #include "spi_flash.h"
+#include "SPI_ADC.h"
 
 #if defined (CFG_SPI_FLASH_ENABLE)
 // Configuration struct for SPI
@@ -161,7 +162,12 @@ void periph_init(void)
     //Init pads
     set_pad_functions();
 	
-	 user_spi_flash_init(SPI_FLASH_GPIO_MAP);
+	 user_spi_flash_init(SPI_FLASH_GPIO_MAP);//RDD
+#ifdef __SoundSensor__	 
+	 timer2_init();//RDD
+	 
+	 SPI_ADC_init();//RDD
+#endif
 
     // Initialize UART2 controller
 #ifdef CFG_PRINTF_UART2
@@ -229,6 +235,7 @@ void user_spi_flash_init(uint32_t gpio_map)
 
     // Try to auto-detect the device
     spi_flash_auto_detect(&dev_id);
+//			GPIO_ConfigurePin(0, 6, OUTPUT, PID_PWM3, true);
 
 }
 

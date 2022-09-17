@@ -6,11 +6,11 @@
 #include "user_periph_setup.h"
 
 
-#define def_dataRead_Size 4096
-uint8_t SA_dataRead[def_dataRead_Size],dataRead_toy;
-bool SA_b_dataRead_full;
-bool SA_b_dataRead_empty;
-static uint16_t SA_ui16_dataRead_index;
+//#define def_dataRead_Size 4096
+//uint8_t SA_dataRead[def_dataRead_Size],dataRead_toy;
+//bool SA_b_dataRead_full;
+//bool SA_b_dataRead_empty;
+//static uint16_t SA_ui16_dataRead_index;
 
 /*
 To configure the SPI controller in master mode, follow the steps below:
@@ -221,48 +221,48 @@ void timer2_init(void)
 #endif
 
 
-void SPI_Handler(void)
-{
-#ifdef __SoundSensor__ 	
-	//----------------------------------------------------------------------------	
-//	Step	2 spi_cs_low();			
-	  
-    //SetWord16(SPI_CS_CONFIG_REG, SPI_CS_0);		
-	
-	 /// SetWord16(SPI_CTRL_REG, GetWord16(SPI_CTRL_REG) | (SPI_FIFO_RESET)); 	
-		SetWord16(SPI_IRQ_MASK_REG, 0);	
-//		NVIC_DisableIRQ(SPI_IRQn);	
+//void SPI_Handler(void)
+//{
+//#ifdef __SoundSensor__ 	
+//	//----------------------------------------------------------------------------	
+////	Step	2 spi_cs_low();			
+//	  
+//    //SetWord16(SPI_CS_CONFIG_REG, SPI_CS_0);		
+//	
+//	 /// SetWord16(SPI_CTRL_REG, GetWord16(SPI_CTRL_REG) | (SPI_FIFO_RESET)); 	
+//		SetWord16(SPI_IRQ_MASK_REG, 0);	
+////		NVIC_DisableIRQ(SPI_IRQn);	
 
 
-//----------------------------------------------------------------------------		
-//    dataRead = (GetWord16(&spi->SPI_FIFO_HIGH_REGF) << 16);		
-//    dataRead += GetWord16(&spi->SPI_FIFO_READ_REGF) & 0xFFFF;		
-//	Step	6 Read data (3 byte)		
-	if (SA_ui16_dataRead_index<(def_dataRead_Size-3))
-	{
-    SA_dataRead[SA_ui16_dataRead_index++] = GetWord16(&spi->SPI_FIFO_READ_REGF) ;				
-    SA_dataRead[SA_ui16_dataRead_index++] = GetWord16(&spi->SPI_FIFO_READ_REGF) ;				
-		SA_dataRead[SA_ui16_dataRead_index++]= GetWord16(&spi->SPI_FIFO_READ_REGF) ;	
-	}	
-	else 
-	{ //SA_b_dataRead_full=true;
-		dataRead_toy = GetWord16(&spi->SPI_FIFO_READ_REGF) ;				
-    dataRead_toy = GetWord16(&spi->SPI_FIFO_READ_REGF) ;				
-		dataRead_toy = GetWord16(&spi->SPI_FIFO_READ_REGF) ;	
-	};	
-	
+////----------------------------------------------------------------------------		
+////    dataRead = (GetWord16(&spi->SPI_FIFO_HIGH_REGF) << 16);		
+////    dataRead += GetWord16(&spi->SPI_FIFO_READ_REGF) & 0xFFFF;		
+////	Step	6 Read data (3 byte)		
+//	if (SA_ui16_dataRead_index<(def_dataRead_Size-3))
+//	{
+//    SA_dataRead[SA_ui16_dataRead_index++] = GetWord16(&spi->SPI_FIFO_READ_REGF) ;				
+//    SA_dataRead[SA_ui16_dataRead_index++] = GetWord16(&spi->SPI_FIFO_READ_REGF) ;				
+//		SA_dataRead[SA_ui16_dataRead_index++]= GetWord16(&spi->SPI_FIFO_READ_REGF) ;	
+//	}	
+//	else 
+//	{ //SA_b_dataRead_full=true;
+//		dataRead_toy = GetWord16(&spi->SPI_FIFO_READ_REGF) ;				
+//    dataRead_toy = GetWord16(&spi->SPI_FIFO_READ_REGF) ;				
+//		dataRead_toy = GetWord16(&spi->SPI_FIFO_READ_REGF) ;	
+//	};	
+//	
 
-	  //----------------------------------------------------------------------------
-//    SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(SPI_FLASH_OP_RDSR << 8));
-//	Step	4 Init read 3 byte  
-    SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x55));	
-    SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x33));
-    SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x44));
-		
+//	  //----------------------------------------------------------------------------
+////    SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(SPI_FLASH_OP_RDSR << 8));
+////	Step	4 Init read 3 byte  
+//    SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x55));	
+//    SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x33));
+//    SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x44));
+//		
 
 
-   	NVIC_ClearPendingIRQ(SPI_IRQn);
-	  //SetWord16(SPI_CS_CONFIG_REG, SPI_CS_NONE);	
-#endif
-}
+//   	NVIC_ClearPendingIRQ(SPI_IRQn);
+//	  //SetWord16(SPI_CS_CONFIG_REG, SPI_CS_NONE);	
+//#endif
+//}
 

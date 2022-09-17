@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\out_531\dsps_device_531.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\out_531\dsps_device_531.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Fri Sep 16 22:11:51 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sat Sep 17 22:15:52 2022
 <BR><P>
 <H3>Maximum Stack Usage =        364 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -46,7 +46,7 @@ Function Pointers
  <LI><a href="#[f]">RFCAL_Handler</a> from startup_da14531.o(.text) referenced from startup_da14531.o(RESET)
  <LI><a href="#[18]">RTC_Handler</a> from startup_da14531.o(.text) referenced from startup_da14531.o(RESET)
  <LI><a href="#[0]">Reset_Handler</a> from startup_da14531.o(.text) referenced from startup_da14531.o(RESET)
- <LI><a href="#[b]">SPI_Handler</a> from spi_adc.o(.text) referenced from startup_da14531.o(RESET)
+ <LI><a href="#[b]">SPI_Handler</a> from startup_da14531.o(.text) referenced from startup_da14531.o(RESET)
  <LI><a href="#[3]">SVC_Handler</a> from startup_da14531.o(.text) referenced from startup_da14531.o(RESET)
  <LI><a href="#[17]">SWTIM1_Handler</a> from startup_da14531.o(.text) referenced from startup_da14531.o(RESET)
  <LI><a href="#[15]">SWTIM_Handler</a> from startup_da14531.o(.text) referenced from startup_da14531.o(RESET)
@@ -1067,6 +1067,9 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_da14531.o(RESET)
 </UL>
 <P><STRONG><a name="[18]"></a>RTC_Handler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_da14531.o(.text))
+<BR>[Address Reference Count : 1]<UL><LI> startup_da14531.o(RESET)
+</UL>
+<P><STRONG><a name="[b]"></a>SPI_Handler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_da14531.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_da14531.o(RESET)
 </UL>
 <P><STRONG><a name="[17]"></a>SWTIM1_Handler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_da14531.o(.text))
@@ -2806,11 +2809,6 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_on_ble_powered
 </UL>
 
-<P><STRONG><a name="[b]"></a>SPI_Handler</STRONG> (Thumb, 78 bytes, Stack size 8 bytes, spi_adc.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = SPI_Handler
-</UL>
-<BR>[Address Reference Count : 1]<UL><LI> startup_da14531.o(RESET)
-</UL>
 <P><STRONG><a name="[4e]"></a>JT_lld_test_mode_rx_func</STRONG> (Thumb, 142 bytes, Stack size 24 bytes, lld.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = JT_lld_test_mode_rx_func
 </UL>

@@ -166,7 +166,7 @@ void periph_init(void)
 #ifdef __SoundSensor__	 
 	 timer2_init();//RDD
 	 
-	 SPI_ADC_init();//RDD
+	// SPI_ADC_init();//RDD
 #endif
 
     // Initialize UART2 controller

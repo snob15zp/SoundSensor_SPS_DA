@@ -223,7 +223,7 @@
       <OPTFL>
         <tvExp>1</tvExp>
         <tvExpOptDlg>0</tvExpOptDlg>
-        <IsCurrentTarget>1</IsCurrentTarget>
+        <IsCurrentTarget>0</IsCurrentTarget>
       </OPTFL>
       <CpuCode>7</CpuCode>
       <DebugOpt>
@@ -265,10 +265,6 @@
         <pMon>Segger\JL2CM3.dll</pMon>
       </DebugOpt>
       <TargetDriverDllRegistry>
-        <SetRegEntry>
-          <Number>0</Number>
-          <Key>DLGUARM</Key>
-        </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
           <Key>ARMRTXEVENTFLAGS</Key>
@@ -410,7 +406,7 @@
       <OPTFL>
         <tvExp>1</tvExp>
         <tvExpOptDlg>0</tvExpOptDlg>
-        <IsCurrentTarget>0</IsCurrentTarget>
+        <IsCurrentTarget>1</IsCurrentTarget>
       </OPTFL>
       <CpuCode>7</CpuCode>
       <DebugOpt>
@@ -448,10 +444,14 @@
         <tDllPa></tDllPa>
         <tDlgDll></tDlgDll>
         <tDlgPa></tDlgPa>
-        <tIfile></tIfile>
+        <tIfile>..\..\..\..\..\sdk6\sdk\common_project_files\misc\jlink_DA14531.ini</tIfile>
         <pMon>Segger\JL2CM3.dll</pMon>
       </DebugOpt>
       <TargetDriverDllRegistry>
+        <SetRegEntry>
+          <Number>0</Number>
+          <Key>DLGUARM</Key>
+        </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
           <Key>ARMRTXEVENTFLAGS</Key>
@@ -482,9 +482,9 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>167</LineNumber>
+          <LineNumber>165</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>133970438</Address>
+          <Address>133970432</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -493,7 +493,23 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>.\..\src\platform\user_periph_setup.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\SS_Fix\../src/platform/user_periph_setup.c\167</Expression>
+          <Expression>\\SS_Fix\../src/platform/user_periph_setup.c\165</Expression>
+        </Bp>
+        <Bp>
+          <Number>1</Number>
+          <Type>0</Type>
+          <LineNumber>157</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>133974316</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>..\src\SPI_ADC\SPI_ADC.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\SS_Fix\../src/SPI_ADC/SPI_ADC.c\157</Expression>
         </Bp>
       </Breakpoint>
       <MemoryWindow1>

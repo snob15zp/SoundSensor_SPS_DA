@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Sun Sep 18 01:55:33 2022
+;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Sun Sep 18 10:53:30 2022
 ;VERSION 0.2
 ;FILE adc_531.o
 adc_correct_sample <= USED 0
@@ -127,8 +127,6 @@ spi_send <= USED 0
 spi_set_cs_mode <= USED 0
 spi_transfer <= USED 0
 ;FILE spi_adc.o
-SPITreeByts <= USED 0
-SPI_ADC_init <= USED 0
 ;FILE spi_flash.o
 spi_flash_block_erase_no_wait <= USED 0
 spi_flash_chip_erase <= USED 0
@@ -174,9 +172,6 @@ syscntl_por_vbat_low_cfg <= USED 0
 ;FILE system_da14531.o
 SystemCoreClockUpdate <= USED 0
 ;FILE timer2.o
-timer2_config <= USED 0
-timer2_pwm_freq_set <= USED 0
-timer2_pwm_signal_config <= USED 0
 ;FILE trng.o
 ;FILE uart.o
 uart_baudrate_setf <= USED 0

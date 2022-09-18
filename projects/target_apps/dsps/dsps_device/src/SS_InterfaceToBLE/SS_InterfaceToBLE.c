@@ -1,4 +1,5 @@
 #include "SS_InterfaceToBLE.h"
+#include "SPI_ADC.h"
 
 //#include "user_periph_setup.h"
 //#include "datasheet.h"
@@ -87,5 +88,6 @@ void SS_InterfaceToBLE_SendThreeBytes(void)
 //        ke_msg_send(p_buff);
 	char a[]="012";
 	user_send_ble_data((uint8_t*)a,3);
+	SPITreeByts();
 	
 }

@@ -135,40 +135,56 @@ static const spi_cfg_t spi_cfg = {
 #define ADC_SPI_RX_TL (2<<4)
 #define ADC_SPI_TX_TL 0
 
+int16_t tmp_SPI_CTRL_REG;
+int16_t tmp_SPI_CONFIG_REG;
+int16_t tmp_SPI_FIFO_CONFIG_REG;
+int16_t tmp_SPI_CS_CONFIG_REG;
+
 void SPI_ADC_init(void)
 {
 #ifdef __DA14531__	
 //user_spi_flash_init(SPI_FLASH_GPIO_MAP);	
 
-//	SetWord16(SPI_CTRL_REG, SPI_FIFO_RESET|SPI_RX_EN|SPI_TX_EN|SPI_EN); 
-//	SetWord16(SPI_CONFIG_REG, ADC_SPI_WORD_LENGTH);
-//	//SetWord16(SPI_CLOCK_REG, );
-//	SetWord16(SPI_FIFO_CONFIG_REG,ADC_SPI_RX_TL|ADC_SPI_TX_TL );
-//	//SetWord16(SPI_IRQ_MASK_REG, );
-//	SetWord16(SPI_CTRL_REG,                 SPI_RX_EN|SPI_TX_EN|SPI_EN); 
-//	SetWord16(SPI_CS_CONFIG_REG,SPI_CS_0);
- 
-	  //SetWord16(SPI_CS_CONFIG_REG, SPI_CS_0);	
+	SetWord16(SPI_CTRL_REG, SPI_FIFO_RESET|SPI_RX_EN|SPI_TX_EN|SPI_EN); 
+	SetWord16(SPI_CONFIG_REG, ADC_SPI_WORD_LENGTH);
+	//SetWord16(SPI_CLOCK_REG, );
+	SetWord16(SPI_FIFO_CONFIG_REG,ADC_SPI_RX_TL|ADC_SPI_TX_TL );
+	//SetWord16(SPI_IRQ_MASK_REG, );
+	SetWord16(SPI_CTRL_REG,                 SPI_RX_EN|SPI_TX_EN|SPI_EN); 
+	SetWord16(SPI_CS_CONFIG_REG,SPI_CS_0);
+	SetWord16(SPI_CS_CONFIG_REG,SPI_CS_1);
+	//SetWord16(SPI_CS_CONFIG_REG,SPI_CS_NONE);
+	//SetWord16(SPI_CS_CONFIG_REG,SPI_CS_GPIO);
+//======================================================================================================= 
+//	  //SetWord16(SPI_CS_CONFIG_REG, SPI_CS_0);	
 
-	//	Step	1 	SPI_MODE_8BIT
-//			spi_set_bitmode(SPI_MODE_8BIT);	
-//		SetBits16(&spi->SPI_CONFIG_REGF, SPI_WORD_LENGTH, 15);
-//    spi_env.incr = 2;	
-	  SetBits16(&spi->SPI_CONFIG_REGF, SPI_WORD_LENGTH, 7);	
+//	//	Step	1 	SPI_MODE_8BIT
+////			spi_set_bitmode(SPI_MODE_8BIT);	
+////		SetBits16(&spi->SPI_CONFIG_REGF, SPI_WORD_LENGTH, 15);
+////    spi_env.incr = 2;	
+//	  SetBits16(&spi->SPI_CONFIG_REGF, SPI_WORD_LENGTH, 7);	
 
-//----------------------------------------------------------------------------	
-//	Step	2 spi_cs_low();			
-	  SetWord16(SPI_CTRL_REG, GetWord16(SPI_CTRL_REG) & (~SPI_FIFO_RESET)); 
-    SetWord16(SPI_CS_CONFIG_REG, SPI_CS_0);			
-	
-//----------------------------------------------------------------------------	
-//	Step	3 Control SPI  			
-//    SetBits16(&spi->SPI_CTRL_REGF, SPI_EN | SPI_TX_EN | SPI_RX_EN| SPI_DMA_TX_EN | SPI_DMA_RX_EN, 0);		
-    SetWord16(SPI_CTRL_REG, 0x07);			
+////----------------------------------------------------------------------------	
+////	Step	2 spi_cs_low();			
+//	  SetWord16(SPI_CTRL_REG, GetWord16(SPI_CTRL_REG) & (~SPI_FIFO_RESET)); 
+//    SetWord16(SPI_CS_CONFIG_REG, SPI_CS_0);			
+//	
+////----------------------------------------------------------------------------	
+////	Step	3 Control SPI  			
+////    SetBits16(&spi->SPI_CTRL_REGF, SPI_EN | SPI_TX_EN | SPI_RX_EN| SPI_DMA_TX_EN | SPI_DMA_RX_EN, 0);		
+//    SetWord16(SPI_CTRL_REG, 0x07);			
+//========================================================================================================
+tmp_SPI_CTRL_REG=GetWord16(SPI_CTRL_REG);
+tmp_SPI_CONFIG_REG=GetWord16(SPI_CONFIG_REG);
+tmp_SPI_FIFO_CONFIG_REG=GetWord16(SPI_FIFO_CONFIG_REG);
+tmp_SPI_CS_CONFIG_REG=GetWord16(SPI_CS_CONFIG_REG);
+
 
 	
 	while(1)
 {	
+	
+	SetWord16(SPI_CS_CONFIG_REG,SPI_CS_0);
     SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x55));	
     SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x33));
     SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x44));
@@ -177,6 +193,7 @@ void SPI_ADC_init(void)
 		{
 		
 		};
+	SetWord16(SPI_CS_CONFIG_REG,SPI_CS_1);	
 	}		
 		//SetWord16(SPI_CS_CONFIG_REG, SPI_CS_NONE);
 #endif	

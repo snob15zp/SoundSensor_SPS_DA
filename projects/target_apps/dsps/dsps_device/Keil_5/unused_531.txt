@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Sun Sep 18 20:17:45 2022
+;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Mon Sep 19 20:10:57 2022
 ;VERSION 0.2
 ;FILE adc_531.o
 adc_correct_sample <= USED 0
@@ -67,7 +67,6 @@ crc32 <= USED 0
 ;FILE gpio.o
 GPIO_ConfigurePinPower <= USED 0
 GPIO_DisablePorPin <= USED 0
-GPIO_EnableIRQ <= USED 0
 GPIO_GetIRQInputLevel <= USED 0
 GPIO_GetPinFunction <= USED 0
 GPIO_GetPinStatus <= USED 0
@@ -76,6 +75,7 @@ GPIO_RegisterCallback <= USED 0
 GPIO_SetIRQInputLevel <= USED 0
 GPIO_SetPorTime <= USED 0
 GPIO_is_valid <= USED 0
+GPIOn_Handler <= USED 0
 ;FILE hardfault_handler.o
 ;FILE hash.o
 hash <= USED 0

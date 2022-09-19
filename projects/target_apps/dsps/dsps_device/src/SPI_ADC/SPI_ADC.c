@@ -181,7 +181,7 @@ tmp_SPI_CS_CONFIG_REG=GetWord16(SPI_CS_CONFIG_REG);
 
 
 	
-	while(1)
+//	while(1)
 {	
 	
 	SetWord16(SPI_CS_CONFIG_REG,SPI_CS_0);
@@ -202,9 +202,11 @@ tmp_SPI_CS_CONFIG_REG=GetWord16(SPI_CS_CONFIG_REG);
 void SPITreeByts (void)
 {
 #ifdef __DA14531__		
+//	  SetWord16(SPI_CS_CONFIG_REG,SPI_CS_1);	
+//	  SetWord16(SPI_CS_CONFIG_REG,SPI_CS_0);
     SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x55));	
-    SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x33));
-    SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x44));	
+    SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x55));
+    SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x55));	
 #endif	
 }
 
@@ -307,3 +309,57 @@ void timer2_init(void)
 //#endif
 //}
 
+void intinit(void)
+{
+/*	
+	24.3.2 GPIO Interrupts
+1. Enable a GPIO interrupt for the P0_x by setting the
+GPIO_IRQx_IN_SEL_REG[KBRD_IRQ0_SEL] bit.
+2. Select the logic level by which the interrupt is generated
+(GPIO_INT_LEVEL_CTRL_REG[INPUT_LEVELx]).
+3. Select whether a key release is needed for an interrupt to be generated after a generated IRQ is
+cleared (GPIO_INT_LEVEL_CTRL_REG[EDGE_LEVELNx]).
+4. Set up the debounce time for GPIO trigger (GPIO_DEBOUNCE_REG[DEB_VALUE]).
+5. Enable the debounce timer for the selected IRQ (GPIO_DEBOUNCE_REG[DEB_ENABLEx]).
+	*/
+/*	
+	NVIC_ISER	Interrupt Set-Enable Register.
+NVIC_ICER	Interrupt Clear-Enable Register.
+NVIC_ISPR	Interrupt Set-Pending Register.
+NVIC_ICPR	Interrupt Clear-Pending Register.
+NVIC_IPR0-NVIC_IPR7	Interrupt Priority Registers.
+	*/
+	
+//void GPIO_SetPinFunction(GPIO_PORT port, GPIO_PIN pin, GPIO_PUPD mode, GPIO_FUNCTION function)
+//void GPIO_ConfigurePin(GPIO_PORT port, GPIO_PIN pin, GPIO_PUPD mode, GPIO_FUNCTION function,const bool high)
+//void GPIO_ConfigurePinPower(GPIO_PORT port, GPIO_PIN pin, GPIO_POWER_RAIL power_rail)//PAD_WEAK_CTRL_REG
+//void GPIO_EnableIRQ(GPIO_PORT port, GPIO_PIN pin, IRQn_Type irq, bool low_input,bool release_wait, uint8_t debounce_ms)	
+//void GPIO_SetIRQInputLevel(IRQn_Type irq, GPIO_IRQ_INPUT_LEVEL level)//GPIO_INT_LEVEL_CTRL_REG
+//void GPIO_ResetIRQ( IRQn_Type irq )	//GPIO_RESET_IRQ_REG
+
+GPIO_ConfigurePin(GPIO_PORT_0,GPIO_PIN_7,INPUT, PID_GPIO,false);
+
+
+GPIO_EnableIRQ(GPIO_PORT_0, //GPIOSetBits16(GPIO_IRQ0_IN_SEL_REG + 2*(irq-GPIO0_IRQn), KBRD_IRQn_SEL, KBRD_IRQn_SEL_BASE[port] + pin);
+GPIO_PIN_7,
+GPIO0_IRQn,
+true,/* 0= selected input will generate GPIO IRQ0 if that input is high.
+1 = selected input will generate GPIO IRQ0 if that input is low.*/
+	false,/*0: do not wait for key release after interrupt was reset for GPIO IRQ0, so a new interrupt can be
+initiated immediately 1: wait for key release after interrupt was reset for IRQ0*/
+		0);//GPIO_DEBOUNCE_REG
+//
+	
+}
+
+void GPIO0_Handler(void)
+{
+
+ SetWord16(SPI_CS_CONFIG_REG,SPI_CS_1);	
+ SetWord16(SPI_CS_CONFIG_REG,SPI_CS_0); 	
+ SPITreeByts();
+	//    SetWord16(SPI_CS_CONFIG_REG,SPI_CS_0); 
+ GPIO_ResetIRQ(GPIO0_IRQn);
+ NVIC_ClearPendingIRQ(GPIO0_IRQn);
+
+}

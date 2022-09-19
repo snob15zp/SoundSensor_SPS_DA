@@ -167,6 +167,8 @@ void periph_init(void)
 	 timer2_init();//RDD
 	 
 	 SPI_ADC_init();//RDD
+	 
+	 intinit();
 #endif
 
     // Initialize UART2 controller

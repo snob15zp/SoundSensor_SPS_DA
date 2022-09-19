@@ -451,7 +451,6 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGUARM</Key>
-          <Name>Üôo</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -485,7 +484,7 @@
           <Type>0</Type>
           <LineNumber>154</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>133974334</Address>
+          <Address>133974524</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -499,9 +498,9 @@
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
-          <LineNumber>165</LineNumber>
+          <LineNumber>171</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>133970432</Address>
+          <Address>133970630</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -510,7 +509,7 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>.\..\src\platform\user_periph_setup.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\SS_Fix\../src/platform/user_periph_setup.c\165</Expression>
+          <Expression>\\SS_Fix\../src/platform/user_periph_setup.c\171</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -1990,7 +1989,7 @@
 
   <Group>
     <GroupName>user_remote_config_service</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>

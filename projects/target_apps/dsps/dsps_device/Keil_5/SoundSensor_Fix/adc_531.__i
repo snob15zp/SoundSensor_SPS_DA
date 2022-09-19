@@ -3,4 +3,4 @@
 -IC:\Users\RD\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include
 -IC:\Keil_v5\ARM\CMSIS\Include
 -D__UVISION_VERSION="528" -DARMCM0P -D__DA14531__ -D__SoundSensor__ -D__SSFix__
--o .\soundsensor_fix\app_default_handlers.o --omf_browse .\soundsensor_fix\app_default_handlers.crf --depend .\soundsensor_fix\app_default_handlers.d "..\..\..\..\..\sdk6\sdk\app_modules\src\app_default_hnd\app_default_handlers.c"
+-o .\soundsensor_fix\adc_531.o --omf_browse .\soundsensor_fix\adc_531.crf --depend .\soundsensor_fix\adc_531.d "..\..\..\..\..\sdk6\sdk\platform\driver\adc\adc_531.c"

@@ -343,7 +343,7 @@ GPIO_ConfigurePin(GPIO_PORT_0,GPIO_PIN_7,INPUT, PID_GPIO,false);
 GPIO_EnableIRQ(GPIO_PORT_0, //GPIOSetBits16(GPIO_IRQ0_IN_SEL_REG + 2*(irq-GPIO0_IRQn), KBRD_IRQn_SEL, KBRD_IRQn_SEL_BASE[port] + pin);
 GPIO_PIN_7,
 GPIO0_IRQn,
-true,/* 0= selected input will generate GPIO IRQ0 if that input is high.
+false,/* 0= selected input will generate GPIO IRQ0 if that input is high.
 1 = selected input will generate GPIO IRQ0 if that input is low.*/
 	false,/*0: do not wait for key release after interrupt was reset for GPIO IRQ0, so a new interrupt can be
 initiated immediately 1: wait for key release after interrupt was reset for IRQ0*/

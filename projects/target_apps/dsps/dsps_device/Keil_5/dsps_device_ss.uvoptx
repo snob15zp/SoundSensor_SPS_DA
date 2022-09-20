@@ -451,6 +451,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGUARM</Key>
+          <Name>DíY</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -482,25 +483,9 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>154</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>133974524</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\src\SPI_ADC\SPI_ADC.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\SS_Fix\../src/SPI_ADC/SPI_ADC.c\154</Expression>
-        </Bp>
-        <Bp>
-          <Number>1</Number>
-          <Type>0</Type>
           <LineNumber>171</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>133970630</Address>
+          <Address>133970628</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -510,6 +495,22 @@
           <Filename>.\..\src\platform\user_periph_setup.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\SS_Fix\../src/platform/user_periph_setup.c\171</Expression>
+        </Bp>
+        <Bp>
+          <Number>1</Number>
+          <Type>0</Type>
+          <LineNumber>330</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>133974692</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>..\src\SPI_ADC\SPI_ADC.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\SS_Fix\../src/SPI_ADC/SPI_ADC.c\330</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -534,6 +535,13 @@
           <ItemText>tmp_SPI_CS_CONFIG_REG</ItemText>
         </Ww>
       </WatchWindow1>
+      <WatchWindow2>
+        <Ww>
+          <count>0</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>SA_dataRead</ItemText>
+        </Ww>
+      </WatchWindow2>
       <MemoryWindow1>
         <Mm>
           <WinNumber>1</WinNumber>

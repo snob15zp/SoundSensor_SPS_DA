@@ -3,4 +3,4 @@
 -IC:\Users\RD\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include
 -IC:\Keil_v5\ARM\CMSIS\Include
 -D__UVISION_VERSION="528" -DARMCM0P -D__DA14531__ -D__SoundSensor__ -D__SSFix__
--o .\soundsensor_fix\dma.o --omf_browse .\soundsensor_fix\dma.crf --depend .\soundsensor_fix\dma.d "..\..\..\..\..\sdk6\sdk\platform\driver\dma\dma.c"
+-o .\soundsensor_fix\crc32.o --omf_browse .\soundsensor_fix\crc32.crf --depend .\soundsensor_fix\crc32.d "..\..\..\..\..\sdk6\third_party\crc32\crc32.c"

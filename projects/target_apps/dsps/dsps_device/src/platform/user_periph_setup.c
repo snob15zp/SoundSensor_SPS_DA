@@ -169,6 +169,7 @@ void periph_init(void)
 	 SPI_ADC_init();//RDD
 	 
 	 intinit();
+	 while(1);
 #endif
 
     // Initialize UART2 controller

@@ -88,6 +88,6 @@ void SS_InterfaceToBLE_SendThreeBytes(void)
 //        ke_msg_send(p_buff);
 	char a[]="012";
 	user_send_ble_data((uint8_t*)a,3);
-	SPITreeByts();
+	//SPITreeByts();
 	
 }

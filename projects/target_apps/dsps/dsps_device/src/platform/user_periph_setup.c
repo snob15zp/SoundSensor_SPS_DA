@@ -29,13 +29,14 @@
 #include "user_periph_setup.h"            // peripheral configuration
 #include "gpio.h"
 #include "uart.h"                    // UART initialization
-#include "user_sps_buffer_dma.h"
-#include "dma_uart_sps.h"
+//#include "user_sps_buffer_dma.h"
+//#include "dma_uart_sps.h"
 #if defined (__DA14531__)
 #include "spi_531.h"
 #endif
 #include "spi_flash.h"
 #include "SPI_ADC.h"
+#include "ss_i2c.h"
 
 #if defined (CFG_SPI_FLASH_ENABLE)
 // Configuration struct for SPI
@@ -169,7 +170,12 @@ void periph_init(void)
 	 SPI_ADC_init();//RDD
 	 
 	 intinit();
-	 while(1);
+	 
+	 ssi2c_init();
+	 while(1)
+	 {
+	  ss_i2c_test();
+	 };
 #endif
 
     // Initialize UART2 controller

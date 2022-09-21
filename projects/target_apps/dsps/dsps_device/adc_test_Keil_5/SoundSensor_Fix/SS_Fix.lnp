@@ -1,0 +1,24 @@
+--cpu Cortex-M0+
+".\soundsensor_fix\hardfault_handler.o"
+".\soundsensor_fix\nmi_handler.o"
+".\soundsensor_fix\system_da14531.o"
+".\soundsensor_fix\startup_da14531.o"
+".\soundsensor_fix\syscntl.o"
+".\soundsensor_fix\gpio.o"
+".\soundsensor_fix\wkupct_quadec.o"
+".\soundsensor_fix\trng.o"
+".\soundsensor_fix\spi_flash.o"
+".\soundsensor_fix\uart.o"
+".\soundsensor_fix\dma.o"
+".\soundsensor_fix\spi_531.o"
+".\soundsensor_fix\hw_otpc_531.o"
+".\soundsensor_fix\adc_531.o"
+".\soundsensor_fix\timer2.o"
+".\soundsensor_fix\user_periph_setup.o"
+".\soundsensor_fix\main.o"
+".\soundsensor_fix\spi_adc.o"
+".\soundsensor_fix\arch_system.o"
+--library_type=microlib --strict --scatter "..\..\..\..\..\sdk6\sdk\common_project_files\scatterfiles\DA14531_all_ram_ret.sct"
+--feedback=".\unused_531.txt" .\..\..\..\..\..\projects\target_apps\dsps\common\misc\da14531_symbols.txt --symdefs dsps_531_symdef.txt --any_placement=best_fit --datacompressor off --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\SoundSensor_Fix\SS_Fix.map" -o .\SoundSensor_Fix\SS_Fix.axf

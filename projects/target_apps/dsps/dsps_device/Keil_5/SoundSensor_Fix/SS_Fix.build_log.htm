@@ -22,16 +22,23 @@ Dialog DLL:      TARMCM1.DLL V1.14.1.0
  
 <h2>Project:</h2>
 D:\User\dropbox_nsel16zp\ZERDLab Dropbox\CurrentProject\SoundSensor\Firmware\git_SS\SoundSensor_SPS_DA\projects\target_apps\dsps\dsps_device\Keil_5\dsps_device_ss.uvprojx
-Project File Date:  09/18/2022
+Project File Date:  09/21/2022
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'SoundSensor_Fix'
-compiling SPI_ADC.c...
+compiling ss_i2c.c...
+..\src\i2c\ss_i2c.c(62): warning:  #177-D: variable "ptrBuff"  was declared but never referenced
+  static uint8_t* ptrBuff;
+..\src\i2c\ss_i2c.c(64): warning:  #177-D: variable "sysTime"  was declared but never referenced
+  static uint32_t sysTime;
+..\src\i2c\ss_i2c.c(65): warning:  #550-D: variable "err"  was set but never used
+  static i2c_error_code err;
+..\src\i2c\ss_i2c.c: 3 warnings, 0 errors
 linking...
-Program Size: Code=20558 RO-data=2462 RW-data=884 ZI-data=15364  
+Program Size: Code=21402 RO-data=2486 RW-data=888 ZI-data=14444  
 FromELF: creating hex file...
-".\SoundSensor_Fix\SS_Fix.axf" - 0 Error(s), 0 Warning(s).
+".\SoundSensor_Fix\SS_Fix.axf" - 0 Error(s), 3 Warning(s).
 
 <h2>Software Packages used:</h2>
 

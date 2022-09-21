@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Tue Sep 20 19:55:05 2022
+;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Wed Sep 21 21:49:08 2022
 ;VERSION 0.2
 ;FILE adc_531.o
 adc_correct_sample <= USED 0
@@ -87,6 +87,26 @@ hw_otpc_prog_and_verify <= USED 0
 hw_otpc_read <= USED 0
 hw_otpc_word_prog_and_verify <= USED 0
 hw_otpc_word_read <= USED 0
+;FILE i2c.o
+i2c_master_receive_buffer_async <= USED 0
+i2c_master_receive_buffer_sync <= USED 0
+i2c_master_transmit_buffer_async <= USED 0
+i2c_master_transmit_buffer_sync <= USED 0
+i2c_register_int <= USED 0
+i2c_release <= USED 0
+i2c_slave_receive_buffer_async <= USED 0
+i2c_slave_receive_buffer_sync <= USED 0
+i2c_slave_transmit_buffer_async <= USED 0
+i2c_slave_transmit_buffer_sync <= USED 0
+i2c_unregister_int <= USED 0
+;FILE i2c_eeprom.o
+i2c_eeprom_get_configuration <= USED 0
+i2c_eeprom_read_byte <= USED 0
+i2c_eeprom_read_data <= USED 0
+i2c_eeprom_release <= USED 0
+i2c_eeprom_update_slave_address <= USED 0
+i2c_eeprom_write_data <= USED 0
+i2c_eeprom_write_page <= USED 0
 ;FILE jump_table.o
 dummyf <= USED 0
 ;FILE lld.o
@@ -158,6 +178,7 @@ spi_flash_write_enable_volatile <= USED 0
 spi_flash_write_status_config_reg <= USED 0
 spi_flash_write_status_reg <= USED 0
 ;FILE sps_server.o
+;FILE ss_i2c.o
 ;FILE ss_interfacetoble.o
 user_app_adv_start <= USED 0
 ;FILE startup_da14531.o

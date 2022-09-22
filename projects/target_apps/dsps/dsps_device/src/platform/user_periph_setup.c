@@ -174,7 +174,7 @@ void periph_init(void)
 	 ssi2c_init();
 	 while(1)
 	 {
-	  ss_i2c_test();
+	//  ss_i2c_test();
 	 };
 #endif
 

@@ -76,9 +76,11 @@ void ssi2c_init(void)
   ssi2c_set_pad_functions();
   // Enable the pads
 	
-	err = i2c_eeprom_write_byte(1, 0x1E);
+	err = i2c_eeprom_write_byte(1, 0x0E);
   err = i2c_eeprom_write_byte(2, 0x00);
   err = i2c_eeprom_write_byte(3, 0x00);
+	
+	i2c_eeprom_write_byte(SX1502_REGDATA_ADDR, 0x6F); //0 - NC calibration
   
   i2cBuff[0] = 0x7F;
   i2cBuff[1] = 0xBF;

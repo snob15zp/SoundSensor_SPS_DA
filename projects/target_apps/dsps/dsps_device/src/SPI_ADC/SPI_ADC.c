@@ -352,11 +352,16 @@ void GPIO0_Handler(void)
     dataRead_toy = GetWord16(&spi->SPI_FIFO_READ_REGF) ;				
 		dataRead_toy = GetWord16(&spi->SPI_FIFO_READ_REGF) ;	
 	};	
-	
+	SetWord16(SPI_CTRL_REG, SPI_FIFO_RESET|SPI_RX_EN|SPI_TX_EN|SPI_EN);
+	SetWord16(SPI_CTRL_REG,                SPI_RX_EN|SPI_TX_EN|SPI_EN);
  SetWord16(SPI_CS_CONFIG_REG,SPI_CS_0); 	
  SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x55));//SPITreeByts();
  SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0xff));
  SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x55));	
+ while ( GetWord16(SPI_FIFO_STATUS_REG) & SPI_TRANSACTION_ACTIVE )
+		{
+		};
+ SetWord16(SPI_CS_CONFIG_REG,SPI_CS_NONE);		
 	//    SetWord16(SPI_CS_CONFIG_REG,SPI_CS_0); 
  GPIO_ResetIRQ(GPIO0_IRQn);
  NVIC_ClearPendingIRQ(GPIO0_IRQn);

@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Thu Sep 22 09:17:59 2022
+;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Thu Sep 22 13:49:55 2022
 ;VERSION 0.2
 ;FILE adc_531.o
 adc_correct_sample <= USED 0
@@ -101,7 +101,6 @@ i2c_slave_transmit_buffer_sync <= USED 0
 i2c_unregister_int <= USED 0
 ;FILE i2c_eeprom.o
 i2c_eeprom_get_configuration <= USED 0
-i2c_eeprom_read_byte <= USED 0
 i2c_eeprom_read_data <= USED 0
 i2c_eeprom_release <= USED 0
 i2c_eeprom_update_slave_address <= USED 0
@@ -180,6 +179,7 @@ spi_flash_write_status_reg <= USED 0
 ;FILE sps_server.o
 ;FILE ss_i2c.o
 ss_i2c_test <= USED 0
+ssi2c_init <= USED 0
 ;FILE ss_interfacetoble.o
 user_app_adv_start <= USED 0
 ;FILE startup_da14531.o

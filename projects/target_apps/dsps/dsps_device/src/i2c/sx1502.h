@@ -70,8 +70,19 @@
  #define SX1502_REG_SENS_FALLING              (0x2)   // Falling - Interrupt Edge Sensitivity
  #define SX1502_REG_SENS_BOTH                 (0x3)   // None - Interrupt Edge Sensitivity
  
+ #define IO_OUTPUT                            0
+ #define IO_INPUT                             1 
+
+ #define RED_LED_OUT                          0x80
+ #define GREEN_LED_OUT                        0x40 
+ #define BLUE_LED_OUT                         0x20 
+ #define CONTROL_OUT                          0x10
+ #define PWR_FIX_OUT                          0x08
+ #define BTN_PWR_IN                           0x04
+ #define BTN_BT_IN                            0x02
+ #define SINGLE_LED_OUT                       0x01
  
-extern uint32_t sx1502_read_data(uint8_t *data, uint32_t address, uint32_t size);
+//extern i2c_error_code sx1502_init(void);
  
 
 #endif // _SX1502_H_

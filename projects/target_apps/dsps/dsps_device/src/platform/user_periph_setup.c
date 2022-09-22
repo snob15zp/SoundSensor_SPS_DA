@@ -165,15 +165,15 @@ void periph_init(void)
 	
 	 user_spi_flash_init(SPI_FLASH_GPIO_MAP);//RDD
 #ifdef __SoundSensor__	 
-	 timer2_init();//RDD
+//	 timer2_init();//RDD
 	 
-	 SPI_ADC_init();//RDD
+//	 SPI_ADC_init();//RDD
 	 
-	 intinit();
+//	 intinit();
 	 
 	 //ssi2c_init();
 	 sx1502_init();
-	 while(1)
+//	 while(1)
 	 {
 	//  ss_i2c_test();
 		 sx_main();

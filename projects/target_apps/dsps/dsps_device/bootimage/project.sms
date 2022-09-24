@@ -79,8 +79,8 @@
     <PathToExportFile/>
   </SPI_Flash_Programmer>
   <Flash_Code>
-    <PathToImportFile>D:\User\dropbox_nsel16zp\ZERDLab Dropbox\CurrentProject\SoundSensor\Firmware\git_SS\SoundSensor_SPS_DA\projects\target_apps\dsps\dsps_device\Keil_5\boot_kit_single_man\531_kit_singleM.img</PathToImportFile>
-    <PathToExportFile>D:\User\dropbox_nsel16zp\ZERDLab Dropbox\CurrentProject\SoundSensor\Firmware\git_SS\SoundSensor_SPS_DA\projects\target_apps\dsps\dsps_device\Keil_5\boot_kit_single_man\531_kit_single.img</PathToExportFile>
+    <PathToImportFile>D:\User\dropbox_nsel16zp\ZERDLab Dropbox\CurrentProject\SoundSensor\Firmware\git_SS\SoundSensor_SPS_DA\projects\target_apps\dsps\dsps_device\Keil_5\0_1_1_1_BKSM\dsps_device_531.img</PathToImportFile>
+    <PathToExportFile>D:\User\dropbox_nsel16zp\ZERDLab Dropbox\CurrentProject\SoundSensor\Firmware\git_SS\SoundSensor_SPS_DA\projects\target_apps\dsps\dsps_device\Keil_5\0_1_1_1_BKSM\dsps_device_531M.img</PathToExportFile>
   </Flash_Code>
   <Flash_DATA>
     <PathToImportFile/>

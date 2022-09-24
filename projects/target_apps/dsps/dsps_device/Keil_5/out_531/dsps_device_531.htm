@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\out_531\dsps_device_531.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\out_531\dsps_device_531.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Fri Sep 23 13:53:59 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sat Sep 24 10:28:39 2022
 <BR><P>
 <H3>Maximum Stack Usage =        364 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -489,11 +489,11 @@ Global Symbols
 <P><STRONG><a name="[50]"></a>smpc_pdu_recv_func</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE), UNUSED)
 <BR>[Address Reference Count : 1]<UL><LI> jump_table.o(.constdata)
 </UL>
-<P><STRONG><a name="[1d5]"></a>gapc_get_conidx</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
+<P><STRONG><a name="[1d4]"></a>gapc_get_conidx</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
 <BR><BR>[Called By]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_config_enable_req_handler
 </UL>
 
-<P><STRONG><a name="[1d3]"></a>gapc_get_conhdl</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
+<P><STRONG><a name="[1d2]"></a>gapc_get_conhdl</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
 <BR><BR>[Called By]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_read_rsp_cmd_handler
 <LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_write_rsp_cmd_handler
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_discover_rsp_cmd_handler
@@ -541,8 +541,8 @@ Global Symbols
 
 <P><STRONG><a name="[e1]"></a>ke_malloc</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
 <BR><BR>[Called By]<UL><LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_rand_seed_from_trng
-<LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_write_configuration_struct
-<LI><a href="#[1d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_read_configuration_struct
+<LI><a href="#[1d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_write_configuration_struct
+<LI><a href="#[1d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_read_configuration_struct
 <LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_remote_discover_val_ind_handler
 <LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_config_init
 <LI><a href="#[1c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_alloc_no_init
@@ -552,8 +552,8 @@ Global Symbols
 
 <P><STRONG><a name="[e3]"></a>ke_free</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
 <BR><BR>[Called By]<UL><LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_rand_seed_from_trng
-<LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_write_configuration_struct
-<LI><a href="#[1d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_read_configuration_struct
+<LI><a href="#[1d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_write_configuration_struct
+<LI><a href="#[1d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_read_configuration_struct
 <LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_remote_discover_val_ind_handler
 <LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_config_destroy
 <LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sps_destroy
@@ -744,8 +744,8 @@ Global Symbols
 <LI><a href="#[178]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_advertise_operation
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_app_on_set_dev_info
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_app_on_get_dev_name
-<LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_write_configuration_struct
-<LI><a href="#[1d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_read_configuration_struct
+<LI><a href="#[1d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_write_configuration_struct
+<LI><a href="#[1d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_read_configuration_struct
 <LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_remote_read_request_ind_handler
 <LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_remote_write_request_ind_handler
 <LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_remote_discover_val_ind_handler
@@ -776,7 +776,7 @@ Global Symbols
 
 <P><STRONG><a name="[181]"></a>__aeabi_memclr</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
 <BR><BR>[Called By]<UL><LI><a href="#[180]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_easy_gap_dev_config_create_msg
-<LI><a href="#[1d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_read_configuration_struct
+<LI><a href="#[1d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_read_configuration_struct
 </UL>
 
 <P><STRONG><a name="[1ad]"></a>__aeabi_memclr4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
@@ -828,7 +828,7 @@ Global Symbols
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_config_enable_req_handler
 <LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_config_gattc_read_req_ind_handler
 <LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_config_gattc_write_req_ind_handler
-<LI><a href="#[1d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_config_get_att_idx
+<LI><a href="#[1d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_config_get_att_idx
 <LI><a href="#[1ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_set_default_tx_size
 <LI><a href="#[1c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_dma_uart_to_ble_confirm
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gattc_write_req_ind_handler
@@ -1519,7 +1519,7 @@ Global Symbols
 <LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_flash_is_busy
 </UL>
 <BR>[Called By]<UL><LI><a href="#[19f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_read_ext_mem
-<LI><a href="#[1d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_storage_read_ext_mem
+<LI><a href="#[1d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_storage_read_ext_mem
 </UL>
 
 <P><STRONG><a name="[13c]"></a>spi_set_speed</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, spi_531.o(.text))
@@ -2446,7 +2446,7 @@ Global Symbols
 <LI><a href="#[185]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_send
 <LI><a href="#[1c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_alloc_no_init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SS_InterfaceToBLE_SendThreeBytes
+<BR>[Called By]<UL><LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SS_InterfaceToBLE_SendThreeBytes
 </UL>
 
 <P><STRONG><a name="[9e]"></a>user_spss_process_handler</STRONG> (Thumb, 24 bytes, Stack size 32 bytes, user_spss_task.o(.text))
@@ -2546,7 +2546,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_suotar_img_hdlr
 <LI><a href="#[1a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_read_image_headers
 <LI><a href="#[197]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_set_image_valid_flag
-<LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_write_configuration_struct
+<LI><a href="#[1d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_write_configuration_struct
 </UL>
 
 <P><STRONG><a name="[8b]"></a>user_on_connection</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, user_sps_device_dma.o(.text))
@@ -2683,16 +2683,15 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_sps_server_data_tx_cfm_handler
 </UL>
 
-<P><STRONG><a name="[fa]"></a>user_on_ble_powered</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, user_sps_schedule_dma.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = user_on_ble_powered &rArr; SS_InterfaceToBLE_init &rArr; adv_data_update_timer_cb &rArr; SS_InterfaceToBLE_SendThreeBytes &rArr; user_send_ble_data &rArr; ke_msg_alloc_no_init
+<P><STRONG><a name="[fa]"></a>user_on_ble_powered</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, user_sps_schedule_dma.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = user_on_ble_powered
 </UL>
 <BR>[Calls]<UL><LI><a href="#[187]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_state_get
-<LI><a href="#[1d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SS_InterfaceToBLE_init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[1d2]"></a>remote_config_get_att_idx</STRONG> (Thumb, 38 bytes, Stack size 16 bytes, remote_config.o(.text))
+<P><STRONG><a name="[1d1]"></a>remote_config_get_att_idx</STRONG> (Thumb, 38 bytes, Stack size 16 bytes, remote_config.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = remote_config_get_att_idx
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prf_env_get
@@ -2738,14 +2737,14 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> app_entry_point.o(.constdata)
 </UL>
-<P><STRONG><a name="[1d6]"></a>user_config_read_configuration_struct</STRONG> (Thumb, 130 bytes, Stack size 32 bytes, user_config_storage.o(.text))
+<P><STRONG><a name="[1d5]"></a>user_config_read_configuration_struct</STRONG> (Thumb, 130 bytes, Stack size 32 bytes, user_config_storage.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = user_config_read_configuration_struct &rArr; user_config_storage_read_ext_mem &rArr; spi_flash_read_data &rArr; spi_flash_is_busy &rArr; spi_flash_read_status_reg &rArr; spi_transaction &rArr; spi_access
 </UL>
 <BR>[Calls]<UL><LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_malloc
 <LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_free
 <LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 <LI><a href="#[181]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
-<LI><a href="#[1d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_storage_read_ext_mem
+<LI><a href="#[1d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_storage_read_ext_mem
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_conf_storage_init
 </UL>
@@ -2756,22 +2755,22 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
 <LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 <LI><a href="#[194]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_spi_flash_init
-<LI><a href="#[1d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_read_configuration_struct
-<LI><a href="#[1d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_storage_read_ext_mem
+<LI><a href="#[1d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_read_configuration_struct
+<LI><a href="#[1d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_storage_read_ext_mem
 <LI><a href="#[1c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_spi_flash_release
 </UL>
 <BR>[Called By]<UL><LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_on_init
 <LI><a href="#[25]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_sps_apply_config
 </UL>
 
-<P><STRONG><a name="[1d8]"></a>user_config_write_configuration_struct</STRONG> (Thumb, 196 bytes, Stack size 32 bytes, user_config_storage.o(.text))
+<P><STRONG><a name="[1d7]"></a>user_config_write_configuration_struct</STRONG> (Thumb, 196 bytes, Stack size 32 bytes, user_config_storage.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 172<LI>Call Chain = user_config_write_configuration_struct &rArr; user_flash_write_data &rArr; spi_flash_write_data &rArr; spi_flash_page_program &rArr; spi_flash_write_enable &rArr; spi_flash_wait_till_ready &rArr; spi_flash_read_status_reg &rArr; spi_transaction &rArr; spi_access
 </UL>
 <BR>[Calls]<UL><LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_malloc
 <LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_free
 <LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 <LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_flash_write_data
-<LI><a href="#[1d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_storage_read_ext_mem
+<LI><a href="#[1d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_storage_read_ext_mem
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_storage_save_configuration
 </UL>
@@ -2780,13 +2779,13 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 236<LI>Call Chain = user_config_storage_save_configuration &rArr; user_spi_flash_init &rArr; spi_flash_auto_detect &rArr; spi_flash_read_jedec_id &rArr; spi_flash_is_busy &rArr; spi_flash_read_status_reg &rArr; spi_transaction &rArr; spi_access
 </UL>
 <BR>[Calls]<UL><LI><a href="#[194]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_spi_flash_init
-<LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_write_configuration_struct
+<LI><a href="#[1d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_write_configuration_struct
 <LI><a href="#[1c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_spi_flash_release
 </UL>
 <BR>[Called By]<UL><LI><a href="#[25]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_sps_apply_config
 </UL>
 
-<P><STRONG><a name="[1d9]"></a>SS_InterfaceToBLE_SendThreeBytes</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, ss_interfacetoble.o(.text))
+<P><STRONG><a name="[1d8]"></a>SS_InterfaceToBLE_SendThreeBytes</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, ss_interfacetoble.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = SS_InterfaceToBLE_SendThreeBytes &rArr; user_send_ble_data &rArr; ke_msg_alloc_no_init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_send_ble_data
@@ -2804,12 +2803,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;periph_init
 </UL>
 
-<P><STRONG><a name="[1d1]"></a>SS_InterfaceToBLE_init</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, ss_interfacetoble.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = SS_InterfaceToBLE_init &rArr; adv_data_update_timer_cb &rArr; SS_InterfaceToBLE_SendThreeBytes &rArr; user_send_ble_data &rArr; ke_msg_alloc_no_init
-</UL>
-<BR>[Calls]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;adv_data_update_timer_cb
-</UL>
-<BR>[Called By]<UL><LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_on_ble_powered
+<P><STRONG><a name="[1d9]"></a>SS_InterfaceToBLE_init</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, ss_interfacetoble.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;adv_data_update_timer_cb
 </UL>
 
 <P><STRONG><a name="[10]"></a>GPIO0_Handler</STRONG> (Thumb, 116 bytes, Stack size 16 bytes, spi_adc.o(.text))
@@ -3412,9 +3407,9 @@ Local Symbols
 <BR>[Calls]<UL><LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 <LI><a href="#[185]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_send
 <LI><a href="#[17d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_alloc
-<LI><a href="#[1d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gapc_get_conhdl
-<LI><a href="#[1d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;handle_ntf_change
-<LI><a href="#[1d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_config_get_att_idx
+<LI><a href="#[1d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gapc_get_conhdl
+<LI><a href="#[1d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;handle_ntf_change
+<LI><a href="#[1d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_config_get_att_idx
 <LI><a href="#[1a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prf_env_get
 <LI><a href="#[1b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prf_dst_task_get
 <LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_common_switch8
@@ -3426,7 +3421,7 @@ Local Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[185]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_send
 <LI><a href="#[17d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_alloc
-<LI><a href="#[1d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_config_get_att_idx
+<LI><a href="#[1d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_config_get_att_idx
 <LI><a href="#[1a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prf_env_get
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> remote_config_task.o(.constdata)
@@ -3436,7 +3431,7 @@ Local Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[185]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_send
 <LI><a href="#[17d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_alloc
-<LI><a href="#[1d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gapc_get_conidx
+<LI><a href="#[1d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gapc_get_conidx
 <LI><a href="#[1a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prf_env_get
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> remote_config_task.o(.constdata)
@@ -3447,7 +3442,7 @@ Local Symbols
 <BR>[Calls]<UL><LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 <LI><a href="#[185]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_send
 <LI><a href="#[17d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_alloc
-<LI><a href="#[1d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gapc_get_conhdl
+<LI><a href="#[1d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gapc_get_conhdl
 <LI><a href="#[1a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prf_env_get
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> remote_config_task.o(.constdata)
@@ -3458,7 +3453,7 @@ Local Symbols
 <BR>[Calls]<UL><LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 <LI><a href="#[185]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_send
 <LI><a href="#[17d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_alloc
-<LI><a href="#[1d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gapc_get_conhdl
+<LI><a href="#[1d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gapc_get_conhdl
 <LI><a href="#[1a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prf_env_get
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> remote_config_task.o(.constdata)
@@ -3470,13 +3465,13 @@ Local Symbols
 <LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 <LI><a href="#[185]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_send
 <LI><a href="#[17d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_alloc
-<LI><a href="#[1d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gapc_get_conhdl
+<LI><a href="#[1d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gapc_get_conhdl
 <LI><a href="#[1d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gattc_get_mtu
 <LI><a href="#[1a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prf_env_get
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> remote_config_task.o(.constdata)
 </UL>
-<P><STRONG><a name="[1d4]"></a>handle_ntf_change</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, remote_config_task.o(.text))
+<P><STRONG><a name="[1d3]"></a>handle_ntf_change</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, remote_config_task.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_config_gattc_write_req_ind_handler
 </UL>
 
@@ -3516,13 +3511,13 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> user_remote_config_task.o(.constdata)
 </UL>
-<P><STRONG><a name="[1d7]"></a>user_config_storage_read_ext_mem</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, user_config_storage.o(.text))
+<P><STRONG><a name="[1d6]"></a>user_config_storage_read_ext_mem</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, user_config_storage.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = user_config_storage_read_ext_mem &rArr; spi_flash_read_data &rArr; spi_flash_is_busy &rArr; spi_flash_read_status_reg &rArr; spi_transaction &rArr; spi_access
 </UL>
 <BR>[Calls]<UL><LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_flash_read_data
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_write_configuration_struct
-<LI><a href="#[1d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_read_configuration_struct
+<BR>[Called By]<UL><LI><a href="#[1d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_write_configuration_struct
+<LI><a href="#[1d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_read_configuration_struct
 <LI><a href="#[1c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_conf_storage_init
 </UL>
 
@@ -3530,9 +3525,9 @@ Local Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = adv_data_update_timer_cb &rArr; SS_InterfaceToBLE_SendThreeBytes &rArr; user_send_ble_data &rArr; ke_msg_alloc_no_init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[18f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_easy_timer
-<LI><a href="#[1d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SS_InterfaceToBLE_SendThreeBytes
+<LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SS_InterfaceToBLE_SendThreeBytes
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SS_InterfaceToBLE_init
+<BR>[Called By]<UL><LI><a href="#[1d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SS_InterfaceToBLE_init
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> ss_interfacetoble.o(.text)
 </UL><P>

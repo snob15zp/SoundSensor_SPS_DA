@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Fri Sep 23 13:53:59 2022
+;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Sat Sep 24 10:28:39 2022
 ;VERSION 0.2
 ;FILE adc_531.o
 adc_correct_sample <= USED 0
@@ -195,6 +195,7 @@ sx1502_init <= USED 0
 sx_SysTick_Handler <= USED 0
 sx_main <= USED 0
 ;FILE ss_interfacetoble.o
+SS_InterfaceToBLE_init <= USED 0
 user_app_adv_start <= USED 0
 ;FILE startup_da14531.o
 ;FILE syscntl.o

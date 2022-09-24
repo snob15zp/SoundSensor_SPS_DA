@@ -222,12 +222,12 @@ arch_main_loop_callback_ret_t user_on_ble_powered(void)
                 break;
             if (app_default_sleep_mode == ARCH_EXT_SLEEP_ON)
             {
-                    SS_InterfaceToBLE_init();
+//                    SS_InterfaceToBLE_init();
                     power_on_state = PON_STATE_WAIT_RTS;
             }
             else
             {
-							  SS_InterfaceToBLE_init(); 
+//							  SS_InterfaceToBLE_init(); 
                 power_on_state = PON_STATE_WAIT_RTS;
             }
         case PON_STATE_WAIT_RTS://RDD?!!!!!!!

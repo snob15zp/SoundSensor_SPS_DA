@@ -1,3 +1,3 @@
-#define SW_VERSION          "6.150.4.50"
-#define SW_VERSION_DATE     "2020-06-10 13:00"
-#define SW_VERSION_STATUS   "REPOSITORY VERSION"
+#define SW_VERSION          "0.1.1.1"
+#define SW_VERSION_DATE     "2022-09-24 10:27"
+#define SW_VERSION_STATUS   "DEBUG VERSION"

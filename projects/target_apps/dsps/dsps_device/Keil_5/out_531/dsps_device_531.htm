@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\out_531\dsps_device_531.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\out_531\dsps_device_531.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sun Sep 04 13:50:58 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sat Sep 24 14:13:01 2022
 <BR><P>
 <H3>Maximum Stack Usage =        364 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -280,10 +280,10 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_da14531.o(RESET)
 </UL>
 <P><STRONG><a name="[1c4]"></a>platform_reset</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
-<BR><BR>[Called By]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PATCHED_ke_malloc
-<LI><a href="#[2c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_sps_apply_config
+<BR><BR>[Called By]<UL><LI><a href="#[2c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_sps_apply_config
 <LI><a href="#[1c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_suotar_read_mem
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_on_disconnect
+<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PATCHED_ke_malloc
 </UL>
 
 <P><STRONG><a name="[1b9]"></a>prf_get_task_from_id</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
@@ -747,14 +747,14 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[11c]"></a>__aeabi_uidivmod</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
-<BR><BR>[Called By]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PATCHED_ke_malloc
-<LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lld_sleep_us_2_lpcycles_rcx_func
+<BR><BR>[Called By]<UL><LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lld_sleep_us_2_lpcycles_rcx_func
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lld_sleep_compensate_func
 <LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rf_rssi_convert
 <LI><a href="#[15f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_set_speed
 <LI><a href="#[1e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_sps_apply_uart_baudrate
 <LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_read_rsp_cmd_handler
 <LI><a href="#[216]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_heap_usage
+<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PATCHED_ke_malloc
 </UL>
 
 <P><STRONG><a name="[16e]"></a>__aeabi_idivmod</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
@@ -1938,8 +1938,8 @@ Global Symbols
 <P><STRONG><a name="[e]"></a>BLE_RF_DIAG_Handler</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, rwble.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = BLE_RF_DIAG_Handler
 </UL>
-<BR>[Calls]<UL><LI><a href="#[17e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ble_rx_evt_handler
-<LI><a href="#[17d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ble_tx_evt_handler
+<BR>[Calls]<UL><LI><a href="#[17d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ble_tx_evt_handler
+<LI><a href="#[17e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ble_rx_evt_handler
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_da14531.o(RESET)
 </UL>
@@ -2927,12 +2927,12 @@ Global Symbols
 <P><STRONG><a name="[12e]"></a>user_on_init</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, user_sps_device_dma.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 348<LI>Call Chain = user_on_init &rArr; user_conf_storage_init &rArr; user_spi_flash_init &rArr; spi_flash_auto_detect &rArr; spi_flash_read_jedec_id &rArr; spi_flash_is_busy &rArr; spi_flash_read_status_reg &rArr; spi_transaction &rArr; spi_access
 </UL>
-<BR>[Calls]<UL><LI><a href="#[209]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
-<LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;periph_init
+<BR>[Calls]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;periph_init
 <LI><a href="#[1e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_conf_storage_init
 <LI><a href="#[1e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_sps_apply_uart_baudrate
 <LI><a href="#[197]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_app_on_init
 <LI><a href="#[20a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_remote_config_init
+<LI><a href="#[209]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;system_init_post
 </UL>
@@ -3251,11 +3251,11 @@ Global Symbols
 <P><STRONG><a name="[ce]"></a>PATCHED_ke_malloc</STRONG> (Thumb, 566 bytes, Stack size 40 bytes, patch.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = PATCHED_ke_malloc &rArr; ble_fc_set_state
 </UL>
-<BR>[Calls]<UL><LI><a href="#[21e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_heap_space_all_total
+<BR>[Calls]<UL><LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uidivmod
+<LI><a href="#[1c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;platform_reset
+<LI><a href="#[21e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_heap_space_all_total
 <LI><a href="#[220]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ble_fc_set_state
 <LI><a href="#[21f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ble_fc_get_state
-<LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uidivmod
-<LI><a href="#[1c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;platform_reset
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> patch.o(.constdata)
 </UL>
@@ -3413,8 +3413,8 @@ Global Symbols
 <P><STRONG><a name="[e9]"></a>otp_cs_store</STRONG> (Thumb, 472 bytes, Stack size 40 bytes, otp_cs.o(system_init_run_once))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = otp_cs_store
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_common_switch8
-<LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+<BR>[Calls]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_common_switch8
 </UL>
 <BR>[Called By]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;system_init
 </UL>
@@ -3802,10 +3802,10 @@ Local Symbols
 <P><STRONG><a name="[ad]"></a>diss_value_req_ind_handler</STRONG> (Thumb, 116 bytes, Stack size 24 bytes, app_diss_task.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = diss_value_req_ind_handler
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_common_switch8
-<LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+<BR>[Calls]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 <LI><a href="#[1ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_send
 <LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_alloc
+<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_common_switch8
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> app_diss_task.o(.constdata)
 </UL>
@@ -4069,8 +4069,7 @@ Local Symbols
 <P><STRONG><a name="[c3]"></a>remote_config_gattc_write_req_ind_handler</STRONG> (Thumb, 324 bytes, Stack size 48 bytes, remote_config_task.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = remote_config_gattc_write_req_ind_handler &rArr; remote_config_get_att_idx
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_common_switch8
-<LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+<BR>[Calls]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 <LI><a href="#[1cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prf_env_get
 <LI><a href="#[1db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prf_dst_task_get
 <LI><a href="#[1ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_send
@@ -4078,6 +4077,7 @@ Local Symbols
 <LI><a href="#[218]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gapc_get_conhdl
 <LI><a href="#[219]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;handle_ntf_change
 <LI><a href="#[217]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_config_get_att_idx
+<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_common_switch8
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> remote_config_task.o(.constdata)
 </UL>
@@ -4187,9 +4187,9 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[224]"></a>restore_rx_buffer</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, ble_flow_control.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[222]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disable_rx_buffer_limit
-<LI><a href="#[175]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ble_flow_control_revert_rx_buffers_limit
+<BR><BR>[Called By]<UL><LI><a href="#[175]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ble_flow_control_revert_rx_buffers_limit
 <LI><a href="#[173]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ble_flow_control_apply_rx_buffers_limit
+<LI><a href="#[222]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disable_rx_buffer_limit
 </UL>
 
 <P><STRONG><a name="[221]"></a>set_rx_buffer_limit</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, ble_flow_control.o(.text))

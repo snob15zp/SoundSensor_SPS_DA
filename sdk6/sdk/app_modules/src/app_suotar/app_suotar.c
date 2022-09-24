@@ -379,7 +379,7 @@ void app_suotar_img_hdlr(void)
             if( suota_state.suota_block_idx != 0 && suota_state.suota_img_idx == 0 )
             {
                 // Read image headers and determine active image.
-                ret = app_read_image_headers( suota_state.suota_image_bank, suota_all_pd, suota_state.suota_block_idx );
+                ret = app_read_image_headers( suota_state.suota_image_bank, suota_all_pd, suota_state.suota_block_idx );//RDD i2c
                 if( ret != IMAGE_HEADER_OK )
                 {
                     status = ret;
@@ -400,7 +400,7 @@ void app_suotar_img_hdlr(void)
 
                     i2c_eeprom_write_data(suota_all_pd, (suota_state.mem_base_add + suota_state.suota_img_idx), suota_state.suota_block_idx, &ret);
                     if( ret !=  suota_state.suota_block_idx){
-                        status = SUOTAR_EXT_MEM_WRITE_ERR;
+                        status = SUOTAR_EXT_MEM_WRITE_ERR;//rdd i2c
                     }
                     else
                     {
@@ -410,7 +410,7 @@ void app_suotar_img_hdlr(void)
                 }
                 else
                 {
-                    status = SUOTAR_EXT_MEM_WRITE_ERR;
+                    status = SUOTAR_EXT_MEM_WRITE_ERR;//rdd i2c
                 }
             }
             suota_state.suota_block_idx = 0;
@@ -430,7 +430,7 @@ void app_suotar_img_hdlr(void)
             if( suota_state.suota_block_idx != 0 && suota_state.suota_img_idx == 0 )
             {
                 // Read image headers and determine active image.
-                ret = app_read_image_headers( suota_state.suota_image_bank, suota_all_pd, suota_state.suota_block_idx );
+                ret = app_read_image_headers( suota_state.suota_image_bank, suota_all_pd, suota_state.suota_block_idx );//rdd SPI3 
                 if( ret != IMAGE_HEADER_OK )
                 {
                     status = ret;
@@ -451,7 +451,7 @@ void app_suotar_img_hdlr(void)
 
                     ret = user_flash_write_data (suota_all_pd, (suota_state.mem_base_add + suota_state.suota_img_idx), suota_state.suota_block_idx);
                     if(ret < 0){
-                        status = SUOTAR_EXT_MEM_WRITE_ERR;
+                        status = SUOTAR_EXT_MEM_WRITE_ERR;//rdd spi 1.0
                     }
                     else
                     {
@@ -461,7 +461,7 @@ void app_suotar_img_hdlr(void)
                 }
                 else
                 {
-                    status = SUOTAR_EXT_MEM_WRITE_ERR;
+                    status = SUOTAR_EXT_MEM_WRITE_ERR;//rdd spi 1.1
                 }
             }
             suota_state.suota_block_idx = 0;
@@ -584,7 +584,7 @@ int app_read_image_headers(uint8_t image_bank, uint8_t* data, uint32_t data_len)
         len = (data_len == suota_state.suota_image_len + ADDITINAL_CRC_SIZE) ? suota_state.suota_image_len : data_len;
         ret = user_flash_write_data((uint8_t*)pfwHeader, suota_state.mem_base_add, len);
         if (ret < 0)
-            return SUOTAR_EXT_MEM_WRITE_ERR;
+            return SUOTAR_EXT_MEM_WRITE_ERR;//rdd spi 2
 
         current_config_struct_id++;
         current_config_struct_index++;
@@ -698,9 +698,9 @@ int app_read_image_headers(uint8_t image_bank, uint8_t* data, uint32_t data_len)
         ret = user_erase_flash_sectors(suota_state.mem_base_add, 1);
     #endif
 
-    if( ret != SPI_FLASH_ERR_OK) return SUOTAR_EXT_MEM_WRITE_ERR;
+    if( ret != SPI_FLASH_ERR_OK) return SUOTAR_EXT_MEM_WRITE_ERR;//rdd spi 3.0
 #else
-        return SUOTAR_EXT_MEM_WRITE_ERR;
+        return SUOTAR_EXT_MEM_WRITE_ERR; //rdd spi 3.1
 #endif
     }
     else
@@ -712,9 +712,9 @@ int app_read_image_headers(uint8_t image_bank, uint8_t* data, uint32_t data_len)
         {
             ret = -1;
         }
-        if( ret_i2c !=  CODE_OFFSET ) return SUOTAR_EXT_MEM_WRITE_ERR;
+        if( ret_i2c !=  CODE_OFFSET ) return SUOTAR_EXT_MEM_WRITE_ERR;//rdd spi 3.2
 #else
-        return SUOTAR_EXT_MEM_WRITE_ERR;
+        return SUOTAR_EXT_MEM_WRITE_ERR; //rdd spi 3.3
 #endif
     }
 
@@ -734,12 +734,14 @@ int app_read_image_headers(uint8_t image_bank, uint8_t* data, uint32_t data_len)
 #if (!SUOTAR_SPI_DISABLE)
         // write header
         ret = user_flash_write_data((uint8_t*)pImageHeader, suota_state.mem_base_add, sizeof(image_header_t));
-        if(ret < 0) return SUOTAR_EXT_MEM_WRITE_ERR;
+        if(ret < 0) 
+					           return SUOTAR_EXT_MEM_WRITE_ERR; //rdd spi 3.4
 
         ret = user_flash_write_data((uint8_t*) &data[CODE_OFFSET], suota_state.mem_base_add + CODE_OFFSET, data_len - CODE_OFFSET);
-        if(ret < 0) return SUOTAR_EXT_MEM_WRITE_ERR;
+        if(ret < 0) 
+					           return SUOTAR_EXT_MEM_WRITE_ERR; // rdd spi 3.5
 #else
-        return SUOTAR_EXT_MEM_WRITE_ERR;
+        return SUOTAR_EXT_MEM_WRITE_ERR; //rdd spi 3.6
 #endif
     }
     else
@@ -751,15 +753,15 @@ int app_read_image_headers(uint8_t image_bank, uint8_t* data, uint32_t data_len)
         {
             ret = -1;
         }
-        if( ret_i2c != sizeof(image_header_t) ) return SUOTAR_EXT_MEM_WRITE_ERR;
+        if( ret_i2c != sizeof(image_header_t) ) return SUOTAR_EXT_MEM_WRITE_ERR; //rdd i2c
 
         if (i2c_eeprom_write_data((uint8_t*) &data[CODE_OFFSET], suota_state.mem_base_add + CODE_OFFSET, data_len - CODE_OFFSET, &ret_i2c) != I2C_NO_ERROR)
         {
             ret = -1;
         }
-        if( ret_i2c != (data_len - CODE_OFFSET) ) return SUOTAR_EXT_MEM_WRITE_ERR;
+        if( ret_i2c != (data_len - CODE_OFFSET) ) return SUOTAR_EXT_MEM_WRITE_ERR; //rdd i2c
 #else
-        return SUOTAR_EXT_MEM_WRITE_ERR;
+        return SUOTAR_EXT_MEM_WRITE_ERR; //rdd i2c
 #endif
     }
 
@@ -779,7 +781,7 @@ int app_read_image_headers(uint8_t image_bank, uint8_t* data, uint32_t data_len)
  */
 uint8_t app_set_image_valid_flag(void)
 {
-    int8_t ret = SUOTAR_EXT_MEM_WRITE_ERR;
+    int8_t ret = SUOTAR_EXT_MEM_WRITE_ERR;//rdd spi 4
     uint8_t flag = STATUS_VALID_IMAGE;
 
     if( suota_state.mem_dev == SUOTAR_IMG_SPI_FLASH )

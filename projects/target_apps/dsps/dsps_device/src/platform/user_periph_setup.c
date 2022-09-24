@@ -37,6 +37,7 @@
 #include "spi_flash.h"
 #include "SPI_ADC.h"
 #include "ss_i2c.h"
+#include "SS_InterfaceToBLE.h"
 
 #if defined (CFG_SPI_FLASH_ENABLE)
 // Configuration struct for SPI
@@ -143,6 +144,8 @@ void set_pad_functions(void)        // set gpio port function mode
 
 void periph_init(void)
 {
+	LEDinit();
+	
     // Power up peripherals' power domain
 #if !defined (__DA14531__)
     SetBits16(PMU_CTRL_REG, PERIPH_SLEEP, 0);
@@ -172,11 +175,11 @@ void periph_init(void)
 //	 intinit();
 	 
 	 //ssi2c_init();
-	 sx1502_init();
+//	 sx1502_init();
 //	 while(1)
 	 {
 	//  ss_i2c_test();
-		 sx_main();
+//		 sx_main();
 	 };
 #endif
 

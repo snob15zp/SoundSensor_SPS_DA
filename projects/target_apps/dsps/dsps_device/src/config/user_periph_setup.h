@@ -334,7 +334,7 @@ extern uint8_t gpio_por_pin_timeout;
 /* SPI Flash configuration                                                              */
 /****************************************************************************************/
 #if !defined (__DA14586__)
-#define SPI_FLASH_DEV_SIZE          (256 * 1024) //RDD?
+#define SPI_FLASH_DEV_SIZE          (4 * 1024*1024) //RDD?
 #endif
 
 /*

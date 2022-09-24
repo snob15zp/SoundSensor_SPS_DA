@@ -111,8 +111,18 @@ static const uart_cfg_t uart_cfg =
             };
 #endif
 
+#define LED_PORT                GPIO_PORT_0
+#define LED_PIN                 GPIO_PIN_9
+						
 int main (void)
 {
+	
+GPIO_ConfigurePin(LED_PORT, LED_PIN, OUTPUT, PID_GPIO, false);
+GPIO_set_pad_latch_en(true);
+				GPIO_SetActive(LED_PORT, LED_PIN);
+	
+	
+	
 #if defined(SPI_FLASH_SUPPORTED ) || defined(I2C_EEPROM_SUPPORTED)
     int ret = -1;
 #endif

@@ -55,16 +55,24 @@ ITB_timer = app_easy_timer(ITB_pause, adv_data_update_timer_cb);
 //				 Filter0_step();
 //				GPIO_SetInactive(LED_PORT, LED_PIN);
 
+
+void LEDinit (void)
+{
+#ifndef __SoundSensor__	
+GPIO_ConfigurePin(LED_PORT, LED_PIN, OUTPUT, PID_GPIO, false);
+GPIO_set_pad_latch_en(true);
+				GPIO_SetActive(LED_PORT, LED_PIN);
+	      GPIO_SetInactive(LED_PORT, LED_PIN);
+#endif	
+	
+};
+
+
 void SS_InterfaceToBLE_init(void)
 {
 if (ITB_initstatus==0)
 {ITB_initstatus=1;
-#ifdef __KIT__	
-GPIO_ConfigurePin(LED_PORT, LED_PIN, OUTPUT, PID_GPIO, false);
-GPIO_set_pad_latch_en(true);
-//				GPIO_SetActive(LED_PORT, LED_PIN);
-//	      GPIO_SetInactive(LED_PORT, LED_PIN);
-#endif	
+//	LEDinit();
 adv_data_update_timer_cb();
 }
 }

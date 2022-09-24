@@ -185,7 +185,9 @@ int main(void)
         do {
             // schedule all pending events
             schedule_while_ble_on();
+#ifdef __SoundSensor__					
 					sx_main();
+#endif					
         }
         while (app_asynch_proc() != GOTO_SLEEP);    //grant control to the application, try to go to power down
                                                     //if the application returns GOTO_SLEEP

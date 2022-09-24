@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Thu Sep 22 14:01:50 2022
+;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Fri Sep 23 13:53:59 2022
 ;VERSION 0.2
 ;FILE adc_531.o
 adc_correct_sample <= USED 0
@@ -89,24 +89,32 @@ hw_otpc_read <= USED 0
 hw_otpc_word_prog_and_verify <= USED 0
 hw_otpc_word_read <= USED 0
 ;FILE i2c.o
+i2c_init <= USED 0
 i2c_master_receive_buffer_async <= USED 0
 i2c_master_receive_buffer_sync <= USED 0
 i2c_master_transmit_buffer_async <= USED 0
 i2c_master_transmit_buffer_sync <= USED 0
 i2c_register_int <= USED 0
 i2c_release <= USED 0
+i2c_setup_master <= USED 0
+i2c_setup_slave <= USED 0
 i2c_slave_receive_buffer_async <= USED 0
 i2c_slave_receive_buffer_sync <= USED 0
 i2c_slave_transmit_buffer_async <= USED 0
 i2c_slave_transmit_buffer_sync <= USED 0
 i2c_unregister_int <= USED 0
 ;FILE i2c_eeprom.o
+i2c_eeprom_configure <= USED 0
 i2c_eeprom_get_configuration <= USED 0
+i2c_eeprom_initialize <= USED 0
+i2c_eeprom_read_byte <= USED 0
 i2c_eeprom_read_data <= USED 0
 i2c_eeprom_release <= USED 0
 i2c_eeprom_update_slave_address <= USED 0
+i2c_eeprom_write_byte <= USED 0
 i2c_eeprom_write_data <= USED 0
 i2c_eeprom_write_page <= USED 0
+i2c_wait_until_eeprom_ready <= USED 0
 ;FILE jump_table.o
 dummyf <= USED 0
 ;FILE lld.o
@@ -149,7 +157,6 @@ spi_transfer <= USED 0
 ;FILE spi_adc.o
 SPI_ADC_init <= USED 0
 intinit <= USED 0
-timer2_init <= USED 0
 ;FILE spi_flash.o
 spi_flash_block_erase_no_wait <= USED 0
 spi_flash_chip_erase <= USED 0
@@ -184,6 +191,9 @@ spi_flash_write_status_reg <= USED 0
 ;FILE ss_i2c.o
 ss_i2c_test <= USED 0
 ssi2c_init <= USED 0
+sx1502_init <= USED 0
+sx_SysTick_Handler <= USED 0
+sx_main <= USED 0
 ;FILE ss_interfacetoble.o
 user_app_adv_start <= USED 0
 ;FILE startup_da14531.o

@@ -3,4 +3,4 @@
 -IC:\Users\RD\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include
 -IC:\Keil_v5\ARM\CMSIS\Include
 -D__UVISION_VERSION="528" -DARMCM0P -D__DA14531__
--o .\out_531\arch_rom.o --omf_browse .\out_531\arch_rom.crf --depend .\out_531\arch_rom.d "..\..\..\..\..\sdk6\sdk\platform\arch\main\arch_rom.c"
+-o .\out_531\system_da14531.o --omf_browse .\out_531\system_da14531.crf --depend .\out_531\system_da14531.d "..\..\..\..\..\sdk6\sdk\platform\arch\boot\system_DA14531.c"

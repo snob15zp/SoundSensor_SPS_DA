@@ -444,7 +444,7 @@ void app_suotar_img_hdlr(void)
             else
             {
                 //check file size
-                if (( suota_state.suota_image_len+ADDITINAL_CRC_SIZE ) >= ( suota_state.suota_img_idx + suota_state.suota_block_idx ))
+                if (( suota_state.suota_image_len+ADDITINAL_CRC_SIZE+5 ) >= ( suota_state.suota_img_idx + suota_state.suota_block_idx ))
                 {
                     if (suota_state.suota_image_len < (suota_state.suota_img_idx + suota_state.suota_block_idx))
                         suota_state.suota_block_idx = suota_state.suota_image_len - suota_state.suota_img_idx;

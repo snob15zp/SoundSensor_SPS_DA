@@ -3,4 +3,4 @@
 -IC:\Users\RD\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include
 -IC:\Keil_v5\ARM\CMSIS\Include
 -D__UVISION_VERSION="528" -DARMCM0P -D__DA14531__
--o .\out_531\app_entry_point.o --omf_browse .\out_531\app_entry_point.crf --depend .\out_531\app_entry_point.d "..\..\..\..\..\sdk6\sdk\app_modules\src\app_entry\app_entry_point.c"
+-o .\out_531\uart.o --omf_browse .\out_531\uart.crf --depend .\out_531\uart.d "..\..\..\..\..\sdk6\sdk\platform\driver\uart\uart.c"

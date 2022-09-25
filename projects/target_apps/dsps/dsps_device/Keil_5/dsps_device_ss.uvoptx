@@ -267,6 +267,10 @@
       <TargetDriverDllRegistry>
         <SetRegEntry>
           <Number>0</Number>
+          <Key>DLGUARM</Key>
+        </SetRegEntry>
+        <SetRegEntry>
+          <Number>0</Number>
           <Key>ARMRTXEVENTFLAGS</Key>
           <Name>-L70 -Z18 -C0 -M0 -T1</Name>
         </SetRegEntry>
@@ -295,18 +299,18 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>62</LineNumber>
+          <LineNumber>464</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>133974114</Address>
+          <Address>133966960</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\src\SS_InterfaceToBLE\SS_InterfaceToBLE.c</Filename>
+          <Filename>..\..\..\..\..\sdk6\sdk\app_modules\src\app_suotar\app_suotar.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\dsps_device_531\../src/SS_InterfaceToBLE/SS_InterfaceToBLE.c\62</Expression>
+          <Expression>\\dsps_device_531\../../../../../sdk6/sdk/app_modules/src/app_suotar/app_suotar.c\464</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -1388,7 +1392,7 @@
       <GroupNumber>6</GroupNumber>
       <FileNumber>63</FileNumber>
       <FileType>1</FileType>
-      <tvExp>1</tvExp>
+      <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\..\..\..\..\sdk6\sdk\app_modules\src\app_suotar\app_suotar.c</PathWithFileName>

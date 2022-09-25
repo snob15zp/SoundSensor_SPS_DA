@@ -76,6 +76,7 @@
 #endif
 
 #include "ss_i2c.h"
+#include "SS_InterfaceToBLE.h"
 
 
 
@@ -187,6 +188,9 @@ int main(void)
             schedule_while_ble_on();
 #ifdef __SoundSensor__					
 					sx_main();
+#endif					
+#ifndef __SoundSensor__					
+					led_flash();
 #endif					
         }
         while (app_asynch_proc() != GOTO_SLEEP);    //grant control to the application, try to go to power down

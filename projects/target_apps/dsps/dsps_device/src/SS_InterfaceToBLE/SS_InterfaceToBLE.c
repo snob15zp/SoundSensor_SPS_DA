@@ -37,6 +37,24 @@ if (ITB_state)
 	 SS_InterfaceToBLE_SendThreeBytes();
 }
 
+void led_flash(void)
+{
+if (ITB_state)
+  {
+#ifndef __SoundSensor__		
+	GPIO_SetActive(LED_PORT, LED_PIN);
+#endif	
+	;}
+   else
+	 {
+#ifndef __SoundSensor__
+	 GPIO_SetInactive(LED_PORT, LED_PIN);
+#endif
+	 };
+ITB_state=!ITB_state;
+}
+
+
 void user_app_adv_start(void)
 {
 

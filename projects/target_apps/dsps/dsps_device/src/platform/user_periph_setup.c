@@ -174,12 +174,11 @@ void periph_init(void)
 	 
 //	 intinit();
 	 
-	 //ssi2c_init();
-//	 sx1502_init();
+	 
+	 sx1502_init();//ssi2c_init();
 //	 while(1)
 	 {
-	//  ss_i2c_test();
-//		 sx_main();
+		 sx_main();//  ss_i2c_test();
 	 };
 #endif
 

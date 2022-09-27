@@ -183,10 +183,14 @@ int main(void)
 
     while(1)
     {
+#ifndef __SoundSensor__					
+					led_flash();
+#endif					
+			
         do {
             // schedule all pending events
             schedule_while_ble_on();
-#ifdef __SoundSensor__					
+#ifdef __SoundSensor__			
 					sx_main();
 #endif					
 #ifndef __SoundSensor__					

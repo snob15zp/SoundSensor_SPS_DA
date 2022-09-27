@@ -111,15 +111,15 @@ static const uart_cfg_t uart_cfg =
             };
 #endif
 
-#define LED_PORT                GPIO_PORT_0
-#define LED_PIN                 GPIO_PIN_9
+//#define LED_PORT                GPIO_PORT_0
+//#define LED_PIN                 GPIO_PIN_9
 						
 int main (void)
 {
 	
-GPIO_ConfigurePin(LED_PORT, LED_PIN, OUTPUT, PID_GPIO, false);
-GPIO_set_pad_latch_en(true);
-				GPIO_SetActive(LED_PORT, LED_PIN);
+//GPIO_ConfigurePin(LED_PORT, LED_PIN, OUTPUT, PID_GPIO, false);
+//GPIO_set_pad_latch_en(true);
+//				GPIO_SetActive(LED_PORT, LED_PIN);
 	
 	
 	

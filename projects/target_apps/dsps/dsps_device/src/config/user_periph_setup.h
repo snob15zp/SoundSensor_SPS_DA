@@ -285,7 +285,7 @@ extern uint8_t gpio_por_pin_timeout;
 // Define SPI Pads
 #if defined (__DA14531__)
     #define SPI_EN_PORT             GPIO_PORT_0
-    #define SPI_EN_PIN              GPIO_PIN_1
+    #define SPI_EN_PIN              GPIO_PIN_1 //GPIO_PIN_11
 
     #define SPI_CLK_PORT            GPIO_PORT_0
     #define SPI_CLK_PIN             GPIO_PIN_4
@@ -317,8 +317,8 @@ extern uint8_t gpio_por_pin_timeout;
     #define SPI_CS                  SPI_CS_0
 
 #if defined(__DA14531__)
-    #define SPI_SPEED_MODE          SPI_SPEED_MODE_4MHz
-//    #define SPI_SPEED_MODE          SPI_SPEED_MODE_2MHz
+//    #define SPI_SPEED_MODE          SPI_SPEED_MODE_4MHz
+    #define SPI_SPEED_MODE          SPI_SPEED_MODE_2MHz
 
     #define SPI_EDGE_CAPTURE        SPI_MASTER_EDGE_CAPTURE
 #else // (DA14585, DA14586)
@@ -334,7 +334,7 @@ extern uint8_t gpio_por_pin_timeout;
 /* SPI Flash configuration                                                              */
 /****************************************************************************************/
 #if !defined (__DA14586__)
-#define SPI_FLASH_DEV_SIZE          (256 * 1024) //RDD?
+#define SPI_FLASH_DEV_SIZE          (4 * 1024*1024) //RDD?
 #endif
 
 /*

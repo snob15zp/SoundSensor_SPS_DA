@@ -29,13 +29,15 @@
 #include "user_periph_setup.h"            // peripheral configuration
 #include "gpio.h"
 #include "uart.h"                    // UART initialization
-#include "user_sps_buffer_dma.h"
-#include "dma_uart_sps.h"
+//#include "user_sps_buffer_dma.h"
+//#include "dma_uart_sps.h"
 #if defined (__DA14531__)
 #include "spi_531.h"
 #endif
 #include "spi_flash.h"
 #include "SPI_ADC.h"
+#include "ss_i2c.h"
+#include "SS_InterfaceToBLE.h"
 
 #if defined (CFG_SPI_FLASH_ENABLE)
 // Configuration struct for SPI
@@ -142,6 +144,8 @@ void set_pad_functions(void)        // set gpio port function mode
 
 void periph_init(void)
 {
+	LEDinit();
+	
     // Power up peripherals' power domain
 #if !defined (__DA14531__)
     SetBits16(PMU_CTRL_REG, PERIPH_SLEEP, 0);
@@ -164,9 +168,18 @@ void periph_init(void)
 	
 	 user_spi_flash_init(SPI_FLASH_GPIO_MAP);//RDD
 #ifdef __SoundSensor__	 
-	 timer2_init();//RDD
+//	 timer2_init();//RDD
 	 
-	 SPI_ADC_init();//RDD
+//	 SPI_ADC_init();//RDD
+	 
+//	 intinit();
+	 
+	 
+	 sx1502_init();//ssi2c_init();
+//	 while(1)
+	 {
+		 sx_main();//  ss_i2c_test();
+	 };
 #endif
 
     // Initialize UART2 controller

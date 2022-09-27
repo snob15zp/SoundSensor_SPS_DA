@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Sat Sep 17 13:42:53 2022
+;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Tue Sep 27 20:28:41 2022
 ;VERSION 0.2
 ;FILE adc_531.o
 adc_correct_sample <= USED 0
@@ -40,6 +40,7 @@ app_easy_wakeup <= USED 0
 app_easy_wakeup_free <= USED 0
 app_easy_wakeup_set <= USED 0
 ;FILE app_easy_timer.o
+app_easy_timer <= USED 0
 app_easy_timer_cancel <= USED 0
 app_easy_timer_cancel_all <= USED 0
 app_easy_timer_modify <= USED 0
@@ -76,6 +77,7 @@ GPIO_RegisterCallback <= USED 0
 GPIO_SetIRQInputLevel <= USED 0
 GPIO_SetPorTime <= USED 0
 GPIO_is_valid <= USED 0
+GPIOn_Handler <= USED 0
 ;FILE hardfault_handler.o
 ;FILE hash.o
 hash <= USED 0
@@ -87,6 +89,25 @@ hw_otpc_prog_and_verify <= USED 0
 hw_otpc_read <= USED 0
 hw_otpc_word_prog_and_verify <= USED 0
 hw_otpc_word_read <= USED 0
+;FILE i2c.o
+i2c_master_receive_buffer_async <= USED 0
+i2c_master_receive_buffer_sync <= USED 0
+i2c_master_transmit_buffer_async <= USED 0
+i2c_master_transmit_buffer_sync <= USED 0
+i2c_register_int <= USED 0
+i2c_release <= USED 0
+i2c_slave_receive_buffer_async <= USED 0
+i2c_slave_receive_buffer_sync <= USED 0
+i2c_slave_transmit_buffer_async <= USED 0
+i2c_slave_transmit_buffer_sync <= USED 0
+i2c_unregister_int <= USED 0
+;FILE i2c_eeprom.o
+i2c_eeprom_get_configuration <= USED 0
+i2c_eeprom_read_data <= USED 0
+i2c_eeprom_release <= USED 0
+i2c_eeprom_update_slave_address <= USED 0
+i2c_eeprom_write_data <= USED 0
+i2c_eeprom_write_page <= USED 0
 ;FILE jump_table.o
 dummyf <= USED 0
 ;FILE lld.o
@@ -127,7 +148,9 @@ spi_send <= USED 0
 spi_set_cs_mode <= USED 0
 spi_transfer <= USED 0
 ;FILE spi_adc.o
-SPITreeByts <= USED 0
+SPI_ADC_init <= USED 0
+intinit <= USED 0
+timer2_init <= USED 0
 ;FILE spi_flash.o
 spi_flash_block_erase_no_wait <= USED 0
 spi_flash_chip_erase <= USED 0
@@ -159,7 +182,13 @@ spi_flash_write_enable_volatile <= USED 0
 spi_flash_write_status_config_reg <= USED 0
 spi_flash_write_status_reg <= USED 0
 ;FILE sps_server.o
+;FILE ss_i2c.o
+ss_i2c_test <= USED 0
+ssi2c_init <= USED 0
 ;FILE ss_interfacetoble.o
+SS_InterfaceToBLE_SendThreeBytes <= USED 0
+SS_InterfaceToBLE_init <= USED 0
+led_flash <= USED 0
 user_app_adv_start <= USED 0
 ;FILE startup_da14531.o
 ;FILE syscntl.o
@@ -173,6 +202,9 @@ syscntl_por_vbat_low_cfg <= USED 0
 ;FILE system_da14531.o
 SystemCoreClockUpdate <= USED 0
 ;FILE timer2.o
+timer2_config <= USED 0
+timer2_pwm_freq_set <= USED 0
+timer2_pwm_signal_config <= USED 0
 ;FILE trng.o
 ;FILE uart.o
 uart_baudrate_setf <= USED 0
@@ -205,8 +237,10 @@ user_on_connect_failed <= USED 0
 ;FILE user_sps_schedule_dma.o
 user_dma_sps_sleep_check <= USED 0
 ;FILE user_sps_utils.o
+ke_msg_alloc_no_init <= USED 0
 user_rwip_sleep_check <= USED 0
 ;FILE user_spss.o
+user_send_ble_data <= USED 0
 user_send_ble_flow_ctrl <= USED 0
 user_send_dummy_ble_data <= USED 0
 ;FILE user_spss_task.o

@@ -1,0 +1,466 @@
+Dependencies for Project 'secondary_bootloader', Target 'DA14531': (DO NOT MODIFY !)
+F (..\..\sdk6\sdk\platform\arch\boot\ARM\startup_DA14585_586.s)(0x5EDF3FBA)()
+F (..\..\sdk6\sdk\platform\arch\boot\system_DA14585_586.c)(0x5EDF3FBA)()
+F (..\..\sdk6\sdk\platform\arch\main\hardfault_handler.c)(0x5EDF3FBA)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB --li -g -O3 --apcs=interwork -I .\includes -I ..\..\sdk6\sdk\platform\include -I ..\..\sdk6\sdk\platform\driver\spi -I ..\..\sdk6\sdk\platform\driver\i2c_eeprom -I ..\..\sdk6\sdk\platform\driver\i2c -I ..\..\sdk6\sdk\platform\driver\spi_flash -I ..\..\sdk6\sdk\platform\driver\gpio -I ..\..\sdk6\sdk\platform\driver\dma -I ..\..\sdk6\sdk\platform\arch -I ..\..\sdk6\sdk\platform\arch\compiler -I ..\..\sdk6\sdk\platform\arch\ll -I ..\..\sdk6\sdk\platform\driver\reg -I ..\..\sdk6\sdk\platform\driver\syscntl -I ..\..\sdk6\sdk\platform\driver\uart -I ..\..\sdk6\sdk\platform\driver\timer -I ..\..\sdk6\sdk\platform\core_modules\crypto -I ..\..\sdk6\sdk\platform\driver\systick -I ..\..\sdk6\sdk\platform\driver\hw_otpc -I ..\..\sdk6\sdk\platform\utilities\otp_cs -I ..\..\sdk6\sdk\platform\driver\adc -I ..\..\sdk6\sdk\platform\core_modules\rf\api -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\core_modules\nvds\api -I ..\..\sdk6\sdk\platform\utilities\otp_hdr -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include --thumb -c --preinclude da1458x_config_basic.h --feedback=".\unused_531.txt"-I.\RTE\_DA14531-IC:\Users\RD\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DARMCM0P -D__DA14531__ -D__NON_BLE_EXAMPLE__-o .\out_da14531\objects\hardfault_handler.o --omf_browse .\out_da14531\objects\hardfault_handler.crf --depend .\out_da14531\objects\hardfault_handler.d)
+I (.\includes\da1458x_config_basic.h)(0x5EDF3EB2)
+I (..\..\sdk6\sdk\platform\include\datasheet.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\da14531.h)(0x5EDF3FBA)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEBC032)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\core_cm0plus.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_version.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_armcc.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\system_DA14531.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\arch.h)(0x5EDF3FBA)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEBC032)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5CEBC02E)
+I (..\..\sdk6\sdk\platform\arch\compiler\compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\compiler\ARM/compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\ll\ll.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\uart\uart.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\dma\dma.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\gpio\gpio.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\main\arch_wdg.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\syscntl\syscntl.h)(0x5EDF3FBA)
+I (.\includes\user_periph_setup.h)(0x5EDF3EB2)
+I (..\..\sdk6\sdk\platform\driver\i2c_eeprom\i2c_eeprom.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\i2c\i2c.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\spi\spi.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\spi\spi_531.h)(0x5EDF3FBA)
+F (..\..\sdk6\sdk\platform\arch\main\nmi_handler.c)(0x5EDF3FBA)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB --li -g -O3 --apcs=interwork -I .\includes -I ..\..\sdk6\sdk\platform\include -I ..\..\sdk6\sdk\platform\driver\spi -I ..\..\sdk6\sdk\platform\driver\i2c_eeprom -I ..\..\sdk6\sdk\platform\driver\i2c -I ..\..\sdk6\sdk\platform\driver\spi_flash -I ..\..\sdk6\sdk\platform\driver\gpio -I ..\..\sdk6\sdk\platform\driver\dma -I ..\..\sdk6\sdk\platform\arch -I ..\..\sdk6\sdk\platform\arch\compiler -I ..\..\sdk6\sdk\platform\arch\ll -I ..\..\sdk6\sdk\platform\driver\reg -I ..\..\sdk6\sdk\platform\driver\syscntl -I ..\..\sdk6\sdk\platform\driver\uart -I ..\..\sdk6\sdk\platform\driver\timer -I ..\..\sdk6\sdk\platform\core_modules\crypto -I ..\..\sdk6\sdk\platform\driver\systick -I ..\..\sdk6\sdk\platform\driver\hw_otpc -I ..\..\sdk6\sdk\platform\utilities\otp_cs -I ..\..\sdk6\sdk\platform\driver\adc -I ..\..\sdk6\sdk\platform\core_modules\rf\api -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\core_modules\nvds\api -I ..\..\sdk6\sdk\platform\utilities\otp_hdr -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include --thumb -c --preinclude da1458x_config_basic.h --feedback=".\unused_531.txt"-I.\RTE\_DA14531-IC:\Users\RD\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DARMCM0P -D__DA14531__ -D__NON_BLE_EXAMPLE__-o .\out_da14531\objects\nmi_handler.o --omf_browse .\out_da14531\objects\nmi_handler.crf --depend .\out_da14531\objects\nmi_handler.d)
+I (.\includes\da1458x_config_basic.h)(0x5EDF3EB2)
+I (..\..\sdk6\sdk\platform\include\datasheet.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\da14531.h)(0x5EDF3FBA)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEBC032)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\core_cm0plus.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_version.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_armcc.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\system_DA14531.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\main\arch_wdg.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\arch.h)(0x5EDF3FBA)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEBC032)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5CEBC02E)
+I (..\..\sdk6\sdk\platform\arch\compiler\compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\compiler\ARM/compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\ll\ll.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\syscntl\syscntl.h)(0x5EDF3FBA)
+F (..\..\sdk6\sdk\platform\arch\boot\system_DA14531.c)(0x5EDF3FBA)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB --li -g -O3 --apcs=interwork -I .\includes -I ..\..\sdk6\sdk\platform\include -I ..\..\sdk6\sdk\platform\driver\spi -I ..\..\sdk6\sdk\platform\driver\i2c_eeprom -I ..\..\sdk6\sdk\platform\driver\i2c -I ..\..\sdk6\sdk\platform\driver\spi_flash -I ..\..\sdk6\sdk\platform\driver\gpio -I ..\..\sdk6\sdk\platform\driver\dma -I ..\..\sdk6\sdk\platform\arch -I ..\..\sdk6\sdk\platform\arch\compiler -I ..\..\sdk6\sdk\platform\arch\ll -I ..\..\sdk6\sdk\platform\driver\reg -I ..\..\sdk6\sdk\platform\driver\syscntl -I ..\..\sdk6\sdk\platform\driver\uart -I ..\..\sdk6\sdk\platform\driver\timer -I ..\..\sdk6\sdk\platform\core_modules\crypto -I ..\..\sdk6\sdk\platform\driver\systick -I ..\..\sdk6\sdk\platform\driver\hw_otpc -I ..\..\sdk6\sdk\platform\utilities\otp_cs -I ..\..\sdk6\sdk\platform\driver\adc -I ..\..\sdk6\sdk\platform\core_modules\rf\api -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\core_modules\nvds\api -I ..\..\sdk6\sdk\platform\utilities\otp_hdr -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include --thumb -c --preinclude da1458x_config_basic.h --feedback=".\unused_531.txt"-I.\RTE\_DA14531-IC:\Users\RD\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DARMCM0P -D__DA14531__ -D__NON_BLE_EXAMPLE__-o .\out_da14531\objects\system_da14531.o --omf_browse .\out_da14531\objects\system_da14531.crf --depend .\out_da14531\objects\system_da14531.d)
+I (.\includes\da1458x_config_basic.h)(0x5EDF3EB2)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEBC032)
+I (..\..\sdk6\sdk\platform\include\datasheet.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\da14531.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\core_cm0plus.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_version.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_armcc.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\system_DA14531.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\utilities\otp_cs\otp_cs.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\arch.h)(0x5EDF3FBA)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEBC032)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5CEBC02E)
+I (..\..\sdk6\sdk\platform\arch\compiler\compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\compiler\ARM/compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\ll\ll.h)(0x5EDF3FBA)
+F (..\..\sdk6\sdk\platform\arch\boot\ARM\startup_DA14531.s)(0x5EDF3FBA)(--cpu Cortex-M0+ --li -g --16 --apcs=interwork --pd "__MICROLIB SETA 1" -I .\includes-I.\RTE\_DA14531-IC:\Users\RD\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include-IC:\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 528" --pd "ARMCM0P SETA 1"-o .\out_da14531\objects\startup_da14531.o --depend .\out_da14531\objects\startup_da14531.d)
+F (.\src\bootloader.c)(0x633330F0)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB --li -g -O3 --apcs=interwork -I .\includes -I ..\..\sdk6\sdk\platform\include -I ..\..\sdk6\sdk\platform\driver\spi -I ..\..\sdk6\sdk\platform\driver\i2c_eeprom -I ..\..\sdk6\sdk\platform\driver\i2c -I ..\..\sdk6\sdk\platform\driver\spi_flash -I ..\..\sdk6\sdk\platform\driver\gpio -I ..\..\sdk6\sdk\platform\driver\dma -I ..\..\sdk6\sdk\platform\arch -I ..\..\sdk6\sdk\platform\arch\compiler -I ..\..\sdk6\sdk\platform\arch\ll -I ..\..\sdk6\sdk\platform\driver\reg -I ..\..\sdk6\sdk\platform\driver\syscntl -I ..\..\sdk6\sdk\platform\driver\uart -I ..\..\sdk6\sdk\platform\driver\timer -I ..\..\sdk6\sdk\platform\core_modules\crypto -I ..\..\sdk6\sdk\platform\driver\systick -I ..\..\sdk6\sdk\platform\driver\hw_otpc -I ..\..\sdk6\sdk\platform\utilities\otp_cs -I ..\..\sdk6\sdk\platform\driver\adc -I ..\..\sdk6\sdk\platform\core_modules\rf\api -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\core_modules\nvds\api -I ..\..\sdk6\sdk\platform\utilities\otp_hdr -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include --thumb -c --preinclude da1458x_config_basic.h --feedback=".\unused_531.txt"-I.\RTE\_DA14531-IC:\Users\RD\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DARMCM0P -D__DA14531__ -D__NON_BLE_EXAMPLE__-o .\out_da14531\objects\bootloader.o --omf_browse .\out_da14531\objects\bootloader.crf --depend .\out_da14531\objects\bootloader.d)
+I (.\includes\da1458x_config_basic.h)(0x5EDF3EB2)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEBC032)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEBC032)
+I (.\includes\user_periph_setup.h)(0x5EDF3EB2)
+I (..\..\sdk6\sdk\platform\driver\gpio\gpio.h)(0x5EDF3FBA)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5CEBC02E)
+I (..\..\sdk6\sdk\platform\include\datasheet.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\da14531.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\core_cm0plus.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_version.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_armcc.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\system_DA14531.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\arch.h)(0x5EDF3FBA)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEBC032)
+I (..\..\sdk6\sdk\platform\arch\compiler\compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\compiler\ARM/compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\ll\ll.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\i2c_eeprom\i2c_eeprom.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\i2c\i2c.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\dma\dma.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\spi\spi.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\spi\spi_531.h)(0x5EDF3FBA)
+I (.\includes\uart_booter.h)(0x5EDF3EB2)
+I (.\includes\bootloader.h)(0x63331ECD)
+I (..\..\sdk6\sdk\platform\driver\spi_flash\spi_flash.h)(0x5EDF3FBA)
+I (.\includes\decrypt.h)(0x5EDF3EB2)
+F (..\..\sdk6\sdk\platform\driver\spi_flash\spi_flash.c)(0x632EE225)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB --li -g -O3 --apcs=interwork -I .\includes -I ..\..\sdk6\sdk\platform\include -I ..\..\sdk6\sdk\platform\driver\spi -I ..\..\sdk6\sdk\platform\driver\i2c_eeprom -I ..\..\sdk6\sdk\platform\driver\i2c -I ..\..\sdk6\sdk\platform\driver\spi_flash -I ..\..\sdk6\sdk\platform\driver\gpio -I ..\..\sdk6\sdk\platform\driver\dma -I ..\..\sdk6\sdk\platform\arch -I ..\..\sdk6\sdk\platform\arch\compiler -I ..\..\sdk6\sdk\platform\arch\ll -I ..\..\sdk6\sdk\platform\driver\reg -I ..\..\sdk6\sdk\platform\driver\syscntl -I ..\..\sdk6\sdk\platform\driver\uart -I ..\..\sdk6\sdk\platform\driver\timer -I ..\..\sdk6\sdk\platform\core_modules\crypto -I ..\..\sdk6\sdk\platform\driver\systick -I ..\..\sdk6\sdk\platform\driver\hw_otpc -I ..\..\sdk6\sdk\platform\utilities\otp_cs -I ..\..\sdk6\sdk\platform\driver\adc -I ..\..\sdk6\sdk\platform\core_modules\rf\api -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\core_modules\nvds\api -I ..\..\sdk6\sdk\platform\utilities\otp_hdr -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include --thumb -c --preinclude da1458x_config_basic.h --feedback=".\unused_531.txt"-I.\RTE\_DA14531-IC:\Users\RD\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DARMCM0P -D__DA14531__ -D__NON_BLE_EXAMPLE__-o .\out_da14531\objects\spi_flash.o --omf_browse .\out_da14531\objects\spi_flash.crf --depend .\out_da14531\objects\spi_flash.d)
+I (.\includes\da1458x_config_basic.h)(0x5EDF3EB2)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEBC032)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5CEBC032)
+I (..\..\sdk6\sdk\platform\driver\spi_flash\spi_flash.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\spi\spi.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\spi\spi_531.h)(0x5EDF3FBA)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEBC032)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5CEBC02E)
+I (..\..\sdk6\sdk\platform\include\datasheet.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\da14531.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\core_cm0plus.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_version.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_armcc.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\system_DA14531.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\gpio\gpio.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\arch.h)(0x5EDF3FBA)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEBC032)
+I (..\..\sdk6\sdk\platform\arch\compiler\compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\compiler\ARM/compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\ll\ll.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\dma\dma.h)(0x5EDF3FBA)
+F (..\..\sdk6\sdk\platform\driver\gpio\gpio.c)(0x5EDF3FBA)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB --li -g -O3 --apcs=interwork -I .\includes -I ..\..\sdk6\sdk\platform\include -I ..\..\sdk6\sdk\platform\driver\spi -I ..\..\sdk6\sdk\platform\driver\i2c_eeprom -I ..\..\sdk6\sdk\platform\driver\i2c -I ..\..\sdk6\sdk\platform\driver\spi_flash -I ..\..\sdk6\sdk\platform\driver\gpio -I ..\..\sdk6\sdk\platform\driver\dma -I ..\..\sdk6\sdk\platform\arch -I ..\..\sdk6\sdk\platform\arch\compiler -I ..\..\sdk6\sdk\platform\arch\ll -I ..\..\sdk6\sdk\platform\driver\reg -I ..\..\sdk6\sdk\platform\driver\syscntl -I ..\..\sdk6\sdk\platform\driver\uart -I ..\..\sdk6\sdk\platform\driver\timer -I ..\..\sdk6\sdk\platform\core_modules\crypto -I ..\..\sdk6\sdk\platform\driver\systick -I ..\..\sdk6\sdk\platform\driver\hw_otpc -I ..\..\sdk6\sdk\platform\utilities\otp_cs -I ..\..\sdk6\sdk\platform\driver\adc -I ..\..\sdk6\sdk\platform\core_modules\rf\api -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\core_modules\nvds\api -I ..\..\sdk6\sdk\platform\utilities\otp_hdr -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include --thumb -c --preinclude da1458x_config_basic.h --feedback=".\unused_531.txt"-I.\RTE\_DA14531-IC:\Users\RD\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DARMCM0P -D__DA14531__ -D__NON_BLE_EXAMPLE__-o .\out_da14531\objects\gpio.o --omf_browse .\out_da14531\objects\gpio.crf --depend .\out_da14531\objects\gpio.d)
+I (.\includes\da1458x_config_basic.h)(0x5EDF3EB2)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEBC032)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEBC032)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5CEBC02E)
+I (..\..\sdk6\sdk\platform\include\datasheet.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\da14531.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\core_cm0plus.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_version.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_armcc.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\system_DA14531.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\arch.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\compiler\compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\compiler\ARM/compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\ll\ll.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\gpio\gpio.h)(0x5EDF3FBA)
+I (.\includes\user_periph_setup.h)(0x5EDF3EB2)
+I (..\..\sdk6\sdk\platform\driver\i2c_eeprom\i2c_eeprom.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\i2c\i2c.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\dma\dma.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\spi\spi.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\spi\spi_531.h)(0x5EDF3FBA)
+F (..\..\sdk6\sdk\platform\driver\i2c_eeprom\i2c_eeprom.c)(0x5EDF3FBA)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB --li -g -O3 --apcs=interwork -I .\includes -I ..\..\sdk6\sdk\platform\include -I ..\..\sdk6\sdk\platform\driver\spi -I ..\..\sdk6\sdk\platform\driver\i2c_eeprom -I ..\..\sdk6\sdk\platform\driver\i2c -I ..\..\sdk6\sdk\platform\driver\spi_flash -I ..\..\sdk6\sdk\platform\driver\gpio -I ..\..\sdk6\sdk\platform\driver\dma -I ..\..\sdk6\sdk\platform\arch -I ..\..\sdk6\sdk\platform\arch\compiler -I ..\..\sdk6\sdk\platform\arch\ll -I ..\..\sdk6\sdk\platform\driver\reg -I ..\..\sdk6\sdk\platform\driver\syscntl -I ..\..\sdk6\sdk\platform\driver\uart -I ..\..\sdk6\sdk\platform\driver\timer -I ..\..\sdk6\sdk\platform\core_modules\crypto -I ..\..\sdk6\sdk\platform\driver\systick -I ..\..\sdk6\sdk\platform\driver\hw_otpc -I ..\..\sdk6\sdk\platform\utilities\otp_cs -I ..\..\sdk6\sdk\platform\driver\adc -I ..\..\sdk6\sdk\platform\core_modules\rf\api -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\core_modules\nvds\api -I ..\..\sdk6\sdk\platform\utilities\otp_hdr -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include --thumb -c --preinclude da1458x_config_basic.h --feedback=".\unused_531.txt"-I.\RTE\_DA14531-IC:\Users\RD\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DARMCM0P -D__DA14531__ -D__NON_BLE_EXAMPLE__-o .\out_da14531\objects\i2c_eeprom.o --omf_browse .\out_da14531\objects\i2c_eeprom.crf --depend .\out_da14531\objects\i2c_eeprom.d)
+I (.\includes\da1458x_config_basic.h)(0x5EDF3EB2)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEBC032)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5CEBC032)
+I (..\..\sdk6\sdk\platform\arch\compiler\compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\compiler\ARM/compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_armcc.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\ll\ll.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\datasheet.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\da14531.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\core_cm0plus.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_version.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\system_DA14531.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\arch.h)(0x5EDF3FBA)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEBC032)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5CEBC02E)
+I (..\..\sdk6\sdk\platform\driver\i2c_eeprom\i2c_eeprom.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\i2c\i2c.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\dma\dma.h)(0x5EDF3FBA)
+F (.\src\main.c)(0x63332E5C)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB --li -g -O3 --apcs=interwork -I .\includes -I ..\..\sdk6\sdk\platform\include -I ..\..\sdk6\sdk\platform\driver\spi -I ..\..\sdk6\sdk\platform\driver\i2c_eeprom -I ..\..\sdk6\sdk\platform\driver\i2c -I ..\..\sdk6\sdk\platform\driver\spi_flash -I ..\..\sdk6\sdk\platform\driver\gpio -I ..\..\sdk6\sdk\platform\driver\dma -I ..\..\sdk6\sdk\platform\arch -I ..\..\sdk6\sdk\platform\arch\compiler -I ..\..\sdk6\sdk\platform\arch\ll -I ..\..\sdk6\sdk\platform\driver\reg -I ..\..\sdk6\sdk\platform\driver\syscntl -I ..\..\sdk6\sdk\platform\driver\uart -I ..\..\sdk6\sdk\platform\driver\timer -I ..\..\sdk6\sdk\platform\core_modules\crypto -I ..\..\sdk6\sdk\platform\driver\systick -I ..\..\sdk6\sdk\platform\driver\hw_otpc -I ..\..\sdk6\sdk\platform\utilities\otp_cs -I ..\..\sdk6\sdk\platform\driver\adc -I ..\..\sdk6\sdk\platform\core_modules\rf\api -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\core_modules\nvds\api -I ..\..\sdk6\sdk\platform\utilities\otp_hdr -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include --thumb -c --preinclude da1458x_config_basic.h --feedback=".\unused_531.txt"-I.\RTE\_DA14531-IC:\Users\RD\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DARMCM0P -D__DA14531__ -D__NON_BLE_EXAMPLE__-o .\out_da14531\objects\main.o --omf_browse .\out_da14531\objects\main.crf --depend .\out_da14531\objects\main.d)
+I (.\includes\da1458x_config_basic.h)(0x5EDF3EB2)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEBC032)
+I (..\..\sdk6\sdk\platform\arch\main\arch_system.h)(0x5EDF3FBA)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5CEBC02E)
+I (..\..\sdk6\sdk\platform\include\datasheet.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\da14531.h)(0x5EDF3FBA)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEBC032)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\core_cm0plus.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_version.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_armcc.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\system_DA14531.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\arch.h)(0x5EDF3FBA)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEBC032)
+I (..\..\sdk6\sdk\platform\arch\compiler\compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\compiler\ARM/compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\ll\ll.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\arch_api.h)(0x5EDF3FBA)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5CEBC032)
+I (..\..\sdk6\sdk\platform\core_modules\nvds\api\nvds.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\main\arch_wdg.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\gpio\gpio.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\syscntl\syscntl.h)(0x5EDF3FBA)
+I (.\includes\user_periph_setup.h)(0x5EDF3EB2)
+I (..\..\sdk6\sdk\platform\driver\i2c_eeprom\i2c_eeprom.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\i2c\i2c.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\dma\dma.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\spi\spi.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\spi\spi_531.h)(0x5EDF3FBA)
+I (.\includes\uart_booter.h)(0x5EDF3EB2)
+I (..\..\sdk6\sdk\platform\driver\spi_flash\spi_flash.h)(0x5EDF3FBA)
+I (.\includes\bootloader.h)(0x63331ECD)
+I (..\..\sdk6\sdk\platform\driver\uart\uart.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\hw_otpc\hw_otpc.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\hw_otpc\hw_otpc_531.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\adc\adc.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\adc\adc_531.h)(0x5EDF3FBA)
+F (.\src\uart_booter.c)(0x5EDF3EB2)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB --li -g -O3 --apcs=interwork -I .\includes -I ..\..\sdk6\sdk\platform\include -I ..\..\sdk6\sdk\platform\driver\spi -I ..\..\sdk6\sdk\platform\driver\i2c_eeprom -I ..\..\sdk6\sdk\platform\driver\i2c -I ..\..\sdk6\sdk\platform\driver\spi_flash -I ..\..\sdk6\sdk\platform\driver\gpio -I ..\..\sdk6\sdk\platform\driver\dma -I ..\..\sdk6\sdk\platform\arch -I ..\..\sdk6\sdk\platform\arch\compiler -I ..\..\sdk6\sdk\platform\arch\ll -I ..\..\sdk6\sdk\platform\driver\reg -I ..\..\sdk6\sdk\platform\driver\syscntl -I ..\..\sdk6\sdk\platform\driver\uart -I ..\..\sdk6\sdk\platform\driver\timer -I ..\..\sdk6\sdk\platform\core_modules\crypto -I ..\..\sdk6\sdk\platform\driver\systick -I ..\..\sdk6\sdk\platform\driver\hw_otpc -I ..\..\sdk6\sdk\platform\utilities\otp_cs -I ..\..\sdk6\sdk\platform\driver\adc -I ..\..\sdk6\sdk\platform\core_modules\rf\api -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\core_modules\nvds\api -I ..\..\sdk6\sdk\platform\utilities\otp_hdr -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include --thumb -c --preinclude da1458x_config_basic.h --feedback=".\unused_531.txt"-I.\RTE\_DA14531-IC:\Users\RD\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DARMCM0P -D__DA14531__ -D__NON_BLE_EXAMPLE__-o .\out_da14531\objects\uart_booter.o --omf_browse .\out_da14531\objects\uart_booter.crf --depend .\out_da14531\objects\uart_booter.d)
+I (.\includes\da1458x_config_basic.h)(0x5EDF3EB2)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEBC032)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEBC032)
+I (.\includes\uart_booter.h)(0x5EDF3EB2)
+I (.\includes\user_periph_setup.h)(0x5EDF3EB2)
+I (..\..\sdk6\sdk\platform\driver\gpio\gpio.h)(0x5EDF3FBA)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5CEBC02E)
+I (..\..\sdk6\sdk\platform\include\datasheet.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\da14531.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\core_cm0plus.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_version.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_armcc.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\system_DA14531.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\arch.h)(0x5EDF3FBA)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEBC032)
+I (..\..\sdk6\sdk\platform\arch\compiler\compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\compiler\ARM/compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\ll\ll.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\i2c_eeprom\i2c_eeprom.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\i2c\i2c.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\dma\dma.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\spi\spi.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\spi\spi_531.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\uart\uart.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\systick\systick.h)(0x5EDF3FBA)
+F (..\..\sdk6\third_party\crc32\crc32.c)(0x5EDF3FBA)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB --li -g -O3 --apcs=interwork -I .\includes -I ..\..\sdk6\sdk\platform\include -I ..\..\sdk6\sdk\platform\driver\spi -I ..\..\sdk6\sdk\platform\driver\i2c_eeprom -I ..\..\sdk6\sdk\platform\driver\i2c -I ..\..\sdk6\sdk\platform\driver\spi_flash -I ..\..\sdk6\sdk\platform\driver\gpio -I ..\..\sdk6\sdk\platform\driver\dma -I ..\..\sdk6\sdk\platform\arch -I ..\..\sdk6\sdk\platform\arch\compiler -I ..\..\sdk6\sdk\platform\arch\ll -I ..\..\sdk6\sdk\platform\driver\reg -I ..\..\sdk6\sdk\platform\driver\syscntl -I ..\..\sdk6\sdk\platform\driver\uart -I ..\..\sdk6\sdk\platform\driver\timer -I ..\..\sdk6\sdk\platform\core_modules\crypto -I ..\..\sdk6\sdk\platform\driver\systick -I ..\..\sdk6\sdk\platform\driver\hw_otpc -I ..\..\sdk6\sdk\platform\utilities\otp_cs -I ..\..\sdk6\sdk\platform\driver\adc -I ..\..\sdk6\sdk\platform\core_modules\rf\api -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\core_modules\nvds\api -I ..\..\sdk6\sdk\platform\utilities\otp_hdr -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include --thumb -c --preinclude da1458x_config_basic.h --feedback=".\unused_531.txt"-I.\RTE\_DA14531-IC:\Users\RD\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DARMCM0P -D__DA14531__ -D__NON_BLE_EXAMPLE__-o .\out_da14531\objects\crc32.o --omf_browse .\out_da14531\objects\crc32.crf --depend .\out_da14531\objects\crc32.d)
+I (.\includes\da1458x_config_basic.h)(0x5EDF3EB2)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEBC032)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEBC032)
+F (..\..\sdk6\sdk\platform\core_modules\crypto\sw_aes.c)(0x5EDF3FBA)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB --li -g -O3 -Otime --apcs=interwork -I .\includes -I ..\..\sdk6\sdk\platform\include -I ..\..\sdk6\sdk\platform\driver\spi -I ..\..\sdk6\sdk\platform\driver\i2c_eeprom -I ..\..\sdk6\sdk\platform\driver\i2c -I ..\..\sdk6\sdk\platform\driver\spi_flash -I ..\..\sdk6\sdk\platform\driver\gpio -I ..\..\sdk6\sdk\platform\driver\dma -I ..\..\sdk6\sdk\platform\arch -I ..\..\sdk6\sdk\platform\arch\compiler -I ..\..\sdk6\sdk\platform\arch\ll -I ..\..\sdk6\sdk\platform\driver\reg -I ..\..\sdk6\sdk\platform\driver\syscntl -I ..\..\sdk6\sdk\platform\driver\uart -I ..\..\sdk6\sdk\platform\driver\timer -I ..\..\sdk6\sdk\platform\core_modules\crypto -I ..\..\sdk6\sdk\platform\driver\systick -I ..\..\sdk6\sdk\platform\driver\hw_otpc -I ..\..\sdk6\sdk\platform\utilities\otp_cs -I ..\..\sdk6\sdk\platform\driver\adc -I ..\..\sdk6\sdk\platform\core_modules\rf\api -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\core_modules\nvds\api -I ..\..\sdk6\sdk\platform\utilities\otp_hdr -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include --thumb -c --preinclude da1458x_config_basic.h --feedback=".\unused_531.txt"-I.\RTE\_DA14531-IC:\Users\RD\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DARMCM0P -D__DA14531__ -D__NON_BLE_EXAMPLE__-o .\out_da14531\objects\sw_aes.o --omf_browse .\out_da14531\objects\sw_aes.crf --depend .\out_da14531\objects\sw_aes.d)
+I (.\includes\da1458x_config_basic.h)(0x5EDF3EB2)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5CEBC032)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5CEBC032)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEBC032)
+I (..\..\sdk6\sdk\platform\core_modules\crypto\sw_aes.h)(0x5EDF3FBA)
+F (.\src\decrypt.c)(0x5EDF3EB2)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB --li -g -O3 --apcs=interwork -I .\includes -I ..\..\sdk6\sdk\platform\include -I ..\..\sdk6\sdk\platform\driver\spi -I ..\..\sdk6\sdk\platform\driver\i2c_eeprom -I ..\..\sdk6\sdk\platform\driver\i2c -I ..\..\sdk6\sdk\platform\driver\spi_flash -I ..\..\sdk6\sdk\platform\driver\gpio -I ..\..\sdk6\sdk\platform\driver\dma -I ..\..\sdk6\sdk\platform\arch -I ..\..\sdk6\sdk\platform\arch\compiler -I ..\..\sdk6\sdk\platform\arch\ll -I ..\..\sdk6\sdk\platform\driver\reg -I ..\..\sdk6\sdk\platform\driver\syscntl -I ..\..\sdk6\sdk\platform\driver\uart -I ..\..\sdk6\sdk\platform\driver\timer -I ..\..\sdk6\sdk\platform\core_modules\crypto -I ..\..\sdk6\sdk\platform\driver\systick -I ..\..\sdk6\sdk\platform\driver\hw_otpc -I ..\..\sdk6\sdk\platform\utilities\otp_cs -I ..\..\sdk6\sdk\platform\driver\adc -I ..\..\sdk6\sdk\platform\core_modules\rf\api -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\core_modules\nvds\api -I ..\..\sdk6\sdk\platform\utilities\otp_hdr -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include --thumb -c --preinclude da1458x_config_basic.h --feedback=".\unused_531.txt"-I.\RTE\_DA14531-IC:\Users\RD\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DARMCM0P -D__DA14531__ -D__NON_BLE_EXAMPLE__-o .\out_da14531\objects\decrypt.o --omf_browse .\out_da14531\objects\decrypt.crf --depend .\out_da14531\objects\decrypt.d)
+I (.\includes\da1458x_config_basic.h)(0x5EDF3EB2)
+I (..\..\sdk6\sdk\platform\core_modules\crypto\sw_aes.h)(0x5EDF3FBA)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEBC032)
+I (.\includes\uart_booter.h)(0x5EDF3EB2)
+F (..\..\sdk6\sdk\platform\driver\dma\dma.c)(0x5EDF3FBA)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB --li -g -O3 --apcs=interwork -I .\includes -I ..\..\sdk6\sdk\platform\include -I ..\..\sdk6\sdk\platform\driver\spi -I ..\..\sdk6\sdk\platform\driver\i2c_eeprom -I ..\..\sdk6\sdk\platform\driver\i2c -I ..\..\sdk6\sdk\platform\driver\spi_flash -I ..\..\sdk6\sdk\platform\driver\gpio -I ..\..\sdk6\sdk\platform\driver\dma -I ..\..\sdk6\sdk\platform\arch -I ..\..\sdk6\sdk\platform\arch\compiler -I ..\..\sdk6\sdk\platform\arch\ll -I ..\..\sdk6\sdk\platform\driver\reg -I ..\..\sdk6\sdk\platform\driver\syscntl -I ..\..\sdk6\sdk\platform\driver\uart -I ..\..\sdk6\sdk\platform\driver\timer -I ..\..\sdk6\sdk\platform\core_modules\crypto -I ..\..\sdk6\sdk\platform\driver\systick -I ..\..\sdk6\sdk\platform\driver\hw_otpc -I ..\..\sdk6\sdk\platform\utilities\otp_cs -I ..\..\sdk6\sdk\platform\driver\adc -I ..\..\sdk6\sdk\platform\core_modules\rf\api -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\core_modules\nvds\api -I ..\..\sdk6\sdk\platform\utilities\otp_hdr -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include --thumb -c --preinclude da1458x_config_basic.h --feedback=".\unused_531.txt"-I.\RTE\_DA14531-IC:\Users\RD\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DARMCM0P -D__DA14531__ -D__NON_BLE_EXAMPLE__-o .\out_da14531\objects\dma.o --omf_browse .\out_da14531\objects\dma.crf --depend .\out_da14531\objects\dma.d)
+I (.\includes\da1458x_config_basic.h)(0x5EDF3EB2)
+F (..\..\sdk6\sdk\platform\driver\spi\spi_58x.c)(0x5EDF3FBA)()
+F (..\..\sdk6\sdk\platform\driver\spi\spi_531.c)(0x5EDF3FBA)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB --li -g -O3 --apcs=interwork -I .\includes -I ..\..\sdk6\sdk\platform\include -I ..\..\sdk6\sdk\platform\driver\spi -I ..\..\sdk6\sdk\platform\driver\i2c_eeprom -I ..\..\sdk6\sdk\platform\driver\i2c -I ..\..\sdk6\sdk\platform\driver\spi_flash -I ..\..\sdk6\sdk\platform\driver\gpio -I ..\..\sdk6\sdk\platform\driver\dma -I ..\..\sdk6\sdk\platform\arch -I ..\..\sdk6\sdk\platform\arch\compiler -I ..\..\sdk6\sdk\platform\arch\ll -I ..\..\sdk6\sdk\platform\driver\reg -I ..\..\sdk6\sdk\platform\driver\syscntl -I ..\..\sdk6\sdk\platform\driver\uart -I ..\..\sdk6\sdk\platform\driver\timer -I ..\..\sdk6\sdk\platform\core_modules\crypto -I ..\..\sdk6\sdk\platform\driver\systick -I ..\..\sdk6\sdk\platform\driver\hw_otpc -I ..\..\sdk6\sdk\platform\utilities\otp_cs -I ..\..\sdk6\sdk\platform\driver\adc -I ..\..\sdk6\sdk\platform\core_modules\rf\api -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\core_modules\nvds\api -I ..\..\sdk6\sdk\platform\utilities\otp_hdr -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include --thumb -c --preinclude da1458x_config_basic.h --feedback=".\unused_531.txt"-I.\RTE\_DA14531-IC:\Users\RD\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DARMCM0P -D__DA14531__ -D__NON_BLE_EXAMPLE__-o .\out_da14531\objects\spi_531.o --omf_browse .\out_da14531\objects\spi_531.crf --depend .\out_da14531\objects\spi_531.d)
+I (.\includes\da1458x_config_basic.h)(0x5EDF3EB2)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEBC032)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5CEBC032)
+I (..\..\sdk6\sdk\platform\driver\spi\spi.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\spi\spi_531.h)(0x5EDF3FBA)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5CEBC02E)
+I (..\..\sdk6\sdk\platform\include\datasheet.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\da14531.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\core_cm0plus.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_version.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_armcc.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\system_DA14531.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\gpio\gpio.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\arch.h)(0x5EDF3FBA)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEBC032)
+I (..\..\sdk6\sdk\platform\arch\compiler\compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\compiler\ARM/compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\ll\ll.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\dma\dma.h)(0x5EDF3FBA)
+F (..\..\sdk6\sdk\platform\driver\i2c\i2c.c)(0x5EDF3FBA)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB --li -g -O3 --apcs=interwork -I .\includes -I ..\..\sdk6\sdk\platform\include -I ..\..\sdk6\sdk\platform\driver\spi -I ..\..\sdk6\sdk\platform\driver\i2c_eeprom -I ..\..\sdk6\sdk\platform\driver\i2c -I ..\..\sdk6\sdk\platform\driver\spi_flash -I ..\..\sdk6\sdk\platform\driver\gpio -I ..\..\sdk6\sdk\platform\driver\dma -I ..\..\sdk6\sdk\platform\arch -I ..\..\sdk6\sdk\platform\arch\compiler -I ..\..\sdk6\sdk\platform\arch\ll -I ..\..\sdk6\sdk\platform\driver\reg -I ..\..\sdk6\sdk\platform\driver\syscntl -I ..\..\sdk6\sdk\platform\driver\uart -I ..\..\sdk6\sdk\platform\driver\timer -I ..\..\sdk6\sdk\platform\core_modules\crypto -I ..\..\sdk6\sdk\platform\driver\systick -I ..\..\sdk6\sdk\platform\driver\hw_otpc -I ..\..\sdk6\sdk\platform\utilities\otp_cs -I ..\..\sdk6\sdk\platform\driver\adc -I ..\..\sdk6\sdk\platform\core_modules\rf\api -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\core_modules\nvds\api -I ..\..\sdk6\sdk\platform\utilities\otp_hdr -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include --thumb -c --preinclude da1458x_config_basic.h --feedback=".\unused_531.txt"-I.\RTE\_DA14531-IC:\Users\RD\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DARMCM0P -D__DA14531__ -D__NON_BLE_EXAMPLE__-o .\out_da14531\objects\i2c.o --omf_browse .\out_da14531\objects\i2c.crf --depend .\out_da14531\objects\i2c.d)
+I (.\includes\da1458x_config_basic.h)(0x5EDF3EB2)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEBC032)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEBC032)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5CEBC02E)
+I (..\..\sdk6\sdk\platform\driver\i2c\i2c.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\datasheet.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\da14531.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\core_cm0plus.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_version.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_armcc.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\system_DA14531.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\dma\dma.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\ll\ll.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\arch.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\compiler\compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\compiler\ARM/compiler.h)(0x5EDF3FBA)
+F (..\..\sdk6\sdk\platform\driver\uart\uart.c)(0x5EDF3FBA)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB --li -g -O3 --apcs=interwork -I .\includes -I ..\..\sdk6\sdk\platform\include -I ..\..\sdk6\sdk\platform\driver\spi -I ..\..\sdk6\sdk\platform\driver\i2c_eeprom -I ..\..\sdk6\sdk\platform\driver\i2c -I ..\..\sdk6\sdk\platform\driver\spi_flash -I ..\..\sdk6\sdk\platform\driver\gpio -I ..\..\sdk6\sdk\platform\driver\dma -I ..\..\sdk6\sdk\platform\arch -I ..\..\sdk6\sdk\platform\arch\compiler -I ..\..\sdk6\sdk\platform\arch\ll -I ..\..\sdk6\sdk\platform\driver\reg -I ..\..\sdk6\sdk\platform\driver\syscntl -I ..\..\sdk6\sdk\platform\driver\uart -I ..\..\sdk6\sdk\platform\driver\timer -I ..\..\sdk6\sdk\platform\core_modules\crypto -I ..\..\sdk6\sdk\platform\driver\systick -I ..\..\sdk6\sdk\platform\driver\hw_otpc -I ..\..\sdk6\sdk\platform\utilities\otp_cs -I ..\..\sdk6\sdk\platform\driver\adc -I ..\..\sdk6\sdk\platform\core_modules\rf\api -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\core_modules\nvds\api -I ..\..\sdk6\sdk\platform\utilities\otp_hdr -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include --thumb -c --preinclude da1458x_config_basic.h --feedback=".\unused_531.txt"-I.\RTE\_DA14531-IC:\Users\RD\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DARMCM0P -D__DA14531__ -D__NON_BLE_EXAMPLE__-o .\out_da14531\objects\uart.o --omf_browse .\out_da14531\objects\uart.crf --depend .\out_da14531\objects\uart.d)
+I (.\includes\da1458x_config_basic.h)(0x5EDF3EB2)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEBC032)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5CEBC032)
+I (..\..\sdk6\sdk\platform\arch\compiler\compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\compiler\ARM/compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_armcc.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\uart\uart.h)(0x5EDF3FBA)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5CEBC02E)
+I (..\..\sdk6\sdk\platform\include\datasheet.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\da14531.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\core_cm0plus.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_version.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\system_DA14531.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\dma\dma.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\ll\ll.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\arch.h)(0x5EDF3FBA)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEBC032)
+F (..\..\sdk6\sdk\platform\driver\systick\systick.c)(0x5EDF3FBA)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB --li -g -O3 --apcs=interwork -I .\includes -I ..\..\sdk6\sdk\platform\include -I ..\..\sdk6\sdk\platform\driver\spi -I ..\..\sdk6\sdk\platform\driver\i2c_eeprom -I ..\..\sdk6\sdk\platform\driver\i2c -I ..\..\sdk6\sdk\platform\driver\spi_flash -I ..\..\sdk6\sdk\platform\driver\gpio -I ..\..\sdk6\sdk\platform\driver\dma -I ..\..\sdk6\sdk\platform\arch -I ..\..\sdk6\sdk\platform\arch\compiler -I ..\..\sdk6\sdk\platform\arch\ll -I ..\..\sdk6\sdk\platform\driver\reg -I ..\..\sdk6\sdk\platform\driver\syscntl -I ..\..\sdk6\sdk\platform\driver\uart -I ..\..\sdk6\sdk\platform\driver\timer -I ..\..\sdk6\sdk\platform\core_modules\crypto -I ..\..\sdk6\sdk\platform\driver\systick -I ..\..\sdk6\sdk\platform\driver\hw_otpc -I ..\..\sdk6\sdk\platform\utilities\otp_cs -I ..\..\sdk6\sdk\platform\driver\adc -I ..\..\sdk6\sdk\platform\core_modules\rf\api -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\core_modules\nvds\api -I ..\..\sdk6\sdk\platform\utilities\otp_hdr -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include --thumb -c --preinclude da1458x_config_basic.h --feedback=".\unused_531.txt"-I.\RTE\_DA14531-IC:\Users\RD\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DARMCM0P -D__DA14531__ -D__NON_BLE_EXAMPLE__-o .\out_da14531\objects\systick.o --omf_browse .\out_da14531\objects\systick.crf --depend .\out_da14531\objects\systick.d)
+I (.\includes\da1458x_config_basic.h)(0x5EDF3EB2)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEBC032)
+I (..\..\sdk6\sdk\platform\arch\compiler\compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\compiler\ARM/compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_compiler.h)(0x5EDF3FBA)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEBC032)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_armcc.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\systick\systick.h)(0x5EDF3FBA)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5CEBC02E)
+I (..\..\sdk6\sdk\platform\include\datasheet.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\da14531.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\core_cm0plus.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_version.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\system_DA14531.h)(0x5EDF3FBA)
+F (..\..\sdk6\sdk\platform\driver\syscntl\syscntl.c)(0x5EDF3FBA)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB --li -g -O3 --apcs=interwork -I .\includes -I ..\..\sdk6\sdk\platform\include -I ..\..\sdk6\sdk\platform\driver\spi -I ..\..\sdk6\sdk\platform\driver\i2c_eeprom -I ..\..\sdk6\sdk\platform\driver\i2c -I ..\..\sdk6\sdk\platform\driver\spi_flash -I ..\..\sdk6\sdk\platform\driver\gpio -I ..\..\sdk6\sdk\platform\driver\dma -I ..\..\sdk6\sdk\platform\arch -I ..\..\sdk6\sdk\platform\arch\compiler -I ..\..\sdk6\sdk\platform\arch\ll -I ..\..\sdk6\sdk\platform\driver\reg -I ..\..\sdk6\sdk\platform\driver\syscntl -I ..\..\sdk6\sdk\platform\driver\uart -I ..\..\sdk6\sdk\platform\driver\timer -I ..\..\sdk6\sdk\platform\core_modules\crypto -I ..\..\sdk6\sdk\platform\driver\systick -I ..\..\sdk6\sdk\platform\driver\hw_otpc -I ..\..\sdk6\sdk\platform\utilities\otp_cs -I ..\..\sdk6\sdk\platform\driver\adc -I ..\..\sdk6\sdk\platform\core_modules\rf\api -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\core_modules\nvds\api -I ..\..\sdk6\sdk\platform\utilities\otp_hdr -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include --thumb -c --preinclude da1458x_config_basic.h --feedback=".\unused_531.txt"-I.\RTE\_DA14531-IC:\Users\RD\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DARMCM0P -D__DA14531__ -D__NON_BLE_EXAMPLE__-o .\out_da14531\objects\syscntl.o --omf_browse .\out_da14531\objects\syscntl.crf --depend .\out_da14531\objects\syscntl.d)
+I (.\includes\da1458x_config_basic.h)(0x5EDF3EB2)
+I (..\..\sdk6\sdk\platform\include\datasheet.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\da14531.h)(0x5EDF3FBA)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEBC032)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\core_cm0plus.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_version.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_armcc.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\system_DA14531.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\syscntl\syscntl.h)(0x5EDF3FBA)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5CEBC02E)
+I (..\..\sdk6\sdk\platform\arch\arch.h)(0x5EDF3FBA)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEBC032)
+I (..\..\sdk6\sdk\platform\arch\compiler\compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\compiler\ARM/compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\ll\ll.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\hw_otpc\hw_otpc.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\hw_otpc\hw_otpc_531.h)(0x5EDF3FBA)
+F (..\..\sdk6\sdk\platform\driver\hw_otpc\hw_otpc_58x.c)(0x5EDF3FBA)()
+F (..\..\sdk6\sdk\platform\driver\hw_otpc\hw_otpc_531.c)(0x5EDF3FBA)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB --li -g -O3 --apcs=interwork -I .\includes -I ..\..\sdk6\sdk\platform\include -I ..\..\sdk6\sdk\platform\driver\spi -I ..\..\sdk6\sdk\platform\driver\i2c_eeprom -I ..\..\sdk6\sdk\platform\driver\i2c -I ..\..\sdk6\sdk\platform\driver\spi_flash -I ..\..\sdk6\sdk\platform\driver\gpio -I ..\..\sdk6\sdk\platform\driver\dma -I ..\..\sdk6\sdk\platform\arch -I ..\..\sdk6\sdk\platform\arch\compiler -I ..\..\sdk6\sdk\platform\arch\ll -I ..\..\sdk6\sdk\platform\driver\reg -I ..\..\sdk6\sdk\platform\driver\syscntl -I ..\..\sdk6\sdk\platform\driver\uart -I ..\..\sdk6\sdk\platform\driver\timer -I ..\..\sdk6\sdk\platform\core_modules\crypto -I ..\..\sdk6\sdk\platform\driver\systick -I ..\..\sdk6\sdk\platform\driver\hw_otpc -I ..\..\sdk6\sdk\platform\utilities\otp_cs -I ..\..\sdk6\sdk\platform\driver\adc -I ..\..\sdk6\sdk\platform\core_modules\rf\api -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\core_modules\nvds\api -I ..\..\sdk6\sdk\platform\utilities\otp_hdr -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include --thumb -c --preinclude da1458x_config_basic.h --feedback=".\unused_531.txt"-I.\RTE\_DA14531-IC:\Users\RD\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DARMCM0P -D__DA14531__ -D__NON_BLE_EXAMPLE__-o .\out_da14531\objects\hw_otpc_531.o --omf_browse .\out_da14531\objects\hw_otpc_531.crf --depend .\out_da14531\objects\hw_otpc_531.d)
+I (.\includes\da1458x_config_basic.h)(0x5EDF3EB2)
+I (..\..\sdk6\sdk\platform\driver\hw_otpc\hw_otpc.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\hw_otpc\hw_otpc_531.h)(0x5EDF3FBA)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5CEBC02E)
+I (..\..\sdk6\sdk\platform\include\datasheet.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\da14531.h)(0x5EDF3FBA)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEBC032)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\core_cm0plus.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_version.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_armcc.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\system_DA14531.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\arch.h)(0x5EDF3FBA)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEBC032)
+I (..\..\sdk6\sdk\platform\arch\compiler\compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\compiler\ARM/compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\ll\ll.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\syscntl\syscntl.h)(0x5EDF3FBA)
+F (..\..\sdk6\sdk\platform\driver\adc\adc_531.c)(0x5EDF3FBA)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB --li -g -O3 --apcs=interwork -I .\includes -I ..\..\sdk6\sdk\platform\include -I ..\..\sdk6\sdk\platform\driver\spi -I ..\..\sdk6\sdk\platform\driver\i2c_eeprom -I ..\..\sdk6\sdk\platform\driver\i2c -I ..\..\sdk6\sdk\platform\driver\spi_flash -I ..\..\sdk6\sdk\platform\driver\gpio -I ..\..\sdk6\sdk\platform\driver\dma -I ..\..\sdk6\sdk\platform\arch -I ..\..\sdk6\sdk\platform\arch\compiler -I ..\..\sdk6\sdk\platform\arch\ll -I ..\..\sdk6\sdk\platform\driver\reg -I ..\..\sdk6\sdk\platform\driver\syscntl -I ..\..\sdk6\sdk\platform\driver\uart -I ..\..\sdk6\sdk\platform\driver\timer -I ..\..\sdk6\sdk\platform\core_modules\crypto -I ..\..\sdk6\sdk\platform\driver\systick -I ..\..\sdk6\sdk\platform\driver\hw_otpc -I ..\..\sdk6\sdk\platform\utilities\otp_cs -I ..\..\sdk6\sdk\platform\driver\adc -I ..\..\sdk6\sdk\platform\core_modules\rf\api -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\core_modules\nvds\api -I ..\..\sdk6\sdk\platform\utilities\otp_hdr -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include --thumb -c --preinclude da1458x_config_basic.h --feedback=".\unused_531.txt"-I.\RTE\_DA14531-IC:\Users\RD\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DARMCM0P -D__DA14531__ -D__NON_BLE_EXAMPLE__-o .\out_da14531\objects\adc_531.o --omf_browse .\out_da14531\objects\adc_531.crf --depend .\out_da14531\objects\adc_531.d)
+I (.\includes\da1458x_config_basic.h)(0x5EDF3EB2)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEBC032)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEBC032)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5CEBC02E)
+I (..\..\sdk6\sdk\platform\driver\adc\adc.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\datasheet.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\da14531.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\core_cm0plus.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_version.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_armcc.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\system_DA14531.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\arch.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\compiler\compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\compiler\ARM/compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\ll\ll.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\adc\adc_531.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\utilities\otp_cs\otp_cs.h)(0x5EDF3FBA)
+F (..\..\sdk6\sdk\platform\utilities\otp_cs\otp_cs.c)(0x5EDF3FBA)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB --li -g -O3 --apcs=interwork -I .\includes -I ..\..\sdk6\sdk\platform\include -I ..\..\sdk6\sdk\platform\driver\spi -I ..\..\sdk6\sdk\platform\driver\i2c_eeprom -I ..\..\sdk6\sdk\platform\driver\i2c -I ..\..\sdk6\sdk\platform\driver\spi_flash -I ..\..\sdk6\sdk\platform\driver\gpio -I ..\..\sdk6\sdk\platform\driver\dma -I ..\..\sdk6\sdk\platform\arch -I ..\..\sdk6\sdk\platform\arch\compiler -I ..\..\sdk6\sdk\platform\arch\ll -I ..\..\sdk6\sdk\platform\driver\reg -I ..\..\sdk6\sdk\platform\driver\syscntl -I ..\..\sdk6\sdk\platform\driver\uart -I ..\..\sdk6\sdk\platform\driver\timer -I ..\..\sdk6\sdk\platform\core_modules\crypto -I ..\..\sdk6\sdk\platform\driver\systick -I ..\..\sdk6\sdk\platform\driver\hw_otpc -I ..\..\sdk6\sdk\platform\utilities\otp_cs -I ..\..\sdk6\sdk\platform\driver\adc -I ..\..\sdk6\sdk\platform\core_modules\rf\api -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\core_modules\nvds\api -I ..\..\sdk6\sdk\platform\utilities\otp_hdr -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include --thumb -c --preinclude da1458x_config_basic.h --feedback=".\unused_531.txt"-I.\RTE\_DA14531-IC:\Users\RD\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DARMCM0P -D__DA14531__ -D__NON_BLE_EXAMPLE__-o .\out_da14531\objects\otp_cs.o --omf_browse .\out_da14531\objects\otp_cs.crf --depend .\out_da14531\objects\otp_cs.d)
+I (.\includes\da1458x_config_basic.h)(0x5EDF3EB2)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEBC032)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5CEBC032)
+I (..\..\sdk6\sdk\platform\arch\arch.h)(0x5EDF3FBA)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEBC032)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5CEBC02E)
+I (..\..\sdk6\sdk\platform\arch\compiler\compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\compiler\ARM/compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_armcc.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\ll\ll.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\datasheet.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\da14531.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\core_cm0plus.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_version.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\system_DA14531.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\utilities\otp_cs\otp_cs.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\core_modules\rf\api\rf_531.h)(0x5EDF3FBA)
+F (..\..\sdk6\sdk\platform\arch\main\arch_system.c)(0x5EDF3FBA)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB --li -g -O3 --apcs=interwork -I .\includes -I ..\..\sdk6\sdk\platform\include -I ..\..\sdk6\sdk\platform\driver\spi -I ..\..\sdk6\sdk\platform\driver\i2c_eeprom -I ..\..\sdk6\sdk\platform\driver\i2c -I ..\..\sdk6\sdk\platform\driver\spi_flash -I ..\..\sdk6\sdk\platform\driver\gpio -I ..\..\sdk6\sdk\platform\driver\dma -I ..\..\sdk6\sdk\platform\arch -I ..\..\sdk6\sdk\platform\arch\compiler -I ..\..\sdk6\sdk\platform\arch\ll -I ..\..\sdk6\sdk\platform\driver\reg -I ..\..\sdk6\sdk\platform\driver\syscntl -I ..\..\sdk6\sdk\platform\driver\uart -I ..\..\sdk6\sdk\platform\driver\timer -I ..\..\sdk6\sdk\platform\core_modules\crypto -I ..\..\sdk6\sdk\platform\driver\systick -I ..\..\sdk6\sdk\platform\driver\hw_otpc -I ..\..\sdk6\sdk\platform\utilities\otp_cs -I ..\..\sdk6\sdk\platform\driver\adc -I ..\..\sdk6\sdk\platform\core_modules\rf\api -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\core_modules\nvds\api -I ..\..\sdk6\sdk\platform\utilities\otp_hdr -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include --thumb -c --preinclude da1458x_config_basic.h --feedback=".\unused_531.txt"-I.\RTE\_DA14531-IC:\Users\RD\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DARMCM0P -D__DA14531__ -D__NON_BLE_EXAMPLE__-o .\out_da14531\objects\arch_system.o --omf_browse .\out_da14531\objects\arch_system.crf --depend .\out_da14531\objects\arch_system.d)
+I (.\includes\da1458x_config_basic.h)(0x5EDF3EB2)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEBC032)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5CEBC032)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEBC032)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5CEBC02E)
+I (..\..\sdk6\sdk\platform\include\datasheet.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\da14531.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\core_cm0plus.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_version.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_armcc.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\system_DA14531.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\arch.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\compiler\compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\compiler\ARM/compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\ll\ll.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\arch_api.h)(0x5EDF3FBA)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5CEBC032)
+I (..\..\sdk6\sdk\platform\core_modules\nvds\api\nvds.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\main\arch_wdg.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\gpio\gpio.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\main\arch_system.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\hw_otpc\hw_otpc.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\hw_otpc\hw_otpc_531.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\utilities\otp_hdr\otp_hdr.h)(0x5EDF3FBA)
+I (.\includes\user_periph_setup.h)(0x5EDF3EB2)
+I (..\..\sdk6\sdk\platform\driver\i2c_eeprom\i2c_eeprom.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\i2c\i2c.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\dma\dma.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\spi\spi.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\spi\spi_531.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\adc\adc.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\adc\adc_531.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\utilities\otp_cs\otp_cs.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\syscntl\syscntl.h)(0x5EDF3FBA)
+F (.\src\user_periph_setup.c)(0x5EDF3EB2)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB --li -g -O3 --apcs=interwork -I .\includes -I ..\..\sdk6\sdk\platform\include -I ..\..\sdk6\sdk\platform\driver\spi -I ..\..\sdk6\sdk\platform\driver\i2c_eeprom -I ..\..\sdk6\sdk\platform\driver\i2c -I ..\..\sdk6\sdk\platform\driver\spi_flash -I ..\..\sdk6\sdk\platform\driver\gpio -I ..\..\sdk6\sdk\platform\driver\dma -I ..\..\sdk6\sdk\platform\arch -I ..\..\sdk6\sdk\platform\arch\compiler -I ..\..\sdk6\sdk\platform\arch\ll -I ..\..\sdk6\sdk\platform\driver\reg -I ..\..\sdk6\sdk\platform\driver\syscntl -I ..\..\sdk6\sdk\platform\driver\uart -I ..\..\sdk6\sdk\platform\driver\timer -I ..\..\sdk6\sdk\platform\core_modules\crypto -I ..\..\sdk6\sdk\platform\driver\systick -I ..\..\sdk6\sdk\platform\driver\hw_otpc -I ..\..\sdk6\sdk\platform\utilities\otp_cs -I ..\..\sdk6\sdk\platform\driver\adc -I ..\..\sdk6\sdk\platform\core_modules\rf\api -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\core_modules\nvds\api -I ..\..\sdk6\sdk\platform\utilities\otp_hdr -I ..\..\sdk6\sdk\platform\arch\main -I ..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include --thumb -c --preinclude da1458x_config_basic.h --feedback=".\unused_531.txt"-I.\RTE\_DA14531-IC:\Users\RD\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DARMCM0P -D__DA14531__ -D__NON_BLE_EXAMPLE__-o .\out_da14531\objects\user_periph_setup.o --omf_browse .\out_da14531\objects\user_periph_setup.crf --depend .\out_da14531\objects\user_periph_setup.d)
+I (.\includes\da1458x_config_basic.h)(0x5EDF3EB2)
+I (..\..\sdk6\sdk\platform\include\datasheet.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\da14531.h)(0x5EDF3FBA)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEBC032)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\core_cm0plus.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_version.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include\cmsis_armcc.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\include\system_DA14531.h)(0x5EDF3FBA)
+I (.\includes\user_periph_setup.h)(0x5EDF3EB2)
+I (..\..\sdk6\sdk\platform\driver\gpio\gpio.h)(0x5EDF3FBA)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5CEBC02E)
+I (..\..\sdk6\sdk\platform\arch\arch.h)(0x5EDF3FBA)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEBC032)
+I (..\..\sdk6\sdk\platform\arch\compiler\compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\compiler\ARM/compiler.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\arch\ll\ll.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\i2c_eeprom\i2c_eeprom.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\i2c\i2c.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\dma\dma.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\spi\spi.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\spi\spi_531.h)(0x5EDF3FBA)
+I (..\..\sdk6\sdk\platform\driver\syscntl\syscntl.h)(0x5EDF3FBA)
+I (.\includes\bootloader.h)(0x63331ECD)
+F (.\includes\user_periph_setup.h)(0x5EDF3EB2)()
+F (..\..\sdk6\sdk\platform\include\datasheet.h)(0x5EDF3FBA)()
+F (..\..\sdk6\sdk\platform\driver\spi\spi.h)(0x5EDF3FBA)()
+F (..\..\sdk6\sdk\platform\driver\spi_flash\spi_flash.h)(0x5EDF3FBA)()
+F (..\..\sdk6\sdk\platform\driver\gpio\gpio.h)(0x5EDF3FBA)()
+F (..\..\sdk6\sdk\platform\driver\i2c_eeprom\i2c_eeprom.h)(0x5EDF3FBA)()
+F (.\includes\uart_booter.h)(0x5EDF3EB2)()
+F (.\includes\bootloader.h)(0x63331ECD)()
+F (.\includes\os_int.h)(0x5EDF3EB2)()
+F (.\includes\os_port.h)(0x5EDF3EB2)()
+F (..\..\sdk6\sdk\platform\core_modules\crypto\sw_aes.h)(0x5EDF3FBA)()
+F (..\..\sdk6\sdk\platform\driver\uart\uart.h)(0x5EDF3FBA)()
+F (.\includes\da1458x_config_basic.h)(0x5EDF3EB2)()

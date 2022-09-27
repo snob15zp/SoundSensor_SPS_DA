@@ -301,7 +301,7 @@ static void spi_flash_peripheral_init(spi_cfg_t *spi_cfg, spi_flash_cfg_t *spi_f
 
     spi_cfg->spi_ms = SPI_MS_MODE_MASTER;
     spi_cfg->spi_cp = SPI_CP_MODE_0;
-    spi_cfg->spi_speed = SPI_SPEED_MODE_8MHz;
+    spi_cfg->spi_speed = SPI_SPEED_MODE_2MHz;//;SPI_SPEED_MODE_8MHz;
     spi_cfg->spi_wsz = SPI_MODE_8BIT;
     spi_cfg->spi_cs = SPI_CS_0;
     spi_cfg->cs_pad.port = SPI_EN_PORT;

@@ -39,7 +39,7 @@
 #define AES_ENCRYPTED_IMAGE_SUPPORTED 1
 
 /************** UART Booter section**************/
-#define UART_SUPPORTED
+#undef UART_SUPPORTED
 
 /************** Flash memory section  **************/
 #define SPI_FLASH_SUPPORTED
@@ -56,7 +56,7 @@
 
 // Define ALLOW_NO_HEADER to enable loading 0x7f00 bytes from memory offset 0
 // in case no valid AN-B-001 header is found.
-#define ALLOW_NO_HEADER
+#undef ALLOW_NO_HEADER
 
 #if  defined (SUPPORT_AN_B_001) && AES_ENCRYPTED_IMAGE_SUPPORTED == 1
      #warning "Encryption is not supported by the secondary bootloader"

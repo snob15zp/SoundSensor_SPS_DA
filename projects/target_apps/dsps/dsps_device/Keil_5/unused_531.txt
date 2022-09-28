@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Tue Sep 27 20:28:41 2022
+;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Wed Sep 28 14:28:00 2022
 ;VERSION 0.2
 ;FILE adc_531.o
 adc_correct_sample <= USED 0
@@ -68,7 +68,6 @@ crc32 <= USED 0
 ;FILE gpio.o
 GPIO_ConfigurePinPower <= USED 0
 GPIO_DisablePorPin <= USED 0
-GPIO_EnableIRQ <= USED 0
 GPIO_GetIRQInputLevel <= USED 0
 GPIO_GetPinFunction <= USED 0
 GPIO_GetPinStatus <= USED 0
@@ -148,9 +147,6 @@ spi_send <= USED 0
 spi_set_cs_mode <= USED 0
 spi_transfer <= USED 0
 ;FILE spi_adc.o
-SPI_ADC_init <= USED 0
-intinit <= USED 0
-timer2_init <= USED 0
 ;FILE spi_flash.o
 spi_flash_block_erase_no_wait <= USED 0
 spi_flash_chip_erase <= USED 0
@@ -184,7 +180,7 @@ spi_flash_write_status_reg <= USED 0
 ;FILE sps_server.o
 ;FILE ss_i2c.o
 ss_i2c_test <= USED 0
-ssi2c_init <= USED 0
+sx1502_init <= USED 0
 ;FILE ss_interfacetoble.o
 SS_InterfaceToBLE_SendThreeBytes <= USED 0
 SS_InterfaceToBLE_init <= USED 0
@@ -202,9 +198,6 @@ syscntl_por_vbat_low_cfg <= USED 0
 ;FILE system_da14531.o
 SystemCoreClockUpdate <= USED 0
 ;FILE timer2.o
-timer2_config <= USED 0
-timer2_pwm_freq_set <= USED 0
-timer2_pwm_signal_config <= USED 0
 ;FILE trng.o
 ;FILE uart.o
 uart_baudrate_setf <= USED 0

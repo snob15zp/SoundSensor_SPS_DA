@@ -64,6 +64,7 @@ static uint8_t cnt;
 static uint32_t sysTime;
 static i2c_error_code err;
 
+#define board_calibration_control 0x10
 
 void ssi2c_init(void)
 {
@@ -80,7 +81,8 @@ void ssi2c_init(void)
   err = i2c_eeprom_write_byte(2, 0x00);
   err = i2c_eeprom_write_byte(3, 0x00);
 	
-	i2c_eeprom_write_byte(SX1502_REGDATA_ADDR, 0x7F); //0 - NC calibration
+	//i2c_eeprom_write_byte(SX1502_REGDATA_ADDR, 0x7F|board_calibration_control ); //IO4: 0 - NC calibration
+	i2c_eeprom_write_byte(SX1502_REGDATA_ADDR, 0x7F&(~board_calibration_control) ); //IO4: 0 - NC calibration
   
   i2cBuff[0] = 0x7F;
   i2cBuff[1] = 0xBF;

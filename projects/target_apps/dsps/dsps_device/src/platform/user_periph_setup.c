@@ -167,19 +167,25 @@ void periph_init(void)
     set_pad_functions();
 	
 	 user_spi_flash_init(SPI_FLASH_GPIO_MAP);//RDD
-#ifdef __SoundSensor__	 
-//	 timer2_init();//RDD
+#ifdef __SoundSensor__	
+#ifdef __ADCTEST__
+   ssi2c_init();
+
+	 timer2_init();//RDD
 	 
-//	 SPI_ADC_init();//RDD
+	 SPI_ADC_init();//RDD
 	 
-//	 intinit();
+	 intinit();
 	 
-	 
-	 sx1502_init();//ssi2c_init();
-//	 while(1)
+	 while(1)
 	 {
-		 sx_main();//  ss_i2c_test();
-	 };
+		  //ss_i2c_test();
+	 }
+#else
+	 sx1502_init();//ssi2c_init();
+	 sx_main();//  ss_i2c_test();
+#endif		 
+
 #endif
 
     // Initialize UART2 controller

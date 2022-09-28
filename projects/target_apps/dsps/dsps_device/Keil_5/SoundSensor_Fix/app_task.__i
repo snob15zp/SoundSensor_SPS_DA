@@ -3,4 +3,4 @@
 -IC:\Users\RD\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include
 -IC:\Keil_v5\ARM\CMSIS\Include
 -D__UVISION_VERSION="528" -DARMCM0P -D__DA14531__ -D__SoundSensor__ -D__SSFix__ -D__ADCTEST__
--o .\soundsensor_fix\app_msg_utils.o --omf_browse .\soundsensor_fix\app_msg_utils.crf --depend .\soundsensor_fix\app_msg_utils.d "..\..\..\..\..\sdk6\sdk\app_modules\src\app_common\app_msg_utils.c"
+-o .\soundsensor_fix\app_task.o --omf_browse .\soundsensor_fix\app_task.crf --depend .\soundsensor_fix\app_task.d "..\..\..\..\..\sdk6\sdk\app_modules\src\app_common\app_task.c"

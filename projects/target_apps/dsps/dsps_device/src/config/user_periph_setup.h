@@ -289,7 +289,7 @@ extern uint8_t gpio_por_pin_timeout;
 #ifdef	__ADCTEST__	
     #define SPI_EN_PIN              GPIO_PIN_11
 #else
-                                    GPIO_PIN_1
+    #define SPI_EN_PIN              GPIO_PIN_1
 #endif
 
     #define SPI_CLK_PORT            GPIO_PORT_0

@@ -41,7 +41,7 @@
 /* If defined, Configuration Storage mechanism is enabled.                                                      */
 /* CRC check is not used.                                                                                       */
 /****************************************************************************************************************/
-#define CFG_CONFIG_STORAGE
+#define CFG_CONFIG_STORAGE  //RDD REN_um-b-088_da14585-531_serial_port_service_reference_application_2v0_MAT_20200623_1.pdf
 #undef USE_CONFIG_STORAGE_CRC
 
 /****************************************************************************************************************/
@@ -117,7 +117,7 @@
 /* and type disp_heaplog in debugger's command window. Heap memory statistics will be displayed on window       */
 /****************************************************************************************************************/
 #if defined (__DA14531__)
-#define CFG_LOG_HEAP_USAGE
+#undef CFG_LOG_HEAP_USAGE //RDD
 #else
 #undef CFG_LOG_HEAP_USAGE
 #if defined (CFG_LOG_HEAP_USAGE)
@@ -129,7 +129,7 @@
 /* Enables BLE flow control mechanism based on heap usage                                                       */
 /****************************************************************************************************************/
 #if defined (__DA14531__)
-#define CFG_BLE_FLOW_CONTROL
+#undef CFG_BLE_FLOW_CONTROL//RDD
 #else
 #undef CFG_BLE_FLOW_CONTROL
 #if defined (CFG_BLE_FLOW_CONTROL)
@@ -143,7 +143,7 @@
 /****************************************************************************************************************/
 /* Enables the BLE statistics measurement feature.                                                              */
 /****************************************************************************************************************/
-#undef CFG_BLE_METRICS
+#undef CFG_BLE_METRICS  //https://www.renesas.com/cn/zh/document/mas/um-b-079-da14585-da14586-software-platform-reference-sdk-608
 
 /****************************************************************************************************************/
 /* Output the Hardfault arguments to serial/UART interface.                                                     */
@@ -183,7 +183,7 @@
 /* Duplicate filter max value for the scan report list. The maximum value shall be 100.                         */
 /****************************************************************************************************************/
 #define CFG_BLE_DUPLICATE_FILTER_MAX    (10)
-
+//https://support.dialog-semiconductor.com/forums/post/dialog-smartbond-bluetooth-low-energy-%E2%80%93-software/duplicate-filter-not-always-working
 /****************************************************************************************************************/
 /* Duplicate filter flag for the scan report list. This flag controls what will be reported if the              */
 /* CFG_BLE_DUPLICATE_FILTER_MAX number is exceeded.                                                             */
@@ -272,6 +272,7 @@
 #define CFG_DISABLE_QUADEC_ON_START_UP
 #endif
 
+#define __EXCLUDE_GPIO0_HANDLER__
 #define __EXCLUDE_GPIO1_HANDLER__
 #define __EXCLUDE_GPIO2_HANDLER__
 #define __EXCLUDE_GPIO3_HANDLER__

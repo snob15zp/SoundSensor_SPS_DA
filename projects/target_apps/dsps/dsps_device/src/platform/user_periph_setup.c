@@ -29,12 +29,15 @@
 #include "user_periph_setup.h"            // peripheral configuration
 #include "gpio.h"
 #include "uart.h"                    // UART initialization
-#include "user_sps_buffer_dma.h"
-#include "dma_uart_sps.h"
+//#include "user_sps_buffer_dma.h"
+//#include "dma_uart_sps.h"
 #if defined (__DA14531__)
 #include "spi_531.h"
 #endif
 #include "spi_flash.h"
+#include "SPI_ADC.h"
+#include "ss_i2c.h"
+#include "SS_InterfaceToBLE.h"
 
 #if defined (CFG_SPI_FLASH_ENABLE)
 // Configuration struct for SPI
@@ -52,15 +55,15 @@ static const spi_cfg_t spi_cfg = {
 };
 
 static const spi_flash_cfg_t spi_flash_cfg = {
-    .chip_size = SPI_FLASH_DEV_SIZE,
+    .chip_size = SPI_FLASH_DEV_SIZE,    //chipsize
 };
 #endif
 
-UART_BAUDRATE cfg_uart_sps_baudrate;
-UART_BAUD cfg_uart_sps_baud;
-uint32_t uart_wait_byte_time;
-uint32_t uart_wait_byte_counter;
-extern struct dma_uart_tag dma_uart;
+//UART_BAUDRATE cfg_uart_sps_baudrate;
+//UART_BAUD cfg_uart_sps_baud;
+//uint32_t uart_wait_byte_time;
+//uint32_t uart_wait_byte_counter;
+//extern struct dma_uart_tag dma_uart;
 
 #if defined (__DA14531__)
     #if defined (CFG_BLE_FLOW_CONTROL)
@@ -112,7 +115,7 @@ void set_pad_functions(void)        // set gpio port function mode
 {
 
     #ifdef __DA14531__
-    SetBits16(HWR_CTRL_REG, DISABLE_HWR, 1);
+    SetBits16(HWR_CTRL_REG, DISABLE_HWR, 1);//RDD?
 
     // GP ADC Fix
     SetBits16(GP_ADC_CTRL_REG, GP_ADC_MUTE, 1);//RDD?
@@ -126,10 +129,6 @@ void set_pad_functions(void)        // set gpio port function mode
         GPIO_ConfigurePin(gpio_wakeup_ext_host.port, gpio_wakeup_ext_host.pin, OUTPUT, PID_GPIO, false);
     #endif
 
-   // GPIO_ConfigurePin( gpio_uart1_tx.port, gpio_uart1_tx.pin, OUTPUT, PID_UART1_TX, false );//RDD-
-   // GPIO_ConfigurePin( gpio_uart1_rx.port, gpio_uart1_rx.pin, INPUT_PULLUP, PID_UART1_RX, false );//RDD-
-   // GPIO_ConfigurePin( gpio_uart1_rts.port, gpio_uart1_rts.pin, OUTPUT, PID_GPIO, true );//RDD-
-   // GPIO_ConfigurePin( gpio_uart1_cts.port, gpio_uart1_cts.pin, INPUT_PULLUP, PID_UART1_CTSN, false );//RDD-
 #if defined (__DA14531__)
     if ((gpio_reset_status.port != GPIO_PORT_INVALID) && (gpio_reset_status.pin != GPIO_PIN_INVALID))
         GPIO_ConfigurePin( gpio_reset_status.port, gpio_reset_status.pin, INPUT_PULLUP, PID_GPIO, true );
@@ -145,6 +144,8 @@ void set_pad_functions(void)        // set gpio port function mode
 
 void periph_init(void)
 {
+	LEDinit();
+	
     // Power up peripherals' power domain
 #if !defined (__DA14531__)
     SetBits16(PMU_CTRL_REG, PERIPH_SLEEP, 0);
@@ -164,6 +165,28 @@ void periph_init(void)
 
     //Init pads
     set_pad_functions();
+	
+	 user_spi_flash_init(SPI_FLASH_GPIO_MAP);//RDD
+#ifdef __SoundSensor__	
+#ifdef __ADCTEST__
+   ssi2c_init();
+
+	 timer2_init();//RDD
+	 
+	 SPI_ADC_init();//RDD
+	 
+	 intinit();
+	 
+	 while(1)
+	 {
+		  //ss_i2c_test();
+	 }
+#else
+	 sx1502_init();//ssi2c_init();
+	 sx_main();//  ss_i2c_test();
+#endif		 
+
+#endif
 
     // Initialize UART2 controller
 #ifdef CFG_PRINTF_UART2
@@ -227,10 +250,11 @@ void user_spi_flash_init(uint32_t gpio_map)
 #endif
 
     // Release Flash from power down
-    spi_flash_release_from_power_down();
+    //spi_flash_release_from_power_down();//DD-
 
     // Try to auto-detect the device
     spi_flash_auto_detect(&dev_id);
+//			GPIO_ConfigurePin(0, 6, OUTPUT, PID_PWM3, true);
 
 }
 

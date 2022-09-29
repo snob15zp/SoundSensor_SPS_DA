@@ -48,6 +48,8 @@
 #include "user_sps_buffer_dma.h"
 #include "user_sps_schedule_dma.h"
 
+#include "SS_InterfaceToBLE.h"//RDD
+
 /// Struct dma_uart
 struct dma_uart_tag dma_uart __attribute__((section("retention_mem_area0"),zero_init)); //@RETENTION MEMORY;
 
@@ -163,8 +165,8 @@ void dma_uart_timeout(void)
  */
 static struct UART_RX_STRUCT *dma_uart_allocate_rx_buffer(void)
 {
-    struct UART_RX_STRUCT *p_buff = KE_MSG_ALLOC_DYN_NO_INIT(DATA_TX_REQ,
-                                                             prf_get_task_from_id(DEST_TASK_ID),
+    struct UART_RX_STRUCT *p_buff = KE_MSG_ALLOC_DYN_NO_INIT(DATA_TX_REQ, //RDD id, dest, src, param_str,length
+                                                             prf_get_task_from_id(DEST_TASK_ID), //RDD #define DEST_TASK_ID TASK_ID_SPS_CLIENT
                                                              TASK_APP,
                                                              UART_RX_STRUCT,
                                                              ELEMENT_SIZE_RX);
@@ -206,7 +208,7 @@ static void dma_uart_read(uint32_t * rx_data, uint16_t rx_length)
 void dma_uart_rx_activate(void)
 {
     
-    struct UART_RX_STRUCT *p_buff = dma_uart_allocate_rx_buffer();
+    struct UART_RX_STRUCT *p_buff = dma_uart_allocate_rx_buffer();//RDD  nessendge+UART_RX_STRUCT
 
     __disable_irq();
     dma_uart.p_rx_active  = ( struct ke_msg * )ke_param2msg(p_buff);
@@ -214,6 +216,8 @@ void dma_uart_rx_activate(void)
 
     dma_uart_read((uint32_t *) (p_buff->data), EXPECTED_SIZE);
     dma_uart.rx_to_cnt = 0;
+	
+	 SS_InterfaceToBLE_init();//RDD
 }
 
 /**

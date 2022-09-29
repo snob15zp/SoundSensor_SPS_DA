@@ -1,0 +1,194 @@
+[INFO     General@22-09-22 23:17:19] Found SW-DP with ID 0x0BC11477
+[INFO     General@22-09-22 23:17:19] Scanning AP map to find all available APs
+[INFO     General@22-09-22 23:17:19] AP[1]: Stopped AP scan as end of AP map has been reached
+[INFO     General@22-09-22 23:17:19] AP[0]: AHB-AP (IDR: 0x04770031)
+[INFO     General@22-09-22 23:17:19] Iterating through AP map to find AHB-AP to use
+[INFO     General@22-09-22 23:17:19] AP[0]: Core found
+[INFO     General@22-09-22 23:17:19] AP[0]: AHB-AP ROM base: 0xE00FF000
+[INFO     General@22-09-22 23:17:19] CPUID register: 0x410CC601. Implementer code: 0x41 (ARM)
+[INFO     General@22-09-22 23:17:19] Found Cortex-M0 r0p1, Little endian.
+[INFO     General@22-09-22 23:17:19] FPUnit: 4 code (BP) slots and 0 literal slots
+[INFO     General@22-09-22 23:17:19] CoreSight components:
+[INFO     General@22-09-22 23:17:19] ROMTbl[0] @ E00FF000
+[INFO     General@22-09-22 23:17:19] ROMTbl[0][0]: E000E000, CID: B105E00D, PID: 000BB008 SCS
+[INFO     General@22-09-22 23:17:19] ROMTbl[0][1]: E0001000, CID: B105E00D, PID: 000BB00A DWT
+[INFO     General@22-09-22 23:17:20] ROMTbl[0][2]: E0002000, CID: B105E00D, PID: 000BB00B FPB
+[INFO     General@22-09-22 23:17:20] BTLE device selected.
+[INFO     General@22-09-22 23:17:20] Found SW-DP with ID 0x0BC11477
+[INFO     General@22-09-22 23:17:20] Scanning AP map to find all available APs
+[INFO     General@22-09-22 23:17:20] AP[1]: Stopped AP scan as end of AP map has been reached
+[INFO     General@22-09-22 23:17:20] AP[0]: AHB-AP (IDR: 0x04770031)
+[INFO     General@22-09-22 23:17:20] Iterating through AP map to find AHB-AP to use
+[INFO     General@22-09-22 23:17:20] AP[0]: Core found
+[INFO     General@22-09-22 23:17:20] AP[0]: AHB-AP ROM base: 0xE00FF000
+[INFO     General@22-09-22 23:17:20] CPUID register: 0x410CC601. Implementer code: 0x41 (ARM)
+[INFO     General@22-09-22 23:17:20] Found Cortex-M0 r0p1, Little endian.
+[INFO     General@22-09-22 23:17:20] FPUnit: 4 code (BP) slots and 0 literal slots
+[INFO     General@22-09-22 23:17:20] CoreSight components:
+[INFO     General@22-09-22 23:17:20] ROMTbl[0] @ E00FF000
+[INFO     General@22-09-22 23:17:20] ROMTbl[0][0]: E000E000, CID: B105E00D, PID: 000BB008 SCS
+[INFO     General@22-09-22 23:17:20] ROMTbl[0][1]: E0001000, CID: B105E00D, PID: 000BB00A DWT
+[INFO     General@22-09-22 23:17:20] ROMTbl[0][2]: E0002000, CID: B105E00D, PID: 000BB00B FPB
+[INFO     General@22-09-22 23:17:20] BTLE device selected.
+[WARNING  Support Packages Updater@22-09-22 23:17:21] Cannot contact Dialog Support Package server. Cannot check for updates.
+[INFO     Flash Code@22-09-22 23:17:24] Found SW-DP with ID 0x0BC11477
+[INFO     Flash Code@22-09-22 23:17:24] AP map detection skipped. Manually configured AP map found.
+[INFO     Flash Code@22-09-22 23:17:24] AP[0]: AHB-AP (IDR: Not set)
+[INFO     Flash Code@22-09-22 23:17:24] AP[0]: Core found
+[INFO     Flash Code@22-09-22 23:17:24] AP[0]: AHB-AP ROM base: 0xE00FF000
+[INFO     Flash Code@22-09-22 23:17:24] CPUID register: 0x410CC601. Implementer code: 0x41 (ARM)
+[INFO     Flash Code@22-09-22 23:17:24] Found Cortex-M0 r0p1, Little endian.
+[INFO     Flash Code@22-09-22 23:17:24] FPUnit: 4 code (BP) slots and 0 literal slots
+[INFO     Flash Code@22-09-22 23:17:24] CoreSight components:
+[INFO     Flash Code@22-09-22 23:17:24] ROMTbl[0] @ E00FF000
+[INFO     Flash Code@22-09-22 23:17:24] ROMTbl[0][0]: E000E000, CID: B105E00D, PID: 000BB008 SCS
+[INFO     Flash Code@22-09-22 23:17:24] ROMTbl[0][1]: E0001000, CID: B105E00D, PID: 000BB00A DWT
+[INFO     Flash Code@22-09-22 23:17:24] ROMTbl[0][2]: E0002000, CID: B105E00D, PID: 000BB00B FPB
+[INFO     Flash Code@22-09-22 23:17:24] Reset: Halt core after reset via DEMCR.VC_CORERESET.
+[INFO     Flash Code@22-09-22 23:17:24] Reset: Reset device via AIRCR.SYSRESETREQ.
+[INFO     Flash Code@22-09-22 23:17:24] Firmware File C:\Program Files\SmartSnippetsToolbox\SmartSnippetsToolbox5.0.20\common_resources\SupportPackages\DA1453x\toolbox_resources/common/jtag_programmer_531.bin has been selected for downloading.
+[INFO     Flash Code@22-09-22 23:17:24] Reset: Halt core after reset via DEMCR.VC_CORERESET.
+[INFO     Flash Code@22-09-22 23:17:24] Reset: Reset device via AIRCR.SYSRESETREQ.
+[INFO     Flash Code@22-09-22 23:17:25] Reset: Halt core after reset via DEMCR.VC_CORERESET.
+[INFO     Flash Code@22-09-22 23:17:25] Reset: Reset device via AIRCR.SYSRESETREQ.
+[INFO     SPI Flash Programmer@22-09-22 23:17:25] Successfully configured SPI ports and pins.
+[INFO     Flash Code@22-09-22 23:17:25] Successfully downloaded firmware file to the board.
+[INFO     Flash Code@22-09-22 23:17:28] Started reading 32768 bytes from memory.
+[INFO     Flash Code@22-09-22 23:17:29] Read 16384 bytes from offset 0x00
+[INFO     Flash Code@22-09-22 23:17:29] Read 16384 bytes from offset 0x4000
+[INFO     Flash Code@22-09-22 23:17:29] Reading has finished. Read 32768 bytes.
+[INFO     Flash Code@22-09-22 23:17:31] Started erasing from 0x00 to 0x8000 (9 sectors)
+[INFO     Flash Code@22-09-22 23:17:32] Memory erasing completed successfully.
+[INFO     Flash Code@22-09-22 23:17:32] Reading memory to verify its contents after erase...
+[INFO     Flash Code@22-09-22 23:17:32] Read 16384 bytes from offset 0x00
+[INFO     Flash Code@22-09-22 23:17:33] Read 16384 bytes from offset 0x4000
+[INFO     Flash Code@22-09-22 23:17:33] Verification succeeded. 32768 bytes read for verification.
+[INFO     Flash Code@22-09-22 23:17:33] Reading memory to refresh table contents...
+[INFO     Flash Code@22-09-22 23:17:33] Read 16384 bytes from offset 0x00
+[INFO     Flash Code@22-09-22 23:17:34] Read 16384 bytes from offset 0x4000
+[INFO     Flash Code@22-09-22 23:17:34] Reading has finished. Read 32768 bytes.
+[INFO     SPI Flash Programmer@22-09-22 23:21:11] Copying file: D:\User\dropbox_nsel16zp\ZERDLab Dropbox\CurrentProject\SoundSensor\Firmware\git_SS\SoundSensor_SPS_DA\projects\target_apps\dsps\dsps_device\Keil_5\SoundSensor_Fix\SS_Fix.hex to C:\Users\RD\AppData\Local\Temp\\input1.hex.
+[INFO     SPI Flash Programmer@22-09-22 23:21:11] Converting file input1.hex to bin.
+[INFO     SPI Flash Programmer@22-09-22 23:21:11] Copying file: D:\User\dropbox_nsel16zp\ZERDLab Dropbox\CurrentProject\SoundSensor\Firmware\git_SS\SoundSensor_SPS_DA\projects\target_apps\dsps\dsps_device\Keil_5\SoundSensor_Fix\SS_Fix220922copy.hex to C:\Users\RD\AppData\Local\Temp\\input2.hex.
+[INFO     SPI Flash Programmer@22-09-22 23:21:11] Converting file input2.hex to bin.
+[INFO     SPI Flash Programmer@22-09-22 23:21:11] Copying file: D:\User\dropbox_nsel16zp\ZERDLab Dropbox\CurrentProject\SoundSensor\Firmware\git_SS\SoundSensor_SPS_DA\utilities\secondary_bootloader\out_DA14531\Objects\secondary_bootloader_531.hex to C:\Users\RD\AppData\Local\Temp\\bootloader.hex.
+[INFO     SPI Flash Programmer@22-09-22 23:21:11] Converting file bootloader.hex to bin.
+[INFO     SPI Flash Programmer@22-09-22 23:21:11] Executing: mkimage.exe multi spi C:\Users\RD\AppData\Local\Temp\\bootloader.bin C:\Users\RD\AppData\Local\Temp\\input1.bin 0x04000 C:\Users\RD\AppData\Local\Temp\\input2.bin 0x11000 0x1f000 C:\Users\RD\AppData\Local\Temp\\image.bin
+[INFO     SPI Flash Programmer@22-09-22 23:21:11] Creating image 'C:\Users\RD\AppData\Local\Temp\\image.bin'...
+[INFO     SPI Flash Programmer@22-09-22 23:21:11] [00000000] AN-B-001 SPI header
+[INFO     SPI Flash Programmer@22-09-22 23:21:11] [00000008] Bootloader
+[INFO     SPI Flash Programmer@22-09-22 23:21:11] [0000226c] Padding (FF's)
+[INFO     SPI Flash Programmer@22-09-22 23:21:11] [00004000] 'C:\Users\RD\AppData\Local\Temp\\input1.bin'
+[INFO     SPI Flash Programmer@22-09-22 23:21:11] [0000a190] Padding (FF's)
+[INFO     SPI Flash Programmer@22-09-22 23:21:11] [00011000] 'C:\Users\RD\AppData\Local\Temp\\input2.bin'
+[INFO     SPI Flash Programmer@22-09-22 23:21:11] [00017190] Padding (FF's)
+[INFO     SPI Flash Programmer@22-09-22 23:21:11] [0001f000] Product header
+[INFO     Flash Code@22-09-22 23:21:12] Read 127000 bytes from file C:\Users\RD\AppData\Local\Temp\\image.bin.
+[INFO     Flash Code@22-09-22 23:21:15] Started burning memory with 127000 bytes of data at address 0x00.
+[INFO     Flash Code@22-09-22 23:21:15] Write 16384 bytes at offset 0x00
+[INFO     Flash Code@22-09-22 23:21:16] Write 16384 bytes at offset 0x4000
+[INFO     Flash Code@22-09-22 23:21:16] Write 16384 bytes at offset 0x8000
+[INFO     Flash Code@22-09-22 23:21:17] Write 16384 bytes at offset 0xC000
+[INFO     Flash Code@22-09-22 23:21:17] Write 16384 bytes at offset 0x10000
+[INFO     Flash Code@22-09-22 23:21:18] Write 16384 bytes at offset 0x14000
+[INFO     Flash Code@22-09-22 23:21:19] Write 16384 bytes at offset 0x18000
+[INFO     Flash Code@22-09-22 23:21:19] Write 12312 bytes at offset 0x1C000
+[INFO     Flash Code@22-09-22 23:21:19] Memory burning completed successfully.
+[INFO     Flash Code@22-09-22 23:21:19] Reading memory to refresh table contents....
+[INFO     Flash Code@22-09-22 23:21:19] Read 16384 bytes from offset 0x00
+[INFO     Flash Code@22-09-22 23:21:20] Read 16384 bytes from offset 0x4000
+[INFO     Flash Code@22-09-22 23:21:20] Read 16384 bytes from offset 0x8000
+[INFO     Flash Code@22-09-22 23:21:21] Read 16384 bytes from offset 0xC000
+[INFO     Flash Code@22-09-22 23:21:21] Read 16384 bytes from offset 0x10000
+[INFO     Flash Code@22-09-22 23:21:22] Read 16384 bytes from offset 0x14000
+[INFO     Flash Code@22-09-22 23:21:22] Read 16384 bytes from offset 0x18000
+[INFO     Flash Code@22-09-22 23:21:23] Read 12312 bytes from offset 0x1C000
+[INFO     Flash Code@22-09-22 23:21:23] Reading has finished. Read 127000 bytes.
+[INFO     Flash Code@22-09-22 23:21:23] Send reset command. If application won't start replug the board.
+[INFO     General@22-09-23 00:31:34] Found SW-DP with ID 0x0BC11477
+[INFO     General@22-09-23 00:31:34] Scanning AP map to find all available APs
+[INFO     General@22-09-23 00:31:34] AP[1]: Stopped AP scan as end of AP map has been reached
+[INFO     General@22-09-23 00:31:34] AP[0]: AHB-AP (IDR: 0x04770031)
+[INFO     General@22-09-23 00:31:34] Iterating through AP map to find AHB-AP to use
+[INFO     General@22-09-23 00:31:34] AP[0]: Core found
+[INFO     General@22-09-23 00:31:34] AP[0]: AHB-AP ROM base: 0xE00FF000
+[INFO     General@22-09-23 00:31:34] CPUID register: 0x410CC601. Implementer code: 0x41 (ARM)
+[INFO     General@22-09-23 00:31:34] Found Cortex-M0 r0p1, Little endian.
+[INFO     General@22-09-23 00:31:34] FPUnit: 4 code (BP) slots and 0 literal slots
+[INFO     General@22-09-23 00:31:34] CoreSight components:
+[INFO     General@22-09-23 00:31:34] ROMTbl[0] @ E00FF000
+[INFO     General@22-09-23 00:31:34] ROMTbl[0][0]: E000E000, CID: B105E00D, PID: 000BB008 SCS
+[INFO     General@22-09-23 00:31:34] ROMTbl[0][1]: E0001000, CID: B105E00D, PID: 000BB00A DWT
+[INFO     General@22-09-23 00:31:34] ROMTbl[0][2]: E0002000, CID: B105E00D, PID: 000BB00B FPB
+[INFO     General@22-09-23 00:31:34] BTLE device selected.
+[INFO     Flash Code@22-09-23 00:31:38] Found SW-DP with ID 0x0BC11477
+[INFO     Flash Code@22-09-23 00:31:38] AP map detection skipped. Manually configured AP map found.
+[INFO     Flash Code@22-09-23 00:31:38] AP[0]: AHB-AP (IDR: Not set)
+[INFO     Flash Code@22-09-23 00:31:38] AP[0]: Core found
+[INFO     Flash Code@22-09-23 00:31:38] AP[0]: AHB-AP ROM base: 0xE00FF000
+[INFO     Flash Code@22-09-23 00:31:38] CPUID register: 0x410CC601. Implementer code: 0x41 (ARM)
+[INFO     Flash Code@22-09-23 00:31:38] Found Cortex-M0 r0p1, Little endian.
+[INFO     Flash Code@22-09-23 00:31:38] FPUnit: 4 code (BP) slots and 0 literal slots
+[INFO     Flash Code@22-09-23 00:31:38] CoreSight components:
+[INFO     Flash Code@22-09-23 00:31:38] ROMTbl[0] @ E00FF000
+[INFO     Flash Code@22-09-23 00:31:38] ROMTbl[0][0]: E000E000, CID: B105E00D, PID: 000BB008 SCS
+[INFO     Flash Code@22-09-23 00:31:38] ROMTbl[0][1]: E0001000, CID: B105E00D, PID: 000BB00A DWT
+[INFO     Flash Code@22-09-23 00:31:38] ROMTbl[0][2]: E0002000, CID: B105E00D, PID: 000BB00B FPB
+[INFO     Flash Code@22-09-23 00:31:38] Reset: Halt core after reset via DEMCR.VC_CORERESET.
+[INFO     Flash Code@22-09-23 00:31:38] Reset: Reset device via AIRCR.SYSRESETREQ.
+[INFO     Flash Code@22-09-23 00:31:38] Firmware File C:\Program Files\SmartSnippetsToolbox\SmartSnippetsToolbox5.0.20\common_resources\SupportPackages\DA1453x\toolbox_resources/common/jtag_programmer_531.bin has been selected for downloading.
+[INFO     Flash Code@22-09-23 00:31:38] Reset: Halt core after reset via DEMCR.VC_CORERESET.
+[INFO     Flash Code@22-09-23 00:31:38] Reset: Reset device via AIRCR.SYSRESETREQ.
+[INFO     Flash Code@22-09-23 00:31:38] Reset: Halt core after reset via DEMCR.VC_CORERESET.
+[INFO     Flash Code@22-09-23 00:31:38] Reset: Reset device via AIRCR.SYSRESETREQ.
+[INFO     SPI Flash Programmer@22-09-23 00:31:38] Successfully configured SPI ports and pins.
+[INFO     Flash Code@22-09-23 00:31:38] Successfully downloaded firmware file to the board.
+[INFO     Flash Code@22-09-23 00:31:49] Started erasing from 0x00 to 0x1F018 (32 sectors)
+[INFO     Flash Code@22-09-23 00:31:53] Read 16384 bytes from offset 0x8000
+[INFO     Flash Code@22-09-23 00:31:53] Read 16384 bytes from offset 0xC000
+[INFO     Flash Code@22-09-23 00:31:54] Read 16384 bytes from offset 0x10000
+[INFO     Flash Code@22-09-23 00:31:54] Read 16384 bytes from offset 0x14000
+[INFO     Flash Code@22-09-23 00:31:55] Read 16384 bytes from offset 0x18000
+[INFO     Flash Code@22-09-23 00:31:55] Read 12312 bytes from offset 0x1C000
+[INFO     Flash Code@22-09-23 00:31:55] Verification succeeded. 127000 bytes read for verification.
+[INFO     Flash Code@22-09-23 00:31:55] Reading memory to refresh table contents...
+[INFO     Flash Code@22-09-23 00:31:56] Read 16384 bytes from offset 0x00
+[INFO     Flash Code@22-09-23 00:31:56] Read 16384 bytes from offset 0x4000
+[INFO     Flash Code@22-09-23 00:31:56] Reading has finished. Read 32768 bytes.
+[INFO     SPI Flash Programmer@22-09-23 00:35:13] Copying file: D:\User\dropbox_nsel16zp\ZERDLab Dropbox\CurrentProject\SoundSensor\Firmware\git_SS\SoundSensor_SPS_DA\projects\target_apps\dsps\dsps_device\Keil_5\SoundSensor_Fix\SS_Fix.hex to C:\Users\RD\AppData\Local\Temp\\input1.hex.
+[INFO     SPI Flash Programmer@22-09-23 00:35:13] Converting file input1.hex to bin.
+[INFO     SPI Flash Programmer@22-09-23 00:35:13] Copying file: D:\User\dropbox_nsel16zp\ZERDLab Dropbox\CurrentProject\SoundSensor\Firmware\git_SS\SoundSensor_SPS_DA\projects\target_apps\dsps\dsps_device\Keil_5\SoundSensor_Fix\SS_Fix220922copy.hex to C:\Users\RD\AppData\Local\Temp\\input2.hex.
+[INFO     SPI Flash Programmer@22-09-23 00:35:13] Converting file input2.hex to bin.
+[INFO     SPI Flash Programmer@22-09-23 00:35:13] Copying file: D:\User\dropbox_nsel16zp\ZERDLab Dropbox\CurrentProject\SoundSensor\Firmware\git_SS\SoundSensor_SPS_DA\utilities\secondary_bootloader\bin\secondary_bootloader_531.bin to C:\Users\RD\AppData\Local\Temp\\bootloader.bin.
+[INFO     SPI Flash Programmer@22-09-23 00:35:13] Executing: mkimage.exe multi spi C:\Users\RD\AppData\Local\Temp\\bootloader.bin C:\Users\RD\AppData\Local\Temp\\input1.bin 0x04000 C:\Users\RD\AppData\Local\Temp\\input2.bin 0x10000 0x1f000 C:\Users\RD\AppData\Local\Temp\\image.bin
+[INFO     SPI Flash Programmer@22-09-23 00:35:13] Creating image 'C:\Users\RD\AppData\Local\Temp\\image.bin'...
+[INFO     SPI Flash Programmer@22-09-23 00:35:13] [00000000] AN-B-001 SPI header
+[INFO     SPI Flash Programmer@22-09-23 00:35:13] [00000008] Bootloader
+[INFO     SPI Flash Programmer@22-09-23 00:35:13] [0000226c] Padding (FF's)
+[INFO     SPI Flash Programmer@22-09-23 00:35:13] [00004000] 'C:\Users\RD\AppData\Local\Temp\\input1.bin'
+[INFO     SPI Flash Programmer@22-09-23 00:35:13] [0000a084] Padding (FF's)
+[INFO     SPI Flash Programmer@22-09-23 00:35:13] [00010000] 'C:\Users\RD\AppData\Local\Temp\\input2.bin'
+[INFO     SPI Flash Programmer@22-09-23 00:35:13] [00016190] Padding (FF's)
+[INFO     SPI Flash Programmer@22-09-23 00:35:13] [0001f000] Product header
+[INFO     Flash Code@22-09-23 00:35:13] Read 127000 bytes from file C:\Users\RD\AppData\Local\Temp\\image.bin.
+[INFO     Flash Code@22-09-23 00:35:16] Started burning memory with 127000 bytes of data at address 0x00.
+[INFO     Flash Code@22-09-23 00:35:17] Write 16384 bytes at offset 0x00
+[INFO     Flash Code@22-09-23 00:35:17] Write 16384 bytes at offset 0x4000
+[INFO     Flash Code@22-09-23 00:35:18] Write 16384 bytes at offset 0x8000
+[INFO     Flash Code@22-09-23 00:35:18] Write 16384 bytes at offset 0xC000
+[INFO     Flash Code@22-09-23 00:35:19] Write 16384 bytes at offset 0x10000
+[INFO     Flash Code@22-09-23 00:35:20] Write 16384 bytes at offset 0x14000
+[INFO     Flash Code@22-09-23 00:35:20] Write 16384 bytes at offset 0x18000
+[INFO     Flash Code@22-09-23 00:35:21] Write 12312 bytes at offset 0x1C000
+[INFO     Flash Code@22-09-23 00:35:21] Memory burning completed successfully.
+[INFO     Flash Code@22-09-23 00:35:21] Reading memory to refresh table contents....
+[INFO     Flash Code@22-09-23 00:35:21] Read 16384 bytes from offset 0x00
+[INFO     Flash Code@22-09-23 00:35:21] Read 16384 bytes from offset 0x4000
+[INFO     Flash Code@22-09-23 00:35:22] Read 16384 bytes from offset 0x8000
+[INFO     Flash Code@22-09-23 00:35:22] Read 16384 bytes from offset 0xC000
+[INFO     Flash Code@22-09-23 00:35:23] Read 16384 bytes from offset 0x10000
+[INFO     Flash Code@22-09-23 00:35:23] Read 16384 bytes from offset 0x14000
+[INFO     Flash Code@22-09-23 00:35:24] Read 16384 bytes from offset 0x18000
+[INFO     Flash Code@22-09-23 00:35:24] Read 12312 bytes from offset 0x1C000
+[INFO     Flash Code@22-09-23 00:35:24] Reading has finished. Read 127000 bytes.
+[INFO     Flash Code@22-09-23 00:35:24] Send reset command. If application won't start replug the board.

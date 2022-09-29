@@ -87,21 +87,21 @@ static void user_gattc_exc_mtu_cmd(uint8_t conidx)
  * @return void
   ****************************************************************************************
  */
-static void get_features(void)
-{
-    struct spss_env_tag *sps_env = PRF_ENV_GET(SPS_SERVER, spss);
-    sps_env->peer_supports_dle = 0;
-    
-    struct gapc_get_info_cmd* info_cmd = KE_MSG_ALLOC(GAPC_GET_INFO_CMD,
-                                                      KE_BUILD_ID(TASK_GAPC,conn_idx),
-                                                      TASK_APP, 
-                                                      gapc_get_info_cmd);
-    // request peer device name.
-    info_cmd->operation = GAPC_GET_PEER_FEATURES;
-    
-    // send command
-    ke_msg_send(info_cmd);
-} 
+//static void get_features(void)
+//{
+//    struct spss_env_tag *sps_env = PRF_ENV_GET(SPS_SERVER, spss);
+//    sps_env->peer_supports_dle = 0;
+//    
+//    struct gapc_get_info_cmd* info_cmd = KE_MSG_ALLOC(GAPC_GET_INFO_CMD,
+//                                                      KE_BUILD_ID(TASK_GAPC,conn_idx),
+//                                                      TASK_APP, 
+//                                                      gapc_get_info_cmd);
+//    // request peer device name.
+//    info_cmd->operation = GAPC_GET_PEER_FEATURES;
+//    
+//    // send command
+//    ke_msg_send(info_cmd);
+//} 
 
 void user_on_connection(uint8_t connection_idx, struct gapc_connection_req_ind const *param)
 {
@@ -109,9 +109,9 @@ void user_on_connection(uint8_t connection_idx, struct gapc_connection_req_ind c
     
     conn_idx = connection_idx;
     
-    features_timer = app_easy_timer(60, get_features);
+    //features_timer = app_easy_timer(60, get_features);//RDD https://www.cxybb.com/article/weixin_38933763/108622509
     
-    dma_uart_on_connect();
+    //dma_uart_on_connect();//RDD
 
     dev_connected = true;
 }
@@ -127,25 +127,25 @@ void user_on_disconnect( struct gapc_disconnect_ind const *param )
         platform_reset(RESET_AFTER_SUOTA_UPDATE);
 #endif
 
-    dma_uart_set_tx_size(23);
-    default_app_on_disconnect(param);
-    if( dma_uart.p_rx_ready_active!=NULL)
-    {    
-        __disable_irq();
-        co_list_push_front(&dma_uart.rx_list_ready, &dma_uart.p_rx_ready_active->hdr);
-        dma_uart.p_rx_ready_active=NULL;
-        __enable_irq();
-    }    
-    
-    dma_uart_deassert_rts();  
-    dma_uart_rx_disable();
+    //dma_uart_set_tx_size(23);
+   // default_app_on_disconnect(param);
+//    if( dma_uart.p_rx_ready_active!=NULL)
+//    {    
+//        __disable_irq();
+//        co_list_push_front(&dma_uart.rx_list_ready, &dma_uart.p_rx_ready_active->hdr);
+//        dma_uart.p_rx_ready_active=NULL;
+//        __enable_irq();
+//    }    
+//    
+//    dma_uart_deassert_rts();  
+//    dma_uart_rx_disable();
 }
 
 void user_on_connect_failed (void)
 {
     ASSERT_WARNING(0);
-    dma_uart_deassert_rts();  
-    dma_uart_rx_disable(); 
+//    dma_uart_deassert_rts();//RDD  GPIO_SetActive( gpio_uart1_rts.port, gpio_uart1_rts.pin );
+//    dma_uart_rx_disable(); 
 }
 
 /*
@@ -170,8 +170,8 @@ void user_on_init(void)
         spss_conf_struct_version, &spss_conf_struct_version_len);
 #endif
 
-    user_sps_apply_uart_baudrate();
-    periph_init();
+    //user_sps_apply_uart_baudrate();//RDD
+    periph_init();//RDD?
 
 #if BLE_REMOTE_CONFIG
     callback = user_sps_apply_config;
@@ -184,7 +184,7 @@ void user_on_init(void)
 void user_on_db_init_complete(void)
 {
     default_app_on_db_init_complete();
-    user_init_queues();
+    //user_init_queues();//RDD
 }  
 
 #if defined(CFG_BLE_METRICS) && defined(CFG_PRINTF)
@@ -213,10 +213,10 @@ void user_statistics(void){
  
 void user_before_sleep(void)
 {
-    user_dma_sps_sleep_check();
+    //user_dma_sps_sleep_check();//RDD
 }
 
-void user_on_data_length_change(struct gapc_le_pkt_size_ind *param, uint16_t src_id)
+void user_on_data_length_change(struct gapc_le_pkt_size_ind *param, uint16_t src_id) //RDD #ifdef USE_DLE
 {
     uint8_t conidx = KE_IDX_GET(src_id);
     user_gattc_exc_mtu_cmd(conidx);
@@ -250,7 +250,7 @@ void user_on_gapc_peer_features_ind(const uint8_t conidx, struct gapc_peer_featu
     app_easy_gap_param_update_start(conidx);
 }
 
-void user_catch_rest_hndl(ke_msg_id_t const msgid,
+void user_catch_rest_hndl(ke_msg_id_t const msgid,  //RDD In case a message has not been handled by any module,
                           void const *param,
                           ke_task_id_t const dest_id,
                           ke_task_id_t const src_id)

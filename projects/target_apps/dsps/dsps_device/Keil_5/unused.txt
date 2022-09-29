@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Tue Mar 24 15:51:10 2020
+;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Sat Sep 17 20:23:29 2022
 ;VERSION 0.2
 ;FILE adc_58x.o
 adc_disable <= USED 0
@@ -31,6 +31,9 @@ app_timer_set <= USED 0
 default_advertise_operation <= USED 0
 default_app_generate_static_random_addr <= USED 0
 default_app_generate_unique_static_random_addr <= USED 0
+default_app_on_disconnect <= USED 0
+;FILE app_diss.o
+;FILE app_diss_task.o
 ;FILE app_easy_msg_utils.o
 app_easy_msg_free_callback <= USED 0
 app_easy_msg_modify <= USED 0
@@ -70,17 +73,19 @@ set_xtal16m_trim_value <= USED 0
 ;FILE attm_db_128.o
 ;FILE battery.o
 battery_get_lvl <= USED 0
+;FILE crc32.o
+crc32 <= USED 0
 ;FILE custom_common.o
-;FILE dma.o
-dma_channel_active <= USED 0
-dma_channel_cancel <= USED 0
-;FILE dma_uart_sps.o
+;FILE diss.o
 ;FILE gpio.o
 GPIO_ConfigurePinPower <= USED 0
 GPIO_DisablePorPin <= USED 0
+GPIO_EnableIRQ <= USED 0
 GPIO_GetIRQInputLevel <= USED 0
 GPIO_GetPinFunction <= USED 0
+GPIO_GetPinStatus <= USED 0
 GPIO_GetPorTime <= USED 0
+GPIO_RegisterCallback <= USED 0
 GPIO_SetIRQInputLevel <= USED 0
 GPIO_SetPorTime <= USED 0
 GPIO_is_valid <= USED 0
@@ -108,8 +113,9 @@ hw_otpc_write_rr <= USED 0
 dummyf <= USED 0
 ;FILE nmi_handler.o
 ;FILE nvds.o
-;FILE otp_hdr.o
 ;FILE patch.o
+JT_l2cc_pdu_recv_ind_handler_func <= USED 0
+JT_l2cc_pdu_unpack_func <= USED 0
 ;FILE pll_vcocal_lut.o
 GPADC_init <= USED 0
 MedianOfFive <= USED 0
@@ -155,6 +161,9 @@ spi_set_cs_pad <= USED 0
 spi_set_irq_mode <= USED 0
 spi_set_speed <= USED 0
 spi_transfer <= USED 0
+;FILE spi_adc.o
+SPITreeByts <= USED 0
+SPI_ADC_init <= USED 0
 ;FILE spi_flash.o
 spi_flash_block_erase_no_wait <= USED 0
 spi_flash_chip_erase <= USED 0
@@ -177,6 +186,7 @@ spi_flash_read_data_buffer <= USED 0
 spi_flash_read_rems_id <= USED 0
 spi_flash_read_security_reg <= USED 0
 spi_flash_read_unique_id <= USED 0
+spi_flash_release_from_power_down <= USED 0
 spi_flash_set_power_mode <= USED 0
 spi_flash_set_write_disable <= USED 0
 spi_flash_set_write_enable <= USED 0
@@ -185,6 +195,8 @@ spi_flash_write_enable_volatile <= USED 0
 spi_flash_write_status_config_reg <= USED 0
 spi_flash_write_status_reg <= USED 0
 ;FILE sps_server.o
+;FILE ss_interfacetoble.o
+user_app_adv_start <= USED 0
 ;FILE startup_da14585_586.o
 ;FILE suotar.o
 ;FILE syscntl.o
@@ -197,27 +209,45 @@ systick_start <= USED 0
 systick_stop <= USED 0
 systick_value <= USED 0
 systick_wait <= USED 0
+;FILE timer2.o
+timer2_config <= USED 0
+timer2_pwm_freq_set <= USED 0
+timer2_pwm_signal_config <= USED 0
 ;FILE trng.o
 ;FILE uart.o
+uart_baudrate_setf <= USED 0
 uart_disable <= USED 0
 uart_disable_flow_control <= USED 0
+uart_enable <= USED 0
 uart_enable_flow_control <= USED 0
+uart_initialize <= USED 0
+uart_read_buffer <= USED 0
+uart_read_byte <= USED 0
+uart_receive <= USED 0
 uart_register_err_cb <= USED 0
 uart_register_rx_cb <= USED 0
 uart_register_tx_cb <= USED 0
+uart_send <= USED 0
 uart_wait_tx_finish <= USED 0
+uart_write_buffer <= USED 0
+uart_write_byte <= USED 0
 ;FILE user_config_storage.o
 ;FILE user_periph_setup.o
 ;FILE user_remote_config.o
 ;FILE user_remote_config_task.o
 ;FILE user_sps_buffer_dma.o
+user_ble_to_dma_uart <= USED 0
+user_init_queues <= USED 0
 ;FILE user_sps_device_config.o
+user_sps_apply_uart_baudrate <= USED 0
 ;FILE user_sps_device_dma.o
 user_on_connect_failed <= USED 0
 ;FILE user_sps_schedule_dma.o
+user_dma_sps_sleep_check <= USED 0
 ;FILE user_sps_utils.o
+user_rwip_sleep_check <= USED 0
 ;FILE user_spss.o
-user_send_ble_data <= USED 0
+user_send_ble_flow_ctrl <= USED 0
 user_send_dummy_ble_data <= USED 0
 ;FILE user_spss_task.o
 ;FILE wkupct_quadec.o
@@ -227,3 +257,5 @@ quad_decoder_init <= USED 0
 quad_decoder_register_callback <= USED 0
 quad_decoder_release <= USED 0
 wkupct_disable_irq <= USED 0
+wkupct_enable_irq <= USED 0
+wkupct_register_callback <= USED 0

@@ -441,13 +441,13 @@ uint8_t user_sps_apply_config(user_configuration_struct_tag* config_data)
 
 void user_sps_apply_uart_baudrate(void)
 {
-    cfg_uart_sps_baudrate = uart_baudrate_t[uart_baudrate_param];
-    cfg_uart_sps_baud = uart_baud_t[uart_baudrate_param];
-    // 8 bits + start bit + stop bit, uart_wait_byte_time in usec
-    uart_wait_byte_time = (1000000/cfg_uart_sps_baud) * 10;
-    // In order to calculate a wait for loop equal to 1 byte duration.
-    // Duration of 1 iteration in a for loop is 0.25 usec
-    uart_wait_byte_counter = (uart_wait_byte_time * 4) + 30;
+//    cfg_uart_sps_baudrate = uart_baudrate_t[uart_baudrate_param];
+//    cfg_uart_sps_baud = uart_baud_t[uart_baudrate_param];
+//    // 8 bits + start bit + stop bit, uart_wait_byte_time in usec
+//    uart_wait_byte_time = (1000000/cfg_uart_sps_baud) * 10;
+//    // In order to calculate a wait for loop equal to 1 byte duration.
+//    // Duration of 1 iteration in a for loop is 0.25 usec
+//    uart_wait_byte_counter = (uart_wait_byte_time * 4) + 30;
 }
 
 /**

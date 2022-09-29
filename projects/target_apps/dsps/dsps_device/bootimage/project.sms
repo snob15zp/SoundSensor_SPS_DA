@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Project>
+  <Version>2.0</Version>
+  <Name>bootimage</Name>
+  <Type>DEVELOPMENT</Type>
+  <UART/>
+  <SPI/>
+  <JTAG>480045312</JTAG>
+  <DK_Version>DA14531</DK_Version>
+  <Board_Setup>
+    <TXRXBD>P0_5, P0_5, 115200 Bd</TXRXBD>
+    <CLK>P0_4</CLK>
+    <CS>P0_1</CS>
+    <MISO>P0_3</MISO>
+    <MOSI>P0_0</MOSI>
+    <SCL>P0_5</SCL>
+    <SDA>P0_6</SDA>
+  </Board_Setup>
+  <Power_Profiler>
+    <AutoTrigger>false</AutoTrigger>
+    <AutoStop>false</AutoStop>
+    <Threshold>0.0</Threshold>
+    <TimeInterval>1500</TimeInterval>
+    <LowPassFiltering>Standard</LowPassFiltering>
+    <NumOfPatterns>4</NumOfPatterns>
+    <Voltage>3.0</Voltage>
+    <Multiplier>100.0</Multiplier>
+    <MultiplierIsDefault>true</MultiplierIsDefault>
+    <Offset>0.0</Offset>
+    <AxisCurrentMin1>0.0</AxisCurrentMin1>
+    <AxisCurrentMax1>1.0</AxisCurrentMax1>
+    <AxisCurrentMin2>0.0</AxisCurrentMin2>
+    <AxisCurrentMax2>1.0</AxisCurrentMax2>
+    <SamplesOfSwCursor>5</SamplesOfSwCursor>
+    <SwCursorsToStop>0</SwCursorsToStop>
+    <MaxSamplingTime>10000</MaxSamplingTime>
+    <MaxSamplesToDraw>5000</MaxSamplesToDraw>
+    <AutoScaling1>true</AutoScaling1>
+    <AutoScaling2>true</AutoScaling2>
+    <ParseUartProto>false</ParseUartProto>
+    <CreateMarkerOnMaxValue>true</CreateMarkerOnMaxValue>
+    <EnableLOD>false</EnableLOD>
+    <CurrentTooltip>true</CurrentTooltip>
+    <CsvFilePath>C:\Users\RD\SmartSnippetsToolbox\Projects\Default</CsvFilePath>
+    <SnapshotFilePath>C:\Users\RD\SmartSnippetsToolbox\Projects\Default</SnapshotFilePath>
+    <TimeOffsetOfSWCursor>0.36</TimeOffsetOfSWCursor>
+    <PreTriggerSamplingTime>0.05</PreTriggerSamplingTime>
+    <SleepMode>Extended</SleepMode>
+    <SleepModeThreshold>50.0</SleepModeThreshold>
+    <SleepModeExtended>1.2</SleepModeExtended>
+    <SleepModeDeep>0.55</SleepModeDeep>
+    <SWCursorTolerance>0.0</SWCursorTolerance>
+    <SampleRate>105 kSamples</SampleRate>
+    <FilterA2DPattern>false</FilterA2DPattern>
+  </Power_Profiler>
+  <OTP_Image>
+    <PathToImportFile/>
+    <PathToExportFile/>
+  </OTP_Image>
+  <OTP_Header>
+    <Browse/>
+    <PathToImportFile/>
+    <PathToExportFile/>
+  </OTP_Header>
+  <OTP>
+    <PathToImportFile/>
+    <PathToExportFile/>
+  </OTP>
+  <Booter>
+    <PathToFirmware/>
+  </Booter>
+  <RAM>
+    <PathToCodeImportFile/>
+    <PathToDataImportFile/>
+    <Address/>
+  </RAM>
+  <SPI_Flash_Programmer>
+    <PathToImportFile/>
+    <PathToExportFile/>
+  </SPI_Flash_Programmer>
+  <Flash_Code>
+    <PathToImportFile>D:\User\dropbox_nsel16zp\ZERDLab Dropbox\CurrentProject\SoundSensor\Firmware\git_SS\SoundSensor_SPS_DA\projects\target_apps\dsps\dsps_device\Keil_5\0_1_1_1_BKSM\dsps_device_531.img</PathToImportFile>
+    <PathToExportFile>D:\User\dropbox_nsel16zp\ZERDLab Dropbox\CurrentProject\SoundSensor\Firmware\git_SS\SoundSensor_SPS_DA\projects\target_apps\dsps\dsps_device\Keil_5\0_1_1_1_BKSM\dsps_device_531M.img</PathToExportFile>
+  </Flash_Code>
+  <Flash_DATA>
+    <PathToImportFile/>
+    <PathToExportFile/>
+  </Flash_DATA>
+  <EEPROM_Programmer>
+    <PathToImportFile/>
+    <PathToExportFile/>
+  </EEPROM_Programmer>
+  <Proprietary_Header_Programmer>
+    <SPIOffset/>
+    <EEPROMOffset/>
+    <SPIFile/>
+    <EEPROMOffset/>
+    <PathToImportFile/>
+    <PathToExportFile/>
+  </Proprietary_Header_Programmer>
+  <RF_Master>
+    <PathToFirmware/>
+  </RF_Master>
+  <Terminal>
+    <SettingIndexes>0 0 0 0 0</SettingIndexes>
+  </Terminal>
+  <Terminal_Scripting>
+    <PathToFirmware/>
+    <PathToBatchFile/>
+    <PathToCSVFormatter/>
+    <SettingIndexes>0 0 0 0 0</SettingIndexes>
+    <ConsoleSettings>1 1 1 1</ConsoleSettings>
+  </Terminal_Scripting>
+</Project>

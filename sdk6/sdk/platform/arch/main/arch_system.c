@@ -1209,8 +1209,9 @@ void system_init(void)
     // Turn off LDO_LOW.
     // Boost (or Bypass) mode: it must be turned off always.
     // Buck mode: it must be turned off since DC/DC is used for VBAT_LOW. It has to be turned on, as late as possible, before sleep.
-   // SetBits16(POWER_CTRL_REG, LDO_LOW_CTRL_REG, 1);//rdd B2
-
+#ifndef __BOARD2__
+    SetBits16(POWER_CTRL_REG, LDO_LOW_CTRL_REG, 1);//rdd B2
+#endif
     // Set for proper RCX operation
     SetBits16(GP_DATA_REG, 0x60, 1);
 #endif

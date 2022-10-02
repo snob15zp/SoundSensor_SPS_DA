@@ -688,7 +688,7 @@
 
   <Group>
     <GroupName>sdk_arch</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -2168,6 +2168,30 @@
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
+    <File>
+      <GroupNumber>17</GroupNumber>
+      <FileNumber>120</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\src\SPI_ADC\ADC_flash.c</PathWithFileName>
+      <FilenameWithoutPath>ADC_flash.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>17</GroupNumber>
+      <FileNumber>121</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\src\SPI_ADC\adc_flash.h</PathWithFileName>
+      <FilenameWithoutPath>adc_flash.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
   </Group>
 
   <Group>
@@ -2178,7 +2202,7 @@
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>18</GroupNumber>
-      <FileNumber>120</FileNumber>
+      <FileNumber>122</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2190,7 +2214,7 @@
     </File>
     <File>
       <GroupNumber>18</GroupNumber>
-      <FileNumber>121</FileNumber>
+      <FileNumber>123</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2202,7 +2226,7 @@
     </File>
     <File>
       <GroupNumber>18</GroupNumber>
-      <FileNumber>122</FileNumber>
+      <FileNumber>124</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>

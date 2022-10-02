@@ -1420,6 +1420,16 @@
               <FileType>5</FileType>
               <FilePath>..\src\SPI_ADC\SPI_ADC.h</FilePath>
             </File>
+            <File>
+              <FileName>ADC_flash.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\SPI_ADC\ADC_flash.c</FilePath>
+            </File>
+            <File>
+              <FileName>adc_flash.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\SPI_ADC\adc_flash.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2909,6 +2919,16 @@
               <FileType>5</FileType>
               <FilePath>..\src\SPI_ADC\SPI_ADC.h</FilePath>
             </File>
+            <File>
+              <FileName>ADC_flash.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\SPI_ADC\ADC_flash.c</FilePath>
+            </File>
+            <File>
+              <FileName>adc_flash.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\SPI_ADC\adc_flash.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -4397,6 +4417,16 @@
               <FileName>SPI_ADC.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\src\SPI_ADC\SPI_ADC.h</FilePath>
+            </File>
+            <File>
+              <FileName>ADC_flash.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\SPI_ADC\ADC_flash.c</FilePath>
+            </File>
+            <File>
+              <FileName>adc_flash.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\SPI_ADC\adc_flash.h</FilePath>
             </File>
           </Files>
         </Group>

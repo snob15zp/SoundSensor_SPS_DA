@@ -19,6 +19,7 @@
 ".\out_531\wkupct_quadec.o"
 ".\out_531\trng.o"
 ".\out_531\spi_flash.o"
+".\out_531\systick.o"
 ".\out_531\uart.o"
 ".\out_531\dma.o"
 ".\out_531\spi_531.o"
@@ -73,7 +74,13 @@
 ".\out_531\user_config_storage.o"
 ".\out_531\ss_interfacetoble.o"
 ".\out_531\spi_adc.o"
+".\out_531\adc_flash.o"
 ".\out_531\ss_i2c.o"
+".\out_531\mathslow.o"
+".\out_531\mathfast.o"
+".\out_531\filterc_s19s29_cg1.o"
+".\out_531\filterac_s19s29_cg.o"
+".\out_531\ss_sys.o"
 --library_type=microlib --strict --scatter "..\..\..\..\..\sdk6\sdk\common_project_files\scatterfiles\DA14531_all_ram_ret.sct"
 --feedback=".\unused_531.txt" .\..\..\..\..\..\projects\target_apps\dsps\common\misc\da14531_symbols.txt --symdefs dsps_531_symdef.txt --any_placement=best_fit --datacompressor off --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

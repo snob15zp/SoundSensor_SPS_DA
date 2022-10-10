@@ -11,7 +11,8 @@
 #define AF_D_timestampHi 6
 
 void AF_V_WriteTimestamp(void);
-void AF_V_WriteServiceRecord(uint8_t recodType, uint16_t callerFunction);
+void AF_V_WriteStartServiceRecord(uint8_t recodType, uint16_t callerFunction);
+void AF_V_WriteStopServiceRecord(uint8_t recodType, uint16_t callerFunction);
 void AF_V_AddADCdataToFIFO(uint16_t A, uint16_t B);
 
 #endif

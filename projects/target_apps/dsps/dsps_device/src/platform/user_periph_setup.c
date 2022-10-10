@@ -38,6 +38,8 @@
 #include "SPI_ADC.h"
 #include "ss_i2c.h"
 #include "SS_InterfaceToBLE.h"
+#include "MathFast.h"
+#include "SS_sys.h"
 
 #if defined (CFG_SPI_FLASH_ENABLE)
 // Configuration struct for SPI
@@ -144,7 +146,7 @@ void set_pad_functions(void)        // set gpio port function mode
 
 void periph_init(void)
 {
-	LEDinit();
+//	LEDinit();
 	
     // Power up peripherals' power domain
 #if !defined (__DA14531__)
@@ -179,6 +181,7 @@ void periph_init(void)
 	 
 	 while(1)
 	 {
+		 MF_main();
 		  //ss_i2c_test();
 	 }
 #else
@@ -186,7 +189,17 @@ void periph_init(void)
 	 sx_main();//  ss_i2c_test();
 #endif		 
 
-#endif
+#else
+#ifdef __MATHTEST__	 
+   LEDinit();
+   test_hnd_init();
+	 while(1)
+	 {
+		 MF_main();
+	 }	 
+
+#endif	 
+#endif	 
 
     // Initialize UART2 controller
 #ifdef CFG_PRINTF_UART2

@@ -23,6 +23,6 @@ typedef union
 
 void MF_main(void);
 int32_T mul_u18s29sh(int32_T a, int32_T b, uint32_T aShift);
-
+int32_T mul_s32_loSR(int32_T a, int32_T b, uint32_T aShift);
 
 #endif

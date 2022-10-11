@@ -268,7 +268,6 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGUARM</Key>
-          <Name>Di+</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -278,7 +277,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGTARM</Key>
-          <Name>(1010=-1,-1,-1,-1,0)(1007=-1,-1,-1,-1,0)(1008=2188,316,2564,552,0)(1009=-1,-1,-1,-1,0)</Name>
+          <Name>(1010=-1,-1,-1,-1,0)(1007=-1,-1,-1,-1,0)(1008=1544,316,1920,552,0)(1009=-1,-1,-1,-1,0)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -300,9 +299,25 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
+          <LineNumber>53</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>133974390</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>..\src\Math\mathfast.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\dsps_device_531\../src/Math/mathfast.c\53</Expression>
+        </Bp>
+        <Bp>
+          <Number>1</Number>
+          <Type>0</Type>
           <LineNumber>33</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>133974344</Address>
+          <Address>133974586</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -314,11 +329,11 @@
           <Expression>\\dsps_device_531\../src/Math/mathfast.c\33</Expression>
         </Bp>
         <Bp>
-          <Number>1</Number>
+          <Number>2</Number>
           <Type>0</Type>
-          <LineNumber>19</LineNumber>
+          <LineNumber>116</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>133974292</Address>
+          <Address>133975280</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -327,7 +342,7 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>..\src\Math\mathfast.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\dsps_device_531\../src/Math/mathfast.c\19</Expression>
+          <Expression>\\dsps_device_531\../src/Math/mathfast.c\116</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -335,6 +350,16 @@
           <count>0</count>
           <WinNumber>1</WinNumber>
           <ItemText>spi_conf.cs.port</ItemText>
+        </Ww>
+        <Ww>
+          <count>1</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>r1[1]</ItemText>
+        </Ww>
+        <Ww>
+          <count>2</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>r2[1]</ItemText>
         </Ww>
       </WatchWindow1>
       <WatchWindow2>
@@ -347,6 +372,11 @@
           <count>1</count>
           <WinNumber>2</WinNumber>
           <ItemText>spi_cfg</ItemText>
+        </Ww>
+        <Ww>
+          <count>2</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>r2[i]</ItemText>
         </Ww>
       </WatchWindow2>
       <MemoryWindow1>

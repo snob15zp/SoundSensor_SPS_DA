@@ -27,7 +27,16 @@ Project File Date:  10/07/2022
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'dsps_531'
-".\out_531\dsps_device_531.axf" - 0 Error(s), 0 Warning(s).
+compiling mathfast.c...
+..\src\Math\mathfast.c(44): warning:  #550-D: variable "r1"  was set but never used
+  int32_t r1[mi];
+..\src\Math\mathfast.c(45): warning:  #550-D: variable "r2"  was set but never used
+  int32_t r2[mi];
+..\src\Math\mathfast.c: 2 warnings, 0 errors
+linking...
+Program Size: Code=20744 RO-data=2488 RW-data=884 ZI-data=12436  
+FromELF: creating hex file...
+".\out_531\dsps_device_531.axf" - 0 Error(s), 2 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -41,7 +50,7 @@ Package Vendor: ARM
   D:\Keil_v5\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:04
 </pre>
 </body>
 </html>

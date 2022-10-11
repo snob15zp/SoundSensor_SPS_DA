@@ -3,4 +3,4 @@
 -ID:\Keil_v5\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include
 -ID:\Keil_v5\ARM\CMSIS\Include
 -D__UVISION_VERSION="528" -DARMCM0P -D__DA14531__ -D__MATHTEST__
--o .\out_531\app_msg_utils.o --omf_browse .\out_531\app_msg_utils.crf --depend .\out_531\app_msg_utils.d "..\..\..\..\..\sdk6\sdk\app_modules\src\app_common\app_msg_utils.c"
+-o .\out_531\app_easy_security.o --omf_browse .\out_531\app_easy_security.crf --depend .\out_531\app_easy_security.d "..\..\..\..\..\sdk6\sdk\app_modules\src\app_easy\app_easy_security.c"

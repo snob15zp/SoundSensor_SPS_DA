@@ -3,4 +3,4 @@
 -ID:\Keil_v5\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include
 -ID:\Keil_v5\ARM\CMSIS\Include
 -D__UVISION_VERSION="528" -DARMCM0P -D__DA14531__ -D__MATHTEST__
--o .\out_531\app_entry_point.o --omf_browse .\out_531\app_entry_point.crf --depend .\out_531\app_entry_point.d "..\..\..\..\..\sdk6\sdk\app_modules\src\app_entry\app_entry_point.c"
+-o .\out_531\adc_flash.o --omf_browse .\out_531\adc_flash.crf --depend .\out_531\adc_flash.d "..\src\SPI_ADC\ADC_flash.c"

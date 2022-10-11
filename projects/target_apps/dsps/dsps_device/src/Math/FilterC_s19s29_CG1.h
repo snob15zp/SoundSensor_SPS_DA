@@ -81,6 +81,7 @@ extern ExtY_FilterC_s19s29_CG1_T FilterC_s19s29_CG1_Y;
 /* Model entry point functions */
 extern void FilterC_s19s29_CG1_initialize(void);
 extern void FilterC_s19s29_CG1_step(void);
+extern void FilterC_s19s29_CG1_step_o(void);
 extern void FilterC_s19s29_CG1_terminate(void);
 
 /* Real-time Model object */

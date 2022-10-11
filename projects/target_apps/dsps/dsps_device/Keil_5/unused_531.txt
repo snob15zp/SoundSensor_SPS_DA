@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Tue Oct 11 10:31:34 2022
+;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Tue Oct 11 22:11:28 2022
 ;VERSION 0.2
 ;FILE adc_531.o
 adc_correct_sample <= USED 0
@@ -69,7 +69,6 @@ crc32 <= USED 0
 FilterAC_s19s29_CG_initialize <= USED 0
 FilterAC_s19s29_CG_terminate <= USED 0
 ;FILE filterc_s19s29_cg1.o
-FilterC_s19s29_CG1_initialize <= USED 0
 FilterC_s19s29_CG1_terminate <= USED 0
 ;FILE gpio.o
 GPIO_ConfigurePinPower <= USED 0

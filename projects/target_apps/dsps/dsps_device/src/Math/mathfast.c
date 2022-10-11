@@ -12,6 +12,7 @@ uint8_t IntegratorIndex,IntegratorIndexOut;
 
 void fast(void);
 void mathtest(void);
+void mathtest_FilterC(void);
 
 void MF_main(void)
 {
@@ -31,6 +32,7 @@ void MF_main(void)
 	
 	fast();
 	mathtest();
+	mathtest_FilterC();
 	
 }
 ;
@@ -51,6 +53,32 @@ for(int i=0;i<mi;i++)
 }
 
 }
+
+void mathtest_FilterC(void)
+{
+#define mi 2
+int32_t a[mi]={65536,-65536};
+	
+int32_t r1[mi];
+int32_t r2[mi];
+FilterC_s19s29_CG1_initialize();
+for(int i=0;i<mi;i++)
+{
+	FilterC_s19s29_CG1_U.Input=a[i];
+  FilterC_s19s29_CG1_step(); 
+	r1[i]=FilterC_s19s29_CG1_Y.Output;
+}
+FilterC_s19s29_CG1_initialize();
+for(int i=0;i<mi;i++)
+{
+	FilterC_s19s29_CG1_U.Input=a[i];
+  FilterC_s19s29_CG1_step_o(); 
+	r2[i]=FilterC_s19s29_CG1_Y.Output;
+}
+
+}
+
+
 
 t_U_MF_int64 fastmul(int32_t A,uint16_t K);
 
@@ -116,6 +144,28 @@ inline int32_T mul_u18s29sh(int32_T a, int32_T b, uint32_T aShift) //aShift=0 ->
 	b_h = ((uint32_T)b) >> 14;
   b_l = ((uint32_T )b) &	0x3fff;
 	ab=( (b_h * a )>>(aShift-14) )	+ ( (b_l * a )>> (aShift));
+	ab=-ab;	
+	}
+	return ab;
+}
+
+inline int32_T mul_u18s29shl(int32_T a, int32_T b, uint32_T aShift) //aShift=0 ->
+{
+	int32_T ab;
+	uint32_T b_h;
+	uint32_T b_l;
+	if (b>=0)
+	{
+	b_h = ((uint32_T)b) >> 14;
+  b_l = ((uint32_T )b) &	0x3fff;
+	ab=( (b_h * a )>>(aShift-14) ) 	+  ( (b_l * a )>> (aShift) );
+	}
+	else
+	{
+		b=-b;
+	b_h = ((uint32_T)b) >> 14;
+  b_l = ((uint32_T )b) &	0x3fff;
+	ab=( (b_h * a )<<(14-aShift) )	+ ( (b_l * a )>> (aShift));
 	ab=-ab;	
 	}
 	return ab;

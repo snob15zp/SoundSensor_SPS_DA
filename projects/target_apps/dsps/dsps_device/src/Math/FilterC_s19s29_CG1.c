@@ -59,7 +59,7 @@ RT_MODEL_FilterC_s19s29_CG1_T *const FilterC_s19s29_CG1_M =
 
 
 /* Model step function */
-void FilterC_s19s29_CG1_step(void)
+void FilterC_s19s29_CG1_step_o(void)
 {
   int32_T rtb_HeadSum1;
   int32_T rtb_HeadSum2;
@@ -104,8 +104,8 @@ void FilterC_s19s29_CG1_step(void)
    *  Sum: '<S1>/HeadSum2'
    */
   FilterC_s19s29_CG1_DW.BodyDelay22_DSTATE =
-    (((FilterC_s19s29_CG1_DW.FootDelay2_DSTATE >> 3) - rtb_HeadSum1) -
-     mul_u18s29sh(-130543, rtb_HeadSum2, 17U)) << 3;                                   //17
+    (((FilterC_s19s29_CG1_DW.FootDelay2_DSTATE >> 3) - rtb_HeadSum1) +
+     mul_u18s29sh(130543, rtb_HeadSum2, 17U)) << 3;                                   //17
 
   /* Update for Delay: '<S1>/FootDelay1' incorporates:
    *  Gain: '<S1>/a(3)(1)'
@@ -122,9 +122,77 @@ void FilterC_s19s29_CG1_step(void)
    *  Sum: '<S1>/HeadSum1'
    *  Sum: '<S1>/HeadSum2'
    */
-  FilterC_s19s29_CG1_DW.FootDelay2_DSTATE = (rtb_HeadSum1 - mul_u18s29sh(4063,        //17
+  FilterC_s19s29_CG1_DW.FootDelay2_DSTATE = (rtb_HeadSum1 - mul_u18s29shl(4063,        //12
     rtb_HeadSum2, 12U)) << 2;
 }
+
+void FilterC_s19s29_CG1_step(void)
+{
+  int32_T rtb_HeadSum1;
+  int32_T rtb_HeadSum2;
+
+  /* Sum: '<S1>/HeadSum1' incorporates:
+   *  Delay: '<S1>/BodyDelay21'
+   *  Inport: '<Root>/Input'
+   */
+  rtb_HeadSum1 = (FilterC_s19s29_CG1_U.Input >> 1) +
+    FilterC_s19s29_CG1_DW.BodyDelay21_DSTATE;
+
+  /* Sum: '<S1>/HeadSum2' incorporates:
+   *  Delay: '<S1>/BodyDelay22'
+   *  Sum: '<S1>/HeadSum1'
+   */
+  rtb_HeadSum2 = (FilterC_s19s29_CG1_DW.BodyDelay22_DSTATE >> 2) + rtb_HeadSum1;
+
+  /* Outport: '<Root>/Output' incorporates:
+   *  Sum: '<S1>/HeadSum2'
+   */
+  FilterC_s19s29_CG1_Y.Output = rtb_HeadSum2;
+
+  /* Update for Delay: '<S1>/BodyDelay21' incorporates:
+   *  Delay: '<S1>/FootDelay1'
+   *  Gain: '<S1>/a(2)(1)'
+   *  Inport: '<Root>/Input'
+   *  Sum: '<S1>/BodyLSum21'
+   *  Sum: '<S1>/BodyRSum21'
+   *  Sum: '<S1>/HeadSum1'
+   */
+  FilterC_s19s29_CG1_DW.BodyDelay21_DSTATE =
+    ((FilterC_s19s29_CG1_DW.FootDelay1_DSTATE >> 1) + FilterC_s19s29_CG1_U.Input)
+    - (mul_s32_loSR(94095, rtb_HeadSum1, 17U) >> 2);
+
+  /* Update for Delay: '<S1>/BodyDelay22' incorporates:
+   *  Delay: '<S1>/FootDelay2'
+   *  Gain: '<S1>/a(2)(2)'
+   *  Gain: '<S1>/b(2)(2)'
+   *  Sum: '<S1>/BodyLSum22'
+   *  Sum: '<S1>/BodyRSum22'
+   *  Sum: '<S1>/HeadSum1'
+   *  Sum: '<S1>/HeadSum2'
+   */
+  FilterC_s19s29_CG1_DW.BodyDelay22_DSTATE =
+    (((FilterC_s19s29_CG1_DW.FootDelay2_DSTATE >> 3) - rtb_HeadSum1) -
+     mul_s32_loSR(-130543, rtb_HeadSum2, 17U)) << 3;
+
+  /* Update for Delay: '<S1>/FootDelay1' incorporates:
+   *  Gain: '<S1>/a(3)(1)'
+   *  Inport: '<Root>/Input'
+   *  Sum: '<S1>/FootSum1'
+   *  Sum: '<S1>/HeadSum1'
+   */
+  FilterC_s19s29_CG1_DW.FootDelay1_DSTATE = FilterC_s19s29_CG1_U.Input -
+    (mul_s32_loSR(135099, rtb_HeadSum1, 17U) >> 6);
+
+  /* Update for Delay: '<S1>/FootDelay2' incorporates:
+   *  Gain: '<S1>/a(3)(2)'
+   *  Sum: '<S1>/FootSum2'
+   *  Sum: '<S1>/HeadSum1'
+   *  Sum: '<S1>/HeadSum2'
+   */
+  FilterC_s19s29_CG1_DW.FootDelay2_DSTATE = (rtb_HeadSum1 - mul_s32_loSR(4063,
+    rtb_HeadSum2, 12U)) << 2;
+}
+
 
 /* Model initialize function */
 void FilterC_s19s29_CG1_initialize(void)

@@ -268,6 +268,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGUARM</Key>
+          <Name>|í¯</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -299,25 +300,9 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>53</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>133974390</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\src\Math\mathfast.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\dsps_device_531\../src/Math/mathfast.c\53</Expression>
-        </Bp>
-        <Bp>
-          <Number>1</Number>
-          <Type>0</Type>
           <LineNumber>33</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>133974586</Address>
+          <Address>133974666</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -329,11 +314,11 @@
           <Expression>\\dsps_device_531\../src/Math/mathfast.c\33</Expression>
         </Bp>
         <Bp>
-          <Number>2</Number>
+          <Number>1</Number>
           <Type>0</Type>
           <LineNumber>116</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>133975280</Address>
+          <Address>133974498</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -343,6 +328,22 @@
           <Filename>..\src\Math\mathfast.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\dsps_device_531\../src/Math/mathfast.c\116</Expression>
+        </Bp>
+        <Bp>
+          <Number>2</Number>
+          <Type>0</Type>
+          <LineNumber>79</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>133974232</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>..\src\Math\mathfast.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\dsps_device_531\../src/Math/mathfast.c\79</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -372,11 +373,6 @@
           <count>1</count>
           <WinNumber>2</WinNumber>
           <ItemText>spi_cfg</ItemText>
-        </Ww>
-        <Ww>
-          <count>2</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>r2[i]</ItemText>
         </Ww>
       </WatchWindow2>
       <MemoryWindow1>
@@ -2340,7 +2336,7 @@
       <GroupNumber>19</GroupNumber>
       <FileNumber>127</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\src\Math\FilterC_s19s29_CG1.c</PathWithFileName>

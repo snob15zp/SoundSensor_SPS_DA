@@ -3,6 +3,31 @@
 #include "FilterAC_s19s29_CG.h"
 
 
+//int32_t sin1000[]={          
+//	        0,
+//   13092290,
+//   25681450,
+//   37283687,
+//   47453133,
+//   55798981,
+//   62000506,
+//   65819386,
+//   67108864,
+//   65819386,
+//   62000506,
+//   55798981,
+//   47453133,
+//   37283687,
+//   25681450,
+//   13092290,
+//          0,};
+
+
+//const int sin1000_len=sizeof(sin1000)/sizeof(int32_t);
+//	
+//int32_t r1[sin1000_len];
+//int32_t r2[sin1000_len];					
+					
 t_U_MF_uint64 Integrator;
 uint32_t Integrator_Hi;
 
@@ -13,6 +38,7 @@ uint8_t IntegratorIndex,IntegratorIndexOut;
 void fast(void);
 void mathtest(void);
 void mathtest_FilterC(void);
+void mathtest_FilterAC(void);
 
 void MF_main(void)
 {
@@ -31,54 +57,87 @@ void MF_main(void)
 	if (t>Integrator.num32[1]) {Integrator_Hi++;};
 	
 	fast();
-	mathtest();
-	mathtest_FilterC();
-	
+	//mathtest();
+	//mathtest_FilterC();
+	//mathtest_FilterAC();
 }
 ;
 
-void mathtest(void)
-{
-#define mi 2
-int32_t a[mi]={65536,-65536};
-int32_t k[mi]={1, 1};
-int32_t s[mi]={14, 14};	
-int32_t r1[mi];
-int32_t r2[mi];
+//void mathtest(void)
+//{
+//const int mi=2;//#define mi 2
+//int32_t a[mi]={65536,-65536};
+//int32_t k[mi]={1, 1};
+//int32_t s[mi]={14, 14};	
 
-for(int i=0;i<mi;i++)
-{
-	r1[i]=mul_u18s29sh(k[i],a[i],s[i]);
-	r2[i]=mul_s32_loSR(k[i],a[i],s[i]);
-}
 
-}
+//for(int i=0;i<mi;i++)
+//{
+//	r1[i]=mul_u18s29sh(k[i],a[i],s[i]);
+//	r2[i]=mul_s32_loSR(k[i],a[i],s[i]);
+//}
 
-void mathtest_FilterC(void)
+//}
+
+//void mathtest_FilterC(void)
+//{
+//const int mi=2;//#define mi 2
+//int32_t a[mi]={65536,-65536};
+//	
+
+//FilterC_s19s29_CG1_initialize();
+//for(int i=0;i<mi;i++)
+//{
+//	FilterC_s19s29_CG1_U.Input=a[i];
+//  FilterC_s19s29_CG1_step(); 
+//	r1[i]=FilterC_s19s29_CG1_Y.Output;
+//}
+//FilterC_s19s29_CG1_initialize();
+//for(int i=0;i<mi;i++)
+//{
+//	FilterC_s19s29_CG1_U.Input=a[i];
+//  FilterC_s19s29_CG1_step_o(); 
+//	r2[i]=FilterC_s19s29_CG1_Y.Output;
+//}
+
+//}
+
+//void mathtest_FilterAC(void)
+//{
+//	
+
+//FilterAC_s19s29_CG_initialize();
+//for(int i=8;i<sin1000_len;i++)
+//{
+//	FilterAC_s19s29_CG_U.Input=sin1000[i];
+//  FilterAC_s19s29_CG_step(); 
+//	r1[i]=FilterAC_s19s29_CG_Y.Output;
+//}
+//FilterAC_s19s29_CG_initialize();
+//for(int i=8;i<sin1000_len;i++)
+//{
+//	FilterAC_s19s29_CG_U.Input=sin1000[i];
+//  FilterAC_s19s29_CG_step_o(); 
+//	r2[i]=FilterAC_s19s29_CG_Y.Output;
+//}
+
+//}
+
+
+
+int32_t filterC(int32_t in) //for test in matlab
 {
-#define mi 2
-int32_t a[mi]={65536,-65536};
-	
-int32_t r1[mi];
-int32_t r2[mi];
-FilterC_s19s29_CG1_initialize();
-for(int i=0;i<mi;i++)
-{
-	FilterC_s19s29_CG1_U.Input=a[i];
-  FilterC_s19s29_CG1_step(); 
-	r1[i]=FilterC_s19s29_CG1_Y.Output;
-}
-FilterC_s19s29_CG1_initialize();
-for(int i=0;i<mi;i++)
-{
-	FilterC_s19s29_CG1_U.Input=a[i];
+	FilterC_s19s29_CG1_U.Input=in;
   FilterC_s19s29_CG1_step_o(); 
-	r2[i]=FilterC_s19s29_CG1_Y.Output;
+	return FilterC_s19s29_CG1_Y.Output;
 }
 
+int32_t filterAC(int32_t in) //for test in matlab
+{
+	FilterAC_s19s29_CG_U.Input=in;
+  FilterAC_s19s29_CG_step_o(); 
+	return FilterAC_s19s29_CG_Y.Output;
 }
-
-
 
 t_U_MF_int64 fastmul(int32_t A,uint16_t K);
 
@@ -130,8 +189,12 @@ t_U_MF_int64 fastmul(int32_t A,uint16_t K)
 inline int32_T mul_u18s29sh(int32_T a, int32_T b, uint32_T aShift) //aShift=0 ->
 {
 	int32_T ab;
-	uint32_T b_h;
+  uint32_T b_h;
 	uint32_T b_l;
+//static int32_T A;
+//static int32_T B;
+//	A=a;
+//	B=b;
 	if (b>=0)
 	{
 	b_h = ((uint32_T)b) >> 14;
@@ -154,11 +217,15 @@ inline int32_T mul_u18s29shl(int32_T a, int32_T b, uint32_T aShift) //aShift=0 -
 	int32_T ab;
 	uint32_T b_h;
 	uint32_T b_l;
+//static int32_T A;
+//static int32_T B;
+//	A=a;
+//	B=b;
 	if (b>=0)
 	{
 	b_h = ((uint32_T)b) >> 14;
   b_l = ((uint32_T )b) &	0x3fff;
-	ab=( (b_h * a )>>(aShift-14) ) 	+  ( (b_l * a )>> (aShift) );
+	ab=( (b_h * a )<<(14-aShift) ) 	+  ( (b_l * a )>> (aShift) );
 	}
 	else
 	{

@@ -27,5 +27,7 @@ int32_T mul_u18s29shl(int32_T a, int32_T b, uint32_T aShift); //aShift=0 ->
 int32_T mul_s32_loSR(int32_T a, int32_T b, uint32_T aShift);
 int32_t filterC(int32_t in);
 int32_t filterAC(int32_t in); //for test in matlab
+t_U_MF_int64 fastmul(uint16_t K,int32_t A);
+int64_t fast(uint64_t in);
 
 #endif

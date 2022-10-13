@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\out_531\dsps_device_531.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\out_531\dsps_device_531.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Wed Oct 12 22:20:19 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Oct 13 19:41:42 2022
 <BR><P>
 <H3>Maximum Stack Usage =        364 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -2779,28 +2779,21 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_da14531.o(RESET)
 </UL>
-<P><STRONG><a name="[1d9]"></a>fastmul</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, mathfast.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = fastmul
-</UL>
-<BR>[Called By]<UL><LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fast
-</UL>
-
-<P><STRONG><a name="[1d8]"></a>fast</STRONG> (Thumb, 88 bytes, Stack size 24 bytes, mathfast.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = fast &rArr; fastmul
-</UL>
-<BR>[Calls]<UL><LI><a href="#[1d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fastmul
-</UL>
-<BR>[Called By]<UL><LI><a href="#[1c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MF_main
-</UL>
-
-<P><STRONG><a name="[1c8]"></a>MF_main</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, mathfast.o(.text))
+<P><STRONG><a name="[1c8]"></a>MF_main</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, mathfast.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = MF_main &rArr; FilterC_s19s29_CG1_step &rArr; mul_s32_loSR &rArr; mul_wide_s32
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FilterC_s19s29_CG1_step
-<LI><a href="#[1db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FilterAC_s19s29_CG_step
-<LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fast
+<BR>[Calls]<UL><LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FilterC_s19s29_CG1_step
+<LI><a href="#[1d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FilterAC_s19s29_CG_step
 </UL>
 <BR>[Called By]<UL><LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;periph_init
+</UL>
+
+<P><STRONG><a name="[1db]"></a>fastmul</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, mathfast.o(.text), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[1da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fast
+</UL>
+
+<P><STRONG><a name="[1da]"></a>fast</STRONG> (Thumb, 86 bytes, Stack size 32 bytes, mathfast.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[1db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fastmul
 </UL>
 
 <P><STRONG><a name="[1dd]"></a>mul_wide_s32</STRONG> (Thumb, 134 bytes, Stack size 36 bytes, mathfast.o(.text))
@@ -2814,11 +2807,11 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mul_wide_s32
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FilterC_s19s29_CG1_step
-<LI><a href="#[1db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FilterAC_s19s29_CG_step
+<BR>[Called By]<UL><LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FilterC_s19s29_CG1_step
+<LI><a href="#[1d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FilterAC_s19s29_CG_step
 </UL>
 
-<P><STRONG><a name="[1da]"></a>FilterC_s19s29_CG1_step</STRONG> (Thumb, 108 bytes, Stack size 24 bytes, filterc_s19s29_cg1.o(.text))
+<P><STRONG><a name="[1d8]"></a>FilterC_s19s29_CG1_step</STRONG> (Thumb, 108 bytes, Stack size 24 bytes, filterc_s19s29_cg1.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = FilterC_s19s29_CG1_step &rArr; mul_s32_loSR &rArr; mul_wide_s32
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mul_s32_loSR
@@ -2826,7 +2819,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[1c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MF_main
 </UL>
 
-<P><STRONG><a name="[1db]"></a>FilterAC_s19s29_CG_step</STRONG> (Thumb, 68 bytes, Stack size 24 bytes, filterac_s19s29_cg.o(.text))
+<P><STRONG><a name="[1d9]"></a>FilterAC_s19s29_CG_step</STRONG> (Thumb, 68 bytes, Stack size 24 bytes, filterac_s19s29_cg.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = FilterAC_s19s29_CG_step &rArr; mul_s32_loSR &rArr; mul_wide_s32
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mul_s32_loSR

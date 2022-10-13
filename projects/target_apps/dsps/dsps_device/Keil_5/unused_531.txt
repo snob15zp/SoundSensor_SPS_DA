@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Wed Oct 12 22:20:20 2022
+;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Thu Oct 13 19:41:42 2022
 ;VERSION 0.2
 ;FILE adc_531.o
 adc_correct_sample <= USED 0
@@ -128,6 +128,9 @@ i2c_wait_until_eeprom_ready <= USED 0
 dummyf <= USED 0
 ;FILE lld.o
 ;FILE mathfast.o
+fast <= USED 0
+fastmul <= USED 0
+fastmul64 <= USED 0
 filterAC <= USED 0
 filterC <= USED 0
 mul_u18s29sh <= USED 0

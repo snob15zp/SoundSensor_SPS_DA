@@ -25,20 +25,23 @@
 
 //const int sin1000_len=sizeof(sin1000)/sizeof(int32_t);
 //	
-//int32_t r1[sin1000_len];
-//int32_t r2[sin1000_len];					
+////int32_t r1[sin1000_len];
+////int32_t r2[sin1000_len];					
+//int64_t r64[sin1000_len];
 					
 t_U_MF_uint64 Integrator;
 uint32_t Integrator_Hi;
 
 uint64_t square;
-
+//uint64_t fastdata;
+					
 uint8_t IntegratorIndex,IntegratorIndexOut;
 
-void fast(void);
+
 void mathtest(void);
 void mathtest_FilterC(void);
 void mathtest_FilterAC(void);
+void mathtest_fast(void);					
 
 void MF_main(void)
 {
@@ -56,10 +59,11 @@ void MF_main(void)
 	Integrator.num64=+FilterAC_s19s29_CG_Y.Output*FilterAC_s19s29_CG_Y.Output;
 	if (t>Integrator.num32[1]) {Integrator_Hi++;};
 	
-	fast();
+	//fast();
 	//mathtest();
 	//mathtest_FilterC();
 	//mathtest_FilterAC();
+//	mathtest_fast();
 }
 ;
 
@@ -77,6 +81,16 @@ void MF_main(void)
 //	r2[i]=mul_s32_loSR(k[i],a[i],s[i]);
 //}
 
+//}
+
+//void mathtest_fast(void)
+//{
+//	for(int i=0;i<sin1000_len;i++)
+//	{
+//		square=((uint64_t)sin1000[i])*((uint64_t)sin1000[i]);
+//		r64[i]=fast(square); 
+//		
+//	}
 //}
 
 //void mathtest_FilterC(void)
@@ -139,7 +153,7 @@ int32_t filterAC(int32_t in) //for test in matlab
 	return FilterAC_s19s29_CG_Y.Output;
 }
 
-t_U_MF_int64 fastmul(int32_t A,uint16_t K);
+
 
 uint64_t fastDelay;
 
@@ -150,29 +164,53 @@ t_U_MF_int64 MF_U_64_fastoutouter;
 t_U_MF_int64 MF_U_64_fastMulResult;
 int64_t fastoutinner;
 
-#define fastFactor 33000
+#define fastFactor 33550	
 
-void fast()
+int64_t fast(uint64_t in)
 {
- MF_U_64_fastoutinner.num64=(square>>7)+fastDelay;
- MF_U_64_fastMulResult=fastmul(MF_U_64_fastoutouter.num32[1],fastFactor);
- fastDelay=square+(MF_U_64_fastoutouter.num64-MF_U_64_fastMulResult.num64);	
+ MF_U_64_fastoutinner.num64=(in>>7)+fastDelay;
+ MF_U_64_fastMulResult=fastmul(fastFactor,MF_U_64_fastoutouter.num32[1]);
+ fastDelay=(in>>7)+(MF_U_64_fastoutouter.num64-MF_U_64_fastMulResult.num64);	
  MF_U_64_fastoutouter.num64= MF_U_64_fastoutinner.num64;
+ return MF_U_64_fastoutouter.num64;	
 }
 
-
-t_U_MF_int64 fastmul(int32_t A,uint16_t K)
+t_U_MF_int64 fastmul(uint16_t K,int32_t A)
 { 
-	t_U_MF_int64 t;
-	uint32_t r0;
-	uint32_t uA;
+static	t_U_MF_int64 t;
+static	uint32_t r0,r1; 
+static 	uint32_t uA;
+	if (A<0) 
+	{	uA=-A;
+		r1=((uA>>16)*K);
+		r0=(uA&0xffff)*K;
+		//t.num32[0]+=r0<<5;
+		t.num64=(r0<<5)+(r1<<(5+16));
+		t.num64=-t.num64;
+	}
+	else
+	{ uA=A;
+		r1=(uA>>16)*K;
+		r0=(uA&0xffff)*K;
+		t.num32[0]=0;
+		t.num32[1]=(r0>>(32-5))+(r1>>(16-5));
+	}
+	return t;
+};
+
+
+t_U_MF_int64 fastmul64(uint16_t K,int32_t A)
+{ 
+static	t_U_MF_int64 t;
+static	uint64_t r0,r1; //TODO optimize
+static 	uint32_t uA;
 	if (A<0) 
 	{	uA=-A;
 		uA=uA<<1;
-		t.num32[1]=(uA>>16)*K;
+		r1=((uA>>16)*K);
 		r0=(uA&0xffff)*K;
-		t.num32[0]=r0<<16;
-		t.num32[1]+=(uA>>16);
+		//t.num32[0]+=r0<<5;
+		t.num64=(r0<<5)+(r1<<(5+16));
 		t.num64=-t.num64;
 	}
 	else
@@ -181,7 +219,7 @@ t_U_MF_int64 fastmul(int32_t A,uint16_t K)
 		t.num32[1]=(uA>>16)*K;
 		r0=(uA&0xffff)*K;
 		t.num32[0]=r0<<16;
-		t.num32[1]+=(uA>>16);
+		t.num32[1]+=(r0>>16);
 	}
 	return t;
 };

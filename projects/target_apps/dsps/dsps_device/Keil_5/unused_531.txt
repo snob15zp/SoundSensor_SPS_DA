@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Thu Oct 13 19:41:42 2022
+;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Fri Oct 14 19:09:32 2022
 ;VERSION 0.2
 ;FILE adc_531.o
 adc_correct_sample <= USED 0
@@ -67,11 +67,11 @@ check_sys_startup_period <= USED 0
 crc32 <= USED 0
 ;FILE filterac_s19s29_cg.o
 FilterAC_s19s29_CG_initialize <= USED 0
-FilterAC_s19s29_CG_step_o <= USED 0
+FilterAC_s19s29_CG_step <= USED 0
 FilterAC_s19s29_CG_terminate <= USED 0
 ;FILE filterc_s19s29_cg1.o
 FilterC_s19s29_CG1_initialize <= USED 0
-FilterC_s19s29_CG1_step_o <= USED 0
+FilterC_s19s29_CG1_step <= USED 0
 FilterC_s19s29_CG1_terminate <= USED 0
 ;FILE gpio.o
 GPIO_ConfigurePinPower <= USED 0
@@ -128,13 +128,11 @@ i2c_wait_until_eeprom_ready <= USED 0
 dummyf <= USED 0
 ;FILE lld.o
 ;FILE mathfast.o
-fast <= USED 0
-fastmul <= USED 0
 fastmul64 <= USED 0
 filterAC <= USED 0
 filterC <= USED 0
-mul_u18s29sh <= USED 0
-mul_u18s29shl <= USED 0
+mul_s32_loSR <= USED 0
+mul_wide_s32 <= USED 0
 ;FILE mathslow.o
 EvaluteLogLevel <= USED 0
 ;FILE nmi_handler.o

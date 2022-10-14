@@ -195,7 +195,7 @@ void periph_init(void)
    test_hnd_init();
 	 while(1)
 	 {
-		 MF_main();
+		 test_MF_main();
 	 }	 
 
 #endif	 

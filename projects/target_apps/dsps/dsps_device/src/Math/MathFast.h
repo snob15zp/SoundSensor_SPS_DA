@@ -21,13 +21,23 @@ typedef union
 	uint16_t num16[4];
 } t_U_MF_uint64;
 
-void MF_main(void);
+//=======================for MATLAB check==================================
+extern uint32_t Integrator_Hi_out;
+extern int32_t i32_fastAC;
+extern int32_t filterCout;
+extern int32_t filterAout;
+//--------------------------------------------------------------------------
+//=======================for colling from ADCinterrupt===============================
+void MF_main(int32_t adcinput);
+//========================general function for math modules==========================
 int32_T mul_u18s29sh(int32_T a, int32_T b, uint32_T aShift);
 int32_T mul_u18s29shl(int32_T a, int32_T b, uint32_T aShift); //aShift=0 ->
 int32_T mul_s32_loSR(int32_T a, int32_T b, uint32_T aShift);
+//========================for test in MATLAB=========================================
 int32_t filterC(int32_t in);
 int32_t filterAC(int32_t in); //for test in matlab
 t_U_MF_int64 fastmul(uint16_t K,int32_t A);
 int64_t fast(uint64_t in);
-
+//=========================for test in keil==========================================
+void test_MF_main(void);
 #endif

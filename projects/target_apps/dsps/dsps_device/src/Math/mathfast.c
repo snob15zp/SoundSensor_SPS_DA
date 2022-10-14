@@ -2,8 +2,8 @@
 #include "FilterC_s19s29_CG1.h"
 #include "FilterAC_s19s29_CG.h"
 
-
-//int32_t sin1000[]={          
+//const int sin1000_len=16;
+//int32_t sin1000[sin1000_len]={          
 //	        0,
 //   13092290,
 //   25681450,
@@ -20,7 +20,8 @@
 //   37283687,
 //   25681450,
 //   13092290,
-//          0,};
+////          0,
+//};
 
 
 //const int sin1000_len=sizeof(sin1000)/sizeof(int32_t);
@@ -29,36 +30,58 @@
 ////int32_t r2[sin1000_len];					
 //int64_t r64[sin1000_len];
 					
-t_U_MF_uint64 Integrator;
-uint32_t Integrator_Hi;
+static t_U_MF_uint64 Integrator;
 
-uint64_t square;
+uint32_t Integrator_Hi;
+t_U_MF_int64 MF_U_64_fastAC;
+//-------------- output fast----------
+uint32_t Integrator_Hi_out;
+int32_t filterCout;
+int32_t filterAout;
+int32_t i32_fastAC;
+//-----------------------------------
+
 //uint64_t fastdata;
 					
-uint8_t IntegratorIndex,IntegratorIndexOut;
+//uint8_t IntegratorIndex,IntegratorIndexOut;
 
 
-void mathtest(void);
-void mathtest_FilterC(void);
-void mathtest_FilterAC(void);
-void mathtest_fast(void);					
+//void mathtest(void);
+//void mathtest_FilterC(void);
+//void mathtest_FilterAC(void);
+//void mathtest_fast(void);			
 
-void MF_main(void)
+
+
+void MF_main(int32_t adcinput)
 {
-	uint32_t t;
+static	uint32_t t;
 	
-	FilterC_s19s29_CG1_step();
+static	uint64_t square;
+	
+	FilterC_s19s29_CG1_U.Input=adcinput;
+	
+	FilterC_s19s29_CG1_step_o();
+	
+	filterCout=FilterC_s19s29_CG1_Y.Output;
 	
 	FilterAC_s19s29_CG_U.Input=FilterC_s19s29_CG1_Y.Output;
 	
-	FilterAC_s19s29_CG_step();
+	FilterAC_s19s29_CG_step_o();
 	
-	square=FilterAC_s19s29_CG_Y.Output*FilterAC_s19s29_CG_Y.Output;
+	filterAout=FilterAC_s19s29_CG_Y.Output;
+	
+	square=((uint64_t)(FilterAC_s19s29_CG_Y.Output))*((uint64_t)(FilterAC_s19s29_CG_Y.Output));
 	
 	t=Integrator.num32[1];
-	Integrator.num64=+FilterAC_s19s29_CG_Y.Output*FilterAC_s19s29_CG_Y.Output;
-	if (t>Integrator.num32[1]) {Integrator_Hi++;};
+	Integrator.num64+=square;
+	if (t>Integrator.num32[1]) 
+  {Integrator_Hi++;
+	 Integrator_Hi_out=Integrator_Hi;	
+	};
 	
+	MF_U_64_fastAC.num64=fast(square);
+	i32_fastAC=(int32_t)(MF_U_64_fastAC.num32[1]);
 	//fast();
 	//mathtest();
 	//mathtest_FilterC();
@@ -66,6 +89,20 @@ void MF_main(void)
 //	mathtest_fast();
 }
 ;
+//void test_MF_main(void)
+//{
+//	while(1)
+//	{
+//		for(int i=0;i<sin1000_len;i++)
+//		{
+//			MF_main(sin1000[i]);
+//		}
+//			for(int i=0;i<sin1000_len;i++)
+//		{
+//			MF_main(-sin1000[i]);
+//		}
+//	};
+//}
 
 //void mathtest(void)
 //{
@@ -92,6 +129,7 @@ void MF_main(void)
 //		
 //	}
 //}
+
 
 //void mathtest_FilterC(void)
 //{

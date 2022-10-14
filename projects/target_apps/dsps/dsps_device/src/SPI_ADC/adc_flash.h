@@ -13,6 +13,10 @@
 void AF_V_WriteTimestamp(void);
 void AF_V_WriteStartServiceRecord(uint8_t recodType, uint16_t callerFunction);
 void AF_V_WriteStopServiceRecord(uint8_t recodType, uint16_t callerFunction);
+
 void AF_V_AddADCdataToFIFO(uint16_t A, uint16_t B);
+
+void AF_V_WriteStart(uint16_t callerFunction);
+void AF_V_WriteStop(uint16_t callerFunction);
 
 #endif

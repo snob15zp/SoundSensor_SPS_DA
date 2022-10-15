@@ -1,8 +1,9 @@
 #include "SS_sys.h"
 #include "systick.h"
 #include "gpio.h"
+#include "MathFast.h"
 
-#define SYSTICK_PERIOD_US   1000000     // period for systick timer in us, so 1000000ticks = 1second
+#define SYSTICK_PERIOD_US   64     // period for systick timer in us, so 1000000ticks = 1second
 #define SYSTICK_EXCEPTION   1           // generate systick exceptions
 
 
@@ -10,27 +11,35 @@
 volatile uint32_t systick_time;
 
 #ifndef __SoundSensor__
-volatile uint32_t i;
-
+volatile static uint8_t i;
+#endif
 
 void systick_irq()
 {
-    systick_time++;
-    if (i == 0)
-    {
-        GPIO_SetActive(LED_PORT, LED_PIN);
-        i = 1;
-    }
-    else
-    {
-        GPIO_SetInactive(LED_PORT, LED_PIN);
-        i = 0;
-    }
-	
-	
+    systick_time++;	  
+#ifndef __SoundSensor__
+	  GPIO_SetActive(LED_PORT, LED_PIN); 
+#endif	
+	  test_MF_main_ADCEmul();
+#ifndef __SoundSensor__	
+	  GPIO_SetInactive(LED_PORT, LED_PIN);
+#endif	
+
+//#ifndef
+//    if (i == 0)
+//    {
+//        GPIO_SetActive(LED_PORT, LED_PIN);
+//        i = 1;
+//    }
+//    else
+//    {
+//        GPIO_SetInactive(LED_PORT, LED_PIN);
+//        i = 0;
+//    }
+//#endif		
 	
 }
-#endif
+
 
 void test_hnd_init(void)
 {

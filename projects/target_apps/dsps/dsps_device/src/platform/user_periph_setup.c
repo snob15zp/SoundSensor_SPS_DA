@@ -193,11 +193,11 @@ void periph_init(void)
 #else
 #ifdef __MATHTEST__	 
    LEDinit();
-   test_hnd_init();
+   test_hnd_init(); //sys tick
 	 while(1)
 	 { 
-		 MS_test_EvaluteLogLevel();
-		 test_MF_main();
+//		 MS_test_EvaluteLogLevel();
+//		 test_MF_main();
 	 }	 
 
 #endif	 

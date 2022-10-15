@@ -29,6 +29,8 @@ extern int32_t filterAout;
 //--------------------------------------------------------------------------
 //=======================for colling from ADCinterrupt===============================
 void MF_main(int32_t adcinput);
+//=======================for ADC emulating===========================================
+void test_MF_main_ADCEmul(void);
 //========================general function for math modules==========================
 int32_T mul_u18s29sh(int32_T a, int32_T b, uint32_T aShift);
 int32_T mul_u18s29shl(int32_T a, int32_T b, uint32_T aShift); //aShift=0 ->

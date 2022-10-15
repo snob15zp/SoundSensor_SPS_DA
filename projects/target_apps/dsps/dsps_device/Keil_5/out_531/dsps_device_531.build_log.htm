@@ -5,7 +5,7 @@
 <h2>Tool Versions:</h2>
 IDE-Version: µVision V5.28.0.0
 Copyright (C) 2019 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: 1 1, 1, LIC=2TTQD-8XRTT-HRTXN-YV1RZ-UZXPB-2VWER
+License Information: 1 1, 1, LIC=NHYHL-0KXUH-JPIZQ-NTCI2-NA0ND-Q2DKC
  
 Tool Versions:
 Toolchain:       MDK-ARM Professional  Version: 5.28.0.0
@@ -21,17 +21,22 @@ Target DLL:      Segger\JL2CM3.dll V2.99.36.0
 Dialog DLL:      TARMCM1.DLL V1.14.1.0
  
 <h2>Project:</h2>
-D:\DropBox_Nsel\ZERDLab Dropbox\CurrentProject\SoundSensor\Firmware\git_SS\SoundSensor_SPS_DA\projects\target_apps\dsps\dsps_device\Keil_5\dsps_device_ss.uvprojx
+D:\user\DropBox_Nsel\ZERDLab Dropbox\CurrentProject\SoundSensor\Firmware\git_SS\SoundSensor_SPS_DA\projects\target_apps\dsps\dsps_device\Keil_5\dsps_device_ss.uvprojx
 Project File Date:  10/11/2022
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'dsps_531'
-compiling mathfast.c...
+compiling MathSlow.c...
+..\src\Math\MathSlow.h(14): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\src\Math\MathSlow.c(34): warning:  #1-D: last line of file ends without a newline
+  }
+..\src\Math\MathSlow.c: 2 warnings, 0 errors
 linking...
-Program Size: Code=20714 RO-data=2462 RW-data=948 ZI-data=12516  
+Program Size: Code=23380 RO-data=2528 RW-data=888 ZI-data=12532  
 FromELF: creating hex file...
-".\out_531\dsps_device_531.axf" - 0 Error(s), 0 Warning(s).
+".\out_531\dsps_device_531.axf" - 0 Error(s), 2 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -42,10 +47,10 @@ Package Vendor: ARM
 
 <h2>Collection of Component include folders:</h2>
   .\RTE\_dsps_531
-  d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include
+  D:\Keil_v5\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:05
+Build Time Elapsed:  00:00:04
 </pre>
 </body>
 </html>

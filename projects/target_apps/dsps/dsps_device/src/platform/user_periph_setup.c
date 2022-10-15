@@ -39,6 +39,7 @@
 #include "ss_i2c.h"
 #include "SS_InterfaceToBLE.h"
 #include "MathFast.h"
+#include "MathSlow.h"
 #include "SS_sys.h"
 
 #if defined (CFG_SPI_FLASH_ENABLE)
@@ -194,7 +195,8 @@ void periph_init(void)
    LEDinit();
    test_hnd_init();
 	 while(1)
-	 {
+	 { 
+		 MS_test_EvaluteLogLevel();
 		 test_MF_main();
 	 }	 
 

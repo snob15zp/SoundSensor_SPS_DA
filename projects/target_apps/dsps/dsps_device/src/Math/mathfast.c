@@ -89,8 +89,8 @@ static	uint64_t square;
 //	mathtest_fast();
 }
 ;
-//void test_MF_main(void)
-//{
+void test_MF_main(void)
+{
 //	while(1)
 //	{
 //		for(int i=0;i<sin1000_len;i++)
@@ -102,7 +102,7 @@ static	uint64_t square;
 //			MF_main(-sin1000[i]);
 //		}
 //	};
-//}
+}
 
 //void mathtest(void)
 //{

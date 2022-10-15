@@ -70,25 +70,25 @@ int32_t i32_fastAC;
 
 
 
-void MF_main(int32_t adcinput)
+inline void MF_main(int32_t adcoutput)
 {
-static	uint32_t t;
+	uint32_t t;
 	
-static	uint64_t square;
+	uint64_t square;
 	
-	FilterC_s19s29_CG1_U.Input=adcinput;
+	//FilterC_s19s29_CG1_U.Input=adcinput;
 	
-	FilterC_s19s29_CG1_step_o();
+	filterCout=FilterC_s19s29_CG1_step_o(adcoutput);
 	
-	filterCout=FilterC_s19s29_CG1_Y.Output;
+	//filterCout=FilterC_s19s29_CG1_Y.Output;
 	
-	FilterAC_s19s29_CG_U.Input=FilterC_s19s29_CG1_Y.Output;
+	//FilterAC_s19s29_CG_U.Input=FilterC_s19s29_CG1_Y.Output;
 	
-	FilterAC_s19s29_CG_step_o();
+	filterAout=FilterAC_s19s29_CG_step_o(filterCout);
 	
-	filterAout=FilterAC_s19s29_CG_Y.Output;
+	//filterAout=FilterAC_s19s29_CG_Y.Output;
 	
-	square=((uint64_t)(FilterAC_s19s29_CG_Y.Output))*((uint64_t)(FilterAC_s19s29_CG_Y.Output));
+	square=MF_sqr(filterAout);
 	
 	t=Integrator.num32[1];
 	Integrator.num64+=square;
@@ -99,14 +99,14 @@ static	uint64_t square;
 	
 	MF_U_64_fastAC.num64=fast(square);
 	i32_fastAC=(int32_t)(MF_U_64_fastAC.num32[1]);
-	//fast();
+	//fast();//test
 	//mathtest();
 	//mathtest_FilterC();
 	//mathtest_FilterAC();
 //	mathtest_fast();
 }
 ;
-void test_MF_main_ADCEmul(void)
+inline void test_MF_main_ADCEmul(void)
 {
 	static uint8_t i;
 	i++;
@@ -205,19 +205,19 @@ void test_MF_main_ADCEmul(void)
 
 
 
-int32_t filterC(int32_t in) //for test in matlab
-{
-	FilterC_s19s29_CG1_U.Input=in;
-  FilterC_s19s29_CG1_step_o(); 
-	return FilterC_s19s29_CG1_Y.Output;
-}
+//int32_t filterC(int32_t in) //for test in matlab
+//{
+//	FilterC_s19s29_CG1_U.Input=in;
+//  FilterC_s19s29_CG1_step_o(); 
+//	return FilterC_s19s29_CG1_Y.Output;
+//}
 
-int32_t filterAC(int32_t in) //for test in matlab
-{
-	FilterAC_s19s29_CG_U.Input=in;
-  FilterAC_s19s29_CG_step_o(); 
-	return FilterAC_s19s29_CG_Y.Output;
-}
+//inline int32_t filterAC(int32_t in) //for test in matlab
+//{
+//	FilterAC_s19s29_CG_U.Input=in;
+//  FilterAC_s19s29_CG_step_o(); 
+//	return FilterAC_s19s29_CG_Y.Output;
+//}
 
 
 
@@ -230,34 +230,34 @@ t_U_MF_int64 MF_U_64_fastoutouter;
 t_U_MF_int64 MF_U_64_fastMulResult;
 int64_t fastoutinner;
 
-#define fastFactor 33550	
 
-int64_t fast(uint64_t in)
+
+inline int64_t fast(uint64_t in)
 {
  MF_U_64_fastoutinner.num64=(in>>7)+fastDelay;
- MF_U_64_fastMulResult=fastmul(fastFactor,MF_U_64_fastoutouter.num32[1]);
+ MF_U_64_fastMulResult=fastmul(MF_U_64_fastoutouter.num32[1]);
  fastDelay=(in>>7)+(MF_U_64_fastoutouter.num64-MF_U_64_fastMulResult.num64);	
  MF_U_64_fastoutouter.num64= MF_U_64_fastoutinner.num64;
  return MF_U_64_fastoutouter.num64;	
 }
-
-t_U_MF_int64 fastmul(uint16_t K,int32_t A)
+#define fastFactor 33550	
+inline t_U_MF_int64 fastmul(int32_t A)
 { 
-static	t_U_MF_int64 t;
-static	uint32_t r0,r1; 
-static 	uint32_t uA;
+t_U_MF_int64 t;
+uint32_t r0,r1; 
+uint32_t uA;
 	if (A<0) 
 	{	uA=-A;
-		r1=((uA>>16)*K);
-		r0=(uA&0xffff)*K;
+		r1=((uA>>16)*fastFactor);
+		r0=(uA&0xffff)*fastFactor;
 		//t.num32[0]+=r0<<5;
 		t.num64=(r0<<5)+(r1<<(5+16));
 		t.num64=-t.num64;
 	}
 	else
 	{ uA=A;
-		r1=(uA>>16)*K;
-		r0=(uA&0xffff)*K;
+		r1=(uA>>16)*fastFactor;
+		r0=(uA&0xffff)*fastFactor;
 		t.num32[0]=0;
 		t.num32[1]=(r0>>(32-5))+(r1>>(16-5));
 	}
@@ -265,30 +265,30 @@ static 	uint32_t uA;
 };
 
 
-t_U_MF_int64 fastmul64(uint16_t K,int32_t A)
-{ 
-static	t_U_MF_int64 t;
-static	uint64_t r0,r1; //TODO optimize
-static 	uint32_t uA;
-	if (A<0) 
-	{	uA=-A;
-		uA=uA<<1;
-		r1=((uA>>16)*K);
-		r0=(uA&0xffff)*K;
-		//t.num32[0]+=r0<<5;
-		t.num64=(r0<<5)+(r1<<(5+16));
-		t.num64=-t.num64;
-	}
-	else
-	{ uA=A;
-		uA=uA<<1;
-		t.num32[1]=(uA>>16)*K;
-		r0=(uA&0xffff)*K;
-		t.num32[0]=r0<<16;
-		t.num32[1]+=(r0>>16);
-	}
-	return t;
-};
+//inline t_U_MF_int64 fastmul64(uint16_t K,int32_t A)
+//{ 
+//static	t_U_MF_int64 t;
+//static	uint64_t r0,r1; //TODO optimize
+//static 	uint32_t uA;
+//	if (A<0) 
+//	{	uA=-A;
+//		uA=uA<<1;
+//		r1=((uA>>16)*K);
+//		r0=(uA&0xffff)*K;
+//		//t.num32[0]+=r0<<5;
+//		t.num64=(r0<<5)+(r1<<(5+16));
+//		t.num64=-t.num64;
+//	}
+//	else
+//	{ uA=A;
+//		uA=uA<<1;
+//		t.num32[1]=(uA>>16)*K;
+//		r0=(uA&0xffff)*K;
+//		t.num32[0]=r0<<16;
+//		t.num32[1]+=(r0>>16);
+//	}
+//	return t;
+//};
 
 inline int32_T mul_u18s29sh(int32_T a, int32_T b, uint32_T aShift) //aShift=0 ->
 {
@@ -316,6 +316,34 @@ inline int32_T mul_u18s29sh(int32_T a, int32_T b, uint32_T aShift) //aShift=0 ->
 	return ab;
 }
 
+inline int32_T mul_u18s29sh17(int32_T a, int32_T b) //aShift=0 ->
+{
+	int32_T ab;
+  uint32_T b_h;
+	uint32_T b_l;
+//static int32_T A;
+//static int32_T B;
+//	A=a;
+//	B=b;
+	if (b>=0)
+	{
+	b_h = ((uint32_T)b) >> 14;
+  b_l = ((uint32_T )b) &	0x3fff;
+	ab=( (b_h * a )>>(17-14) ) 	+  ( (b_l * a )>> (17) );
+	}
+	else
+	{
+		b=-b;
+	b_h = ((uint32_T)b) >> 14;
+  b_l = ((uint32_T )b) &	0x3fff;
+	ab=( (b_h * a )>>(17-14) )	+ ( (b_l * a )>> (17));
+	ab=-ab;	
+	}
+	return ab;
+}
+
+
+
 inline int32_T mul_u18s29shl(int32_T a, int32_T b, uint32_T aShift) //aShift=0 ->
 {
 	int32_T ab;
@@ -341,6 +369,72 @@ inline int32_T mul_u18s29shl(int32_T a, int32_T b, uint32_T aShift) //aShift=0 -
 	}
 	return ab;
 }
+
+inline int32_T mul_u18s29sh12(int32_T a, int32_T b) //aShift=0 ->
+{
+	int32_T ab;
+	uint32_T b_h;
+	uint32_T b_l;
+//static int32_T A;
+//static int32_T B;
+//	A=a;
+//	B=b;
+	if (b>=0)
+	{
+	b_h = ((uint32_T)b) >> 14;
+  b_l = ((uint32_T )b) &	0x3fff;
+	ab=( (b_h * a )<<(14-12) ) 	+  ( (b_l * a )>> (12) );
+	}
+	else
+	{
+		b=-b;
+	b_h = ((uint32_T)b) >> 14;
+  b_l = ((uint32_T )b) &	0x3fff;
+	ab=( (b_h * a )<<(14-12) )	+ ( (b_l * a )>> (12));
+	ab=-ab;	
+	}
+	return ab;
+}
+
+inline uint64_t MF_sqr(int32_T a) //aShift=0 ->
+{
+	t_U_MF_uint64 a2;
+
+	if (a<0)
+	         {a=-a;};
+	a2.num32[0]=(a&0xffff)*(a&0xffff);
+	a2.num32[1]=((a>>16)*(a>>16)); 
+  a2.num64+=(((uint64_t)((a&0xffff)*(a>>16)))<<17);
+	return a2.num64;
+}
+
+
+inline int32_T mul_u18s29sh13(int32_T a, int32_T b) //aShift=0 ->
+{
+	int32_T ab;
+	uint32_T b_h;
+	uint32_T b_l;
+//static int32_T A;
+//static int32_T B;
+//	A=a;
+//	B=b;
+	if (b>=0)
+	{
+	b_h = ((uint32_T)b) >> 14;
+  b_l = ((uint32_T )b) &	0x3fff;
+	ab=( (b_h * a )<<(14-13) ) 	+  ( (b_l * a )>> (13) );
+	}
+	else
+	{
+		b=-b;
+	b_h = ((uint32_T)b) >> 14;
+  b_l = ((uint32_T )b) &	0x3fff;
+	ab=( (b_h * a )<<(14-13) )	+ ( (b_l * a )>> (13));
+	ab=-ab;	
+	}
+	return ab;
+}
+
 
 void mul_wide_s32(int32_T in0, int32_T in1, uint32_T *ptrOutBitsHi, uint32_T
                   *ptrOutBitsLo)

@@ -66,15 +66,15 @@ struct tag_RTM_FilterAC_s19s29_CG_T {
 extern DW_FilterAC_s19s29_CG_T FilterAC_s19s29_CG_DW;
 
 /* External inputs (root inport signals with default storage) */
-extern ExtU_FilterAC_s19s29_CG_T FilterAC_s19s29_CG_U;
+//extern ExtU_FilterAC_s19s29_CG_T FilterAC_s19s29_CG_U;
 
 /* External outputs (root outports fed by signals with default storage) */
-extern ExtY_FilterAC_s19s29_CG_T FilterAC_s19s29_CG_Y;
+//extern ExtY_FilterAC_s19s29_CG_T FilterAC_s19s29_CG_Y;
 
 /* Model entry point functions */
 extern void FilterAC_s19s29_CG_initialize(void);
 extern void FilterAC_s19s29_CG_step(void);
-extern void FilterAC_s19s29_CG_step_o(void);
+extern int32_t FilterAC_s19s29_CG_step_o(int32_t Input);
 extern void FilterAC_s19s29_CG_terminate(void);
 
 /* Real-time Model object */

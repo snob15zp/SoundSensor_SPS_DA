@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Wed Sep 28 21:53:10 2022
+;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Mon Oct 17 01:09:27 2022
 ;VERSION 0.2
 ;FILE adc_531.o
 adc_correct_sample <= USED 0
@@ -12,6 +12,9 @@ adc_offset_calibrate <= USED 0
 adc_register_interrupt <= USED 0
 adc_reset <= USED 0
 adc_unregister_interrupt <= USED 0
+;FILE adc_flash.o
+AF_V_WriteStart <= USED 0
+AF_V_WriteStop <= USED 0
 ;FILE app.o
 app_easy_gap_advertise_with_timeout_stop <= USED 0
 app_easy_gap_dev_config_get_active <= USED 0
@@ -52,22 +55,30 @@ app_msg_send_wakeup_ble <= USED 0
 ;FILE arch_main.o
 ;FILE arch_rom.o
 ;FILE arch_sleep.o
+arch_ble_ext_wakeup_get <= USED 0
 arch_ble_ext_wakeup_off <= USED 0
 arch_ble_ext_wakeup_on <= USED 0
 arch_force_active_mode <= USED 0
+arch_get_sleep_mode <= USED 0
 arch_last_rwble_evt_get <= USED 0
 arch_restore_sleep_mode <= USED 0
 arch_set_deep_sleep <= USED 0
 ;FILE arch_system.o
+app_use_lower_clocks_check <= USED 0
 arch_set_pxact_gpio <= USED 0
 arch_wkupct_tweak_deb_time <= USED 0
 check_sys_startup_period <= USED 0
 ;FILE ble_arp.o
 ;FILE crc32.o
 crc32 <= USED 0
+;FILE filterac_s19s29_cg.o
+FilterAC_s19s29_CG_terminate <= USED 0
+;FILE filterc_s19s29_cg1.o
+FilterC_s19s29_CG1_terminate <= USED 0
 ;FILE gpio.o
 GPIO_ConfigurePinPower <= USED 0
 GPIO_DisablePorPin <= USED 0
+GPIO_EnableIRQ <= USED 0
 GPIO_GetIRQInputLevel <= USED 0
 GPIO_GetPinFunction <= USED 0
 GPIO_GetPinStatus <= USED 0
@@ -89,27 +100,42 @@ hw_otpc_read <= USED 0
 hw_otpc_word_prog_and_verify <= USED 0
 hw_otpc_word_read <= USED 0
 ;FILE i2c.o
+i2c_init <= USED 0
 i2c_master_receive_buffer_async <= USED 0
 i2c_master_receive_buffer_sync <= USED 0
 i2c_master_transmit_buffer_async <= USED 0
 i2c_master_transmit_buffer_sync <= USED 0
 i2c_register_int <= USED 0
 i2c_release <= USED 0
+i2c_setup_master <= USED 0
+i2c_setup_slave <= USED 0
 i2c_slave_receive_buffer_async <= USED 0
 i2c_slave_receive_buffer_sync <= USED 0
 i2c_slave_transmit_buffer_async <= USED 0
 i2c_slave_transmit_buffer_sync <= USED 0
 i2c_unregister_int <= USED 0
 ;FILE i2c_eeprom.o
+i2c_eeprom_configure <= USED 0
 i2c_eeprom_get_configuration <= USED 0
+i2c_eeprom_initialize <= USED 0
+i2c_eeprom_read_byte <= USED 0
 i2c_eeprom_read_data <= USED 0
 i2c_eeprom_release <= USED 0
 i2c_eeprom_update_slave_address <= USED 0
+i2c_eeprom_write_byte <= USED 0
 i2c_eeprom_write_data <= USED 0
 i2c_eeprom_write_page <= USED 0
+i2c_wait_until_eeprom_ready <= USED 0
 ;FILE jump_table.o
 dummyf <= USED 0
 ;FILE lld.o
+;FILE mathfast.o
+MF_main_reset <= USED 0
+mul_s32_loSR <= USED 0
+mul_u18s29sh <= USED 0
+mul_u18s29shl <= USED 0
+mul_wide_s32 <= USED 0
+;FILE mathslow.o
 ;FILE nmi_handler.o
 ;FILE otp_cs.o
 otp_cs_get_adc_diff_ge <= USED 0
@@ -137,6 +163,8 @@ rf_nfm_enable <= USED 0
 rf_power_down <= USED 0
 ;FILE rwble.o
 ;FILE rwip.o
+patched_ble_regs_push <= USED 0
+rwip_sleep <= USED 0
 ;FILE spi_531.o
 spi_master_transfer <= USED 0
 spi_receive <= USED 0
@@ -147,6 +175,8 @@ spi_send <= USED 0
 spi_set_cs_mode <= USED 0
 spi_transfer <= USED 0
 ;FILE spi_adc.o
+SPI_ADC_init <= USED 0
+intinit <= USED 0
 ;FILE spi_flash.o
 spi_flash_block_erase_no_wait <= USED 0
 spi_flash_chip_erase <= USED 0
@@ -180,12 +210,16 @@ spi_flash_write_status_reg <= USED 0
 ;FILE sps_server.o
 ;FILE ss_i2c.o
 ss_i2c_test <= USED 0
+ssi2c_init <= USED 0
 sx1502_init <= USED 0
+sx_SysTick_Handler <= USED 0
+sx_main <= USED 0
 ;FILE ss_interfacetoble.o
 SS_InterfaceToBLE_SendThreeBytes <= USED 0
 SS_InterfaceToBLE_init <= USED 0
-led_flash <= USED 0
 user_app_adv_start <= USED 0
+;FILE ss_main.o
+;FILE ss_sys.o
 ;FILE startup_da14531.o
 ;FILE syscntl.o
 syscntl_dcdc_get_level <= USED 0
@@ -197,7 +231,14 @@ syscntl_por_vbat_high_cfg <= USED 0
 syscntl_por_vbat_low_cfg <= USED 0
 ;FILE system_da14531.o
 SystemCoreClockUpdate <= USED 0
+;FILE systick.o
+systick_stop <= USED 0
+systick_value <= USED 0
+systick_wait <= USED 0
 ;FILE timer2.o
+timer2_config <= USED 0
+timer2_pwm_freq_set <= USED 0
+timer2_pwm_signal_config <= USED 0
 ;FILE trng.o
 ;FILE uart.o
 uart_baudrate_setf <= USED 0
@@ -226,6 +267,7 @@ user_init_queues <= USED 0
 ;FILE user_sps_device_config.o
 user_sps_apply_uart_baudrate <= USED 0
 ;FILE user_sps_device_dma.o
+user_before_sleep <= USED 0
 user_on_connect_failed <= USED 0
 ;FILE user_sps_schedule_dma.o
 user_dma_sps_sleep_check <= USED 0

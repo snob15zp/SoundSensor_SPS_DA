@@ -51,12 +51,12 @@ static t_U_MF_uint64 Integrator;
 
 uint32_t Integrator_Hi;
 t_U_MF_int64 MF_U_64_fastAC;
-//-------------- output fast----------
+//-------------- output ----------
 uint32_t Integrator_Hi_out;
 int32_t filterCout;
 int32_t filterAout;
 int32_t i32_fastAC;
-//-----------------------------------
+
 
 //uint64_t fastdata;
 					
@@ -66,9 +66,20 @@ int32_t i32_fastAC;
 //void mathtest(void);
 //void mathtest_FilterC(void);
 //void mathtest_FilterAC(void);
+void fast_init(void);
 //void mathtest_fast(void);			
 
-
+void MF_main_init(void)
+{
+	fast_init();
+  FilterAC_s19s29_CG_initialize();
+	FilterC_s19s29_CG1_initialize();
+};
+void MF_main_reset(void)
+{
+	Integrator.num64=0;
+	Integrator_Hi=0;
+};
 
 inline void MF_main(int32_t adcoutput)
 {
@@ -221,24 +232,25 @@ inline void test_MF_main_ADCEmul(void)
 
 
 
+//----------------fast-------------------
 uint64_t fastDelay;
-
-
-
-t_U_MF_int64 MF_U_64_fastoutinner;
 t_U_MF_int64 MF_U_64_fastoutouter;
-t_U_MF_int64 MF_U_64_fastMulResult;
-int64_t fastoutinner;
 
-
+void fast_init(void)
+{
+  fastDelay=0;
+	MF_U_64_fastoutouter.num64=0;	
+}
 
 inline int64_t fast(uint64_t in)
 {
- MF_U_64_fastoutinner.num64=(in>>7)+fastDelay;
- MF_U_64_fastMulResult=fastmul(MF_U_64_fastoutouter.num32[1]);
- fastDelay=(in>>7)+(MF_U_64_fastoutouter.num64-MF_U_64_fastMulResult.num64);	
- MF_U_64_fastoutouter.num64= MF_U_64_fastoutinner.num64;
- return MF_U_64_fastoutouter.num64;	
+	t_U_MF_int64 MF_U_64_fastMulResult;
+	t_U_MF_int64 MF_U_64_fastoutinner;
+	MF_U_64_fastoutinner.num64=(in>>7)+fastDelay;
+	MF_U_64_fastMulResult=fastmul(MF_U_64_fastoutouter.num32[1]);
+	fastDelay=(in>>7)+(MF_U_64_fastoutouter.num64-MF_U_64_fastMulResult.num64);	
+	MF_U_64_fastoutouter.num64= MF_U_64_fastoutinner.num64;
+	return MF_U_64_fastoutouter.num64;	
 }
 #define fastFactor 33550	
 inline t_U_MF_int64 fastmul(int32_t A)

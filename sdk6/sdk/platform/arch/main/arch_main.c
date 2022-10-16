@@ -77,6 +77,7 @@
 
 #include "ss_i2c.h"
 #include "SS_InterfaceToBLE.h"
+#include "ss_main.h"	
 
 
 
@@ -173,8 +174,8 @@ int main(void)
 
     system_init_post();
 	
-		  
-
+	  ss_main_init();
+	
     /*
      ************************************************************************************
      * Platform initialization
@@ -183,73 +184,89 @@ int main(void)
 
     while(1)
     {
+			
 #ifndef __SoundSensor__					
 					led_flash();
-#endif					
-			
-        do {
+#endif			
+		switch (ssm_main_state)
+		{
+			case 0: ssm_main_ADC_prepare();
+								ssm_main_state++;
+			case 1: if (!ssm_main_BLE_RDY) 
+								{ssm_main_state++;
+								 ss_main_init();
+								};
+				      break;	
+			case 2: if (!ss_main())
+							{	ssm_main_BLE_prepare();
+								ssm_main_state++;
+							}
+								break;
+			case 3: if (ssm_main_BLE_RDY) 
+								ssm_main_state++;
+			        break;
+			case 4:
+        
             // schedule all pending events
             schedule_while_ble_on();
-#ifdef __SoundSensor__			
-					sx_main();
-#endif					
-#ifndef __SoundSensor__					
-					led_flash();
-#endif					
-        }
-        while (app_asynch_proc() != GOTO_SLEEP);    //grant control to the application, try to go to power down
-                                                    //if the application returns GOTO_SLEEP
+					
+       
+//        while (app_asynch_proc() != GOTO_SLEEP);    //grant control to the application, try to go to power down
+//                                                    //if the application returns GOTO_SLEEP
 
-        //wait for interrupt and go to sleep if this is allowed
-        if (((!BLE_APP_PRESENT) && (check_gtl_state())) || (BLE_APP_PRESENT))
-        {
-            //Disable the interrupts
-            GLOBAL_INT_STOP();
+//        //wait for interrupt and go to sleep if this is allowed
+//        if (((!BLE_APP_PRESENT) && (check_gtl_state())) || (BLE_APP_PRESENT))
+//        {
+//            //Disable the interrupts
+//            GLOBAL_INT_STOP();
 
-            app_asynch_sleep_proc();
+//            app_asynch_sleep_proc();
 
-            // get the allowed sleep mode
-            // time from rwip_power_down() to __WFI() must be kept as short as possible!!
-            sleep_mode = rwip_power_down();
+//            // get the allowed sleep mode
+//            // time from rwip_power_down() to __WFI() must be kept as short as possible!!
+//            sleep_mode = rwip_power_down();
 
-            if ((sleep_mode == mode_ext_sleep) || (sleep_mode == mode_ext_sleep_otp_copy))
-            {
-                //power down the radio and whatever is allowed
-                arch_goto_sleep(sleep_mode);
+//            if ((sleep_mode == mode_ext_sleep) || (sleep_mode == mode_ext_sleep_otp_copy))
+//            {
+//                //power down the radio and whatever is allowed
+//                arch_goto_sleep(sleep_mode);
 
-                // In extended sleep mode the watchdog timer is disabled
-                // (power domain PD_SYS is automatically OFF). However, if the debugger
-                // is attached the watchdog timer remains enabled and must be explicitly
-                // disabled.
-                if ((GetWord16(SYS_STAT_REG) & DBG_IS_UP) == DBG_IS_UP)
-                {
-                    wdg_freeze();    // Stop watchdog timer
-                }
+//                // In extended sleep mode the watchdog timer is disabled
+//                // (power domain PD_SYS is automatically OFF). However, if the debugger
+//                // is attached the watchdog timer remains enabled and must be explicitly
+//                // disabled.
+//                if ((GetWord16(SYS_STAT_REG) & DBG_IS_UP) == DBG_IS_UP)
+//                {
+//                    wdg_freeze();    // Stop watchdog timer
+//                }
 
-                //wait for an interrupt to resume operation
-                __WFI();
+//                //wait for an interrupt to resume operation
+//                __WFI();
 
-                if ((GetWord16(SYS_STAT_REG) & DBG_IS_UP) == DBG_IS_UP)
-                {
-                    wdg_resume();    // Resume watchdog timer
-                }
+//                if ((GetWord16(SYS_STAT_REG) & DBG_IS_UP) == DBG_IS_UP)
+//                {
+//                    wdg_resume();    // Resume watchdog timer
+//                }
 
-                //resume operation
-                arch_resume_from_sleep();
-            }
-            else if (sleep_mode == mode_idle)
-            {
-                if (((!BLE_APP_PRESENT) && check_gtl_state()) || (BLE_APP_PRESENT))
-                {
-                    //wait for an interrupt to resume operation
-                    __WFI();
-                }
-            }
-            // restore interrupts
-            GLOBAL_INT_START();
-        }
-        wdg_reload(WATCHDOG_DEFAULT_PERIOD);
-    }
+//                //resume operation
+//                arch_resume_from_sleep();
+//            }
+//            else if (sleep_mode == mode_idle)
+//            {
+//                if (((!BLE_APP_PRESENT) && check_gtl_state()) || (BLE_APP_PRESENT))
+//                {
+//                    //wait for an interrupt to resume operation
+//                    __WFI();
+//                }
+//            }
+//            // restore interrupts
+//            GLOBAL_INT_START();
+//        }
+				break;
+			default: ssm_main_state=0;
+		}
+    wdg_reload(WATCHDOG_DEFAULT_PERIOD);
+    };
 }
 
 /**

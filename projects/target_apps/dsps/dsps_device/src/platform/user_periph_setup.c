@@ -191,6 +191,7 @@ void periph_init(void)
 #endif		 
 
 #else
+   LEDinit();
 #ifdef __MATHTEST__	 
    LEDinit();
    test_hnd_init(); //sys tick
@@ -202,6 +203,7 @@ void periph_init(void)
 
 #endif	 
 #endif	 
+    test_hnd_init();
 
     // Initialize UART2 controller
 #ifdef CFG_PRINTF_UART2

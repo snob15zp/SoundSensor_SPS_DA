@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Sat Oct 15 16:56:10 2022
+;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Mon Oct 17 01:09:27 2022
 ;VERSION 0.2
 ;FILE adc_531.o
 adc_correct_sample <= USED 0
@@ -12,6 +12,9 @@ adc_offset_calibrate <= USED 0
 adc_register_interrupt <= USED 0
 adc_reset <= USED 0
 adc_unregister_interrupt <= USED 0
+;FILE adc_flash.o
+AF_V_WriteStart <= USED 0
+AF_V_WriteStop <= USED 0
 ;FILE app.o
 app_easy_gap_advertise_with_timeout_stop <= USED 0
 app_easy_gap_dev_config_get_active <= USED 0
@@ -52,13 +55,16 @@ app_msg_send_wakeup_ble <= USED 0
 ;FILE arch_main.o
 ;FILE arch_rom.o
 ;FILE arch_sleep.o
+arch_ble_ext_wakeup_get <= USED 0
 arch_ble_ext_wakeup_off <= USED 0
 arch_ble_ext_wakeup_on <= USED 0
 arch_force_active_mode <= USED 0
+arch_get_sleep_mode <= USED 0
 arch_last_rwble_evt_get <= USED 0
 arch_restore_sleep_mode <= USED 0
 arch_set_deep_sleep <= USED 0
 ;FILE arch_system.o
+app_use_lower_clocks_check <= USED 0
 arch_set_pxact_gpio <= USED 0
 arch_wkupct_tweak_deb_time <= USED 0
 check_sys_startup_period <= USED 0
@@ -66,10 +72,8 @@ check_sys_startup_period <= USED 0
 ;FILE crc32.o
 crc32 <= USED 0
 ;FILE filterac_s19s29_cg.o
-FilterAC_s19s29_CG_initialize <= USED 0
 FilterAC_s19s29_CG_terminate <= USED 0
 ;FILE filterc_s19s29_cg1.o
-FilterC_s19s29_CG1_initialize <= USED 0
 FilterC_s19s29_CG1_terminate <= USED 0
 ;FILE gpio.o
 GPIO_ConfigurePinPower <= USED 0
@@ -126,14 +130,12 @@ i2c_wait_until_eeprom_ready <= USED 0
 dummyf <= USED 0
 ;FILE lld.o
 ;FILE mathfast.o
+MF_main_reset <= USED 0
 mul_s32_loSR <= USED 0
 mul_u18s29sh <= USED 0
 mul_u18s29shl <= USED 0
 mul_wide_s32 <= USED 0
 ;FILE mathslow.o
-EvaluteLogLevel <= USED 0
-MS_test_EvaluteLogLevel <= USED 0
-SM_catch <= USED 0
 ;FILE nmi_handler.o
 ;FILE otp_cs.o
 otp_cs_get_adc_diff_ge <= USED 0
@@ -161,6 +163,8 @@ rf_nfm_enable <= USED 0
 rf_power_down <= USED 0
 ;FILE rwble.o
 ;FILE rwip.o
+patched_ble_regs_push <= USED 0
+rwip_sleep <= USED 0
 ;FILE spi_531.o
 spi_master_transfer <= USED 0
 spi_receive <= USED 0
@@ -214,6 +218,7 @@ sx_main <= USED 0
 SS_InterfaceToBLE_SendThreeBytes <= USED 0
 SS_InterfaceToBLE_init <= USED 0
 user_app_adv_start <= USED 0
+;FILE ss_main.o
 ;FILE ss_sys.o
 ;FILE startup_da14531.o
 ;FILE syscntl.o
@@ -262,6 +267,7 @@ user_init_queues <= USED 0
 ;FILE user_sps_device_config.o
 user_sps_apply_uart_baudrate <= USED 0
 ;FILE user_sps_device_dma.o
+user_before_sleep <= USED 0
 user_on_connect_failed <= USED 0
 ;FILE user_sps_schedule_dma.o
 user_dma_sps_sleep_check <= USED 0

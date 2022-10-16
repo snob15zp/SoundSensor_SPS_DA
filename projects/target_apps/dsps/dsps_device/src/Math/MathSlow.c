@@ -21,14 +21,14 @@ MS_i32_fastAC=i32_fastAC;
 }
 	
 
-void EvaluteLogLevel(uint32_t i, int32_t a)
+void EvaluteLogLevel(void)
 {
-LogLevelA=            1000*log10(a)+D_LogLevelA_offset;
-LogLevelIntegrator=   1000*log10(i)+D_LogLevelIntegrator_offset;	
+LogLevelA=            1000*log10(MS_i32_fastAC)+D_LogLevelA_offset;
+LogLevelIntegrator=   1000*log10(MS_Integrator_Hi_out)+D_LogLevelIntegrator_offset;	
 }	
 
 
-void MS_test_EvaluteLogLevel(void)
-{
-	EvaluteLogLevel(121,1092782150);
-}
+//void MS_test_EvaluteLogLevel(void)
+//{
+//	EvaluteLogLevel(121,1092782150);
+//}

@@ -31,6 +31,9 @@ extern int32_t filterAout;
 void MF_main(int32_t adcinput);
 //=======================for ADC emulating===========================================
 void test_MF_main_ADCEmul(void);
+//======================= init=======================================================
+void MF_main_init(void);
+void MF_main_reset(void);
 //========================general function for math modules==========================
 int32_T mul_u18s29sh(int32_T a, int32_T b, uint32_T aShift);
 int32_T mul_u18s29sh17(int32_T a, int32_T b);

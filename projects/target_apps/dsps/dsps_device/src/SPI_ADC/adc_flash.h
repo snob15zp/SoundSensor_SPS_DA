@@ -2,6 +2,7 @@
 #define __ADC_flash_h__
 
 #include <stdint.h>
+#include <stdbool.h>
 
 #define AF_D_StartFirstRecording 1
 #define AF_D_StartContinueRecording 2
@@ -9,6 +10,8 @@
 #define AF_D_StopPoewrOff 4 
 #define AF_D_timestampLo 5
 #define AF_D_timestampHi 6
+
+extern bool ADCon;
 
 void AF_V_WriteTimestamp(void);
 void AF_V_WriteStartServiceRecord(uint8_t recodType, uint16_t callerFunction);

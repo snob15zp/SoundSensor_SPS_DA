@@ -190,22 +190,27 @@ int main(void)
 #endif			
 		switch (ssm_main_state)
 		{
-			case 0: ssm_main_ADC_prepare();
-								ssm_main_state++;
-			case 1: if (!ssm_main_BLE_RDY) 
-								{ssm_main_state++;
-								 ss_main_init();
-								};
-				      break;	
-			case 2: if (!ss_main())
-							{	ssm_main_BLE_prepare();
-								ssm_main_state++;
-							}
-								break;
-			case 3: if (ssm_main_BLE_RDY) 
+			case 0: if (ssm_main_ADC_prepare())
 								ssm_main_state++;
 			        break;
-			case 4:
+			case 1: if (!ssm_main_BLE_RDY) 
+								{ssm_main_state++;
+								};
+				      break;	
+			case 2: if (ss_main_init())
+								ssm_main_state++;
+			        break;					
+			case 3: if (ss_main())
+							{	ssm_main_state++;
+							}
+								break;
+			case 4: if (ssm_main_BLE_prepare())
+								ssm_main_state++;
+			        break;					
+			case 5: if (ssm_main_BLE_RDY) 
+								ssm_main_state++;
+			        break;
+			case 6:
         
             // schedule all pending events
             schedule_while_ble_on();

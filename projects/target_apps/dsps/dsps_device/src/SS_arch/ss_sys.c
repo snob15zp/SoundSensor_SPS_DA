@@ -1,10 +1,11 @@
+#include "ss_global.h"
 #include "SS_sys.h"
 #include "systick.h"
 #include "gpio.h"
 #include "MathFast.h"
 #include "ADC_flash.h"
 
-#define SYSTICK_PERIOD_US   32     // period for systick timer in us, so 1000000ticks = 1second
+
 #define SYSTICK_EXCEPTION   1           // generate systick exceptions
 
 

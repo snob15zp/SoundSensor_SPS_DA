@@ -171,9 +171,11 @@ void periph_init(void)
 	
 	 user_spi_flash_init(SPI_FLASH_GPIO_MAP);//RDD
 #ifdef __SoundSensor__	
+   
 #ifdef __ADCTEST__
+   
    ssi2c_init();
-
+	 
 	 timer2_init();//RDD
 	 
 	 SPI_ADC_init();//RDD
@@ -182,7 +184,7 @@ void periph_init(void)
 	 
 	 while(1)
 	 {
-		 MF_main();
+		 test_MF_main_ADCEmul();
 		  //ss_i2c_test();
 	 }
 #else

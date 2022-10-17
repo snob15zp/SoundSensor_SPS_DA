@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\out_531\dsps_device_531.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\out_531\dsps_device_531.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Mon Oct 17 01:09:27 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Mon Oct 17 15:43:39 2022
 <BR><P>
 <H3>Maximum Stack Usage =        364 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1066,7 +1066,7 @@ Global Symbols
 <P><STRONG><a name="[1a]"></a>XTAL32M_RDY_Handler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_da14531.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_da14531.o(RESET)
 </UL>
-<P><STRONG><a name="[1e]"></a>main</STRONG> (Thumb, 188 bytes, Stack size 8 bytes, arch_main.o(.text))
+<P><STRONG><a name="[1e]"></a>main</STRONG> (Thumb, 186 bytes, Stack size 8 bytes, arch_main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 364<LI>Call Chain = main &rArr; system_init_post &rArr; user_on_init &rArr; user_conf_storage_init &rArr; user_spi_flash_init &rArr; spi_flash_auto_detect &rArr; spi_flash_read_jedec_id &rArr; spi_flash_is_busy &rArr; spi_flash_read_status_reg &rArr; spi_transaction &rArr; spi_access
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_on_ble_powered
@@ -2056,12 +2056,12 @@ Global Symbols
 <LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_alloc
 <LI><a href="#[185]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prf_get_task_from_id
 </UL>
-<BR>[Called By]<UL><LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_suotar_img_hdlr
-<LI><a href="#[18d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_suotar_read_mem
+<BR>[Called By]<UL><LI><a href="#[18d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_suotar_read_mem
 <LI><a href="#[18c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_suotar_start
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;suotar_patch_len_ind_handler
 <LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;suotar_gpio_map_ind_handler
 <LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;suotar_patch_data_ind_handler
+<LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_suotar_img_hdlr
 </UL>
 
 <P><STRONG><a name="[186]"></a>on_suotar_status_change</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, app_suotar.o(.text))
@@ -2122,9 +2122,9 @@ Global Symbols
 <LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_alloc
 <LI><a href="#[185]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prf_get_task_from_id
 </UL>
-<BR>[Called By]<UL><LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_suotar_img_hdlr
-<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;suotar_gpio_map_ind_handler
+<BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;suotar_gpio_map_ind_handler
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;suotar_patch_mem_dev_ind_handler
+<LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_suotar_img_hdlr
 </UL>
 
 <P><STRONG><a name="[197]"></a>app_get_image_id</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, app_suotar.o(.text))
@@ -2146,13 +2146,13 @@ Global Symbols
 <P><STRONG><a name="[193]"></a>app_read_image_headers</STRONG> (Thumb, 656 bytes, Stack size 128 bytes, app_suotar.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 268<LI>Call Chain = app_read_image_headers &rArr; user_flash_write_data &rArr; spi_flash_write_data &rArr; spi_flash_page_program &rArr; spi_flash_write_enable &rArr; spi_flash_wait_till_ready &rArr; spi_flash_read_status_reg &rArr; spi_transaction &rArr; spi_access
 </UL>
-<BR>[Calls]<UL><LI><a href="#[196]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
-<LI><a href="#[192]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_read_ext_mem
+<BR>[Calls]<UL><LI><a href="#[192]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_read_ext_mem
 <LI><a href="#[195]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_find_old_img
 <LI><a href="#[197]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_get_image_id
 <LI><a href="#[18b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_flash_write_data
 <LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_erase_flash_sectors
 <LI><a href="#[194]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;memcmp
+<LI><a href="#[196]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
 </UL>
 <BR>[Called By]<UL><LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_suotar_img_hdlr
 </UL>
@@ -2160,11 +2160,11 @@ Global Symbols
 <P><STRONG><a name="[199]"></a>app_suotar_img_hdlr</STRONG> (Thumb, 160 bytes, Stack size 16 bytes, app_suotar.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 284<LI>Call Chain = app_suotar_img_hdlr &rArr; app_read_image_headers &rArr; user_flash_write_data &rArr; spi_flash_write_data &rArr; spi_flash_page_program &rArr; spi_flash_write_enable &rArr; spi_flash_wait_till_ready &rArr; spi_flash_read_status_reg &rArr; spi_transaction &rArr; spi_access
 </UL>
-<BR>[Calls]<UL><LI><a href="#[193]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_read_image_headers
-<LI><a href="#[191]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;suotar_send_mem_info_update_req
+<BR>[Calls]<UL><LI><a href="#[191]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;suotar_send_mem_info_update_req
 <LI><a href="#[184]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;suotar_send_status_update_req
 <LI><a href="#[187]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_spi_flash_init
 <LI><a href="#[18b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_flash_write_data
+<LI><a href="#[193]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_read_image_headers
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;suotar_patch_data_ind_handler
 </UL>
@@ -2435,11 +2435,11 @@ Global Symbols
 <LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_flash_configure_env
 </UL>
 <BR>[Called By]<UL><LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;periph_init
-<LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_suotar_img_hdlr
 <LI><a href="#[18a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_set_image_valid_flag
 <LI><a href="#[186]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;on_suotar_status_change
 <LI><a href="#[1b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_storage_save_configuration
 <LI><a href="#[1b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_conf_storage_init
+<LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_suotar_img_hdlr
 </UL>
 
 <P><STRONG><a name="[119]"></a>periph_init</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, user_periph_setup.o(.text))
@@ -2469,8 +2469,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_flash_block_erase
 </UL>
-<BR>[Called By]<UL><LI><a href="#[193]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_read_image_headers
-<LI><a href="#[18b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_flash_write_data
+<BR>[Called By]<UL><LI><a href="#[18b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_flash_write_data
+<LI><a href="#[193]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_read_image_headers
 </UL>
 
 <P><STRONG><a name="[18b]"></a>user_flash_write_data</STRONG> (Thumb, 58 bytes, Stack size 24 bytes, user_periph_setup.o(.text))
@@ -2479,10 +2479,10 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_flash_write_data
 <LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_erase_flash_sectors
 </UL>
-<BR>[Called By]<UL><LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_suotar_img_hdlr
-<LI><a href="#[193]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_read_image_headers
-<LI><a href="#[18a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_set_image_valid_flag
+<BR>[Called By]<UL><LI><a href="#[18a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_set_image_valid_flag
 <LI><a href="#[1c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_write_configuration_struct
+<LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_suotar_img_hdlr
+<LI><a href="#[193]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_read_image_headers
 </UL>
 
 <P><STRONG><a name="[8b]"></a>user_on_connection</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, user_sps_device_dma.o(.text))
@@ -2781,7 +2781,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[1d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MF_main_init
 </UL>
 
-<P><STRONG><a name="[f9]"></a>ssm_main_ADC_prepare</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, ss_main.o(.text))
+<P><STRONG><a name="[f9]"></a>ssm_main_ADC_prepare</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, ss_main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = ssm_main_ADC_prepare &rArr; MF_main_init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MF_main_init
@@ -2793,7 +2793,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[f7]"></a>ss_main_init</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, ss_main.o(.text))
+<P><STRONG><a name="[f7]"></a>ss_main_init</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, ss_main.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -3423,8 +3423,8 @@ Local Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 300<LI>Call Chain = suotar_patch_data_ind_handler &rArr; app_suotar_img_hdlr &rArr; app_read_image_headers &rArr; user_flash_write_data &rArr; spi_flash_write_data &rArr; spi_flash_page_program &rArr; spi_flash_write_enable &rArr; spi_flash_wait_till_ready &rArr; spi_flash_read_status_reg &rArr; spi_transaction &rArr; spi_access
 </UL>
 <BR>[Calls]<UL><LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
-<LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_suotar_img_hdlr
 <LI><a href="#[184]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;suotar_send_status_update_req
+<LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_suotar_img_hdlr
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> app_suotar_task.o(.constdata)
 </UL>

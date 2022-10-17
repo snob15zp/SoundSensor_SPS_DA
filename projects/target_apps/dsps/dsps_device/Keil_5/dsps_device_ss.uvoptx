@@ -268,6 +268,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGUARM</Key>
+          <Name>Dóo</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -299,9 +300,9 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>266</LineNumber>
+          <LineNumber>210</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>133956268</Address>
+          <Address>133956174</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -310,23 +311,7 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>.\..\..\..\..\..\sdk6\sdk\platform\arch\main\arch_main.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\dsps_device_531\../../../../../sdk6/sdk/platform/arch/main/arch_main.c\266</Expression>
-        </Bp>
-        <Bp>
-          <Number>1</Number>
-          <Type>0</Type>
-          <LineNumber>193</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>133956128</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>.\..\..\..\..\..\sdk6\sdk\platform\arch\main\arch_main.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\dsps_device_531\../../../../../sdk6/sdk/platform/arch/main/arch_main.c\193</Expression>
+          <Expression>\\dsps_device_531\../../../../../sdk6/sdk/platform/arch/main/arch_main.c\210</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -897,7 +882,7 @@
 
   <Group>
     <GroupName>sdk_driver</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -2197,7 +2182,7 @@
 
   <Group>
     <GroupName>SPI_ADC</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -2297,7 +2282,7 @@
 
   <Group>
     <GroupName>Math</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -2461,7 +2446,7 @@
 
   <Group>
     <GroupName>SS_arch</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -2510,6 +2495,30 @@
       <bDave2>0</bDave2>
       <PathWithFileName>..\src\SS_arch\ss_main.h</PathWithFileName>
       <FilenameWithoutPath>ss_main.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>20</GroupNumber>
+      <FileNumber>142</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\src\SS_arch\ss_global.c</PathWithFileName>
+      <FilenameWithoutPath>ss_global.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>20</GroupNumber>
+      <FileNumber>143</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\ss_global.h</PathWithFileName>
+      <FilenameWithoutPath>ss_global.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

@@ -36,8 +36,7 @@
 #include "app_task.h"           // Application Task API
 #include "app_entry_point.h"
 #include "app.h"
-#include "sdk_version.h"
-#include "dsps_device_sw_version.h"
+#include "version.h"
 #include "user_profiles_config.h"
 
 /*

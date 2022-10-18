@@ -3,11 +3,11 @@
 <title>Static Call Graph - [.\out_531\dsps_device_531.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\out_531\dsps_device_531.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sat Sep 24 14:13:01 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue Oct 18 22:37:37 2022
 <BR><P>
-<H3>Maximum Stack Usage =        364 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        300 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-main &rArr; system_init_post &rArr; user_on_init &rArr; user_conf_storage_init &rArr; user_spi_flash_init &rArr; spi_flash_auto_detect &rArr; spi_flash_read_jedec_id &rArr; spi_flash_is_busy &rArr; spi_flash_read_status_reg &rArr; spi_transaction &rArr; spi_access
+suotar_patch_data_ind_handler &rArr; app_suotar_img_hdlr &rArr; app_read_image_headers &rArr; user_flash_write_data &rArr; spi_flash_write_data &rArr; spi_flash_page_program &rArr; spi_flash_write_enable &rArr; spi_flash_wait_till_ready &rArr; spi_flash_read_status_reg &rArr; spi_transaction &rArr; spi_access
 <P>
 <H3>
 Mutually Recursive functions
@@ -295,8 +295,8 @@ Global Symbols
 <LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_remote_read_request_ind_handler
 <LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_remote_write_request_ind_handler
 <LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_remote_discover_val_ind_handler
-<LI><a href="#[1f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_rx_activate
-<LI><a href="#[1eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_send_ble_flow_ctrl
+<LI><a href="#[1f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_rx_activate
+<LI><a href="#[1e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_send_ble_flow_ctrl
 </UL>
 
 <P><STRONG><a name="[112]"></a>dia_rand</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
@@ -310,24 +310,24 @@ Global Symbols
 
 <P><STRONG><a name="[1d5]"></a>co_list_init</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
 <BR><BR>[Called By]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sps_init
-<LI><a href="#[20b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_init_queues
+<LI><a href="#[208]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_init_queues
 </UL>
 
 <P><STRONG><a name="[1d6]"></a>co_list_pop_front</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
 <BR><BR>[Called By]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sps_destroy
 <LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_tx_callback
-<LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_dma_uart_to_ble
-<LI><a href="#[1ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_tx_async
+<LI><a href="#[1ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_dma_uart_to_ble
+<LI><a href="#[1ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_tx_async
 </UL>
 
 <P><STRONG><a name="[1d1]"></a>co_list_push_back</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
 <BR><BR>[Called By]<UL><LI><a href="#[1ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sps_att_set_value
-<LI><a href="#[1fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_timeout
+<LI><a href="#[1fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_timeout
 <LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_rx_callback
-<LI><a href="#[1ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_ble_to_dma_uart
+<LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_ble_to_dma_uart
 </UL>
 
-<P><STRONG><a name="[208]"></a>co_list_push_front</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
+<P><STRONG><a name="[206]"></a>co_list_push_front</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
 <BR><BR>[Called By]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_on_disconnect
 </UL>
 
@@ -360,11 +360,11 @@ Global Symbols
 <P><STRONG><a name="[70]"></a>lld_data_tx_prog_func</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE), UNUSED)
 <BR>[Address Reference Count : 1]<UL><LI> jump_table.o(.constdata)
 </UL>
-<P><STRONG><a name="[227]"></a>lld_evt_elt_insert</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
+<P><STRONG><a name="[221]"></a>lld_evt_elt_insert</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
 <BR><BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;JT_lld_test_mode_rx_func
 </UL>
 
-<P><STRONG><a name="[225]"></a>lld_evt_adv_create</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
+<P><STRONG><a name="[21f]"></a>lld_evt_adv_create</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
 <BR><BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;JT_lld_test_mode_rx_func
 </UL>
 
@@ -384,7 +384,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rwip_sleep
 </UL>
 
-<P><STRONG><a name="[226]"></a>lld_util_freq2chnl</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
+<P><STRONG><a name="[220]"></a>lld_util_freq2chnl</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
 <BR><BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;JT_lld_test_mode_rx_func
 </UL>
 
@@ -420,7 +420,7 @@ Global Symbols
 <P><STRONG><a name="[101]"></a>ea_sleep_check</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
 <BR><BR>[Called By]<UL><LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rwip_sleep
 <LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[212]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_rwip_sleep_check
+<LI><a href="#[20f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_rwip_sleep_check
 </UL>
 
 <P><STRONG><a name="[2f]"></a>uart_init_func</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE), UNUSED)
@@ -505,21 +505,21 @@ Global Symbols
 <P><STRONG><a name="[66]"></a>atts_l2cc_pdu_recv_handler_func</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE), UNUSED)
 <BR>[Address Reference Count : 1]<UL><LI> jump_table.o(.constdata)
 </UL>
-<P><STRONG><a name="[211]"></a>gattc_get_mtu</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
+<P><STRONG><a name="[20e]"></a>gattc_get_mtu</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
 <BR><BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_remote_read_request_ind_handler
 <LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_remote_discover_val_ind_handler
 <LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_read_rsp_cmd_handler
-<LI><a href="#[20f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_set_default_tx_size
+<LI><a href="#[20c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_set_default_tx_size
 </UL>
 
 <P><STRONG><a name="[56]"></a>smpc_pdu_recv_func</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE), UNUSED)
 <BR>[Address Reference Count : 1]<UL><LI> jump_table.o(.constdata)
 </UL>
-<P><STRONG><a name="[21a]"></a>gapc_get_conidx</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
+<P><STRONG><a name="[217]"></a>gapc_get_conidx</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
 <BR><BR>[Called By]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_config_enable_req_handler
 </UL>
 
-<P><STRONG><a name="[218]"></a>gapc_get_conhdl</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
+<P><STRONG><a name="[215]"></a>gapc_get_conhdl</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
 <BR><BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_read_rsp_cmd_handler
 <LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_write_rsp_cmd_handler
 <LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_discover_rsp_cmd_handler
@@ -555,7 +555,7 @@ Global Symbols
 </UL>
 <P><STRONG><a name="[184]"></a>ke_sleep_check</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
 <BR><BR>[Called By]<UL><LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rwip_sleep
-<LI><a href="#[212]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_rwip_sleep_check
+<LI><a href="#[20f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_rwip_sleep_check
 </UL>
 
 <P><STRONG><a name="[10d]"></a>ke_mem_init</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
@@ -570,11 +570,9 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_rand_seed_from_trng
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sps_init
 <LI><a href="#[1ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sps_att_set_value
-<LI><a href="#[21d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_write_configuration_struct
-<LI><a href="#[21b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_read_configuration_struct
 <LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_remote_discover_val_ind_handler
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_config_init
-<LI><a href="#[1f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_alloc_no_init
+<LI><a href="#[1f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_alloc_no_init
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> patch.o(.constdata)
 </UL>
@@ -582,8 +580,6 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_rand_seed_from_trng
 <LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sps_destroy
 <LI><a href="#[1ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sps_att_set_value
-<LI><a href="#[21d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_write_configuration_struct
-<LI><a href="#[21b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_read_configuration_struct
 <LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_remote_discover_val_ind_handler
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_config_destroy
 </UL>
@@ -624,9 +620,9 @@ Global Symbols
 <LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_config_gattc_read_req_ind_handler
 <LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_config_gattc_write_req_ind_handler
 <LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_config_gattc_att_info_req_ind_handler
-<LI><a href="#[20d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_gattc_exc_mtu_cmd
+<LI><a href="#[20a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_gattc_exc_mtu_cmd
 <LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_features
-<LI><a href="#[1eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_send_ble_flow_ctrl
+<LI><a href="#[1e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_send_ble_flow_ctrl
 </UL>
 
 <P><STRONG><a name="[1ac]"></a>ke_msg_send</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
@@ -666,18 +662,18 @@ Global Symbols
 <LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_config_gattc_read_req_ind_handler
 <LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_config_gattc_write_req_ind_handler
 <LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_config_gattc_att_info_req_ind_handler
-<LI><a href="#[20d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_gattc_exc_mtu_cmd
+<LI><a href="#[20a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_gattc_exc_mtu_cmd
 <LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_features
-<LI><a href="#[1ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_dma_uart_to_ble_confirm
-<LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_dma_uart_to_ble
-<LI><a href="#[1eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_send_ble_flow_ctrl
+<LI><a href="#[1eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_dma_uart_to_ble_confirm
+<LI><a href="#[1ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_dma_uart_to_ble
+<LI><a href="#[1e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_send_ble_flow_ctrl
 </UL>
 
-<P><STRONG><a name="[23d]"></a>ke_msg_send_basic</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE), UNUSED)
+<P><STRONG><a name="[237]"></a>ke_msg_send_basic</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE), UNUSED)
 <BR><BR>[Called By]<UL></UL>
 
-<P><STRONG><a name="[1fb]"></a>ke_msg_free</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
-<BR><BR>[Called By]<UL><LI><a href="#[1fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_rx_disable
+<P><STRONG><a name="[1f9]"></a>ke_msg_free</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
+<BR><BR>[Called By]<UL><LI><a href="#[1f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_rx_disable
 <LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_tx_callback
 </UL>
 
@@ -722,12 +718,12 @@ Global Symbols
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_timer_api_process_handler
 </UL>
 
-<P><STRONG><a name="[23a]"></a>ke_timer_clear</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE), UNUSED)
+<P><STRONG><a name="[234]"></a>ke_timer_clear</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE), UNUSED)
 <BR><BR>[Called By]<UL></UL>
 
 <P><STRONG><a name="[185]"></a>ke_timer_sleep_check</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
 <BR><BR>[Called By]<UL><LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rwip_sleep
-<LI><a href="#[212]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_rwip_sleep_check
+<LI><a href="#[20f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_rwip_sleep_check
 </UL>
 
 <P><STRONG><a name="[109]"></a>rwip_schedule</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
@@ -751,9 +747,9 @@ Global Symbols
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lld_sleep_compensate_func
 <LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rf_rssi_convert
 <LI><a href="#[15f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_set_speed
-<LI><a href="#[1e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_sps_apply_uart_baudrate
+<LI><a href="#[1e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_sps_apply_uart_baudrate
 <LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_read_rsp_cmd_handler
-<LI><a href="#[216]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_heap_usage
+<LI><a href="#[213]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_heap_usage
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PATCHED_ke_malloc
 </UL>
 
@@ -779,7 +775,6 @@ Global Symbols
 <LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;arch_rom_init
 <LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_init
 <LI><a href="#[2d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rf_init_func
-<LI><a href="#[1e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_conf_storage_init
 <LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gattc_read_req_ind_handler
 <LI><a href="#[1de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sps_server_send_event
 <LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sps_set_ccc_value
@@ -793,8 +788,6 @@ Global Symbols
 <LI><a href="#[19e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_advertise_operation
 <LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_app_on_set_dev_info
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_app_on_get_dev_name
-<LI><a href="#[21d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_write_configuration_struct
-<LI><a href="#[21b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_read_configuration_struct
 <LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_remote_read_request_ind_handler
 <LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_remote_write_request_ind_handler
 <LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_remote_discover_val_ind_handler
@@ -802,7 +795,7 @@ Global Symbols
 <LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_write_rsp_cmd_handler
 <LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_discover_rsp_cmd_handler
 <LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_config_gattc_write_req_ind_handler
-<LI><a href="#[20a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_remote_config_init
+<LI><a href="#[207]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_remote_config_init
 </UL>
 
 <P><STRONG><a name="[e8]"></a>__aeabi_memcpy4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
@@ -810,7 +803,6 @@ Global Symbols
 <LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;arch_rom_init
 <LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_dma_init
 <LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_flash_auto_detect
-<LI><a href="#[1e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_conf_storage_init
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_config_init
 </UL>
 
@@ -820,12 +812,11 @@ Global Symbols
 
 <P><STRONG><a name="[1a8]"></a>__aeabi_memclr</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
 <BR><BR>[Called By]<UL><LI><a href="#[1a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_easy_gap_dev_config_create_msg
-<LI><a href="#[21b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_read_configuration_struct
 </UL>
 
 <P><STRONG><a name="[1d4]"></a>__aeabi_memclr4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
 <BR><BR>[Called By]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sps_init
-<LI><a href="#[20b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_init_queues
+<LI><a href="#[208]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_init_queues
 </UL>
 
 <P><STRONG><a name="[1c8]"></a>memcmp</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
@@ -887,11 +878,11 @@ Global Symbols
 <LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_config_enable_req_handler
 <LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_config_gattc_read_req_ind_handler
 <LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_config_gattc_write_req_ind_handler
-<LI><a href="#[217]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_config_get_att_idx
-<LI><a href="#[20f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_set_default_tx_size
+<LI><a href="#[214]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_config_get_att_idx
+<LI><a href="#[20c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_set_default_tx_size
 <LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_features
-<LI><a href="#[1ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_dma_uart_to_ble_confirm
-<LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_dma_uart_to_ble
+<LI><a href="#[1eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_dma_uart_to_ble_confirm
+<LI><a href="#[1ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_dma_uart_to_ble
 </UL>
 
 <P><STRONG><a name="[1da]"></a>prf_src_task_get</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
@@ -986,14 +977,14 @@ Global Symbols
 
 <P><STRONG><a name="[1a5]"></a>append_device_name</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
 <BR><BR>[Called By]<UL><LI><a href="#[1a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_easy_gap_undirected_advertise_start_create_msg
-<LI><a href="#[210]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_append_device_name
+<LI><a href="#[20d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_append_device_name
 </UL>
 
 <P><STRONG><a name="[1c3]"></a>app_easy_gap_disconnect</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
 <BR><BR>[Called By]<UL><LI><a href="#[1c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_suotar_read_mem
 </UL>
 
-<P><STRONG><a name="[20e]"></a>app_easy_gap_set_data_packet_length</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
+<P><STRONG><a name="[20b]"></a>app_easy_gap_set_data_packet_length</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
 <BR><BR>[Called By]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_on_update_params_rejected
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_on_update_params_complete
 </UL>
@@ -1012,25 +1003,25 @@ Global Symbols
 <P><STRONG><a name="[20]"></a>__main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry.o(.ARM.Collect$$$$00000000))
 <BR>[Address Reference Count : 1]<UL><LI> startup_da14531.o(.text)
 </UL>
-<P><STRONG><a name="[265]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
+<P><STRONG><a name="[25f]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
 
 <P><STRONG><a name="[fa]"></a>_main_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
 <BR><BR>[Calls]<UL><LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 </UL>
 
-<P><STRONG><a name="[228]"></a>__main_after_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
+<P><STRONG><a name="[222]"></a>__main_after_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
 <BR><BR>[Called By]<UL><LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 </UL>
 
-<P><STRONG><a name="[266]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
+<P><STRONG><a name="[260]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
 
-<P><STRONG><a name="[267]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
+<P><STRONG><a name="[261]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
 
-<P><STRONG><a name="[268]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
+<P><STRONG><a name="[262]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
 
-<P><STRONG><a name="[269]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
+<P><STRONG><a name="[263]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
 
-<P><STRONG><a name="[26a]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
+<P><STRONG><a name="[264]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
 
 <P><STRONG><a name="[22]"></a>HardFault_HandlerC</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, hardfault_handler.o(.text))
 <BR><BR>[Calls]<UL><LI><a href="#[22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HardFault_HandlerC
@@ -1126,7 +1117,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_da14531.o(RESET)
 </UL>
 <P><STRONG><a name="[1e]"></a>main</STRONG> (Thumb, 186 bytes, Stack size 8 bytes, arch_main.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 364<LI>Call Chain = main &rArr; system_init_post &rArr; user_on_init &rArr; user_conf_storage_init &rArr; user_spi_flash_init &rArr; spi_flash_auto_detect &rArr; spi_flash_read_jedec_id &rArr; spi_flash_is_busy &rArr; spi_flash_read_status_reg &rArr; spi_transaction &rArr; spi_access
+<BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = main &rArr; user_on_ble_powered &rArr; dma_uart_sps_init &rArr; uart_initialize &rArr; uart_dma_init &rArr; dma_initialize
 </UL>
 <BR>[Calls]<UL><LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_on_ble_powered
 <LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_before_sleep
@@ -1185,12 +1176,12 @@ Global Symbols
 <P><STRONG><a name="[117]"></a>arch_disable_sleep</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, arch_sleep.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;system_init
 <LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;arch_set_sleep_mode
-<LI><a href="#[20c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_dma_sps_sleep_check
+<LI><a href="#[209]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_dma_sps_sleep_check
 </UL>
 
 <P><STRONG><a name="[116]"></a>arch_set_extended_sleep</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, arch_sleep.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;arch_set_sleep_mode
-<LI><a href="#[20c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_dma_sps_sleep_check
+<LI><a href="#[209]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_dma_sps_sleep_check
 </UL>
 
 <P><STRONG><a name="[115]"></a>arch_set_sleep_mode</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, arch_sleep.o(.text))
@@ -1206,7 +1197,7 @@ Global Symbols
 
 <P><STRONG><a name="[183]"></a>arch_ble_ext_wakeup_get</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, arch_sleep.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rwip_sleep
-<LI><a href="#[212]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_rwip_sleep_check
+<LI><a href="#[20f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_rwip_sleep_check
 </UL>
 
 <P><STRONG><a name="[1b5]"></a>arch_ble_force_wakeup</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, arch_sleep.o(.text))
@@ -1290,8 +1281,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[213]"></a>check_sys_startup_period</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, arch_system.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[212]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_rwip_sleep_check
+<P><STRONG><a name="[210]"></a>check_sys_startup_period</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, arch_system.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[20f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_rwip_sleep_check
 </UL>
 
 <P><STRONG><a name="[189]"></a>app_use_lower_clocks_check</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, arch_system.o(.text))
@@ -1339,7 +1330,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[ff]"></a>system_init_post</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, arch_system.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 356<LI>Call Chain = system_init_post &rArr; user_on_init &rArr; user_conf_storage_init &rArr; user_spi_flash_init &rArr; spi_flash_auto_detect &rArr; spi_flash_read_jedec_id &rArr; spi_flash_is_busy &rArr; spi_flash_read_status_reg &rArr; spi_transaction &rArr; spi_access
+<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = system_init_post &rArr; lld_sleep_init_func &rArr; set_sleep_delay &rArr; lld_sleep_lpcycles_2_us_sel_func &rArr; lld_sleep_lpcycles_2_us_rcx_func &rArr; __ARM_common_ll_muluu
 </UL>
 <BR>[Calls]<UL><LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_on_init
 <LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enable_rf_diag_irq
@@ -1416,12 +1407,12 @@ Global Symbols
 
 <P><STRONG><a name="[133]"></a>GPIO_SetInactive</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, gpio.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ConfigurePin
-<LI><a href="#[1f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_assert_rts
+<LI><a href="#[1f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_assert_rts
 </UL>
 
 <P><STRONG><a name="[132]"></a>GPIO_SetActive</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, gpio.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ConfigurePin
-<LI><a href="#[1fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_deassert_rts
+<LI><a href="#[1fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_deassert_rts
 </UL>
 
 <P><STRONG><a name="[131]"></a>GPIO_ConfigurePin</STRONG> (Thumb, 38 bytes, Stack size 16 bytes, gpio.o(.text))
@@ -1432,13 +1423,13 @@ Global Symbols
 <LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetPinFunction
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_spi_flash_init
-<LI><a href="#[1f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_pad_functions
+<LI><a href="#[1ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_pad_functions
 </UL>
 
-<P><STRONG><a name="[203]"></a>GPIO_GetPinStatus</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, gpio.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[205]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_sps_init
+<P><STRONG><a name="[201]"></a>GPIO_GetPinStatus</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, gpio.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[203]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_sps_init
 <LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_gpio_callback
-<LI><a href="#[1ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_tx_async
+<LI><a href="#[1ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_tx_async
 </UL>
 
 <P><STRONG><a name="[135]"></a>GPIO_EnableIRQ</STRONG> (Thumb, 230 bytes, Stack size 48 bytes, gpio.o(.text))
@@ -1446,7 +1437,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpioshift16
 </UL>
-<BR>[Called By]<UL><LI><a href="#[205]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_sps_init
+<BR>[Called By]<UL><LI><a href="#[203]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_sps_init
 <LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_gpio_callback
 </UL>
 
@@ -1458,8 +1449,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[138]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOn_Handler
 </UL>
 
-<P><STRONG><a name="[206]"></a>GPIO_RegisterCallback</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, gpio.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[205]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_sps_init
+<P><STRONG><a name="[204]"></a>GPIO_RegisterCallback</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, gpio.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[203]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_sps_init
 </UL>
 
 <P><STRONG><a name="[138]"></a>GPIOn_Handler</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, gpio.o(.text))
@@ -1477,10 +1468,10 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_da14531.o(RESET)
 </UL>
-<P><STRONG><a name="[1f2]"></a>GPIO_EnablePorPin</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, gpio.o(.text))
+<P><STRONG><a name="[1f0]"></a>GPIO_EnablePorPin</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, gpio.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = GPIO_EnablePorPin
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_pad_functions
+<BR>[Called By]<UL><LI><a href="#[1ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_pad_functions
 </UL>
 
 <P><STRONG><a name="[16]"></a>WKUP_QUADEC_Handler</STRONG> (Thumb, 142 bytes, Stack size 8 bytes, wkupct_quadec.o(.text))
@@ -1570,7 +1561,7 @@ Global Symbols
 <LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_flash_is_busy
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;on_suotar_status_change
-<LI><a href="#[1f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_spi_flash_release
+<LI><a href="#[1f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_spi_flash_release
 </UL>
 
 <P><STRONG><a name="[148]"></a>spi_flash_block_erase</STRONG> (Thumb, 44 bytes, Stack size 16 bytes, spi_flash.o(.text))
@@ -1618,7 +1609,6 @@ Global Symbols
 <LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_flash_is_busy
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_read_ext_mem
-<LI><a href="#[21c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_storage_read_ext_mem
 </UL>
 
 <P><STRONG><a name="[14d]"></a>uart_enable</STRONG> (Thumb, 48 bytes, Stack size 0 bytes, uart.o(.text))
@@ -1638,7 +1628,7 @@ Global Symbols
 <LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_enable
 <LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_dma_init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[205]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_sps_init
+<BR>[Called By]<UL><LI><a href="#[203]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_sps_init
 </UL>
 
 <P><STRONG><a name="[150]"></a>uart_write_byte</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, uart.o(.text))
@@ -1666,7 +1656,7 @@ Global Symbols
 <LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NVIC_EnableIRQ
 <LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NVIC_SetPriority
 </UL>
-<BR>[Called By]<UL><LI><a href="#[202]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_write
+<BR>[Called By]<UL><LI><a href="#[200]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_write
 </UL>
 
 <P><STRONG><a name="[158]"></a>uart_read_byte</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, uart.o(.text))
@@ -1694,13 +1684,13 @@ Global Symbols
 <LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NVIC_EnableIRQ
 <LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NVIC_SetPriority
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_rx_activate
+<BR>[Called By]<UL><LI><a href="#[1f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_rx_activate
 </UL>
 
 <P><STRONG><a name="[15d]"></a>dma_channel_stop</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, dma.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[15c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_helper
-<LI><a href="#[1fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_timeout
-<LI><a href="#[1fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_rx_disable
+<LI><a href="#[1fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_timeout
+<LI><a href="#[1f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_rx_disable
 </UL>
 
 <P><STRONG><a name="[19]"></a>DMA_Handler</STRONG> (Thumb, 86 bytes, Stack size 16 bytes, dma.o(.text))
@@ -1742,7 +1732,7 @@ Global Symbols
 
 <P><STRONG><a name="[1bd]"></a>spi_disable</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, spi_531.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[1bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_suotar_stop
-<LI><a href="#[1f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_spi_flash_release
+<LI><a href="#[1f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_spi_flash_release
 </UL>
 
 <P><STRONG><a name="[162]"></a>spi_set_cp_mode</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, spi_531.o(.text))
@@ -2422,7 +2412,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[1c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_read_image_headers
 </UL>
 
-<P><STRONG><a name="[1c7]"></a>app_read_image_headers</STRONG> (Thumb, 656 bytes, Stack size 128 bytes, app_suotar.o(.text))
+<P><STRONG><a name="[1c7]"></a>app_read_image_headers</STRONG> (Thumb, 546 bytes, Stack size 128 bytes, app_suotar.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 268<LI>Call Chain = app_read_image_headers &rArr; user_flash_write_data &rArr; spi_flash_write_data &rArr; spi_flash_page_program &rArr; spi_flash_write_enable &rArr; spi_flash_wait_till_ready &rArr; spi_flash_read_status_reg &rArr; spi_transaction &rArr; spi_access
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_flash_write_data
@@ -2584,17 +2574,15 @@ Global Symbols
 <P><STRONG><a name="[7c]"></a>spss_prf_itf_get</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, sps_server.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> prf.o(.constdata)
 </UL>
-<P><STRONG><a name="[2c]"></a>user_sps_apply_config</STRONG> (Thumb, 136 bytes, Stack size 24 bytes, user_sps_device_config.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 356<LI>Call Chain = user_sps_apply_config &rArr; user_conf_storage_init &rArr; user_spi_flash_init &rArr; spi_flash_auto_detect &rArr; spi_flash_read_jedec_id &rArr; spi_flash_is_busy &rArr; spi_flash_read_status_reg &rArr; spi_transaction &rArr; spi_access
+<P><STRONG><a name="[2c]"></a>user_sps_apply_config</STRONG> (Thumb, 112 bytes, Stack size 24 bytes, user_sps_device_config.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = user_sps_apply_config &rArr; app_easy_gap_param_update_start &rArr; app_easy_gap_param_update_msg_create
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_storage_save_configuration
-<LI><a href="#[1e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_conf_storage_init
-<LI><a href="#[1c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;platform_reset
+<BR>[Calls]<UL><LI><a href="#[1c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;platform_reset
 <LI><a href="#[1ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_easy_gap_param_update_start
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> user_sps_device_dma.o(.text)
 </UL>
-<P><STRONG><a name="[1e9]"></a>user_sps_apply_uart_baudrate</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, user_sps_device_config.o(.text))
+<P><STRONG><a name="[1e7]"></a>user_sps_apply_uart_baudrate</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, user_sps_device_config.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = user_sps_apply_uart_baudrate
 </UL>
 <BR>[Calls]<UL><LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uidivmod
@@ -2608,21 +2596,21 @@ Global Symbols
 <P><STRONG><a name="[d6]"></a>user_sps_config_verify_ci_max_cb</STRONG> (Thumb, 54 bytes, Stack size 16 bytes, user_sps_device_config.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = user_sps_config_verify_ci_max_cb
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_total_interval
+<BR>[Calls]<UL><LI><a href="#[1e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_total_interval
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> user_sps_device_config.o(.data)
 </UL>
 <P><STRONG><a name="[d7]"></a>user_sps_config_verify_sl_cb</STRONG> (Thumb, 48 bytes, Stack size 16 bytes, user_sps_device_config.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = user_sps_config_verify_sl_cb
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_total_interval
+<BR>[Calls]<UL><LI><a href="#[1e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_total_interval
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> user_sps_device_config.o(.data)
 </UL>
 <P><STRONG><a name="[d8]"></a>user_sps_config_verify_sup_to_cb</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, user_sps_device_config.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = user_sps_config_verify_sup_to_cb
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_total_interval
+<BR>[Calls]<UL><LI><a href="#[1e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_total_interval
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> user_sps_device_config.o(.data)
 </UL>
@@ -2672,16 +2660,16 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> app.o(.constdata)
 </UL>
-<P><STRONG><a name="[1eb]"></a>user_send_ble_flow_ctrl</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, user_spss.o(.text))
+<P><STRONG><a name="[1e9]"></a>user_send_ble_flow_ctrl</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, user_spss.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = user_send_ble_flow_ctrl
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prf_get_task_from_id
 <LI><a href="#[1ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_send
 <LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_alloc
 </UL>
-<BR>[Called By]<UL><LI><a href="#[200]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_test_tx_queue_for_flow_on
-<LI><a href="#[204]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_force_tx_flow_off
-<LI><a href="#[201]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_test_tx_queue_for_flow_off
+<BR>[Called By]<UL><LI><a href="#[1fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_test_tx_queue_for_flow_on
+<LI><a href="#[202]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_force_tx_flow_off
+<LI><a href="#[1ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_test_tx_queue_for_flow_off
 </UL>
 
 <P><STRONG><a name="[a4]"></a>user_spss_process_handler</STRONG> (Thumb, 24 bytes, Stack size 32 bytes, user_spss_task.o(.text))
@@ -2694,22 +2682,22 @@ Global Symbols
 <P><STRONG><a name="[b8]"></a>user_sps_server_enable_cfm_handler</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, user_spss_task.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = user_sps_server_enable_cfm_handler &rArr; user_dma_uart_to_ble
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_dma_uart_to_ble
+<BR>[Calls]<UL><LI><a href="#[1ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_dma_uart_to_ble
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> user_spss_task.o(.constdata)
 </UL>
 <P><STRONG><a name="[b9]"></a>user_sps_server_data_tx_cfm_handler</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, user_spss_task.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = user_sps_server_data_tx_cfm_handler &rArr; user_dma_uart_to_ble_confirm &rArr; user_dma_uart_to_ble
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_dma_uart_to_ble_confirm
+<BR>[Calls]<UL><LI><a href="#[1eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_dma_uart_to_ble_confirm
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> user_spss_task.o(.constdata)
 </UL>
 <P><STRONG><a name="[bc]"></a>user_sps_server_data_write_ind_handler</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, user_spss_task.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = user_sps_server_data_write_ind_handler &rArr; dma_uart_tx_async &rArr; dma_uart_write &rArr; uart_send &rArr; uart_write_buffer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_ble_to_dma_uart
-<LI><a href="#[1ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_tx_async
+<BR>[Calls]<UL><LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_ble_to_dma_uart
+<LI><a href="#[1ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_tx_async
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> user_spss_task.o(.constdata)
 </UL>
@@ -2725,14 +2713,14 @@ Global Symbols
 <P><STRONG><a name="[bd]"></a>gattc_mtu_changed_ind_handler</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, user_spss_task.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = gattc_mtu_changed_ind_handler
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_set_tx_size
+<BR>[Calls]<UL><LI><a href="#[1ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_set_tx_size
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> user_spss_task.o(.constdata)
 </UL>
-<P><STRONG><a name="[1f1]"></a>set_pad_functions</STRONG> (Thumb, 74 bytes, Stack size 8 bytes, user_periph_setup.o(.text))
+<P><STRONG><a name="[1ef]"></a>set_pad_functions</STRONG> (Thumb, 74 bytes, Stack size 8 bytes, user_periph_setup.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = set_pad_functions &rArr; GPIO_ConfigurePin &rArr; GPIO_SetPinFunction
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_EnablePorPin
+<BR>[Calls]<UL><LI><a href="#[1f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_EnablePorPin
 <LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ConfigurePin
 </UL>
 <BR>[Called By]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;periph_init
@@ -2741,8 +2729,8 @@ Global Symbols
 <P><STRONG><a name="[10e]"></a>periph_init</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, user_periph_setup.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = periph_init &rArr; set_pad_functions &rArr; GPIO_ConfigurePin &rArr; GPIO_SetPinFunction
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;patch_func
-<LI><a href="#[1f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_pad_functions
+<BR>[Calls]<UL><LI><a href="#[1f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;patch_func
+<LI><a href="#[1ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_pad_functions
 </UL>
 <BR>[Called By]<UL><LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_on_init
 <LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;system_init
@@ -2758,21 +2746,14 @@ Global Symbols
 <LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_flash_configure_env
 <LI><a href="#[13f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_flash_release_from_power_down
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_storage_save_configuration
-<LI><a href="#[1e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_conf_storage_init
-<LI><a href="#[1cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_suotar_img_hdlr
+<BR>[Called By]<UL><LI><a href="#[1cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_suotar_img_hdlr
 <LI><a href="#[1be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_set_image_valid_flag
 <LI><a href="#[1ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;on_suotar_status_change
 </UL>
 
-<P><STRONG><a name="[1f4]"></a>user_spi_flash_release</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, user_periph_setup.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = user_spi_flash_release &rArr; spi_flash_power_down &rArr; spi_flash_is_busy &rArr; spi_flash_read_status_reg &rArr; spi_transaction &rArr; spi_access
-</UL>
-<BR>[Calls]<UL><LI><a href="#[1bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_disable
+<P><STRONG><a name="[1f2]"></a>user_spi_flash_release</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, user_periph_setup.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[1bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_disable
 <LI><a href="#[146]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_flash_power_down
-</UL>
-<BR>[Called By]<UL><LI><a href="#[1e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_storage_save_configuration
-<LI><a href="#[1e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_conf_storage_init
 </UL>
 
 <P><STRONG><a name="[1cc]"></a>user_erase_flash_sectors</STRONG> (Thumb, 58 bytes, Stack size 16 bytes, user_periph_setup.o(.text))
@@ -2793,108 +2774,107 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[1cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_suotar_img_hdlr
 <LI><a href="#[1c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_read_image_headers
 <LI><a href="#[1be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_set_image_valid_flag
-<LI><a href="#[21d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_write_configuration_struct
 </UL>
 
-<P><STRONG><a name="[1f5]"></a>dma_uart_rx_activate</STRONG> (Thumb, 68 bytes, Stack size 8 bytes, dma_uart_sps.o(.text))
+<P><STRONG><a name="[1f3]"></a>dma_uart_rx_activate</STRONG> (Thumb, 68 bytes, Stack size 8 bytes, dma_uart_sps.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = dma_uart_rx_activate &rArr; uart_receive &rArr; uart_read_buffer
 </UL>
 <BR>[Calls]<UL><LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_receive
 <LI><a href="#[1b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prf_get_task_from_id
-<LI><a href="#[1f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_alloc_no_init
+<LI><a href="#[1f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_alloc_no_init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_on_ble_powered
-<LI><a href="#[1fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_timeout
-<LI><a href="#[1f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_rx_reactivate
+<LI><a href="#[1fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_timeout
+<LI><a href="#[1f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_rx_reactivate
 </UL>
 
-<P><STRONG><a name="[1f7]"></a>dma_uart_rx_reactivate</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, dma_uart_sps.o(.text))
+<P><STRONG><a name="[1f5]"></a>dma_uart_rx_reactivate</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, dma_uart_sps.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = dma_uart_rx_reactivate &rArr; dma_uart_rx_activate &rArr; uart_receive &rArr; uart_read_buffer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_check_set_flow_on
-<LI><a href="#[1f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_assert_rts
-<LI><a href="#[1f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_rx_activate
+<BR>[Calls]<UL><LI><a href="#[1f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_check_set_flow_on
+<LI><a href="#[1f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_assert_rts
+<LI><a href="#[1f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_rx_activate
 </UL>
 <BR>[Called By]<UL><LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_on_ble_powered
 </UL>
 
-<P><STRONG><a name="[1fe]"></a>dma_uart_rx_check_empty</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, dma_uart_sps.o(.text))
+<P><STRONG><a name="[1fc]"></a>dma_uart_rx_check_empty</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, dma_uart_sps.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = dma_uart_rx_check_empty
 </UL>
-<BR>[Called By]<UL><LI><a href="#[215]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_check_dma_uart_rx_to
-<LI><a href="#[20c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_dma_sps_sleep_check
-<LI><a href="#[1fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_timeout
+<BR>[Called By]<UL><LI><a href="#[212]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_check_dma_uart_rx_to
+<LI><a href="#[209]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_dma_sps_sleep_check
+<LI><a href="#[1fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_timeout
 </UL>
 
-<P><STRONG><a name="[1fa]"></a>dma_uart_rx_disable</STRONG> (Thumb, 40 bytes, Stack size 16 bytes, dma_uart_sps.o(.text))
+<P><STRONG><a name="[1f8]"></a>dma_uart_rx_disable</STRONG> (Thumb, 40 bytes, Stack size 16 bytes, dma_uart_sps.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = dma_uart_rx_disable
 </UL>
 <BR>[Calls]<UL><LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_channel_stop
-<LI><a href="#[1fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_free
+<LI><a href="#[1f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_free
 </UL>
 <BR>[Called By]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_on_disconnect
-<LI><a href="#[20c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_dma_sps_sleep_check
+<LI><a href="#[209]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_dma_sps_sleep_check
 </UL>
 
-<P><STRONG><a name="[1fc]"></a>dma_uart_timeout</STRONG> (Thumb, 106 bytes, Stack size 16 bytes, dma_uart_sps.o(.text))
+<P><STRONG><a name="[1fa]"></a>dma_uart_timeout</STRONG> (Thumb, 106 bytes, Stack size 16 bytes, dma_uart_sps.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = dma_uart_timeout &rArr; dma_uart_rx_activate &rArr; uart_receive &rArr; uart_read_buffer
 </UL>
 <BR>[Calls]<UL><LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_channel_stop
 <LI><a href="#[1d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;co_list_push_back
-<LI><a href="#[1ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_check_set_flow_off
-<LI><a href="#[1fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_deassert_rts
-<LI><a href="#[1f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_assert_rts
-<LI><a href="#[1fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_rx_check_empty
-<LI><a href="#[1f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_rx_activate
+<LI><a href="#[1fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_check_set_flow_off
+<LI><a href="#[1fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_deassert_rts
+<LI><a href="#[1f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_assert_rts
+<LI><a href="#[1fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_rx_check_empty
+<LI><a href="#[1f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_rx_activate
 </UL>
-<BR>[Called By]<UL><LI><a href="#[215]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_check_dma_uart_rx_to
+<BR>[Called By]<UL><LI><a href="#[212]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_check_dma_uart_rx_to
 </UL>
 
-<P><STRONG><a name="[200]"></a>dma_uart_test_tx_queue_for_flow_on</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, dma_uart_sps.o(.text))
+<P><STRONG><a name="[1fe]"></a>dma_uart_test_tx_queue_for_flow_on</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, dma_uart_sps.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = dma_uart_test_tx_queue_for_flow_on &rArr; user_send_ble_flow_ctrl
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_send_ble_flow_ctrl
+<BR>[Calls]<UL><LI><a href="#[1e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_send_ble_flow_ctrl
 </UL>
 <BR>[Called By]<UL><LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_on_ble_powered
-<LI><a href="#[205]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_sps_init
+<LI><a href="#[203]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_sps_init
 <LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_gpio_callback
 <LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_tx_callback
 </UL>
 
-<P><STRONG><a name="[205]"></a>dma_uart_sps_init</STRONG> (Thumb, 148 bytes, Stack size 32 bytes, dma_uart_sps.o(.text))
+<P><STRONG><a name="[203]"></a>dma_uart_sps_init</STRONG> (Thumb, 148 bytes, Stack size 32 bytes, dma_uart_sps.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = dma_uart_sps_init &rArr; uart_initialize &rArr; uart_dma_init &rArr; dma_initialize
 </UL>
-<BR>[Calls]<UL><LI><a href="#[206]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_RegisterCallback
+<BR>[Calls]<UL><LI><a href="#[204]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_RegisterCallback
 <LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_EnableIRQ
-<LI><a href="#[203]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_GetPinStatus
+<LI><a href="#[201]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_GetPinStatus
 <LI><a href="#[14c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_initialize
-<LI><a href="#[200]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_test_tx_queue_for_flow_on
-<LI><a href="#[204]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_force_tx_flow_off
+<LI><a href="#[1fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_test_tx_queue_for_flow_on
+<LI><a href="#[202]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_force_tx_flow_off
 </UL>
 <BR>[Called By]<UL><LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_on_ble_powered
 </UL>
 
-<P><STRONG><a name="[214]"></a>dma_uart_check_active</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, dma_uart_sps.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[20c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_dma_sps_sleep_check
+<P><STRONG><a name="[211]"></a>dma_uart_check_active</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, dma_uart_sps.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[209]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_dma_sps_sleep_check
 </UL>
 
-<P><STRONG><a name="[207]"></a>dma_uart_on_connect</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, dma_uart_sps.o(.text))
+<P><STRONG><a name="[205]"></a>dma_uart_on_connect</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, dma_uart_sps.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_on_connection
 </UL>
 
-<P><STRONG><a name="[1ef]"></a>dma_uart_tx_async</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, dma_uart_sps.o(.text))
+<P><STRONG><a name="[1ed]"></a>dma_uart_tx_async</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, dma_uart_sps.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = dma_uart_tx_async &rArr; dma_uart_write &rArr; uart_send &rArr; uart_write_buffer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[203]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_GetPinStatus
+<BR>[Calls]<UL><LI><a href="#[201]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_GetPinStatus
 <LI><a href="#[1d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;co_list_pop_front
-<LI><a href="#[201]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_test_tx_queue_for_flow_off
-<LI><a href="#[202]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_write
+<LI><a href="#[1ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_test_tx_queue_for_flow_off
+<LI><a href="#[200]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_write
 </UL>
 <BR>[Called By]<UL><LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_on_ble_powered
 <LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_sps_server_data_write_ind_handler
 </UL>
 
-<P><STRONG><a name="[1f0]"></a>dma_uart_set_tx_size</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, dma_uart_sps.o(.text))
+<P><STRONG><a name="[1ee]"></a>dma_uart_set_tx_size</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, dma_uart_sps.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_on_disconnect
 <LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gattc_mtu_changed_ind_handler
 </UL>
@@ -2904,7 +2884,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_easy_timer
 <LI><a href="#[19c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_app_on_connection
-<LI><a href="#[207]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_on_connect
+<LI><a href="#[205]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_on_connect
 </UL>
 <BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gapc_connection_req_ind_handler
 </UL>
@@ -2915,24 +2895,22 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;platform_reset
 <LI><a href="#[19f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_app_on_disconnect
-<LI><a href="#[208]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;co_list_push_front
-<LI><a href="#[1fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_deassert_rts
-<LI><a href="#[1fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_rx_disable
-<LI><a href="#[1f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_set_tx_size
+<LI><a href="#[206]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;co_list_push_front
+<LI><a href="#[1fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_deassert_rts
+<LI><a href="#[1f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_rx_disable
+<LI><a href="#[1ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_set_tx_size
 </UL>
 <BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gapc_disconnect_ind_handler
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> app_entry_point.o(.constdata)
 </UL>
-<P><STRONG><a name="[12e]"></a>user_on_init</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, user_sps_device_dma.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 348<LI>Call Chain = user_on_init &rArr; user_conf_storage_init &rArr; user_spi_flash_init &rArr; spi_flash_auto_detect &rArr; spi_flash_read_jedec_id &rArr; spi_flash_is_busy &rArr; spi_flash_read_status_reg &rArr; spi_transaction &rArr; spi_access
+<P><STRONG><a name="[12e]"></a>user_on_init</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, user_sps_device_dma.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = user_on_init &rArr; periph_init &rArr; set_pad_functions &rArr; GPIO_ConfigurePin &rArr; GPIO_SetPinFunction
 </UL>
 <BR>[Calls]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;periph_init
-<LI><a href="#[1e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_conf_storage_init
-<LI><a href="#[1e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_sps_apply_uart_baudrate
+<LI><a href="#[1e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_sps_apply_uart_baudrate
 <LI><a href="#[197]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_app_on_init
-<LI><a href="#[20a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_remote_config_init
-<LI><a href="#[209]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
+<LI><a href="#[207]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_remote_config_init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;system_init_post
 </UL>
@@ -2941,14 +2919,14 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = user_on_db_init_complete &rArr; default_app_on_db_init_complete &rArr; user_advertise_operation &rArr; app_easy_gap_undirected_advertise_start &rArr; app_easy_gap_undirected_advertise_start_create_msg
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_app_on_db_init_complete
-<LI><a href="#[20b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_init_queues
+<LI><a href="#[208]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_init_queues
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> app_entry_point.o(.constdata)
 </UL>
 <P><STRONG><a name="[104]"></a>user_before_sleep</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, user_sps_device_dma.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = user_before_sleep &rArr; user_dma_sps_sleep_check &rArr; user_rwip_sleep_check
 </UL>
-<BR>[Calls]<UL><LI><a href="#[20c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_dma_sps_sleep_check
+<BR>[Calls]<UL><LI><a href="#[209]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_dma_sps_sleep_check
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -2956,7 +2934,7 @@ Global Symbols
 <P><STRONG><a name="[9c]"></a>user_on_data_length_change</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, user_sps_device_dma.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = user_on_data_length_change &rArr; user_gattc_exc_mtu_cmd
 </UL>
-<BR>[Calls]<UL><LI><a href="#[20d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_gattc_exc_mtu_cmd
+<BR>[Calls]<UL><LI><a href="#[20a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_gattc_exc_mtu_cmd
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> app_entry_point.o(.constdata)
 </UL>
@@ -2983,9 +2961,9 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = user_on_update_params_complete &rArr; user_set_default_tx_size
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prf_env_get
-<LI><a href="#[20e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_easy_gap_set_data_packet_length
-<LI><a href="#[20f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_set_default_tx_size
-<LI><a href="#[20d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_gattc_exc_mtu_cmd
+<LI><a href="#[20b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_easy_gap_set_data_packet_length
+<LI><a href="#[20c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_set_default_tx_size
+<LI><a href="#[20a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_gattc_exc_mtu_cmd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gapc_cmp_evt_handler
 </UL>
@@ -2996,9 +2974,9 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prf_env_get
 <LI><a href="#[1ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_easy_gap_param_update_start
-<LI><a href="#[20e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_easy_gap_set_data_packet_length
-<LI><a href="#[20f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_set_default_tx_size
-<LI><a href="#[20d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_gattc_exc_mtu_cmd
+<LI><a href="#[20b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_easy_gap_set_data_packet_length
+<LI><a href="#[20c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_set_default_tx_size
+<LI><a href="#[20a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_gattc_exc_mtu_cmd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gapc_cmp_evt_handler
 </UL>
@@ -3010,7 +2988,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[1a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_state_set
 <LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_easy_gap_undirected_advertise_get_active
 <LI><a href="#[1ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_easy_gap_undirected_advertise_start
-<LI><a href="#[210]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_append_device_name
+<LI><a href="#[20d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_append_device_name
 </UL>
 <BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gapm_cmp_evt_handler
 </UL>
@@ -3023,7 +3001,7 @@ Global Symbols
 <LI><a href="#[1a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_state_set
 <LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_easy_gap_undirected_advertise_get_active
 <LI><a href="#[1ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_easy_gap_undirected_advertise_start
-<LI><a href="#[210]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_append_device_name
+<LI><a href="#[20d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_append_device_name
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_app_on_db_init_complete
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_app_on_set_dev_config_complete
@@ -3031,27 +3009,27 @@ Global Symbols
 <LI><a href="#[19c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_app_on_connection
 </UL>
 
-<P><STRONG><a name="[1f6]"></a>ke_msg_alloc_no_init</STRONG> (Thumb, 42 bytes, Stack size 24 bytes, user_sps_utils.o(.text))
+<P><STRONG><a name="[1f4]"></a>ke_msg_alloc_no_init</STRONG> (Thumb, 42 bytes, Stack size 24 bytes, user_sps_utils.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = ke_msg_alloc_no_init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_malloc
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_rx_activate
+<BR>[Called By]<UL><LI><a href="#[1f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_rx_activate
 </UL>
 
-<P><STRONG><a name="[212]"></a>user_rwip_sleep_check</STRONG> (Thumb, 110 bytes, Stack size 24 bytes, user_sps_utils.o(.text))
+<P><STRONG><a name="[20f]"></a>user_rwip_sleep_check</STRONG> (Thumb, 110 bytes, Stack size 24 bytes, user_sps_utils.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = user_rwip_sleep_check
 </UL>
 <BR>[Calls]<UL><LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ea_sleep_check
-<LI><a href="#[213]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_sys_startup_period
+<LI><a href="#[210]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_sys_startup_period
 <LI><a href="#[183]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;arch_ble_ext_wakeup_get
 <LI><a href="#[185]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_timer_sleep_check
 <LI><a href="#[184]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_sleep_check
 </UL>
-<BR>[Called By]<UL><LI><a href="#[20c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_dma_sps_sleep_check
+<BR>[Called By]<UL><LI><a href="#[209]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_dma_sps_sleep_check
 </UL>
 
-<P><STRONG><a name="[20b]"></a>user_init_queues</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, user_sps_buffer_dma.o(.text))
+<P><STRONG><a name="[208]"></a>user_init_queues</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, user_sps_buffer_dma.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = user_init_queues
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;co_list_init
@@ -3060,7 +3038,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_on_db_init_complete
 </UL>
 
-<P><STRONG><a name="[1ee]"></a>user_ble_to_dma_uart</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, user_sps_buffer_dma.o(.text))
+<P><STRONG><a name="[1ec]"></a>user_ble_to_dma_uart</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, user_sps_buffer_dma.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = user_ble_to_dma_uart
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;co_list_push_back
@@ -3068,7 +3046,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_sps_server_data_write_ind_handler
 </UL>
 
-<P><STRONG><a name="[1ec]"></a>user_dma_uart_to_ble</STRONG> (Thumb, 72 bytes, Stack size 8 bytes, user_sps_buffer_dma.o(.text))
+<P><STRONG><a name="[1ea]"></a>user_dma_uart_to_ble</STRONG> (Thumb, 72 bytes, Stack size 8 bytes, user_sps_buffer_dma.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = user_dma_uart_to_ble
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prf_env_get
@@ -3076,80 +3054,80 @@ Global Symbols
 <LI><a href="#[1ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_send
 </UL>
 <BR>[Called By]<UL><LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_on_ble_powered
-<LI><a href="#[1ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_dma_uart_to_ble_confirm
+<LI><a href="#[1eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_dma_uart_to_ble_confirm
 <LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_sps_server_enable_cfm_handler
 </UL>
 
-<P><STRONG><a name="[1ed]"></a>user_dma_uart_to_ble_confirm</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, user_sps_buffer_dma.o(.text))
+<P><STRONG><a name="[1eb]"></a>user_dma_uart_to_ble_confirm</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, user_sps_buffer_dma.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = user_dma_uart_to_ble_confirm &rArr; user_dma_uart_to_ble
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prf_env_get
 <LI><a href="#[1ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_send
-<LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_dma_uart_to_ble
+<LI><a href="#[1ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_dma_uart_to_ble
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_sps_server_data_tx_cfm_handler
 </UL>
 
-<P><STRONG><a name="[20c]"></a>user_dma_sps_sleep_check</STRONG> (Thumb, 136 bytes, Stack size 16 bytes, user_sps_schedule_dma.o(.text))
+<P><STRONG><a name="[209]"></a>user_dma_sps_sleep_check</STRONG> (Thumb, 136 bytes, Stack size 16 bytes, user_sps_schedule_dma.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = user_dma_sps_sleep_check &rArr; user_rwip_sleep_check
 </UL>
 <BR>[Calls]<UL><LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;arch_set_extended_sleep
 <LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;arch_disable_sleep
-<LI><a href="#[212]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_rwip_sleep_check
-<LI><a href="#[1fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_deassert_rts
-<LI><a href="#[1f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_assert_rts
-<LI><a href="#[214]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_check_active
-<LI><a href="#[1fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_rx_disable
-<LI><a href="#[1fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_rx_check_empty
+<LI><a href="#[20f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_rwip_sleep_check
+<LI><a href="#[1fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_deassert_rts
+<LI><a href="#[1f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_assert_rts
+<LI><a href="#[211]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_check_active
+<LI><a href="#[1f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_rx_disable
+<LI><a href="#[1fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_rx_check_empty
 </UL>
 <BR>[Called By]<UL><LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_before_sleep
 </UL>
 
-<P><STRONG><a name="[215]"></a>user_check_dma_uart_rx_to</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, user_sps_schedule_dma.o(.text))
+<P><STRONG><a name="[212]"></a>user_check_dma_uart_rx_to</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, user_sps_schedule_dma.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = user_check_dma_uart_rx_to &rArr; dma_uart_timeout &rArr; dma_uart_rx_activate &rArr; uart_receive &rArr; uart_read_buffer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_timeout
-<LI><a href="#[1fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_rx_check_empty
+<BR>[Calls]<UL><LI><a href="#[1fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_timeout
+<LI><a href="#[1fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_rx_check_empty
 </UL>
 <BR>[Called By]<UL><LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_on_ble_powered
 </UL>
 
-<P><STRONG><a name="[1ff]"></a>user_check_set_flow_off</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, user_sps_schedule_dma.o(.text))
+<P><STRONG><a name="[1fd]"></a>user_check_set_flow_off</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, user_sps_schedule_dma.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = user_check_set_flow_off &rArr; get_heap_usage
 </UL>
-<BR>[Calls]<UL><LI><a href="#[216]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_heap_usage
-<LI><a href="#[1fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_deassert_rts
+<BR>[Calls]<UL><LI><a href="#[213]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_heap_usage
+<LI><a href="#[1fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_deassert_rts
 </UL>
 <BR>[Called By]<UL><LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_on_ble_powered
-<LI><a href="#[1fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_timeout
+<LI><a href="#[1fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_timeout
 </UL>
 
-<P><STRONG><a name="[1f8]"></a>user_check_set_flow_on</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, user_sps_schedule_dma.o(.text))
+<P><STRONG><a name="[1f6]"></a>user_check_set_flow_on</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, user_sps_schedule_dma.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = user_check_set_flow_on &rArr; get_heap_usage
 </UL>
-<BR>[Calls]<UL><LI><a href="#[216]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_heap_usage
+<BR>[Calls]<UL><LI><a href="#[213]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_heap_usage
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_rx_reactivate
+<BR>[Called By]<UL><LI><a href="#[1f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_rx_reactivate
 </UL>
 
 <P><STRONG><a name="[103]"></a>user_on_ble_powered</STRONG> (Thumb, 106 bytes, Stack size 8 bytes, user_sps_schedule_dma.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = user_on_ble_powered &rArr; dma_uart_sps_init &rArr; uart_initialize &rArr; uart_dma_init &rArr; dma_initialize
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_state_get
-<LI><a href="#[215]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_check_dma_uart_rx_to
-<LI><a href="#[1ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_check_set_flow_off
-<LI><a href="#[1f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_assert_rts
-<LI><a href="#[205]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_sps_init
-<LI><a href="#[200]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_test_tx_queue_for_flow_on
-<LI><a href="#[1f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_rx_reactivate
-<LI><a href="#[1f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_rx_activate
-<LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_dma_uart_to_ble
-<LI><a href="#[1ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_tx_async
+<LI><a href="#[212]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_check_dma_uart_rx_to
+<LI><a href="#[1fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_check_set_flow_off
+<LI><a href="#[1f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_assert_rts
+<LI><a href="#[203]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_sps_init
+<LI><a href="#[1fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_test_tx_queue_for_flow_on
+<LI><a href="#[1f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_rx_reactivate
+<LI><a href="#[1f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_rx_activate
+<LI><a href="#[1ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_dma_uart_to_ble
+<LI><a href="#[1ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_tx_async
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[217]"></a>remote_config_get_att_idx</STRONG> (Thumb, 38 bytes, Stack size 16 bytes, remote_config.o(.text))
+<P><STRONG><a name="[214]"></a>remote_config_get_att_idx</STRONG> (Thumb, 38 bytes, Stack size 16 bytes, remote_config.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = remote_config_get_att_idx
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prf_env_get
@@ -3161,7 +3139,7 @@ Global Symbols
 <P><STRONG><a name="[7d]"></a>remote_config_prf_itf_get</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, remote_config.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> prf.o(.constdata)
 </UL>
-<P><STRONG><a name="[20a]"></a>user_remote_config_init</STRONG> (Thumb, 34 bytes, Stack size 16 bytes, user_remote_config.o(.text))
+<P><STRONG><a name="[207]"></a>user_remote_config_init</STRONG> (Thumb, 34 bytes, Stack size 16 bytes, user_remote_config.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = user_remote_config_init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
@@ -3195,54 +3173,6 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> app_entry_point.o(.constdata)
 </UL>
-<P><STRONG><a name="[21b]"></a>user_config_read_configuration_struct</STRONG> (Thumb, 130 bytes, Stack size 32 bytes, user_config_storage.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = user_config_read_configuration_struct &rArr; user_config_storage_read_ext_mem &rArr; spi_flash_read_data &rArr; spi_flash_is_busy &rArr; spi_flash_read_status_reg &rArr; spi_transaction &rArr; spi_access
-</UL>
-<BR>[Calls]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_malloc
-<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_free
-<LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
-<LI><a href="#[1a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
-<LI><a href="#[21c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_storage_read_ext_mem
-</UL>
-<BR>[Called By]<UL><LI><a href="#[1e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_conf_storage_init
-</UL>
-
-<P><STRONG><a name="[1e8]"></a>user_conf_storage_init</STRONG> (Thumb, 232 bytes, Stack size 120 bytes, user_config_storage.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 332<LI>Call Chain = user_conf_storage_init &rArr; user_spi_flash_init &rArr; spi_flash_auto_detect &rArr; spi_flash_read_jedec_id &rArr; spi_flash_is_busy &rArr; spi_flash_read_status_reg &rArr; spi_transaction &rArr; spi_access
-</UL>
-<BR>[Calls]<UL><LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
-<LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
-<LI><a href="#[1bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_spi_flash_init
-<LI><a href="#[21b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_read_configuration_struct
-<LI><a href="#[21c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_storage_read_ext_mem
-<LI><a href="#[1f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_spi_flash_release
-</UL>
-<BR>[Called By]<UL><LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_on_init
-<LI><a href="#[2c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_sps_apply_config
-</UL>
-
-<P><STRONG><a name="[21d]"></a>user_config_write_configuration_struct</STRONG> (Thumb, 196 bytes, Stack size 32 bytes, user_config_storage.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 172<LI>Call Chain = user_config_write_configuration_struct &rArr; user_flash_write_data &rArr; spi_flash_write_data &rArr; spi_flash_page_program &rArr; spi_flash_write_enable &rArr; spi_flash_wait_till_ready &rArr; spi_flash_read_status_reg &rArr; spi_transaction &rArr; spi_access
-</UL>
-<BR>[Calls]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_malloc
-<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_free
-<LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
-<LI><a href="#[1bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_flash_write_data
-<LI><a href="#[21c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_storage_read_ext_mem
-</UL>
-<BR>[Called By]<UL><LI><a href="#[1e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_storage_save_configuration
-</UL>
-
-<P><STRONG><a name="[1e7]"></a>user_config_storage_save_configuration</STRONG> (Thumb, 104 bytes, Stack size 24 bytes, user_config_storage.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 236<LI>Call Chain = user_config_storage_save_configuration &rArr; user_spi_flash_init &rArr; spi_flash_auto_detect &rArr; spi_flash_read_jedec_id &rArr; spi_flash_is_busy &rArr; spi_flash_read_status_reg &rArr; spi_transaction &rArr; spi_access
-</UL>
-<BR>[Calls]<UL><LI><a href="#[1bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_spi_flash_init
-<LI><a href="#[21d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_write_configuration_struct
-<LI><a href="#[1f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_spi_flash_release
-</UL>
-<BR>[Called By]<UL><LI><a href="#[2c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_sps_apply_config
-</UL>
-
 <P><STRONG><a name="[cd]"></a>PATCHED_ke_free</STRONG> (Thumb, 370 bytes, Stack size 20 bytes, patch.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = PATCHED_ke_free
 </UL>
@@ -3253,13 +3183,13 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uidivmod
 <LI><a href="#[1c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;platform_reset
-<LI><a href="#[21e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_heap_space_all_total
-<LI><a href="#[220]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ble_fc_set_state
-<LI><a href="#[21f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ble_fc_get_state
+<LI><a href="#[218]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_heap_space_all_total
+<LI><a href="#[21a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ble_fc_set_state
+<LI><a href="#[219]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ble_fc_get_state
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> patch.o(.constdata)
 </UL>
-<P><STRONG><a name="[1f3]"></a>patch_func</STRONG> (Thumb, 30 bytes, Stack size 12 bytes, patch.o(.text))
+<P><STRONG><a name="[1f1]"></a>patch_func</STRONG> (Thumb, 30 bytes, Stack size 12 bytes, patch.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = patch_func
 </UL>
 <BR>[Called By]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;periph_init
@@ -3276,20 +3206,20 @@ Global Symbols
 <LI><a href="#[2e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rf_reinit_func
 </UL>
 
-<P><STRONG><a name="[216]"></a>get_heap_usage</STRONG> (Thumb, 78 bytes, Stack size 8 bytes, ble_flow_control.o(.text))
+<P><STRONG><a name="[213]"></a>get_heap_usage</STRONG> (Thumb, 78 bytes, Stack size 8 bytes, ble_flow_control.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = get_heap_usage
 </UL>
 <BR>[Calls]<UL><LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uidivmod
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_check_set_flow_on
-<LI><a href="#[1ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_check_set_flow_off
+<BR>[Called By]<UL><LI><a href="#[1f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_check_set_flow_on
+<LI><a href="#[1fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_check_set_flow_off
 </UL>
 
-<P><STRONG><a name="[220]"></a>ble_fc_set_state</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, ble_flow_control.o(.text))
+<P><STRONG><a name="[21a]"></a>ble_fc_set_state</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, ble_flow_control.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = ble_fc_set_state
 </UL>
-<BR>[Calls]<UL><LI><a href="#[222]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disable_rx_buffer_limit
-<LI><a href="#[221]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_rx_buffer_limit
+<BR>[Calls]<UL><LI><a href="#[21c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disable_rx_buffer_limit
+<LI><a href="#[21b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_rx_buffer_limit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PATCHED_ke_malloc
 </UL>
@@ -3302,11 +3232,11 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[223]"></a>ble_fc_disable_heap_monitoring</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, ble_flow_control.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[222]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disable_rx_buffer_limit
+<P><STRONG><a name="[21d]"></a>ble_fc_disable_heap_monitoring</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, ble_flow_control.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[21c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disable_rx_buffer_limit
 </UL>
 
-<P><STRONG><a name="[26b]"></a>ble_fc_heap_monitoring_is_enabled</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, ble_flow_control.o(.text), UNUSED)
+<P><STRONG><a name="[265]"></a>ble_fc_heap_monitoring_is_enabled</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, ble_flow_control.o(.text), UNUSED)
 
 <P><STRONG><a name="[17e]"></a>ble_rx_evt_handler</STRONG> (Thumb, 80 bytes, Stack size 0 bytes, ble_flow_control.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BLE_RF_DIAG_Handler
@@ -3315,7 +3245,7 @@ Global Symbols
 <P><STRONG><a name="[173]"></a>ble_flow_control_apply_rx_buffers_limit</STRONG> (Thumb, 92 bytes, Stack size 8 bytes, ble_flow_control.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = ble_flow_control_apply_rx_buffers_limit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[224]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;restore_rx_buffer
+<BR>[Calls]<UL><LI><a href="#[21e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;restore_rx_buffer
 </UL>
 <BR>[Called By]<UL><LI><a href="#[7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rwble_isr
 </UL>
@@ -3331,39 +3261,35 @@ Global Symbols
 <P><STRONG><a name="[175]"></a>ble_flow_control_revert_rx_buffers_limit</STRONG> (Thumb, 78 bytes, Stack size 8 bytes, ble_flow_control.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = ble_flow_control_revert_rx_buffers_limit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[224]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;restore_rx_buffer
+<BR>[Calls]<UL><LI><a href="#[21e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;restore_rx_buffer
 </UL>
 <BR>[Called By]<UL><LI><a href="#[7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rwble_isr
 </UL>
 
-<P><STRONG><a name="[21f]"></a>ble_fc_get_state</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, ble_flow_control.o(.text))
+<P><STRONG><a name="[219]"></a>ble_fc_get_state</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, ble_flow_control.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PATCHED_ke_malloc
 </UL>
 
-<P><STRONG><a name="[21e]"></a>get_heap_space_all_total</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, ble_flow_control.o(.text))
+<P><STRONG><a name="[218]"></a>get_heap_space_all_total</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, ble_flow_control.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PATCHED_ke_malloc
 </UL>
 
 <P><STRONG><a name="[54]"></a>JT_lld_test_mode_rx_func</STRONG> (Thumb, 142 bytes, Stack size 24 bytes, lld.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = JT_lld_test_mode_rx_func
 </UL>
-<BR>[Calls]<UL><LI><a href="#[226]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lld_util_freq2chnl
-<LI><a href="#[225]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lld_evt_adv_create
-<LI><a href="#[227]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lld_evt_elt_insert
+<BR>[Calls]<UL><LI><a href="#[220]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lld_util_freq2chnl
+<LI><a href="#[21f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lld_evt_adv_create
+<LI><a href="#[221]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lld_evt_elt_insert
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> jump_table.o(.constdata)
 </UL>
-<P><STRONG><a name="[209]"></a>strlen</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, strlen.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_on_init
-</UL>
-
 <P><STRONG><a name="[fb]"></a>__scatterload</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, init.o(.text))
-<BR><BR>[Calls]<UL><LI><a href="#[228]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main_after_scatterload
+<BR><BR>[Calls]<UL><LI><a href="#[222]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main_after_scatterload
 </UL>
 <BR>[Called By]<UL><LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_main_scatterload
 </UL>
 
-<P><STRONG><a name="[26c]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
+<P><STRONG><a name="[266]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
 
 <P><STRONG><a name="[11a]"></a>__ARM_common_ll_muluu</STRONG> (Thumb, 48 bytes, Stack size 24 bytes, arch_system.o(i.__ARM_common_ll_muluu))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = __ARM_common_ll_muluu
@@ -3371,32 +3297,32 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lld_sleep_lpcycles_2_us_rcx_func
 </UL>
 
-<P><STRONG><a name="[26d]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
+<P><STRONG><a name="[267]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
 
-<P><STRONG><a name="[26e]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
+<P><STRONG><a name="[268]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
 
-<P><STRONG><a name="[26f]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
+<P><STRONG><a name="[269]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
-<P><STRONG><a name="[1f9]"></a>dma_uart_assert_rts</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, dma_uart_sps.o(i.dma_uart_assert_rts))
+<P><STRONG><a name="[1f7]"></a>dma_uart_assert_rts</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, dma_uart_sps.o(i.dma_uart_assert_rts))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = dma_uart_assert_rts
 </UL>
 <BR>[Calls]<UL><LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetInactive
 </UL>
 <BR>[Called By]<UL><LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_on_ble_powered
-<LI><a href="#[20c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_dma_sps_sleep_check
-<LI><a href="#[1fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_timeout
-<LI><a href="#[1f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_rx_reactivate
+<LI><a href="#[209]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_dma_sps_sleep_check
+<LI><a href="#[1fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_timeout
+<LI><a href="#[1f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_rx_reactivate
 </UL>
 
-<P><STRONG><a name="[1fd]"></a>dma_uart_deassert_rts</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, dma_uart_sps.o(i.dma_uart_deassert_rts))
+<P><STRONG><a name="[1fb]"></a>dma_uart_deassert_rts</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, dma_uart_sps.o(i.dma_uart_deassert_rts))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = dma_uart_deassert_rts
 </UL>
 <BR>[Calls]<UL><LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetActive
 </UL>
 <BR>[Called By]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_on_disconnect
-<LI><a href="#[20c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_dma_sps_sleep_check
-<LI><a href="#[1ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_check_set_flow_off
-<LI><a href="#[1fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_timeout
+<LI><a href="#[209]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_dma_sps_sleep_check
+<LI><a href="#[1fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_check_set_flow_off
+<LI><a href="#[1fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_timeout
 <LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_rx_callback
 </UL>
 
@@ -3930,7 +3856,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> sps_server_task.o(.constdata)
 </UL>
-<P><STRONG><a name="[1ea]"></a>calc_total_interval</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, user_sps_device_config.o(.text))
+<P><STRONG><a name="[1e8]"></a>calc_total_interval</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, user_sps_device_config.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_sps_config_verify_sup_to_cb
 <LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_sps_config_verify_sl_cb
 <LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_sps_config_verify_ci_max_cb
@@ -3940,7 +3866,7 @@ Local Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = dma_uart_rx_callback &rArr; dma_uart_deassert_rts
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;co_list_push_back
-<LI><a href="#[1fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_deassert_rts
+<LI><a href="#[1fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_deassert_rts
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> dma_uart_sps.o(.text)
 </UL>
@@ -3948,10 +3874,10 @@ Local Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = dma_uart_tx_callback &rArr; dma_uart_write &rArr; uart_send &rArr; uart_write_buffer
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;co_list_pop_front
-<LI><a href="#[1fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_free
-<LI><a href="#[200]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_test_tx_queue_for_flow_on
-<LI><a href="#[201]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_test_tx_queue_for_flow_off
-<LI><a href="#[202]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_write
+<LI><a href="#[1f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_free
+<LI><a href="#[1fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_test_tx_queue_for_flow_on
+<LI><a href="#[1ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_test_tx_queue_for_flow_off
+<LI><a href="#[200]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_write
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> dma_uart_sps.o(.text)
 </UL>
@@ -3959,39 +3885,39 @@ Local Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = dma_uart_gpio_callback &rArr; GPIO_EnableIRQ
 </UL>
 <BR>[Calls]<UL><LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_EnableIRQ
-<LI><a href="#[203]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_GetPinStatus
-<LI><a href="#[200]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_test_tx_queue_for_flow_on
-<LI><a href="#[204]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_force_tx_flow_off
+<LI><a href="#[201]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_GetPinStatus
+<LI><a href="#[1fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_test_tx_queue_for_flow_on
+<LI><a href="#[202]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_force_tx_flow_off
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> dma_uart_sps.o(.text)
 </UL>
 <P><STRONG><a name="[28]"></a>uart_user_no_err_expected_cb</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, dma_uart_sps.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> dma_uart_sps.o(.text)
 </UL>
-<P><STRONG><a name="[202]"></a>dma_uart_write</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, dma_uart_sps.o(.text))
+<P><STRONG><a name="[200]"></a>dma_uart_write</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, dma_uart_sps.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = dma_uart_write &rArr; uart_send &rArr; uart_write_buffer
 </UL>
 <BR>[Calls]<UL><LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_send
 </UL>
 <BR>[Called By]<UL><LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_tx_callback
-<LI><a href="#[1ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_tx_async
+<LI><a href="#[1ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_tx_async
 </UL>
 
-<P><STRONG><a name="[201]"></a>dma_uart_test_tx_queue_for_flow_off</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, dma_uart_sps.o(.text))
+<P><STRONG><a name="[1ff]"></a>dma_uart_test_tx_queue_for_flow_off</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, dma_uart_sps.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = dma_uart_test_tx_queue_for_flow_off &rArr; user_send_ble_flow_ctrl
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_send_ble_flow_ctrl
+<BR>[Calls]<UL><LI><a href="#[1e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_send_ble_flow_ctrl
 </UL>
 <BR>[Called By]<UL><LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_tx_callback
-<LI><a href="#[1ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_tx_async
+<LI><a href="#[1ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_tx_async
 </UL>
 
-<P><STRONG><a name="[204]"></a>dma_uart_force_tx_flow_off</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, dma_uart_sps.o(.text))
+<P><STRONG><a name="[202]"></a>dma_uart_force_tx_flow_off</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, dma_uart_sps.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = dma_uart_force_tx_flow_off &rArr; user_send_ble_flow_ctrl
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_send_ble_flow_ctrl
+<BR>[Calls]<UL><LI><a href="#[1e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_send_ble_flow_ctrl
 </UL>
-<BR>[Called By]<UL><LI><a href="#[205]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_sps_init
+<BR>[Called By]<UL><LI><a href="#[203]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_sps_init
 <LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_uart_gpio_callback
 </UL>
 
@@ -4004,7 +3930,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> user_sps_device_dma.o(.text)
 </UL>
-<P><STRONG><a name="[210]"></a>user_append_device_name</STRONG> (Thumb, 58 bytes, Stack size 16 bytes, user_sps_device_dma.o(.text))
+<P><STRONG><a name="[20d]"></a>user_append_device_name</STRONG> (Thumb, 58 bytes, Stack size 16 bytes, user_sps_device_dma.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = user_append_device_name
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;append_device_name
@@ -4013,7 +3939,7 @@ Local Symbols
 <LI><a href="#[19e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_advertise_operation
 </UL>
 
-<P><STRONG><a name="[20d]"></a>user_gattc_exc_mtu_cmd</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, user_sps_device_dma.o(.text))
+<P><STRONG><a name="[20a]"></a>user_gattc_exc_mtu_cmd</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, user_sps_device_dma.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = user_gattc_exc_mtu_cmd
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_send
@@ -4024,11 +3950,11 @@ Local Symbols
 <LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_on_data_length_change
 </UL>
 
-<P><STRONG><a name="[20f]"></a>user_set_default_tx_size</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, user_sps_device_dma.o(.text))
+<P><STRONG><a name="[20c]"></a>user_set_default_tx_size</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, user_sps_device_dma.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = user_set_default_tx_size
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prf_env_get
-<LI><a href="#[211]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gattc_get_mtu
+<LI><a href="#[20e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gattc_get_mtu
 </UL>
 <BR>[Called By]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_on_update_params_rejected
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_on_update_params_complete
@@ -4074,9 +4000,9 @@ Local Symbols
 <LI><a href="#[1db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prf_dst_task_get
 <LI><a href="#[1ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_send
 <LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_alloc
-<LI><a href="#[218]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gapc_get_conhdl
-<LI><a href="#[219]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;handle_ntf_change
-<LI><a href="#[217]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_config_get_att_idx
+<LI><a href="#[215]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gapc_get_conhdl
+<LI><a href="#[216]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;handle_ntf_change
+<LI><a href="#[214]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_config_get_att_idx
 <LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_common_switch8
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> remote_config_task.o(.constdata)
@@ -4087,7 +4013,7 @@ Local Symbols
 <BR>[Calls]<UL><LI><a href="#[1cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prf_env_get
 <LI><a href="#[1ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_send
 <LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_alloc
-<LI><a href="#[217]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_config_get_att_idx
+<LI><a href="#[214]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_config_get_att_idx
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> remote_config_task.o(.constdata)
 </UL>
@@ -4097,7 +4023,7 @@ Local Symbols
 <BR>[Calls]<UL><LI><a href="#[1cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prf_env_get
 <LI><a href="#[1ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_send
 <LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_alloc
-<LI><a href="#[21a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gapc_get_conidx
+<LI><a href="#[217]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gapc_get_conidx
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> remote_config_task.o(.constdata)
 </UL>
@@ -4108,7 +4034,7 @@ Local Symbols
 <LI><a href="#[1cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prf_env_get
 <LI><a href="#[1ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_send
 <LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_alloc
-<LI><a href="#[218]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gapc_get_conhdl
+<LI><a href="#[215]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gapc_get_conhdl
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> remote_config_task.o(.constdata)
 </UL>
@@ -4119,7 +4045,7 @@ Local Symbols
 <LI><a href="#[1cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prf_env_get
 <LI><a href="#[1ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_send
 <LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_alloc
-<LI><a href="#[218]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gapc_get_conhdl
+<LI><a href="#[215]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gapc_get_conhdl
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> remote_config_task.o(.constdata)
 </UL>
@@ -4131,12 +4057,12 @@ Local Symbols
 <LI><a href="#[1cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prf_env_get
 <LI><a href="#[1ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_send
 <LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_alloc
-<LI><a href="#[218]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gapc_get_conhdl
-<LI><a href="#[211]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gattc_get_mtu
+<LI><a href="#[215]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gapc_get_conhdl
+<LI><a href="#[20e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gattc_get_mtu
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> remote_config_task.o(.constdata)
 </UL>
-<P><STRONG><a name="[219]"></a>handle_ntf_change</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, remote_config_task.o(.text))
+<P><STRONG><a name="[216]"></a>handle_ntf_change</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, remote_config_task.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remote_config_gattc_write_req_ind_handler
 </UL>
 
@@ -4150,7 +4076,7 @@ Local Symbols
 <LI><a href="#[1b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prf_get_task_from_id
 <LI><a href="#[1ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_send
 <LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_alloc
-<LI><a href="#[211]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gattc_get_mtu
+<LI><a href="#[20e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gattc_get_mtu
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> user_remote_config_task.o(.constdata)
 </UL>
@@ -4172,35 +4098,25 @@ Local Symbols
 <LI><a href="#[1b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prf_get_task_from_id
 <LI><a href="#[1ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_send
 <LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_msg_alloc
-<LI><a href="#[211]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gattc_get_mtu
+<LI><a href="#[20e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gattc_get_mtu
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> user_remote_config_task.o(.constdata)
 </UL>
-<P><STRONG><a name="[21c]"></a>user_config_storage_read_ext_mem</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, user_config_storage.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = user_config_storage_read_ext_mem &rArr; spi_flash_read_data &rArr; spi_flash_is_busy &rArr; spi_flash_read_status_reg &rArr; spi_transaction &rArr; spi_access
-</UL>
-<BR>[Calls]<UL><LI><a href="#[14b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_flash_read_data
-</UL>
-<BR>[Called By]<UL><LI><a href="#[1e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_conf_storage_init
-<LI><a href="#[21d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_write_configuration_struct
-<LI><a href="#[21b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_read_configuration_struct
-</UL>
-
-<P><STRONG><a name="[224]"></a>restore_rx_buffer</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, ble_flow_control.o(.text))
+<P><STRONG><a name="[21e]"></a>restore_rx_buffer</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, ble_flow_control.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[175]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ble_flow_control_revert_rx_buffers_limit
 <LI><a href="#[173]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ble_flow_control_apply_rx_buffers_limit
-<LI><a href="#[222]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disable_rx_buffer_limit
+<LI><a href="#[21c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disable_rx_buffer_limit
 </UL>
 
-<P><STRONG><a name="[221]"></a>set_rx_buffer_limit</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, ble_flow_control.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[220]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ble_fc_set_state
+<P><STRONG><a name="[21b]"></a>set_rx_buffer_limit</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, ble_flow_control.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[21a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ble_fc_set_state
 </UL>
 
-<P><STRONG><a name="[222]"></a>disable_rx_buffer_limit</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, ble_flow_control.o(.text))
-<BR><BR>[Calls]<UL><LI><a href="#[224]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;restore_rx_buffer
+<P><STRONG><a name="[21c]"></a>disable_rx_buffer_limit</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, ble_flow_control.o(.text))
+<BR><BR>[Calls]<UL><LI><a href="#[21e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;restore_rx_buffer
 </UL>
-<BR>[Called By]<UL><LI><a href="#[223]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ble_fc_disable_heap_monitoring
-<LI><a href="#[220]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ble_fc_set_state
+<BR>[Called By]<UL><LI><a href="#[21d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ble_fc_disable_heap_monitoring
+<LI><a href="#[21a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ble_fc_set_state
 </UL>
 <P>
 <H3>

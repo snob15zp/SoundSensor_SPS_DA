@@ -41,7 +41,7 @@
 /* If defined, Configuration Storage mechanism is enabled.                                                      */
 /* CRC check is not used.                                                                                       */
 /****************************************************************************************************************/
-#define CFG_CONFIG_STORAGE
+#undef CFG_CONFIG_STORAGE  //RDD
 #undef USE_CONFIG_STORAGE_CRC
 
 /****************************************************************************************************************/

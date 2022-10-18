@@ -45,7 +45,7 @@
 #if defined (__DA14531__)
 #define PRODUCT_HEADER_POSITION     0x1F000
 #else
-#define PRODUCT_HEADER_POSITION     0x39000
+//#define PRODUCT_HEADER_POSITION     0x39000
 #endif
 #endif
 
@@ -317,8 +317,8 @@ extern uint8_t gpio_por_pin_timeout;
     #define SPI_CS                  SPI_CS_0
 
 #if defined(__DA14531__)
-    #define SPI_SPEED_MODE          SPI_SPEED_MODE_4MHz
-//    #define SPI_SPEED_MODE          SPI_SPEED_MODE_2MHz
+//   #define SPI_SPEED_MODE          SPI_SPEED_MODE_4MHz
+    #define SPI_SPEED_MODE          SPI_SPEED_MODE_2MHz
 
     #define SPI_EDGE_CAPTURE        SPI_MASTER_EDGE_CAPTURE
 #else // (DA14585, DA14586)

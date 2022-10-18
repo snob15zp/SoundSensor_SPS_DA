@@ -1,6 +1,0 @@
---cpu Cortex-M0+ --li -g --16 --apcs=interwork --pd "__MICROLIB SETA 1"
--I.\RTE\_dsps_531
--IC:\Users\RD\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include
--IC:\Keil_v5\ARM\CMSIS\Include
---pd "__UVISION_VERSION SETA 528" --pd "ARMCM0P SETA 1"
--o .\out_531\startup_da14531.o --depend .\out_531\startup_da14531.d "..\..\..\..\..\sdk6\sdk\platform\arch\boot\ARM\startup_DA14531.s"

@@ -39,7 +39,7 @@
 #define AES_ENCRYPTED_IMAGE_SUPPORTED 1
 
 /************** UART Booter section**************/
-#define UART_SUPPORTED
+#undef UART_SUPPORTED
 
 /************** Flash memory section  **************/
 #define SPI_FLASH_SUPPORTED

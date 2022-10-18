@@ -50,3 +50,9 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+*.crf
+utilities/secondary_bootloader/out_DA14531/*
+utilities/secondary_bootloader/includes/bootloader.h
+projects/target_apps/dsps/dsps_device/Keil_5/out_585/*
+JLinkLog.txt
+out/*

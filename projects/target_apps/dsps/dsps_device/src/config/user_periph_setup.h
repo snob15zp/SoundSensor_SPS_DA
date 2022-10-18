@@ -41,13 +41,7 @@
  ****************************************************************************************
  */
 
-#ifndef PRODUCT_HEADER_POSITION
-#if defined (__DA14531__)
-#define PRODUCT_HEADER_POSITION     0x1F000
-#else
-#define PRODUCT_HEADER_POSITION     0x39000
-#endif
-#endif
+#define PRODUCT_HEADER_POSITION     0x38000
 
 #define HW_CONFIG_PRO_DK 1
 //*** <<< Use Configuration Wizard in Context Menu >>> ***

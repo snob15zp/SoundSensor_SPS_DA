@@ -99,7 +99,7 @@
 #define APP_DIS_FIRM_REV_STR_LEN        (sizeof(APP_DIS_FIRM_REV_STR) - 1)
 
 /// Software Revision String
-#define APP_DIS_SW_REV_STR              SW_VERSION
+#define APP_DIS_SW_REV_STR              SDK_VERSION
 #define APP_DIS_SW_REV_STR_LEN          (sizeof(APP_DIS_SW_REV_STR) - 1)
 
 /// IEEE

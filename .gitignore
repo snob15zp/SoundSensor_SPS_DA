@@ -56,3 +56,7 @@ utilities/secondary_bootloader/includes/bootloader.h
 projects/target_apps/dsps/dsps_device/Keil_5/out_585/*
 JLinkLog.txt
 out/*
+projects/target_apps/dsps/dsps_device/Keil_5/out_531/*
+*.log
+*.intl
+**/__pycache__/**

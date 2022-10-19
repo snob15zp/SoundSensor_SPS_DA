@@ -49,8 +49,8 @@ e_FunctionReturnState ss_main(void)
 	if ((systick_time-systick_last)>PeriodSlowMath)
 	{ 
 		systick_last+=PeriodSlowMath;
-		SM_catch();
-		EvaluteLogLevel();
+		MS_catch();
+		MS_EvaluteLogLevel();
 		AF_V_AddADCdataToFIFO((uint16_t) LogLevelA, (uint16_t) LogLevelC);
 		
 #ifndef __SoundSensor__					

@@ -26,6 +26,10 @@ extern uint32_t Integrator_Hi_out;
 extern int32_t i32_fastAC;
 extern int32_t filterCout;
 extern int32_t filterAout;
+#ifndef __NO_MATLAB__
+extern int32_t filterCout_M;
+extern int32_t filterAout_M;
+#endif
 //--------------------------------------------------------------------------
 //=======================for colling from ADCinterrupt===============================
 void MF_main(int32_t adcinput);

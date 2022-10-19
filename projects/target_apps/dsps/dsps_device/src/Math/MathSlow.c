@@ -14,14 +14,19 @@ uint32_t MS_Integrator_Hi_out;
 int32_t MS_i32_fastAC;
 
 
-void SM_catch(void)
+void MS_catch(void)
 {
 MS_Integrator_Hi_out=Integrator_Hi_out;
 MS_i32_fastAC=i32_fastAC;
 }
 	
+void MS_EvaluteLogLevel(void)
+{
+	MS_EvaluteLogLevel_A(MS_i32_fastAC,MS_Integrator_Hi_out);
+}
 
-void EvaluteLogLevel(void)
+
+void MS_EvaluteLogLevel_A(int32_t a, uint32_t i)
 {
 LogLevelA=            1000*log10(MS_i32_fastAC)+D_LogLevelA_offset;
 LogLevelIntegrator=   1000*log10(MS_Integrator_Hi_out)+D_LogLevelIntegrator_offset;	

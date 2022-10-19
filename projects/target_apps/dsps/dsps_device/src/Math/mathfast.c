@@ -55,6 +55,10 @@ t_U_MF_int64 MF_U_64_fastAC;
 uint32_t Integrator_Hi_out;
 int32_t filterCout;
 int32_t filterAout;
+#ifndef __NO_MATLAB__
+int32_t filterCout_M;
+int32_t filterAout_M;
+#endif
 int32_t i32_fastAC;
 
 
@@ -74,6 +78,7 @@ void MF_main_init(void)
 	fast_init();
   FilterAC_s19s29_CG_initialize();
 	FilterC_s19s29_CG1_initialize();
+	
 };
 void MF_main_reset(void)
 {
@@ -96,6 +101,12 @@ inline void MF_main(int32_t adcoutput)
 	//FilterAC_s19s29_CG_U.Input=FilterC_s19s29_CG1_Y.Output;
 	
 	filterAout=FilterAC_s19s29_CG_step_o(filterCout);
+	
+#ifndef __NO_MATLAB__
+	filterCout_M=filterCout;
+	filterAout_M=filterAout;
+#endif
+
 	
 	//filterAout=FilterAC_s19s29_CG_Y.Output;
 	

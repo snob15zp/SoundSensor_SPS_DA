@@ -7,8 +7,9 @@ extern int32_t LogLevelA;
 extern int32_t LogLevelC;	
 extern int32_t LogLevelIntegrator;
 
-void SM_catch(void);
-void EvaluteLogLevel(void);
+void MS_catch(void);
+void MS_EvaluteLogLevel(void);
+void MS_EvaluteLogLevel_A(int32_t a, uint32_t i);//for matlab
 void MS_test_EvaluteLogLevel(void);
 
 #endif

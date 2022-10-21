@@ -1,4 +1,5 @@
 #include "MathFast.h"
+#include "MathSlow.h"
 #include "FilterC_s19s29_CG1.h"
 #include "FilterAC_s19s29_CG.h"
 
@@ -46,15 +47,20 @@ int32_t sin1000[sin1000_len]={
 ////int32_t r1[sin1000_len];
 ////int32_t r2[sin1000_len];					
 //int64_t r64[sin1000_len];
-					
+
+
+int32_t MF_ADCOverLoad;
+uint32_t MF_ADCOverLoad_Flag;
+bool catch_flag;
+static int32_t	PeakC_max_current;
+uint32_t	PeakC_max;
 static t_U_MF_uint64 Integrator;
 
 uint32_t Integrator_Hi;
 t_U_MF_int64 MF_U_64_fastAC;
 //-------------- output ----------
+
 uint32_t Integrator_Hi_out;
-int32_t filterCout;
-int32_t filterAout;
 #ifndef __NO_MATLAB__
 int32_t filterCout_M;
 int32_t filterAout_M;
@@ -78,7 +84,10 @@ void MF_main_init(void)
 	fast_init();
   FilterAC_s19s29_CG_initialize();
 	FilterC_s19s29_CG1_initialize();
-	
+	catch_flag=false;
+	PeakC_max_current=0;
+  PeakC_max=0;
+	MF_ADCOverLoad=MS_D_AlertLevel_Overload;
 };
 void MF_main_reset(void)
 {
@@ -88,13 +97,42 @@ void MF_main_reset(void)
 
 inline void MF_main(int32_t adcoutput)
 {
+	int32_t filterCout;
+	
+  int32_t filterAout;
+	
 	uint32_t t;
 	
 	uint64_t square;
 	
+	if (adcoutput<0) 
+		{ t=-adcoutput;}
+		else 
+		{t=adcoutput;};
+	if (t>MF_ADCOverLoad)
+	                MF_ADCOverLoad_Flag++;
+
+	
 	//FilterC_s19s29_CG1_U.Input=adcinput;
 	
 	filterCout=FilterC_s19s29_CG1_step_o(adcoutput);
+	
+	//eakC(filterCout); 
+	
+	
+	if (filterCout<0) 
+		{ t=-filterCout;}
+		else 
+		{t=filterCout;};
+	if (t>PeakC_max_current)
+	                 PeakC_max_current=t;
+	if (catch_flag) 
+	{
+	     PeakC_max=PeakC_max_current;
+		   PeakC_max_current=0;
+       catch_flag=0; 
+	}        
+
 	
 	//filterCout=FilterC_s19s29_CG1_Y.Output;
 	
@@ -106,7 +144,8 @@ inline void MF_main(int32_t adcoutput)
 	filterCout_M=filterCout;
 	filterAout_M=filterAout;
 #endif
-
+ 
+ 
 	
 	//filterAout=FilterAC_s19s29_CG_Y.Output;
 	
@@ -128,6 +167,13 @@ inline void MF_main(int32_t adcoutput)
 //	mathtest_fast();
 }
 ;
+inline void PeakC(int32_t in)
+{
+//	int32_t abs_in;
+};
+
+
+
 inline void test_MF_main_ADCEmul(void)
 {
 	static uint8_t i;

@@ -1,7 +1,14 @@
 #ifndef __MathFast_h__
 #define __MathFast_h__
 
+#ifdef __NO_MATLAB__
+#include "ss_global.h"
+#else
 #include <stdint.h>
+#include <stdbool.h>
+
+//#define SYSTICK_PERIOD_US   32     // period for systick timer in us, so 1000000ticks = 1second
+#endif
 
 typedef uint32_t uint32_T;
 typedef int32_t  int32_T;
@@ -21,7 +28,12 @@ typedef union
 	uint16_t num16[4];
 } t_U_MF_uint64;
 
+extern uint32_t MF_ADCOverLoad_Flag;
+extern bool catch_flag;
+
+
 //=======================for MATLAB check==================================
+extern uint32_t	PeakC_max;
 extern uint32_t Integrator_Hi_out;
 extern int32_t i32_fastAC;
 extern int32_t filterCout;
@@ -51,6 +63,7 @@ int32_t filterC(int32_t in);
 int32_t filterAC(int32_t in); //for test in matlab
 t_U_MF_int64 fastmul(int32_t A);
 int64_t fast(uint64_t in);
+void PeakC(int32_t in);
 //=========================for test in keil==========================================
 void test_MF_main(void);
 #endif

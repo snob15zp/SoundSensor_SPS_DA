@@ -51,7 +51,7 @@ e_FunctionReturnState ss_main(void)
 		systick_last+=PeriodSlowMath;
 		MS_catch();
 		MS_EvaluteLogLevel();
-		AF_V_AddADCdataToFIFO((uint16_t) LogLevelA, (uint16_t) LogLevelC);
+		AF_V_AddADCdataToFIFO((uint16_t) MS_i32_Level_FastA_dB, (uint16_t) MS_i32_Level_C_Peak_dB);
 		
 #ifndef __SoundSensor__					
 					led_flash();

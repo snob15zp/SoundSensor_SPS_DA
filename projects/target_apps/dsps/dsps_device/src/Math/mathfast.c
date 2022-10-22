@@ -152,7 +152,7 @@ inline void MF_main(int32_t adcoutput)
 	square=MF_sqr(filterAout);
 	
 	t=Integrator.num32[1];
-	Integrator.num64+=square;
+	Integrator.num64+=(square<<3);
 	if (t>Integrator.num32[1]) 
   {Integrator_Hi++;
 	 Integrator_Hi_out=Integrator_Hi;	

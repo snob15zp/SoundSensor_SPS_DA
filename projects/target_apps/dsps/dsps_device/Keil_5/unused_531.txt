@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Fri Oct 21 23:08:38 2022
+;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Sat Oct 22 15:31:59 2022
 ;VERSION 0.2
 ;FILE adc_531.o
 adc_correct_sample <= USED 0
@@ -137,9 +137,7 @@ mul_u18s29sh <= USED 0
 mul_u18s29shl <= USED 0
 mul_wide_s32 <= USED 0
 ;FILE mathslow.o
-MS_Alerts <= USED 0
-MS_evalute <= USED 0
-MS_init <= USED 0
+MS_EvaluteLogLevel <= USED 0
 ;FILE nmi_handler.o
 ;FILE otp_cs.o
 otp_cs_get_adc_diff_ge <= USED 0

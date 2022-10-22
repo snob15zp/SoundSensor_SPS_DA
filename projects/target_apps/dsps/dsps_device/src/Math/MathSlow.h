@@ -3,6 +3,7 @@
 
 #ifdef __NO_MATLAB__
 #include "ss_global.h"
+#include "ss_sys.h"
 #else
 #include <stdint.h>
 #include <stdbool.h>
@@ -14,16 +15,16 @@
 #define MF_ADCOverLoad_Flag_duration_US 1000000
 
 #define MS_D_offset_FastA_dB 49.88 //dB
-#define MS_D_offset_Dose_dB  74.53 //dB 74.53
+#define MS_D_offset_Dose_dB  (74.53-9) //dB 74.53
 #define MS_D_offset_C_Peak_dB (-23.70202241) //dB
 #define MS_D_dBscale 100.0
 
 
 #define MS_D_AlertLevel_C_140bB_peak 153144400 //ADC bits, factor 2, fp26
-#define MS_D_AlertLevel_FastA 850//0.1dB
+#define MS_D_AlertLevel_FastA (85)//0.1dB
 #define MS_D_AlertLevel_Overload     102469853 //ADC bits, fp27
 #define MS_D_AlertLevel_Dose MS_D_AlertLevel_FastA//0.1dB
-#define MS_D_AlertLevel_DoseM3dB (MS_D_AlertLevel_Dose-30)//0.1dB	
+#define MS_D_AlertLevel_DoseM3dB (MS_D_AlertLevel_Dose-3)//0.1dB	
 
 //extern int32_t MS_i32_AlertLevel_C140dB_Peak;//filterC bits
 extern int32_t MS_i32_AlertLevel_FastA;//0.1dB

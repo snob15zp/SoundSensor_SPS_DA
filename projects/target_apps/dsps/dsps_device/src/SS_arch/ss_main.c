@@ -17,6 +17,7 @@ e_FunctionReturnState ssm_main_ADC_prepare(void)
 #ifdef __SoundSensor__
 	AF_V_WriteStart((uint16_t) ssm_main_ADC_prepare);	
 #endif	
+	MS_init();
 	MF_main_init();
 	ADCon=true;
 	ssm_main_BLE_RDY=false;
@@ -44,13 +45,12 @@ e_FunctionReturnState ss_main_init(void)
 e_FunctionReturnState ss_main(void)
 {
 	e_FunctionReturnState b_rv;
-	b_rv=e_FRS_Done;
+	b_rv=e_FRS_Not_Done;
 	
 	if ((systick_time-systick_last)>PeriodSlowMath)
 	{ 
 		systick_last+=PeriodSlowMath;
-		MS_catch();
-		MS_EvaluteLogLevel();
+		MS_main();
 		AF_V_AddADCdataToFIFO((uint16_t) MS_i32_Level_FastA_dB, (uint16_t) MS_i32_Level_C_Peak_dB);
 		
 #ifndef __SoundSensor__					
@@ -67,6 +67,6 @@ e_FunctionReturnState ss_main(void)
 	
 	
 	if (systick_time>32000)  //debug
-		b_rv=e_FRS_Not_Done;
+		b_rv=e_FRS_Done;
 	return b_rv; 
 };

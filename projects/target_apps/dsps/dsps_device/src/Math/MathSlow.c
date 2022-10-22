@@ -55,19 +55,19 @@ void MS_evalute(uint32_t c, int32_t a, uint32_t i,uint32_t t)
 
 void MS_catch(void)
 {
-//	#ifndef __NO_MATLAB__
+	#ifndef __NO_MATLAB__
 	MS_matlab_time++;
 	MS_matlab_time_out=MS_matlab_time;
 	if (++MS_couter==4000)
 	{ MS_couter=0;
-//	#endif
+	#endif
 
 	catch_flag=true;
 	MS_Integrator_Hi_out=Integrator_Hi_out;
 	MS_i32_fastAC=i32_fastAC;
-//	#ifndef __NO_MATLAB__
+	#ifndef __NO_MATLAB__
 	};
-//	#endif
+	#endif
 	
 }
 	
@@ -82,14 +82,14 @@ uint32_t MF_ADCOverLoad_Flag_time;
 void MS_EvaluteLogLevel_A(uint32_t c, int32_t a, uint32_t i)
 {
 
-MS_i32_Level_FastA_dB=  MS_D_dBscale*(10.0*log10(a)+MS_D_offset_FastA_dB); //0.01dB
-MS_i32_Level_Dose_dB=   MS_D_dBscale*(10.0*log10(i)+MS_D_offset_Dose_dB);	//0.01dB
-MS_i32_Level_C_Peak_dB= MS_D_dBscale*(20.0*log10(c)+MS_D_offset_C_Peak_dB);//0.01dB
-// #ifndef __NO_MATLAB__	
+MS_i32_Level_FastA_dB=  MS_D_dBscale*(10.0*log10(a) + MS_D_offset_FastA_dB); //0.01dB
+MS_i32_Level_Dose_dB=   MS_D_dBscale*(10.0*log10(i) + (74.53-9.0));	//0.01dBMS_D_offset_Dose_dB
+MS_i32_Level_C_Peak_dB= MS_D_dBscale*(20.0*log10(c) + MS_D_offset_C_Peak_dB);//0.01dB
+#ifndef __NO_MATLAB__	
 MS_i32_Level_C_Peak_dB_out=MS_i32_Level_C_Peak_dB;//0.1dB
 MS_i32_Level_FastA_dB_out=MS_i32_Level_FastA_dB;//0.1dB
 MS_i32_Level_Dose_dB_out=MS_i32_Level_Dose_dB;//0.1dB	
-// #endif	
+#endif	
 }	
 
 void MS_Alerts(uint32_t time)
@@ -113,7 +113,7 @@ void MS_Alerts(uint32_t time)
 		MF_ADCOverLoad_Flag_time=time-(MF_ADCOverLoad_Flag_duration_US/SYSTICK_PERIOD_US)*2;
 	}
 	
-	MS_b_alert_DoseM3dB=(MS_i32_Level_Dose_dB>MS_i32_AlertLevel_DoseM3dB);
+	MS_b_alert_DoseM3dB=(MS_i32_Level_Dose_dB>(MS_i32_AlertLevel_DoseM3dB));
 	
 	MS_b_alert_Dose=(MS_i32_Level_Dose_dB>MS_i32_AlertLevel_Dose);
 	
@@ -132,10 +132,10 @@ void MS_init(void)
 {
 
 //MS_i32_AlertLevel_C140dB_Peak=MS_D_AlertLevel_C_140bB_peak;//filterC bits
-MS_i32_AlertLevel_FastA=MS_D_AlertLevel_FastA;//0.1dB
+MS_i32_AlertLevel_FastA=(MS_D_AlertLevel_FastA)*(MS_D_dBscale);//0.1dB
 //MS_i32_AlertLevel_Overload=MS_D_AlertLevel_Overload;//ADC bits
-MS_i32_AlertLevel_Dose=MS_D_AlertLevel_Dose;//0.1dB
-MS_i32_AlertLevel_DoseM3dB=MS_D_AlertLevel_DoseM3dB;//0.1dB	
+MS_i32_AlertLevel_Dose=(MS_D_AlertLevel_Dose)*(MS_D_dBscale);//0.1dB
+MS_i32_AlertLevel_DoseM3dB=(MS_D_AlertLevel_DoseM3dB)*(MS_D_dBscale);//0.1dB	
 
 
 MS_b_alert_C140dBPeak=false;

@@ -9,7 +9,8 @@
 #endif
 
 
-extern volatile uint32_t systick_time;
+uint16_t* get_vars(void);
+uint64_t get_systime(void);
 
 void LEDinit (void);
 void test_hnd_init(void);

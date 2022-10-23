@@ -40,8 +40,12 @@
  * DEFINES
  ****************************************************************************************
  */
+#define VARS_CNT 32
 
 #define PRODUCT_HEADER_POSITION     0x38000
+
+#define CFG1_DEFAULT_POSITION 0x39000
+#define CFG2_DEFAULT_POSITION 0x3A000
 
 #define HW_CONFIG_PRO_DK 1
 //*** <<< Use Configuration Wizard in Context Menu >>> ***

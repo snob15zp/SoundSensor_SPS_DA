@@ -1356,6 +1356,21 @@
               <FileType>1</FileType>
               <FilePath>..\..\common\src\user_sps_schedule_dma.c</FilePath>
             </File>
+            <File>
+              <FileName>user_config_common.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\user_config_common.h</FilePath>
+            </File>
+            <File>
+              <FileName>user_config_storage.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\user_config_storage.c</FilePath>
+            </File>
+            <File>
+              <FileName>user_config_storage.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\user_config_storage.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1384,29 +1399,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>user_configuration_storage</GroupName>
-          <Files>
-            <File>
-              <FileName>user_config_storage.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\common\src\configuration_storage\user_config_storage.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>SS_InterfaceToBLE</GroupName>
-          <Files>
-            <File>
-              <FileName>SS_InterfaceToBLE.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src\SS_InterfaceToBLE\SS_InterfaceToBLE.c</FilePath>
-            </File>
-            <File>
-              <FileName>SS_InterfaceToBLE.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\src\SS_InterfaceToBLE\SS_InterfaceToBLE.h</FilePath>
-            </File>
-          </Files>
         </Group>
         <Group>
           <GroupName>SPI_ADC</GroupName>
@@ -1555,6 +1548,36 @@
               <FileName>ss_global.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\ss_global.h</FilePath>
+            </File>
+            <File>
+              <FileName>cmd_hnd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\cmd_hnd.c</FilePath>
+            </File>
+            <File>
+              <FileName>cmd_hnd.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\cmd_hnd.h</FilePath>
+            </File>
+            <File>
+              <FileName>cmd_mux.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\cmd_mux.c</FilePath>
+            </File>
+            <File>
+              <FileName>cmd_mux.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\cmd_mux.h</FilePath>
+            </File>
+            <File>
+              <FileName>ss_hnd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\ss_hnd.c</FilePath>
+            </File>
+            <File>
+              <FileName>ss_hnd.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\ss_hnd.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -2961,6 +2984,21 @@
               <FileType>1</FileType>
               <FilePath>..\..\common\src\user_sps_schedule_dma.c</FilePath>
             </File>
+            <File>
+              <FileName>user_config_common.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\user_config_common.h</FilePath>
+            </File>
+            <File>
+              <FileName>user_config_storage.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\user_config_storage.c</FilePath>
+            </File>
+            <File>
+              <FileName>user_config_storage.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\user_config_storage.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2989,29 +3027,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>user_configuration_storage</GroupName>
-          <Files>
-            <File>
-              <FileName>user_config_storage.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\common\src\configuration_storage\user_config_storage.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>SS_InterfaceToBLE</GroupName>
-          <Files>
-            <File>
-              <FileName>SS_InterfaceToBLE.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src\SS_InterfaceToBLE\SS_InterfaceToBLE.c</FilePath>
-            </File>
-            <File>
-              <FileName>SS_InterfaceToBLE.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\src\SS_InterfaceToBLE\SS_InterfaceToBLE.h</FilePath>
-            </File>
-          </Files>
         </Group>
         <Group>
           <GroupName>SPI_ADC</GroupName>
@@ -3160,6 +3176,36 @@
               <FileName>ss_global.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\ss_global.h</FilePath>
+            </File>
+            <File>
+              <FileName>cmd_hnd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\cmd_hnd.c</FilePath>
+            </File>
+            <File>
+              <FileName>cmd_hnd.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\cmd_hnd.h</FilePath>
+            </File>
+            <File>
+              <FileName>cmd_mux.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\cmd_mux.c</FilePath>
+            </File>
+            <File>
+              <FileName>cmd_mux.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\cmd_mux.h</FilePath>
+            </File>
+            <File>
+              <FileName>ss_hnd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\ss_hnd.c</FilePath>
+            </File>
+            <File>
+              <FileName>ss_hnd.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\ss_hnd.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -4566,6 +4612,21 @@
               <FileType>1</FileType>
               <FilePath>..\..\common\src\user_sps_schedule_dma.c</FilePath>
             </File>
+            <File>
+              <FileName>user_config_common.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\user_config_common.h</FilePath>
+            </File>
+            <File>
+              <FileName>user_config_storage.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\user_config_storage.c</FilePath>
+            </File>
+            <File>
+              <FileName>user_config_storage.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\user_config_storage.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -4594,29 +4655,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>user_configuration_storage</GroupName>
-          <Files>
-            <File>
-              <FileName>user_config_storage.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\common\src\configuration_storage\user_config_storage.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>SS_InterfaceToBLE</GroupName>
-          <Files>
-            <File>
-              <FileName>SS_InterfaceToBLE.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src\SS_InterfaceToBLE\SS_InterfaceToBLE.c</FilePath>
-            </File>
-            <File>
-              <FileName>SS_InterfaceToBLE.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\src\SS_InterfaceToBLE\SS_InterfaceToBLE.h</FilePath>
-            </File>
-          </Files>
         </Group>
         <Group>
           <GroupName>SPI_ADC</GroupName>
@@ -4765,6 +4804,36 @@
               <FileName>ss_global.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\ss_global.h</FilePath>
+            </File>
+            <File>
+              <FileName>cmd_hnd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\cmd_hnd.c</FilePath>
+            </File>
+            <File>
+              <FileName>cmd_hnd.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\cmd_hnd.h</FilePath>
+            </File>
+            <File>
+              <FileName>cmd_mux.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\cmd_mux.c</FilePath>
+            </File>
+            <File>
+              <FileName>cmd_mux.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\cmd_mux.h</FilePath>
+            </File>
+            <File>
+              <FileName>ss_hnd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\ss_hnd.c</FilePath>
+            </File>
+            <File>
+              <FileName>ss_hnd.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\ss_hnd.h</FilePath>
             </File>
           </Files>
         </Group>

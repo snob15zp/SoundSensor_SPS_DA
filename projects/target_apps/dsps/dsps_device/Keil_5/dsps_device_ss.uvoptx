@@ -703,7 +703,7 @@
 
   <Group>
     <GroupName>sdk_arch</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -1903,7 +1903,7 @@
 
   <Group>
     <GroupName>user_dsps_service</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -1971,7 +1971,7 @@
 
   <Group>
     <GroupName>user_platform</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -2043,17 +2043,53 @@
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
+    <File>
+      <GroupNumber>13</GroupNumber>
+      <FileNumber>111</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\src\user_config_common.h</PathWithFileName>
+      <FilenameWithoutPath>user_config_common.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>13</GroupNumber>
+      <FileNumber>112</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\src\user_config_storage.c</PathWithFileName>
+      <FilenameWithoutPath>user_config_storage.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>13</GroupNumber>
+      <FileNumber>113</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\src\user_config_storage.h</PathWithFileName>
+      <FilenameWithoutPath>user_config_storage.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
   </Group>
 
   <Group>
     <GroupName>user_remote_config_service</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>14</GroupNumber>
-      <FileNumber>111</FileNumber>
+      <FileNumber>114</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2065,7 +2101,7 @@
     </File>
     <File>
       <GroupNumber>14</GroupNumber>
-      <FileNumber>112</FileNumber>
+      <FileNumber>115</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2077,7 +2113,7 @@
     </File>
     <File>
       <GroupNumber>14</GroupNumber>
-      <FileNumber>113</FileNumber>
+      <FileNumber>116</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2089,7 +2125,7 @@
     </File>
     <File>
       <GroupNumber>14</GroupNumber>
-      <FileNumber>114</FileNumber>
+      <FileNumber>117</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2102,55 +2138,11 @@
   </Group>
 
   <Group>
-    <GroupName>user_configuration_storage</GroupName>
+    <GroupName>SS_InterfaceToBLE</GroupName>
     <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
-    <File>
-      <GroupNumber>15</GroupNumber>
-      <FileNumber>115</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\common\src\configuration_storage\user_config_storage.c</PathWithFileName>
-      <FilenameWithoutPath>user_config_storage.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-  </Group>
-
-  <Group>
-    <GroupName>SS_InterfaceToBLE</GroupName>
-    <tvExp>0</tvExp>
-    <tvExpOptDlg>0</tvExpOptDlg>
-    <cbSel>0</cbSel>
-    <RteFlg>0</RteFlg>
-    <File>
-      <GroupNumber>16</GroupNumber>
-      <FileNumber>116</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\src\SS_InterfaceToBLE\SS_InterfaceToBLE.c</PathWithFileName>
-      <FilenameWithoutPath>SS_InterfaceToBLE.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>16</GroupNumber>
-      <FileNumber>117</FileNumber>
-      <FileType>5</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\src\SS_InterfaceToBLE\SS_InterfaceToBLE.h</PathWithFileName>
-      <FilenameWithoutPath>SS_InterfaceToBLE.h</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
   </Group>
 
   <Group>
@@ -2160,7 +2152,7 @@
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
     <File>
-      <GroupNumber>17</GroupNumber>
+      <GroupNumber>16</GroupNumber>
       <FileNumber>118</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
@@ -2172,7 +2164,7 @@
       <bShared>0</bShared>
     </File>
     <File>
-      <GroupNumber>17</GroupNumber>
+      <GroupNumber>16</GroupNumber>
       <FileNumber>119</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
@@ -2184,7 +2176,7 @@
       <bShared>0</bShared>
     </File>
     <File>
-      <GroupNumber>17</GroupNumber>
+      <GroupNumber>16</GroupNumber>
       <FileNumber>120</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
@@ -2196,7 +2188,7 @@
       <bShared>0</bShared>
     </File>
     <File>
-      <GroupNumber>17</GroupNumber>
+      <GroupNumber>16</GroupNumber>
       <FileNumber>121</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
@@ -2216,7 +2208,7 @@
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
     <File>
-      <GroupNumber>18</GroupNumber>
+      <GroupNumber>17</GroupNumber>
       <FileNumber>122</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
@@ -2228,7 +2220,7 @@
       <bShared>0</bShared>
     </File>
     <File>
-      <GroupNumber>18</GroupNumber>
+      <GroupNumber>17</GroupNumber>
       <FileNumber>123</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
@@ -2240,7 +2232,7 @@
       <bShared>0</bShared>
     </File>
     <File>
-      <GroupNumber>18</GroupNumber>
+      <GroupNumber>17</GroupNumber>
       <FileNumber>124</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
@@ -2260,7 +2252,7 @@
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
     <File>
-      <GroupNumber>19</GroupNumber>
+      <GroupNumber>18</GroupNumber>
       <FileNumber>125</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
@@ -2272,7 +2264,7 @@
       <bShared>0</bShared>
     </File>
     <File>
-      <GroupNumber>19</GroupNumber>
+      <GroupNumber>18</GroupNumber>
       <FileNumber>126</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
@@ -2284,7 +2276,7 @@
       <bShared>0</bShared>
     </File>
     <File>
-      <GroupNumber>19</GroupNumber>
+      <GroupNumber>18</GroupNumber>
       <FileNumber>127</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
@@ -2296,7 +2288,7 @@
       <bShared>0</bShared>
     </File>
     <File>
-      <GroupNumber>19</GroupNumber>
+      <GroupNumber>18</GroupNumber>
       <FileNumber>128</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
@@ -2308,7 +2300,7 @@
       <bShared>0</bShared>
     </File>
     <File>
-      <GroupNumber>19</GroupNumber>
+      <GroupNumber>18</GroupNumber>
       <FileNumber>129</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
@@ -2320,7 +2312,7 @@
       <bShared>0</bShared>
     </File>
     <File>
-      <GroupNumber>19</GroupNumber>
+      <GroupNumber>18</GroupNumber>
       <FileNumber>130</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
@@ -2332,7 +2324,7 @@
       <bShared>0</bShared>
     </File>
     <File>
-      <GroupNumber>19</GroupNumber>
+      <GroupNumber>18</GroupNumber>
       <FileNumber>131</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
@@ -2344,7 +2336,7 @@
       <bShared>0</bShared>
     </File>
     <File>
-      <GroupNumber>19</GroupNumber>
+      <GroupNumber>18</GroupNumber>
       <FileNumber>132</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
@@ -2356,7 +2348,7 @@
       <bShared>0</bShared>
     </File>
     <File>
-      <GroupNumber>19</GroupNumber>
+      <GroupNumber>18</GroupNumber>
       <FileNumber>133</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
@@ -2368,7 +2360,7 @@
       <bShared>0</bShared>
     </File>
     <File>
-      <GroupNumber>19</GroupNumber>
+      <GroupNumber>18</GroupNumber>
       <FileNumber>134</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
@@ -2380,7 +2372,7 @@
       <bShared>0</bShared>
     </File>
     <File>
-      <GroupNumber>19</GroupNumber>
+      <GroupNumber>18</GroupNumber>
       <FileNumber>135</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
@@ -2392,7 +2384,7 @@
       <bShared>0</bShared>
     </File>
     <File>
-      <GroupNumber>19</GroupNumber>
+      <GroupNumber>18</GroupNumber>
       <FileNumber>136</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
@@ -2404,7 +2396,7 @@
       <bShared>0</bShared>
     </File>
     <File>
-      <GroupNumber>19</GroupNumber>
+      <GroupNumber>18</GroupNumber>
       <FileNumber>137</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
@@ -2419,12 +2411,12 @@
 
   <Group>
     <GroupName>SS_arch</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
     <File>
-      <GroupNumber>20</GroupNumber>
+      <GroupNumber>19</GroupNumber>
       <FileNumber>138</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
@@ -2436,7 +2428,7 @@
       <bShared>0</bShared>
     </File>
     <File>
-      <GroupNumber>20</GroupNumber>
+      <GroupNumber>19</GroupNumber>
       <FileNumber>139</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
@@ -2448,7 +2440,7 @@
       <bShared>0</bShared>
     </File>
     <File>
-      <GroupNumber>20</GroupNumber>
+      <GroupNumber>19</GroupNumber>
       <FileNumber>140</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
@@ -2460,7 +2452,7 @@
       <bShared>0</bShared>
     </File>
     <File>
-      <GroupNumber>20</GroupNumber>
+      <GroupNumber>19</GroupNumber>
       <FileNumber>141</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
@@ -2472,7 +2464,7 @@
       <bShared>0</bShared>
     </File>
     <File>
-      <GroupNumber>20</GroupNumber>
+      <GroupNumber>19</GroupNumber>
       <FileNumber>142</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
@@ -2484,7 +2476,7 @@
       <bShared>0</bShared>
     </File>
     <File>
-      <GroupNumber>20</GroupNumber>
+      <GroupNumber>19</GroupNumber>
       <FileNumber>143</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
@@ -2492,6 +2484,78 @@
       <bDave2>0</bDave2>
       <PathWithFileName>.\ss_global.h</PathWithFileName>
       <FilenameWithoutPath>ss_global.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>19</GroupNumber>
+      <FileNumber>144</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\src\cmd_hnd.c</PathWithFileName>
+      <FilenameWithoutPath>cmd_hnd.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>19</GroupNumber>
+      <FileNumber>145</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\src\cmd_hnd.h</PathWithFileName>
+      <FilenameWithoutPath>cmd_hnd.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>19</GroupNumber>
+      <FileNumber>146</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\src\cmd_mux.c</PathWithFileName>
+      <FilenameWithoutPath>cmd_mux.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>19</GroupNumber>
+      <FileNumber>147</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\src\cmd_mux.h</PathWithFileName>
+      <FilenameWithoutPath>cmd_mux.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>19</GroupNumber>
+      <FileNumber>148</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\src\ss_hnd.c</PathWithFileName>
+      <FilenameWithoutPath>ss_hnd.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>19</GroupNumber>
+      <FileNumber>149</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\src\ss_hnd.h</PathWithFileName>
+      <FilenameWithoutPath>ss_hnd.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

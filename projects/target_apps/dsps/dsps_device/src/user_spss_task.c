@@ -44,6 +44,7 @@
 #include "app_entry_point.h"
 #include "user_sps_buffer_dma.h"
 #include "dma_uart_sps.h"
+#include "cmd_mux.h"
 
 /*
 * GLOBAL VARIABLE DEFINITIONS
@@ -111,8 +112,17 @@ int user_sps_server_data_write_ind_handler(ke_msg_id_t const msgid,
                                            ke_task_id_t const dest_id,
                                            ke_task_id_t const src_id)
 {
-//    user_ble_to_dma_uart( (void *)param ); 
-//    dma_uart_tx_async();
+    if (param->length <= CMD_MUX_MSG_MAX_SZ)
+    {
+        uint8_t msg[CMD_MUX_MSG_MAX_SZ] = {0};
+        size_t msg_sz = param->length;
+        memcpy(msg, param->data, param->length);
+        cmd_mux(msg, &msg_sz);
+        if(msg_sz > 0)
+        {
+            user_send_ble_data(msg, msg_sz);
+        }
+    }
     return (KE_MSG_NO_FREE);
 }
 

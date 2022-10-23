@@ -35,7 +35,7 @@ e_FunctionReturnState ss_main_init(void)
 {
 	//ssm_main_state=0;
 	ADCon=false;
-	systick_last=systick_time;
+	systick_last=get_systime();
 	return e_FRS_Done;
 }
 
@@ -46,17 +46,12 @@ e_FunctionReturnState ss_main(void)
 	e_FunctionReturnState b_rv;
 	b_rv=e_FRS_Done;
 	
-	if ((systick_time-systick_last)>PeriodSlowMath)
+	if ((get_systime()-systick_last)>PeriodSlowMath)
 	{ 
 		systick_last+=PeriodSlowMath;
 		SM_catch();
 		EvaluteLogLevel();
 		AF_V_AddADCdataToFIFO((uint16_t) LogLevelA, (uint16_t) LogLevelC);
-		
-#ifndef __SoundSensor__					
-					led_flash();
-#endif
-		
 		
 #ifdef __SoundSensor__			
 					sx_main();
@@ -66,7 +61,7 @@ e_FunctionReturnState ss_main(void)
 	
 	
 	
-	if (systick_time>32000)  //debug
+	if (get_systime()>32000)  //debug
 		b_rv=e_FRS_Not_Done;
 	return b_rv; 
 };

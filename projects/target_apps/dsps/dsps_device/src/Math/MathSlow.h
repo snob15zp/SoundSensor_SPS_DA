@@ -53,6 +53,9 @@ extern uint32_t MS_matlab_time_out;
 extern int32_t MS_i32_Level_C_Peak_dB_out;//0.1dB
 extern int32_t MS_i32_Level_FastA_dB_out;//0.1dB
 extern int32_t MS_i32_Level_Dose_dB_out;//0.1dB
+
+extern bool MS_b_alert_C140dBPeak_out;
+extern bool MS_b_alert_FastA_out;
 #endif
 
 //for external call and matlab;

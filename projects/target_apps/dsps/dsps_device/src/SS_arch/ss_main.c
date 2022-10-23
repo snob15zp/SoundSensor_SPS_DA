@@ -50,7 +50,9 @@ e_FunctionReturnState ss_main(void)
 	if ((systick_time-systick_last)>PeriodSlowMath)
 	{ 
 		systick_last+=PeriodSlowMath;
+#ifdef __NO_MATLAB__		
 		MS_main();
+#endif		
 		AF_V_AddADCdataToFIFO((uint16_t) MS_i32_Level_FastA_dB, (uint16_t) MS_i32_Level_C_Peak_dB);
 		
 #ifndef __SoundSensor__					

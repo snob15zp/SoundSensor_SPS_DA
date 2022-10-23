@@ -37,6 +37,9 @@ uint32_t MS_matlab_time_out;
 int32_t MS_i32_Level_C_Peak_dB_out;//0.1dB
 int32_t MS_i32_Level_FastA_dB_out;//0.1dB
 int32_t MS_i32_Level_Dose_dB_out;//0.1dB
+
+bool MS_b_alert_C140dBPeak_out;
+bool MS_b_alert_FastA_out;
 #endif
 
 #ifdef __NO_MATLAB__
@@ -98,6 +101,11 @@ void MS_Alerts(uint32_t time)
 	MS_b_alert_C140dBPeak=(PeakC_max>MS_D_AlertLevel_C_140bB_peak);
 	MS_b_alert_live=MS_b_alert_FastA||MS_b_alert_C140dBPeak;
 	
+#ifndef __NO_MATLAB__
+MS_b_alert_FastA_out=MS_b_alert_FastA;
+MS_b_alert_C140dBPeak_out=MS_b_alert_C140dBPeak;
+#endif
+	
 	if (MF_ADCOverLoad_Flag_old!=MF_ADCOverLoad_Flag)
 	{ 
 		MF_ADCOverLoad_Flag_old=MF_ADCOverLoad_Flag;
@@ -156,5 +164,8 @@ MS_i32_fastAC=0;
 #ifndef __NO_MATLAB__
 MS_couter=0;
 MS_matlab_time=0;
+
+//MS_b_alert_FastA_out=0;
+//MS_b_alert_C140dBPeak_out=0;
 #endif	
 };

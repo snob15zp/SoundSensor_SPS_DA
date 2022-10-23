@@ -64,6 +64,9 @@ uint32_t Integrator_Hi_out;
 #ifndef __NO_MATLAB__
 int32_t filterCout_M;
 int32_t filterAout_M;
+
+uint32_t	MF_ADCOverLoad_Flag_out;
+	
 #endif
 int32_t i32_fastAC;
 
@@ -110,8 +113,12 @@ inline void MF_main(int32_t adcoutput)
 		else 
 		{t=adcoutput;};
 	if (t>MF_ADCOverLoad)
+	{
 	                MF_ADCOverLoad_Flag++;
-
+#ifndef __NO_MATLAB__
+	MF_ADCOverLoad_Flag_out=MF_ADCOverLoad_Flag;
+#endif		
+	};
 	
 	//FilterC_s19s29_CG1_U.Input=adcinput;
 	
@@ -317,18 +324,21 @@ uint32_t r0,r1;
 uint32_t uA;
 	if (A<0) 
 	{	uA=-A;
-		r1=((uA>>16)*fastFactor);
+		r1=(uA>>16)*fastFactor;
 		r0=(uA&0xffff)*fastFactor;
-		//t.num32[0]+=r0<<5;
-		t.num64=(r0<<5)+(r1<<(5+16));
-		t.num64=-t.num64;
+		t.num32[0]=r0<<(5);
+		t.num32[1]=(r0>>(32-5))+(r1>>(16-5));
+		r1=r1<<(32-(16-5));
+		t.num64+=r1;		t.num64=-t.num64;
 	}
 	else
 	{ uA=A;
 		r1=(uA>>16)*fastFactor;
 		r0=(uA&0xffff)*fastFactor;
-		t.num32[0]=0;
+		t.num32[0]=r0<<(5);
 		t.num32[1]=(r0>>(32-5))+(r1>>(16-5));
+		r1=r1<<(32-(16-5));
+		t.num64+=r1;
 	}
 	return t;
 };

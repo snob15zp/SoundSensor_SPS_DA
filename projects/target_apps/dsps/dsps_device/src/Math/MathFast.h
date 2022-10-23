@@ -41,6 +41,7 @@ extern int32_t filterAout;
 #ifndef __NO_MATLAB__
 extern int32_t filterCout_M;
 extern int32_t filterAout_M;
+extern uint32_t	MF_ADCOverLoad_Flag_out;
 #endif
 //--------------------------------------------------------------------------
 //=======================for colling from ADCinterrupt===============================

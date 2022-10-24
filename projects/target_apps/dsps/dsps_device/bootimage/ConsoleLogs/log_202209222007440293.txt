@@ -1,8 +1,0 @@
-[WARNING  Support Packages Updater@22-09-22 20:07:49] Cannot contact Dialog Support Package server. Cannot check for updates.
-[ACTION   General@22-09-22 20:11:46] Please press the hardware reset button on the board to start the download process.
-[WARNING  General@22-09-22 20:11:49] No UART is selected for communication with the target
-[INFO     General@22-09-22 20:11:49] UART port "COM1" was selected for communication
-[INFO     General@22-09-22 20:11:49] UART port "COM1" has been opened.
-[ERROR    Flash Code@22-09-22 20:11:52] Failed downloading firmware file to the board.
-[ERROR    Flash Code@22-09-22 20:12:09] Failed downloading firmware file to the board.
-[ERROR    Flash Code@22-09-22 20:12:13] Failed downloading firmware file to the board.

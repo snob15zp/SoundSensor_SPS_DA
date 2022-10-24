@@ -1,3 +1,0 @@
-[WARNING  Support Packages Updater@22-09-22 19:39:14] Cannot contact Dialog Support Package server. Cannot check for updates.
-[ERROR    General@22-09-22 20:07:09] No JTAG with serial number 480045312 could be found.
-[ERROR    Flash Code@22-09-22 20:07:09] Failed downloading firmware file to the board.

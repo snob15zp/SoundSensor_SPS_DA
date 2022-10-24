@@ -1,2 +1,0 @@
-[ERROR    Flash Code@22-09-22 22:55:06] Failed reading SYS_CTRL_REG (0x50000012)
-[ERROR    Flash Code@22-09-22 22:55:06] Failed downloading firmware file to the board.

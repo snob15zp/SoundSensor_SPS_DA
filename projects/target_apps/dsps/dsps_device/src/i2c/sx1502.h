@@ -22,7 +22,7 @@
  ****************************************************************************************
  */
  
- #define SX1502_ADDRESS                       (0x20)     // 0x20 (Addr=GND)
+  #define SX1502_ADDRESS                       (0x20)     // 0x20 (Addr=GND)
 
  #define SX1502_REGDATA_ADDR                  (0x00)     // RegData
  #define SX1502_REGDIR_ADDR                   (0x01)     // Direction
@@ -78,11 +78,8 @@
  #define BLUE_LED_OUT                         0x20 
  #define CONTROL_OUT                          0x10
  #define PWR_FIX_OUT                          0x08
- #define BTN_PWR_IN                           0x04
- #define BTN_BT_IN                            0x02
- #define SINGLE_LED_OUT                       0x01
- 
-//extern i2c_error_code sx1502_init(void);
- 
+ #define BTN_SW3_IN                           0x04
+ #define BTN_SW1_IN                           0x02
+ #define SINGLE_LED_OUT                       0x01 
 
 #endif // _SX1502_H_

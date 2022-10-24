@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Sat Oct 22 23:23:35 2022
+;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Mon Oct 24 11:33:05 2022
 ;VERSION 0.2
 ;FILE adc_531.o
 adc_correct_sample <= USED 0
@@ -13,7 +13,6 @@ adc_register_interrupt <= USED 0
 adc_reset <= USED 0
 adc_unregister_interrupt <= USED 0
 ;FILE adc_flash.o
-AF_V_WriteStart <= USED 0
 AF_V_WriteStop <= USED 0
 ;FILE app.o
 app_easy_gap_advertise_with_timeout_stop <= USED 0
@@ -118,14 +117,11 @@ i2c_unregister_int <= USED 0
 i2c_eeprom_configure <= USED 0
 i2c_eeprom_get_configuration <= USED 0
 i2c_eeprom_initialize <= USED 0
-i2c_eeprom_read_byte <= USED 0
 i2c_eeprom_read_data <= USED 0
 i2c_eeprom_release <= USED 0
 i2c_eeprom_update_slave_address <= USED 0
-i2c_eeprom_write_byte <= USED 0
 i2c_eeprom_write_data <= USED 0
 i2c_eeprom_write_page <= USED 0
-i2c_wait_until_eeprom_ready <= USED 0
 ;FILE jump_table.o
 dummyf <= USED 0
 ;FILE lld.o
@@ -137,11 +133,7 @@ mul_u18s29sh <= USED 0
 mul_u18s29shl <= USED 0
 mul_wide_s32 <= USED 0
 ;FILE mathslow.o
-MS_Alerts <= USED 0
 MS_EvaluteLogLevel <= USED 0
-MS_EvaluteLogLevel_A <= USED 0
-MS_catch <= USED 0
-MS_evalute <= USED 0
 ;FILE nmi_handler.o
 ;FILE otp_cs.o
 otp_cs_get_adc_diff_ge <= USED 0
@@ -183,6 +175,7 @@ spi_transfer <= USED 0
 ;FILE spi_adc.o
 SPI_ADC_init <= USED 0
 intinit <= USED 0
+timer2_init <= USED 0
 ;FILE spi_flash.o
 spi_flash_block_erase_no_wait <= USED 0
 spi_flash_chip_erase <= USED 0
@@ -217,15 +210,14 @@ spi_flash_write_status_reg <= USED 0
 ;FILE ss_i2c.o
 ss_i2c_test <= USED 0
 ssi2c_init <= USED 0
-sx1502_init <= USED 0
-sx_SysTick_Handler <= USED 0
-sx_main <= USED 0
 ;FILE ss_interfacetoble.o
 SS_InterfaceToBLE_SendThreeBytes <= USED 0
 SS_InterfaceToBLE_init <= USED 0
+led_flash <= USED 0
 user_app_adv_start <= USED 0
 ;FILE ss_main.o
 ;FILE ss_sys.o
+LEDinit <= USED 0
 ;FILE startup_da14531.o
 ;FILE syscntl.o
 syscntl_dcdc_get_level <= USED 0

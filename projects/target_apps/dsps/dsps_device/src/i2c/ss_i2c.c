@@ -3,6 +3,8 @@
 #include "sx1502.h"
 #include "gpio.h"
 #include "ss_i2c.h"
+#include "SS_sys.h"
+#include "ss_global.h"
 
 /****************************************************************************************/
 /* I2C configuration                                                                    */
@@ -35,6 +37,15 @@ static const i2c_eeprom_cfg_t sx1502_cfg = {
   .address_size = I2C_1BYTE_ADDR
 };
 
+//======================================================================================
+
+
+static uint8_t   inpData;                                                      // ???? ?????? ?????? ?? ?????? SX1502 
+static uint8_t   outData;                                                      // ????? ?????? ?????? ??? ?????? SX1502
+static uint8_t   buttonsState;
+
+static uint32_t systick_last_LED;//TODO to init
+static uint32_t systick_last_SCAN;
 /*****************************************************************************************
 *
 *****************************************************************************************/
@@ -61,14 +72,33 @@ static void ssi2c_set_pad_functions(void)
 static uint8_t i2cBuff[32];
 static uint8_t* ptrBuff;
 static uint8_t cnt;
-static uint32_t sysTime;
 static i2c_error_code err;
 
 #define board_calibration_control 0x10
 
+
+i2c_error_code sx1502_init(void)
+{
+  i2c_error_code err;
+  uint8_t wByte = IO_OUTPUT << 7 | IO_OUTPUT << 6 |
+                  IO_OUTPUT << 5 | IO_OUTPUT << 4 |
+                  IO_OUTPUT << 3 | IO_INPUT << 2 |
+                  IO_INPUT << 1 | IO_OUTPUT << 0;
+  err = i2c_eeprom_write_byte(SX1502_REGDIR_ADDR, wByte);               // wByte = 0b00000110; 0 - OUTPUT, 1 - INPUT  
+  if(err != I2C_NO_ERROR) return err;
+  err = i2c_eeprom_write_byte(SX1502_REGPULLUP_ADDR, 0x00);
+  if(err != I2C_NO_ERROR) return err;
+  wByte = 1 << 2;                                                       // IO2 - PULL_DOWN
+  err = i2c_eeprom_write_byte(SX1502_REGPULLDOWN_ADDR, wByte);
+  return err;  
+}
+//===================================================================================================================
+
 void ssi2c_init(void)
 {
-    
+systick_last_LED=systick_time;
+systick_last_SCAN=systick_time;    
+	
   // Initialize I2C
   i2c_eeprom_configure(&i2c_cfg, &sx1502_cfg);
   i2c_eeprom_initialize();
@@ -91,6 +121,11 @@ void ssi2c_init(void)
   i2cBuff[4] = 0x9F;
   i2cBuff[5] = 0x1F;
   cnt = 0;
+	
+	if(sx1502_init() == I2C_NO_ERROR)
+  {
+    i2c_eeprom_read_byte(SX1502_REGDATA_ADDR, &outData);
+  }
 
 }
 
@@ -113,26 +148,26 @@ void ss_i2c_test (void)
 //=======================================================================================================================
 
 
-
-static uint32_t __attribute__((aligned(8))) sysTime;                           // ????? ?????? ?????????? ? ?? ? ??????? ?????????
-static uint32_t __attribute__((aligned(8))) scanTime;                          // ?????? ???????????? ??????
+                           // ????? ?????? ?????????? ? ?? ? ??????? ?????????
 
 
-static uint8_t   inpData;                                                      // ???? ?????? ?????? ?? ?????? SX1502 
-static uint8_t   outData;                                                      // ????? ?????? ?????? ??? ?????? SX1502
-static uint8_t   buttonsState;
+//uint16_t  vddVoltage;                                                   // здесь храним значение напряжения питания 
 
+uint32_t __attribute__((aligned(8))) ledsTime = LED_SLOT_TIME - 1;;     // таймер светодиодов ()
+
+btn_t         sw1;
+btn_t         sw3;
+rgbLedTask_t  rgbLedTask;
 
 /*************************************************************************************************
  * ????? ????????? 
  * ***********************************************************************************************/
 volatile struct {
-	uint16_t BTN_BT_PUSH		    : 1;				                              // 1 = ?????? (SW1) ??????
-  uint16_t BTN_BT_UNPUSH      : 1;				                              // 1 = ?????? (SW1) ??????
-	uint16_t BTN_PWR_PUSH		    : 1;				                              // 1 = ?????? B_PWR (SW3) ?????? 
-	uint16_t BTN_PWR_UNPUSH		  : 1;				                              // 1 = ?????? B_PWR (SW3) ??????
-	uint16_t PWR_ENABLED			  : 1;				                              // 1 = DC/DC ???????, 0 = ????????
-}Status;
+  uint16_t VLTG_READ_EN       : 1;                                      // 1 = надо мерить напряжение питания
+	uint16_t PWR_ENABLED			  : 1;				                              // 1 = DC/DC включен, 0 = выключен
+  uint16_t ALARM_STATE        : 1;                                      // 1 = обнаружено аварийное состояние
+  uint16_t ERROR_STATE        : 1;
+ }Status;
 
 
 /**********************************************************************************************
@@ -140,66 +175,92 @@ volatile struct {
 * ????????? ?????? ?????? ?????? ???????????
 *
 **********************************************************************************************/
+//void SysTick_Handler(void)
+//{
+//	sysTime++;
+//  scanTime++;
+//  if(sysTime % 200){Status.VLTG_READ_EN = 1;}
+//  if(++ledsTime == LED_SLOT_TIME)
+//  {
+//    ledsTime = 0;
+//    rgbLedTask.timeSlotMode = TSM_STRT;
+//  }
+//}
 
 
-
-#define DEB_CNT         (uint8_t)3                                      // ?????????? ???????? ??? ???????? ?????????
-#define SCAN_TIME       (uint8_t)10                                     // ???????? ?????? ??????
+                                     // интервал опроса кнопок
 /******************************************************************************************
-* @brief   SCAN_TIME 
+* @brief  Проверяем состояние кнопок каждые SCAN_TIME мс
  *****************************************************************************************/
 static void scanInputs(void)
 {
-  static uint8_t debounceBtnPwr = 0;
-  static uint8_t debounceBtnBt = 0;
+ // static uint8_t debounceBtnPwr = 0;
+ // static uint8_t debounceBtnBt = 0;
   
-  if(scanTime < SCAN_TIME) return;                                      // ?????, ???? ????? ???????? ????????? ?????? ?? ?????????
-  
-  scanTime = 0;
+//  if(scanTime < SCAN_TIME) return;                                      // ?????, ???? ????? ???????? ????????? ?????? ?? ?????????
+//  
+//  scanTime = 0;
   if(i2c_eeprom_read_byte(SX1502_REGDATA_ADDR, &inpData) == I2C_NO_ERROR)  // ????????? ?????? ?? ????????
   {
-    if(inpData & BTN_PWR_IN)                                            // ???? ?????? SW3 (B_PWR) ?????? (HiState)
+    if(inpData & BTN_SW3_IN)                                            // если кнопка SW3 нажата (HiState)
     {
-      if(debounceBtnPwr < DEB_CNT)
+      if(sw3.debounceCount < DEB_CNT)
       {
-        if(++debounceBtnPwr == DEB_CNT)                                 // ???? ?????? ??????  ? ??????? ???????????? ??????? 
+        if(++sw3.debounceCount == DEB_CNT)                              // если кнопка нажата  в течении проверочного времени 
         {
-          buttonsState |= 0x01;                                         // ?????????? ??? ????????? ??????
-          Status.BTN_PWR_PUSH = 1;                                      // ?????????? ???? ??????? ??????? ??????
+          if(sw3.isPressed == false)
+          {
+            sw3.isPressed = true;
+            sw3.pressEventFixed = true;
+            sw3.pressEventTime = systick_time;
+          }
         }
       }
     } 
-    else                                                                // ???? ?????? SW3 (B_PWR) ??????
+    else                                                                // если кнопка SW3 (B_PWR) отжата
     {
-      if(debounceBtnPwr > 0)
+      if(sw3.debounceCount > 0)
       {
-        if(--debounceBtnPwr == 0)
+        if(--sw3.debounceCount == 0)
         {
-          buttonsState &= ~0x01;
-//          Status.BTN_PWR_UNPUSH = 1;
+          if(sw3.isPressed)
+          {
+            sw3.isPressed = false;
+            sw3.unpressEventFixed = true;
+            sw3.pressedStateTime = systick_time - sw3.pressEventTime;
+          }
         }
       }        
     }
     
-    if((inpData & BTN_BT_IN) == 0)                                      // ???? ?????? SW1 ?????? (LowState)
+    if((inpData & BTN_SW1_IN) == 0)                                     // если кнопка SW1 нажата (LowState)
     {
-      if(debounceBtnBt < DEB_CNT)
+      if(sw1.debounceCount < DEB_CNT)
       {
-        if(++debounceBtnBt == DEB_CNT)
+        if(++sw1.debounceCount == DEB_CNT)
         {
-          buttonsState |= 0x02;
-          Status.BTN_BT_PUSH = 1;
+          if(!sw1.isPressed)
+          {
+            sw1.isPressed = true;
+            sw1.pressEventFixed = true;
+            sw1.pressEventTime = systick_time;
+            sw1.numOfClicks++;          
+          }
         }
       }    
     }
     else
     {
-      if(debounceBtnBt > 0)
+      if(sw1.debounceCount > 0)
       {
-        if(--debounceBtnBt == 0)
+        if(--sw1.debounceCount == 0)
         {
-          buttonsState &= ~0x02;
-//          Status.BTN_BT_UNPUSH = 1;
+          if(sw1.isPressed)
+          {
+            sw1.isPressed = false;
+            sw1.unpressEventFixed = true;
+            sw1.pressedStateTime = systick_time - sw1.pressEventTime;
+          }
         }
       }        
     }
@@ -207,111 +268,209 @@ static void scanInputs(void)
 }
 
 /*****************************************************************************************
-* @brief  PWR ON/OFF (SW3)  
+* @brief Обработка событий нажатия кнопок
  *****************************************************************************************/
-static void updatePowerState(void)
+static btnCmd_en decodeButtonsState(void)
 {
-  if(Status.BTN_PWR_PUSH)                                               // ???? ????????????? ??????? ?????? SW3
-  { 
-    if(Status.PWR_ENABLED)                                              // ???? DC/DC ???????
+  btnCmd_en result = BTN_CMD_NO;
+  
+  if(sw3.isPressed && sw3.pressEventFixed)                              // если sw3 нажата
+  {
+    if(sw1.numOfClicks == 0)                                            // если sw1 не нажималась ни разу
     {
-      outData &= ~PWR_FIX_OUT;                                          // ????? ??? ????????? DC/DC
-      outData |= SINGLE_LED_OUT;                                        // ?????????? ??? ??? ?????????? ?????????? ??????????
-      Status.PWR_ENABLED = 0;                                           // ????? ???? ??????????? DC/DC
-    } 
-    else 
-    {
-      outData |= PWR_FIX_OUT;                                           // ?????????? ??? ????????? DC/DC
-      outData &= ~SINGLE_LED_OUT;                                       // ????? ??? ??? ????????? ?????????? ??????????
-      Status.PWR_ENABLED = 1;                                           // ?????????? ???? ??????????? DC/DC
+      if(systick_time - sw3.pressEventTime >= 5000)                          // если прошло более 5 секунд
+      {
+        sw3.pressEventFixed = false;                                    // снять признак фиксации события нажатия SW3
+        return BTN_SW3_LONG;                                            // возвратить код команды
+      }
     }
-    i2c_eeprom_write_byte(SX1502_REGDATA_ADDR, outData);                // ???????? ?????? ? ????
-    Status.BTN_PWR_PUSH = 0;                                            // ????? ???? ???????? ??????? ??????
   }
+  
+  if(sw3.unpressEventFixed)                                             // если зафиксировано событие "SW3 отжата"
+  {
+    sw3.unpressEventFixed = false;
+    result = BTN_CMD_NO;
+    if(sw3.pressedStateTime < 5000)
+    {
+      result = (btnCmd_en)(sw1.numOfClicks + 1);                        // вернуть код команды                                             
+    }
+    sw1.numOfClicks = 0;   
+  }
+  
+  if(sw1.unpressEventFixed)                                             // если зафиксировано событие "SW1 отжата"
+  {
+    sw1.unpressEventFixed = false;
+    if(!sw3.isPressed)
+    {
+      sw1.numOfClicks = 0;  
+      result = BTN_SW1_SHORT;
+    }
+  }   
+  return result;
 }
 
 /*****************************************************************************************
-* @brief  SW1  
+* @brief Выполнение команды длинного нажатия кнопки PWR ON/OFF (SW3)  
+ *****************************************************************************************/
+static void togglePowerState(void)
+{
+  if(Status.PWR_ENABLED)                                                // если DC/DC включен
+  {
+    outData &= ~PWR_FIX_OUT;                                            // снять бит включения DC/DC
+    outData |= SINGLE_LED_OUT;                                          // установить бит для выключения одиночного светодиода
+    Status.PWR_ENABLED = 0;                                             // снять флаг включенного DC/DC
+  } 
+  else
+  {
+    outData |= PWR_FIX_OUT;                                             // установить бит включения DC/DC
+    outData &= ~SINGLE_LED_OUT;                                         // снять бит для включения одиночного светодиода
+    Status.PWR_ENABLED = 1;                                             // установить флаг включенного DC/DC
+  }
+  i2c_eeprom_write_byte(SX1502_REGDATA_ADDR, outData);                  // записать данные в порт
+}
+
+/*****************************************************************************************
+* @brief Обработка нажатия кнопок  
  *****************************************************************************************/
 static void executeSwState(void)
 {
-  static uint8_t i = 0;
-  
-  if(Status.BTN_BT_PUSH)                                                // ???? ????????????? ??????? ?????? SW1
-  {
-    if(++i == 4) {i = 0;}
-    outData |= RED_LED_OUT | GREEN_LED_OUT | BLUE_LED_OUT;              // ????????????? ?????? ??? RGB ??????????
-    switch(i)                                                           
-    {
-      case 1:
-        outData &= ~RED_LED_OUT;                                        // ????? ??? ??? ????????? RED_LED
-      break;
-      
-      case 2:
-        outData &= ~GREEN_LED_OUT;                                      // ????? ??? ??? ????????? GREEN_LED
-      break;
-      
-      case 3:
-        outData &= ~BLUE_LED_OUT;                                       // ????? ??? ??? ????????? GREEN_LED
-      break;
-      
-      default: break;
-    } 
+  btnCmd_en btnCmd = decodeButtonsState();
 
-    i2c_eeprom_write_byte(SX1502_REGDATA_ADDR, outData);                // ???????? ?????? ? ????
-    Status.BTN_BT_PUSH = 0;                                             // ????? ???? ???????? ??????? ??????
+  switch(btnCmd)                                                           
+  {
+    case BTN_SW3_LONG:                                                  // если было длинное нажатие SW3
+//      togglePowerState();                                               // изменить состояние выхода контроля питания
+      rgbLedTask.ledTimeSlot[0].isEnabled = false;
+      rgbLedTask.ledTimeSlot[1].isEnabled = false;
+      rgbLedTask.ledTimeSlot[2].isEnabled = false;
+    break;
+      
+    case BTN_SW3_SHORT:                                                 // если было короткое нажатие SW3
+      rgbLedTask.ledTimeSlot[0].color = CL_RED;
+      rgbLedTask.ledTimeSlot[0].pulseWidthMs = 125;
+      rgbLedTask.ledTimeSlot[0].isEnabled = true;
+    break;
+    
+    case BTN_SW1_SHORT:                                                 // если было нажатие SW1 без SW3
+      rgbLedTask.ledTimeSlot[1].color = CL_RED;
+      rgbLedTask.ledTimeSlot[1].pulseWidthMs = 125;
+      rgbLedTask.ledTimeSlot[1].isEnabled = true;      
+    break;
+    
+    case BTN_SW1_ONE_CLICK:                                             // если было одно нажатие SW1 при нажатой SW3
+      rgbLedTask.ledTimeSlot[1].color = CL_GREEN;
+      rgbLedTask.ledTimeSlot[1].pulseWidthMs = 125;
+      rgbLedTask.ledTimeSlot[1].isEnabled = true;
+    break;
+      
+    case BTN_SW1_DBL_CLICK:                                             // если было два нажатия SW1 при нажатой SW3
+      rgbLedTask.ledTimeSlot[2].color = CL_BLUE;
+      rgbLedTask.ledTimeSlot[2].pulseWidthMs = 125;
+      rgbLedTask.ledTimeSlot[2].isEnabled = true;
+    break;
+    
+    case BTN_SW1_THREE_CLICK:                                           // если было три нажатия SW1 при нажатой SW3
+
+    break;
+      
+    default: break;
+  } 
+}
+
+///*****************************************************************************************
+//* @brief Измеряем напряжение питания  
+// *****************************************************************************************/
+//static void updateVddValue(void)
+//{
+//  uint16_t adc_sample;
+//  
+//  if(Status.VLTG_READ_EN)
+//  {
+//    Status.VLTG_READ_EN = 0;
+//    
+//    adc_sample = adc_get_sample();
+//    adc_sample = adc_correct_sample(adc_sample);
+//    // Divider depends on oversampling setting
+//    vddVoltage = ((3600 * adc_sample) / 2047);
+//  }
+//}
+
+/*****************************************************************************************
+* @brief Управление RGB светодиодом  
+ *****************************************************************************************/
+static void rgbLedServer(void)
+{
+  static uint16_t itemIndex = 0;
+  
+  switch(rgbLedTask.timeSlotMode)
+  {
+    case TSM_STRT:
+      
+      if(rgbLedTask.ledTimeSlot[itemIndex].isEnabled)                   // если выбранный слот активен
+      {
+        outData |= RED_LED_OUT | GREEN_LED_OUT | BLUE_LED_OUT;          // замаскировать выходы для RGB светодиода
+        outData &= ~rgbLedTask.ledTimeSlot[itemIndex].color;            // снять бит для включения нужного светодиода
+        i2c_eeprom_write_byte(SX1502_REGDATA_ADDR, outData);            // записать данные в порт
+        rgbLedTask.timeSlotMode = TSM_BUSY;                             // переключить режим работы слота
+      } 
+      else 
+      {
+        rgbLedTask.timeSlotMode = TSM_IDLE;                             // переключить режим работы слота
+        if(++itemIndex == LEDS_NUM){itemIndex = 0;}                     // если слоты всех светодиодов обработаны, перейти в начало
+      }
+    break;
+    
+    case TSM_BUSY:
+      
+    if(rgbLedTask.ledTimeSlot[itemIndex].pulseWidthMs >= ledsTime)      // если время включенного состояния светодиода истекло
+      {
+        outData |= RED_LED_OUT | GREEN_LED_OUT | BLUE_LED_OUT;          // замаскировать выходы для RGB светодиода
+        i2c_eeprom_write_byte(SX1502_REGDATA_ADDR, outData);            // записать данные в порт
+        rgbLedTask.timeSlotMode = TSM_IDLE;;                            // переключить режим работы слота
+       if(++itemIndex == LEDS_NUM){itemIndex = 0;}                      // если слоты всех светодиодов обработаны, перейти в начало        
+      }
+      
+    break;
+      
+    default: break;
   }
 }
 
-i2c_error_code sx1502_init(void)
-{
-	
-	i2c_eeprom_configure(&i2c_cfg, &sx1502_cfg);
-  i2c_eeprom_initialize();
-  
-  // Set pad functionality
-  ssi2c_set_pad_functions();
-
-	
-  i2c_error_code err;
-  uint8_t wByte = IO_OUTPUT << 7 | IO_OUTPUT << 6 |
-                  IO_OUTPUT << 5 | IO_OUTPUT << 4 |
-                  IO_OUTPUT << 3 | IO_INPUT << 2 |
-                  IO_INPUT << 1 | IO_OUTPUT << 0;
-  err = i2c_eeprom_write_byte(SX1502_REGDIR_ADDR, wByte);               // wByte = 0b00000110; 0 - OUTPUT, 1 - INPUT  
-  if(err != I2C_NO_ERROR) return err;
-  err = i2c_eeprom_write_byte(SX1502_REGPULLUP_ADDR, 0x00);
-  if(err != I2C_NO_ERROR) return err;
-  wByte = 1 << 2;                                                       // IO2 - PULL_DOWN
-  err = i2c_eeprom_write_byte(SX1502_REGPULLDOWN_ADDR, wByte);
-	
-	i2c_eeprom_read_byte(SX1502_REGDATA_ADDR, &outData);
-	
-  return err;  
-}
-
-void sx_SysTick_Handler(void)
-{
-	sysTime++;
-  scanTime++;
-}
 
 /******************************************************************************************
  * @brief 
  *****************************************************************************************/
+
+
+//#define Period_LED 200000//uS
+
 void sx_main (void)
 {
-	sx_SysTick_Handler();
+  
+  //SysTick_Config(SystemCoreClock / 1000);
   
 //  if(sx1502_init() == I2C_NO_ERROR)
 //  {
 //    i2c_eeprom_read_byte(SX1502_REGDATA_ADDR, &outData);
 //  } else while(1);
+   
+//  while(1)
+	if ((systick_time-systick_last_LED)>(LED_PULSE_TIME/SYSTICK_PERIOD_US))
+	{ 
+		systick_last_LED+=(LED_PULSE_TIME/SYSTICK_PERIOD_US);
+	  rgbLedTask.timeSlotMode = TSM_STRT;
+	}	
+		if ((systick_time-systick_last_SCAN)>(SCAN_TIME/SYSTICK_PERIOD_US))
+	{ 
+		systick_last_SCAN+=(SCAN_TIME/SYSTICK_PERIOD_US);
+	  scanInputs();
+	}	
+
+  {
   
-
-    scanInputs();
-    updatePowerState();
-    executeSwState();    
-
+    executeSwState();
+//    updateVddValue();
+    rgbLedServer();    
+  }
 }
 

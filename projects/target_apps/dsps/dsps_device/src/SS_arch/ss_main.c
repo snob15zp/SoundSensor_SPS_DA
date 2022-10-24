@@ -6,6 +6,7 @@
 #include "MathSlow.h"
 #include "ADC_flash.h"
 #include "i2c.h"
+#include "ss_i2c.h"
 
 uint8_t ssm_main_state;
 bool ssm_main_BLE_RDY;
@@ -40,7 +41,7 @@ e_FunctionReturnState ss_main_init(void)
 	return e_FRS_Done;
 }
 
-#define PeriodSlowMath 4000
+#define PeriodSlowMath 4000 //ticks
 
 e_FunctionReturnState ss_main(void)
 {
@@ -68,7 +69,7 @@ e_FunctionReturnState ss_main(void)
 	
 	
 	
-	if (systick_time>32000)  //debug
-		b_rv=e_FRS_Done;
+//	if (systick_time>32000)  //debug
+//		b_rv=e_FRS_Done;
 	return b_rv; 
 };

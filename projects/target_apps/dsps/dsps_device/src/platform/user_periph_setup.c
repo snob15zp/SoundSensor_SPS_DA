@@ -36,11 +36,15 @@
 #endif
 #include "spi_flash.h"
 #include "SPI_ADC.h"
+#include "ADC_flash.h"
 #include "ss_i2c.h"
 #include "SS_InterfaceToBLE.h"
 #include "MathFast.h"
 #include "MathSlow.h"
 #include "SS_sys.h"
+
+
+#include "my_proj.h"
 
 #if defined (CFG_SPI_FLASH_ENABLE)
 // Configuration struct for SPI
@@ -180,12 +184,14 @@ void periph_init(void)
 	 
 	 SPI_ADC_init();//RDD
 	 
-	 intinit();
+//	 intinit();
+	 init_spi_task();
 	 
 	 while(1)
 	 {
 		 test_MF_main_ADCEmul();
 		  //ss_i2c_test();
+		task_project();
 	 }
 #else
 	 ssi2c_init;//

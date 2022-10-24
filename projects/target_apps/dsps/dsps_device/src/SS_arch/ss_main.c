@@ -62,7 +62,7 @@ e_FunctionReturnState ss_main(void)
 		
 		
 #ifdef __SoundSensor__			
-					sx_main();
+	//				sx_main();
 #endif					
 		
 	}

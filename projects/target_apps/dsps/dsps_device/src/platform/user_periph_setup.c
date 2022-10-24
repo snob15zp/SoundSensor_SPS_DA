@@ -188,8 +188,8 @@ void periph_init(void)
 		  //ss_i2c_test();
 	 }
 #else
-	 sx1502_init();//ssi2c_init();
-	 sx_main();//  ss_i2c_test();
+	 ssi2c_init;//
+	 //sx_main();//  ss_i2c_test();
 #endif		 
 
 #else

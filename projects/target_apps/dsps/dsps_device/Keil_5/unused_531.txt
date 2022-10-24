@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Mon Oct 24 11:33:05 2022
+;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Mon Oct 24 12:50:01 2022
 ;VERSION 0.2
 ;FILE adc_531.o
 adc_correct_sample <= USED 0
@@ -210,6 +210,7 @@ spi_flash_write_status_reg <= USED 0
 ;FILE ss_i2c.o
 ss_i2c_test <= USED 0
 ssi2c_init <= USED 0
+sx1502_init <= USED 0
 ;FILE ss_interfacetoble.o
 SS_InterfaceToBLE_SendThreeBytes <= USED 0
 SS_InterfaceToBLE_init <= USED 0

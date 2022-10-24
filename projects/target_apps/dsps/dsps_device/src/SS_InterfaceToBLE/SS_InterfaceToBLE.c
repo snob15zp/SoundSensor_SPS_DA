@@ -10,8 +10,7 @@
 #include "dma_uart_sps.h"
 
 #define ITB_pause 100
-//#define LED_PORT                GPIO_PORT_0
-//#define LED_PIN                 GPIO_PIN_9
+
 
 static int8_t ITB_state;
 static int8_t ITB_initstatus=0;
@@ -65,8 +64,7 @@ ITB_timer = app_easy_timer(ITB_pause, adv_data_update_timer_cb);
 //app_easy_timer_cancel(app_adv_data_update_timer_used);
 
 
-//    #define LED_PORT                GPIO_PORT_0
-//    #define LED_PIN                 GPIO_PIN_9
+
 //GPIO_ConfigurePin(LED_PORT, LED_PIN, OUTPUT, PID_GPIO, false);
 //GPIO_set_pad_latch_en(true);
 //				GPIO_SetActive(LED_PORT, LED_PIN);

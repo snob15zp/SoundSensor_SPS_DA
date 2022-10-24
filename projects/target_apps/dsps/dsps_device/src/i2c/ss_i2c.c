@@ -10,6 +10,7 @@
 /* I2C configuration                                                                    */
 /****************************************************************************************/
 // Define I2C Pad  
+
   #define I2C_SDA_PIN             GPIO_PIN_8   
   #define I2C_SCL_PIN             GPIO_PIN_9
 

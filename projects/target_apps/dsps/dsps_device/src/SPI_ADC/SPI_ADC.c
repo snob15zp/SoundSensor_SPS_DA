@@ -6,7 +6,7 @@
 #include "user_periph_setup.h"
 
 #ifndef __NON_BLE_EXAMPLE__
-#define def_dataRead_Size (1024*3)
+#define def_dataRead_Size (1024*1)
 #else
 #define def_dataRead_Size (1024*16)
 #endif

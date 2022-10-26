@@ -186,7 +186,7 @@ inline void test_MF_main_ADCEmul(void)
 	static uint8_t i;
 	i++;
 	i&=0x1f;
-	MF_main(sin1000[i]);
+//	MF_main(sin1000[i]);
 }
 
 

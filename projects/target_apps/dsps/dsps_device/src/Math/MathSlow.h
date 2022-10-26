@@ -8,7 +8,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#define SYSTICK_PERIOD_US   32     // period for systick timer in us, so 1000000ticks = 1second
+//#define SYSTICK_PERIOD_US   32     // period for systick timer in us, so 1000000ticks = 1second
 #endif
 
 

@@ -3,4 +3,4 @@
 -IC:\Users\RD\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include
 -IC:\Keil_v5\ARM\CMSIS\Include
 -D__UVISION_VERSION="528" -DARMCM0P -D__DA14531__ -D__SoundSensor__ -D__SSFix__ -D__NO_MATLAB__
--o .\soundsensor_fix\i2c_eeprom.o --omf_browse .\soundsensor_fix\i2c_eeprom.crf --depend .\soundsensor_fix\i2c_eeprom.d "..\..\..\..\..\sdk6\sdk\platform\driver\i2c_eeprom\i2c_eeprom.c"
+-o .\soundsensor_fix\app_suotar_task.o --omf_browse .\soundsensor_fix\app_suotar_task.crf --depend .\soundsensor_fix\app_suotar_task.d "..\..\..\..\..\sdk6\sdk\app_modules\src\app_suotar\app_suotar_task.c"

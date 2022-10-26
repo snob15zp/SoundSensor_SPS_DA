@@ -89,6 +89,7 @@ void AF_V_AddADCdataToFIFO(uint16_t A, uint16_t B)
 
 int AF_V_WriteStart(uint16_t callerFunction)
 {
+	return 0;//RDD
 int rezult_Start; 	
 // 	Configure SPI pins
     GPIO_ConfigurePin(SPI_ADC_FLASH_EN_PORT,  SPI_ADC_FLASH_EN_PIN,  OUTPUT, PID_SPI_EN, true);
@@ -177,7 +178,7 @@ int spi_flash_init(void);
 
 int init_spi_task(void)
 {
-	init_systick();
+//	init_systick();
 //	spi_flash_init();
 	return 0;
 }

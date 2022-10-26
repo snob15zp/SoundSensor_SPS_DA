@@ -7,9 +7,12 @@
 #include "ADC_flash.h"
 #include "i2c.h"
 #include "ss_i2c.h"
+#include "SPI_ADC.h"
+#include "ring_buff.h"
 
 uint8_t ssm_main_state;
 bool ssm_main_BLE_RDY;
+E_ADC_MODE_t SS_ADC_Active_MODE=EAM_ADC_sin;
 
 
 e_FunctionReturnState ssm_main_ADC_prepare(void)
@@ -20,15 +23,37 @@ e_FunctionReturnState ssm_main_ADC_prepare(void)
 #endif	
 	MS_init();
 	MF_main_init();
-	ADCon=true;
 	ssm_main_BLE_RDY=false;
+	SS_spi_switchoff_pins(SPI_FLASH_GPIO_MAP);
+	SPI_ADC_init();
+	SS_ADC_MODE=SS_ADC_Active_MODE;
 	return e_FRS_Done;
 };
 
+static uint8_t SM_FSM_state;
 e_FunctionReturnState ssm_main_BLE_prepare(void)
-{
-	ssm_main_BLE_RDY=true;
-	return e_FRS_Done;
+{ e_FunctionReturnState b_rv;
+	b_rv=e_FRS_Not_Done;
+	switch (SM_FSM_state)
+		{case 0: // 
+			       SM_FSM_state++;
+		 case 1: //if (RingBuffer_is_empty())//RDD debug
+                   SM_FSM_state++;
+		         break;
+		 default: 	SS_ADC_MODE=EAM_IDLE;
+			        SPI_ADC_deinit();
+              ss_spi_init(SPI_ADC_GPIO_MAP,&UPS_spi_cfg);		 
+	            user_spi_flash_init(SPI_FLASH_GPIO_MAP);
+        	    AF_V_WriteStop((uint16_t) ssm_main_BLE_prepare);		 
+	            //write stop stamp
+	          	
+	            ssm_main_BLE_RDY=true;	
+	          
+		          SM_FSM_state=0;
+			        b_rv=e_FRS_Done;
+	 }
+		 
+	return b_rv;
 };
 
 static uint32_t systick_last;
@@ -41,7 +66,7 @@ e_FunctionReturnState ss_main_init(void)
 	return e_FRS_Done;
 }
 
-#define PeriodSlowMath 4000 //ticks
+#define PeriodSlowMath (1000000/(SYSTICK_PERIOD_US*8)) //ticks
 
 e_FunctionReturnState ss_main(void)
 {
@@ -62,14 +87,14 @@ e_FunctionReturnState ss_main(void)
 		
 		
 #ifdef __SoundSensor__			
-	//				sx_main();
+					sx_main();
 #endif					
 		
 	}
 	
 	
 	
-//	if (systick_time>32000)  //debug
-//		b_rv=e_FRS_Done;
+	if (systick_time>(1000000/SYSTICK_PERIOD_US))  //debug
+	  	b_rv=e_FRS_Done;
 	return b_rv; 
 };

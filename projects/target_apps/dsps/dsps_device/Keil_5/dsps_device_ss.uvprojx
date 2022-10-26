@@ -1430,6 +1430,36 @@
               <FileType>5</FileType>
               <FilePath>..\src\SPI_ADC\adc_flash.h</FilePath>
             </File>
+            <File>
+              <FileName>my_proj.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\SPI_ADC\my_proj.c</FilePath>
+            </File>
+            <File>
+              <FileName>my_proj.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\SPI_ADC\my_proj.h</FilePath>
+            </File>
+            <File>
+              <FileName>my_timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\SPI_ADC\my_timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>my_timer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\SPI_ADC\my_timer.h</FilePath>
+            </File>
+            <File>
+              <FileName>ring_buff.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\SPI_ADC\ring_buff.c</FilePath>
+            </File>
+            <File>
+              <FileName>ring_buff.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\SPI_ADC\ring_buff.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1553,7 +1583,7 @@
             <File>
               <FileName>ss_global.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\ss_global.h</FilePath>
+              <FilePath>..\src\SS_arch\ss_global.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -3034,6 +3064,36 @@
               <FileType>5</FileType>
               <FilePath>..\src\SPI_ADC\adc_flash.h</FilePath>
             </File>
+            <File>
+              <FileName>my_proj.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\SPI_ADC\my_proj.c</FilePath>
+            </File>
+            <File>
+              <FileName>my_proj.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\SPI_ADC\my_proj.h</FilePath>
+            </File>
+            <File>
+              <FileName>my_timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\SPI_ADC\my_timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>my_timer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\SPI_ADC\my_timer.h</FilePath>
+            </File>
+            <File>
+              <FileName>ring_buff.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\SPI_ADC\ring_buff.c</FilePath>
+            </File>
+            <File>
+              <FileName>ring_buff.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\SPI_ADC\ring_buff.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -3157,7 +3217,7 @@
             <File>
               <FileName>ss_global.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\ss_global.h</FilePath>
+              <FilePath>..\src\SS_arch\ss_global.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -4638,6 +4698,36 @@
               <FileType>5</FileType>
               <FilePath>..\src\SPI_ADC\adc_flash.h</FilePath>
             </File>
+            <File>
+              <FileName>my_proj.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\SPI_ADC\my_proj.c</FilePath>
+            </File>
+            <File>
+              <FileName>my_proj.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\SPI_ADC\my_proj.h</FilePath>
+            </File>
+            <File>
+              <FileName>my_timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\SPI_ADC\my_timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>my_timer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\SPI_ADC\my_timer.h</FilePath>
+            </File>
+            <File>
+              <FileName>ring_buff.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\SPI_ADC\ring_buff.c</FilePath>
+            </File>
+            <File>
+              <FileName>ring_buff.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\SPI_ADC\ring_buff.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -4761,7 +4851,7 @@
             <File>
               <FileName>ss_global.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\ss_global.h</FilePath>
+              <FilePath>..\src\SS_arch\ss_global.h</FilePath>
             </File>
           </Files>
         </Group>

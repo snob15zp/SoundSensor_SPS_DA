@@ -1,11 +1,9 @@
 #include "ring_buff.h"
 
+
 #define RING_BUFF_MASK			(RING_BUFF_SIZE - 1)  
 
-typedef union {
-    uint8_t	masByte[4];
-    uint32_t data_u32;
-} uni_uint32_t;
+
 
 typedef enum {
     BUFF_NOT_FULL = 0,

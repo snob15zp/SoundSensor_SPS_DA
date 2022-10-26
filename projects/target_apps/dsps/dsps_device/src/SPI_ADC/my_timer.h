@@ -9,12 +9,12 @@
 #include <stdint.h>
 
 
-void init_systick(void);
+
 void led_ON(void);
 void led_Off(void);
 
 int check_timeOVER(uint16_t *time_stop, uint16_t delta);
-uint16_t get_systick(void);
+
 
 void delay_ms(uint16_t time_delta);
 void delay_200us(void);

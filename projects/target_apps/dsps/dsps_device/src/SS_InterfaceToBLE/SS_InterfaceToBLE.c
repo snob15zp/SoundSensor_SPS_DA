@@ -1,5 +1,6 @@
 #include "SS_InterfaceToBLE.h"
 #include "SPI_ADC.h"
+#include "SS_sys.h"
 
 //#include "user_periph_setup.h"
 //#include "datasheet.h"
@@ -40,14 +41,14 @@ void led_flash(void)
 {
 if (ITB_state)
   {
-#ifndef __SoundSensor__		
-//	GPIO_SetActive(LED_PORT, LED_PIN);
+#ifdef __DEVKIT_EXT__		
+	GPIO_SetActive(LED_PORT, LED_PIN);
 #endif	
 	;}
    else
 	 {
-#ifndef __SoundSensor__
-//	 GPIO_SetInactive(LED_PORT, LED_PIN);
+#ifdef __DEVKIT_EXT__
+	 GPIO_SetInactive(LED_PORT, LED_PIN);
 #endif
 	 };
 ITB_state=!ITB_state;

@@ -4,30 +4,32 @@
 #include "gpio.h"
 #include "MathFast.h"
 #include "ADC_flash.h"
+#include "SPI_ADC.h"
 
 
 
 #define SYSTICK_EXCEPTION   1           // generate systick exceptions
 
-bool ADC_EMUL_mode;
+//bool ADC_EMUL_mode;
 
 E_ADC_MODE_t	SS_ADC_MODE;
 
 volatile uint32_t systick_time;
 
-#ifndef __SoundSensor__
-volatile static uint8_t i;
-#endif
+//#ifndef __SoundSensor__
+//volatile static uint8_t i;
+//#endif
 
 void systick_irq()
 {
     systick_time++;	  
-#ifndef __SoundSensor__
+#ifdef __DEVKIT_EXT__
 	  GPIO_SetActive(LED_PORT, LED_PIN); 
 #endif	
 	  if (SS_ADC_MODE==EAM_ADCsystick)
-			test_MF_main_ADCEmul();
-#ifndef __SoundSensor__	
+			//test_MF_main_ADCEmul();
+		ADC_IRQ();
+#ifdef __DEVKIT_EXT__	
 	  GPIO_SetInactive(LED_PORT, LED_PIN);
 #endif	
 
@@ -57,11 +59,11 @@ void test_hnd_init(void)
 
 void LEDinit (void)
 {
-#ifndef __SoundSensor__	
-GPIO_ConfigurePin(LED_PORT, LED_PIN, OUTPUT, PID_GPIO, false);
-GPIO_set_pad_latch_en(true);
-				GPIO_SetActive(LED_PORT, LED_PIN);
-	      GPIO_SetInactive(LED_PORT, LED_PIN);
+#ifdef __DEVKIT_EXT__	
+//GPIO_ConfigurePin(LED_PORT, LED_PIN, OUTPUT, PID_GPIO, false);
+//GPIO_set_pad_latch_en(true);
+//				GPIO_SetActive(LED_PORT, LED_PIN);
+//	      GPIO_SetInactive(LED_PORT, LED_PIN);
 #endif	
 	
 };
@@ -79,10 +81,11 @@ void SS_spi_switchoff_pins(uint32_t gpio_map)
     spi_conf.miso.port     = ((GPIO_PORT)((gpio_map & 0xf0000000) >> 28));
     spi_conf.miso.pin      = ((GPIO_PIN) ((gpio_map & 0x0f000000) >> 24));
 
-    GPIO_ConfigurePin( spi_conf.cs.port, spi_conf.cs.pin, INPUT_PULLUP, FUNC_GPIO, true );
-    GPIO_ConfigurePin( spi_conf.clk.port, spi_conf.clk.pin, INPUT_PULLDOWN, FUNC_GPIO, false );
-    GPIO_ConfigurePin( spi_conf.mosi.port, spi_conf.mosi.pin, INPUT_PULLDOWN, FUNC_GPIO, false );
-    GPIO_ConfigurePin( spi_conf.miso.port, spi_conf.miso.pin, INPUT_PULLDOWN, FUNC_GPIO, false );
+    GPIO_ConfigurePin( spi_conf.cs.port, spi_conf.cs.pin, INPUT_PULLUP, PID_GPIO, true );
+    GPIO_ConfigurePin( spi_conf.clk.port, spi_conf.clk.pin, INPUT_PULLDOWN, PID_GPIO, false );
+    GPIO_ConfigurePin( spi_conf.mosi.port, spi_conf.mosi.pin, INPUT_PULLDOWN, PID_GPIO, false );
+    GPIO_ConfigurePin( spi_conf.miso.port, spi_conf.miso.pin, INPUT_PULLDOWN, PID_GPIO, false );
+
 }
 
 void ss_spi_init(uint32_t gpio_map, const spi_cfg_t *spi_cfg)//

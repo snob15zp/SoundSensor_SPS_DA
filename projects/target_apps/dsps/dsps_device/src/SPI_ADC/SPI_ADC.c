@@ -172,7 +172,7 @@ void SPI_ADC_init(void)
   SA_dataRead_32[0]=45;	
 	SA_ui16_dataRead_index=4;
 	
-#ifdef __SoundSensor__	
+
 //user_spi_init(SPI_ADC_GPIO_MAP);
   ss_spi_init(SPI_ADC_GPIO_MAP,&spi_cfg_ADC);
 
@@ -228,7 +228,7 @@ tmp_SPI_CS_CONFIG_REG=GetWord16(SPI_CS_CONFIG_REG);
 //	SetWord16(SPI_CS_CONFIG_REG,SPI_CS_1);	
 //	}		
 //		//SetWord16(SPI_CS_CONFIG_REG, SPI_CS_NONE);
-#endif	
+
 }
 
 //void SPITreeByts (void)
@@ -242,7 +242,7 @@ tmp_SPI_CS_CONFIG_REG=GetWord16(SPI_CS_CONFIG_REG);
 //#endif	
 //}
 
-#ifdef __SoundSensor__ 
+#ifdef __SS_EXT__ 
 static tim0_2_clk_div_config_t clk_div_config =
 {
     .clk_div  = TIM0_2_CLK_DIV_8
@@ -352,9 +352,9 @@ false,/* 0= selected input will generate GPIO IRQ0 if that input is high.
 initiated immediately 1: wait for key release after interrupt was reset for IRQ0*/
 		0);//GPIO_DEBOUNCE_REG
 //
-	NVIC_DisableIRQ(PID_GPIO);
-	NVIC_SetPriority(PID_GPIO, 0);
-  NVIC_EnableIRQ(PID_GPIO);	
+	NVIC_DisableIRQ(GPIO0_IRQn);
+	NVIC_SetPriority(GPIO0_IRQn, 0);
+  NVIC_EnableIRQ(GPIO0_IRQn);	
 	
 
 }
@@ -431,7 +431,7 @@ void GPIO0_Handler(void)
  SetWord16(&spi->SPI_FIFO_WRITE_REGF, SA_out.masByte[1]);
  SetWord16(&spi->SPI_FIFO_WRITE_REGF, SA_out.masByte[0]);	
 	
- if	(ADC_EMUL_mode)
+ if	(SS_ADC_MODE==EAM_ADC_sin)
  {
 	test_MF_main_ADCEmul();
  }

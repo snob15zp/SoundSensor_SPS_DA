@@ -12,15 +12,15 @@
 
 uint8_t ssm_main_state;
 bool ssm_main_BLE_RDY;
-E_ADC_MODE_t SS_ADC_Active_MODE=EAM_ADC_sin;
+E_ADC_MODE_t SS_ADC_Active_MODE=EAM_ADCsystick;
 
 
 e_FunctionReturnState ssm_main_ADC_prepare(void)
 {
 	
-#ifdef __SoundSensor__
+
 	AF_V_WriteStart((uint16_t) ssm_main_ADC_prepare);	
-#endif	
+
 	MS_init();
 	MF_main_init();
 	ssm_main_BLE_RDY=false;
@@ -81,12 +81,12 @@ e_FunctionReturnState ss_main(void)
 #endif		
 		AF_V_AddADCdataToFIFO((uint16_t) MS_i32_Level_FastA_dB, (uint16_t) MS_i32_Level_C_Peak_dB);
 		
-#ifndef __SoundSensor__					
-					led_flash();
+#ifdef __DEVKIT_EXT__					
+//					led_flash();
 #endif
 		
 		
-#ifdef __SoundSensor__			
+#ifdef __SS_EXT__			
 					sx_main();
 #endif					
 		

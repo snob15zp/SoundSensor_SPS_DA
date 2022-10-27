@@ -185,7 +185,7 @@ int main(void)
     while(1)
     {
 			
-#ifndef __SoundSensor__					
+#ifdef __DEVKIT_EXT__					
 					led_flash();
 #endif			
 		switch (ssm_main_state)

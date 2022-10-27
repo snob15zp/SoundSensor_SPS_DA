@@ -6,7 +6,11 @@
 #include "spi_531.h"
 
     #define ADC_EN_PORT             GPIO_PORT_0
+#ifdef __SoundSensor__		
     #define ADC_EN_PIN              GPIO_PIN_11
+#else
+    #define ADC_EN_PIN              GPIO_PIN_7
+#endif
 
     #define ADC_CLK_PORT            GPIO_PORT_0
     #define ADC_CLK_PIN             GPIO_PIN_4
@@ -42,5 +46,6 @@ extern void SPI_ADC_init(void);
 extern void SPI_ADC_deinit(void);
 extern void SPITreeByts (void);
 extern void intinit(void);
+extern void ADC_IRQ(void);
 
 #endif

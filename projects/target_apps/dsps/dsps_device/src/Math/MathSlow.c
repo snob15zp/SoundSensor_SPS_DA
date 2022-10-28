@@ -3,8 +3,6 @@
 #include "MathSlow.h"
 
 
-
-
 #define D_LogLevelA_offset 0
 #define  D_LogLevelC_offset	0
 #define  D_LogLevelIntegrator_offset 0
@@ -56,17 +54,18 @@ void MS_evalute(uint32_t c, int32_t a, uint32_t i,uint32_t t)
  MS_Alerts(t);	
 }
 
+
 void MS_catch(void)
 {
 	#ifndef __NO_MATLAB__
 	MS_matlab_time++;
 	MS_matlab_time_out=MS_matlab_time;
-	if (++MS_couter==4000)
+	if ((++MS_couter)==4000)//TODO
 	{ MS_couter=0;
 	#endif
 
 	catch_flag=true;
-	MS_Integrator_Hi_out=Integrator_Hi_out;
+	MS_Integrator_Hi_out=Integrator_Hi;
 	MS_i32_fastAC=i32_fastAC;
 	#ifndef __NO_MATLAB__
 	};
@@ -86,7 +85,7 @@ void MS_EvaluteLogLevel_A(uint32_t c, int32_t a, uint32_t i)
 {
 
 MS_i32_Level_FastA_dB=  MS_D_dBscale*(10.0*log10(a) + MS_D_offset_FastA_dB); //0.01dB
-MS_i32_Level_Dose_dB=   MS_D_dBscale*(10.0*log10(i) + (74.53-9.0));	//0.01dBMS_D_offset_Dose_dB
+MS_i32_Level_Dose_dB=   MS_D_dBscale*(10.0*log10(i) + (MS_D_offset_Dose_dB));	//0.01dBMS_D_offset_Dose_dB
 MS_i32_Level_C_Peak_dB= MS_D_dBscale*(20.0*log10(c) + MS_D_offset_C_Peak_dB);//0.01dB
 #ifndef __NO_MATLAB__	
 MS_i32_Level_C_Peak_dB_out=MS_i32_Level_C_Peak_dB;//0.1dB

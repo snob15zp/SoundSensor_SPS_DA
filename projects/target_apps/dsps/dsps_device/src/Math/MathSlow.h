@@ -8,14 +8,14 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-//#define SYSTICK_PERIOD_US   32     // period for systick timer in us, so 1000000ticks = 1second
+#define SYSTICK_PERIOD_US   32     // period for systick timer in us, so 1000000ticks = 1second
 #endif
 
 
 #define MF_ADCOverLoad_Flag_duration_US 1000000
 
 #define MS_D_offset_FastA_dB 49.88 //dB
-#define MS_D_offset_Dose_dB  (74.53-9) //dB 74.53
+#define MS_D_offset_Dose_dB  (62.484) //dB 74.53
 #define MS_D_offset_C_Peak_dB (-23.70202241) //dB
 #define MS_D_dBscale 100.0
 

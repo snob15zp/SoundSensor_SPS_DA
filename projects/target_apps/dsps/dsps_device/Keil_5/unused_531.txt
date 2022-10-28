@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Thu Oct 27 15:20:53 2022
+;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Thu Oct 27 22:50:19 2022
 ;VERSION 0.2
 ;FILE adc_531.o
 adc_correct_sample <= USED 0
@@ -142,7 +142,11 @@ mul_u18s29sh <= USED 0
 mul_u18s29shl <= USED 0
 mul_wide_s32 <= USED 0
 ;FILE mathslow.o
+MS_Alerts <= USED 0
 MS_EvaluteLogLevel <= USED 0
+MS_EvaluteLogLevel_A <= USED 0
+MS_catch <= USED 0
+MS_evalute <= USED 0
 ;FILE my_proj.o
 init_mass <= USED 0
 my_spi_flash_page_program_dma <= USED 0
@@ -243,9 +247,11 @@ sx_main <= USED 0
 ;FILE ss_interfacetoble.o
 SS_InterfaceToBLE_SendThreeBytes <= USED 0
 SS_InterfaceToBLE_init <= USED 0
+led_flash <= USED 0
 user_app_adv_start <= USED 0
 ;FILE ss_main.o
 ;FILE ss_sys.o
+LEDinit <= USED 0
 ;FILE startup_da14531.o
 ;FILE syscntl.o
 syscntl_dcdc_get_level <= USED 0

@@ -61,7 +61,7 @@ static uint32_t systick_last;
 e_FunctionReturnState ss_main_init(void)
 {
 	//ssm_main_state=0;
-	ADCon=false;
+	//ADCon=false;
 	systick_last=systick_time;
 	return e_FRS_Done;
 }

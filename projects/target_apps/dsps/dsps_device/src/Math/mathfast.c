@@ -90,8 +90,23 @@ void Int_fast_A(void);
 inline t_U_MF_int64 fastmulA(int32_t A);
 //void mathtest_fast(void);			
 
+
+//#define D_FASTOLD 1
+#define D_FAST_NEW 1
+void MF_Int_Init(void)
+{
+	NVIC_SetPriority(KEYBRD_IRQn, 1);
+  NVIC_EnableIRQ(KEYBRD_IRQn);	
+}
+void KEYBRD_Handler(void)
+{
+ Int_fast_A();
+}
+
+
 void MF_main_init(void)
 {
+	MF_Int_Init();
 	fast_init();
 	fastA_init();
   FilterAC_s19s29_CG_initialize();
@@ -102,6 +117,7 @@ void MF_main_init(void)
 	MF_ADCOverLoad=MS_D_AlertLevel_Overload;
 	IFA_integrator_Old.u64=Integrator.u64;
 	Integrator_Hi=0;
+	
 };
 void MF_main_reset(void)
 {
@@ -169,7 +185,7 @@ inline void MF_main(int32_t adcoutput)
 	
 	t=Integrator.u32[1];
 	Integrator.u64+=(square);
-	
+#ifdef D_FASTOLD	
 //---------------------	Integrator_Hi & Fast-------------------------------
 	if (t>Integrator.u32[1]) 
   {Integrator_Hi++;
@@ -179,13 +195,22 @@ inline void MF_main(int32_t adcoutput)
 	};
 	
 	i32_fastAC=fast(square);
+#endif	
+	
+#ifdef  D_FAST_NEW	
 //---------------------	Integrator_Hi & Fast alternative-------------------	
 	
 	
 	if (!((IntegratorIndex++)&IntegratorIndexMask))
 	{ IntegratorData.u64=Integrator.u64;
+#ifndef __NO_MATLAB__	
 		Int_fast_A();
+#else
+   NVIC_SetPendingIRQ(KEYBRD_IRQn);	
+#endif	
 	}
+#endif	
+//-------------------- Interrupt -------------------------------------------	
 	
 //=========================================================================	
 	//fast();//test

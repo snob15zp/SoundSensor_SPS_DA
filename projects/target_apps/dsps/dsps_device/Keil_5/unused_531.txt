@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Thu Oct 27 22:50:19 2022
+;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Sat Oct 29 23:32:59 2022
 ;VERSION 0.2
 ;FILE adc_531.o
 adc_correct_sample <= USED 0
@@ -137,16 +137,14 @@ dummyf <= USED 0
 ;FILE mathfast.o
 MF_main_reset <= USED 0
 PeakC <= USED 0
+fast <= USED 0
+fastmul <= USED 0
 mul_s32_loSR <= USED 0
 mul_u18s29sh <= USED 0
 mul_u18s29shl <= USED 0
 mul_wide_s32 <= USED 0
 ;FILE mathslow.o
-MS_Alerts <= USED 0
 MS_EvaluteLogLevel <= USED 0
-MS_EvaluteLogLevel_A <= USED 0
-MS_catch <= USED 0
-MS_evalute <= USED 0
 ;FILE my_proj.o
 init_mass <= USED 0
 my_spi_flash_page_program_dma <= USED 0

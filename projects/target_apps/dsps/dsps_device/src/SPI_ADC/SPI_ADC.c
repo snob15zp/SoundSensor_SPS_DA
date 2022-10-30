@@ -430,7 +430,7 @@ void GPIO0_Handler(void)
  SetWord16(&spi->SPI_FIFO_WRITE_REGF, SA_out.masByte[1]);
  SetWord16(&spi->SPI_FIFO_WRITE_REGF, SA_out.masByte[0]);	
 	
- if	(SS_ADC_MODE==EAM_ADC_sin)
+ if	((SS_ADC_MODE==EAM_ADC_sin)||(SS_ADC_MODE==EAM_ADCsystick))
  {
 	test_MF_main_ADCEmul();
  }

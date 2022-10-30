@@ -65,8 +65,8 @@ void MS_catch(void)
 	#endif
 
 	catch_flag=true;
-	MS_Integrator_Hi_out=Integrator_Hi;
-	MS_i32_fastAC=i32_fastAC;
+	MS_Integrator_Hi_out=IntegratorA_Hi;
+	MS_i32_fastAC=i32_fastAAC;
 	#ifndef __NO_MATLAB__
 	};
 	#endif

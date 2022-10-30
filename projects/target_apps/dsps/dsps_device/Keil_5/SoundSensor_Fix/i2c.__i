@@ -3,4 +3,4 @@
 -IC:\Users\RD\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include
 -IC:\Keil_v5\ARM\CMSIS\Include
 -D__UVISION_VERSION="528" -DARMCM0P -D__DA14531__ -D__SoundSensor__ -D__SSFix__ -D__NO_MATLAB__
--o .\soundsensor_fix\app.o --omf_browse .\soundsensor_fix\app.crf --depend .\soundsensor_fix\app.d "..\..\..\..\..\sdk6\sdk\app_modules\src\app_common\app.c"
+-o .\soundsensor_fix\i2c.o --omf_browse .\soundsensor_fix\i2c.crf --depend .\soundsensor_fix\i2c.d "..\..\..\..\..\sdk6\sdk\platform\driver\i2c\i2c.c"

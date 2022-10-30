@@ -14,7 +14,7 @@ uint8_t ssm_main_state;
 bool ssm_main_BLE_RDY;
 E_ADC_MODE_t SS_ADC_Active_MODE=EAM_ADCsystick;
 
-
+static int32_t time_start;
 e_FunctionReturnState ssm_main_ADC_prepare(void)
 {
 	
@@ -25,6 +25,9 @@ e_FunctionReturnState ssm_main_ADC_prepare(void)
 	MF_main_init();
 	ssm_main_BLE_RDY=false;
 	SS_spi_switchoff_pins(SPI_FLASH_GPIO_MAP);
+	
+	time_start=systick_time;
+	
 	SPI_ADC_init();
 	SS_ADC_MODE=SS_ADC_Active_MODE;
 	return e_FRS_Done;
@@ -43,7 +46,7 @@ e_FunctionReturnState ssm_main_BLE_prepare(void)
 		 default: 	SS_ADC_MODE=EAM_IDLE;
 			        SPI_ADC_deinit();
               ss_spi_init(SPI_ADC_GPIO_MAP,&UPS_spi_cfg);		 
-	            user_spi_flash_init(SPI_FLASH_GPIO_MAP);
+	            //user_spi_flash_init(SPI_FLASH_GPIO_MAP);
         	    AF_V_WriteStop((uint16_t) ssm_main_BLE_prepare);		 
 	            //write stop stamp
 	          	
@@ -94,7 +97,7 @@ e_FunctionReturnState ss_main(void)
 	
 	
 	
-	if (systick_time>(1000000/SYSTICK_PERIOD_US))  //debug
+	if (systick_time>((30000000+time_start)/SYSTICK_PERIOD_US))  //debug
 	  	b_rv=e_FRS_Done;
 	return b_rv; 
 };

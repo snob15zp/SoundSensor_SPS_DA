@@ -3,42 +3,42 @@
 #include "FilterC_s19s29_CG1.h"
 #include "FilterAC_s19s29_CG.h"
 
+#define id_factor 1
 
 #define sin1000_len 32
 int32_t sin1000[sin1000_len]={          
-	        0,
-   13092290,
-   25681450,
-   37283687,
-   47453133,
-   55798981,
-   62000506,
-   65819386,
-   67108864,
-   65819386,
-   62000506,
-   55798981,
-   47453133,
-   37283687,
-   25681450,
-   13092290,
-	        0,
-   -13092290,
-   -25681450,
-   -37283687,
-   -47453133,
-   -55798981,
-   -62000506,
-   -65819386,
-   -67108864,
-   -65819386,
-   -62000506,
-   -55798981,
-   -47453133,
-   -37283687,
-   -25681450,
-   -13092290,
-
+          0/id_factor,
+   25167023/id_factor,
+   49366891/id_factor,
+   71669617/id_factor,
+   91218120/id_factor,
+  107261162/id_factor,
+  119182217/id_factor,
+  126523167/id_factor,
+  129001902/id_factor,
+  126523167/id_factor,
+  119182217/id_factor,
+  107261162/id_factor,
+   91218120/id_factor,
+   71669617/id_factor,
+   49366891/id_factor,
+   25167023/id_factor,
+          0/id_factor,
+  -25167023/id_factor,
+  -49366891/id_factor,
+  -71669617/id_factor,
+  -91218120/id_factor,
+ -107261162/id_factor,
+ -119182217/id_factor,
+ -126523167/id_factor,
+ -129001902/id_factor,
+ -126523167/id_factor,
+ -119182217/id_factor,
+ -107261162/id_factor,
+  -91218120/id_factor,
+  -71669617/id_factor,
+  -49366891/id_factor,
+  -25167023/id_factor,
 };
 
 
@@ -116,7 +116,7 @@ void MF_main_init(void)
   PeakC_max=0;
 	MF_ADCOverLoad=MS_D_AlertLevel_Overload;
 	IFA_integrator_Old.u64=Integrator.u64;
-	Integrator_Hi=0;
+	//Integrator_Hi=0;
 	
 };
 void MF_main_reset(void)
@@ -232,7 +232,7 @@ inline void test_MF_main_ADCEmul(void)
 	static uint8_t i;
 	i++;
 	i&=0x1f;
-//	MF_main(sin1000[i]);
+	MF_main(sin1000[i]);
 }
 
 

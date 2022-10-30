@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\SoundSensor_Fix\SS_Fix.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\SoundSensor_Fix\SS_Fix.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sat Oct 29 23:32:59 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sun Oct 30 22:51:12 2022
 <BR><P>
 <H3>Maximum Stack Usage =        364 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -2436,8 +2436,7 @@ Global Symbols
 <LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_flash_auto_detect
 <LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_flash_configure_env
 </UL>
-<BR>[Called By]<UL><LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ssm_main_BLE_prepare
-<LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;periph_init
+<BR>[Called By]<UL><LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;periph_init
 <LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_suotar_img_hdlr
 <LI><a href="#[189]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_set_image_valid_flag
 <LI><a href="#[185]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;on_suotar_status_change
@@ -2728,7 +2727,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[10]"></a>GPIO0_Handler</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, spi_adc.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = GPIO0_Handler &rArr; ADC_IRQ &rArr; MF_main &rArr; FilterC_s19s29_CG1_step_o
+<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = GPIO0_Handler &rArr; ADC_IRQ &rArr; test_MF_main_ADCEmul &rArr; MF_main &rArr; FilterC_s19s29_CG1_step_o
 </UL>
 <BR>[Calls]<UL><LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetIRQ
 <LI><a href="#[1cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IRQ
@@ -2832,7 +2831,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[1dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MF_main_init
 </UL>
 
-<P><STRONG><a name="[1dd]"></a>MF_main_init</STRONG> (Thumb, 54 bytes, Stack size 8 bytes, mathfast.o(.text))
+<P><STRONG><a name="[1dd]"></a>MF_main_init</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, mathfast.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = MF_main_init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FilterC_s19s29_CG1_initialize
@@ -2870,7 +2869,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[1dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MF_main_init
 </UL>
 
-<P><STRONG><a name="[26]"></a>ssm_main_ADC_prepare</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, ss_main.o(.text))
+<P><STRONG><a name="[26]"></a>ssm_main_ADC_prepare</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, ss_main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 92<LI>Call Chain = ssm_main_ADC_prepare &rArr; SPI_ADC_init &rArr; ss_spi_init &rArr; spi_initialize &rArr; spi_set_bitmode
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MF_main_init
@@ -2883,11 +2882,10 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> ss_main.o(.text)
 </UL>
-<P><STRONG><a name="[27]"></a>ssm_main_BLE_prepare</STRONG> (Thumb, 66 bytes, Stack size 16 bytes, ss_main.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 228<LI>Call Chain = ssm_main_BLE_prepare &rArr; user_spi_flash_init &rArr; spi_flash_auto_detect &rArr; spi_flash_read_jedec_id &rArr; spi_flash_is_busy &rArr; spi_flash_read_status_reg &rArr; spi_transaction &rArr; spi_access
+<P><STRONG><a name="[27]"></a>ssm_main_BLE_prepare</STRONG> (Thumb, 60 bytes, Stack size 16 bytes, ss_main.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 92<LI>Call Chain = ssm_main_BLE_prepare &rArr; ss_spi_init &rArr; spi_initialize &rArr; spi_set_bitmode
 </UL>
-<BR>[Calls]<UL><LI><a href="#[186]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_spi_flash_init
-<LI><a href="#[1cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AF_V_WriteStop
+<BR>[Calls]<UL><LI><a href="#[1cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AF_V_WriteStop
 <LI><a href="#[1cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ss_spi_init
 <LI><a href="#[1c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_ADC_deinit
 </UL>
@@ -2899,7 +2897,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[fa]"></a>ss_main</STRONG> (Thumb, 58 bytes, Stack size 16 bytes, ss_main.o(.text))
+<P><STRONG><a name="[fa]"></a>ss_main</STRONG> (Thumb, 70 bytes, Stack size 16 bytes, ss_main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 320<LI>Call Chain = ss_main &rArr; MS_main &rArr; MS_evalute &rArr; MS_EvaluteLogLevel_A &rArr; log10 &rArr; log &rArr; __kernel_poly &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MS_main
@@ -2909,7 +2907,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[28]"></a>systick_irq</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, ss_sys.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = systick_irq &rArr; ADC_IRQ &rArr; MF_main &rArr; FilterC_s19s29_CG1_step_o
+<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = systick_irq &rArr; ADC_IRQ &rArr; test_MF_main_ADCEmul &rArr; MF_main &rArr; FilterC_s19s29_CG1_step_o
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IRQ
 </UL>
@@ -3092,8 +3090,8 @@ Global Symbols
 
 <P><STRONG><a name="[272]"></a>__aeabi_cdcmple</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, cdcmple.o(.text), UNUSED)
 
-<P><STRONG><a name="[1cc]"></a>ADC_IRQ</STRONG> (Thumb, 118 bytes, Stack size 24 bytes, spi_adc.o(i.ADC_IRQ))
-<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = ADC_IRQ &rArr; MF_main &rArr; FilterC_s19s29_CG1_step_o
+<P><STRONG><a name="[1cc]"></a>ADC_IRQ</STRONG> (Thumb, 122 bytes, Stack size 24 bytes, spi_adc.o(i.ADC_IRQ))
+<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = ADC_IRQ &rArr; test_MF_main_ADCEmul &rArr; MF_main &rArr; FilterC_s19s29_CG1_step_o
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;test_MF_main_ADCEmul
 <LI><a href="#[1fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MF_main
@@ -3109,7 +3107,8 @@ Global Symbols
 <LI><a href="#[1e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FilterAC_s19s29_CG_step_o
 <LI><a href="#[1fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MF_sqr
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IRQ
+<BR>[Called By]<UL><LI><a href="#[1fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;test_MF_main_ADCEmul
+<LI><a href="#[1cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IRQ
 </UL>
 
 <P><STRONG><a name="[1fc]"></a>MF_sqr</STRONG> (Thumb, 38 bytes, Stack size 12 bytes, mathfast.o(i.MF_sqr))
@@ -3230,8 +3229,12 @@ Global Symbols
 <LI><a href="#[1e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FilterAC_s19s29_CG_step_o
 </UL>
 
-<P><STRONG><a name="[1fb]"></a>test_MF_main_ADCEmul</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, mathfast.o(i.test_MF_main_ADCEmul))
-<BR><BR>[Called By]<UL><LI><a href="#[1cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IRQ
+<P><STRONG><a name="[1fb]"></a>test_MF_main_ADCEmul</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, mathfast.o(i.test_MF_main_ADCEmul))
+<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = test_MF_main_ADCEmul &rArr; MF_main &rArr; FilterC_s19s29_CG1_step_o
+</UL>
+<BR>[Calls]<UL><LI><a href="#[1fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MF_main
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IRQ
 </UL>
 
 <P><STRONG><a name="[dd]"></a>arch_rom_init</STRONG> (Thumb, 214 bytes, Stack size 96 bytes, arch_rom.o(system_init_run_once))

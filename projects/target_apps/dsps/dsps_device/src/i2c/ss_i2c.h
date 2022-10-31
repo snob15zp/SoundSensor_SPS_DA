@@ -64,9 +64,10 @@ typedef struct
 
 
 // simple test
-void ssi2c_init(void);
+
 void ss_i2c_test (void);
 //complex test
-i2c_error_code sx1502_init(void);
+void ssi2c_init(void);
+i2c_error_code sx1502_init(void);//for inner
 void sx_main(void);
 #endif

@@ -180,8 +180,13 @@ void periph_init(void)
 
 #ifdef __SS_EXT__	
    timer2_init();
+	 
 	 ssi2c_init();//
+#ifndef __ADCTEST__	 
 	 sx_main();//  ss_i2c_test();
+#else
+#endif
+
 #endif	 
 
    
@@ -191,17 +196,6 @@ void periph_init(void)
 
 #ifdef __ADCTEST__
    
-    SPI_ADC_init()
-//	 intinit();
-	 init_spi_task();
-	 
-	 while(1)
-	 {
-		 test_MF_main_ADCEmul();
-		  //ss_i2c_test();
-		task_project();
-	 }
-
 #endif		 
 
 

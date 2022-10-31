@@ -108,25 +108,26 @@ systick_last_SCAN=systick_time;
   ssi2c_set_pad_functions();
   // Enable the pads
 	
-	err = i2c_eeprom_write_byte(1, 0x0E);
-  err = i2c_eeprom_write_byte(2, 0x00);
-  err = i2c_eeprom_write_byte(3, 0x00);
-	
-	i2c_eeprom_write_byte(SX1502_REGDATA_ADDR, 0x7F|board_calibration_control ); //IO4: 0 - NC calibration
-	//i2c_eeprom_write_byte(SX1502_REGDATA_ADDR, 0x7F&(~board_calibration_control) ); //IO4: 0 - NC calibration
-  
-  i2cBuff[0] = 0x7F;
-  i2cBuff[1] = 0xBF;
-  i2cBuff[2] = 0xDF;
-  i2cBuff[3] = 0x5F;
-  i2cBuff[4] = 0x9F;
-  i2cBuff[5] = 0x1F;
-  cnt = 0;
-	
+//	err = i2c_eeprom_write_byte(1, 0x0E);
+//  err = i2c_eeprom_write_byte(2, 0x00);
+//  err = i2c_eeprom_write_byte(3, 0x00);
+
 	if(sx1502_init() == I2C_NO_ERROR)
   {
     i2c_eeprom_read_byte(SX1502_REGDATA_ADDR, &outData);
   }
+	
+	//i2c_eeprom_write_byte(SX1502_REGDATA_ADDR, 0x7F|board_calibration_control ); //IO4=1 1 - NO microphone
+	i2c_eeprom_write_byte(SX1502_REGDATA_ADDR, 0x7F&(~board_calibration_control) ); //IO4: 0 - NC calibration
+  
+//  i2cBuff[0] = 0x7F;
+//  i2cBuff[1] = 0xBF;
+//  i2cBuff[2] = 0xDF;
+//  i2cBuff[3] = 0x5F;
+//  i2cBuff[4] = 0x9F;
+//  i2cBuff[5] = 0x1F;
+//  cnt = 0;
+	
 
 }
 

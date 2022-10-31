@@ -12,7 +12,7 @@
 
 uint8_t ssm_main_state;
 bool ssm_main_BLE_RDY;
-E_ADC_MODE_t SS_ADC_Active_MODE=EAM_ADCsystick;
+E_ADC_MODE_t SS_ADC_Active_MODE=EAM_ADC_WORK;
 
 static int32_t time_start;
 e_FunctionReturnState ssm_main_ADC_prepare(void)
@@ -89,8 +89,10 @@ e_FunctionReturnState ss_main(void)
 #endif
 		
 		
-#ifdef __SS_EXT__			
+#ifdef __SS_EXT__		
+#ifndef __ADCTEST__		
 					sx_main();
+#endif		
 #endif					
 		
 	}

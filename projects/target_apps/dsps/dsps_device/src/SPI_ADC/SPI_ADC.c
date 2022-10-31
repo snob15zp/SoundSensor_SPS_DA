@@ -22,7 +22,7 @@ static const spi_cfg_t spi_cfg_ADC = {
 };
 
 
-#define def_dataRead_Size (16*1)
+#define def_dataRead_Size (512*1)
 
 volatile bool SA_flashbit;
 uni_int32_t SA_out;
@@ -361,14 +361,15 @@ inline void ADC_IRQ_adctest(void);
 inline void ADC_IRQ(void);
 void GPIO0_Handler(void)
 {
- switch(SS_ADC_MODE)
-	 {case EAM_ADC_sin:
-		case EAM_ADC_WORK: 
+// switch(SS_ADC_MODE)
+//	 {
+//	  case EAM_ADC_sin:
+//		case EAM_ADC_WORK: 
 		  	ADC_IRQ();
-	      break;
-//	  case EAM_ADCLIVE: ADC_IRQ_adctest();break;
-	 default:;
-	 };
+//	      break;
+////	  case EAM_ADCLIVE: ADC_IRQ_adctest();break;
+//	 default:;
+//	 };
  GPIO_ResetIRQ(GPIO0_IRQn);
  NVIC_ClearPendingIRQ(GPIO0_IRQn);
 }
@@ -407,7 +408,7 @@ void GPIO0_Handler(void)
 
 //}
 
- void ADC_IRQ(void)
+inline void ADC_IRQ(void)
 {
 	uni_int32_t SA_in;
   SetWord16(SPI_CS_CONFIG_REG,SPI_CS_NONE);	
@@ -430,19 +431,34 @@ void GPIO0_Handler(void)
  SetWord16(&spi->SPI_FIFO_WRITE_REGF, SA_out.masByte[1]);
  SetWord16(&spi->SPI_FIFO_WRITE_REGF, SA_out.masByte[0]);	
 	
- if	((SS_ADC_MODE==EAM_ADC_sin)||(SS_ADC_MODE==EAM_ADCsystick))
- {
-	test_MF_main_ADCEmul();
- }
- else
- {
+#ifdef	__ADCTEST__
+	if (SA_ui16_dataRead_index<(def_dataRead_Size-10))
+	{
+		SA_dataRead[SA_ui16_dataRead_index+3] = SA_in.masByte[3] ;				
+    SA_dataRead[SA_ui16_dataRead_index+2] = SA_in.masByte[2] ;				
+		SA_dataRead[SA_ui16_dataRead_index+1]= SA_in.masByte[1] ;	
+		SA_dataRead[SA_ui16_dataRead_index]=SA_in.masByte[0];
+		SA_ui16_dataRead_index+=4;
+	}	
+	else 
+	{
+		SA_ui16_dataRead_index=def_dataRead_Size-1;
+	};
+#endif	
+	
+// if	((SS_ADC_MODE==EAM_ADC_sin)||(SS_ADC_MODE==EAM_ADCsystick))
+// {
+//	test_MF_main_ADCEmul();
+// }
+// else
+// {
 	MF_main(SA_in.data_u32>>5);
- }
+// }
 	
 	
- while ( GetWord16(SPI_FIFO_STATUS_REG) & SPI_TRANSACTION_ACTIVE )
-		{
-		};
+// while ( GetWord16(SPI_FIFO_STATUS_REG) & SPI_TRANSACTION_ACTIVE )
+//		{
+//		};
 	SetWord16(SPI_CS_CONFIG_REG,SPI_CS_NONE);	
 	SetWord16(GPIO_BASE+2, 1 << SPI_EN_PIN);
 	if (SA_flashbit) 

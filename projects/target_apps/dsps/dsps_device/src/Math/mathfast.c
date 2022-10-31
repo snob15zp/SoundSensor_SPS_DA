@@ -181,7 +181,7 @@ inline void MF_main(int32_t adcoutput)
 	
 	//filterAout=FilterAC_s19s29_CG_Y.Output;
 	
-//	square=MF_sqr(filterAout<<ForIntegratorShift);
+	square=MF_sqr(filterAout<<ForIntegratorShift);
 	
 	t=Integrator.u32[1];
 	Integrator.u64+=(square);

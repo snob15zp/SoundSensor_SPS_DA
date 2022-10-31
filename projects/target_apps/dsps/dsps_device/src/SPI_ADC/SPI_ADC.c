@@ -21,11 +21,13 @@ static const spi_cfg_t spi_cfg_ADC = {
 #endif
 };
 
-
-#define def_dataRead_Size (512*1)
-
 volatile bool SA_flashbit;
 uni_int32_t SA_out;
+
+
+
+#ifdef	__ADCTEST__
+#define def_dataRead_Size (512*1)
 
 int32_t SA_dataRead_32[def_dataRead_Size/4];
 int8_t dataRead_toy;
@@ -33,6 +35,7 @@ int8_t dataRead_toy;
 //bool SA_b_dataRead_empty;
 volatile uint16_t SA_ui16_dataRead_index;
 uint8_t *SA_dataRead=(uint8_t*)(&(SA_dataRead_32[0]));
+#endif
 /*
 To configure the SPI controller in master mode, follow the steps below:
 1. Set the appropriate GPIO ports in SPI clock mode (output), SPI Chip Select mode (output), SPI
@@ -169,9 +172,10 @@ void SPI_ADC_deinit(void)
 void SPI_ADC_init(void)
 {
 	//SA_dataRead_32=(int32_t*)(&(SA_dataRead[0]));
+#ifdef	__ADCTEST__	
   SA_dataRead_32[0]=45;	
 	SA_ui16_dataRead_index=4;
-	
+#endif	
 
 //user_spi_init(SPI_ADC_GPIO_MAP);
   ss_spi_init(SPI_ADC_GPIO_MAP,&spi_cfg_ADC);

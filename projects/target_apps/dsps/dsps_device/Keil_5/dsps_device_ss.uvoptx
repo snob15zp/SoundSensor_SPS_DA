@@ -463,6 +463,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGUARM</Key>
+          <Name>4óÜ</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -499,18 +500,34 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>445</LineNumber>
+          <LineNumber>286</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>133977834</Address>
+          <Address>133975244</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\src\SPI_ADC\SPI_ADC.c</Filename>
+          <Filename>..\src\i2c\ss_i2c.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\SS_Fix\../src/SPI_ADC/SPI_ADC.c\445</Expression>
+          <Expression>\\SS_Fix\../src/i2c/ss_i2c.c\286</Expression>
+        </Bp>
+        <Bp>
+          <Number>1</Number>
+          <Type>0</Type>
+          <LineNumber>346</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>133975160</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>..\src\i2c\ss_i2c.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\SS_Fix\../src/i2c/ss_i2c.c\346</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -2272,7 +2289,7 @@
 
   <Group>
     <GroupName>i2c</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -2316,7 +2333,7 @@
 
   <Group>
     <GroupName>Math</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>

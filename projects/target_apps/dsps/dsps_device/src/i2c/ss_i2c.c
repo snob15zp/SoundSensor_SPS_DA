@@ -118,7 +118,7 @@ systick_last_SCAN=systick_time;
   }
 	
 	//i2c_eeprom_write_byte(SX1502_REGDATA_ADDR, 0x7F|board_calibration_control ); //IO4=1 1 - NO microphone
-	i2c_eeprom_write_byte(SX1502_REGDATA_ADDR, 0x7F&(~board_calibration_control) ); //IO4: 0 - NC calibration
+	i2c_eeprom_write_byte(SX1502_REGDATA_ADDR, 0xBF&(~board_calibration_control) ); //IO4: 0 - NC calibration
   
 //  i2cBuff[0] = 0x7F;
 //  i2cBuff[1] = 0xBF;
@@ -280,7 +280,7 @@ static btnCmd_en decodeButtonsState(void)
   {
     if(sw1.numOfClicks == 0)                                            // если sw1 не нажималась ни разу
     {
-      if(systick_time - sw3.pressEventTime >= 5000)                          // если прошло более 5 секунд
+      if((systick_time - sw3.pressEventTime) >= (5000000/SYSTICK_PERIOD_US))                          // если прошло более 5 секунд
       {
         sw3.pressEventFixed = false;                                    // снять признак фиксации события нажатия SW3
         return BTN_SW3_LONG;                                            // возвратить код команды
@@ -292,7 +292,7 @@ static btnCmd_en decodeButtonsState(void)
   {
     sw3.unpressEventFixed = false;
     result = BTN_CMD_NO;
-    if(sw3.pressedStateTime < 5000)
+    if(sw3.pressedStateTime < (5000000/SYSTICK_PERIOD_US))
     {
       result = (btnCmd_en)(sw1.numOfClicks + 1);                        // вернуть код команды                                             
     }

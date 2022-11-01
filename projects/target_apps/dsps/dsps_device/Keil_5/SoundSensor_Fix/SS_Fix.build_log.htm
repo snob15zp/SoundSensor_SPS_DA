@@ -27,7 +27,54 @@ Project File Date:  10/31/2022
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'SoundSensor_Fix'
-".\SoundSensor_Fix\SS_Fix.axf" - 0 Error(s), 0 Warning(s).
+compiling my_timer.c...
+compiling SS_InterfaceToBLE.c...
+compiling SPI_ADC.c...
+compiling user_periph_setup.c...
+compiling arch_main.c...
+..\..\..\..\..\sdk6\sdk\platform\arch\main\arch_main.c(167): warning:  #177-D: variable "sleep_mode"  was declared but never referenced
+      sleep_mode_t sleep_mode;
+..\..\..\..\..\sdk6\sdk\platform\arch\main\arch_main.c(284): warning:  #177-D: function "arch_goto_sleep"  was declared but never referenced
+  __STATIC_INLINE void arch_goto_sleep(sleep_mode_t current_sleep_mode)
+..\..\..\..\..\sdk6\sdk\platform\arch\main\arch_main.c(378): warning:  #177-D: function "arch_resume_from_sleep"  was declared but never referenced
+  __STATIC_INLINE void arch_resume_from_sleep(void)
+..\..\..\..\..\sdk6\sdk\platform\arch\main\arch_main.c(505): warning:  #177-D: function "rwip_power_down"  was declared but never referenced
+  __STATIC_INLINE sleep_mode_t rwip_power_down(void)
+..\..\..\..\..\sdk6\sdk\platform\arch\main\arch_main.c(930): warning:  #177-D: function "app_asynch_proc"  was declared but never referenced
+  __STATIC_INLINE arch_main_loop_callback_ret_t app_asynch_proc(void)
+..\..\..\..\..\sdk6\sdk\platform\arch\main\arch_main.c(947): warning:  #177-D: function "app_asynch_sleep_proc"  was declared but never referenced
+  __STATIC_INLINE void app_asynch_sleep_proc(void)
+..\..\..\..\..\sdk6\sdk\platform\arch\main\arch_main.c: 6 warnings, 0 errors
+compiling ss_i2c.c...
+..\src\i2c\ss_i2c.c(359): warning:  #188-D: enumerated type mixed with another type
+        rgbLedTask.ledTimeSlot[1].color = CL_RED|CL_GREEN;
+..\src\i2c\ss_i2c.c(46): warning:  #177-D: variable "buttonsState"  was declared but never referenced
+  static uint8_t   buttonsState;
+..\src\i2c\ss_i2c.c(75): warning:  #177-D: variable "ptrBuff"  was declared but never referenced
+  static uint8_t* ptrBuff;
+..\src\i2c\ss_i2c.c(77): warning:  #177-D: variable "err"  was declared but never referenced
+  static i2c_error_code err;
+..\src\i2c\ss_i2c.c(319): warning:  #177-D: function "togglePowerState"  was declared but never referenced
+  static void togglePowerState(void)
+..\src\i2c\ss_i2c.c: 5 warnings, 0 errors
+compiling MathSlow.c...
+compiling FilterC_s19s29_CG1.c...
+compiling mathfast.c...
+compiling FilterAC_s19s29_CG.c...
+compiling ss_global.c...
+compiling ss_main.c...
+..\src\SS_arch\ss_main.c(22): warning:  #767-D: conversion from pointer to smaller integer
+  	AF_V_WriteStart((uint16_t) ssm_main_ADC_prepare);	
+..\src\SS_arch\ss_main.c(50): warning:  #767-D: conversion from pointer to smaller integer
+          	    AF_V_WriteStop((uint16_t) ssm_main_BLE_prepare);		 
+..\src\SS_arch\ss_main.c(17): warning:  #550-D: variable "time_start"  was set but never used
+  static int32_t time_start;
+..\src\SS_arch\ss_main.c: 3 warnings, 0 errors
+compiling ss_sys.c...
+linking...
+Program Size: Code=25572 RO-data=2568 RW-data=896 ZI-data=11748  
+FromELF: creating hex file...
+".\SoundSensor_Fix\SS_Fix.axf" - 0 Error(s), 14 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -41,7 +88,7 @@ Package Vendor: ARM
   C:\Users\RD\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:03
 </pre>
 </body>
 </html>

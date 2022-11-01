@@ -4,10 +4,12 @@
 #include "i2c_eeprom.h"
 
 #define    LEDS_NUM               3                                     // количество светодиодов в последовательности
-#define    LED_PULSE_TIME         1000000     //us                             // время цикла обработки всех светодиодов
+#define    LED_PULSE_TIME         (3000000/SYSTICK_PERIOD_US)     //us                             // время цикла обработки всех светодиодов
 #define    LED_SLOT_TIME          ((uint16_t)(LED_PULSE_TIME / LEDS_NUM)) // время работы одного светодиода 
 #define DEB_CNT         ((uint8_t)3)                                      // 믫鸥񲢮 ౮㦰猪嬿 𨪱ᷨ衱ﲲ-鿍
-#define SCAN_TIME       (5000)//us 
+#define SCAN_TIME       (10000/SYSTICK_PERIOD_US)//us 
+#define D_pulseWidthMs (500000/SYSTICK_PERIOD_US)
+#define D_KL_long (5000000/SYSTICK_PERIOD_US)
 
 typedef struct
 {

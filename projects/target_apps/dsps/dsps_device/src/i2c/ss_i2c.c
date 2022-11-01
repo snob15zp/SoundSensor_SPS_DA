@@ -47,6 +47,7 @@ static uint8_t   buttonsState;
 
 static uint32_t systick_last_LED;//TODO to init
 static uint32_t systick_last_SCAN;
+static uint32_t ledsTime;     // таймер светодиодов ()
 /*****************************************************************************************
 *
 *****************************************************************************************/
@@ -99,6 +100,7 @@ void ssi2c_init(void)
 {
 systick_last_LED=systick_time;
 systick_last_SCAN=systick_time;    
+ledsTime = systick_time;	
 	
   // Initialize I2C
   i2c_eeprom_configure(&i2c_cfg, &sx1502_cfg);
@@ -155,7 +157,7 @@ void ss_i2c_test (void)
 
 //uint16_t  vddVoltage;                                                   // здесь храним значение напряжения питания 
 
-uint32_t __attribute__((aligned(8))) ledsTime = LED_SLOT_TIME - 1;;     // таймер светодиодов ()
+
 
 btn_t         sw1;
 btn_t         sw3;
@@ -280,7 +282,7 @@ static btnCmd_en decodeButtonsState(void)
   {
     if(sw1.numOfClicks == 0)                                            // если sw1 не нажималась ни разу
     {
-      if((systick_time - sw3.pressEventTime) >= (5000000/SYSTICK_PERIOD_US))                          // если прошло более 5 секунд
+      if((systick_time - sw3.pressEventTime) >= D_KL_long)                          // если прошло более 5 секунд
       {
         sw3.pressEventFixed = false;                                    // снять признак фиксации события нажатия SW3
         return BTN_SW3_LONG;                                            // возвратить код команды
@@ -292,7 +294,7 @@ static btnCmd_en decodeButtonsState(void)
   {
     sw3.unpressEventFixed = false;
     result = BTN_CMD_NO;
-    if(sw3.pressedStateTime < (5000000/SYSTICK_PERIOD_US))
+    if(sw3.pressedStateTime < D_KL_long)
     {
       result = (btnCmd_en)(sw1.numOfClicks + 1);                        // вернуть код команды                                             
     }
@@ -349,25 +351,25 @@ static void executeSwState(void)
       
     case BTN_SW3_SHORT:                                                 // если было короткое нажатие SW3
       rgbLedTask.ledTimeSlot[0].color = CL_RED;
-      rgbLedTask.ledTimeSlot[0].pulseWidthMs = 125;
+      rgbLedTask.ledTimeSlot[0].pulseWidthMs = D_pulseWidthMs;
       rgbLedTask.ledTimeSlot[0].isEnabled = true;
     break;
     
     case BTN_SW1_SHORT:                                                 // если было нажатие SW1 без SW3
-      rgbLedTask.ledTimeSlot[1].color = CL_RED;
-      rgbLedTask.ledTimeSlot[1].pulseWidthMs = 125;
+      rgbLedTask.ledTimeSlot[1].color = CL_RED|CL_GREEN;
+      rgbLedTask.ledTimeSlot[1].pulseWidthMs = D_pulseWidthMs;
       rgbLedTask.ledTimeSlot[1].isEnabled = true;      
     break;
     
     case BTN_SW1_ONE_CLICK:                                             // если было одно нажатие SW1 при нажатой SW3
       rgbLedTask.ledTimeSlot[1].color = CL_GREEN;
-      rgbLedTask.ledTimeSlot[1].pulseWidthMs = 125;
+      rgbLedTask.ledTimeSlot[1].pulseWidthMs = D_pulseWidthMs;
       rgbLedTask.ledTimeSlot[1].isEnabled = true;
     break;
       
     case BTN_SW1_DBL_CLICK:                                             // если было два нажатия SW1 при нажатой SW3
       rgbLedTask.ledTimeSlot[2].color = CL_BLUE;
-      rgbLedTask.ledTimeSlot[2].pulseWidthMs = 125;
+      rgbLedTask.ledTimeSlot[2].pulseWidthMs = D_pulseWidthMs;
       rgbLedTask.ledTimeSlot[2].isEnabled = true;
     break;
     
@@ -403,6 +405,14 @@ static void executeSwState(void)
 static void rgbLedServer(void)
 {
   static uint16_t itemIndex = 0;
+	uint32_t l_ledsTime;
+	
+	l_ledsTime=systick_time-ledsTime;
+	if (l_ledsTime >= LED_SLOT_TIME)
+  { 
+    ledsTime = systick_time;
+    rgbLedTask.timeSlotMode = TSM_STRT;
+	}
   
   switch(rgbLedTask.timeSlotMode)
   {
@@ -413,6 +423,8 @@ static void rgbLedServer(void)
         outData |= RED_LED_OUT | GREEN_LED_OUT | BLUE_LED_OUT;          // замаскировать выходы для RGB светодиода
         outData &= ~rgbLedTask.ledTimeSlot[itemIndex].color;            // снять бит для включения нужного светодиода
         i2c_eeprom_write_byte(SX1502_REGDATA_ADDR, outData);            // записать данные в порт
+//        outData |= RED_LED_OUT | GREEN_LED_OUT | BLUE_LED_OUT;          // замаскировать выходы для RGB светодиода
+//        i2c_eeprom_write_byte(SX1502_REGDATA_ADDR, outData);            // записать данные в порт
         rgbLedTask.timeSlotMode = TSM_BUSY;                             // переключить режим работы слота
       } 
       else 
@@ -424,7 +436,7 @@ static void rgbLedServer(void)
     
     case TSM_BUSY:
       
-    if(rgbLedTask.ledTimeSlot[itemIndex].pulseWidthMs >= ledsTime)      // если время включенного состояния светодиода истекло
+    if(rgbLedTask.ledTimeSlot[itemIndex].pulseWidthMs >= l_ledsTime)      // если время включенного состояния светодиода истекло
       {
         outData |= RED_LED_OUT | GREEN_LED_OUT | BLUE_LED_OUT;          // замаскировать выходы для RGB светодиода
         i2c_eeprom_write_byte(SX1502_REGDATA_ADDR, outData);            // записать данные в порт
@@ -457,14 +469,14 @@ void sx_main (void)
 //  } else while(1);
    
 //  while(1)
-	if ((systick_time-systick_last_LED)>(LED_PULSE_TIME/SYSTICK_PERIOD_US))
+	if ((systick_time-systick_last_LED)>(LED_PULSE_TIME))
 	{ 
-		systick_last_LED+=(LED_PULSE_TIME/SYSTICK_PERIOD_US);
+		systick_last_LED+=(LED_PULSE_TIME);
 	  rgbLedTask.timeSlotMode = TSM_STRT;
 	}	
-		if ((systick_time-systick_last_SCAN)>(SCAN_TIME/SYSTICK_PERIOD_US))
+		if ((systick_time-systick_last_SCAN)>(SCAN_TIME))
 	{ 
-		systick_last_SCAN+=(SCAN_TIME/SYSTICK_PERIOD_US);
+		systick_last_SCAN+=(SCAN_TIME);
 	  scanInputs();
 	}	
 

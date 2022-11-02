@@ -186,7 +186,7 @@ int main(void)
     {
 			
 #ifdef __DEVKIT_EXT__					
-					led_flash();
+//					led_flash();
 #endif			
 		switch (ssm_main_state)
 		{

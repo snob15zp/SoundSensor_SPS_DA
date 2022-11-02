@@ -304,7 +304,7 @@ char user_advertise_data[28] = USER_ADVERTISE_DATA;
 uint8_t user_advertise_data_len = USER_ADVERTISE_DATA_LEN;
 char user_adv_scan_resp_data[31] = USER_ADVERTISE_SCAN_RESPONSE_DATA;
 uint8_t user_adv_scan_resp_data_len = USER_ADVERTISE_SCAN_RESPONSE_DATA_LEN;
-uint8_t uart_baudrate_param = BAUDRATE_CONFIG;
+//uint8_t uart_baudrate_param = BAUDRATE_CONFIG;
 
 char * spss_conf_struct_version = SPSS_CONF_STRUCT_VER;
 uint8_t spss_conf_struct_version_len = sizeof(SPSS_CONF_STRUCT_VER)-1;
@@ -324,9 +324,9 @@ gpio_func_t gpio_reset_status = {GPIO_ACTIVE_STATUS_PIN, GPIO_ACTIVE_STATUS_PORT
 #if WKUP_EXT_PROCESSOR
 gpio_func_t gpio_wakeup_ext_host = {WKUP_EXT_PROC_GPIO_PIN, WKUP_EXT_PROC_GPIO_PORT};
 #endif
-gpio_func_t gpio_por_pin = {GPIO_POR_PIN, GPIO_POR_PORT};
-uint8_t gpio_por_pin_polarity = GPIO_POR_PIN_POLARITY_HIGH;
-uint8_t gpio_por_pin_timeout = 0;
+//gpio_func_t gpio_por_pin = {GPIO_POR_PIN, GPIO_POR_PORT};
+//uint8_t gpio_por_pin_polarity = GPIO_POR_PIN_POLARITY_HIGH;
+//uint8_t gpio_por_pin_timeout = 0;
 #if BLE_REMOTE_CONFIG
 bool mtu_reset = false;
 #endif
@@ -347,11 +347,11 @@ user_config_elem_t    spss_configuration_table[USER_CONF_ELEMENTS_NUM] = {
                                                 {ELEM_ID_USER_ADV_SCAN_RESP_DATA_LEN, 1, 1, &user_adv_scan_resp_data_len, NULL, false},
                                                 {ELEM_ID_USER_DEVICE_NAME, 32, USER_DEVICE_NAME_LEN, device_info.dev_name.name, NULL, false},
                                                 {ELEM_ID_USER_DEVICE_NAME_LEN, 1, 1, &device_info.dev_name.length, NULL, false},
-                                                {ELEM_ID_PERIPH_UART_BAUDRATE, 1, 1, &uart_baudrate_param, user_sps_config_verify_uart_baudrate_cb, false},
-                                                {ELEM_ID_GPIO_UART1_RX, 2, 2, &gpio_uart1_rx, user_sps_config_verify_gpio_config_cb, false},
-                                                {ELEM_ID_GPIO_UART1_TX, 2, 2, &gpio_uart1_tx, user_sps_config_verify_gpio_config_cb, false},
-                                                {ELEM_ID_GPIO_UART1_CTS, 2, 2, &gpio_uart1_cts, user_sps_config_verify_gpio_config_cb, false},
-                                                {ELEM_ID_GPIO_UART1_RTS, 2, 2, &gpio_uart1_rts, user_sps_config_verify_gpio_config_cb, false},
+                                              //  {ELEM_ID_PERIPH_UART_BAUDRATE, 1, 1, &uart_baudrate_param, user_sps_config_verify_uart_baudrate_cb, false},
+                                              //  {ELEM_ID_GPIO_UART1_RX, 2, 2, &gpio_uart1_rx, user_sps_config_verify_gpio_config_cb, false},
+                                               // {ELEM_ID_GPIO_UART1_TX, 2, 2, &gpio_uart1_tx, user_sps_config_verify_gpio_config_cb, false},
+                                              //  {ELEM_ID_GPIO_UART1_CTS, 2, 2, &gpio_uart1_cts, user_sps_config_verify_gpio_config_cb, false},
+                                              //  {ELEM_ID_GPIO_UART1_RTS, 2, 2, &gpio_uart1_rts, user_sps_config_verify_gpio_config_cb, false},
 #if (EXTERNAL_WAKEUP)
                                                 {ELEM_ID_GPIO_EXT_WAKEUP, 2, 2, &gpio_ext_wakeup, user_sps_config_verify_gpio_config_cb, false},
                                                 {ELEM_ID_GPIO_EXT_WAKEUP_POLARITY, 1, 1, &gpio_ext_wakeup_polarity, user_sps_config_verify_polarity_cb, false},
@@ -361,9 +361,9 @@ user_config_elem_t    spss_configuration_table[USER_CONF_ELEMENTS_NUM] = {
 #if WKUP_EXT_PROCESSOR
                                                 {ELEM_ID_GPIO_WAKEUP_EXT_HOST, 2, 2, &gpio_wakeup_ext_host, user_sps_config_verify_gpio_config_cb, false},
 #endif
-                                                {ELEM_ID_GPIO_POR_PIN, 2, 2, &gpio_por_pin, user_sps_config_verify_gpio_config_cb, false},
-                                                {ELEM_ID_GPIO_POR_PIN_POLARITY, 1, 1, &gpio_por_pin_polarity, user_sps_config_verify_polarity_cb, false},
-                                                {ELEM_ID_GPIO_POR_PIN_TIMEOUT, 1, 1, &gpio_por_pin_timeout, user_sps_config_verify_por_pin_timeout_cb, false},
+                          //                      {ELEM_ID_GPIO_POR_PIN, 2, 2, &gpio_por_pin, user_sps_config_verify_gpio_config_cb, false},
+                           //                     {ELEM_ID_GPIO_POR_PIN_POLARITY, 1, 1, &gpio_por_pin_polarity, user_sps_config_verify_polarity_cb, false},
+                           //                     {ELEM_ID_GPIO_POR_PIN_TIMEOUT, 1, 1, &gpio_por_pin_timeout, user_sps_config_verify_por_pin_timeout_cb, false},
 };
 
 #if BLE_REMOTE_CONFIG

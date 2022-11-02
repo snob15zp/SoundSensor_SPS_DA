@@ -137,11 +137,11 @@ void set_pad_functions(void)        // set gpio port function mode
     #endif
 
 #if defined (__DA14531__)
-    if ((gpio_reset_status.port != GPIO_PORT_INVALID) && (gpio_reset_status.pin != GPIO_PIN_INVALID))
-        GPIO_ConfigurePin( gpio_reset_status.port, gpio_reset_status.pin, INPUT_PULLUP, PID_GPIO, true );
+//    if ((gpio_reset_status.port != GPIO_PORT_INVALID) && (gpio_reset_status.pin != GPIO_PIN_INVALID))
+//        GPIO_ConfigurePin( gpio_reset_status.port, gpio_reset_status.pin, INPUT_PULLUP, PID_GPIO, true );
 #endif
-    if ((gpio_por_pin.port != GPIO_PORT_INVALID) && (gpio_por_pin.pin != GPIO_PIN_INVALID))
-        GPIO_EnablePorPin(gpio_por_pin.port, gpio_por_pin.pin, (GPIO_POR_PIN_POLARITY)gpio_por_pin_polarity, gpio_por_pin_timeout);
+//    if ((gpio_por_pin.port != GPIO_PORT_INVALID) && (gpio_por_pin.pin != GPIO_PIN_INVALID))
+//        GPIO_EnablePorPin(gpio_por_pin.port, gpio_por_pin.pin, (GPIO_POR_PIN_POLARITY)gpio_por_pin_polarity, gpio_por_pin_timeout);
 
 #ifdef CFG_PRINTF_UART2
     GPIO_ConfigurePin( GPIO_UART2_TX_PORT, GPIO_UART2_TX_PIN, OUTPUT, PID_UART2_TX, false );

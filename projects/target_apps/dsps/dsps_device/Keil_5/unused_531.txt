@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Wed Oct 26 21:06:46 2022
+;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Wed Nov 02 11:23:49 2022
 ;VERSION 0.2
 ;FILE adc_531.o
 adc_correct_sample <= USED 0
@@ -13,13 +13,6 @@ adc_register_interrupt <= USED 0
 adc_reset <= USED 0
 adc_unregister_interrupt <= USED 0
 ;FILE adc_flash.o
-IRQ_wrByteFromRecord <= USED 0
-find_AddrNewRecord <= USED 0
-get_u32_flashDisk <= USED 0
-init_spi_task <= USED 0
-my_spi_send <= USED 0
-spi_flashProgramByte_dma <= USED 0
-spi_flash_StartProgramByteSequent <= USED 0
 ;FILE app.o
 app_easy_gap_advertise_with_timeout_stop <= USED 0
 app_easy_gap_dev_config_get_active <= USED 0
@@ -77,12 +70,15 @@ check_sys_startup_period <= USED 0
 ;FILE crc32.o
 crc32 <= USED 0
 ;FILE filterac_s19s29_cg.o
+FilterAC_s19s29_CG_step_o <= USED 0
 FilterAC_s19s29_CG_terminate <= USED 0
 ;FILE filterc_s19s29_cg1.o
+FilterC_s19s29_CG1_step_o <= USED 0
 FilterC_s19s29_CG1_terminate <= USED 0
 ;FILE gpio.o
 GPIO_ConfigurePinPower <= USED 0
 GPIO_DisablePorPin <= USED 0
+GPIO_EnableIRQ <= USED 0
 GPIO_GetIRQInputLevel <= USED 0
 GPIO_GetPinFunction <= USED 0
 GPIO_GetPinStatus <= USED 0
@@ -104,50 +100,57 @@ hw_otpc_read <= USED 0
 hw_otpc_word_prog_and_verify <= USED 0
 hw_otpc_word_read <= USED 0
 ;FILE i2c.o
+i2c_init <= USED 0
 i2c_master_receive_buffer_async <= USED 0
 i2c_master_receive_buffer_sync <= USED 0
 i2c_master_transmit_buffer_async <= USED 0
 i2c_master_transmit_buffer_sync <= USED 0
 i2c_register_int <= USED 0
 i2c_release <= USED 0
+i2c_setup_master <= USED 0
+i2c_setup_slave <= USED 0
 i2c_slave_receive_buffer_async <= USED 0
 i2c_slave_receive_buffer_sync <= USED 0
 i2c_slave_transmit_buffer_async <= USED 0
 i2c_slave_transmit_buffer_sync <= USED 0
 i2c_unregister_int <= USED 0
 ;FILE i2c_eeprom.o
+i2c_eeprom_configure <= USED 0
 i2c_eeprom_get_configuration <= USED 0
+i2c_eeprom_initialize <= USED 0
+i2c_eeprom_read_byte <= USED 0
 i2c_eeprom_read_data <= USED 0
 i2c_eeprom_release <= USED 0
 i2c_eeprom_update_slave_address <= USED 0
+i2c_eeprom_write_byte <= USED 0
 i2c_eeprom_write_data <= USED 0
 i2c_eeprom_write_page <= USED 0
+i2c_wait_until_eeprom_ready <= USED 0
 ;FILE jump_table.o
 dummyf <= USED 0
 ;FILE lld.o
 ;FILE mathfast.o
+MF_main <= USED 0
 MF_main_reset <= USED 0
+MF_sqr <= USED 0
 PeakC <= USED 0
+fast <= USED 0
+fastmul <= USED 0
 mul_s32_loSR <= USED 0
 mul_u18s29sh <= USED 0
+mul_u18s29sh12 <= USED 0
+mul_u18s29sh13 <= USED 0
+mul_u18s29sh17 <= USED 0
 mul_u18s29shl <= USED 0
 mul_wide_s32 <= USED 0
+test_MF_main_ADCEmul <= USED 0
 ;FILE mathslow.o
+MS_Alerts <= USED 0
 MS_EvaluteLogLevel <= USED 0
-;FILE my_proj.o
-init_mass <= USED 0
-my_spi_flash_page_program_dma <= USED 0
-my_spi_flash_page_program_next <= USED 0
-my_spi_send_board <= USED 0
-out <= USED 0
-task_project <= USED 0
-;FILE my_timer.o
-delay_100ms <= USED 0
-delay_10ms <= USED 0
-delay_200us <= USED 0
-delay_ms <= USED 0
-led_ON <= USED 0
-led_Off <= USED 0
+MS_EvaluteLogLevel_A <= USED 0
+MS_catch <= USED 0
+MS_evalute <= USED 0
+MS_main <= USED 0
 ;FILE nmi_handler.o
 ;FILE otp_cs.o
 otp_cs_get_adc_diff_ge <= USED 0
@@ -175,10 +178,7 @@ rf_nfm_enable <= USED 0
 rf_power_down <= USED 0
 ;FILE ring_buff.o
 RingBuffer_Clr <= USED 0
-RingBuffer_get_ch8 <= USED 0
-RingBuffer_get_i32 <= USED 0
 RingBuffer_get_qntNode <= USED 0
-RingBuffer_is_empty <= USED 0
 RingBuffer_is_full <= USED 0
 ;FILE rwble.o
 ;FILE rwip.o
@@ -194,6 +194,7 @@ spi_send <= USED 0
 spi_set_cs_mode <= USED 0
 spi_transfer <= USED 0
 ;FILE spi_adc.o
+intinit <= USED 0
 ;FILE spi_flash.o
 spi_flash_block_erase_no_wait <= USED 0
 spi_flash_chip_erase <= USED 0
@@ -219,22 +220,21 @@ spi_flash_read_unique_id <= USED 0
 spi_flash_release_from_power_down <= USED 0
 spi_flash_set_power_mode <= USED 0
 spi_flash_set_write_disable <= USED 0
-spi_flash_set_write_enable <= USED 0
 spi_flash_write_data_buffer <= USED 0
 spi_flash_write_enable_volatile <= USED 0
 spi_flash_write_status_config_reg <= USED 0
-spi_flash_write_status_reg <= USED 0
 ;FILE sps_server.o
 ;FILE ss_i2c.o
 ss_i2c_test <= USED 0
+ssi2c_init <= USED 0
+sx1502_init <= USED 0
+sx_main <= USED 0
 ;FILE ss_interfacetoble.o
 SS_InterfaceToBLE_SendThreeBytes <= USED 0
 SS_InterfaceToBLE_init <= USED 0
-led_flash <= USED 0
 user_app_adv_start <= USED 0
 ;FILE ss_main.o
 ;FILE ss_sys.o
-LEDinit <= USED 0
 ;FILE startup_da14531.o
 ;FILE syscntl.o
 syscntl_dcdc_get_level <= USED 0
@@ -250,6 +250,9 @@ SystemCoreClockUpdate <= USED 0
 systick_value <= USED 0
 systick_wait <= USED 0
 ;FILE timer2.o
+timer2_config <= USED 0
+timer2_pwm_freq_set <= USED 0
+timer2_pwm_signal_config <= USED 0
 ;FILE trng.o
 ;FILE uart.o
 uart_baudrate_setf <= USED 0

@@ -1,9 +1,8 @@
+
+#include "SPI_ADC.h"
 #include "ring_buff.h"
 
-
 #define RING_BUFF_MASK			(RING_BUFF_SIZE - 1)  
-
-
 
 typedef enum {
     BUFF_NOT_FULL = 0,
@@ -27,9 +26,24 @@ typedef struct
 	enum_lockRecord_t lockRecord;	
 } RING_sBuf_t;
 
-
+static uint8_t byteFlash;
 static RING_sBuf_t sBuf;
 static RING_sBuf_t *ptr = (RING_sBuf_t *)&sBuf;
+
+int RingBuffer_get_ch8(uint8_t *data);
+
+void poll_newBytetoWriteFlash(void)
+{
+	if ( SA_flashbit == true)
+		return;	
+	if ( RingBuffer_get_ch8(&byteFlash) == 0 )
+	{
+		SA_out.masByte[0] = 0xAD;
+		SA_out.masByte[1] = 0x22;
+		SA_out.masByte[2] = byteFlash;		
+		SA_flashbit = true;
+	}
+}
 
 void RingBuffer_Clr(void)
 {
@@ -39,7 +53,7 @@ void RingBuffer_Clr(void)
 	ptr->convrt.data_u32 = 0;
     ptr->ovr_buff = BUFF_NOT_FULL;
     ptr->cnt_ovr = 0;
-	ptr->lockRecord = LOCK_RECORD_ACTIVE;
+	ptr->lockRecord = LOCK_RECORD_INACTIVE;
 }
 
 int RingBuffer_is_empty(void)
@@ -123,5 +137,19 @@ int RingBuffer_add_u32(uint32_t data)
     if ( ptr->idxIn == ptr->idxOut )
         ptr->ovr_buff = BUFF_FULL;        
     return 0;
+}
+
+void delay_200us(void)
+{
+    uint16_t i;
+    for (i = 530; i != 0; --i)
+		__asm__ volatile("nop");
+}
+
+void delay_10ms(void)
+{
+    uint16_t i;
+    for (i = 50; i != 0; --i)
+		delay_200us();
 }
 

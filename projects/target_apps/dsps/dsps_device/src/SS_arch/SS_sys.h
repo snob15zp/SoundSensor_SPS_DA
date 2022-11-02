@@ -5,7 +5,7 @@
 #include "spi_531.h"
 
 
-#ifndef __SoundSensor__
+#ifdef __DEVKIT_EXT__
     #define LED_PORT                GPIO_PORT_0
     #define LED_PIN                 GPIO_PIN_9
 #endif

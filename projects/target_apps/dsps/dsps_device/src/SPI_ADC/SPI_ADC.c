@@ -24,7 +24,7 @@ static const spi_cfg_t spi_cfg_ADC = {
 
 #define def_dataRead_Size (16*1)
 
-volatile bool SA_flashbit;
+volatile bool SA_flashbit = false;
 uni_int32_t SA_out;
 
 int32_t SA_dataRead_32[def_dataRead_Size/4];
@@ -172,7 +172,7 @@ void SPI_ADC_init(void)
   SA_dataRead_32[0]=45;	
 	SA_ui16_dataRead_index=4;
 	
-#ifdef __SoundSensor__	
+
 //user_spi_init(SPI_ADC_GPIO_MAP);
   ss_spi_init(SPI_ADC_GPIO_MAP,&spi_cfg_ADC);
 
@@ -228,7 +228,7 @@ tmp_SPI_CS_CONFIG_REG=GetWord16(SPI_CS_CONFIG_REG);
 //	SetWord16(SPI_CS_CONFIG_REG,SPI_CS_1);	
 //	}		
 //		//SetWord16(SPI_CS_CONFIG_REG, SPI_CS_NONE);
-#endif	
+
 }
 
 //void SPITreeByts (void)
@@ -242,7 +242,7 @@ tmp_SPI_CS_CONFIG_REG=GetWord16(SPI_CS_CONFIG_REG);
 //#endif	
 //}
 
-#ifdef __SoundSensor__ 
+#ifdef __SS_EXT__ 
 static tim0_2_clk_div_config_t clk_div_config =
 {
     .clk_div  = TIM0_2_CLK_DIV_8
@@ -352,9 +352,9 @@ false,/* 0= selected input will generate GPIO IRQ0 if that input is high.
 initiated immediately 1: wait for key release after interrupt was reset for IRQ0*/
 		0);//GPIO_DEBOUNCE_REG
 //
-	NVIC_DisableIRQ(PID_GPIO);
-	NVIC_SetPriority(PID_GPIO, 0);
-  NVIC_EnableIRQ(PID_GPIO);	
+	NVIC_DisableIRQ(GPIO0_IRQn);
+	NVIC_SetPriority(GPIO0_IRQn, 0);
+  NVIC_EnableIRQ(GPIO0_IRQn);	
 	
 
 }
@@ -410,46 +410,42 @@ void GPIO0_Handler(void)
 
  void ADC_IRQ(void)
 {
-	uni_int32_t SA_in;
+uni_int32_t SA_in;
+	
   SetWord16(SPI_CS_CONFIG_REG,SPI_CS_NONE);	
 	
-	SA_in.masByte[3] = GetWord16(&spi->SPI_FIFO_READ_REGF) ;				
-  SA_in.masByte[2] = GetWord16(&spi->SPI_FIFO_READ_REGF) ;			
-	SA_in.masByte[1] = GetWord16(&spi->SPI_FIFO_READ_REGF) ; 	
-	SA_in.masByte[0] = 0 ;
-
-	SetWord16(SPI_CTRL_REG, SPI_FIFO_RESET|SPI_RX_EN|SPI_TX_EN|SPI_EN);
-	SetWord16(SPI_CTRL_REG,                SPI_RX_EN|SPI_TX_EN|SPI_EN);
+//    spi_set_bitmode(SPI_MODE_8BIT);	
+	SetWord16(SPI_CONFIG_REG, 0x1C); 	
+	SA_in.masByte[3] = GetWord16(&spi->SPI_FIFO_READ_REGF) ;    
+	SA_in.masByte[2] = GetWord16(&spi->SPI_FIFO_READ_REGF) ;   
+	SA_in.masByte[1] = GetWord16(&spi->SPI_FIFO_READ_REGF) ;  
+	SA_in.masByte[0] = 0 ;	
 	
+	SetWord16(SPI_CTRL_REG, SPI_FIFO_RESET|SPI_RX_EN|SPI_TX_EN|SPI_EN);
+	SetWord16(SPI_CTRL_REG, SPI_RX_EN|SPI_TX_EN|SPI_EN);	
+	
+//	SA_flashbit = false;
 	if (SA_flashbit)
-		      SetWord16(GPIO_BASE+4, 1 << SPI_EN_PIN);	
+//		      SetWord16(GPIO_BASE+4, 1 << SPI_EN_PIN);
+		      SetWord16(P0_RESET_DATA_REG, 0x0002);	
 	SetWord16(SPI_CS_CONFIG_REG,SPI_CS_0); 	
 	
-	
-	  
- SetWord16(&spi->SPI_FIFO_WRITE_REGF, SA_out.masByte[2]);//SPITreeByts();
- SetWord16(&spi->SPI_FIFO_WRITE_REGF, SA_out.masByte[1]);
- SetWord16(&spi->SPI_FIFO_WRITE_REGF, SA_out.masByte[0]);	
-	
- if	(ADC_EMUL_mode)
- {
-	test_MF_main_ADCEmul();
- }
- else
- {
-	MF_main(SA_in.data_u32>>5);
- }
-	
-	
- while ( GetWord16(SPI_FIFO_STATUS_REG) & SPI_TRANSACTION_ACTIVE )
-		{
-		};
-	SetWord16(SPI_CS_CONFIG_REG,SPI_CS_NONE);	
-	SetWord16(GPIO_BASE+2, 1 << SPI_EN_PIN);
-	if (SA_flashbit) 
-		               SA_flashbit=false;
-	//    SetWord16(SPI_CS_CONFIG_REG,SPI_CS_0); 
+	SetWord16(&spi->SPI_FIFO_WRITE_REGF, 0xAD);//	SA_out.masByte[0]
+	SetWord16(&spi->SPI_FIFO_WRITE_REGF, 0x22);//	SA_out.masByte[1]
+	SetWord16(&spi->SPI_FIFO_WRITE_REGF, SA_out.masByte[2]);	
 
+//	MF_main(SA_in.data_u32>>5);
+	
+	while (GetBits16(&spi->SPI_FIFO_STATUS_REGF, SPI_TRANSACTION_ACTIVE) == SPI_TRANSACTION_IS_ACTIVE)
+	{
+	};
+	
+	SetWord16(SPI_CS_CONFIG_REG, SPI_CS_NONE);
+//	SetWord16(GPIO_BASE+2, 1 << SPI_EN_PIN);
+	SetWord16(P0_SET_DATA_REG, 1 << SPI_EN_PIN);	
+
+	if (SA_flashbit) 
+		SA_flashbit=false; 
 
 }
 

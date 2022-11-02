@@ -95,7 +95,7 @@ e_FunctionReturnState ss_main_init(void)
 }
 
 #define PeriodSlowMath (1000000/(SYSTICK_PERIOD_US*8)) //ticks
-
+int32_t fifodebugcalc;
 e_FunctionReturnState ss_main(void)
 {
 	e_FunctionReturnState b_rv;
@@ -107,7 +107,8 @@ e_FunctionReturnState ss_main(void)
 #ifdef __NO_MATLAB__		
 		MS_main();
 #endif		
-		AF_V_AddADCdataToFIFO((uint16_t) MS_i32_Level_FastA_dB, (uint16_t) MS_i32_Level_C_Peak_dB);
+//		AF_V_AddADCdataToFIFO((uint16_t) MS_i32_Level_FastA_dB, (uint16_t) MS_i32_Level_C_Peak_dB);
+		AF_V_AddADCdataToFIFO((uint16_t) (fifodebugcalc), (uint16_t) (fifodebugcalc+1));fifodebugcalc+=2;
 		
 #ifdef __DEVKIT_EXT__					
 //					led_flash();
@@ -123,42 +124,8 @@ e_FunctionReturnState ss_main(void)
 	}
 	
 	
-	
-//	if (systick_time>((30000000+time_start)/SYSTICK_PERIOD_US))  //debug
-//	  	b_rv=e_FRS_Done;
-	return b_rv; 
-*/
-//-------------------------------------------------------------------
-//-------------------------------------------------------------------
-static uint32_t sys_cnt = 2000;
-	switch(sys_cnt)
-	{
-		case 2000:
-			if ( systick_time > sys_cnt )
-			{
-				sys_cnt = 3000;
-				AF_V_AddADCdataToFIFO(0x0033, 0x3231);
-			}	
-			break;
-		case 3000:
-			if ( systick_time > sys_cnt )
-			{
-				sys_cnt = 4000;
-				AF_V_AddADCdataToFIFO(0x0043, 0x4241);				
-			}	
-			break;
-		case 4000:
-			if ( systick_time > sys_cnt )
-			{
-				sys_cnt = 5000;
-				AF_V_AddADCdataToFIFO(0x0053, 0x5251);				
-			}	
-			break;
-		default:			
-			break;			
-	}
-	
-	if (systick_time>(500000/SYSTICK_PERIOD_US))  //debug
+
+	if (systick_time>((30000000+time_start)/SYSTICK_PERIOD_US))
 	  	b_rv=e_FRS_Done;
 	return b_rv; 
 //-------------------------------------------------------------------

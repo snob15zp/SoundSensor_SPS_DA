@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Wed Nov 02 18:02:25 2022
+;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Wed Nov 02 19:07:49 2022
 ;VERSION 0.2
 ;FILE adc_531.o
 adc_correct_sample <= USED 0
@@ -72,10 +72,8 @@ check_sys_startup_period <= USED 0
 ;FILE crc32.o
 crc32 <= USED 0
 ;FILE filterac_s19s29_cg.o
-FilterAC_s19s29_CG_step_o <= USED 0
 FilterAC_s19s29_CG_terminate <= USED 0
 ;FILE filterc_s19s29_cg1.o
-FilterC_s19s29_CG1_step_o <= USED 0
 FilterC_s19s29_CG1_terminate <= USED 0
 ;FILE gpio.o
 GPIO_ConfigurePinPower <= USED 0
@@ -133,27 +131,17 @@ i2c_wait_until_eeprom_ready <= USED 0
 dummyf <= USED 0
 ;FILE lld.o
 ;FILE mathfast.o
-MF_main <= USED 0
 MF_main_reset <= USED 0
-MF_sqr <= USED 0
 PeakC <= USED 0
 fast <= USED 0
 fastmul <= USED 0
 mul_s32_loSR <= USED 0
 mul_u18s29sh <= USED 0
-mul_u18s29sh12 <= USED 0
-mul_u18s29sh13 <= USED 0
-mul_u18s29sh17 <= USED 0
 mul_u18s29shl <= USED 0
 mul_wide_s32 <= USED 0
 test_MF_main_ADCEmul <= USED 0
 ;FILE mathslow.o
-MS_Alerts <= USED 0
 MS_EvaluteLogLevel <= USED 0
-MS_EvaluteLogLevel_A <= USED 0
-MS_catch <= USED 0
-MS_evalute <= USED 0
-MS_main <= USED 0
 ;FILE nmi_handler.o
 ;FILE otp_cs.o
 otp_cs_get_adc_diff_ge <= USED 0
@@ -235,6 +223,7 @@ sx1502_init <= USED 0
 sx_main <= USED 0
 ;FILE ss_main.o
 ;FILE ss_sys.o
+LEDinit <= USED 0
 ;FILE startup_da14531.o
 ;FILE syscntl.o
 syscntl_dcdc_get_level <= USED 0

@@ -22,11 +22,8 @@ static const spi_cfg_t spi_cfg_ADC = {
 };
 
 
-#define def_dataRead_Size (16*1)
-
 volatile bool SA_flashbit = false;
 uni_int32_t SA_out;
-
 
 
 #ifdef	__ADCTEST__
@@ -419,10 +416,10 @@ inline void ADC_IRQ(void)
 {
 uni_int32_t SA_in;
 	
-  SetWord16(SPI_CS_CONFIG_REG,SPI_CS_NONE);	
+ // SetWord16(SPI_CS_CONFIG_REG,SPI_CS_NONE);	
 	
 //    spi_set_bitmode(SPI_MODE_8BIT);	
-	SetWord16(SPI_CONFIG_REG, 0x1C); 	
+//	SetWord16(SPI_CONFIG_REG, 0x1C); 	
 	SA_in.masByte[3] = GetWord16(&spi->SPI_FIFO_READ_REGF) ;    
 	SA_in.masByte[2] = GetWord16(&spi->SPI_FIFO_READ_REGF) ;   
 	SA_in.masByte[1] = GetWord16(&spi->SPI_FIFO_READ_REGF) ;  
@@ -441,11 +438,6 @@ uni_int32_t SA_in;
 	SetWord16(&spi->SPI_FIFO_WRITE_REGF, 0x22);//	SA_out.masByte[1]
 	SetWord16(&spi->SPI_FIFO_WRITE_REGF, SA_out.masByte[2]);	
 
-//	MF_main(SA_in.data_u32>>5);
-	
-	while (GetBits16(&spi->SPI_FIFO_STATUS_REGF, SPI_TRANSACTION_ACTIVE) == SPI_TRANSACTION_IS_ACTIVE)
-	{
-	};
 	
 #ifdef	__ADCTEST__
 	if (SA_ui16_dataRead_index<(def_dataRead_Size-10))

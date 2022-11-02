@@ -125,7 +125,7 @@ e_FunctionReturnState ss_main(void)
 	
 	
 
-	if (systick_time>((30000000+time_start)/SYSTICK_PERIOD_US))
+	if (systick_time>((1000000+time_start)/SYSTICK_PERIOD_US))
 	  	b_rv=e_FRS_Done;
 	return b_rv; 
 //-------------------------------------------------------------------

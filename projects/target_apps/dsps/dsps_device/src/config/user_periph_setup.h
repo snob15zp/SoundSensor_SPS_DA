@@ -42,7 +42,11 @@
  */
 #define VARS_CNT 32
 
+#ifdef __SoundSensor__
+#define PRODUCT_HEADER_POSITION     0x19000
+#else
 #define PRODUCT_HEADER_POSITION     0x38000
+#endif
 
 #define CFG1_DEFAULT_POSITION 0x39000
 #define CFG2_DEFAULT_POSITION 0x3A000
@@ -177,6 +181,8 @@ extern UART_BAUDRATE cfg_uart_sps_baudrate;
 extern UART_BAUD cfg_uart_sps_baud;
 extern uint32_t uart_wait_byte_time;
 extern uint32_t uart_wait_byte_counter;
+
+extern const spi_cfg_t UPS_spi_cfg;
 
 /* Enable WKUPCT. Required by wkupct_quadec driver. */
 #define WKUP_ENABLED
@@ -337,7 +343,11 @@ extern uint8_t gpio_por_pin_timeout;
 /* SPI Flash configuration                                                              */
 /****************************************************************************************/
 #if !defined (__DA14586__)
-#define SPI_FLASH_DEV_SIZE          (4 * 1024*1024) //RDD?
+#ifdef __SoundSensor__
+#define SPI_FLASH_DEV_SIZE          ((32/4) * 1024*1024) //RDD?
+#else
+#define SPI_FLASH_DEV_SIZE          (2*1024*(1024/8)) //RDD?
+#endif
 #endif
 
 /*

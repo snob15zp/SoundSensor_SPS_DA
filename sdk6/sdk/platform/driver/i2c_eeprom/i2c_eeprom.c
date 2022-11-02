@@ -147,14 +147,14 @@ i2c_error_code i2c_eeprom_read_byte(uint32_t address, uint8_t *byte)
     }
 
     // Critical section
-    GLOBAL_INT_DISABLE();
+    //GLOBAL_INT_DISABLE();
 
     i2c_eeprom_send_address(address);
 
     i2c_write_last_byte(I2C_CMD);                   // Set R/W bit to 1 (read access)
 
     // End of critical section
-    GLOBAL_INT_RESTORE();
+    //GLOBAL_INT_RESTORE();
 
     while (i2c_get_rx_fifo_level() == 0);           // Wait for received data
     *byte = i2c_read_byte();                        // Get received byte

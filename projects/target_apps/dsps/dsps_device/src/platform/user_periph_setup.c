@@ -36,15 +36,19 @@
 #endif
 #include "spi_flash.h"
 #include "SPI_ADC.h"
+#include "ADC_flash.h"
 #include "ss_i2c.h"
 #include "SS_InterfaceToBLE.h"
 #include "MathFast.h"
 #include "MathSlow.h"
 #include "SS_sys.h"
 
+
+//#include "my_proj.h"
+
 #if defined (CFG_SPI_FLASH_ENABLE)
 // Configuration struct for SPI
-static const spi_cfg_t spi_cfg = {
+const spi_cfg_t UPS_spi_cfg = {
     .spi_ms = SPI_MS_MODE,
     .spi_cp = SPI_CP_MODE,
     .spi_speed = SPI_SPEED_MODE,
@@ -170,42 +174,37 @@ void periph_init(void)
     set_pad_functions();
 	
 	 user_spi_flash_init(SPI_FLASH_GPIO_MAP);//RDD
-#ifdef __SoundSensor__	
+	 
+//====================SS initialization======================== 
+	test_hnd_init(); 	 
+
+#ifdef __SS_EXT__	
+   timer2_init();
+	 
+	 ssi2c_init();//
+#ifndef __ADCTEST__	 
+	 sx_main();//  ss_i2c_test();
+#else
+#endif
+
+#endif	 
+
    
+#ifdef __SS_EXT__		 
+   intinit();
+#endif
+
 #ifdef __ADCTEST__
    
-   ssi2c_init();
-	 
-	 timer2_init();//RDD
-	 
-	 SPI_ADC_init();//RDD
-	 
-	 intinit();
-	 
-	 while(1)
-	 {
-		 test_MF_main_ADCEmul();
-		  //ss_i2c_test();
-	 }
-#else
-	 sx1502_init();//ssi2c_init();
-	 sx_main();//  ss_i2c_test();
 #endif		 
 
-#else
-   LEDinit();
-#ifdef __MATHTEST__	 
-   LEDinit();
-   test_hnd_init(); //sys tick
-	 while(1)
-	 { 
-//		 MS_test_EvaluteLogLevel();
-//		 test_MF_main();
-	 }	 
 
+
+#ifdef __DEVKIT_EXT__	 
+   LEDinit();
 #endif	 
-#endif	 
-    test_hnd_init();
+	 
+    
 
     // Initialize UART2 controller
 #ifdef CFG_PRINTF_UART2
@@ -265,7 +264,7 @@ void user_spi_flash_init(uint32_t gpio_map)
     spi_flash_configure_env(&spi_flash_cfg);
 
     // Initialize SPI
-    spi_initialize(&spi_cfg);
+    spi_initialize(&UPS_spi_cfg);
 #endif
 
     // Release Flash from power down

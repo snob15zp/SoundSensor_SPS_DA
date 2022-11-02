@@ -184,6 +184,10 @@ int main(void)
 
     while(1)
     {
+			
+#ifdef __DEVKIT_EXT__					
+					led_flash();
+#endif			
 		switch (ssm_main_state)
 		{
 			case 0: if (ssm_main_ADC_prepare())

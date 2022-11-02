@@ -173,7 +173,7 @@ void i2c_init(const i2c_cfg_t *cfg)
     while ((i2c_get_controller_status() != I2C_CONTROLLER_ENABLE));
 
     // Set the priority of I2C interrupt to level 2
-    NVIC_SetPriority(I2C_IRQn, 2);
+    NVIC_SetPriority(I2C_IRQn, 3);
     // Enable I2C interrupt
     NVIC_EnableIRQ(I2C_IRQn);
 }

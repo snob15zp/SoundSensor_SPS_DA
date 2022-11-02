@@ -16,7 +16,7 @@
         <TargetCommonOption>
           <Device>ARMCM0</Device>
           <Vendor>ARM</Vendor>
-          <PackID>ARM.CMSIS.5.7.0</PackID>
+          <PackID>ARM.CMSIS.5.9.0</PackID>
           <PackURL>http://www.keil.com/pack/</PackURL>
           <Cpu>IROM(0x0,0x0) IRAM(0x0,0x0) CPUTYPE("Cortex-M0") CLOCK(12000000) ESEL ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -1424,26 +1424,6 @@
               <FilePath>..\src\SPI_ADC\adc_flash.h</FilePath>
             </File>
             <File>
-              <FileName>my_proj.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src\SPI_ADC\my_proj.c</FilePath>
-            </File>
-            <File>
-              <FileName>my_proj.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\src\SPI_ADC\my_proj.h</FilePath>
-            </File>
-            <File>
-              <FileName>my_timer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src\SPI_ADC\my_timer.c</FilePath>
-            </File>
-            <File>
-              <FileName>my_timer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\src\SPI_ADC\my_timer.h</FilePath>
-            </File>
-            <File>
               <FileName>ring_buff.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\src\SPI_ADC\ring_buff.c</FilePath>
@@ -1622,7 +1602,7 @@
         <TargetCommonOption>
           <Device>ARMCM0P</Device>
           <Vendor>ARM</Vendor>
-          <PackID>ARM.CMSIS.5.7.0</PackID>
+          <PackID>ARM.CMSIS.5.9.0</PackID>
           <PackURL>http://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x20000000,0x00020000) IROM(0x00000000,0x00040000) CPUTYPE("Cortex-M0+") CLOCK(12000000) ESEL ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -3081,26 +3061,6 @@
               <FilePath>..\src\SPI_ADC\adc_flash.h</FilePath>
             </File>
             <File>
-              <FileName>my_proj.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src\SPI_ADC\my_proj.c</FilePath>
-            </File>
-            <File>
-              <FileName>my_proj.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\src\SPI_ADC\my_proj.h</FilePath>
-            </File>
-            <File>
-              <FileName>my_timer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src\SPI_ADC\my_timer.c</FilePath>
-            </File>
-            <File>
-              <FileName>my_timer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\src\SPI_ADC\my_timer.h</FilePath>
-            </File>
-            <File>
               <FileName>ring_buff.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\src\SPI_ADC\ring_buff.c</FilePath>
@@ -3279,7 +3239,7 @@
         <TargetCommonOption>
           <Device>ARMCM0P</Device>
           <Vendor>ARM</Vendor>
-          <PackID>ARM.CMSIS.5.7.0</PackID>
+          <PackID>ARM.CMSIS.5.9.0</PackID>
           <PackURL>http://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x20000000,0x00020000) IROM(0x00000000,0x00040000) CPUTYPE("Cortex-M0+") CLOCK(12000000) ESEL ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -4736,26 +4696,6 @@
               <FileName>adc_flash.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\src\SPI_ADC\adc_flash.h</FilePath>
-            </File>
-            <File>
-              <FileName>my_proj.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src\SPI_ADC\my_proj.c</FilePath>
-            </File>
-            <File>
-              <FileName>my_proj.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\src\SPI_ADC\my_proj.h</FilePath>
-            </File>
-            <File>
-              <FileName>my_timer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src\SPI_ADC\my_timer.c</FilePath>
-            </File>
-            <File>
-              <FileName>my_timer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\src\SPI_ADC\my_timer.h</FilePath>
             </File>
             <File>
               <FileName>ring_buff.c</FileName>

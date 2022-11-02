@@ -21,7 +21,10 @@ static const spi_cfg_t spi_cfg_ADC = {
 #endif
 };
 
-volatile bool SA_flashbit;
+
+#define def_dataRead_Size (16*1)
+
+volatile bool SA_flashbit = false;
 uni_int32_t SA_out;
 
 
@@ -414,26 +417,35 @@ void GPIO0_Handler(void)
 
 inline void ADC_IRQ(void)
 {
-	uni_int32_t SA_in;
+uni_int32_t SA_in;
+	
   SetWord16(SPI_CS_CONFIG_REG,SPI_CS_NONE);	
 	
-	SA_in.masByte[3] = GetWord16(&spi->SPI_FIFO_READ_REGF) ;				
-  SA_in.masByte[2] = GetWord16(&spi->SPI_FIFO_READ_REGF) ;			
-	SA_in.masByte[1] = GetWord16(&spi->SPI_FIFO_READ_REGF) ; 	
-	SA_in.masByte[0] = 0 ;
-
-	SetWord16(SPI_CTRL_REG, SPI_FIFO_RESET|SPI_RX_EN|SPI_TX_EN|SPI_EN);
-	SetWord16(SPI_CTRL_REG,                SPI_RX_EN|SPI_TX_EN|SPI_EN);
+//    spi_set_bitmode(SPI_MODE_8BIT);	
+	SetWord16(SPI_CONFIG_REG, 0x1C); 	
+	SA_in.masByte[3] = GetWord16(&spi->SPI_FIFO_READ_REGF) ;    
+	SA_in.masByte[2] = GetWord16(&spi->SPI_FIFO_READ_REGF) ;   
+	SA_in.masByte[1] = GetWord16(&spi->SPI_FIFO_READ_REGF) ;  
+	SA_in.masByte[0] = 0 ;	
 	
+	SetWord16(SPI_CTRL_REG, SPI_FIFO_RESET|SPI_RX_EN|SPI_TX_EN|SPI_EN);
+	SetWord16(SPI_CTRL_REG, SPI_RX_EN|SPI_TX_EN|SPI_EN);	
+	
+//	SA_flashbit = false;
 	if (SA_flashbit)
-		      SetWord16(GPIO_BASE+4, 1 << SPI_EN_PIN);	
+//		      SetWord16(GPIO_BASE+4, 1 << SPI_EN_PIN);
+		      SetWord16(P0_RESET_DATA_REG, 0x0002);	
 	SetWord16(SPI_CS_CONFIG_REG,SPI_CS_0); 	
 	
+	SetWord16(&spi->SPI_FIFO_WRITE_REGF, 0xAD);//	SA_out.masByte[0]
+	SetWord16(&spi->SPI_FIFO_WRITE_REGF, 0x22);//	SA_out.masByte[1]
+	SetWord16(&spi->SPI_FIFO_WRITE_REGF, SA_out.masByte[2]);	
+
+//	MF_main(SA_in.data_u32>>5);
 	
-	  
- SetWord16(&spi->SPI_FIFO_WRITE_REGF, SA_out.masByte[2]);//SPITreeByts();
- SetWord16(&spi->SPI_FIFO_WRITE_REGF, SA_out.masByte[1]);
- SetWord16(&spi->SPI_FIFO_WRITE_REGF, SA_out.masByte[0]);	
+	while (GetBits16(&spi->SPI_FIFO_STATUS_REGF, SPI_TRANSACTION_ACTIVE) == SPI_TRANSACTION_IS_ACTIVE)
+	{
+	};
 	
 #ifdef	__ADCTEST__
 	if (SA_ui16_dataRead_index<(def_dataRead_Size-10))
@@ -466,9 +478,7 @@ inline void ADC_IRQ(void)
 	SetWord16(SPI_CS_CONFIG_REG,SPI_CS_NONE);	
 	SetWord16(GPIO_BASE+2, 1 << SPI_EN_PIN);
 	if (SA_flashbit) 
-		               SA_flashbit=false;
-	//    SetWord16(SPI_CS_CONFIG_REG,SPI_CS_0); 
-
+		SA_flashbit=false; 
 
 }
 

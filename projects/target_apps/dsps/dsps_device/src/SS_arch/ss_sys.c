@@ -116,7 +116,7 @@ void SS_spi_switchoff_pins(uint32_t gpio_map)
     spi_conf.miso.port     = ((GPIO_PORT)((gpio_map & 0xf0000000) >> 28));
     spi_conf.miso.pin      = ((GPIO_PIN) ((gpio_map & 0x0f000000) >> 24));
 
-    GPIO_ConfigurePin( spi_conf.cs.port, spi_conf.cs.pin, INPUT_PULLUP, PID_GPIO, true );
+    GPIO_ConfigurePin( spi_conf.cs.port, spi_conf.cs.pin, OUTPUT, PID_GPIO, true );
     GPIO_ConfigurePin( spi_conf.clk.port, spi_conf.clk.pin, INPUT_PULLDOWN, PID_GPIO, false );
     GPIO_ConfigurePin( spi_conf.mosi.port, spi_conf.mosi.pin, INPUT_PULLDOWN, PID_GPIO, false );
     GPIO_ConfigurePin( spi_conf.miso.port, spi_conf.miso.pin, INPUT_PULLDOWN, PID_GPIO, false );

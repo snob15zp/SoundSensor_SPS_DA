@@ -27,16 +27,12 @@
                         ((uint32_t)ADC_DO_PIN << 16) | ((uint32_t)ADC_DO_PORT << 20) | \
                         ((uint32_t)ADC_DI_PIN << 24) | ((uint32_t)ADC_DI_PORT << 28))
 
-
-
-
-
-
 typedef union {
     uint8_t	masByte[4];
     int32_t data_u32;
 } uni_int32_t;
 
+extern volatile bool SA_flashbit;
 
 extern volatile uni_int32_t SA_in;
 extern uni_int32_t SA_out;

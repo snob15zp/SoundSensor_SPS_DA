@@ -32,7 +32,7 @@
 #include "prf_utils.h"
 #include "gpio.h"
 #include "user_periph_setup.h"
-#include "user_sps_buffer_dma.h"
+
 #include "user_sps_utils.h"
 
 #if BLE_SPS_CLIENT
@@ -72,6 +72,11 @@ void *ke_msg_alloc_no_init(ke_msg_id_t const id, ke_task_id_t const dest_id,
     param_ptr = ke_msg2param(msg);
 
     return param_ptr;
+}
+
+arch_main_loop_callback_ret_t user_on_ble_powered(void)
+{
+    return GOTO_SLEEP;
 }
 
 //#ifdef DMA_UART  //RDD

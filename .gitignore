@@ -60,3 +60,5 @@ projects/target_apps/dsps/dsps_device/Keil_5/out_531/*
 *.log
 *.intl
 **/__pycache__/**
+*.crf
+

@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Wed Nov 02 20:22:39 2022
+;#<FEEDBACK># ARM Linker, 5060960: Last Updated: Thu Nov 03 02:24:36 2022
 ;VERSION 0.2
 ;FILE adc_531.o
 adc_correct_sample <= USED 0
@@ -31,8 +31,6 @@ default_advertise_operation <= USED 0
 default_app_generate_static_random_addr <= USED 0
 default_app_generate_unique_static_random_addr <= USED 0
 default_app_on_disconnect <= USED 0
-;FILE app_diss.o
-;FILE app_diss_task.o
 ;FILE app_easy_msg_utils.o
 app_easy_msg_free_callback <= USED 0
 app_easy_msg_modify <= USED 0
@@ -152,7 +150,6 @@ otp_cs_get_adc_single_ge <= USED 0
 otp_cs_get_adc_single_offset <= USED 0
 otp_cs_get_low_power_clock <= USED 0
 ;FILE prf.o
-;FILE remote_config.o
 ;FILE rf_531.o
 dcoff_calibration <= USED 0
 dis_kdco_cal <= USED 0
@@ -262,23 +259,23 @@ uart_write_buffer <= USED 0
 uart_write_byte <= USED 0
 ;FILE user_config_storage.o
 ;FILE user_periph_setup.o
-;FILE user_remote_config.o
-user_remote_config_init <= USED 0
-;FILE user_remote_config_task.o
-;FILE user_sps_buffer_dma.o
-user_ble_to_dma_uart <= USED 0
-user_init_queues <= USED 0
 ;FILE user_sps_device_config.o
-user_sps_apply_config <= USED 0
 user_sps_apply_uart_baudrate <= USED 0
+user_sps_config_verify_adv_channel_map_cb <= USED 0
+user_sps_config_verify_adv_int_max_cb <= USED 0
+user_sps_config_verify_adv_int_min_cb <= USED 0
+user_sps_config_verify_ci_max_cb <= USED 0
+user_sps_config_verify_ci_min_cb <= USED 0
+user_sps_config_verify_gpio_config_cb <= USED 0
+user_sps_config_verify_mtu_cb <= USED 0
 user_sps_config_verify_polarity_cb <= USED 0
 user_sps_config_verify_por_pin_timeout_cb <= USED 0
+user_sps_config_verify_sl_cb <= USED 0
+user_sps_config_verify_sup_to_cb <= USED 0
 user_sps_config_verify_uart_baudrate_cb <= USED 0
 ;FILE user_sps_device_dma.o
 user_before_sleep <= USED 0
 user_on_connect_failed <= USED 0
-;FILE user_sps_schedule_dma.o
-user_dma_sps_sleep_check <= USED 0
 ;FILE user_sps_utils.o
 user_rwip_sleep_check <= USED 0
 ;FILE user_spss.o

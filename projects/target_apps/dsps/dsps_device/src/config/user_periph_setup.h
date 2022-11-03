@@ -35,7 +35,6 @@
 #include "arch.h"
 #include "da1458x_periph_setup.h"
 #include "dma.h"
-#include "dma_uart_sps.h"
 /*
  * DEFINES
  ****************************************************************************************

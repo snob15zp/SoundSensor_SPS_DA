@@ -11,7 +11,7 @@ echo %_version%>projects\target_apps\dsps\dsps_device\src\version.h
 
 echo "Build image A (0x4000)"
 D:\Keil_v5\UV4\UV4.exe -b projects\target_apps\dsps\dsps_device\Keil_5\dsps_device_ss.uvprojx
-copy projects\target_apps\dsps\dsps_device\Keil_5\out_531\dsps_device_531.hex out\dsps_device_531.img-A.hex
+copy projects\target_apps\dsps\dsps_device\Keil_5\out_531\SS_Fix.hex out\dsps_device_531.img-A.hex
 utilities\hex2bin.exe out\dsps_device_531.img-A.bin out\dsps_device_531.img-A.hex
 utilities\mkimage.exe single out\dsps_device_531.img-A.bin projects\target_apps\dsps\dsps_device\src\version.h out\dsps_device_531.A.img
 
@@ -21,7 +21,7 @@ echo %_version%>projects\target_apps\dsps\dsps_device\src\version.h
 
 echo "Build image B (0x1F000)"
 D:\Keil_v5\UV4\UV4.exe -b projects\target_apps\dsps\dsps_device\Keil_5\dsps_device_ss.uvprojx
-copy projects\target_apps\dsps\dsps_device\Keil_5\out_531\dsps_device_531.hex out\dsps_device_531.img-B.hex
+copy projects\target_apps\dsps\dsps_device\Keil_5\out_531\SS_Fix.hex out\dsps_device_531.img-B.hex
 utilities\hex2bin.exe out\dsps_device_531.img-B.bin out\dsps_device_531.img-B.hex
 utilities\mkimage.exe single out\dsps_device_531.img-B.bin projects\target_apps\dsps\dsps_device\src\version.h out\dsps_device_531.B.img
 

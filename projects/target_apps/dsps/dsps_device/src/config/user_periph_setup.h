@@ -42,7 +42,7 @@
 #define VARS_CNT 32
 
 #ifdef __SoundSensor__
-#define PRODUCT_HEADER_POSITION     0x1f000
+#define PRODUCT_HEADER_POSITION     0x38000
 #define CFG1_DEFAULT_POSITION 0x20000
 #define CFG2_DEFAULT_POSITION 0x21000
 #else

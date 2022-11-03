@@ -166,10 +166,20 @@ int16_t tmp_SPI_CS_CONFIG_REG;
 
 void SPI_ADC_deinit(void)
 {
+	NVIC_DisableIRQ(GPIO0_IRQn);
   SS_spi_switchoff_pins(SPI_ADC_GPIO_MAP);
 }
 
 void SPI_ADC_init(void)
+{
+  SA_SPI_init();
+#ifdef __SS_EXT__ 
+  timer2_init();
+	intinit();
+#endif
+}	
+	
+void SA_SPI_init(void)
 {
 	//SA_dataRead_32=(int32_t*)(&(SA_dataRead[0]));
 #ifdef	__ADCTEST__	
@@ -278,8 +288,8 @@ void timer2_init(void)
     // System clock, divided by 8, is the Timer2 input clock source (according
     // to the clk_div_config struct above).
 //    timer2_pwm_freq_set(PWM_FREQUENCY, 16000000 / 8);
-    //timer2_pwm_freq_set(4000000U, 16000000/2);
-     timer2_pwm_freq_set(2000000U, 16000000/2);//RDD 500 Hz?
+    timer2_pwm_freq_set(4000000U, 16000000/2);
+   // timer2_pwm_freq_set(2000000U, 16000000/2);//RDD 500 Hz?
 	
     timer2_start();
 	
@@ -378,39 +388,6 @@ void GPIO0_Handler(void)
  NVIC_ClearPendingIRQ(GPIO0_IRQn);
 }
 
-//void ADC_IRQ_adctest(void)
-//{
-//SetWord16(SPI_CS_CONFIG_REG,SPI_CS_NONE);	
-//	
-//	if (SA_ui16_dataRead_index<(def_dataRead_Size-10))
-//	{
-//    
-//		SA_dataRead[SA_ui16_dataRead_index+3] = GetWord16(&spi->SPI_FIFO_READ_REGF) ;				
-//    SA_dataRead[SA_ui16_dataRead_index+2] = GetWord16(&spi->SPI_FIFO_READ_REGF) ;				
-//		SA_dataRead[SA_ui16_dataRead_index+1]= GetWord16(&spi->SPI_FIFO_READ_REGF) ;	
-//		SA_dataRead[SA_ui16_dataRead_index]=0;
-//		SA_ui16_dataRead_index+=4;
-//	}	
-//	else 
-//	{ //SA_b_dataRead_full=true;
-//		dataRead_toy = GetWord16(&spi->SPI_FIFO_READ_REGF) ;				
-//    dataRead_toy = GetWord16(&spi->SPI_FIFO_READ_REGF) ;				
-//		dataRead_toy = GetWord16(&spi->SPI_FIFO_READ_REGF) ;	
-//	};	
-//	SetWord16(SPI_CTRL_REG, SPI_FIFO_RESET|SPI_RX_EN|SPI_TX_EN|SPI_EN);
-//	SetWord16(SPI_CTRL_REG,                SPI_RX_EN|SPI_TX_EN|SPI_EN);
-// SetWord16(SPI_CS_CONFIG_REG,SPI_CS_0); 	
-// SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x55));//SPITreeByts();
-// SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0xff));
-// SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x55));	
-// while ( GetWord16(SPI_FIFO_STATUS_REG) & SPI_TRANSACTION_ACTIVE )
-//		{
-//		};
-// SetWord16(SPI_CS_CONFIG_REG,SPI_CS_NONE);		
-//	//    SetWord16(SPI_CS_CONFIG_REG,SPI_CS_0); 
-
-
-//}
 
 inline void ADC_IRQ(void)
 {
@@ -473,6 +450,42 @@ uni_int32_t SA_in;
 		SA_flashbit=false; 
 
 }
+
+
+//void ADC_IRQ_adctest(void)
+//{
+//SetWord16(SPI_CS_CONFIG_REG,SPI_CS_NONE);	
+//	
+//	if (SA_ui16_dataRead_index<(def_dataRead_Size-10))
+//	{
+//    
+//		SA_dataRead[SA_ui16_dataRead_index+3] = GetWord16(&spi->SPI_FIFO_READ_REGF) ;				
+//    SA_dataRead[SA_ui16_dataRead_index+2] = GetWord16(&spi->SPI_FIFO_READ_REGF) ;				
+//		SA_dataRead[SA_ui16_dataRead_index+1]= GetWord16(&spi->SPI_FIFO_READ_REGF) ;	
+//		SA_dataRead[SA_ui16_dataRead_index]=0;
+//		SA_ui16_dataRead_index+=4;
+//	}	
+//	else 
+//	{ //SA_b_dataRead_full=true;
+//		dataRead_toy = GetWord16(&spi->SPI_FIFO_READ_REGF) ;				
+//    dataRead_toy = GetWord16(&spi->SPI_FIFO_READ_REGF) ;				
+//		dataRead_toy = GetWord16(&spi->SPI_FIFO_READ_REGF) ;	
+//	};	
+//	SetWord16(SPI_CTRL_REG, SPI_FIFO_RESET|SPI_RX_EN|SPI_TX_EN|SPI_EN);
+//	SetWord16(SPI_CTRL_REG,                SPI_RX_EN|SPI_TX_EN|SPI_EN);
+// SetWord16(SPI_CS_CONFIG_REG,SPI_CS_0); 	
+// SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x55));//SPITreeByts();
+// SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0xff));
+// SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x55));	
+// while ( GetWord16(SPI_FIFO_STATUS_REG) & SPI_TRANSACTION_ACTIVE )
+//		{
+//		};
+// SetWord16(SPI_CS_CONFIG_REG,SPI_CS_NONE);		
+//	//    SetWord16(SPI_CS_CONFIG_REG,SPI_CS_0); 
+
+
+//}
+
 
 
 //void SPI_Handler(void)

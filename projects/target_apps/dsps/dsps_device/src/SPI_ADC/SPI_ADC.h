@@ -38,10 +38,13 @@ extern volatile uni_int32_t SA_in;
 extern uni_int32_t SA_out;
 
 extern void timer2_init(void);
+extern void SA_SPI_init(void);
+extern void intinit(void);
+
 extern void SPI_ADC_init(void);
 extern void SPI_ADC_deinit(void);
-extern void SPITreeByts (void);
-extern void intinit(void);
+//extern void SPITreeByts (void);
+
 extern void ADC_IRQ(void);
 
 #endif

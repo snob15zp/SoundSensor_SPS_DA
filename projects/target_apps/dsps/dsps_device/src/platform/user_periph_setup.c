@@ -179,8 +179,6 @@ void periph_init(void)
 	test_hnd_init(); 	 
 
 #ifdef __SS_EXT__	
-   timer2_init();
-	 
 	 ssi2c_init();//
 #ifndef __ADCTEST__	 
 	 sx_main();//  ss_i2c_test();
@@ -188,11 +186,6 @@ void periph_init(void)
 #endif
 
 #endif	 
-
-   
-#ifdef __SS_EXT__		 
-   intinit();
-#endif
 
 #ifdef __ADCTEST__
    

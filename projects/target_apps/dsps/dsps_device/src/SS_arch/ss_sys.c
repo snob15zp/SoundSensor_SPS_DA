@@ -53,9 +53,9 @@ void systick_irq()
 #ifdef __DEVKIT_EXT__
 	  GPIO_SetActive(LED_PORT, LED_PIN); 
 #endif	
-	  if (SS_ADC_MODE==EAM_ADCsystick)
-			//test_MF_main_ADCEmul();
-		ADC_IRQ();
+//	  if (SS_ADC_MODE==EAM_ADC_WORK)
+//			//test_MF_main_ADCEmul();
+//		ADC_IRQ();
 #ifdef __DEVKIT_EXT__	
 	  GPIO_SetInactive(LED_PORT, LED_PIN);
 #endif	

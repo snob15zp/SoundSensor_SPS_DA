@@ -29,15 +29,13 @@
 #include "arch_console.h"
 #include "gattc.h"
 #include "user_sps_device_dma.h"
-#include "dma_uart_sps.h"
-#include "user_sps_buffer_dma.h"
-#include "user_sps_schedule_dma.h"
 #include "gapc_task.h"
 #include "prf_utils.h"
 #include "user_remote_config.h"
 #include "user_remote_config_task.h"
 #include "user_config_storage.h"
 #include "user_sps_device_config.h"
+#include "user_periph_setup.h"
 #include "app.h"
 
 extern user_config_elem_t spss_configuration_table[USER_CONF_ELEMENTS_NUM];
@@ -56,7 +54,7 @@ extern bool mtu_reset;
 #if defined(CFG_BLE_METRICS) && defined(CFG_PRINTF)
 extern struct sps_counter ble_data_counter;     
 #endif
-extern struct dma_uart_tag dma_uart;                                                                                 
+                                                                 
 /*
  * FUNCTION DEFINITIONS
  ****************************************************************************************
@@ -84,22 +82,12 @@ static void user_gattc_exc_mtu_cmd(uint8_t conidx)
 void user_on_connection(uint8_t connection_idx, struct gapc_connection_req_ind const *param)
 {
     default_app_on_connection(connection_idx, param);
-    
-    conn_idx = connection_idx;
-    
-    //features_timer = app_easy_timer(60, get_features);//RDD https://www.cxybb.com/article/weixin_38933763/108622509
-    
-    //dma_uart_on_connect();//RDD
-
+    conn_idx = connection_idx;    
     dev_connected = true;
 }
 
 void user_on_disconnect( struct gapc_disconnect_ind const *param )
 {
-#if BLE_REMOTE_CONFIG
-    if (mtu_reset)
-        platform_reset(RESET_NO_ERROR);
-#endif
 #if BLE_SUOTA_RECEIVER
     if (suota_state.reboot_requested)
         platform_reset(RESET_AFTER_SUOTA_UPDATE);

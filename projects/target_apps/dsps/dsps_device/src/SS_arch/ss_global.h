@@ -4,7 +4,10 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#define SYSTICK_PERIOD_US   32     // period for systick timer in us, so 1000000ticks = 1second
+#define D_SYSTICK_PERIOD_US   1000     // period for systick timer in us, so 1000000ticks = 1second
+#define D_PeriodSlowMath_us (1000000/8)
+#define D_PeriodSlowMath (D_PeriodSlowMath_us/(D_SYSTICK_PERIOD_US)) //ticks
+#define D_sx_takt_call
 
 //typedef union {
 //    uint8_t	masByte[4];

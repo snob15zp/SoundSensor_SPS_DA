@@ -201,7 +201,7 @@ int main(void)
 								ssm_main_state++;
 			        break;					
 			case 3: if (ss_main())
-							{	ssm_main_state++;
+							{	ssm_main_state++;//RDD debug=6
 							}
 								break;
 			case 4: if (ssm_main_BLE_prepare())

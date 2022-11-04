@@ -1,10 +1,11 @@
+#include "ss_global.h"
 #include "i2c.h"
 #include "i2c_eeprom.h"
 #include "sx1502.h"
 #include "gpio.h"
 #include "ss_i2c.h"
 #include "SS_sys.h"
-#include "ss_global.h"
+
 
 /****************************************************************************************/
 /* I2C configuration                                                                    */
@@ -39,7 +40,13 @@ static const i2c_eeprom_cfg_t sx1502_cfg = {
 };
 
 //======================================================================================
+#ifdef D_sx_takt_call
+#define sx_time sx_encounter
+#else
+#define sx_time systick_time
+#endif
 
+static uint32_t sx_encounter;
 
 static uint8_t   inpData;                                                      // ???? ?????? ?????? ?? ?????? SX1502 
 static uint8_t   outData;                                                      // ????? ?????? ?????? ??? ?????? SX1502
@@ -98,9 +105,9 @@ i2c_error_code sx1502_init(void)
 
 void ssi2c_init(void)
 {
-systick_last_LED=systick_time;
-systick_last_SCAN=systick_time;    
-ledsTime = systick_time;	
+systick_last_LED=sx_time;
+systick_last_SCAN=sx_time;    
+ledsTime = sx_time;	
 	
   // Initialize I2C
   i2c_eeprom_configure(&i2c_cfg, &sx1502_cfg);
@@ -216,7 +223,7 @@ static void scanInputs(void)
           {
             sw3.isPressed = true;
             sw3.pressEventFixed = true;
-            sw3.pressEventTime = systick_time;
+            sw3.pressEventTime = sx_time;
           }
         }
       }
@@ -231,7 +238,7 @@ static void scanInputs(void)
           {
             sw3.isPressed = false;
             sw3.unpressEventFixed = true;
-            sw3.pressedStateTime = systick_time - sw3.pressEventTime;
+            sw3.pressedStateTime = sx_time - sw3.pressEventTime;
           }
         }
       }        
@@ -247,7 +254,7 @@ static void scanInputs(void)
           {
             sw1.isPressed = true;
             sw1.pressEventFixed = true;
-            sw1.pressEventTime = systick_time;
+            sw1.pressEventTime = sx_time;
             sw1.numOfClicks++;          
           }
         }
@@ -263,7 +270,7 @@ static void scanInputs(void)
           {
             sw1.isPressed = false;
             sw1.unpressEventFixed = true;
-            sw1.pressedStateTime = systick_time - sw1.pressEventTime;
+            sw1.pressedStateTime = sx_time - sw1.pressEventTime;
           }
         }
       }        
@@ -282,7 +289,7 @@ static btnCmd_en decodeButtonsState(void)
   {
     if(sw1.numOfClicks == 0)                                            // если sw1 не нажималась ни разу
     {
-      if((systick_time - sw3.pressEventTime) >= D_KL_long)                          // если прошло более 5 секунд
+      if((sx_time - sw3.pressEventTime) >= D_KL_long)                          // если прошло более 5 секунд
       {
         sw3.pressEventFixed = false;                                    // снять признак фиксации события нажатия SW3
         return BTN_SW3_LONG;                                            // возвратить код команды
@@ -407,10 +414,10 @@ static void rgbLedServer(void)
   static uint16_t itemIndex = 0;
 	uint32_t l_ledsTime;
 	
-	l_ledsTime=systick_time-ledsTime;
+	l_ledsTime=sx_time-ledsTime;
 	if (l_ledsTime >= LED_SLOT_TIME)
   { 
-    ledsTime = systick_time;
+    ledsTime = sx_time;
     rgbLedTask.timeSlotMode = TSM_STRT;
 	}
   
@@ -460,7 +467,7 @@ static void rgbLedServer(void)
 
 void sx_main (void)
 {
-  
+  sx_encounter++;
   //SysTick_Config(SystemCoreClock / 1000);
   
 //  if(sx1502_init() == I2C_NO_ERROR)
@@ -469,12 +476,12 @@ void sx_main (void)
 //  } else while(1);
    
 //  while(1)
-	if ((systick_time-systick_last_LED)>(LED_PULSE_TIME))
+	if ((sx_time-systick_last_LED)>=(LED_PULSE_TIME))
 	{ 
 		systick_last_LED+=(LED_PULSE_TIME);
 	  rgbLedTask.timeSlotMode = TSM_STRT;
 	}	
-		if ((systick_time-systick_last_SCAN)>(SCAN_TIME))
+		if ((sx_time-systick_last_SCAN)>=(SCAN_TIME))
 	{ 
 		systick_last_SCAN+=(SCAN_TIME);
 	  scanInputs();

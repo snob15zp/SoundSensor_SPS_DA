@@ -288,8 +288,8 @@ void timer2_init(void)
     // System clock, divided by 8, is the Timer2 input clock source (according
     // to the clk_div_config struct above).
 //    timer2_pwm_freq_set(PWM_FREQUENCY, 16000000 / 8);
-    timer2_pwm_freq_set(4000000U, 16000000/2);
-   // timer2_pwm_freq_set(2000000U, 16000000/2);//RDD 500 Hz?
+   // timer2_pwm_freq_set(4000000U, 16000000/2);
+    timer2_pwm_freq_set(1000000U, 16000000/2);//RDD 500 Hz?
 	
     timer2_start();
 	

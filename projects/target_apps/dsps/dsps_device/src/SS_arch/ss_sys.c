@@ -81,7 +81,7 @@ void test_hnd_init(void)
 	  systick_stop();
 	  NVIC_SetPriority(SysTick_IRQn, 2);
     systick_register_callback(systick_irq);
-    systick_start(SYSTICK_PERIOD_US, SYSTICK_EXCEPTION);
+    systick_start(D_SYSTICK_PERIOD_US, SYSTICK_EXCEPTION);
     
     uint8_t version_len = strlen(SDK_VERSION);
     char version[16] = {0};

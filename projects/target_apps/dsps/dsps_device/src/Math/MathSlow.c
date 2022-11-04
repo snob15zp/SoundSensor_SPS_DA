@@ -110,14 +110,14 @@ MS_b_alert_C140dBPeak_out=MS_b_alert_C140dBPeak;
 		MF_ADCOverLoad_Flag_old=MF_ADCOverLoad_Flag;
 		MF_ADCOverLoad_Flag_time=time;
 	}
-	if ((time-MF_ADCOverLoad_Flag_time)<(MF_ADCOverLoad_Flag_duration_US/SYSTICK_PERIOD_US))
+	if ((time-MF_ADCOverLoad_Flag_time)<(MF_ADCOverLoad_Flag_duration_US/D_SYSTICK_PERIOD_US))
 	{
 	 MS_b_alert_Overload=true;
 	}
 	else
 	{ 
 		MS_b_alert_Overload=false;
-		MF_ADCOverLoad_Flag_time=time-(MF_ADCOverLoad_Flag_duration_US/SYSTICK_PERIOD_US)*2;
+		MF_ADCOverLoad_Flag_time=time-(MF_ADCOverLoad_Flag_duration_US/D_SYSTICK_PERIOD_US)*2;
 	}
 	
 	MS_b_alert_DoseM3dB=(MS_i32_Level_Dose_dB>(MS_i32_AlertLevel_DoseM3dB));

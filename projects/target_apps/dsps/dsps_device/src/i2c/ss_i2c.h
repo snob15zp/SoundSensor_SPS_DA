@@ -1,15 +1,24 @@
 #ifndef __ss_i2c_h__
 #define __ss_i2c_h__
 
+#include "ss_global.h"
 #include "i2c_eeprom.h"
 
+#ifdef D_sx_takt_call 
+#define D_sx_takt_period D_PeriodSlowMath_us
+#else
+#define D_sx_takt_period  D_SYSTICK_PERIOD_US
+#endif
+
 #define    LEDS_NUM               3                                     // количество светодиодов в последовательности
-#define    LED_PULSE_TIME         (3000000/SYSTICK_PERIOD_US)     //us                             // время цикла обработки всех светодиодов
+#define    LED_PULSE_TIME         (3000000/D_sx_takt_period)     //us                             // время цикла обработки всех светодиодов
 #define    LED_SLOT_TIME          ((uint16_t)(LED_PULSE_TIME / LEDS_NUM)) // время работы одного светодиода 
-#define DEB_CNT         ((uint8_t)3)                                      // 믫鸥񲢮 ౮㦰猪嬿 𨪱ᷨ衱ﲲ-鿍
-#define SCAN_TIME       (10000/SYSTICK_PERIOD_US)//us 
-#define D_pulseWidthMs (500000/SYSTICK_PERIOD_US)
-#define D_KL_long (5000000/SYSTICK_PERIOD_US)
+#define DEB_CNT         ((uint8_t)2)                                      // 믫鸥񲢮 ౮㦰猪嬿 𨪱ᷨ衱ﲲ-鿍
+#define SCAN_TIME       (125000/D_sx_takt_period)// 
+#define D_pulseWidthMs (500000/D_sx_takt_period)
+#define D_KL_long (5000000/D_sx_takt_period)
+
+
 
 typedef struct
 {

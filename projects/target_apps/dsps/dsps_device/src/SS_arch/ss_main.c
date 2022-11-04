@@ -52,7 +52,7 @@ e_FunctionReturnState ssm_main_BLE_prepare(void)
 			       SM_FSM_state++;
 		case 1: //if (RingBuffer_is_empty())//RDD debug
 			poll_newBytetoWriteFlash();
-			if (systick_time<(1000000/SYSTICK_PERIOD_US))  //debug
+			if (systick_time<(1000000/D_SYSTICK_PERIOD_US))  //debug
 			{
 				b_rv=e_FRS_Not_Done;
 				break;		
@@ -94,16 +94,16 @@ e_FunctionReturnState ss_main_init(void)
 	return e_FRS_Done;
 }
 
-#define PeriodSlowMath (1000000/(SYSTICK_PERIOD_US*8)) //ticks
+//#define PeriodSlowMath (1000000/(D_SYSTICK_PERIOD_US*8)) //ticks
 int32_t fifodebugcalc;
 e_FunctionReturnState ss_main(void)
 {
 	e_FunctionReturnState b_rv;
 	b_rv=e_FRS_Not_Done;
 	
-	if ((get_systime()-systick_last)>PeriodSlowMath)
+	if ((get_systime()-systick_last)>D_PeriodSlowMath)
 	{ 
-		systick_last+=PeriodSlowMath;
+		systick_last+=D_PeriodSlowMath;
 #ifdef __NO_MATLAB__		
 		MS_main();
 #endif		
@@ -125,7 +125,7 @@ e_FunctionReturnState ss_main(void)
 	
 	
 
-//	if (systick_time>((1000000+time_start)/SYSTICK_PERIOD_US))
+//	if (systick_time>((10000000+time_start)/D_SYSTICK_PERIOD_US))
 //	  	b_rv=e_FRS_Done;
 	return b_rv; 
 //-------------------------------------------------------------------

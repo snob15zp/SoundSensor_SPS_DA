@@ -61453,6 +61453,7 @@ extern _Bool ssm_main_BLE_RDY;
 extern uint8_t ssm_main_state;
 
 e_FunctionReturnState ss_main(void);
+e_FunctionReturnState ss_main_BLE(void);
 e_FunctionReturnState ss_main_init(void);
 e_FunctionReturnState ssm_main_ADC_prepare(void);
 e_FunctionReturnState ssm_main_BLE_prepare(void);
@@ -61592,10 +61593,11 @@ int main(void)
 			case 5: if (ssm_main_BLE_RDY) 
 								ssm_main_state++;
 			        break;
-			case 6:
-        
+			case 6: if (ss_main_BLE())
+							{	ssm_main_state=0;
+							};
             
-            schedule_while_ble_on();
+              schedule_while_ble_on();
 					
        
 
@@ -61683,7 +61685,7 @@ static __inline void arch_goto_sleep(sleep_mode_t current_sleep_mode)
     app_sleep_prepare_proc(&sleep_mode); 
 
 
-#line 310 "..\\..\\..\\..\\..\\sdk6\\sdk\\platform\\arch\\main\\arch_main.c"
+#line 311 "..\\..\\..\\..\\..\\sdk6\\sdk\\platform\\arch\\main\\arch_main.c"
 
     
     arch_turn_peripherals_off(sleep_mode);
@@ -61824,7 +61826,7 @@ static __inline void schedule_while_ble_on(void)
     while (ble_is_powered())
     {
 
-#line 460 "..\\..\\..\\..\\..\\sdk6\\sdk\\platform\\arch\\main\\arch_main.c"
+#line 461 "..\\..\\..\\..\\..\\sdk6\\sdk\\platform\\arch\\main\\arch_main.c"
         
         rwip_schedule();
 
@@ -61894,7 +61896,7 @@ static __inline sleep_mode_t rwip_power_down(void)
             sleep_mode = mode_ext_sleep_otp_copy;
         }
     }
-#line 536 "..\\..\\..\\..\\..\\sdk6\\sdk\\platform\\arch\\main\\arch_main.c"
+#line 537 "..\\..\\..\\..\\..\\sdk6\\sdk\\platform\\arch\\main\\arch_main.c"
 
     return (sleep_mode);
 }
@@ -61962,7 +61964,7 @@ static __inline uint8_t get_retention_mode_data(void)
         
         return ((0x11) & (0x05));
     }
-#line 621 "..\\..\\..\\..\\..\\sdk6\\sdk\\platform\\arch\\main\\arch_main.c"
+#line 622 "..\\..\\..\\..\\..\\sdk6\\sdk\\platform\\arch\\main\\arch_main.c"
     
     return (0);
 }
@@ -61989,7 +61991,7 @@ static __inline uint8_t get_retention_mode(void)
         
         return ((0x14));
     }
-#line 660 "..\\..\\..\\..\\..\\sdk6\\sdk\\platform\\arch\\main\\arch_main.c"
+#line 661 "..\\..\\..\\..\\..\\sdk6\\sdk\\platform\\arch\\main\\arch_main.c"
     
     return (0);
 }
@@ -62038,10 +62040,10 @@ static __inline uint8_t get_retention_mode_non_ret_heap()
             return (0);
         }
     }
-#line 759 "..\\..\\..\\..\\..\\sdk6\\sdk\\platform\\arch\\main\\arch_main.c"
+#line 760 "..\\..\\..\\..\\..\\sdk6\\sdk\\platform\\arch\\main\\arch_main.c"
 }
 
-#line 787 "..\\..\\..\\..\\..\\sdk6\\sdk\\platform\\arch\\main\\arch_main.c"
+#line 788 "..\\..\\..\\..\\..\\sdk6\\sdk\\platform\\arch\\main\\arch_main.c"
 
 
 
@@ -62084,7 +62086,7 @@ static __inline void arch_turn_peripherals_off(sleep_mode_t current_sleep_mode)
 
  
 
-#line 836 "..\\..\\..\\..\\..\\sdk6\\sdk\\platform\\arch\\main\\arch_main.c"
+#line 837 "..\\..\\..\\..\\..\\sdk6\\sdk\\platform\\arch\\main\\arch_main.c"
             
             ( (* ( volatile uint16_t*)(((0x50000012)))=(((* ( volatile uint16_t*)((0x50000012)) )&(~(uint16_t)((0x0004)))) | (((uint16_t)(0))<<((((0x0004)))&0x0001? 0:(((0x0004)))&0x0002? 1:(((0x0004)))&0x0004? 2:(((0x0004)))&0x0008? 3: (((0x0004)))&0x0010? 4:(((0x0004)))&0x0020? 5:(((0x0004)))&0x0040? 6:(((0x0004)))&0x0080? 7: (((0x0004)))&0x0100? 8:(((0x0004)))&0x0200? 9:(((0x0004)))&0x0400?10:(((0x0004)))&0x0800?11: (((0x0004)))&0x1000?12:(((0x0004)))&0x2000?13:(((0x0004)))&0x4000?14: 15))) ));
             retained_ram_blocks = ret_mode_for_ret_data;
@@ -62135,7 +62137,7 @@ static __inline void otp_prepare(uint32_t code_size)
     
     hw_otpc_close();
 
-#line 901 "..\\..\\..\\..\\..\\sdk6\\sdk\\platform\\arch\\main\\arch_main.c"
+#line 902 "..\\..\\..\\..\\..\\sdk6\\sdk\\platform\\arch\\main\\arch_main.c"
 }
 
 
@@ -62226,6 +62228,6 @@ static __inline void app_sleep_exit_proc(void)
         user_app_main_loop_callbacks.app_resume_from_sleep();
 }
 
-#line 997 "..\\..\\..\\..\\..\\sdk6\\sdk\\platform\\arch\\main\\arch_main.c"
+#line 998 "..\\..\\..\\..\\..\\sdk6\\sdk\\platform\\arch\\main\\arch_main.c"
 
 

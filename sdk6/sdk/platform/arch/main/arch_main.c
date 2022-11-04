@@ -210,10 +210,11 @@ int main(void)
 			case 5: if (ssm_main_BLE_RDY) 
 								ssm_main_state++;
 			        break;
-			case 6:
-        
+			case 6: if (ss_main_BLE())
+							{	ssm_main_state=0;//RDD debug=6
+							};
             // schedule all pending events
-            schedule_while_ble_on();
+              schedule_while_ble_on();
 					
        
 //        while (app_asynch_proc() != GOTO_SLEEP);    //grant control to the application, try to go to power down

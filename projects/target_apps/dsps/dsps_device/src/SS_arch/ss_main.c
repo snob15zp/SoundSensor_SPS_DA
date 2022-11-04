@@ -28,7 +28,7 @@ static int32_t time_start;
 e_FunctionReturnState ssm_main_ADC_prepare(void)
 {
 	
-
+  time_start=systick_time;
 	AF_V_WriteStart((uint16_t) ssm_main_ADC_prepare);	
 
 	MS_init();
@@ -36,7 +36,7 @@ e_FunctionReturnState ssm_main_ADC_prepare(void)
 	ssm_main_BLE_RDY=false;
 	SS_spi_switchoff_pins(SPI_FLASH_GPIO_MAP);
 	
-	time_start=systick_time;
+	
 	
 	SPI_ADC_init();
 	SS_ADC_MODE=SS_ADC_Active_MODE;
@@ -47,6 +47,7 @@ static uint8_t SM_FSM_state = 0;
 e_FunctionReturnState ssm_main_BLE_prepare(void)
 { e_FunctionReturnState b_rv;
 	b_rv=e_FRS_Not_Done;
+	time_start=systick_time;
 	switch (SM_FSM_state)
 	{	case 0: // 
 			       SM_FSM_state++;
@@ -125,9 +126,33 @@ e_FunctionReturnState ss_main(void)
 	
 	
 
-//	if (systick_time>((10000000+time_start)/D_SYSTICK_PERIOD_US))
-//	  	b_rv=e_FRS_Done;
+	if ((systick_time-time_start)>((10000000)/D_SYSTICK_PERIOD_US))
+	  	b_rv=e_FRS_Done;
 	return b_rv; 
 //-------------------------------------------------------------------
 //-------------------------------------------------------------------
 };
+
+e_FunctionReturnState ss_main_BLE(void)
+{
+	e_FunctionReturnState b_rv;
+	b_rv=e_FRS_Not_Done;
+	
+	if ((get_systime()-systick_last)>D_PeriodSlowMath)
+	{ 
+		systick_last+=D_PeriodSlowMath;
+		
+#ifdef __DEVKIT_EXT__					
+//	led_flash();
+#endif
+		
+#ifdef __SS_EXT__		
+#ifndef __ADCTEST__		
+		sx_main();
+#endif		
+#endif						
+  }
+		if ((systick_time-time_start)>((10000000)/D_SYSTICK_PERIOD_US))
+ 	  	b_rv=e_FRS_Done;
+	return b_rv; 
+}

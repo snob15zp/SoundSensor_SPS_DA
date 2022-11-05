@@ -39,6 +39,15 @@ static const i2c_eeprom_cfg_t sx1502_cfg = {
   .address_size = I2C_1BYTE_ADDR
 };
 
+//===========================LEDS=======================================================
+ledTimeSlot_t const LED_ALARM_Empty              ={false,0,0};
+ledTimeSlot_t const LED_ALARM_LiveSPL	          ={true,D_pulseWidthMs,CL_RED};
+ledTimeSlot_t const LED_ALARM_Operatingstate	    ={true,D_pulseWidthMs,CL_BLUE};
+ledTimeSlot_t const LED_ALARM_Overloadindicator	={true,LED_SLOT_TIME,CL_RED};
+ledTimeSlot_t const LED_ALARM_LAeqM3dB	          ={true,D_pulseWidthMs,CL_LD1};
+ledTimeSlot_t const LED_ALARM_LAeq    	          ={true,LED_SLOT_TIME ,CL_LD1};
+ledTimeSlot_t const LED_ALARM_hearing 	          ={true,LED_SLOT_TIME ,CL_GREEN};
+ledTimeSlot_t const LED_ALARM_BLE     	          ={true,LED_SLOT_TIME ,CL_WHITE};
 //======================================================================================
 #ifdef D_sx_takt_call
 #define sx_time sx_encounter
@@ -54,7 +63,7 @@ static uint8_t   buttonsState;
 
 static uint32_t systick_last_LED;//TODO to init
 static uint32_t systick_last_SCAN;
-static uint32_t ledsTime;     // таймер светодиодов ()
+//static uint32_t ledsTime;     // таймер светодиодов ()
 /*****************************************************************************************
 *
 *****************************************************************************************/
@@ -63,14 +72,6 @@ static void ssi2c_set_pad_functions(void)
   // Configure I2C pin functionality
   GPIO_ConfigurePin(GPIO_PORT_0, I2C_SCL_PIN, INPUT, PID_I2C_SCL, false);
   GPIO_ConfigurePin(GPIO_PORT_0, I2C_SDA_PIN, INPUT, PID_I2C_SDA, false);
-  // Configure SPI pins
-/*  
-  GPIO_ConfigurePin(GPIO_PORT_0, SPI_CS0_PIN, OUTPUT, PID_SPI_EN,  true);
-  GPIO_ConfigurePin(GPIO_PORT_0, SPI_CS1_PIN, OUTPUT, PID_SPI_EN,  true);
-  GPIO_ConfigurePin(GPIO_PORT_0, SPI_CLK_PIN, OUTPUT, PID_SPI_CLK, false);
-  GPIO_ConfigurePin(GPIO_PORT_0, SPI_MO_PIN,  OUTPUT, PID_SPI_DO,  false);
-  GPIO_ConfigurePin(GPIO_PORT_0, SPI_MI_PIN,  INPUT,  PID_SPI_DI,  false);
-*/
 }
 
 /*****************************************************************************************
@@ -107,7 +108,12 @@ void ssi2c_init(void)
 {
 systick_last_LED=sx_time;
 systick_last_SCAN=sx_time;    
-ledsTime = sx_time;	
+rgbLedTaskD1.ledsTime = sx_time;	
+rgbLedTaskLD1.ledsTime = sx_time;
+rgbLedTaskD1.LEDS_NUM=2;
+rgbLedTaskLD1.LEDS_NUM=1;	
+rgbLedTaskD1.colormask=SX_D_L1MASK;	
+rgbLedTaskLD1.colormask=SX_D_LD1MASK;	
 	
   // Initialize I2C
   i2c_eeprom_configure(&i2c_cfg, &sx1502_cfg);
@@ -168,8 +174,8 @@ void ss_i2c_test (void)
 
 btn_t         sw1;
 btn_t         sw3;
-rgbLedTask_t  rgbLedTask;
-
+rgbLedTask_t  rgbLedTaskD1;
+rgbLedTask_t  rgbLedTaskLD1;
 /*************************************************************************************************
  * ????? ????????? 
  * ***********************************************************************************************/
@@ -180,23 +186,6 @@ volatile struct {
   uint16_t ERROR_STATE        : 1;
  }Status;
 
-
-/**********************************************************************************************
-*
-* ????????? ?????? ?????? ?????? ???????????
-*
-**********************************************************************************************/
-//void SysTick_Handler(void)
-//{
-//	sysTime++;
-//  scanTime++;
-//  if(sysTime % 200){Status.VLTG_READ_EN = 1;}
-//  if(++ledsTime == LED_SLOT_TIME)
-//  {
-//    ledsTime = 0;
-//    rgbLedTask.timeSlotMode = TSM_STRT;
-//  }
-//}
 
 
                                      // интервал опроса кнопок
@@ -351,33 +340,33 @@ static void executeSwState(void)
   {
     case BTN_SW3_LONG:                                                  // если было длинное нажатие SW3
 //      togglePowerState();                                               // изменить состояние выхода контроля питания
-      rgbLedTask.ledTimeSlot[0].isEnabled = false;
-      rgbLedTask.ledTimeSlot[1].isEnabled = false;
-      rgbLedTask.ledTimeSlot[2].isEnabled = false;
+//      rgbLedTaskD1.ledTimeSlot[0].isEnabled = false;
+//      rgbLedTaskD1.ledTimeSlot[1].isEnabled = false;
+//      rgbLedTaskD1.ledTimeSlot[2].isEnabled = false;
     break;
       
     case BTN_SW3_SHORT:                                                 // если было короткое нажатие SW3
-      rgbLedTask.ledTimeSlot[0].color = CL_RED;
-      rgbLedTask.ledTimeSlot[0].pulseWidthMs = D_pulseWidthMs;
-      rgbLedTask.ledTimeSlot[0].isEnabled = true;
+//      rgbLedTaskD1.ledTimeSlot[0].color = CL_RED;
+//      rgbLedTaskD1.ledTimeSlot[0].pulseWidthMs = D_pulseWidthMs;
+//      rgbLedTaskD1.ledTimeSlot[0].isEnabled = true;
     break;
     
     case BTN_SW1_SHORT:                                                 // если было нажатие SW1 без SW3
-      rgbLedTask.ledTimeSlot[1].color = CL_RED|CL_GREEN;
-      rgbLedTask.ledTimeSlot[1].pulseWidthMs = D_pulseWidthMs;
-      rgbLedTask.ledTimeSlot[1].isEnabled = true;      
+//      rgbLedTaskD1.ledTimeSlot[1].color = CL_RED|CL_GREEN;
+//      rgbLedTaskD1.ledTimeSlot[1].pulseWidthMs = D_pulseWidthMs;
+//      rgbLedTaskD1.ledTimeSlot[1].isEnabled = true;      
     break;
     
     case BTN_SW1_ONE_CLICK:                                             // если было одно нажатие SW1 при нажатой SW3
-      rgbLedTask.ledTimeSlot[1].color = CL_GREEN;
-      rgbLedTask.ledTimeSlot[1].pulseWidthMs = D_pulseWidthMs;
-      rgbLedTask.ledTimeSlot[1].isEnabled = true;
+//      rgbLedTaskD1.ledTimeSlot[1].color = CL_GREEN;
+//      rgbLedTaskD1.ledTimeSlot[1].pulseWidthMs = D_pulseWidthMs;
+//      rgbLedTaskD1.ledTimeSlot[1].isEnabled = true;
     break;
       
     case BTN_SW1_DBL_CLICK:                                             // если было два нажатия SW1 при нажатой SW3
-      rgbLedTask.ledTimeSlot[2].color = CL_BLUE;
-      rgbLedTask.ledTimeSlot[2].pulseWidthMs = D_pulseWidthMs;
-      rgbLedTask.ledTimeSlot[2].isEnabled = true;
+//      rgbLedTaskD1.ledTimeSlot[2].color = CL_BLUE;
+//      rgbLedTaskD1.ledTimeSlot[2].pulseWidthMs = D_pulseWidthMs;
+//      rgbLedTaskD1.ledTimeSlot[2].isEnabled = true;
     break;
     
     case BTN_SW1_THREE_CLICK:                                           // если было три нажатия SW1 при нажатой SW3
@@ -409,46 +398,45 @@ static void executeSwState(void)
 /*****************************************************************************************
 * @brief Управление RGB светодиодом  
  *****************************************************************************************/
-static void rgbLedServer(void)
+static void rgbLedServer(rgbLedTask_t * rgbLedTask )
 {
-  static uint16_t itemIndex = 0;
 	uint32_t l_ledsTime;
 	
-	l_ledsTime=sx_time-ledsTime;
+	l_ledsTime=sx_time-rgbLedTask->ledsTime;
 	if (l_ledsTime >= LED_SLOT_TIME)
   { 
-    ledsTime = sx_time;
-    rgbLedTask.timeSlotMode = TSM_STRT;
+    rgbLedTask->ledsTime = sx_time;
+    rgbLedTask->timeSlotMode = TSM_STRT;
+		if(++rgbLedTask->itemIndex == rgbLedTask->LEDS_NUM){rgbLedTask->itemIndex = 0;}
 	}
   
-  switch(rgbLedTask.timeSlotMode)
+  switch(rgbLedTask->timeSlotMode)
   {
     case TSM_STRT:
       
-      if(rgbLedTask.ledTimeSlot[itemIndex].isEnabled)                   // если выбранный слот активен
+      if(rgbLedTask->ledTimeSlot[rgbLedTask->itemIndex].isEnabled)                   // если выбранный слот активен
       {
-        outData |= RED_LED_OUT | GREEN_LED_OUT | BLUE_LED_OUT;          // замаскировать выходы для RGB светодиода
-        outData &= ~rgbLedTask.ledTimeSlot[itemIndex].color;            // снять бит для включения нужного светодиода
-        i2c_eeprom_write_byte(SX1502_REGDATA_ADDR, outData);            // записать данные в порт
+        outData |= rgbLedTask->colormask;          // замаскировать выходы для RGB светодиода
+        outData &= ~(rgbLedTask->ledTimeSlot[rgbLedTask->itemIndex].color);            // снять бит для включения нужного светодиода
+//        i2c_eeprom_write_byte(SX1502_REGDATA_ADDR, outData);            // записать данные в порт
 //        outData |= RED_LED_OUT | GREEN_LED_OUT | BLUE_LED_OUT;          // замаскировать выходы для RGB светодиода
 //        i2c_eeprom_write_byte(SX1502_REGDATA_ADDR, outData);            // записать данные в порт
-        rgbLedTask.timeSlotMode = TSM_BUSY;                             // переключить режим работы слота
+        rgbLedTask->timeSlotMode = TSM_BUSY;                             // переключить режим работы слота
       } 
       else 
       {
-        rgbLedTask.timeSlotMode = TSM_IDLE;                             // переключить режим работы слота
-        if(++itemIndex == LEDS_NUM){itemIndex = 0;}                     // если слоты всех светодиодов обработаны, перейти в начало
+        rgbLedTask->timeSlotMode = TSM_IDLE;                             // переключить режим работы слота
       }
     break;
     
     case TSM_BUSY:
       
-    if(rgbLedTask.ledTimeSlot[itemIndex].pulseWidthMs >= l_ledsTime)      // если время включенного состояния светодиода истекло
+    if(rgbLedTask->ledTimeSlot[rgbLedTask->itemIndex].pulseWidthMs <= l_ledsTime)      // если время включенного состояния светодиода истекло
       {
-        outData |= RED_LED_OUT | GREEN_LED_OUT | BLUE_LED_OUT;          // замаскировать выходы для RGB светодиода
-        i2c_eeprom_write_byte(SX1502_REGDATA_ADDR, outData);            // записать данные в порт
-        rgbLedTask.timeSlotMode = TSM_IDLE;;                            // переключить режим работы слота
-       if(++itemIndex == LEDS_NUM){itemIndex = 0;}                      // если слоты всех светодиодов обработаны, перейти в начало        
+        outData |= rgbLedTask->colormask;          // замаскировать выходы для RGB светодиода
+       // i2c_eeprom_write_byte(SX1502_REGDATA_ADDR, outData);            // записать данные в порт
+        rgbLedTask->timeSlotMode = TSM_IDLE;;                            // переключить режим работы слота
+                                 
       }
       
     break;
@@ -476,11 +464,11 @@ void sx_main (void)
 //  } else while(1);
    
 //  while(1)
-	if ((sx_time-systick_last_LED)>=(LED_PULSE_TIME))
-	{ 
-		systick_last_LED+=(LED_PULSE_TIME);
-	  rgbLedTask.timeSlotMode = TSM_STRT;
-	}	
+//	if ((sx_time-systick_last_LED)>=(LED_PULSE_TIME))
+//	{ 
+//		systick_last_LED+=(LED_PULSE_TIME);
+//	  rgbLedTaskD1.timeSlotMode = TSM_STRT;
+//	}	
 		if ((sx_time-systick_last_SCAN)>=(SCAN_TIME))
 	{ 
 		systick_last_SCAN+=(SCAN_TIME);
@@ -491,7 +479,9 @@ void sx_main (void)
   
     executeSwState();
 //    updateVddValue();
-    rgbLedServer();    
+    rgbLedServer(&rgbLedTaskD1);
+    rgbLedServer(&rgbLedTaskLD1);    
+		i2c_eeprom_write_byte(SX1502_REGDATA_ADDR, outData);   
   }
 }
 

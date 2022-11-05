@@ -82,4 +82,8 @@
  #define BTN_SW1_IN                           0x02
  #define SINGLE_LED_OUT                       0x01 
 
+ #define SX_D_LED_MASK (RED_LED_OUT|GREEN_LED_OUT|BLUE_LED_OUT|SINGLE_LED_OUT)
+ #define SX_D_L1MASK (RED_LED_OUT|GREEN_LED_OUT|BLUE_LED_OUT)
+ #define SX_D_LD1MASK (SINGLE_LED_OUT)
+ 
 #endif // _SX1502_H_

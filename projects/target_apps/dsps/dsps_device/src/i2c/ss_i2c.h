@@ -2,6 +2,7 @@
 #define __ss_i2c_h__
 
 #include "ss_global.h"
+#include "sx1502.h"
 #include "i2c_eeprom.h"
 
 #ifdef D_sx_takt_call 
@@ -10,9 +11,9 @@
 #define D_sx_takt_period  D_SYSTICK_PERIOD_US
 #endif
 
-#define    LEDS_NUM               3                                     // количество светодиодов в последовательности
-#define    LED_PULSE_TIME         (3000000/D_sx_takt_period)     //us                             // время цикла обработки всех светодиодов
-#define    LED_SLOT_TIME          ((uint16_t)(LED_PULSE_TIME / LEDS_NUM)) // время работы одного светодиода 
+#define    maxLEDS_NUM               2                                     // количество светодиодов в последовательности
+//#define    LED_PULSE_TIME         (3000000/D_sx_takt_period)     //us                             // время цикла обработки всех светодиодов
+#define    LED_SLOT_TIME          (1000000/D_sx_takt_period) // время работы одного светодиода 
 #define DEB_CNT         ((uint8_t)2)                                      // 믫鸥񲢮 ౮㦰猪嬿 𨪱ᷨ衱ﲲ-鿍
 #define SCAN_TIME       (125000/D_sx_takt_period)// 
 #define D_pulseWidthMs (500000/D_sx_takt_period)
@@ -45,10 +46,14 @@ typedef enum
 
 typedef enum
 {
-  CL_RED =    0x80,
-  CL_GREEN =  0x40,
-  CL_BLUE =   0x20
+  CL_RED =  RED_LED_OUT,
+  CL_GREEN =  GREEN_LED_OUT,
+  CL_BLUE =   BLUE_LED_OUT,
+	CL_WHITE = RED_LED_OUT|GREEN_LED_OUT|BLUE_LED_OUT,
+	CL_LD1   = SINGLE_LED_OUT,
+	CL_MASK  =SX_D_LED_MASK
 }color_en;
+
 
 typedef enum
 {
@@ -67,13 +72,24 @@ typedef struct
 typedef struct
 {
   timeSlotMode_en timeSlotMode;
-  ledTimeSlot_t   ledTimeSlot[LEDS_NUM];
+	uint32_t ledsTime;
+	uint16_t itemIndex;
+	uint8_t LEDS_NUM;
+	uint8_t colormask;
+  ledTimeSlot_t   ledTimeSlot[maxLEDS_NUM];
 }rgbLedTask_t;
 
+extern ledTimeSlot_t const LED_ALARM_Empty;
+extern ledTimeSlot_t const LED_ALARM_LiveSPL;
+extern ledTimeSlot_t const LED_ALARM_Operatingstate;
+extern ledTimeSlot_t const LED_ALARM_Overloadindicator;
+extern ledTimeSlot_t const LED_ALARM_LAeqM3dB;
+extern ledTimeSlot_t const LED_ALARM_LAeq;
+extern ledTimeSlot_t const LED_ALARM_hearing;
+extern ledTimeSlot_t const LED_ALARM_BLE;
 
-
-
-
+extern rgbLedTask_t  rgbLedTaskD1;
+extern rgbLedTask_t  rgbLedTaskLD1;
 // simple test
 
 void ss_i2c_test (void);

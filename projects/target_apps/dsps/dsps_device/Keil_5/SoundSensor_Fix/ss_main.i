@@ -44322,6 +44322,8 @@ e_FunctionReturnState ss_main_init(void);
 e_FunctionReturnState ssm_main_ADC_prepare(void);
 e_FunctionReturnState ssm_main_BLE_prepare(void);
 
+void DisplayAlarm(void);
+
 
 
 #line 3 "..\\src\\SS_arch\\ss_main.c"
@@ -44563,7 +44565,78 @@ void delay_100ms(void);
 
 
 #line 5 "..\\src\\i2c\\ss_i2c.h"
+#line 1 "..\\src\\i2c\\sx1502.h"
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+ 
+#line 18 "..\\src\\i2c\\sx1502.h"
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+  
+
+
+
+   
+
+
+  
+#line 45 "..\\src\\i2c\\sx1502.h"
+ 
+
+ 
+ 
+  
+ 
+
+
+#line 61 "..\\src\\i2c\\sx1502.h"
+   
+
+
+   
+
+
+      	
+
+
+
+
+ 
+
+
+
+#line 84 "..\\src\\i2c\\sx1502.h"
+
+
+
+
+ 
 #line 6 "..\\src\\i2c\\ss_i2c.h"
+#line 7 "..\\src\\i2c\\ss_i2c.h"
 
 
 
@@ -44571,7 +44644,13 @@ void delay_100ms(void);
 
 
 
-#line 20 "..\\src\\i2c\\ss_i2c.h"
+
+
+
+
+
+
+
 
 
 
@@ -44600,10 +44679,14 @@ typedef enum
 
 typedef enum
 {
-  CL_RED =    0x80,
+  CL_RED =  0x80,
   CL_GREEN =  0x40,
-  CL_BLUE =   0x20
+  CL_BLUE =   0x20,
+	CL_WHITE = 0x80|0x40|0x20,
+	CL_LD1   = 0x01,
+	CL_MASK  =(0x80|0x40|0x20|0x01)
 }color_en;
+
 
 typedef enum
 {
@@ -44622,13 +44705,24 @@ typedef struct
 typedef struct
 {
   timeSlotMode_en timeSlotMode;
-  ledTimeSlot_t   ledTimeSlot[3];
+	uint32_t ledsTime;
+	uint16_t itemIndex;
+	uint8_t LEDS_NUM;
+	uint8_t colormask;
+  ledTimeSlot_t   ledTimeSlot[2];
 }rgbLedTask_t;
 
+extern ledTimeSlot_t const LED_ALARM_Empty;
+extern ledTimeSlot_t const LED_ALARM_LiveSPL;
+extern ledTimeSlot_t const LED_ALARM_Operatingstate;
+extern ledTimeSlot_t const LED_ALARM_Overloadindicator;
+extern ledTimeSlot_t const LED_ALARM_LAeqM3dB;
+extern ledTimeSlot_t const LED_ALARM_LAeq;
+extern ledTimeSlot_t const LED_ALARM_hearing;
+extern ledTimeSlot_t const LED_ALARM_BLE;
 
-
-
-
+extern rgbLedTask_t  rgbLedTaskD1;
+extern rgbLedTask_t  rgbLedTaskLD1;
 
 
 void ss_i2c_test (void);
@@ -46953,6 +47047,7 @@ e_FunctionReturnState ss_main(void)
 
 
 		
+		   DisplayAlarm();
 		
 
 
@@ -46984,6 +47079,8 @@ e_FunctionReturnState ss_main_BLE(void)
 
 
 		
+		DisplayAlarm();
+		
 
 
 		sx_main();
@@ -46994,3 +47091,22 @@ e_FunctionReturnState ss_main_BLE(void)
  	  	b_rv=e_FRS_Done;
 	return b_rv; 
 }
+
+#line 170 "..\\src\\SS_arch\\ss_main.c"
+
+void DisplayAlarm(void)
+{
+	rgbLedTaskD1.ledTimeSlot[0]=LED_ALARM_Operatingstate;
+  if (0) rgbLedTaskD1.ledTimeSlot[0]=LED_ALARM_LiveSPL;
+	if (0) rgbLedTaskD1.ledTimeSlot[0]=LED_ALARM_Overloadindicator;
+	if (ssm_main_BLE_RDY) rgbLedTaskD1.ledTimeSlot[0]=LED_ALARM_BLE;
+
+	rgbLedTaskD1.ledTimeSlot[1]=LED_ALARM_Empty;
+	if (0) rgbLedTaskD1.ledTimeSlot[1]=LED_ALARM_hearing;
+
+
+	rgbLedTaskLD1.ledTimeSlot[0]=LED_ALARM_Empty;
+	if (1) rgbLedTaskLD1.ledTimeSlot[0]=LED_ALARM_LAeqM3dB;
+	if (0) rgbLedTaskLD1.ledTimeSlot[0]=LED_ALARM_LAeq;
+	
+};

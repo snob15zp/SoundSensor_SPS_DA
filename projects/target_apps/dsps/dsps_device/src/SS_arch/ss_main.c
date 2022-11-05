@@ -115,6 +115,7 @@ e_FunctionReturnState ss_main(void)
 //					led_flash();
 #endif
 		
+		   DisplayAlarm();
 		
 #ifdef __SS_EXT__		
 #ifndef __ADCTEST__		
@@ -146,6 +147,8 @@ e_FunctionReturnState ss_main_BLE(void)
 //	led_flash();
 #endif
 		
+		DisplayAlarm();
+		
 #ifdef __SS_EXT__		
 #ifndef __ADCTEST__		
 		sx_main();
@@ -156,3 +159,28 @@ e_FunctionReturnState ss_main_BLE(void)
  	  	b_rv=e_FRS_Done;
 	return b_rv; 
 }
+
+#define  MS_b_alert_C140dBPeakD true
+#define  MS_b_alert_FastAD true
+#define  MS_b_alert_liveD false
+#define MS_b_alert_OverloadD false
+#define  MS_b_alert_DoseM3dBD	true
+#define  MS_b_alert_DoseD false
+#define MS_b_alert_hearingD false
+
+void DisplayAlarm(void)
+{
+	rgbLedTaskD1.ledTimeSlot[0]=LED_ALARM_Operatingstate;
+  if (MS_b_alert_liveD) rgbLedTaskD1.ledTimeSlot[0]=LED_ALARM_LiveSPL;
+	if (MS_b_alert_OverloadD) rgbLedTaskD1.ledTimeSlot[0]=LED_ALARM_Overloadindicator;
+	if (ssm_main_BLE_RDY) rgbLedTaskD1.ledTimeSlot[0]=LED_ALARM_BLE;
+
+	rgbLedTaskD1.ledTimeSlot[1]=LED_ALARM_Empty;
+	if (MS_b_alert_hearingD) rgbLedTaskD1.ledTimeSlot[1]=LED_ALARM_hearing;
+
+
+	rgbLedTaskLD1.ledTimeSlot[0]=LED_ALARM_Empty;
+	if (MS_b_alert_DoseM3dBD) rgbLedTaskLD1.ledTimeSlot[0]=LED_ALARM_LAeqM3dB;
+	if (MS_b_alert_DoseD) rgbLedTaskLD1.ledTimeSlot[0]=LED_ALARM_LAeq;
+	
+};

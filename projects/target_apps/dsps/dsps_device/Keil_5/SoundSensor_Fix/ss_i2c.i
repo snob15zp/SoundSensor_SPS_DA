@@ -44375,6 +44375,10 @@ typedef enum  {e_FRS_Not_Done, e_FRS_Done,e_FRS_DoneError} e_FunctionReturnState
 
 #line 84 "..\\src\\i2c\\sx1502.h"
 
+
+
+
+ 
 #line 5 "..\\src\\i2c\\ss_i2c.c"
 #line 6 "..\\src\\i2c\\ss_i2c.c"
 #line 1 "..\\src\\i2c\\ss_i2c.h"
@@ -44383,6 +44387,7 @@ typedef enum  {e_FRS_Not_Done, e_FRS_Done,e_FRS_DoneError} e_FunctionReturnState
 
 #line 5 "..\\src\\i2c\\ss_i2c.h"
 #line 6 "..\\src\\i2c\\ss_i2c.h"
+#line 7 "..\\src\\i2c\\ss_i2c.h"
 
 
 
@@ -44390,7 +44395,13 @@ typedef enum  {e_FRS_Not_Done, e_FRS_Done,e_FRS_DoneError} e_FunctionReturnState
 
 
 
-#line 20 "..\\src\\i2c\\ss_i2c.h"
+
+
+
+
+
+
+
 
 
 
@@ -44419,10 +44430,14 @@ typedef enum
 
 typedef enum
 {
-  CL_RED =    0x80,
+  CL_RED =  0x80,
   CL_GREEN =  0x40,
-  CL_BLUE =   0x20
+  CL_BLUE =   0x20,
+	CL_WHITE = 0x80|0x40|0x20,
+	CL_LD1   = 0x01,
+	CL_MASK  =(0x80|0x40|0x20|0x01)
 }color_en;
+
 
 typedef enum
 {
@@ -44441,13 +44456,24 @@ typedef struct
 typedef struct
 {
   timeSlotMode_en timeSlotMode;
-  ledTimeSlot_t   ledTimeSlot[3];
+	uint32_t ledsTime;
+	uint16_t itemIndex;
+	uint8_t LEDS_NUM;
+	uint8_t colormask;
+  ledTimeSlot_t   ledTimeSlot[2];
 }rgbLedTask_t;
 
+extern ledTimeSlot_t const LED_ALARM_Empty;
+extern ledTimeSlot_t const LED_ALARM_LiveSPL;
+extern ledTimeSlot_t const LED_ALARM_Operatingstate;
+extern ledTimeSlot_t const LED_ALARM_Overloadindicator;
+extern ledTimeSlot_t const LED_ALARM_LAeqM3dB;
+extern ledTimeSlot_t const LED_ALARM_LAeq;
+extern ledTimeSlot_t const LED_ALARM_hearing;
+extern ledTimeSlot_t const LED_ALARM_BLE;
 
-
-
-
+extern rgbLedTask_t  rgbLedTaskD1;
+extern rgbLedTask_t  rgbLedTaskLD1;
 
 
 void ss_i2c_test (void);
@@ -44548,6 +44574,15 @@ static const i2c_eeprom_cfg_t sx1502_cfg = {
 };
 
 
+ledTimeSlot_t const LED_ALARM_Empty              ={0,0,0};
+ledTimeSlot_t const LED_ALARM_LiveSPL	          ={1,(500000/(1000000/8)),CL_RED};
+ledTimeSlot_t const LED_ALARM_Operatingstate	    ={1,(500000/(1000000/8)),CL_BLUE};
+ledTimeSlot_t const LED_ALARM_Overloadindicator	={1,(1000000/(1000000/8)),CL_RED};
+ledTimeSlot_t const LED_ALARM_LAeqM3dB	          ={1,(500000/(1000000/8)),CL_LD1};
+ledTimeSlot_t const LED_ALARM_LAeq    	          ={1,(1000000/(1000000/8)) ,CL_LD1};
+ledTimeSlot_t const LED_ALARM_hearing 	          ={1,(1000000/(1000000/8)) ,CL_GREEN};
+ledTimeSlot_t const LED_ALARM_BLE     	          ={1,(1000000/(1000000/8)) ,CL_WHITE};
+
 
 
 
@@ -44562,7 +44597,7 @@ static uint8_t   buttonsState;
 
 static uint32_t systick_last_LED;
 static uint32_t systick_last_SCAN;
-static uint32_t ledsTime;     
+
 
 
  
@@ -44571,14 +44606,6 @@ static void ssi2c_set_pad_functions(void)
   
   GPIO_ConfigurePin(GPIO_PORT_0, GPIO_PIN_9, INPUT, PID_I2C_SCL, 0);
   GPIO_ConfigurePin(GPIO_PORT_0, GPIO_PIN_8, INPUT, PID_I2C_SDA, 0);
-  
-
-
-
-
-
-
- 
 }
 
 
@@ -44615,7 +44642,12 @@ void ssi2c_init(void)
 {
 systick_last_LED=sx_encounter;
 systick_last_SCAN=sx_encounter;    
-ledsTime = sx_encounter;	
+rgbLedTaskD1.ledsTime = sx_encounter;	
+rgbLedTaskLD1.ledsTime = sx_encounter;
+rgbLedTaskD1.LEDS_NUM=2;
+rgbLedTaskLD1.LEDS_NUM=1;	
+rgbLedTaskD1.colormask=(0x80|0x40|0x20);	
+rgbLedTaskLD1.colormask=(0x01);	
 	
   
   i2c_eeprom_configure(&i2c_cfg, &sx1502_cfg);
@@ -44676,8 +44708,8 @@ void ss_i2c_test (void)
 
 btn_t         sw1;
 btn_t         sw3;
-rgbLedTask_t  rgbLedTask;
-
+rgbLedTask_t  rgbLedTaskD1;
+rgbLedTask_t  rgbLedTaskLD1;
 
 
  
@@ -44687,23 +44719,6 @@ volatile struct {
   uint16_t ALARM_STATE        : 1;                                      
   uint16_t ERROR_STATE        : 1;
  }Status;
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -44859,33 +44874,33 @@ static void executeSwState(void)
   {
     case BTN_SW3_LONG:                                                  
 
-      rgbLedTask.ledTimeSlot[0].isEnabled = 0;
-      rgbLedTask.ledTimeSlot[1].isEnabled = 0;
-      rgbLedTask.ledTimeSlot[2].isEnabled = 0;
+
+
+
     break;
       
     case BTN_SW3_SHORT:                                                 
-      rgbLedTask.ledTimeSlot[0].color = CL_RED;
-      rgbLedTask.ledTimeSlot[0].pulseWidthMs = (500000/(1000000/8));
-      rgbLedTask.ledTimeSlot[0].isEnabled = 1;
+
+
+
     break;
     
     case BTN_SW1_SHORT:                                                 
-      rgbLedTask.ledTimeSlot[1].color = CL_RED|CL_GREEN;
-      rgbLedTask.ledTimeSlot[1].pulseWidthMs = (500000/(1000000/8));
-      rgbLedTask.ledTimeSlot[1].isEnabled = 1;      
+
+
+
     break;
     
     case BTN_SW1_ONE_CLICK:                                             
-      rgbLedTask.ledTimeSlot[1].color = CL_GREEN;
-      rgbLedTask.ledTimeSlot[1].pulseWidthMs = (500000/(1000000/8));
-      rgbLedTask.ledTimeSlot[1].isEnabled = 1;
+
+
+
     break;
       
     case BTN_SW1_DBL_CLICK:                                             
-      rgbLedTask.ledTimeSlot[2].color = CL_BLUE;
-      rgbLedTask.ledTimeSlot[2].pulseWidthMs = (500000/(1000000/8));
-      rgbLedTask.ledTimeSlot[2].isEnabled = 1;
+
+
+
     break;
     
     case BTN_SW1_THREE_CLICK:                                           
@@ -44917,46 +44932,45 @@ static void executeSwState(void)
 
 
  
-static void rgbLedServer(void)
+static void rgbLedServer(rgbLedTask_t * rgbLedTask )
 {
-  static uint16_t itemIndex = 0;
 	uint32_t l_ledsTime;
 	
-	l_ledsTime=sx_encounter-ledsTime;
-	if (l_ledsTime >= ((uint16_t)((3000000/(1000000/8)) / 3)))
+	l_ledsTime=sx_encounter-rgbLedTask->ledsTime;
+	if (l_ledsTime >= (1000000/(1000000/8)))
   { 
-    ledsTime = sx_encounter;
-    rgbLedTask.timeSlotMode = TSM_STRT;
+    rgbLedTask->ledsTime = sx_encounter;
+    rgbLedTask->timeSlotMode = TSM_STRT;
+		if(++rgbLedTask->itemIndex == rgbLedTask->LEDS_NUM){rgbLedTask->itemIndex = 0;}
 	}
   
-  switch(rgbLedTask.timeSlotMode)
+  switch(rgbLedTask->timeSlotMode)
   {
     case TSM_STRT:
       
-      if(rgbLedTask.ledTimeSlot[itemIndex].isEnabled)                   
+      if(rgbLedTask->ledTimeSlot[rgbLedTask->itemIndex].isEnabled)                   
       {
-        outData |= 0x80 | 0x40 | 0x20;          
-        outData &= ~rgbLedTask.ledTimeSlot[itemIndex].color;            
-        i2c_eeprom_write_byte((0x00), outData);            
+        outData |= rgbLedTask->colormask;          
+        outData &= ~(rgbLedTask->ledTimeSlot[rgbLedTask->itemIndex].color);            
 
 
-        rgbLedTask.timeSlotMode = TSM_BUSY;                             
+
+        rgbLedTask->timeSlotMode = TSM_BUSY;                             
       } 
       else 
       {
-        rgbLedTask.timeSlotMode = TSM_IDLE;                             
-        if(++itemIndex == 3){itemIndex = 0;}                     
+        rgbLedTask->timeSlotMode = TSM_IDLE;                             
       }
     break;
     
     case TSM_BUSY:
       
-    if(rgbLedTask.ledTimeSlot[itemIndex].pulseWidthMs >= l_ledsTime)      
+    if(rgbLedTask->ledTimeSlot[rgbLedTask->itemIndex].pulseWidthMs <= l_ledsTime)      
       {
-        outData |= 0x80 | 0x40 | 0x20;          
-        i2c_eeprom_write_byte((0x00), outData);            
-        rgbLedTask.timeSlotMode = TSM_IDLE;;                            
-       if(++itemIndex == 3){itemIndex = 0;}                      
+        outData |= rgbLedTask->colormask;          
+       
+        rgbLedTask->timeSlotMode = TSM_IDLE;;                            
+                                 
       }
       
     break;
@@ -44984,11 +44998,11 @@ void sx_main (void)
 
    
 
-	if ((sx_encounter-systick_last_LED)>=((3000000/(1000000/8))))
-	{ 
-		systick_last_LED+=((3000000/(1000000/8)));
-	  rgbLedTask.timeSlotMode = TSM_STRT;
-	}	
+
+
+
+
+
 		if ((sx_encounter-systick_last_SCAN)>=((125000/(1000000/8))))
 	{ 
 		systick_last_SCAN+=((125000/(1000000/8)));
@@ -44999,7 +45013,9 @@ void sx_main (void)
   
     executeSwState();
 
-    rgbLedServer();    
+    rgbLedServer(&rgbLedTaskD1);
+    rgbLedServer(&rgbLedTaskLD1);    
+		i2c_eeprom_write_byte((0x00), outData);   
   }
 }
 

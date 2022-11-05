@@ -12,6 +12,8 @@ e_FunctionReturnState ss_main_init(void);
 e_FunctionReturnState ssm_main_ADC_prepare(void);
 e_FunctionReturnState ssm_main_BLE_prepare(void);
 
+void DisplayAlarm(void);
+
 
 
 #endif

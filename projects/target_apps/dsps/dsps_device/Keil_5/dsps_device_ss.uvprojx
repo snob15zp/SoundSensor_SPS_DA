@@ -1401,7 +1401,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>i2c</GroupName>
+          <GroupName>sx</GroupName>
           <Files>
             <File>
               <FileName>ss_i2c.c</FileName>
@@ -3003,7 +3003,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>i2c</GroupName>
+          <GroupName>sx</GroupName>
           <Files>
             <File>
               <FileName>ss_i2c.c</FileName>
@@ -4605,7 +4605,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>i2c</GroupName>
+          <GroupName>sx</GroupName>
           <Files>
             <File>
               <FileName>ss_i2c.c</FileName>

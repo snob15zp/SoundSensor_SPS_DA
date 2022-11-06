@@ -468,7 +468,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGUARM</Key>
-          <Name>¬oo</Name>
+          <Name>´îï</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -501,7 +501,24 @@
           <Name>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000)</Name>
         </SetRegEntry>
       </TargetDriverDllRegistry>
-      <Breakpoint/>
+      <Breakpoint>
+        <Bp>
+          <Number>0</Number>
+          <Type>0</Type>
+          <LineNumber>206</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>133956224</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>.\..\..\..\..\..\sdk6\sdk\platform\arch\main\arch_main.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\SS_Fix\../../../../../sdk6/sdk/platform/arch/main/arch_main.c\206</Expression>
+        </Bp>
+      </Breakpoint>
       <WatchWindow1>
         <Ww>
           <count>0</count>

@@ -44,6 +44,8 @@ typedef enum
   BTN_SW1_SHORT                                                         // нажималась только sw1
 } btnCmd_en;
 
+
+
 typedef enum
 {
   CL_RED =  RED_LED_OUT,
@@ -96,6 +98,9 @@ extern ledTimeSlot_t const LED_ALARM_CalibrationShort;
 extern rgbLedTask_t  rgbLedTaskD1;
 extern rgbLedTask_t  rgbLedTaskLD1;
 // simple test
+
+extern btnCmd_en btnCmd;
+
 
 void ss_i2c_test (void);
 //complex test

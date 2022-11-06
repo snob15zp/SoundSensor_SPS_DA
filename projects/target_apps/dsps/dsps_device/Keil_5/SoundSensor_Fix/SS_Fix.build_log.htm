@@ -27,26 +27,34 @@ Project File Date:  11/05/2022
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'SoundSensor_Fix'
-compiling ss_main.c...
+compiling arch_main.c...
+..\src\i2c\ss_i2c.h(110): warning:  #1295-D: Deprecated declaration SX_PowerOff - give arg types
+  void SX_PowerOff();
 ..\src\SS_arch\ss_main.h(16): warning:  #1295-D: Deprecated declaration SSM_BLEStop - give arg types
   e_FunctionReturnState SSM_BLEStop();
 ..\src\SS_arch\ss_main.h(17): warning:  #1295-D: Deprecated declaration SSM_BLEStart - give arg types
   e_FunctionReturnState SSM_BLEStart();
-..\src\i2c\ss_i2c.h(105): warning:  #1295-D: Deprecated declaration SX_PowerOff - give arg types
-  void SX_PowerOff();
-..\src\SS_arch\ss_main.c(32): warning:  #767-D: conversion from pointer to smaller integer
-  	AF_V_WriteStart((uint16_t) SSM_ADCStart);	
-..\src\SS_arch\ss_main.c(67): warning:  #767-D: conversion from pointer to smaller integer
-          	    AF_V_WriteStop((uint16_t) SSM_ADCStop);		 
-..\src\SS_arch\ss_main.c(72): warning:  #550-D: variable "AddrNewRecord_funStop"  was set but never used
-  uint32_t AddrNewRecord_funStop;
-..\src\SS_arch\ss_main.c(211): warning:  #1-D: last line of file ends without a newline
-  };
-..\src\SS_arch\ss_main.c: 7 warnings, 0 errors
+..\..\..\..\..\sdk6\sdk\platform\arch\main\arch_main.c(197): warning:  #177-D: variable "currl"  was declared but never referenced
+  	{ int currl;
+..\..\..\..\..\sdk6\sdk\platform\arch\main\arch_main.c(281): warning:  #128-D: loop is not reachable
+      while(1)
+..\..\..\..\..\sdk6\sdk\platform\arch\main\arch_main.c(261): warning:  #177-D: variable "sleep_mode"  was declared but never referenced
+      sleep_mode_t sleep_mode;
+..\..\..\..\..\sdk6\sdk\platform\arch\main\arch_main.c(390): warning:  #177-D: function "arch_goto_sleep"  was declared but never referenced
+  __STATIC_INLINE void arch_goto_sleep(sleep_mode_t current_sleep_mode)
+..\..\..\..\..\sdk6\sdk\platform\arch\main\arch_main.c(484): warning:  #177-D: function "arch_resume_from_sleep"  was declared but never referenced
+  __STATIC_INLINE void arch_resume_from_sleep(void)
+..\..\..\..\..\sdk6\sdk\platform\arch\main\arch_main.c(611): warning:  #177-D: function "rwip_power_down"  was declared but never referenced
+  __STATIC_INLINE sleep_mode_t rwip_power_down(void)
+..\..\..\..\..\sdk6\sdk\platform\arch\main\arch_main.c(1036): warning:  #177-D: function "app_asynch_proc"  was declared but never referenced
+  __STATIC_INLINE arch_main_loop_callback_ret_t app_asynch_proc(void)
+..\..\..\..\..\sdk6\sdk\platform\arch\main\arch_main.c(1053): warning:  #177-D: function "app_asynch_sleep_proc"  was declared but never referenced
+  __STATIC_INLINE void app_asynch_sleep_proc(void)
+..\..\..\..\..\sdk6\sdk\platform\arch\main\arch_main.c: 11 warnings, 0 errors
 linking...
 Program Size: Code=24388 RO-data=2408 RW-data=216 ZI-data=12536  
 FromELF: creating hex file...
-".\SoundSensor_Fix\SS_Fix.axf" - 0 Error(s), 7 Warning(s).
+".\SoundSensor_Fix\SS_Fix.axf" - 0 Error(s), 11 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -60,7 +68,7 @@ Package Vendor: ARM
   C:\Users\RD\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:04
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>

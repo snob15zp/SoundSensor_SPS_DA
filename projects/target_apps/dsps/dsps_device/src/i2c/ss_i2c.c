@@ -57,6 +57,8 @@ ledTimeSlot_t const LED_ALARM_CalibrationShort    ={true,D_pulseWidthMs ,CL_BR};
 #define sx_time systick_time
 #endif
 
+btnCmd_en btnCmd;
+
 static uint32_t sx_encounter;
 
 static uint8_t   inpData;                                                      // ???? ?????? ?????? ?? ?????? SX1502 
@@ -332,56 +334,56 @@ static btnCmd_en decodeButtonsState(void)
 //}
 void SX_PowerOff()
 {
-	outData |= PWR_FIX_OUT;                                             // установить бит включения DC/DC
+	outData &= ~PWR_FIX_OUT;                                             // установить бит включения DC/DC
   i2c_eeprom_write_byte(SX1502_REGDATA_ADDR, outData);                  // записать данные в порт
 };
 /*****************************************************************************************
 * @brief Обработка нажатия кнопок  
  *****************************************************************************************/
-static void executeSwState(void)
-{
-  btnCmd_en btnCmd = decodeButtonsState();
+//static void executeSwState(void)
+//{
+//  btnCmd_en btnCmd = decodeButtonsState();
 
-  switch(btnCmd)                                                           
-  {
-    case BTN_SW3_LONG:                                                  // если было длинное нажатие SW3
-//      togglePowerState();                                               // изменить состояние выхода контроля питания
-//      rgbLedTaskD1.ledTimeSlot[0].isEnabled = false;
-//      rgbLedTaskD1.ledTimeSlot[1].isEnabled = false;
-//      rgbLedTaskD1.ledTimeSlot[2].isEnabled = false;
-    break;
-      
-    case BTN_SW3_SHORT:                                                 // если было короткое нажатие SW3
-//      rgbLedTaskD1.ledTimeSlot[0].color = CL_RED;
-//      rgbLedTaskD1.ledTimeSlot[0].pulseWidthMs = D_pulseWidthMs;
-//      rgbLedTaskD1.ledTimeSlot[0].isEnabled = true;
-    break;
-    
-    case BTN_SW1_SHORT:                                                 // если было нажатие SW1 без SW3
-//      rgbLedTaskD1.ledTimeSlot[1].color = CL_RED|CL_GREEN;
-//      rgbLedTaskD1.ledTimeSlot[1].pulseWidthMs = D_pulseWidthMs;
-//      rgbLedTaskD1.ledTimeSlot[1].isEnabled = true;      
-    break;
-    
-    case BTN_SW1_ONE_CLICK:                                             // если было одно нажатие SW1 при нажатой SW3
-//      rgbLedTaskD1.ledTimeSlot[1].color = CL_GREEN;
-//      rgbLedTaskD1.ledTimeSlot[1].pulseWidthMs = D_pulseWidthMs;
-//      rgbLedTaskD1.ledTimeSlot[1].isEnabled = true;
-    break;
-      
-    case BTN_SW1_DBL_CLICK:                                             // если было два нажатия SW1 при нажатой SW3
-//      rgbLedTaskD1.ledTimeSlot[2].color = CL_BLUE;
-//      rgbLedTaskD1.ledTimeSlot[2].pulseWidthMs = D_pulseWidthMs;
-//      rgbLedTaskD1.ledTimeSlot[2].isEnabled = true;
-    break;
-    
-    case BTN_SW1_THREE_CLICK:                                           // если было три нажатия SW1 при нажатой SW3
+//  switch(btnCmd)                                                           
+//  {
+//    case BTN_SW3_LONG:                                                  // если было длинное нажатие SW3
+////      togglePowerState();                                               // изменить состояние выхода контроля питания
+////      rgbLedTaskD1.ledTimeSlot[0].isEnabled = false;
+////      rgbLedTaskD1.ledTimeSlot[1].isEnabled = false;
+////      rgbLedTaskD1.ledTimeSlot[2].isEnabled = false;
+//    break;
+//      
+//    case BTN_SW3_SHORT:                                                 // если было короткое нажатие SW3
+////      rgbLedTaskD1.ledTimeSlot[0].color = CL_RED;
+////      rgbLedTaskD1.ledTimeSlot[0].pulseWidthMs = D_pulseWidthMs;
+////      rgbLedTaskD1.ledTimeSlot[0].isEnabled = true;
+//    break;
+//    
+//    case BTN_SW1_SHORT:                                                 // если было нажатие SW1 без SW3
+////      rgbLedTaskD1.ledTimeSlot[1].color = CL_RED|CL_GREEN;
+////      rgbLedTaskD1.ledTimeSlot[1].pulseWidthMs = D_pulseWidthMs;
+////      rgbLedTaskD1.ledTimeSlot[1].isEnabled = true;      
+//    break;
+//    
+//    case BTN_SW1_ONE_CLICK:                                             // если было одно нажатие SW1 при нажатой SW3
+////      rgbLedTaskD1.ledTimeSlot[1].color = CL_GREEN;
+////      rgbLedTaskD1.ledTimeSlot[1].pulseWidthMs = D_pulseWidthMs;
+////      rgbLedTaskD1.ledTimeSlot[1].isEnabled = true;
+//    break;
+//      
+//    case BTN_SW1_DBL_CLICK:                                             // если было два нажатия SW1 при нажатой SW3
+////      rgbLedTaskD1.ledTimeSlot[2].color = CL_BLUE;
+////      rgbLedTaskD1.ledTimeSlot[2].pulseWidthMs = D_pulseWidthMs;
+////      rgbLedTaskD1.ledTimeSlot[2].isEnabled = true;
+//    break;
+//    
+//    case BTN_SW1_THREE_CLICK:                                           // если было три нажатия SW1 при нажатой SW3
 
-    break;
-      
-    default: break;
-  } 
-}
+//    break;
+//      
+//    default: break;
+//  } 
+//}
 
 ///*****************************************************************************************
 //* @brief Измеряем напряжение питания  
@@ -467,7 +469,7 @@ void sx_main (void)
 		systick_last_SCAN+=(SCAN_TIME);
 	  scanInputs();
 	}	
-    executeSwState();
+    btnCmd = decodeButtonsState();//executeSwState();
 //    updateVddValue();
     rgbLedServer(&rgbLedTaskD1);
     rgbLedServer(&rgbLedTaskLD1);    

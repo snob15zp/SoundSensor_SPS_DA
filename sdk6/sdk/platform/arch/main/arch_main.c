@@ -209,14 +209,14 @@ e_FunctionReturnState TransitionFunction_M(void * FSM)
 		case e_M_ADCmain:  ss_main();	
 //                       if (buttom3)		
 //												 sign=2;
-//											 if (buttomSW)
-//												 sign=0;
+											 if (BTN_SW3_LONG==btnCmd)
+												 ((t_s_FSM*)FSM)->sign=0;
 			rstate=e_FRS_Done; break;
 		case e_M_BLEmain:	 schedule_while_ble_on();	
 //                       if (buttom3)		
 //												 sign=1;
-//											 if (buttomSW)
-//												 sign=0;
+											 if (BTN_SW3_LONG==btnCmd)
+												 ((t_s_FSM*)FSM)->sign=0;
 			rstate=e_FRS_Done; break;
 		case e_M_SXmain:	 ss_main_BLE();												
 			rstate=e_FRS_Done; break;

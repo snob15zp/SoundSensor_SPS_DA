@@ -108,4 +108,5 @@ void ssi2c_init(void);
 i2c_error_code sx1502_init(void);//for inner
 void sx_main(void);
 void SX_PowerOff();
+void SX_CalibrationOnOff(bool cal);
 #endif

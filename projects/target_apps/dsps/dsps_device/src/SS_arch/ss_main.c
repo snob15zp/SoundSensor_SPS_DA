@@ -27,7 +27,7 @@ E_ADC_MODE_t SS_ADC_Active_MODE=EAM_ADCsystick;
 static int32_t time_start;
 e_FunctionReturnState SSM_ADCStart(void)
 {
-	
+	SX_CalibrationOnOff(SSS_CalibrationMode);
   time_start=systick_time;
 	AF_V_WriteStart((uint16_t) SSM_ADCStart);	
 

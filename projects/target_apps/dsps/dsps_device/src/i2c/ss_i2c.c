@@ -332,6 +332,19 @@ static btnCmd_en decodeButtonsState(void)
 //  }
 //  i2c_eeprom_write_byte(SX1502_REGDATA_ADDR, outData);                  // записать данные в порт
 //}
+void SX_CalibrationOnOff(bool cal)
+{
+	if (cal)
+	{
+		outData &= ~CONTROL_OUT;
+	}
+	else
+	{
+		outData |= CONTROL_OUT;
+	}
+	i2c_eeprom_write_byte(SX1502_REGDATA_ADDR, outData);
+}
+
 void SX_PowerOff()
 {
 	outData &= ~PWR_FIX_OUT;                                             // установить бит включения DC/DC

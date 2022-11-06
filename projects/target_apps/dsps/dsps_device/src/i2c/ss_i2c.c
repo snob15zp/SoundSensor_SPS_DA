@@ -48,6 +48,8 @@ ledTimeSlot_t const LED_ALARM_LAeqM3dB	          ={true,D_pulseWidthMs,CL_LD1};
 ledTimeSlot_t const LED_ALARM_LAeq    	          ={true,LED_SLOT_TIME ,CL_LD1};
 ledTimeSlot_t const LED_ALARM_hearing 	          ={true,LED_SLOT_TIME ,CL_GREEN};
 ledTimeSlot_t const LED_ALARM_BLE     	          ={true,LED_SLOT_TIME ,CL_WHITE};
+ledTimeSlot_t const LED_ALARM_CalibrationLong     ={true,LED_SLOT_TIME ,CL_BR};
+ledTimeSlot_t const LED_ALARM_CalibrationShort    ={true,D_pulseWidthMs ,CL_BR};
 //======================================================================================
 #ifdef D_sx_takt_call
 #define sx_time sx_encounter
@@ -312,23 +314,27 @@ static btnCmd_en decodeButtonsState(void)
 /*****************************************************************************************
 * @brief Выполнение команды длинного нажатия кнопки PWR ON/OFF (SW3)  
  *****************************************************************************************/
-static void togglePowerState(void)
+//static void togglePowerState(void)
+//{
+//  if(Status.PWR_ENABLED)                                                // если DC/DC включен
+//  {
+//    outData &= ~PWR_FIX_OUT;                                            // снять бит включения DC/DC
+//    outData |= SINGLE_LED_OUT;                                          // установить бит для выключения одиночного светодиода
+//    Status.PWR_ENABLED = 0;                                             // снять флаг включенного DC/DC
+//  } 
+//  else
+//  {
+//    outData |= PWR_FIX_OUT;                                             // установить бит включения DC/DC
+//    outData &= ~SINGLE_LED_OUT;                                         // снять бит для включения одиночного светодиода
+//    Status.PWR_ENABLED = 1;                                             // установить флаг включенного DC/DC
+//  }
+//  i2c_eeprom_write_byte(SX1502_REGDATA_ADDR, outData);                  // записать данные в порт
+//}
+void SX_PowerOff()
 {
-  if(Status.PWR_ENABLED)                                                // если DC/DC включен
-  {
-    outData &= ~PWR_FIX_OUT;                                            // снять бит включения DC/DC
-    outData |= SINGLE_LED_OUT;                                          // установить бит для выключения одиночного светодиода
-    Status.PWR_ENABLED = 0;                                             // снять флаг включенного DC/DC
-  } 
-  else
-  {
-    outData |= PWR_FIX_OUT;                                             // установить бит включения DC/DC
-    outData &= ~SINGLE_LED_OUT;                                         // снять бит для включения одиночного светодиода
-    Status.PWR_ENABLED = 1;                                             // установить флаг включенного DC/DC
-  }
+	outData |= PWR_FIX_OUT;                                             // установить бит включения DC/DC
   i2c_eeprom_write_byte(SX1502_REGDATA_ADDR, outData);                  // записать данные в порт
-}
-
+};
 /*****************************************************************************************
 * @brief Обработка нажатия кнопок  
  *****************************************************************************************/
@@ -456,32 +462,15 @@ static void rgbLedServer(rgbLedTask_t * rgbLedTask )
 void sx_main (void)
 {
   sx_encounter++;
-  //SysTick_Config(SystemCoreClock / 1000);
-  
-//  if(sx1502_init() == I2C_NO_ERROR)
-//  {
-//    i2c_eeprom_read_byte(SX1502_REGDATA_ADDR, &outData);
-//  } else while(1);
-   
-//  while(1)
-//	if ((sx_time-systick_last_LED)>=(LED_PULSE_TIME))
-//	{ 
-//		systick_last_LED+=(LED_PULSE_TIME);
-//	  rgbLedTaskD1.timeSlotMode = TSM_STRT;
-//	}	
 		if ((sx_time-systick_last_SCAN)>=(SCAN_TIME))
 	{ 
 		systick_last_SCAN+=(SCAN_TIME);
 	  scanInputs();
 	}	
-
-  {
-  
     executeSwState();
 //    updateVddValue();
     rgbLedServer(&rgbLedTaskD1);
     rgbLedServer(&rgbLedTaskLD1);    
 		i2c_eeprom_write_byte(SX1502_REGDATA_ADDR, outData);   
-  }
 }
 

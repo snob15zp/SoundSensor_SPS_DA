@@ -25,11 +25,11 @@ bool ssm_main_BLE_RDY;
 E_ADC_MODE_t SS_ADC_Active_MODE=EAM_ADCsystick;
 
 static int32_t time_start;
-e_FunctionReturnState ssm_main_ADC_prepare(void)
+e_FunctionReturnState SSM_ADCStart(void)
 {
 	
   time_start=systick_time;
-	AF_V_WriteStart((uint16_t) ssm_main_ADC_prepare);	
+	AF_V_WriteStart((uint16_t) SSM_ADCStart);	
 
 	MS_init();
 	MF_main_init();
@@ -44,7 +44,7 @@ e_FunctionReturnState ssm_main_ADC_prepare(void)
 };
 
 static uint8_t SM_FSM_state = 0;
-e_FunctionReturnState ssm_main_BLE_prepare(void)
+e_FunctionReturnState SSM_ADCStop(void)
 { e_FunctionReturnState b_rv;
 	b_rv=e_FRS_Not_Done;
 	time_start=systick_time;
@@ -62,9 +62,9 @@ e_FunctionReturnState ssm_main_BLE_prepare(void)
 			break;						
 		default: 	SS_ADC_MODE=EAM_IDLE;
 			        SPI_ADC_deinit();
-				ss_spi_init(SPI_ADC_GPIO_MAP,&UPS_spi_cfg);		 
+							ss_spi_init(SPI_ADC_GPIO_MAP,&UPS_spi_cfg);		 
 	            user_spi_flash_init(SPI_FLASH_GPIO_MAP);
-        	    AF_V_WriteStop((uint16_t) ssm_main_BLE_prepare);		 
+        	    AF_V_WriteStop((uint16_t) SSM_ADCStop);		 
 	            //write stop stamp
 	          	
 //---------------------------------------------------------------------------------------------
@@ -160,6 +160,18 @@ e_FunctionReturnState ss_main_BLE(void)
 	return b_rv; 
 }
 
+
+e_FunctionReturnState SSM_BLEStop()
+{
+	return e_FRS_Done;
+};
+e_FunctionReturnState SSM_BLEStart()
+{
+	return e_FRS_Done;
+};
+
+
+//================================ALARM===============================================
 #define  MS_b_alert_C140dBPeakD true
 #define  MS_b_alert_FastAD true
 #define  MS_b_alert_liveD false
@@ -176,7 +188,20 @@ void DisplayAlarm(void)
 	if (ssm_main_BLE_RDY) rgbLedTaskD1.ledTimeSlot[0]=LED_ALARM_BLE;
 
 	rgbLedTaskD1.ledTimeSlot[1]=LED_ALARM_Empty;
-	if (MS_b_alert_hearingD) rgbLedTaskD1.ledTimeSlot[1]=LED_ALARM_hearing;
+	if (SSS_CalibrationMode)
+	{
+		if (MS_b_alert_hearingD) 
+		{rgbLedTaskD1.ledTimeSlot[1]=LED_ALARM_CalibrationLong;
+		}
+		else
+		{rgbLedTaskD1.ledTimeSlot[1]=LED_ALARM_CalibrationShort; 
+		}
+	}
+	else
+	{
+		if (MS_b_alert_hearingD) rgbLedTaskD1.ledTimeSlot[1]=LED_ALARM_hearing;
+	}
+
 
 
 	rgbLedTaskLD1.ledTimeSlot[0]=LED_ALARM_Empty;

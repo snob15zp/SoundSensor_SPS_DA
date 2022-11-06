@@ -15,8 +15,28 @@
 //} uni_uint32_t;
 
 extern uint8_t dummy_function_status;
-
+//=============================================FSM=====================================
 typedef enum  {e_FRS_Not_Done, e_FRS_Done,e_FRS_DoneError} e_FunctionReturnState;
+
+typedef uint32_t key_type;
+typedef e_FunctionReturnState (*fp_FSM_Functions)(void */*FSM*/ );	
+
+typedef
+   struct { 
+			key_type mFSM_Error;
+		  uint8_t state;
+		  uint8_t NumOfel;
+		  uint8_t mainFMSstate;
+		  uint8_t sign;
+		  uint8_t keyrows;
+      key_type *keys;		 
+		  fp_FSM_Functions fs;
+    } t_s_FSM;
+	
+e_FunctionReturnState  FSM_main(t_s_FSM *FSM);
+		
+//typedef e_FunctionReturnState (*fp_FSM_Transition)(t_s_FSM_Data * pFDMD_Power,key_type key,fp_FSM_Functions fp);
+//extern e_FunctionReturnState  FSM_MainTransition(t_s_FSM_Data * pFDMD_Power,key_type key);		
 
 /* parametes
 extern bool ;

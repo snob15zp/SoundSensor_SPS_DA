@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Sat Nov 05 19:41:33 2022
+;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Sun Nov 06 17:14:20 2022
 ;VERSION 0.2
 ;FILE adc_531.o
 adc_correct_sample <= USED 0
@@ -202,12 +202,17 @@ spi_flash_write_data_buffer <= USED 0
 spi_flash_write_enable_volatile <= USED 0
 spi_flash_write_status_config_reg <= USED 0
 ;FILE sps_server.o
+;FILE ss_global.o
 ;FILE ss_hnd.o
 ;FILE ss_i2c.o
 ss_i2c_test <= USED 0
 ;FILE ss_main.o
 ;FILE ss_sys.o
 LEDinit <= USED 0
+SSS_ReadFromVar <= USED 0
+SSS_ReadTableFromVar <= USED 0
+SSS_WriteTableToVar <= USED 0
+SSS_WriteToVar <= USED 0
 ;FILE startup_da14531.o
 ;FILE syscntl.o
 syscntl_dcdc_get_level <= USED 0

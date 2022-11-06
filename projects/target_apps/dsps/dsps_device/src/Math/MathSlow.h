@@ -26,12 +26,12 @@
 #define MS_D_AlertLevel_Dose MS_D_AlertLevel_FastA//0.1dB
 #define MS_D_AlertLevel_DoseM3dB (MS_D_AlertLevel_Dose-3)//0.1dB	
 
-//extern int32_t MS_i32_AlertLevel_C140dB_Peak;//filterC bits
+extern int32_t MS_i32_AlertLevel_C140dB_Peak;//filterC bits
 extern int32_t MS_i32_AlertLevel_FastA;//0.1dB
 //extern int32_t MS_i32_AlertLevel_Overload;//ADC bits
 extern int32_t MS_i32_AlertLevel_Dose;//0.1dB
 extern int32_t MS_i32_AlertLevel_DoseM3dB;//0.1dB	
-
+extern int32_t MS_i32_CalibrationFactor;
 
 extern bool MS_b_alert_C140dBPeak;
 extern bool MS_b_alert_FastA;

@@ -14,7 +14,7 @@ bool MS_b_alert_Overload;
 bool MS_b_alert_DoseM3dB;	
 bool MS_b_alert_Dose;
 
-//extern int32_t MS_i32_AlertLevel_C140dB_Peak;//filterC bits
+int32_t MS_i32_AlertLevel_C140dB_Peak;//filterC bits
 int32_t MS_i32_AlertLevel_FastA;//0.1dB
 //extern int32_t MS_i32_AlertLevel_Overload;//ADC bits
 int32_t MS_i32_AlertLevel_Dose;//0.1dB
@@ -23,6 +23,9 @@ int32_t MS_i32_AlertLevel_DoseM3dB;//0.1dB
 int32_t MS_i32_Level_C_Peak_dB;//0.1dB
 int32_t MS_i32_Level_FastA_dB;//0.1dB
 int32_t MS_i32_Level_Dose_dB;//0.1dB
+
+int32_t MS_i32_CalibrationFactor;
+
 // for catch
 uint32_t MS_Integrator_Hi_out;
 int32_t MS_i32_fastAC;
@@ -138,7 +141,7 @@ MS_b_alert_C140dBPeak_out=MS_b_alert_C140dBPeak;
 void MS_init(void)
 {
 
-//MS_i32_AlertLevel_C140dB_Peak=MS_D_AlertLevel_C_140bB_peak;//filterC bits
+MS_i32_AlertLevel_C140dB_Peak=MS_D_AlertLevel_C_140bB_peak;//filterC bits
 MS_i32_AlertLevel_FastA=(MS_D_AlertLevel_FastA)*(MS_D_dBscale);//0.1dB
 //MS_i32_AlertLevel_Overload=MS_D_AlertLevel_Overload;//ADC bits
 MS_i32_AlertLevel_Dose=(MS_D_AlertLevel_Dose)*(MS_D_dBscale);//0.1dB

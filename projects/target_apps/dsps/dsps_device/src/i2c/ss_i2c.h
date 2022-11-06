@@ -50,6 +50,9 @@ typedef enum
   CL_GREEN =  GREEN_LED_OUT,
   CL_BLUE =   BLUE_LED_OUT,
 	CL_WHITE = RED_LED_OUT|GREEN_LED_OUT|BLUE_LED_OUT,
+	CL_RG =RED_LED_OUT|GREEN_LED_OUT,
+	CL_GB=GREEN_LED_OUT|BLUE_LED_OUT,
+	CL_BR =RED_LED_OUT|BLUE_LED_OUT,
 	CL_LD1   = SINGLE_LED_OUT,
 	CL_MASK  =SX_D_LED_MASK
 }color_en;
@@ -87,6 +90,8 @@ extern ledTimeSlot_t const LED_ALARM_LAeqM3dB;
 extern ledTimeSlot_t const LED_ALARM_LAeq;
 extern ledTimeSlot_t const LED_ALARM_hearing;
 extern ledTimeSlot_t const LED_ALARM_BLE;
+extern ledTimeSlot_t const LED_ALARM_CalibrationLong;
+extern ledTimeSlot_t const LED_ALARM_CalibrationShort;
 
 extern rgbLedTask_t  rgbLedTaskD1;
 extern rgbLedTask_t  rgbLedTaskLD1;
@@ -97,4 +102,5 @@ void ss_i2c_test (void);
 void ssi2c_init(void);
 i2c_error_code sx1502_init(void);//for inner
 void sx_main(void);
+void SX_PowerOff();
 #endif

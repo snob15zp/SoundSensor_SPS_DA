@@ -3,6 +3,7 @@
 #include "systick.h"
 #include "gpio.h"
 #include "MathFast.h"
+#include "MathSlow.h"
 #include "ADC_flash.h"
 #include "SPI_ADC.h"
 #include "version.h"
@@ -13,15 +14,102 @@
 
 #define SYSTICK_EXCEPTION   1           // generate systick exceptions
 
-//bool ADC_EMUL_mode;
+bool SSS_CalibrationMode;
 
 E_ADC_MODE_t	SS_ADC_MODE;
 static uint16_t vars[VARS_CNT] = {0};
 uint8_t verify_value_cb (uint8_t* param);
 
-static const user_config_elem_t conf_table[] = {
-    {0x1000, sizeof(uint16_t) * VARS_CNT, sizeof(uint16_t) * VARS_CNT, vars, verify_value_cb, false},
+static const user_config_elem_t SSS_conf_table[] = 
+{
+	{0x1000, sizeof(MS_i32_AlertLevel_FastA), sizeof(MS_i32_AlertLevel_FastA), &MS_i32_AlertLevel_FastA, verify_value_cb, false},
+	{0x1001, sizeof(MS_i32_AlertLevel_C140dB_Peak), sizeof(MS_i32_AlertLevel_C140dB_Peak), &MS_i32_AlertLevel_C140dB_Peak, verify_value_cb, false},
+	{0x1002, sizeof(MS_i32_AlertLevel_Dose), sizeof(MS_i32_AlertLevel_Dose), &MS_i32_AlertLevel_Dose, verify_value_cb, false},
+	{0x1003, sizeof(MS_i32_AlertLevel_DoseM3dB), sizeof(MS_i32_AlertLevel_DoseM3dB), &MS_i32_AlertLevel_DoseM3dB, verify_value_cb, false},
+	{0x1004, sizeof(SSS_CalibrationMode), sizeof(SSS_CalibrationMode), &SSS_CalibrationMode, verify_value_cb, false},
+	{0x1005, sizeof(MS_i32_CalibrationFactor), sizeof(MS_i32_CalibrationFactor), &MS_i32_CalibrationFactor, verify_value_cb, false},
 };
+static const user_config_elem_t SSS_RO_table[] = 
+{
+	{0x2000, sizeof(MS_i32_Level_FastA_dB), sizeof(MS_i32_Level_FastA_dB), &MS_i32_AlertLevel_FastA, verify_value_cb, false},
+	{0x2001, sizeof(MS_i32_Level_C_Peak_dB), sizeof(MS_i32_Level_C_Peak_dB), &MS_i32_Level_C_Peak_dB, verify_value_cb, false},
+	{0x2002, sizeof(MS_i32_Level_Dose_dB), sizeof(MS_i32_Level_Dose_dB), &MS_i32_Level_Dose_dB, verify_value_cb, false},
+};
+
+static uint8_t SSS_u8_RW_vars_index_table;
+
+static uint8_t SSS_u8_index_vars;
+#define SSS_u8_index_vars_start 4;
+
+void SSS_WriteToVar(void)
+{ SSS_u8_index_vars=SSS_u8_index_vars_start;
+  SSS_WriteTableToVar(SSS_conf_table,&SSS_u8_index_vars,sizeof(SSS_conf_table)/sizeof(user_config_elem_t));
+	SSS_WriteTableToVar(SSS_RO_table,&SSS_u8_index_vars,sizeof(SSS_RO_table)/sizeof(user_config_elem_t));
+}
+
+void SSS_WriteTableToVar(const user_config_elem_t *t, uint8_t *var_index, uint8_t ms)
+{
+	SSS_u8_RW_vars_index_table=0;
+	uint8_t SSS_u8_index_vars=0;
+	while(SSS_u8_RW_vars_index_table<ms)
+	{
+		memcpy(vars+SSS_u8_index_vars,
+		       t[SSS_u8_RW_vars_index_table].data, 
+		       t[SSS_u8_RW_vars_index_table].cur_size
+		      );
+		SSS_u8_RW_vars_index_table++;
+		SSS_u8_index_vars+=(((t[SSS_u8_RW_vars_index_table].cur_size)+1)&0xFE);
+	}		
+}
+
+void SSS_ReadTableFromVar(const user_config_elem_t *t, uint8_t *var_index, uint8_t ms)
+{
+	SSS_u8_RW_vars_index_table=0;
+	uint8_t SSS_u8_index_vars=0;
+	while(SSS_u8_RW_vars_index_table<ms)
+	{
+		memcpy(t[SSS_u8_RW_vars_index_table].data,
+		       vars+SSS_u8_index_vars, 
+		       t[SSS_u8_RW_vars_index_table].cur_size
+		      );
+		SSS_u8_RW_vars_index_table++;
+		SSS_u8_index_vars+=(((t[SSS_u8_RW_vars_index_table].cur_size)+1)&0xFE);
+	}		
+}
+
+void SSS_ReadFromVar(void)
+{ SSS_u8_index_vars=SSS_u8_index_vars_start;
+  SSS_WriteTableToVar(SSS_conf_table,&SSS_u8_index_vars,sizeof(SSS_conf_table)/sizeof(user_config_elem_t));
+}
+
+
+/* parametes
+
+1	LiveWarningLevelAF	Live warning level, weighting A, time weighting fast	xxx.x	dB(A)
+extern int32_t MS_i32_AlertLevel_FastA;//0.1dB MODBUS ADDRESS 2
+2	LiveWarningLevelCP	Live warning level, weighting C, peak	xxx.x	dB(C)
+extern int32_t MS_i32_AlertLevel_C140dB_Peak; MODBUS ADDRESS 4
+3	LAeqLimit	The normalized 8-hour equivalentexposure limit	xxx.x	dB(A)
+extern int32_t MS_i32_AlertLevel_Dose; MODBUS ADDRESS 6
+4
+extern int32_t MS_i32_AlertLevel_DoseM3dB MODBUS ADDRESS 8
+5	CalibrationFactor	Calibration factor	x.xxxxx	 -
+int32_t MS_i32_CalibrationFactor; MODBUS ADDRESS 10
+6	ClibrationMode	Turning on the calibration mode	Check box	-
+uint16_t SSS_calibration MODBUS ADDRESS 12
+
+Table of reading parameters
+#	Variable name	Description	Format	Units
+1	LiveLevelAF	Live level, weighting A, time weighting fast	xxx.x	dB(A)
+extern int32_t MS_i32_Level_FastA_dB;//0.1dB MODBUS ADDRESS 13
+2	LiveLevelCP	Live level, weighting C, peak	xxx.x	dB(C)
+extern int32_t MS_i32_Level_C_Peak_dB;//0.1dB MODBUS ADDRESS 15
+3	LAeq	The normalized 8-hour equivalentexposure	xxx.x	dB(A)
+extern int32_t MS_i32_Level_Dose_dB;//0.1dB MODBUS ADDRESS 17
+
+
+
+*/
 
 volatile uint32_t systick_time;
 
@@ -87,9 +175,9 @@ void test_hnd_init(void)
     char version[16] = {0};
     strncpy(version, SDK_VERSION, sizeof(version));
 
-    user_conf_storage_init((user_config_elem_t *)conf_table, sizeof(conf_table)/sizeof(user_config_elem_t), version, &version_len);
+    user_conf_storage_init((user_config_elem_t *)SSS_conf_table, sizeof(SSS_conf_table)/sizeof(user_config_elem_t), version, &version_len);
     vars[0] += 1;
-    user_config_save((user_config_elem_t *)conf_table, sizeof(conf_table)/sizeof(user_config_elem_t), version, &version_len);
+    user_config_save((user_config_elem_t *)SSS_conf_table, sizeof(SSS_conf_table)/sizeof(user_config_elem_t), version, &version_len);
 }
 
 void LEDinit (void)

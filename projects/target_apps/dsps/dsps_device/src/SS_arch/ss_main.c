@@ -36,8 +36,6 @@ e_FunctionReturnState SSM_ADCStart(void)
 	ssm_main_BLE_RDY=false;
 	SS_spi_switchoff_pins(SPI_FLASH_GPIO_MAP);
 	
-	
-	
 	SPI_ADC_init();
 	SS_ADC_MODE=SS_ADC_Active_MODE;
 	return e_FRS_Done;

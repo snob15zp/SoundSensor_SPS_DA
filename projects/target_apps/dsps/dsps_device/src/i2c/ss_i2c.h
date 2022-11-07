@@ -34,14 +34,14 @@ typedef struct
 
 typedef enum
 {
-  BTN_CMD_NO,
-  BTN_SW3_SHORT,                                                        // sw3 отжата и sw1.numOfClicks = 0
-  BTN_SW1_ONE_CLICK,                                                    // sw3 отжата и sw1.numOfClicks = 1
-  BTN_SW1_DBL_CLICK,                                                    // sw3 отжата и sw1.numOfClicks = 2
-  BTN_SW1_THREE_CLICK,                                                  // sw3 отжата и sw1.numOfClicks = 3
+  BTN_CMD_NO=1,
+  BTN_SW3_SHOR=1<<1,                                                        // sw3 отжата и sw1.numOfClicks = 0
+  BTN_SW1_ONE_CLICK=1<<2,                                                    // sw3 отжата и sw1.numOfClicks = 1
+  BTN_SW1_DBL_CLICK=1<<3,                                                    // sw3 отжата и sw1.numOfClicks = 2
+  BTN_SW1_THREE_CLICK=1<<4,                                                  // sw3 отжата и sw1.numOfClicks = 3
   /* далее можно продолжать список команд с количеством нажатий sw1 (порядок важен для алгоритма) */  
-  BTN_SW3_LONG,                                                         // sw3 нажата более 5 секунд
-  BTN_SW1_SHORT                                                         // нажималась только sw1
+  BTN_SW3_LONG=1<<5,                                                         // sw3 нажата более 5 секунд
+  BTN_SW1_SHORT=1<<6                                                         // нажималась только sw1
 } btnCmd_en;
 
 

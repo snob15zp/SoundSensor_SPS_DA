@@ -207,17 +207,27 @@ e_FunctionReturnState TransitionFunction_M(void * FSM)
 			break;//3
 		
 		case e_M_ADCmain:  ss_main();	
-//                       if (buttom3)		
-//												 sign=2;
-											 if (BTN_SW3_LONG==btnCmd)
+                       if ((BTN_SW1_ONE_CLICK&btnCmd)!=0)		
+											 {	((t_s_FSM*)FSM)->sign=2;
+												  btnCmd&=~BTN_SW1_ONE_CLICK;
+											 }
+											 if ((BTN_SW3_LONG&btnCmd)!=0)
+											 {
 												 ((t_s_FSM*)FSM)->sign=0;
+												 btnCmd&=~BTN_SW3_LONG;
+											 }
 			rstate=e_FRS_Done; break;
 		case e_M_BLEmain:	 schedule_while_ble_on();	
-//                       if (buttom3)		
-//												 sign=1;
-											 if (BTN_SW3_LONG==btnCmd)
+                       if ((BTN_SW1_ONE_CLICK&btnCmd)!=0)		
+											 {	((t_s_FSM*)FSM)->sign=1;
+												  btnCmd&=~BTN_SW1_ONE_CLICK;
+											 }
+											 if ((BTN_SW3_LONG&btnCmd)!=0)
+											 {
 												 ((t_s_FSM*)FSM)->sign=0;
-			rstate=e_FRS_Done; break;
+												 btnCmd&=~BTN_SW3_LONG;
+											 }
+											 rstate=e_FRS_Done; break;
 		case e_M_SXmain:	 ss_main_BLE();												
 			rstate=e_FRS_Done; break;
 		case e_M_PwrSwitchOff:	  ((t_s_FSM*)FSM)->sign=1;       													

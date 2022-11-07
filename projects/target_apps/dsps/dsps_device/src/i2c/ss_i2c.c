@@ -296,9 +296,16 @@ static btnCmd_en decodeButtonsState(void)
     result = BTN_CMD_NO;
     if(sw3.pressedStateTime < D_KL_long)
     {
-      result = (btnCmd_en)(sw1.numOfClicks + 1);                        // вернуть код команды                                             
-    }
+			switch(sw1.numOfClicks)
+			{
+				case 0:result = BTN_SW3_SHOR; break;
+			  case 1:result = BTN_SW1_ONE_CLICK; break;
+				case 2:result = BTN_SW1_DBL_CLICK; break;
+				case 3:result = BTN_SW1_THREE_CLICK; break;
+				default: result = BTN_CMD_NO;                        // вернуть код команды                                             
+      }
     sw1.numOfClicks = 0;   
+    }
   }
   
   if(sw1.unpressEventFixed)                                             // если зафиксировано событие "SW1 отжата"
@@ -482,7 +489,7 @@ void sx_main (void)
 		systick_last_SCAN+=(SCAN_TIME);
 	  scanInputs();
 	}	
-    btnCmd = decodeButtonsState();//executeSwState();
+    btnCmd |= decodeButtonsState();//executeSwState();
 //    updateVddValue();
     rgbLedServer(&rgbLedTaskD1);
     rgbLedServer(&rgbLedTaskLD1);    

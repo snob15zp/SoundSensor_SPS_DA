@@ -3,4 +3,4 @@
 -IC:\Users\RD\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include
 -IC:\Keil_v5\ARM\CMSIS\Include
 -D__UVISION_VERSION="528" -DARMCM0P -D__DA14531__ -D__SoundSensor__ -D__SSFix__ -D__NO_MATLAB__ -D__SS_EXT__
--o .\soundsensor_fix\filterc_s19s29_cg1.o --omf_browse .\soundsensor_fix\filterc_s19s29_cg1.crf --depend .\soundsensor_fix\filterc_s19s29_cg1.d "..\src\Math\FilterC_s19s29_CG1.c"
+-o .\soundsensor_fix\cmd_mux.o --omf_browse .\soundsensor_fix\cmd_mux.crf --depend .\soundsensor_fix\cmd_mux.d "..\src\cmd_mux.c"

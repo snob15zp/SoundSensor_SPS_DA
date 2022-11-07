@@ -39,6 +39,7 @@ extern bool MS_b_alert_live;
 extern bool MS_b_alert_Overload;
 extern bool MS_b_alert_DoseM3dB;	
 extern bool MS_b_alert_Dose;
+extern bool MS_b_alert_hearing;
 // bool 
 
 extern int32_t MS_i32_Level_C_Peak_dB;//0.1dB

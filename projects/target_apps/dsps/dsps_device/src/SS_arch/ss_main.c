@@ -18,11 +18,13 @@ uint32_t my_ssize;
 //---------------------------------------------------------------------
 //---------------------------------------------------------------------
 
-
+bool SSM_b_alert_hearing;
 
 uint8_t ssm_main_state;
 bool ssm_main_BLE_RDY;
 E_ADC_MODE_t SS_ADC_Active_MODE=EAM_ADCsystick;
+
+t_SSS_s_timeevent SSM_erase_alarm_time_event;
 
 static int32_t time_start;
 e_FunctionReturnState SSM_ADCStart(void)
@@ -121,6 +123,20 @@ e_FunctionReturnState ss_main(void)
 #endif		
 #endif					
 		
+		//TODO call ADC
+		
+		if ((BTN_SW1_SHORT&btnCmd)!=0)		
+		{	
+			MS_b_alert_hearing=!MS_b_alert_hearing;
+			btnCmd=0;
+		}
+		if ((BTN_SW3_SHOR&btnCmd)!=0)		
+		{	
+			MS_b_alert_hearing=!MS_b_alert_hearing;
+			btnCmd=0;
+		}
+   
+		
 	}
 	
 	
@@ -152,6 +168,12 @@ e_FunctionReturnState ss_main_BLE(void)
 		sx_main();
 #endif		
 #endif						
+		if ((BTN_SW1_DBL_CLICK&btnCmd)!=0)		
+		{	
+			SSS_SetUpTimeEvent(&SSM_erase_alarm_time_event,(5000000/D_SYSTICK_PERIOD_US));
+			//TODO erase flash
+			btnCmd=0;
+		}
   }
 		if ((systick_time-time_start)>((10000000)/D_SYSTICK_PERIOD_US))
  	  	b_rv=e_FRS_Done;
@@ -178,17 +200,24 @@ e_FunctionReturnState SSM_BLEStart()
 #define  MS_b_alert_DoseD false
 #define MS_b_alert_hearingD false
 
+
+
 void DisplayAlarm(void)
 {
 	rgbLedTaskD1.ledTimeSlot[0]=LED_ALARM_Operatingstate;
   if (MS_b_alert_liveD) rgbLedTaskD1.ledTimeSlot[0]=LED_ALARM_LiveSPL;
 	if (MS_b_alert_OverloadD) rgbLedTaskD1.ledTimeSlot[0]=LED_ALARM_Overloadindicator;
 	if (ssm_main_BLE_RDY) rgbLedTaskD1.ledTimeSlot[0]=LED_ALARM_BLE;
+	if (SSM_erase_alarm_time_event.enable)
+	{	rgbLedTaskD1.ledTimeSlot[0]=LED_ALARM_erase;
+		if (systick_time-SSM_erase_alarm_time_event.time>SSM_erase_alarm_time_event.dtime)
+			SSM_erase_alarm_time_event.enable=false;
+	};
 
 	rgbLedTaskD1.ledTimeSlot[1]=LED_ALARM_Empty;
 	if (SSS_CalibrationMode)
 	{
-		if (MS_b_alert_hearingD) 
+		if (MS_b_alert_hearing) 
 		{rgbLedTaskD1.ledTimeSlot[1]=LED_ALARM_CalibrationLong;
 		}
 		else
@@ -197,7 +226,7 @@ void DisplayAlarm(void)
 	}
 	else
 	{
-		if (MS_b_alert_hearingD) rgbLedTaskD1.ledTimeSlot[1]=LED_ALARM_hearing;
+		if (MS_b_alert_hearing) rgbLedTaskD1.ledTimeSlot[1]=LED_ALARM_hearing;
 	}
 
 

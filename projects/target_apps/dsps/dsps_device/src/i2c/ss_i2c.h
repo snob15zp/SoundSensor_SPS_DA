@@ -94,6 +94,7 @@ extern ledTimeSlot_t const LED_ALARM_hearing;
 extern ledTimeSlot_t const LED_ALARM_BLE;
 extern ledTimeSlot_t const LED_ALARM_CalibrationLong;
 extern ledTimeSlot_t const LED_ALARM_CalibrationShort;
+extern ledTimeSlot_t const LED_ALARM_erase;
 
 extern rgbLedTask_t  rgbLedTaskD1;
 extern rgbLedTask_t  rgbLedTaskLD1;

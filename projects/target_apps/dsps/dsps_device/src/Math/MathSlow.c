@@ -13,6 +13,7 @@ bool MS_b_alert_live;
 bool MS_b_alert_Overload;
 bool MS_b_alert_DoseM3dB;	
 bool MS_b_alert_Dose;
+bool MS_b_alert_hearing;
 
 int32_t MS_i32_AlertLevel_C140dB_Peak;//filterC bits
 int32_t MS_i32_AlertLevel_FastA;//0.1dB

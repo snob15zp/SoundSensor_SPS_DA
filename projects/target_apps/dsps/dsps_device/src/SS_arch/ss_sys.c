@@ -135,6 +135,13 @@ uint16_t* get_vars(void)
 }
 
 
+void SSS_SetUpTimeEvent(t_SSS_s_timeevent *s,uint32_t dt)
+{
+	s->dtime=dt;
+	s->time=systick_time;
+	s->enable=true;
+};
+
 void systick_irq()
 {
     systick_time++;	  

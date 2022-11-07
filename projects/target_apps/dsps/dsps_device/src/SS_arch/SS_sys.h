@@ -13,6 +13,14 @@
 
 typedef enum {EAM_IDLE, EAM_ADCLIVE, EAM_ADC_WORK,EAM_ADC_sin, EAM_ADCsystick} E_ADC_MODE_t;
 
+typedef struct
+{ bool enable;
+	uint32_t time;
+	uint32_t dtime;
+} t_SSS_s_timeevent;
+
+void SSS_SetUpTimeEvent(t_SSS_s_timeevent *s,uint32_t dt);
+
 extern E_ADC_MODE_t	SS_ADC_MODE;
 extern bool SSS_CalibrationMode;
 extern volatile uint32_t systick_time;

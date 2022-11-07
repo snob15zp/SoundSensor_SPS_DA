@@ -78,6 +78,7 @@
 #include "ss_i2c.h"
 #include "SS_InterfaceToBLE.h"
 #include "ss_main.h"	
+#include "SS_sys.h"
 
 
 
@@ -189,7 +190,7 @@ static key_type FSM_main_TransitionKeys[FSM_main_TransitionKeys_size][FSM_main_T
 /*BLEmain*/      {d_BLEStart,   	    d_ADCStop|d_BLEStart,              d_BLEmain|d_SXmain },
 };
 
-
+t_SSS_s_timeevent AM_switch_time_event;
 
 e_FunctionReturnState TransitionFunction_M(void * FSM)
 {   e_FunctionReturnState rstate;
@@ -200,28 +201,45 @@ e_FunctionReturnState TransitionFunction_M(void * FSM)
 	  case e_M_BLEStop: rstate=SSM_BLEStop();					 
 			break;//1
 	  case e_M_ADCStart: 	rstate=SSM_ADCStart(); 	
+//		                    SSS_SetUpTimeEvent(&AM_switch_time_event,(3000000/D_SYSTICK_PERIOD_US));
 			break;//2
-	  case e_M_BLEStart: 	rstate=SSM_BLEStart();		
+	  case e_M_BLEStart: 	rstate=SSM_BLEStart();	
+///                        SSS_SetUpTimeEvent(&AM_switch_time_event,(10000000/D_SYSTICK_PERIOD_US));		
 		  break;//2
 	  case e_M_PwrSwitchStart: SX_PowerOff();rstate=e_FRS_Not_Done;
 			break;//3
 		
-		case e_M_ADCmain:  ss_main();	
-                       if ((BTN_SW1_ONE_CLICK&btnCmd)!=0)		
-											 {	((t_s_FSM*)FSM)->sign=2;
-												  btnCmd&=~BTN_SW1_ONE_CLICK;
-											 }
-											 if ((BTN_SW3_LONG&btnCmd)!=0)
-											 {
-												 ((t_s_FSM*)FSM)->sign=0;
-												 btnCmd&=~BTN_SW3_LONG;
-											 }
+		case e_M_ADCmain:	ss_main();	
+                      if ((BTN_SW1_ONE_CLICK&btnCmd)!=0)		
+											{	((t_s_FSM*)FSM)->sign=2;
+											  btnCmd&=~BTN_SW1_ONE_CLICK;
+											};
+											if (AM_switch_time_event.enable)
+											{	
+												if (systick_time-AM_switch_time_event.time>AM_switch_time_event.dtime)
+												{	AM_switch_time_event.enable=false;
+													((t_s_FSM*)FSM)->sign=2;
+												}
+											};
+											if ((BTN_SW3_LONG&btnCmd)!=0)
+											{
+											 ((t_s_FSM*)FSM)->sign=0;
+											 btnCmd&=~BTN_SW3_LONG;
+											};
+
 			rstate=e_FRS_Done; break;
 		case e_M_BLEmain:	 schedule_while_ble_on();	
                        if ((BTN_SW1_ONE_CLICK&btnCmd)!=0)		
 											 {	((t_s_FSM*)FSM)->sign=1;
 												  btnCmd&=~BTN_SW1_ONE_CLICK;
 											 }
+											if (AM_switch_time_event.enable)
+											{	
+												if (systick_time-AM_switch_time_event.time>AM_switch_time_event.dtime)
+												{	AM_switch_time_event.enable=false;
+													((t_s_FSM*)FSM)->sign=1;
+												}
+											};
 											 if ((BTN_SW3_LONG&btnCmd)!=0)
 											 {
 												 ((t_s_FSM*)FSM)->sign=0;

@@ -290,12 +290,8 @@ extern uint8_t gpio_por_pin_timeout;
 // Define SPI Pads
 #if defined (__DA14531__)
     #define SPI_EN_PORT             GPIO_PORT_0
-		
-#ifdef	__ADCTEST__	
-    #define SPI_EN_PIN              GPIO_PIN_11
-#else
+
     #define SPI_EN_PIN              GPIO_PIN_1
-#endif
 
     #define SPI_CLK_PORT            GPIO_PORT_0
     #define SPI_CLK_PIN             GPIO_PIN_4

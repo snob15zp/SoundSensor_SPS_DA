@@ -39,6 +39,7 @@ int8_t on_int_wr(uint16_t var, uint16_t val)
 
 void on_blob_rd(uint32_t addr, uint8_t buf[16])
 {//TODO read from flash
+ //shift is not needed	; 32 Mbit
     if(addr < sizeof(blob))
     {
         memcpy(buf, &blob[addr], 16);

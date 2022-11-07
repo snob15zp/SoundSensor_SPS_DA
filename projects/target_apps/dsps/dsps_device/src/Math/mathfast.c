@@ -164,11 +164,6 @@ inline void MF_main(int32_t adcoutput)
 		   PeakC_max_current=0;
        catch_flag=0; 
 	}        
-
-	
-	//filterCout=FilterC_s19s29_CG1_Y.Output;
-	
-	//FilterAC_s19s29_CG_U.Input=FilterC_s19s29_CG1_Y.Output;
 	
 	filterAout=FilterAC_s19s29_CG_step_o(filterCout);
 	
@@ -177,11 +172,9 @@ inline void MF_main(int32_t adcoutput)
 	filterAout_M=filterAout;
 #endif
  
- 
-	
-	//filterAout=FilterAC_s19s29_CG_Y.Output;
-	
-	square=MF_sqr(filterAout<<ForIntegratorShift);
+#if	(D_ADCMODE!=1)		
+	//square=MF_sqr(filterAout<<ForIntegratorShift);
+#endif	
 	
 	t=Integrator.u32[1];
 	Integrator.u64+=(square);

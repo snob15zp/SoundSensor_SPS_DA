@@ -180,18 +180,12 @@ void periph_init(void)
 
 #ifdef __SS_EXT__	
 	 ssi2c_init();//
-#ifndef __ADCTEST__	 
+//#ifndef __ADCTEST__	 
 	 sx_main();//  ss_i2c_test();
-#else
-#endif
+//#else
+//#endif
 
 #endif	 
-
-#ifdef __ADCTEST__
-   
-#endif		 
-
-
 
 #ifdef __DEVKIT_EXT__	 
    LEDinit();

@@ -14,7 +14,7 @@
 
 #define SYSTICK_EXCEPTION   1           // generate systick exceptions
 
-bool SSS_CalibrationMode;
+bool SSS_CalibrationMode=true;
 
 E_ADC_MODE_t	SS_ADC_MODE;
 static uint16_t vars[VARS_CNT] = {0};

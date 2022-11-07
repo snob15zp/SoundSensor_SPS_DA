@@ -33,7 +33,13 @@ c000	49152	32768	Second copy
 */
 
 
-
+#define D_ADCMODE 1
+/*
+0 - work mode
+1 - live data
+2 - SIN in ADC_IRQ
+3 - SIN from timer
+*/
 
 
 

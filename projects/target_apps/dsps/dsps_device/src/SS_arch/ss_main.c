@@ -118,9 +118,9 @@ e_FunctionReturnState ss_main(void)
 		   DisplayAlarm();
 		
 #ifdef __SS_EXT__		
-#ifndef __ADCTEST__		
+//#ifndef __ADCTEST__		
 					sx_main();
-#endif		
+//#endif		
 #endif					
 		
 		//TODO call ADC
@@ -164,14 +164,14 @@ e_FunctionReturnState ss_main_BLE(void)
 		DisplayAlarm();
 		
 #ifdef __SS_EXT__		
-#ifndef __ADCTEST__		
+//#ifndef __ADCTEST__		
 		sx_main();
-#endif		
+//#endif		
 #endif						
 		if ((BTN_SW1_DBL_CLICK&btnCmd)!=0)		
 		{	
 			SSS_SetUpTimeEvent(&SSM_erase_alarm_time_event,(5000000/D_SYSTICK_PERIOD_US));
-			//TODO erase flash
+			//TODO erase flash file
 			btnCmd=0;
 		}
   }

@@ -26,7 +26,7 @@ volatile bool SA_flashbit = false;
 uni_int32_t SA_out;
 
 
-#ifdef	__ADCTEST__
+#if	(D_ADCMODE==1)
 #define def_dataRead_Size (512*1)
 
 int32_t SA_dataRead_32[def_dataRead_Size/4];
@@ -182,7 +182,7 @@ void SPI_ADC_init(void)
 void SA_SPI_init(void)
 {
 	//SA_dataRead_32=(int32_t*)(&(SA_dataRead[0]));
-#ifdef	__ADCTEST__	
+#if	(D_ADCMODE==1)	
   SA_dataRead_32[0]=45;	
 	SA_ui16_dataRead_index=4;
 #endif	
@@ -288,8 +288,8 @@ void timer2_init(void)
     // System clock, divided by 8, is the Timer2 input clock source (according
     // to the clk_div_config struct above).
 //    timer2_pwm_freq_set(PWM_FREQUENCY, 16000000 / 8);
-   // timer2_pwm_freq_set(4000000U, 16000000/2);
-    timer2_pwm_freq_set(1000000U, 16000000/2);//RDD 500 Hz?
+    timer2_pwm_freq_set(4000000U, 16000000/2);
+   // timer2_pwm_freq_set(1000000U, 16000000/2);//RDD 500 Hz?
 	
     timer2_start();
 	
@@ -416,7 +416,7 @@ uni_int32_t SA_in;
 	SetWord16(&spi->SPI_FIFO_WRITE_REGF, SA_out.masByte[2]);	
 
 	
-#ifdef	__ADCTEST__
+#if	(D_ADCMODE==1)
 	if (SA_ui16_dataRead_index<(def_dataRead_Size-10))
 	{
 		SA_dataRead[SA_ui16_dataRead_index+3] = SA_in.masByte[3] ;				
@@ -427,7 +427,7 @@ uni_int32_t SA_in;
 	}	
 	else 
 	{
-		SA_ui16_dataRead_index=def_dataRead_Size-1;
+		SA_ui16_dataRead_index=0;//def_dataRead_Size-1;
 	};
 #endif	
 	

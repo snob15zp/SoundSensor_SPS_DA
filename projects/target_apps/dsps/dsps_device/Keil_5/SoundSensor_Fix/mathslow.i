@@ -518,7 +518,7 @@
 
  
 
-#line 1 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdint.h"
+#line 1 "D:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdint.h"
  
  
 
@@ -537,7 +537,7 @@
 
 
      
-#line 27 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdint.h"
+#line 27 "D:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdint.h"
      
 
 
@@ -550,7 +550,7 @@
 
 
 
-#line 46 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdint.h"
+#line 46 "D:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdint.h"
 
 
 
@@ -714,7 +714,7 @@ typedef unsigned     long long uintmax_t;
      
 
      
-#line 216 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdint.h"
+#line 216 "D:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdint.h"
 
      
 
@@ -733,7 +733,7 @@ typedef unsigned     long long uintmax_t;
 
 
 
-#line 241 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdint.h"
+#line 241 "D:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdint.h"
 
      
 
@@ -766,7 +766,7 @@ typedef unsigned     long long uintmax_t;
 
 
 
-#line 305 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdint.h"
+#line 305 "D:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdint.h"
 
 
 
@@ -822,7 +822,7 @@ typedef unsigned     long long uintmax_t;
 
 
  
-#line 1 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdbool.h"
+#line 1 "D:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdbool.h"
  
 
 
@@ -836,12 +836,12 @@ typedef unsigned     long long uintmax_t;
 
 
 
-#line 25 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdbool.h"
+#line 25 "D:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdbool.h"
 
 
 
 #line 48 ".\\..\\..\\..\\..\\..\\sdk6\\sdk\\platform\\core_modules\\common\\api\\co_bt.h"
-#line 1 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stddef.h"
+#line 1 "D:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stddef.h"
  
 
 
@@ -865,7 +865,7 @@ typedef unsigned     long long uintmax_t;
 
 
 
-#line 34 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stddef.h"
+#line 34 "D:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stddef.h"
 
 
 
@@ -879,7 +879,7 @@ typedef unsigned     long long uintmax_t;
 
 
     typedef unsigned int size_t;    
-#line 57 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stddef.h"
+#line 57 "D:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stddef.h"
 
 
 
@@ -888,7 +888,7 @@ typedef unsigned     long long uintmax_t;
 
 
       typedef unsigned short wchar_t;  
-#line 82 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stddef.h"
+#line 82 "D:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stddef.h"
 
 
 
@@ -912,7 +912,7 @@ typedef unsigned     long long uintmax_t;
 
 
 
-#line 114 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stddef.h"
+#line 114 "D:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stddef.h"
 
 
 
@@ -24812,7 +24812,7 @@ struct att_pdu_handler
 
 
 #line 45 ".\\..\\..\\..\\..\\..\\sdk6\\sdk\\ble_stack\\host\\att\\attm\\attm.h"
-#line 1 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\string.h"
+#line 1 "D:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\string.h"
  
  
  
@@ -24843,7 +24843,7 @@ struct att_pdu_handler
 
 
 
-#line 38 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\string.h"
+#line 38 "D:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\string.h"
 
 
   
@@ -24851,7 +24851,7 @@ struct att_pdu_handler
 
 
     typedef unsigned int size_t;    
-#line 54 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\string.h"
+#line 54 "D:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\string.h"
 
 
 
@@ -24985,7 +24985,7 @@ extern __declspec(__nothrow) size_t strxfrm(char * __restrict  , const char * __
  
 
 
-#line 193 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\string.h"
+#line 193 "D:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\string.h"
 extern __declspec(__nothrow) void *memchr(const void *  , int  , size_t  ) __attribute__((__nonnull__(1)));
 
    
@@ -24996,7 +24996,7 @@ extern __declspec(__nothrow) void *memchr(const void *  , int  , size_t  ) __att
 
  
 
-#line 209 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\string.h"
+#line 209 "D:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\string.h"
 extern __declspec(__nothrow) char *strchr(const char *  , int  ) __attribute__((__nonnull__(1)));
 
    
@@ -25014,7 +25014,7 @@ extern __declspec(__nothrow) size_t strcspn(const char *  , const char *  ) __at
 
  
 
-#line 232 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\string.h"
+#line 232 "D:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\string.h"
 extern __declspec(__nothrow) char *strpbrk(const char *  , const char *  ) __attribute__((__nonnull__(1,2)));
 
    
@@ -25024,7 +25024,7 @@ extern __declspec(__nothrow) char *strpbrk(const char *  , const char *  ) __att
 
  
 
-#line 247 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\string.h"
+#line 247 "D:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\string.h"
 extern __declspec(__nothrow) char *strrchr(const char *  , int  ) __attribute__((__nonnull__(1)));
 
    
@@ -25042,7 +25042,7 @@ extern __declspec(__nothrow) size_t strspn(const char *  , const char *  ) __att
 
  
 
-#line 270 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\string.h"
+#line 270 "D:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\string.h"
 extern __declspec(__nothrow) char *strstr(const char *  , const char *  ) __attribute__((__nonnull__(1,2)));
 
    
@@ -25228,7 +25228,7 @@ extern __declspec(__nothrow) void _membitmovewb(void *  , const void *  , int  ,
 
 
 
-#line 502 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\string.h"
+#line 502 "D:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\string.h"
 
 
 
@@ -29772,7 +29772,7 @@ struct arch_main_loop_callbacks {
 
 
 
-#line 1 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdio.h"
+#line 1 "D:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdio.h"
  
  
  
@@ -29811,7 +29811,7 @@ struct arch_main_loop_callbacks {
 
 
 
-#line 47 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdio.h"
+#line 47 "D:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdio.h"
 
 
   
@@ -29883,13 +29883,13 @@ typedef struct __FILE FILE;
 
  
 
-#line 136 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdio.h"
+#line 136 "D:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdio.h"
 
 
 extern FILE __stdin, __stdout, __stderr;
 extern FILE *__aeabi_stdin, *__aeabi_stdout, *__aeabi_stderr;
 
-#line 166 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdio.h"
+#line 166 "D:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdio.h"
     
 
     
@@ -30665,7 +30665,7 @@ extern __declspec(__nothrow) void __use_no_semihosting(void);
 
 
 
-#line 1021 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdio.h"
+#line 1021 "D:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdio.h"
 
 
 
@@ -44260,7 +44260,7 @@ static const struct default_handlers_configuration  user_default_hnd_conf = {
 
 
 #line 1 "..\\src\\Math\\MathSlow.c"
-#line 1 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\math.h"
+#line 1 "D:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\math.h"
 
 
 
@@ -44308,9 +44308,9 @@ static const struct default_handlers_configuration  user_default_hnd_conf = {
 
 
 
-#line 61 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\math.h"
+#line 61 "D:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\math.h"
 
-#line 75 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\math.h"
+#line 75 "D:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\math.h"
 
 
 
@@ -44340,7 +44340,7 @@ static const struct default_handlers_configuration  user_default_hnd_conf = {
 
 
  
-#line 112 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\math.h"
+#line 112 "D:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\math.h"
 
 
 
@@ -44452,7 +44452,7 @@ static inline __declspec(__nothrow) __attribute__((__pcs__("aapcs"))) int __ARM_
 
 
 
-#line 230 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\math.h"
+#line 230 "D:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\math.h"
 
 
 
@@ -44463,12 +44463,12 @@ static inline __declspec(__nothrow) __attribute__((__pcs__("aapcs"))) int __ARM_
    
   typedef float float_t;
   typedef double double_t;
-#line 251 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\math.h"
+#line 251 "D:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\math.h"
 
 
 
 extern const int math_errhandling;
-#line 261 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\math.h"
+#line 261 "D:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\math.h"
 
 extern __declspec(__nothrow) double acos(double  );
     
@@ -44679,7 +44679,7 @@ extern __declspec(__nothrow) double expm1(double  );
 
 
 
-#line 479 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\math.h"
+#line 479 "D:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\math.h"
 
 
 extern __declspec(__nothrow) double hypot(double  , double  );
@@ -44995,7 +44995,7 @@ __declspec(__nothrow) long double exp2l(long double );
 extern __declspec(__nothrow) double fdim(double  , double  );
 extern __declspec(__nothrow) float fdimf(float  , float  );
 __declspec(__nothrow) long double fdiml(long double , long double );
-#line 803 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\math.h"
+#line 803 "D:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\math.h"
 extern __declspec(__nothrow) double fma(double  , double  , double  );
 extern __declspec(__nothrow) float fmaf(float  , float  , float  );
 
@@ -45039,7 +45039,7 @@ extern __declspec(__nothrow) __attribute__((const)) double nan(const char * );
 extern __declspec(__nothrow) __attribute__((const)) float nanf(const char * );
 
 inline __declspec(__nothrow) __attribute__((const)) long double nanl(const char *__t)     { return (long double)nan(__t); }
-#line 856 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\math.h"
+#line 856 "D:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\math.h"
 extern __declspec(__nothrow) __attribute__((const)) double nearbyint(double  );
 extern __declspec(__nothrow) __attribute__((const)) float nearbyintf(float  );
 __declspec(__nothrow) long double nearbyintl(long double );
@@ -45064,11 +45064,9 @@ __declspec(__nothrow) long double truncl(long double );
 
 
 
-#line 896 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\math.h"
+#line 896 "D:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\math.h"
 
-#line 1087 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\math.h"
-
-
+#line 1087 "D:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\math.h"
 
 
 
@@ -45078,7 +45076,9 @@ __declspec(__nothrow) long double truncl(long double );
 
 
 
-#line 1317 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\math.h"
+
+
+#line 1317 "D:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\math.h"
 
 
 
@@ -45242,6 +45242,182 @@ void test_MF_main(void);
 
 
 #line 6 "..\\src\\SS_arch\\ss_sys.h"
+#line 1 ".\\..\\src\\user_config_storage.h"
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+ 
+#line 33 ".\\..\\src\\user_config_storage.h"
+#line 34 ".\\..\\src\\user_config_storage.h"
+#line 35 ".\\..\\src\\user_config_storage.h"
+#line 36 ".\\..\\src\\user_config_storage.h"
+#line 37 ".\\..\\src\\user_config_storage.h"
+#line 38 ".\\..\\src\\user_config_storage.h"
+#line 39 ".\\..\\src\\user_config_storage.h"
+
+
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+enum user_config_storage_error_codes
+{
+    
+    USER_CONFIG_STORAGE_SUCCESS = 0,
+    
+    USER_CONFIG_STORAGE_CRC_ERR,
+    
+    USER_CONFIG_STORAGE_PRODUCT_HEADER_FAILURE,
+    
+    USER_CONFIG_STORAGE_CFG_HEADER_FAILURE,
+    
+    USER_CONFIG_STORAGE_READ_FAILURE,
+    
+    USER_CONFIG_STORAGE_WRITE_FAILURE,
+    
+    USER_CONFIG_STORAGE_INVALID_DATA,
+    
+    USER_CONFIG_STORAGE_ERASE_FAILURE, 
+};
+
+
+typedef struct
+{
+    
+    uint8_t     signature[2];
+    
+    uint8_t     valid;
+    
+    uint8_t     struct_id;
+    
+    uint32_t    crc;
+    
+    uint8_t     version[16];
+    
+    uint16_t    data_size;
+    
+    uint8_t     num_of_items;
+    
+    uint8_t     encr;
+    
+    uint8_t     reserved[36];
+}user_config_struct_header_t;
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+enum user_config_storage_error_codes user_conf_storage_init(user_config_elem_t *conf_table, uint8_t conf_table_num_of_elmts, char *version, uint8_t *version_length);
+
+
+
+
+
+
+
+
+
+ 
+enum user_config_storage_error_codes user_config_read_configuration_struct(uint32_t conf_data_pos,
+                                                                           user_config_elem_t *conf_table,
+                                                                           uint8_t conf_table_num_of_elmts);
+
+
+
+
+
+
+
+ 
+enum user_config_storage_error_codes user_config_storage_save_configuration(user_configuration_struct_tag* config_data);
+
+
+
+
+
+
+
+
+
+ 
+enum user_config_storage_error_codes user_config_write_configuration_struct(user_configuration_struct_tag* config_data, uint32_t config_offset, uint32_t size);
+
+
+
+
+
+
+
+
+
+
+ 
+enum user_config_storage_error_codes user_config_save(user_config_elem_t *conf_table, uint8_t conf_table_num_of_elmts, char *version, uint8_t *version_length);
+
+
+
+#line 7 "..\\src\\SS_arch\\ss_sys.h"
 
 
 
@@ -45261,6 +45437,10 @@ void LEDinit (void);
 void test_hnd_init(void);
 void ss_spi_init(uint32_t gpio_map,const spi_cfg_t *spi_cfg);
 void SS_spi_switchoff_pins(uint32_t gpio_map);
+
+void SSS_ReadFromVar(void);
+void SSS_WriteToVar(void);
+void SSS_WriteTableToVar(const user_config_elem_t* t, uint8_t *var_index, uint8_t ms);
 
 
 
@@ -45282,12 +45462,12 @@ void SS_spi_switchoff_pins(uint32_t gpio_map);
 
 
 
-
+extern int32_t MS_i32_AlertLevel_C140dB_Peak;
 extern int32_t MS_i32_AlertLevel_FastA;
 
 extern int32_t MS_i32_AlertLevel_Dose;
 extern int32_t MS_i32_AlertLevel_DoseM3dB;
-
+extern int32_t MS_i32_CalibrationFactor;
 
 extern _Bool MS_b_alert_C140dBPeak;
 extern _Bool MS_b_alert_FastA;
@@ -45340,10 +45520,13 @@ int32_t MS_i32_Level_C_Peak_dB;
 int32_t MS_i32_Level_FastA_dB;
 int32_t MS_i32_Level_Dose_dB;
 
+int32_t MS_i32_CalibrationFactor;
+
+
 uint32_t MS_Integrator_Hi_out;
 int32_t MS_i32_fastAC;
 
-#line 42 "..\\src\\Math\\MathSlow.c"
+#line 45 "..\\src\\Math\\MathSlow.c"
 
 
 void MS_main(void)
@@ -45362,7 +45545,7 @@ void MS_evalute(uint32_t c, int32_t a, uint32_t i,uint32_t t)
 
 void MS_catch(void)
 {
-#line 66 "..\\src\\Math\\MathSlow.c"
+#line 69 "..\\src\\Math\\MathSlow.c"
 
 	catch_flag=1;
 	MS_Integrator_Hi_out=IntegratorA_Hi;
@@ -45460,5 +45643,5 @@ MS_i32_Level_Dose_dB=0;
 MS_Integrator_Hi_out=0;
 MS_i32_fastAC=0;
 
-#line 170 "..\\src\\Math\\MathSlow.c"
+#line 173 "..\\src\\Math\\MathSlow.c"
 };

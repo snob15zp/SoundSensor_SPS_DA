@@ -3,9 +3,13 @@
 
 #include <stdint.h>
 #include <stdbool.h>
+#include <ss_global.h>
 
-#define SPI_FLASH_ADDR_START_RECORD_ADC			(0x35000) 
-#define SPI_FLASH_ADDR_END_RECORD_ADC			(0x3F000)
+#if (D_FlashMap==585)
+#define SPI_FLASH_ADDR_START_RECORD_ADC			(0x14000) 
+#define SPI_FLASH_ADDR_END_RECORD_ADC			(0x38000)
+#endif
+
 #define SPI_FLASH_DATA_FLASH_ERASE				((uint32_t)0x00FFFFFF) 
 #define SPI_FLASH_FLAG_FLASH_FULL				(-1)
 

@@ -18,25 +18,25 @@ uint32_t my_ssize;
 //---------------------------------------------------------------------
 //---------------------------------------------------------------------
 
-
+bool SSM_b_alert_hearing;
 
 uint8_t ssm_main_state;
 bool ssm_main_BLE_RDY;
 E_ADC_MODE_t SS_ADC_Active_MODE=EAM_ADCsystick;
 
+t_SSS_s_timeevent SSM_erase_alarm_time_event;
+
 static int32_t time_start;
-e_FunctionReturnState ssm_main_ADC_prepare(void)
+e_FunctionReturnState SSM_ADCStart(void)
 {
-	
+	SX_CalibrationOnOff(SSS_CalibrationMode);
   time_start=systick_time;
-	AF_V_WriteStart((uint16_t) ssm_main_ADC_prepare);	
+	AF_V_WriteStart((uint16_t) SSM_ADCStart);	
 
 	MS_init();
 	MF_main_init();
 	ssm_main_BLE_RDY=false;
 	SS_spi_switchoff_pins(SPI_FLASH_GPIO_MAP);
-	
-	
 	
 	SPI_ADC_init();
 	SS_ADC_MODE=SS_ADC_Active_MODE;
@@ -44,7 +44,7 @@ e_FunctionReturnState ssm_main_ADC_prepare(void)
 };
 
 static uint8_t SM_FSM_state = 0;
-e_FunctionReturnState ssm_main_BLE_prepare(void)
+e_FunctionReturnState SSM_ADCStop(void)
 { e_FunctionReturnState b_rv;
 	b_rv=e_FRS_Not_Done;
 	time_start=systick_time;
@@ -62,9 +62,9 @@ e_FunctionReturnState ssm_main_BLE_prepare(void)
 			break;						
 		default: 	SS_ADC_MODE=EAM_IDLE;
 			        SPI_ADC_deinit();
-				ss_spi_init(SPI_ADC_GPIO_MAP,&UPS_spi_cfg);		 
+							ss_spi_init(SPI_ADC_GPIO_MAP,&UPS_spi_cfg);		 
 	            user_spi_flash_init(SPI_FLASH_GPIO_MAP);
-        	    AF_V_WriteStop((uint16_t) ssm_main_BLE_prepare);		 
+        	    AF_V_WriteStop((uint16_t) SSM_ADCStop);		 
 	            //write stop stamp
 	          	
 //---------------------------------------------------------------------------------------------
@@ -123,6 +123,20 @@ e_FunctionReturnState ss_main(void)
 #endif		
 #endif					
 		
+		//TODO call ADC
+		
+		if ((BTN_SW1_SHORT&btnCmd)!=0)		
+		{	
+			MS_b_alert_hearing=!MS_b_alert_hearing;
+			btnCmd=0;
+		}
+		if ((BTN_SW3_SHOR&btnCmd)!=0)		
+		{	
+			MS_b_alert_hearing=!MS_b_alert_hearing;
+			btnCmd=0;
+		}
+   
+		
 	}
 	
 	
@@ -154,12 +168,30 @@ e_FunctionReturnState ss_main_BLE(void)
 		sx_main();
 #endif		
 #endif						
+		if ((BTN_SW1_DBL_CLICK&btnCmd)!=0)		
+		{	
+			SSS_SetUpTimeEvent(&SSM_erase_alarm_time_event,(5000000/D_SYSTICK_PERIOD_US));
+			//TODO erase flash
+			btnCmd=0;
+		}
   }
 		if ((systick_time-time_start)>((10000000)/D_SYSTICK_PERIOD_US))
  	  	b_rv=e_FRS_Done;
 	return b_rv; 
 }
 
+
+e_FunctionReturnState SSM_BLEStop()
+{
+	return e_FRS_Done;
+};
+e_FunctionReturnState SSM_BLEStart()
+{
+	return e_FRS_Done;
+};
+
+
+//================================ALARM===============================================
 #define  MS_b_alert_C140dBPeakD true
 #define  MS_b_alert_FastAD true
 #define  MS_b_alert_liveD false
@@ -168,15 +200,35 @@ e_FunctionReturnState ss_main_BLE(void)
 #define  MS_b_alert_DoseD false
 #define MS_b_alert_hearingD false
 
+
+
 void DisplayAlarm(void)
 {
 	rgbLedTaskD1.ledTimeSlot[0]=LED_ALARM_Operatingstate;
   if (MS_b_alert_liveD) rgbLedTaskD1.ledTimeSlot[0]=LED_ALARM_LiveSPL;
 	if (MS_b_alert_OverloadD) rgbLedTaskD1.ledTimeSlot[0]=LED_ALARM_Overloadindicator;
 	if (ssm_main_BLE_RDY) rgbLedTaskD1.ledTimeSlot[0]=LED_ALARM_BLE;
+	if (SSM_erase_alarm_time_event.enable)
+	{	rgbLedTaskD1.ledTimeSlot[0]=LED_ALARM_erase;
+		if (systick_time-SSM_erase_alarm_time_event.time>SSM_erase_alarm_time_event.dtime)
+			SSM_erase_alarm_time_event.enable=false;
+	};
 
 	rgbLedTaskD1.ledTimeSlot[1]=LED_ALARM_Empty;
-	if (MS_b_alert_hearingD) rgbLedTaskD1.ledTimeSlot[1]=LED_ALARM_hearing;
+	if (SSS_CalibrationMode)
+	{
+		if (MS_b_alert_hearing) 
+		{rgbLedTaskD1.ledTimeSlot[1]=LED_ALARM_CalibrationLong;
+		}
+		else
+		{rgbLedTaskD1.ledTimeSlot[1]=LED_ALARM_CalibrationShort; 
+		}
+	}
+	else
+	{
+		if (MS_b_alert_hearing) rgbLedTaskD1.ledTimeSlot[1]=LED_ALARM_hearing;
+	}
+
 
 
 	rgbLedTaskLD1.ledTimeSlot[0]=LED_ALARM_Empty;

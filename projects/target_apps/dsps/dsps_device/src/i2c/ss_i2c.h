@@ -34,15 +34,17 @@ typedef struct
 
 typedef enum
 {
-  BTN_CMD_NO,
-  BTN_SW3_SHORT,                                                        // sw3 отжата и sw1.numOfClicks = 0
-  BTN_SW1_ONE_CLICK,                                                    // sw3 отжата и sw1.numOfClicks = 1
-  BTN_SW1_DBL_CLICK,                                                    // sw3 отжата и sw1.numOfClicks = 2
-  BTN_SW1_THREE_CLICK,                                                  // sw3 отжата и sw1.numOfClicks = 3
+  BTN_CMD_NO=1,
+  BTN_SW3_SHOR=1<<1,                                                        // sw3 отжата и sw1.numOfClicks = 0
+  BTN_SW1_ONE_CLICK=1<<2,                                                    // sw3 отжата и sw1.numOfClicks = 1
+  BTN_SW1_DBL_CLICK=1<<3,                                                    // sw3 отжата и sw1.numOfClicks = 2
+  BTN_SW1_THREE_CLICK=1<<4,                                                  // sw3 отжата и sw1.numOfClicks = 3
   /* далее можно продолжать список команд с количеством нажатий sw1 (порядок важен для алгоритма) */  
-  BTN_SW3_LONG,                                                         // sw3 нажата более 5 секунд
-  BTN_SW1_SHORT                                                         // нажималась только sw1
+  BTN_SW3_LONG=1<<5,                                                         // sw3 нажата более 5 секунд
+  BTN_SW1_SHORT=1<<6                                                         // нажималась только sw1
 } btnCmd_en;
+
+
 
 typedef enum
 {
@@ -50,6 +52,9 @@ typedef enum
   CL_GREEN =  GREEN_LED_OUT,
   CL_BLUE =   BLUE_LED_OUT,
 	CL_WHITE = RED_LED_OUT|GREEN_LED_OUT|BLUE_LED_OUT,
+	CL_RG =RED_LED_OUT|GREEN_LED_OUT,
+	CL_GB=GREEN_LED_OUT|BLUE_LED_OUT,
+	CL_BR =RED_LED_OUT|BLUE_LED_OUT,
 	CL_LD1   = SINGLE_LED_OUT,
 	CL_MASK  =SX_D_LED_MASK
 }color_en;
@@ -87,14 +92,22 @@ extern ledTimeSlot_t const LED_ALARM_LAeqM3dB;
 extern ledTimeSlot_t const LED_ALARM_LAeq;
 extern ledTimeSlot_t const LED_ALARM_hearing;
 extern ledTimeSlot_t const LED_ALARM_BLE;
+extern ledTimeSlot_t const LED_ALARM_CalibrationLong;
+extern ledTimeSlot_t const LED_ALARM_CalibrationShort;
+extern ledTimeSlot_t const LED_ALARM_erase;
 
 extern rgbLedTask_t  rgbLedTaskD1;
 extern rgbLedTask_t  rgbLedTaskLD1;
 // simple test
+
+extern btnCmd_en btnCmd;
+
 
 void ss_i2c_test (void);
 //complex test
 void ssi2c_init(void);
 i2c_error_code sx1502_init(void);//for inner
 void sx_main(void);
+void SX_PowerOff();
+void SX_CalibrationOnOff(bool cal);
 #endif

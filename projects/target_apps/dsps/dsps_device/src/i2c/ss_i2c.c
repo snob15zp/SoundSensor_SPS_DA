@@ -48,12 +48,17 @@ ledTimeSlot_t const LED_ALARM_LAeqM3dB	          ={true,D_pulseWidthMs,CL_LD1};
 ledTimeSlot_t const LED_ALARM_LAeq    	          ={true,LED_SLOT_TIME ,CL_LD1};
 ledTimeSlot_t const LED_ALARM_hearing 	          ={true,LED_SLOT_TIME ,CL_GREEN};
 ledTimeSlot_t const LED_ALARM_BLE     	          ={true,LED_SLOT_TIME ,CL_WHITE};
+ledTimeSlot_t const LED_ALARM_CalibrationLong     ={true,LED_SLOT_TIME ,CL_BR};
+ledTimeSlot_t const LED_ALARM_CalibrationShort    ={true,D_pulseWidthMs ,CL_BR};
+ledTimeSlot_t const LED_ALARM_erase               ={true,D_pulseWidthMs ,CL_RG};
 //======================================================================================
 #ifdef D_sx_takt_call
 #define sx_time sx_encounter
 #else
 #define sx_time systick_time
 #endif
+
+btnCmd_en btnCmd;
 
 static uint32_t sx_encounter;
 
@@ -292,9 +297,16 @@ static btnCmd_en decodeButtonsState(void)
     result = BTN_CMD_NO;
     if(sw3.pressedStateTime < D_KL_long)
     {
-      result = (btnCmd_en)(sw1.numOfClicks + 1);                        // вернуть код команды                                             
-    }
+			switch(sw1.numOfClicks)
+			{
+				case 0:result = BTN_SW3_SHOR; break;
+			  case 1:result = BTN_SW1_ONE_CLICK; break;
+				case 2:result = BTN_SW1_DBL_CLICK; break;
+				case 3:result = BTN_SW1_THREE_CLICK; break;
+				default: result = BTN_CMD_NO;                        // вернуть код команды                                             
+      }
     sw1.numOfClicks = 0;   
+    }
   }
   
   if(sw1.unpressEventFixed)                                             // если зафиксировано событие "SW1 отжата"
@@ -312,70 +324,87 @@ static btnCmd_en decodeButtonsState(void)
 /*****************************************************************************************
 * @brief ¬ыполнение команды длинного нажати€ кнопки PWR ON/OFF (SW3)  
  *****************************************************************************************/
-static void togglePowerState(void)
+//static void togglePowerState(void)
+//{
+//  if(Status.PWR_ENABLED)                                                // если DC/DC включен
+//  {
+//    outData &= ~PWR_FIX_OUT;                                            // сн€ть бит включени€ DC/DC
+//    outData |= SINGLE_LED_OUT;                                          // установить бит дл€ выключени€ одиночного светодиода
+//    Status.PWR_ENABLED = 0;                                             // сн€ть флаг включенного DC/DC
+//  } 
+//  else
+//  {
+//    outData |= PWR_FIX_OUT;                                             // установить бит включени€ DC/DC
+//    outData &= ~SINGLE_LED_OUT;                                         // сн€ть бит дл€ включени€ одиночного светодиода
+//    Status.PWR_ENABLED = 1;                                             // установить флаг включенного DC/DC
+//  }
+//  i2c_eeprom_write_byte(SX1502_REGDATA_ADDR, outData);                  // записать данные в порт
+//}
+void SX_CalibrationOnOff(bool cal)
 {
-  if(Status.PWR_ENABLED)                                                // если DC/DC включен
-  {
-    outData &= ~PWR_FIX_OUT;                                            // сн€ть бит включени€ DC/DC
-    outData |= SINGLE_LED_OUT;                                          // установить бит дл€ выключени€ одиночного светодиода
-    Status.PWR_ENABLED = 0;                                             // сн€ть флаг включенного DC/DC
-  } 
-  else
-  {
-    outData |= PWR_FIX_OUT;                                             // установить бит включени€ DC/DC
-    outData &= ~SINGLE_LED_OUT;                                         // сн€ть бит дл€ включени€ одиночного светодиода
-    Status.PWR_ENABLED = 1;                                             // установить флаг включенного DC/DC
-  }
-  i2c_eeprom_write_byte(SX1502_REGDATA_ADDR, outData);                  // записать данные в порт
+	if (cal)
+	{
+		outData &= ~CONTROL_OUT;
+	}
+	else
+	{
+		outData |= CONTROL_OUT;
+	}
+	i2c_eeprom_write_byte(SX1502_REGDATA_ADDR, outData);
 }
 
+void SX_PowerOff()
+{
+	outData &= ~PWR_FIX_OUT;                                             // установить бит включени€ DC/DC
+  i2c_eeprom_write_byte(SX1502_REGDATA_ADDR, outData);                  // записать данные в порт
+};
 /*****************************************************************************************
 * @brief ќбработка нажати€ кнопок  
  *****************************************************************************************/
-static void executeSwState(void)
-{
-  btnCmd_en btnCmd = decodeButtonsState();
+//static void executeSwState(void)
+//{
+//  btnCmd_en btnCmd = decodeButtonsState();
 
-  switch(btnCmd)                                                           
-  {
-    case BTN_SW3_LONG:                                                  // если было длинное нажатие SW3
-//      togglePowerState();                                               // изменить состо€ние выхода контрол€ питани€
-//      rgbLedTaskD1.ledTimeSlot[0].isEnabled = false;
-//      rgbLedTaskD1.ledTimeSlot[1].isEnabled = false;
-//      rgbLedTaskD1.ledTimeSlot[2].isEnabled = false;
-    break;
-      
-    case BTN_SW3_SHORT:                                                 // если было короткое нажатие SW3
-//      rgbLedTaskD1.ledTimeSlot[0].color = CL_RED;
-//      rgbLedTaskD1.ledTimeSlot[0].pulseWidthMs = D_pulseWidthMs;
-//      rgbLedTaskD1.ledTimeSlot[0].isEnabled = true;
-    break;
-    
-    case BTN_SW1_SHORT:                                                 // если было нажатие SW1 без SW3
-//      rgbLedTaskD1.ledTimeSlot[1].color = CL_RED|CL_GREEN;
-//      rgbLedTaskD1.ledTimeSlot[1].pulseWidthMs = D_pulseWidthMs;
-//      rgbLedTaskD1.ledTimeSlot[1].isEnabled = true;      
-    break;
-    
-    case BTN_SW1_ONE_CLICK:                                             // если было одно нажатие SW1 при нажатой SW3
-//      rgbLedTaskD1.ledTimeSlot[1].color = CL_GREEN;
-//      rgbLedTaskD1.ledTimeSlot[1].pulseWidthMs = D_pulseWidthMs;
-//      rgbLedTaskD1.ledTimeSlot[1].isEnabled = true;
-    break;
-      
-    case BTN_SW1_DBL_CLICK:                                             // если было два нажати€ SW1 при нажатой SW3
-//      rgbLedTaskD1.ledTimeSlot[2].color = CL_BLUE;
-//      rgbLedTaskD1.ledTimeSlot[2].pulseWidthMs = D_pulseWidthMs;
-//      rgbLedTaskD1.ledTimeSlot[2].isEnabled = true;
-    break;
-    
-    case BTN_SW1_THREE_CLICK:                                           // если было три нажати€ SW1 при нажатой SW3
+//  switch(btnCmd)                                                           
+//  {
+//    case BTN_SW3_LONG:                                                  // если было длинное нажатие SW3
+////      togglePowerState();                                               // изменить состо€ние выхода контрол€ питани€
+////      rgbLedTaskD1.ledTimeSlot[0].isEnabled = false;
+////      rgbLedTaskD1.ledTimeSlot[1].isEnabled = false;
+////      rgbLedTaskD1.ledTimeSlot[2].isEnabled = false;
+//    break;
+//      
+//    case BTN_SW3_SHORT:                                                 // если было короткое нажатие SW3
+////      rgbLedTaskD1.ledTimeSlot[0].color = CL_RED;
+////      rgbLedTaskD1.ledTimeSlot[0].pulseWidthMs = D_pulseWidthMs;
+////      rgbLedTaskD1.ledTimeSlot[0].isEnabled = true;
+//    break;
+//    
+//    case BTN_SW1_SHORT:                                                 // если было нажатие SW1 без SW3
+////      rgbLedTaskD1.ledTimeSlot[1].color = CL_RED|CL_GREEN;
+////      rgbLedTaskD1.ledTimeSlot[1].pulseWidthMs = D_pulseWidthMs;
+////      rgbLedTaskD1.ledTimeSlot[1].isEnabled = true;      
+//    break;
+//    
+//    case BTN_SW1_ONE_CLICK:                                             // если было одно нажатие SW1 при нажатой SW3
+////      rgbLedTaskD1.ledTimeSlot[1].color = CL_GREEN;
+////      rgbLedTaskD1.ledTimeSlot[1].pulseWidthMs = D_pulseWidthMs;
+////      rgbLedTaskD1.ledTimeSlot[1].isEnabled = true;
+//    break;
+//      
+//    case BTN_SW1_DBL_CLICK:                                             // если было два нажати€ SW1 при нажатой SW3
+////      rgbLedTaskD1.ledTimeSlot[2].color = CL_BLUE;
+////      rgbLedTaskD1.ledTimeSlot[2].pulseWidthMs = D_pulseWidthMs;
+////      rgbLedTaskD1.ledTimeSlot[2].isEnabled = true;
+//    break;
+//    
+//    case BTN_SW1_THREE_CLICK:                                           // если было три нажати€ SW1 при нажатой SW3
 
-    break;
-      
-    default: break;
-  } 
-}
+//    break;
+//      
+//    default: break;
+//  } 
+//}
 
 ///*****************************************************************************************
 //* @brief »змер€ем напр€жение питани€  
@@ -456,32 +485,15 @@ static void rgbLedServer(rgbLedTask_t * rgbLedTask )
 void sx_main (void)
 {
   sx_encounter++;
-  //SysTick_Config(SystemCoreClock / 1000);
-  
-//  if(sx1502_init() == I2C_NO_ERROR)
-//  {
-//    i2c_eeprom_read_byte(SX1502_REGDATA_ADDR, &outData);
-//  } else while(1);
-   
-//  while(1)
-//	if ((sx_time-systick_last_LED)>=(LED_PULSE_TIME))
-//	{ 
-//		systick_last_LED+=(LED_PULSE_TIME);
-//	  rgbLedTaskD1.timeSlotMode = TSM_STRT;
-//	}	
 		if ((sx_time-systick_last_SCAN)>=(SCAN_TIME))
 	{ 
 		systick_last_SCAN+=(SCAN_TIME);
 	  scanInputs();
 	}	
-
-  {
-  
-    executeSwState();
+    btnCmd |= decodeButtonsState();//executeSwState();
 //    updateVddValue();
     rgbLedServer(&rgbLedTaskD1);
     rgbLedServer(&rgbLedTaskLD1);    
 		i2c_eeprom_write_byte(SX1502_REGDATA_ADDR, outData);   
-  }
 }
 

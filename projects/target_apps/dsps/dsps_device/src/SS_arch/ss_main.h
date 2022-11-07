@@ -9,9 +9,12 @@ extern uint8_t ssm_main_state;
 e_FunctionReturnState ss_main(void);
 e_FunctionReturnState ss_main_BLE(void);
 e_FunctionReturnState ss_main_init(void);
-e_FunctionReturnState ssm_main_ADC_prepare(void);
-e_FunctionReturnState ssm_main_BLE_prepare(void);
 
+e_FunctionReturnState SSM_ADCStop(void);
+e_FunctionReturnState SSM_ADCStart(void);
+
+e_FunctionReturnState SSM_BLEStop();
+e_FunctionReturnState SSM_BLEStart();
 void DisplayAlarm(void);
 
 

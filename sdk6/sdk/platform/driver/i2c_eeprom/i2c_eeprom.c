@@ -258,14 +258,14 @@ i2c_error_code i2c_eeprom_write_byte(uint32_t address, uint8_t byte)
     }
 
     // Critical section
-    GLOBAL_INT_DISABLE();
+    //GLOBAL_INT_DISABLE();
 
     i2c_eeprom_send_address(address);
 
     i2c_write_last_byte(byte & 0xFF);                // Send write byte
 
     // End of critical section
-    GLOBAL_INT_RESTORE();
+   // GLOBAL_INT_RESTORE();
 
     while (i2c_is_tx_fifo_empty() == 0);            // Wait until Tx FIFO is empty
     while (i2c_is_master_busy());                   // Wait until no master activity

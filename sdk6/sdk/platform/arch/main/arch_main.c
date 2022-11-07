@@ -78,6 +78,7 @@
 #include "ss_i2c.h"
 #include "SS_InterfaceToBLE.h"
 #include "ss_main.h"	
+#include "SS_sys.h"
 
 
 
@@ -162,6 +163,127 @@ __STATIC_INLINE uint8_t get_retention_mode_non_ret_heap(void);
  */
 int main(void);
 
+typedef enum  {e_M_ADCStop,e_M_BLEStop // 3 interface pins
+	            ,e_M_ADCStart,e_M_BLEStart,e_M_PwrSwitchStart
+	            ,e_M_ADCmain,e_M_BLEmain, e_M_SXmain,e_M_PwrSwitchOff //PWR 4+6=10
+,e_M_NumOfel} e_TransitionFunctionType;// 13+1=14
+
+#define d_ADCStop (1<<e_M_ADCStop)   // digital pins and PWR
+#define d_BLEStop (1<<e_M_BLEStop) 
+
+#define d_ADCStart (1<<e_M_ADCStart)
+#define d_BLEStart (1<<e_M_BLEStart)
+#define d_PwrSwitchStart (1<<e_M_PwrSwitchStart)
+
+#define d_ADCmain (1<<e_M_ADCmain)
+#define d_BLEmain (1<<e_M_BLEmain)
+#define d_SXmain  (1<<e_M_SXmain)
+#define d_PwrSwitchOff (1<<e_M_PwrSwitchOff)
+
+
+#define FSM_main_TransitionKeys_size 3
+
+static key_type FSM_main_TransitionKeys[FSM_main_TransitionKeys_size][FSM_main_TransitionKeys_size]=  //int a[ROWS][COLS] // NEW OLD 
+{//                  PwrSwitchOff            ADCmain                    BLEmain      
+/*PwrSwitchOff*/ {d_PwrSwitchOff,     d_ADCStop|d_PwrSwitchStart,        d_BLEStop|d_PwrSwitchStart		},
+/*ADCmain*/      {d_ADCStart          ,   		d_ADCmain,                 d_BLEStop|d_ADCStart     		},
+/*BLEmain*/      {d_BLEStart,   	    d_ADCStop|d_BLEStart,              d_BLEmain|d_SXmain },
+};
+
+t_SSS_s_timeevent AM_switch_time_event;
+
+e_FunctionReturnState TransitionFunction_M(void * FSM)
+{   e_FunctionReturnState rstate;
+	switch (((t_s_FSM*)FSM)->state)
+	{ int currl;
+	  case e_M_ADCStop:	rstate=SSM_ADCStop(); 				 
+			break;//0
+	  case e_M_BLEStop: rstate=SSM_BLEStop();					 
+			break;//1
+	  case e_M_ADCStart: 	rstate=SSM_ADCStart(); 	
+//		                    SSS_SetUpTimeEvent(&AM_switch_time_event,(3000000/D_SYSTICK_PERIOD_US));
+			break;//2
+	  case e_M_BLEStart: 	rstate=SSM_BLEStart();	
+///                        SSS_SetUpTimeEvent(&AM_switch_time_event,(10000000/D_SYSTICK_PERIOD_US));		
+		  break;//2
+	  case e_M_PwrSwitchStart: SX_PowerOff();rstate=e_FRS_Not_Done;
+			break;//3
+		
+		case e_M_ADCmain:	ss_main();	
+                      if ((BTN_SW1_ONE_CLICK&btnCmd)!=0)		
+											{	((t_s_FSM*)FSM)->sign=2;
+											  btnCmd&=~BTN_SW1_ONE_CLICK;
+											};
+											if (AM_switch_time_event.enable)
+											{	
+												if (systick_time-AM_switch_time_event.time>AM_switch_time_event.dtime)
+												{	AM_switch_time_event.enable=false;
+													((t_s_FSM*)FSM)->sign=2;
+												}
+											};
+											if ((BTN_SW3_LONG&btnCmd)!=0)
+											{
+											 ((t_s_FSM*)FSM)->sign=0;
+											 btnCmd&=~BTN_SW3_LONG;
+											};
+
+			rstate=e_FRS_Done; break;
+		case e_M_BLEmain:	 schedule_while_ble_on();	
+                       if ((BTN_SW1_ONE_CLICK&btnCmd)!=0)		
+											 {	((t_s_FSM*)FSM)->sign=1;
+												  btnCmd&=~BTN_SW1_ONE_CLICK;
+											 }
+											if (AM_switch_time_event.enable)
+											{	
+												if (systick_time-AM_switch_time_event.time>AM_switch_time_event.dtime)
+												{	AM_switch_time_event.enable=false;
+													((t_s_FSM*)FSM)->sign=1;
+												}
+											};
+											 if ((BTN_SW3_LONG&btnCmd)!=0)
+											 {
+												 ((t_s_FSM*)FSM)->sign=0;
+												 btnCmd&=~BTN_SW3_LONG;
+											 }
+											 rstate=e_FRS_Done; break;
+		case e_M_SXmain:	 ss_main_BLE();												
+			rstate=e_FRS_Done; break;
+		case e_M_PwrSwitchOff:	  ((t_s_FSM*)FSM)->sign=1;       													
+			rstate=e_FRS_Done; break;
+
+  	default: 																												rstate=e_FRS_DoneError;
+	}
+	return rstate;
+}
+//typedef
+//   struct { 
+//			key_type mFSM_Error;
+//		  uint8_t state;
+//		  uint8_t NumOfel;
+//		  uint8_t mainFMSstate;
+//		  uint8_t sign;
+//      key_type **keys;		 
+//		  fp_FSM_Functions fs;
+//    } t_s_FSM;
+
+
+t_s_FSM s_FSM_main=
+{
+	0,
+	0,
+	e_M_NumOfel,
+	0,
+	1,
+	FSM_main_TransitionKeys_size,
+	&FSM_main_TransitionKeys[0][0],
+	TransitionFunction_M,
+};
+
+
+
+
+
+
 int main(void)
 {
     sleep_mode_t sleep_mode;
@@ -181,7 +303,9 @@ int main(void)
      * Platform initialization
      ************************************************************************************
      */
-
+    while(1)
+	  FSM_main(&s_FSM_main);
+	
     while(1)
     {
 			
@@ -190,7 +314,7 @@ int main(void)
 #endif			
 		switch (ssm_main_state)
 		{
-			case 0: if (ssm_main_ADC_prepare())
+			case 0: if (SSM_ADCStart())
 								ssm_main_state++;
 			        break;
 			case 1: if (!ssm_main_BLE_RDY) 
@@ -204,7 +328,7 @@ int main(void)
 							{	ssm_main_state++;//RDD debug=6
 							}
 								break;
-			case 4: if (ssm_main_BLE_prepare())
+			case 4: if (SSM_ADCStop())
 								ssm_main_state++;
 			        break;					
 			case 5: if (ssm_main_BLE_RDY) 
@@ -269,11 +393,20 @@ int main(void)
 //            GLOBAL_INT_START();
 //        }
 				break;
+//			case 7: if (ssm_main_BLE_prepare())
+//								SwitchOff();
+//				break;
+//			case 8:  if (ssm_main_ADC_prepare())
+//								SwitchOff();
+//				break;
 			default: ssm_main_state=0;
 		}
     wdg_reload(WATCHDOG_DEFAULT_PERIOD);
     };
 }
+
+
+
 
 /**
  ****************************************************************************************

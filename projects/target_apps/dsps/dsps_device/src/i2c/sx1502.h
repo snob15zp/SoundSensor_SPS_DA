@@ -22,7 +22,7 @@
  ****************************************************************************************
  */
  
-  #define SX1502_ADDRESS                       (0x20)     // 0x20 (Addr=GND)
+ #define SX1502_ADDRESS                       (0x20)     // 0x20 (Addr=GND)
 
  #define SX1502_REGDATA_ADDR                  (0x00)     // RegData
  #define SX1502_REGDIR_ADDR                   (0x01)     // Direction

@@ -35,17 +35,16 @@
 #include "arch.h"
 #include "da1458x_periph_setup.h"
 #include "dma.h"
+
+#include "ss_global.h"
+
 /*
  * DEFINES
  ****************************************************************************************
  */
 #define VARS_CNT 32
 
-#ifdef __SoundSensor__
-#define PRODUCT_HEADER_POSITION     0x38000
-#define CFG1_DEFAULT_POSITION 0x20000
-#define CFG2_DEFAULT_POSITION 0x21000
-#else
+#if (D_FlashMap==585)
 #define PRODUCT_HEADER_POSITION     0x38000
 #define CFG1_DEFAULT_POSITION 0x39000
 #define CFG2_DEFAULT_POSITION 0x3A000

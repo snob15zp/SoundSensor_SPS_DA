@@ -14,7 +14,36 @@
 //    uint32_t data_u32;
 //} uni_uint32_t;
 
+#define D_FlashMap 585
+
+/*
+Standat 585			
+Address		Size	
+0x	0d	0d	
+0	0	16384	Bootloader
+4000	16384	32768	First copy
+c000	49152	32768	Second copy
+14000	81920	147456	file
+38000	229376	4096	Header
+39000	233472	4096	Config 1
+3a000	237568	4096	Config 2
+3b000	241664	20480	Config2 end
+40000	262144	3932160	end2m
+400000	4194304		end32m
+*/
+
+
+
+
+
+
+
+
+
 extern uint8_t dummy_function_status;
+
+
+
 
 
 //=============================================FSM=====================================

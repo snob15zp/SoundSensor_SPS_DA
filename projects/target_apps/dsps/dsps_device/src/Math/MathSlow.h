@@ -15,7 +15,7 @@
 #define MF_ADCOverLoad_Flag_duration_US 1000000
 
 #define MS_D_offset_FastA_dB 49.88 //dB
-#define MS_D_offset_Dose_dB  (62.484) //dB 74.53
+#define MS_D_offset_Dose_dB  (62.5869) //dB 74.53
 #define MS_D_offset_C_Peak_dB (-23.70202241) //dB
 #define MS_D_dBscale 100.0
 

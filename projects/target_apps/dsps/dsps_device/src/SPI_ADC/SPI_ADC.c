@@ -371,25 +371,23 @@ initiated immediately 1: wait for key release after interrupt was reset for IRQ0
   NVIC_EnableIRQ(GPIO0_IRQn);	
 
 }
-inline void ADC_IRQ_adctest(void);
-inline void ADC_IRQ(void);
-void GPIO0_Handler(void)
-{
+
+//{
 // switch(SS_ADC_MODE)
 //	 {
 //	  case EAM_ADC_sin:
 //		case EAM_ADC_WORK: 
-		  	ADC_IRQ();
+//		  	ADC_IRQ();
 //	      break;
 ////	  case EAM_ADCLIVE: ADC_IRQ_adctest();break;
 //	 default:;
 //	 };
- GPIO_ResetIRQ(GPIO0_IRQn);
- NVIC_ClearPendingIRQ(GPIO0_IRQn);
-}
+// GPIO_ResetIRQ(GPIO0_IRQn);
+// NVIC_ClearPendingIRQ(GPIO0_IRQn);
+//}
 
-
-inline void ADC_IRQ(void)
+void GPIO0_Handler(void)
+//inline void ADC_IRQ(void)
 {
 uni_int32_t SA_in;
 	
@@ -397,11 +395,13 @@ uni_int32_t SA_in;
 	
 //    spi_set_bitmode(SPI_MODE_8BIT);	
 //	SetWord16(SPI_CONFIG_REG, 0x1C); 	
+	
+#if	(D_ADCMODE!=2)	
 	SA_in.masByte[3] = GetWord16(&spi->SPI_FIFO_READ_REGF) ;    
 	SA_in.masByte[2] = GetWord16(&spi->SPI_FIFO_READ_REGF) ;   
 	SA_in.masByte[1] = GetWord16(&spi->SPI_FIFO_READ_REGF) ;  
 	SA_in.masByte[0] = 0 ;	
-	
+#endif	
 	SetWord16(SPI_CTRL_REG, SPI_FIFO_RESET|SPI_RX_EN|SPI_TX_EN|SPI_EN);
 	SetWord16(SPI_CTRL_REG, SPI_RX_EN|SPI_TX_EN|SPI_EN);	
 	
@@ -431,14 +431,12 @@ uni_int32_t SA_in;
 	};
 #endif	
 	
-// if	((SS_ADC_MODE==EAM_ADC_sin)||(SS_ADC_MODE==EAM_ADCsystick))
-// {
-//	test_MF_main_ADCEmul();
-// }
-// else
-// {
+#if	(D_ADCMODE==2)
+	test_MF_main_ADCEmul();
+#endif
+#if	(D_ADCMODE==0)
 	MF_main(SA_in.data_u32>>5);
-// }
+#endif
 	
 	
 // while ( GetWord16(SPI_FIFO_STATUS_REG) & SPI_TRANSACTION_ACTIVE )
@@ -449,6 +447,8 @@ uni_int32_t SA_in;
 	if (SA_flashbit) 
 		SA_flashbit=false; 
 
+ GPIO_ResetIRQ(GPIO0_IRQn);
+ NVIC_ClearPendingIRQ(GPIO0_IRQn);
 }
 
 

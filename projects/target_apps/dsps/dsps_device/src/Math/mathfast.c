@@ -173,7 +173,7 @@ inline void MF_main(int32_t adcoutput)
 #endif
  
 #if	(D_ADCMODE!=1)		
-	//square=MF_sqr(filterAout<<ForIntegratorShift);
+	square=MF_sqr(filterAout<<ForIntegratorShift);
 #endif	
 	
 	t=Integrator.u32[1];

@@ -33,7 +33,7 @@ c000	49152	32768	Second copy
 */
 
 
-#define D_ADCMODE 1
+#define D_ADCMODE 0
 /*
 0 - work mode
 1 - live data

@@ -92,6 +92,7 @@ void user_on_disconnect( struct gapc_disconnect_ind const *param )
     if (suota_state.reboot_requested)
         platform_reset(RESET_AFTER_SUOTA_UPDATE);
 #endif
+		default_app_on_disconnect(param);
 }
 
 void user_on_connect_failed (void)

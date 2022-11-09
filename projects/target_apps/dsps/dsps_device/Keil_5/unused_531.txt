@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Tue Nov 08 17:03:11 2022
+;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Thu Nov 10 01:29:13 2022
 ;VERSION 0.2
 ;FILE adc_531.o
 adc_correct_sample <= USED 0
@@ -30,7 +30,6 @@ app_easy_gap_undirected_advertise_with_timeout_start <= USED 0
 default_advertise_operation <= USED 0
 default_app_generate_static_random_addr <= USED 0
 default_app_generate_unique_static_random_addr <= USED 0
-default_app_on_disconnect <= USED 0
 ;FILE app_easy_msg_utils.o
 app_easy_msg_free_callback <= USED 0
 app_easy_msg_modify <= USED 0

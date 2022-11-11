@@ -53,7 +53,7 @@ void SSS_WriteTableToVar(const user_config_elem_t *t, uint8_t *var_index, uint8_
 	uint8_t SSS_u8_index_vars=0;
 	while(SSS_u8_RW_vars_index_table<ms)
 	{
-		memcpy(vars+SSS_u8_index_vars,
+		memcpy(vars+(SSS_u8_index_vars/2),
 		       t[SSS_u8_RW_vars_index_table].data, 
 		       t[SSS_u8_RW_vars_index_table].cur_size
 		      );
@@ -73,7 +73,7 @@ void SSS_ReadTableFromVar(const user_config_elem_t *t, uint8_t *var_index, uint8
 		       t[SSS_u8_RW_vars_index_table].cur_size
 		      );
 		SSS_u8_RW_vars_index_table++;
-		SSS_u8_index_vars+=(((t[SSS_u8_RW_vars_index_table].cur_size)+1)&0xFE);
+		SSS_u8_index_vars+=(((t[SSS_u8_RW_vars_index_table].cur_size)+1)>>1);
 	}		
 }
 

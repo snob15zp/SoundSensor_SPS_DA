@@ -1363,9 +1363,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>SS_InterfaceToBLE</GroupName>
-        </Group>
-        <Group>
           <GroupName>SPI_ADC</GroupName>
           <Files>
             <File>
@@ -2965,9 +2962,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>SS_InterfaceToBLE</GroupName>
-        </Group>
-        <Group>
           <GroupName>SPI_ADC</GroupName>
           <Files>
             <File>
@@ -4565,9 +4559,6 @@
               <FilePath>..\src\user_config_storage.h</FilePath>
             </File>
           </Files>
-        </Group>
-        <Group>
-          <GroupName>SS_InterfaceToBLE</GroupName>
         </Group>
         <Group>
           <GroupName>SPI_ADC</GroupName>

@@ -191,7 +191,8 @@ static key_type FSM_main_TransitionKeys[FSM_main_TransitionKeys_size][FSM_main_T
 };
 
 t_SSS_s_timeevent AM_switch_time_event;
-
+uint8_t msgl[]={33,34,35,36}; 
+uint8_t msg_szl=2;
 e_FunctionReturnState TransitionFunction_M(void * FSM)
 {   e_FunctionReturnState rstate;
 	switch (((t_s_FSM*)FSM)->state)
@@ -204,7 +205,7 @@ e_FunctionReturnState TransitionFunction_M(void * FSM)
 		                    SSS_SetUpTimeEvent(&AM_switch_time_event,(10000000/D_SYSTICK_PERIOD_US));
 			break;//2
 	  case e_M_BLEStart: 	rstate=SSM_BLEStart();	
-///                        SSS_SetUpTimeEvent(&AM_switch_time_event,(10000000/D_SYSTICK_PERIOD_US));		
+                        SSS_SetUpTimeEvent(&AM_switch_time_event,(10000000/D_SYSTICK_PERIOD_US));		
 		  break;//2
 	  case e_M_PwrSwitchStart: SX_PowerOff();rstate=e_FRS_Not_Done;
 			break;//3
@@ -236,8 +237,10 @@ e_FunctionReturnState TransitionFunction_M(void * FSM)
 											if (AM_switch_time_event.enable)
 											{	
 												if (systick_time-AM_switch_time_event.time>AM_switch_time_event.dtime)
-												{	AM_switch_time_event.enable=false;
-													((t_s_FSM*)FSM)->sign=1;
+												{	//AM_switch_time_event.enable=false;
+													//((t_s_FSM*)FSM)->sign=1;
+											SSS_SetUpTimeEvent(&AM_switch_time_event,(1000000/D_SYSTICK_PERIOD_US));
+//											user_send_ble_data(msgl, msg_szl);  //RDD debug
 												}
 											};
 											 if ((BTN_SW3_LONG&btnCmd)!=0)

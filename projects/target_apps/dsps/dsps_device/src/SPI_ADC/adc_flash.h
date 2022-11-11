@@ -20,6 +20,12 @@
 #define AF_D_timestampLo 5
 #define AF_D_timestampHi 6
 
+typedef union {
+    uint32_t u32;
+	  uint16_t u16[2];
+	  uint8_t	 u8[4];
+} uni_u32_t;
+
 extern bool ADCon;
 extern uint32_t AddrNewRecord;
 

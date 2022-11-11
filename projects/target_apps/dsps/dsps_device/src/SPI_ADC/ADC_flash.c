@@ -52,12 +52,12 @@ void AF_V_AddADCdataToFIFO(uint16_t A, uint16_t B)
 int AF_V_WriteStart(uint16_t callerFunction)
 {
 int rezult_Start; 	
-    ss_spi_init(SPI_ADC_GPIO_MAP,&UPS_spi_cfg);		 
+ //   ss_spi_init(SPI_ADC_GPIO_MAP,&UPS_spi_cfg);		 
     user_spi_flash_init(SPI_FLASH_GPIO_MAP);		
 //	Unlock flash	
 	delay_10ms();			
 	spi_set_bitmode(SPI_MODE_8BIT);
-	spi_transaction(SPI_FLASH_OP_WRDI);	
+	spi_transaction(SPI_FLASH_OP_WRDI);//RDD???	
 	delay_10ms();	
 	spi_flash_set_write_enable();
 	delay_10ms();		
@@ -110,6 +110,7 @@ int rezult_Start;
 		}
 	}
 	F_PWR_on = 1;
+	
 	return rezult_Start;
 }
 
@@ -119,53 +120,29 @@ uint32_t systick_time_tek;
 uint8_t byteFlash;
 uint8_t dummy;	
 	
-	NVIC_DisableIRQ(GPIO0_IRQn);
-	GPIO_ResetIRQ(GPIO0_IRQn);	
-	NVIC_ClearPendingIRQ(GPIO0_IRQn);		
-//Flag ADC stop !!!!!	
-//	ADD data to buffer	
-	systick_time_tek = systick_time;
-	AF_V_AddADCdataToFIFO(recordType_StopPWRon, callerFunction);
-	AF_V_AddADCdataToFIFO(recordType_TimeStampL, systick_time_tek & 0x00ffff);	
-	AF_V_AddADCdataToFIFO(recordType_TimeStampH, (systick_time_tek>>16) & 0x00ffff);	
-
-	SetWord16(SPI_CS_CONFIG_REG,SPI_CS_NONE);	
-//	SetWord16(P0_SET_DATA_REG, 1 << SPI_EN_PIN);	
-	while ( RingBuffer_get_ch8(&byteFlash) == 0 )
-	{
-//    spi_set_bitmode(SPI_MODE_8BIT);	
-		SetWord16(SPI_CONFIG_REG, 0x1C);
-		dummy = GetWord16(&spi->SPI_FIFO_READ_REGF) ;    
-		dummy = GetWord16(&spi->SPI_FIFO_READ_REGF) ;   
-		dummy = GetWord16(&spi->SPI_FIFO_READ_REGF) ;  
-		dummy = dummy;
-		
-		SetWord16(SPI_CTRL_REG, SPI_FIFO_RESET|SPI_RX_EN|SPI_TX_EN|SPI_EN);
-		SetWord16(SPI_CTRL_REG, SPI_RX_EN|SPI_TX_EN|SPI_EN);	
+uni_u32_t datal;	
+uint32_t actual_size;	
 	
-		SetWord16(P0_RESET_DATA_REG, 0x0002);	
-		SetWord16(SPI_CS_CONFIG_REG,SPI_CS_0); 	
-	
-		SetWord16(&spi->SPI_FIFO_WRITE_REGF, 0xAD);//	SA_out.masByte[0]
-		SetWord16(&spi->SPI_FIFO_WRITE_REGF, 0x22);//	SA_out.masByte[1]
-		SetWord16(&spi->SPI_FIFO_WRITE_REGF, byteFlash);	
-	
-		while (GetBits16(&spi->SPI_FIFO_STATUS_REGF, SPI_TRANSACTION_ACTIVE) == SPI_TRANSACTION_IS_ACTIVE)
-		{
-		};
-	
-		SetWord16(SPI_CS_CONFIG_REG, SPI_CS_NONE);
-		SetWord16(P0_SET_DATA_REG, 1 << SPI_EN_PIN);
-		delay_200us();
-	}
-	
-    ss_spi_init(SPI_ADC_GPIO_MAP,&UPS_spi_cfg);		 
-    user_spi_flash_init(SPI_FLASH_GPIO_MAP);		
 	spi_set_bitmode(SPI_MODE_8BIT);
 	spi_transaction(SPI_FLASH_OP_WRDI);
 	
+  systick_time_tek = systick_time;
 	rezult_find_AddrNewRecord = find_AddrNewRecord(SPI_FLASH_ADDR_START_RECORD_ADC, SPI_FLASH_ADDR_END_RECORD_ADC, &AddrNewRecord);	
-//	if ( rezult_find_AddrNewRecord == 0 )	
+	if ( rezult_find_AddrNewRecord == 0 )
+	{ datal.u8[1]=recordType_StopPWRon;
+		datal.u16[1]=callerFunction;
+		spi_flash_write_data(&(datal.u8[1]),AddrNewRecord,3,&actual_size);
+		datal.u8[1]=recordType_TimeStampL;
+		datal.u16[1]=systick_time_tek & 0x00ffff;
+		spi_flash_write_data(&(datal.u8[1]),AddrNewRecord,3,&actual_size);
+		datal.u8[1]=recordType_TimeStampH;
+		datal.u16[1]=(systick_time_tek>>16);
+		spi_flash_write_data(&(datal.u8[1]),AddrNewRecord,3,&actual_size);
+	}
+	else
+	{
+		strcpy(SSG_ch_Error,"Error AF_V_WriteStop find_AddrNewRecord " );
+	}
 }
 
 //--------------------------------------------------------------------------------------------------

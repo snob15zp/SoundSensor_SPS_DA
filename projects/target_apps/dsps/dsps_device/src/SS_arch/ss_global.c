@@ -1,6 +1,7 @@
 #include "ss_global.h"
 
 uint8_t dummy_function_status;
+char SSG_ch_Error[40]="No error";
 
 e_FunctionReturnState  FSM_Transition(t_s_FSM * FSM, key_type key)
 {

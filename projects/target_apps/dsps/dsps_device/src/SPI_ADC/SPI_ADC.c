@@ -8,34 +8,6 @@
 #include "mathfast.h"
 #include "ss_sys.h"
 
-static const spi_cfg_t spi_cfg_ADC = {
-    .spi_ms = SPI_MS_MODE,
-    .spi_cp = SPI_CP_MODE,
-    .spi_speed = SPI_SPEED_MODE,
-    .spi_wsz = SPI_WSZ,
-    .spi_cs = SPI_CS,
-    .cs_pad.port = ADC_EN_PORT,
-    .cs_pad.pin = ADC_EN_PIN,
-#if defined (__DA14531__)
-    .spi_capture = SPI_EDGE_CAPTURE,
-#endif
-};
-
-
-volatile bool SA_flashbit = false;
-uni_int32_t SA_out;
-
-
-#if	(D_ADCMODE==1)
-#define def_dataRead_Size (512*1)
-
-int32_t SA_dataRead_32[def_dataRead_Size/4];
-int8_t dataRead_toy;
-//bool SA_b_dataRead_full;
-//bool SA_b_dataRead_empty;
-volatile uint16_t SA_ui16_dataRead_index;
-uint8_t *SA_dataRead=(uint8_t*)(&(SA_dataRead_32[0]));
-#endif
 /*
 To configure the SPI controller in master mode, follow the steps below:
 1. Set the appropriate GPIO ports in SPI clock mode (output), SPI Chip Select mode (output), SPI
@@ -154,7 +126,38 @@ static const spi_cfg_t spi_cfg = {
     0x50001228 SPI_FIFO_HIGH_REG Spi TX/RX High 16bit word
     0x5000122C SPI_TXBUFFER_FORCE_L_REG SPI TX buffer force low value
     0x50001230 SPI_TXBUFFER_FOR CE_H_REG SPI TX buffer force high value
-*/
+*///==============================================================================================
+
+static const spi_cfg_t spi_cfg_ADC = {
+    .spi_ms = SPI_MS_MODE,
+    .spi_cp = SPI_CP_MODE,
+    .spi_speed = SPI_SPEED_MODE,
+    .spi_wsz = SPI_WSZ,
+    .spi_cs = SPI_CS,
+    .cs_pad.port = ADC_EN_PORT,
+    .cs_pad.pin = ADC_EN_PIN,
+#if defined (__DA14531__)
+    .spi_capture = SPI_EDGE_CAPTURE,
+#endif
+};
+
+
+volatile bool SA_flashbit = false;
+uni_int32_t SA_out;
+
+
+#if	(D_ADCMODE==1)
+#define def_dataRead_Size (512*1)
+
+int32_t SA_dataRead_32[def_dataRead_Size/4];
+int8_t dataRead_toy;
+//bool SA_b_dataRead_full;
+//bool SA_b_dataRead_empty;
+volatile uint16_t SA_ui16_dataRead_index;
+uint8_t *SA_dataRead=(uint8_t*)(&(SA_dataRead_32[0]));
+#endif
+
+
 #define ADC_SPI_WORD_LENGTH (7<<2)
 #define ADC_SPI_RX_TL (2<<4)
 #define ADC_SPI_TX_TL 0
@@ -167,6 +170,8 @@ int16_t tmp_SPI_CS_CONFIG_REG;
 void SPI_ADC_deinit(void)
 {
 	NVIC_DisableIRQ(GPIO0_IRQn);
+	GPIO_ResetIRQ(GPIO0_IRQn);	
+	NVIC_ClearPendingIRQ(GPIO0_IRQn);
   SS_spi_switchoff_pins(SPI_ADC_GPIO_MAP);
 }
 

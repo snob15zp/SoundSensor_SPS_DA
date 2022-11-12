@@ -319,7 +319,7 @@ extern uint8_t gpio_por_pin_timeout;
 // Define SPI Configuration
     #define SPI_MS_MODE             SPI_MS_MODE_MASTER
     #define SPI_CP_MODE             SPI_CP_MODE_0
-    #define SPI_WSZ                 SPI_MODE_8BIT
+    #define SPI_WSZ                 SPI_MODE_16BIT
     #define SPI_CS                  SPI_CS_0
 
 #if defined(__DA14531__)

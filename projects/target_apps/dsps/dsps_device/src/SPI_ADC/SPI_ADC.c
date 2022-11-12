@@ -196,7 +196,7 @@ void SA_SPI_init(void)
   ss_spi_init(SPI_ADC_GPIO_MAP,&spi_cfg_ADC);
 
 	SetWord16(SPI_CTRL_REG, SPI_FIFO_RESET|SPI_RX_EN|SPI_TX_EN|SPI_EN); 
-	SetWord16(SPI_CONFIG_REG, ADC_SPI_WORD_LENGTH);
+	//SetWord16(SPI_CONFIG_REG, ADC_SPI_WORD_LENGTH);
 	//SetWord16(SPI_CLOCK_REG, );
 	SetWord16(SPI_FIFO_CONFIG_REG,ADC_SPI_RX_TL|ADC_SPI_TX_TL );
 	//SetWord16(SPI_IRQ_MASK_REG, );
@@ -225,18 +225,18 @@ void SA_SPI_init(void)
 ////    SetBits16(&spi->SPI_CTRL_REGF, SPI_EN | SPI_TX_EN | SPI_RX_EN| SPI_DMA_TX_EN | SPI_DMA_RX_EN, 0);		
 //    SetWord16(SPI_CTRL_REG, 0x07);			
 ////========================================================================================================
-tmp_SPI_CTRL_REG=GetWord16(SPI_CTRL_REG);
-tmp_SPI_CONFIG_REG=GetWord16(SPI_CONFIG_REG);
-tmp_SPI_FIFO_CONFIG_REG=GetWord16(SPI_FIFO_CONFIG_REG);
-tmp_SPI_CS_CONFIG_REG=GetWord16(SPI_CS_CONFIG_REG);
+//tmp_SPI_CTRL_REG=GetWord16(SPI_CTRL_REG);
+//tmp_SPI_CONFIG_REG=GetWord16(SPI_CONFIG_REG);
+//tmp_SPI_FIFO_CONFIG_REG=GetWord16(SPI_FIFO_CONFIG_REG);
+//tmp_SPI_CS_CONFIG_REG=GetWord16(SPI_CS_CONFIG_REG);
 
 
 	
 ////	while(1)
 //{	
 //	
-	SetWord16(SPI_CS_CONFIG_REG,SPI_CS_0);
-    SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x55));	
+//	SetWord16(SPI_CS_CONFIG_REG,SPI_CS_0);
+ //   SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x55));	
 //    SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x33));
 //    SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x44));
 //		
@@ -402,9 +402,8 @@ uni_int32_t SA_in;
 //	SetWord16(SPI_CONFIG_REG, 0x1C); 	
 	
 #if	(D_ADCMODE!=2)	
-	SA_in.masByte[3] = GetWord16(&spi->SPI_FIFO_READ_REGF) ;    
-	SA_in.masByte[2] = GetWord16(&spi->SPI_FIFO_READ_REGF) ;   
-	SA_in.masByte[1] = GetWord16(&spi->SPI_FIFO_READ_REGF) ;  
+	SA_in.u16[1] = GetWord16(&spi->SPI_FIFO_READ_REGF) ;    
+	SA_in.u16[0] = GetWord16(&spi->SPI_FIFO_READ_REGF) ;   
 	SA_in.masByte[0] = 0 ;	
 #endif	
 	SetWord16(SPI_CTRL_REG, SPI_FIFO_RESET|SPI_RX_EN|SPI_TX_EN|SPI_EN);
@@ -416,8 +415,8 @@ uni_int32_t SA_in;
 		      SetWord16(P0_RESET_DATA_REG, 0x0002);	
 	SetWord16(SPI_CS_CONFIG_REG,SPI_CS_0); 	
 	
-	SetWord16(&spi->SPI_FIFO_WRITE_REGF, 0xAD);//	SA_out.masByte[0]
-	SetWord16(&spi->SPI_FIFO_WRITE_REGF, 0x22);//	SA_out.masByte[1]
+	SetWord16(&spi->SPI_FIFO_WRITE_REGF, 0xADaa);//	SA_out.masByte[0]
+//	SetWord16(&spi->SPI_FIFO_WRITE_REGF, 0x22);//	SA_out.masByte[1]
 	SetWord16(&spi->SPI_FIFO_WRITE_REGF, SA_out.masByte[2]);	
 
 	

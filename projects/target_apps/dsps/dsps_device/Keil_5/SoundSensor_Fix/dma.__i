@@ -3,4 +3,4 @@
 -IC:\Users\RD\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include
 -IC:\Keil_v5\ARM\CMSIS\Include
 -D__UVISION_VERSION="528" -DARMCM0P -D__DA14531__ -D__SoundSensor__ -D__SSFix__ -D__NO_MATLAB__ -D__SS_EXT__
--o .\soundsensor_fix\arch_sleep.o --omf_browse .\soundsensor_fix\arch_sleep.crf --depend .\soundsensor_fix\arch_sleep.d "..\..\..\..\..\sdk6\sdk\platform\arch\main\arch_sleep.c"
+-o .\soundsensor_fix\dma.o --omf_browse .\soundsensor_fix\dma.crf --depend .\soundsensor_fix\dma.d "..\..\..\..\..\sdk6\sdk\platform\driver\dma\dma.c"

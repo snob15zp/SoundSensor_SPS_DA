@@ -80,6 +80,7 @@
 #include "ss_main.h"	
 #include "SS_sys.h"
 
+#include "spi_flash.h"//debug
 
 
 
@@ -202,7 +203,7 @@ e_FunctionReturnState TransitionFunction_M(void * FSM)
 	  case e_M_BLEStop: rstate=SSM_BLEStop();					 
 			break;//1
 	  case e_M_ADCStart: 	rstate=SSM_ADCStart(); 	
-		                    SSS_SetUpTimeEvent(&AM_switch_time_event,(10000000/D_SYSTICK_PERIOD_US));
+		                    SSS_SetUpTimeEvent(&AM_switch_time_event,(1000000/D_SYSTICK_PERIOD_US));
 			break;//2
 	  case e_M_BLEStart: 	rstate=SSM_BLEStart();	
                         SSS_SetUpTimeEvent(&AM_switch_time_event,(10000000/D_SYSTICK_PERIOD_US));		
@@ -300,6 +301,9 @@ int main(void)
     system_init_post();
 	
 	  ss_main_init();
+	
+    uint8_t dev_id;	
+	  spi_flash_auto_detect(&dev_id); //RDD debug
 	
     /*
      ************************************************************************************

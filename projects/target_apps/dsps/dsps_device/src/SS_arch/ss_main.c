@@ -32,6 +32,7 @@ e_FunctionReturnState SSM_ADCStart(void)
 #ifdef __SS_EXT__
 	SX_CalibrationOnOff(SSS_CalibrationMode);
 #endif	
+	//systick_last=systick_time;
   time_start=systick_time;
 	AF_V_WriteStart((uint16_t) SSM_ADCStart);	
 
@@ -150,8 +151,8 @@ e_FunctionReturnState ss_main(void)
 	
 	
 
-	if ((systick_time-time_start)>((10000000)/D_SYSTICK_PERIOD_US))
-	  	b_rv=e_FRS_Done;
+//	if ((systick_time-time_start)>((10000000)/D_SYSTICK_PERIOD_US))
+//	  	b_rv=e_FRS_Done;
 	return b_rv; 
 //-------------------------------------------------------------------
 //-------------------------------------------------------------------
@@ -184,8 +185,8 @@ e_FunctionReturnState ss_main_BLE(void)
 			btnCmd=0;
 		}
   }
-		if ((systick_time-time_start)>((10000000)/D_SYSTICK_PERIOD_US))
- 	  	b_rv=e_FRS_Done;
+//		if ((systick_time-time_start)>((10000000)/D_SYSTICK_PERIOD_US))
+// 	  	b_rv=e_FRS_Done;
 	return b_rv; 
 }
 

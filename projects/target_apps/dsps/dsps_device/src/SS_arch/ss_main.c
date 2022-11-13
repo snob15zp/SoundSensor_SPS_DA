@@ -55,14 +55,15 @@ e_FunctionReturnState SSM_ADCStop(void)
 	switch (SM_FSM_state)
 	{	case 0: // 
 			       SM_FSM_state++;
-		case 1: poll_newBytetoWriteFlash();
+		case 1: if (poll_newBytetoWriteFlash())
+			           SM_FSM_state++;
 //			if (systick_time<(1000000/D_SYSTICK_PERIOD_US))  //debug
 //			{
 //				b_rv=e_FRS_Not_Done;
 //				break;		
 //			}
-		       if (RingBuffer_is_empty())
-            SM_FSM_state++;
+//		       if (RingBuffer_is_empty())
+//            SM_FSM_state++;
 			break;						
 		default: 	//SS_ADC_MODE=EAM_IDLE;
 			        SPI_ADC_deinit();
@@ -202,21 +203,21 @@ e_FunctionReturnState SSM_BLEStart()
 
 
 //================================ALARM===============================================
-#define  MS_b_alert_C140dBPeakD true
-#define  MS_b_alert_FastAD true
-#define  MS_b_alert_liveD false
-#define MS_b_alert_OverloadD false
-#define  MS_b_alert_DoseM3dBD	true
-#define  MS_b_alert_DoseD false
-#define MS_b_alert_hearingD false
+//#define  MS_b_alert_C140dBPeakD true
+//#define  MS_b_alert_FastAD true
+//#define  MS_b_alert_liveD false
+//#define MS_b_alert_OverloadD false
+//#define  MS_b_alert_DoseM3dBD	true
+//#define  MS_b_alert_DoseD false
+//#define MS_b_alert_hearingD false
 
 
 
 void DisplayAlarm(void)
 {
 	rgbLedTaskD1.ledTimeSlot[0]=LED_ALARM_Operatingstate;
-  if (MS_b_alert_liveD) rgbLedTaskD1.ledTimeSlot[0]=LED_ALARM_LiveSPL;
-	if (MS_b_alert_OverloadD) rgbLedTaskD1.ledTimeSlot[0]=LED_ALARM_Overloadindicator;
+  if (MS_b_alert_live) rgbLedTaskD1.ledTimeSlot[0]=LED_ALARM_LiveSPL;
+	if (MS_b_alert_Overload) rgbLedTaskD1.ledTimeSlot[0]=LED_ALARM_Overloadindicator;
 	if (ssm_main_BLE_RDY) rgbLedTaskD1.ledTimeSlot[0]=LED_ALARM_BLE;
 	if (SSM_erase_alarm_time_event.enable)
 	{	rgbLedTaskD1.ledTimeSlot[0]=LED_ALARM_erase;
@@ -242,7 +243,7 @@ void DisplayAlarm(void)
 
 
 	rgbLedTaskLD1.ledTimeSlot[0]=LED_ALARM_Empty;
-	if (MS_b_alert_DoseM3dBD) rgbLedTaskLD1.ledTimeSlot[0]=LED_ALARM_LAeqM3dB;
-	if (MS_b_alert_DoseD) rgbLedTaskLD1.ledTimeSlot[0]=LED_ALARM_LAeq;
+	if (MS_b_alert_DoseM3dB) rgbLedTaskLD1.ledTimeSlot[0]=LED_ALARM_LAeqM3dB;
+	if (MS_b_alert_Dose) rgbLedTaskLD1.ledTimeSlot[0]=LED_ALARM_LAeq;
 	
 };

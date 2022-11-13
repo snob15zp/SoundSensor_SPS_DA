@@ -129,17 +129,17 @@ uint32_t actual_size;
   systick_time_tek = systick_time;
 	rezult_find_AddrNewRecord = find_AddrNewRecord(SPI_FLASH_ADDR_START_RECORD_ADC, SPI_FLASH_ADDR_END_RECORD_ADC, &AddrNewRecord);	
 	if ( rezult_find_AddrNewRecord == 0 )
-	{ datal.u8[1]=recordType_StopPWRon;
-		datal.u16[1]=callerFunction;
-		spi_flash_write_data(&(datal.u8[1]),AddrNewRecord,3,&actual_size);
+	{ datal.u8[2]=recordType_StopPWRon;
+		datal.u16[0]=callerFunction;
+		spi_flash_write_data(&(datal.u8[0]),AddrNewRecord,3,&actual_size);
 		AddrNewRecord+=3;
-		datal.u8[1]=recordType_TimeStampL;
-		datal.u16[1]=systick_time_tek & 0x00ffff;
-		spi_flash_write_data(&(datal.u8[1]),AddrNewRecord,3,&actual_size);
+		datal.u8[2]=recordType_TimeStampL;
+		datal.u16[0]=systick_time_tek & 0x00ffff;
+		spi_flash_write_data(&(datal.u8[0]),AddrNewRecord,3,&actual_size);
 		AddrNewRecord+=3;
-		datal.u8[1]=recordType_TimeStampH;
-		datal.u16[1]=(systick_time_tek>>16);
-		spi_flash_write_data(&(datal.u8[1]),AddrNewRecord,3,&actual_size);
+		datal.u8[2]=recordType_TimeStampH;
+		datal.u16[0]=(systick_time_tek>>16);
+		spi_flash_write_data(&(datal.u8[0]),AddrNewRecord,3,&actual_size);
 		AddrNewRecord+=3;
 	}
 	else

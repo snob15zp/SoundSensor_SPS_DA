@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\SoundSensor_Fix\SS_Fix.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\SoundSensor_Fix\SS_Fix.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sun Nov 13 00:54:06 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sun Nov 13 12:54:08 2022
 <BR><P>
 <H3>Maximum Stack Usage =        352 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -2685,7 +2685,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[25]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSM_ADCStart
 </UL>
 
-<P><STRONG><a name="[1c9]"></a>AF_V_WriteStop</STRONG> (Thumb, 134 bytes, Stack size 24 bytes, adc_flash.o(.text))
+<P><STRONG><a name="[1c9]"></a>AF_V_WriteStop</STRONG> (Thumb, 132 bytes, Stack size 24 bytes, adc_flash.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 140<LI>Call Chain = AF_V_WriteStop &rArr; spi_flash_write_data &rArr; spi_flash_page_program &rArr; spi_flash_write_enable &rArr; spi_flash_wait_till_ready &rArr; spi_flash_read_status_reg &rArr; spi_transaction &rArr; spi_access
 </UL>
 <BR>[Calls]<UL><LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_transaction
@@ -2698,8 +2698,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[1cc]"></a>RingBuffer_is_empty</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, ring_buff.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSM_ADCStop
-<LI><a href="#[1cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RingBuffer_get_i32
+<BR><BR>[Called By]<UL><LI><a href="#[1cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RingBuffer_get_i32
 </UL>
 
 <P><STRONG><a name="[1cb]"></a>RingBuffer_get_i32</STRONG> (Thumb, 54 bytes, Stack size 8 bytes, ring_buff.o(.text))
@@ -2719,8 +2718,8 @@ Global Symbols
 <LI><a href="#[1c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AF_V_WriteStart
 </UL>
 
-<P><STRONG><a name="[1cd]"></a>poll_newBytetoWriteFlash</STRONG> (Thumb, 42 bytes, Stack size 8 bytes, ring_buff.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = poll_newBytetoWriteFlash &rArr; RingBuffer_get_ch8 &rArr; RingBuffer_get_i32
+<P><STRONG><a name="[1cd]"></a>poll_newBytetoWriteFlash</STRONG> (Thumb, 52 bytes, Stack size 12 bytes, ring_buff.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = poll_newBytetoWriteFlash &rArr; RingBuffer_get_ch8 &rArr; RingBuffer_get_i32
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RingBuffer_get_ch8
 </UL>
@@ -2918,13 +2917,12 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> ss_main.o(.text)
 </UL>
-<P><STRONG><a name="[26]"></a>SSM_ADCStop</STRONG> (Thumb, 102 bytes, Stack size 16 bytes, ss_main.o(.text))
+<P><STRONG><a name="[26]"></a>SSM_ADCStop</STRONG> (Thumb, 98 bytes, Stack size 16 bytes, ss_main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 228<LI>Call Chain = SSM_ADCStop &rArr; user_spi_flash_init &rArr; spi_flash_auto_detect &rArr; spi_flash_read_jedec_id &rArr; spi_flash_is_busy &rArr; spi_flash_read_status_reg &rArr; spi_transaction &rArr; spi_access
 </UL>
 <BR>[Calls]<UL><LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_flash_read_data
 <LI><a href="#[17e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_spi_flash_init
 <LI><a href="#[1cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;poll_newBytetoWriteFlash
-<LI><a href="#[1cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RingBuffer_is_empty
 <LI><a href="#[1c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AF_V_WriteStop
 <LI><a href="#[1be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ss_spi_init
 <LI><a href="#[1b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_ADC_deinit
@@ -2937,7 +2935,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[1ed]"></a>DisplayAlarm</STRONG> (Thumb, 148 bytes, Stack size 16 bytes, ss_main.o(.text))
+<P><STRONG><a name="[1ed]"></a>DisplayAlarm</STRONG> (Thumb, 210 bytes, Stack size 16 bytes, ss_main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = DisplayAlarm
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy

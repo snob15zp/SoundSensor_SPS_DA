@@ -467,11 +467,6 @@
       <TargetDriverDllRegistry>
         <SetRegEntry>
           <Number>0</Number>
-          <Key>DLGUARM</Key>
-          <Name>¤é¯</Name>
-        </SetRegEntry>
-        <SetRegEntry>
-          <Number>0</Number>
           <Key>DLGDARM</Key>
           <Name>(1010=-1,-1,-1,-1,0)(1007=-1,-1,-1,-1,0)(1008=-1,-1,-1,-1,0)(1009=-1,-1,-1,-1,0)</Name>
         </SetRegEntry>
@@ -505,18 +500,18 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>179</LineNumber>
+          <LineNumber>143</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>133969798</Address>
+          <Address>133971438</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>.\..\src\platform\user_periph_setup.c</Filename>
+          <Filename>..\src\SPI_ADC\ADC_flash.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\SS_Fix\../src/platform/user_periph_setup.c\179</Expression>
+          <Expression>\\SS_Fix\../src/SPI_ADC/ADC_flash.c\143</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -688,7 +683,7 @@
 
   <Group>
     <GroupName>sdk_arch</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -1956,7 +1951,7 @@
 
   <Group>
     <GroupName>user_platform</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -2052,7 +2047,7 @@
       <GroupNumber>14</GroupNumber>
       <FileNumber>112</FileNumber>
       <FileType>1</FileType>
-      <tvExp>1</tvExp>
+      <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\src\SPI_ADC\SPI_ADC.c</PathWithFileName>

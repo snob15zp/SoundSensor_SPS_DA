@@ -47,7 +47,7 @@ c000	49152	32768	Second copy
 
 
 extern uint8_t dummy_function_status;
-
+extern char SSG_ch_Error[40];
 
 
 

@@ -8,34 +8,6 @@
 #include "mathfast.h"
 #include "ss_sys.h"
 
-static const spi_cfg_t spi_cfg_ADC = {
-    .spi_ms = SPI_MS_MODE,
-    .spi_cp = SPI_CP_MODE,
-    .spi_speed = SPI_SPEED_MODE,
-    .spi_wsz = SPI_WSZ,
-    .spi_cs = SPI_CS,
-    .cs_pad.port = ADC_EN_PORT,
-    .cs_pad.pin = ADC_EN_PIN,
-#if defined (__DA14531__)
-    .spi_capture = SPI_EDGE_CAPTURE,
-#endif
-};
-
-
-volatile bool SA_flashbit = false;
-uni_int32_t SA_out;
-
-
-#if	(D_ADCMODE==1)
-#define def_dataRead_Size (512*1)
-
-int32_t SA_dataRead_32[def_dataRead_Size/4];
-int8_t dataRead_toy;
-//bool SA_b_dataRead_full;
-//bool SA_b_dataRead_empty;
-volatile uint16_t SA_ui16_dataRead_index;
-uint8_t *SA_dataRead=(uint8_t*)(&(SA_dataRead_32[0]));
-#endif
 /*
 To configure the SPI controller in master mode, follow the steps below:
 1. Set the appropriate GPIO ports in SPI clock mode (output), SPI Chip Select mode (output), SPI
@@ -154,7 +126,38 @@ static const spi_cfg_t spi_cfg = {
     0x50001228 SPI_FIFO_HIGH_REG Spi TX/RX High 16bit word
     0x5000122C SPI_TXBUFFER_FORCE_L_REG SPI TX buffer force low value
     0x50001230 SPI_TXBUFFER_FOR CE_H_REG SPI TX buffer force high value
-*/
+*///==============================================================================================
+
+static const spi_cfg_t spi_cfg_ADC = {
+    .spi_ms = SPI_MS_MODE,
+    .spi_cp = SPI_CP_MODE,
+    .spi_speed = SPI_SPEED_MODE,
+    .spi_wsz = SPI_WSZ,
+    .spi_cs = SPI_CS,
+    .cs_pad.port = ADC_EN_PORT,
+    .cs_pad.pin = ADC_EN_PIN,
+#if defined (__DA14531__)
+    .spi_capture = SPI_EDGE_CAPTURE,
+#endif
+};
+
+
+volatile bool SA_flashbit = false;
+uni_int32_t SA_out;
+
+
+#if	(D_ADCMODE==1)
+#define def_dataRead_Size (512*1)
+
+int32_t SA_dataRead_32[def_dataRead_Size/4];
+int8_t dataRead_toy;
+//bool SA_b_dataRead_full;
+//bool SA_b_dataRead_empty;
+volatile uint16_t SA_ui16_dataRead_index;
+uint8_t *SA_dataRead=(uint8_t*)(&(SA_dataRead_32[0]));
+#endif
+
+
 #define ADC_SPI_WORD_LENGTH (7<<2)
 #define ADC_SPI_RX_TL (2<<4)
 #define ADC_SPI_TX_TL 0
@@ -167,6 +170,8 @@ int16_t tmp_SPI_CS_CONFIG_REG;
 void SPI_ADC_deinit(void)
 {
 	NVIC_DisableIRQ(GPIO0_IRQn);
+	GPIO_ResetIRQ(GPIO0_IRQn);	
+	NVIC_ClearPendingIRQ(GPIO0_IRQn);
   SS_spi_switchoff_pins(SPI_ADC_GPIO_MAP);
 }
 
@@ -191,7 +196,7 @@ void SA_SPI_init(void)
   ss_spi_init(SPI_ADC_GPIO_MAP,&spi_cfg_ADC);
 
 	SetWord16(SPI_CTRL_REG, SPI_FIFO_RESET|SPI_RX_EN|SPI_TX_EN|SPI_EN); 
-	SetWord16(SPI_CONFIG_REG, ADC_SPI_WORD_LENGTH);
+	//SetWord16(SPI_CONFIG_REG, ADC_SPI_WORD_LENGTH);
 	//SetWord16(SPI_CLOCK_REG, );
 	SetWord16(SPI_FIFO_CONFIG_REG,ADC_SPI_RX_TL|ADC_SPI_TX_TL );
 	//SetWord16(SPI_IRQ_MASK_REG, );
@@ -220,18 +225,18 @@ void SA_SPI_init(void)
 ////    SetBits16(&spi->SPI_CTRL_REGF, SPI_EN | SPI_TX_EN | SPI_RX_EN| SPI_DMA_TX_EN | SPI_DMA_RX_EN, 0);		
 //    SetWord16(SPI_CTRL_REG, 0x07);			
 ////========================================================================================================
-tmp_SPI_CTRL_REG=GetWord16(SPI_CTRL_REG);
-tmp_SPI_CONFIG_REG=GetWord16(SPI_CONFIG_REG);
-tmp_SPI_FIFO_CONFIG_REG=GetWord16(SPI_FIFO_CONFIG_REG);
-tmp_SPI_CS_CONFIG_REG=GetWord16(SPI_CS_CONFIG_REG);
+//tmp_SPI_CTRL_REG=GetWord16(SPI_CTRL_REG);
+//tmp_SPI_CONFIG_REG=GetWord16(SPI_CONFIG_REG);
+//tmp_SPI_FIFO_CONFIG_REG=GetWord16(SPI_FIFO_CONFIG_REG);
+//tmp_SPI_CS_CONFIG_REG=GetWord16(SPI_CS_CONFIG_REG);
 
 
 	
 ////	while(1)
 //{	
 //	
-	SetWord16(SPI_CS_CONFIG_REG,SPI_CS_0);
-    SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x55));	
+//	SetWord16(SPI_CS_CONFIG_REG,SPI_CS_0);
+ //   SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x55));	
 //    SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x33));
 //    SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x44));
 //		
@@ -397,9 +402,8 @@ uni_int32_t SA_in;
 //	SetWord16(SPI_CONFIG_REG, 0x1C); 	
 	
 #if	(D_ADCMODE!=2)	
-	SA_in.masByte[3] = GetWord16(&spi->SPI_FIFO_READ_REGF) ;    
-	SA_in.masByte[2] = GetWord16(&spi->SPI_FIFO_READ_REGF) ;   
-	SA_in.masByte[1] = GetWord16(&spi->SPI_FIFO_READ_REGF) ;  
+	SA_in.u16[1] = GetWord16(&spi->SPI_FIFO_READ_REGF) ;    
+	SA_in.u16[0] = GetWord16(&spi->SPI_FIFO_READ_REGF) ;   
 	SA_in.masByte[0] = 0 ;	
 #endif	
 	SetWord16(SPI_CTRL_REG, SPI_FIFO_RESET|SPI_RX_EN|SPI_TX_EN|SPI_EN);
@@ -411,8 +415,8 @@ uni_int32_t SA_in;
 		      SetWord16(P0_RESET_DATA_REG, 0x0002);	
 	SetWord16(SPI_CS_CONFIG_REG,SPI_CS_0); 	
 	
-	SetWord16(&spi->SPI_FIFO_WRITE_REGF, 0xAD);//	SA_out.masByte[0]
-	SetWord16(&spi->SPI_FIFO_WRITE_REGF, 0x22);//	SA_out.masByte[1]
+	SetWord16(&spi->SPI_FIFO_WRITE_REGF, 0xADaa);//	SA_out.masByte[0]
+//	SetWord16(&spi->SPI_FIFO_WRITE_REGF, 0x22);//	SA_out.masByte[1]
 	SetWord16(&spi->SPI_FIFO_WRITE_REGF, SA_out.masByte[2]);	
 
 	

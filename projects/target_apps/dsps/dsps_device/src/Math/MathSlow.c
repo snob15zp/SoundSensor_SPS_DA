@@ -88,9 +88,9 @@ uint32_t MF_ADCOverLoad_Flag_time;
 void MS_EvaluteLogLevel_A(uint32_t c, int32_t a, uint32_t i)
 {
 
-MS_i32_Level_FastA_dB=  MS_D_dBscale*(10.0*log10(a) + MS_D_offset_FastA_dB); //0.01dB
-MS_i32_Level_Dose_dB=   MS_D_dBscale*(10.0*log10(i) + (MS_D_offset_Dose_dB));	//0.01dBMS_D_offset_Dose_dB
-MS_i32_Level_C_Peak_dB= MS_D_dBscale*(20.0*log10(c) + MS_D_offset_C_Peak_dB);//0.01dB
+MS_i32_Level_FastA_dB=  /*MS_D_dBscale*/(100.0*log10(a) + MS_D_offset_FastA_dB); //0.1dB *MS_D_dBscale
+MS_i32_Level_Dose_dB=   /*MS_D_dBscale*/(100.0*log10(i) + (MS_D_offset_Dose_dB));	//0.1dB *MS_D_dBscale
+MS_i32_Level_C_Peak_dB= /*MS_D_dBscale*/(200.0*log10(c) + MS_D_offset_C_Peak_dB);//0.1dB *MS_D_dBscale
 #ifndef __NO_MATLAB__	
 MS_i32_Level_C_Peak_dB_out=MS_i32_Level_C_Peak_dB;//0.1dB
 MS_i32_Level_FastA_dB_out=MS_i32_Level_FastA_dB;//0.1dB

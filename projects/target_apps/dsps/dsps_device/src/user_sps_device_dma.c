@@ -109,7 +109,7 @@ void user_on_init(void)
     // SPS application initialization
     default_app_on_init();
     //user_sps_apply_uart_baudrate();//RDD
-    periph_init();//RDD?
+   // periph_init();//RDD?
 }
 
 void user_on_db_init_complete(void)

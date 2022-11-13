@@ -110,6 +110,7 @@ int8_t spi_flash_auto_detect(uint8_t *dev_id)
     uint8_t supported_spi_flash_count;
 
     // Read JEDEC ID
+		//while(1)//RDD debug
     status = spi_flash_read_jedec_id(&jedec_id);
     if (status != SPI_FLASH_ERR_OK)
     {

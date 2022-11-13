@@ -32,17 +32,20 @@ static RING_sBuf_t *ptr = (RING_sBuf_t *)&sBuf;
 
 int RingBuffer_get_ch8(uint8_t *data);
 
-void poll_newBytetoWriteFlash(void)
-{
+bool poll_newBytetoWriteFlash(void)
+{ bool rv;
+	rv=true;
 	if ( SA_flashbit == true)
-		return;	
+		return false;	
 	if ( RingBuffer_get_ch8(&byteFlash) == 0 )
 	{
 		SA_out.masByte[0] = 0xAD;
 		SA_out.masByte[1] = 0x22;
 		SA_out.masByte[2] = byteFlash;		
 		SA_flashbit = true;
+		rv=false;
 	}
+	return rv;
 }
 
 void RingBuffer_Clr(void)

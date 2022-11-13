@@ -177,7 +177,7 @@ void periph_init(void)
 	 
 //====================SS initialization======================== 
 	test_hnd_init(); 	 
-
+ // MS_main();//debug;
 #ifdef __SS_EXT__	
 	 ssi2c_init();//
 //#ifndef __ADCTEST__	 

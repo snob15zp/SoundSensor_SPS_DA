@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Thu Nov 10 01:29:13 2022
+;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Sun Nov 13 16:03:51 2022
 ;VERSION 0.2
 ;FILE adc_531.o
 adc_correct_sample <= USED 0
@@ -208,10 +208,6 @@ ss_i2c_test <= USED 0
 ;FILE ss_main.o
 ;FILE ss_sys.o
 LEDinit <= USED 0
-SSS_ReadFromVar <= USED 0
-SSS_ReadTableFromVar <= USED 0
-SSS_WriteTableToVar <= USED 0
-SSS_WriteToVar <= USED 0
 ;FILE startup_da14531.o
 ;FILE syscntl.o
 syscntl_dcdc_get_level <= USED 0
@@ -246,7 +242,13 @@ uart_wait_tx_finish <= USED 0
 uart_write_buffer <= USED 0
 uart_write_byte <= USED 0
 ;FILE user_config_storage.o
+user_conf_storage_init <= USED 0
+user_config_read_configuration_struct <= USED 0
+user_config_save <= USED 0
+user_config_storage_save_configuration <= USED 0
+user_config_write_configuration_struct <= USED 0
 ;FILE user_periph_setup.o
+user_spi_flash_release <= USED 0
 ;FILE user_sps_device_config.o
 user_sps_apply_uart_baudrate <= USED 0
 user_sps_config_verify_adv_channel_map_cb <= USED 0

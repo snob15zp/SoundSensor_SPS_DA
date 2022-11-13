@@ -20,6 +20,12 @@
 #define AF_D_timestampLo 5
 #define AF_D_timestampHi 6
 
+typedef union {
+    uint32_t u32;
+	  uint16_t u16[2];
+	  uint8_t	 u8[4];
+} uni_u32_t;
+
 extern bool ADCon;
 extern uint32_t AddrNewRecord;
 
@@ -28,6 +34,7 @@ void AF_V_WriteStartServiceRecord(uint8_t recodType, uint16_t callerFunction);
 void AF_V_WriteStopServiceRecord(uint8_t recodType, uint16_t callerFunction);
 
 		void AF_V_AddADCdataToFIFO(uint16_t A, uint16_t B);
+    void AF_V_Adddatau8u16ToFIFO(uint8_t A, uint16_t B);
 		void IRQ_wrByteFromRecord(void);
 		int AF_V_WriteStart(uint16_t callerFunction);
 		void AF_V_WriteStop(uint16_t callerFunction);

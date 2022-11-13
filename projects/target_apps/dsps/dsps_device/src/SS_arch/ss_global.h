@@ -4,7 +4,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#define D_ADCMODE 3
+#define D_ADCMODE 0
 /*
 0 - work mode
 1 - live data

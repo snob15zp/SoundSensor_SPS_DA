@@ -117,8 +117,8 @@ e_FunctionReturnState ss_main(void)
 #ifdef __NO_MATLAB__		
 		MS_main();
 #endif		
-//		AF_V_AddADCdataToFIFO((uint16_t) MS_i32_Level_FastA_dB, (uint16_t) MS_i32_Level_C_Peak_dB);
-		AF_V_AddADCdataToFIFO((uint16_t) (fifodebugcalc), (uint16_t) (fifodebugcalc+1));fifodebugcalc+=2;
+		AF_V_AddADCdataToFIFO((uint16_t) MS_i32_Level_FastA_dB, (uint16_t) MS_i32_Level_C_Peak_dB);
+//		AF_V_AddADCdataToFIFO((uint16_t) (fifodebugcalc), (uint16_t) (fifodebugcalc+1));fifodebugcalc+=2;
 		
 #ifdef __DEVKIT_EXT__					
 //					led_flash();

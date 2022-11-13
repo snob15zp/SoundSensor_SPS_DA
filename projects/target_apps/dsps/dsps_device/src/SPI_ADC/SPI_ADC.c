@@ -451,8 +451,8 @@ uni_int32_t SA_in;
 #if	((D_ADCMODE==2)||(D_ADCMODE==3))
 	test_MF_main_ADCEmul();
 #endif
-#if	(D_ADCMODE==0)
-	MF_main(SA_in.data_u32>>5);
+#if	((D_ADCMODE==0)||(D_ADCMODE==1))
+	MF_main(SA_in.data_u32>>4);
 #endif
 	
 	

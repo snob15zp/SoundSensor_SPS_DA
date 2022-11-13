@@ -37,7 +37,7 @@ const void *databyteADC = byteADC;
 
 int rezult_find_AddrNewRecord;
 
-bool ADCon;
+
 
 int find_AddrNewRecord(uint32_t Addr_L, uint32_t Addr_R, uint32_t *ptr);
 int8_t spi_flash_StartProgramByteSequent(uint8_t *wr_data_ptr, uint32_t address, uint16_t size);
@@ -46,14 +46,15 @@ void AF_V_AddADCdataToFIFO(uint16_t A, uint16_t B)
 {
 	dc.data_u32 = A& 0x7ff;		
 	dc.data_u32= dc.data_u32|((B& 0x7ff)<<11);
-	RingBuffer_add_u32(dc.data_u32);
+	RingBuffer_add_u32(dc.data_u32,&AddrNewRecord,SPI_FLASH_ADDR_END_RECORD_ADC-SPI_FLASH_ADDR_END_MARGIN_ADC);
+	
 }
 
 void AF_V_Adddatau8u16ToFIFO(uint8_t A, uint16_t B)
 {
 	dc.mas_u16[1] = A;		
 	dc.mas_u16[0] = B;
-	RingBuffer_add_u32(dc.data_u32);
+	RingBuffer_add_u32(dc.data_u32,&AddrNewRecord,SPI_FLASH_ADDR_END_RECORD_ADC-SPI_FLASH_ADDR_END_MARGIN_ADC);
 }
 
 
@@ -73,8 +74,10 @@ int rezult_Start;
 	delay_10ms();	
 
 //	Find address of a new record	
-	rezult_find_AddrNewRecord = find_AddrNewRecord(SPI_FLASH_ADDR_START_RECORD_ADC, SPI_FLASH_ADDR_END_RECORD_ADC, &AddrNewRecord);	
-	if ( rezult_find_AddrNewRecord == 0 )
+	rezult_find_AddrNewRecord = find_AddrNewRecord(SPI_FLASH_ADDR_START_RECORD_ADC, 
+	                   SPI_FLASH_ADDR_END_RECORD_ADC-SPI_FLASH_ADDR_END_MARGIN_ADC, &AddrNewRecord);	
+	if (( rezult_find_AddrNewRecord == 0 )&&
+		(AddrNewRecord<(SPI_FLASH_ADDR_END_RECORD_ADC-SPI_FLASH_ADDR_END_MARGIN_ADC)))
 	{
  		AF_V_Adddatau8u16ToFIFO(recordType_dummyPWRon | F_PWR_on, callerFunction);		
 		if ( RingBuffer_get_ch8(&byteADC[0]) == 0 )
@@ -122,6 +125,24 @@ int rezult_Start;
 	return rezult_Start;
 }
 
+void AF_V_ERASE_FILE_DataADC(void)
+{
+uint32_t qnt_sec4096;
+uint32_t indx_sec4096;
+	
+	qnt_sec4096 = ((SPI_FLASH_ADDR_END_RECORD_ADC) - SPI_FLASH_ADDR_START_RECORD_ADC)/ 4096;
+	for ( indx_sec4096 = 0; indx_sec4096 < qnt_sec4096; indx_sec4096++)
+	{	
+		spi_flash_block_erase(SPI_FLASH_ADDR_START_RECORD_ADC + indx_sec4096*4096, SPI_FLASH_OP_SE);
+		delay_10ms();
+		delay_10ms();
+		delay_10ms();
+		delay_10ms();
+		delay_10ms();
+		delay_10ms();		
+	}
+}
+
 void AF_V_WriteStop(uint16_t callerFunction)
 {
 uint32_t systick_time_tek;
@@ -135,8 +156,10 @@ uint32_t actual_size;
 	spi_transaction(SPI_FLASH_OP_WRDI);
 	
   systick_time_tek = systick_time;
-	rezult_find_AddrNewRecord = find_AddrNewRecord(SPI_FLASH_ADDR_START_RECORD_ADC, SPI_FLASH_ADDR_END_RECORD_ADC, &AddrNewRecord);	
-	if ( rezult_find_AddrNewRecord == 0 )
+	rezult_find_AddrNewRecord = find_AddrNewRecord(SPI_FLASH_ADDR_START_RECORD_ADC, 
+	                 SPI_FLASH_ADDR_END_RECORD_ADC-SPI_FLASH_ADDR_END_MARGIN_STAMP, &AddrNewRecord);	
+	if (( rezult_find_AddrNewRecord == 0 )&&
+	   (AddrNewRecord<(SPI_FLASH_ADDR_END_RECORD_ADC-SPI_FLASH_ADDR_END_MARGIN_STAMP)))
 	{ datal.u8[2]=recordType_StopPWRon;
 		datal.u16[0]=callerFunction;
 		spi_flash_write_data(&(datal.u8[0]),AddrNewRecord,3,&actual_size);

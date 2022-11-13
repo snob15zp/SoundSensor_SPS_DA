@@ -126,8 +126,11 @@ int32_t rd;
 	return 0;
 }
 
-int RingBuffer_add_u32(uint32_t data)
+int RingBuffer_add_u32(uint32_t data,uint32_t *adr, uint32_t margin)
 {
+	  (*adr)+=3;
+	  if (*adr>margin)
+			return -3;
     if ( ptr->lockRecord == LOCK_RECORD_ACTIVE )
         return -1;    		
     if ( ptr->ovr_buff == BUFF_FULL )

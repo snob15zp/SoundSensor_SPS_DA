@@ -194,10 +194,12 @@ e_FunctionReturnState ss_main_BLE(void)
 
 e_FunctionReturnState SSM_BLEStop()
 {
+	SSS_ReadFromVar();
 	return e_FRS_Done;
 };
 e_FunctionReturnState SSM_BLEStart()
 {
+	SSS_WriteToVar();
 	return e_FRS_Done;
 };
 

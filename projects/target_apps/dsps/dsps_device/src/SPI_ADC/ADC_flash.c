@@ -44,10 +44,18 @@ int8_t spi_flash_StartProgramByteSequent(uint8_t *wr_data_ptr, uint32_t address,
 
 void AF_V_AddADCdataToFIFO(uint16_t A, uint16_t B)
 {
+	dc.data_u32 = A& 0x7ff;		
+	dc.data_u32= dc.data_u32|((B& 0x7ff)<<11);
+	RingBuffer_add_u32(dc.data_u32);
+}
+
+void AF_V_Adddatau8u16ToFIFO(uint8_t A, uint16_t B)
+{
 	dc.mas_u16[1] = A;		
 	dc.mas_u16[0] = B;
 	RingBuffer_add_u32(dc.data_u32);
 }
+
 
 int AF_V_WriteStart(uint16_t callerFunction)
 {
@@ -68,7 +76,7 @@ int rezult_Start;
 	rezult_find_AddrNewRecord = find_AddrNewRecord(SPI_FLASH_ADDR_START_RECORD_ADC, SPI_FLASH_ADDR_END_RECORD_ADC, &AddrNewRecord);	
 	if ( rezult_find_AddrNewRecord == 0 )
 	{
- 		AF_V_AddADCdataToFIFO(recordType_dummyPWRon | F_PWR_on, callerFunction);		
+ 		AF_V_Adddatau8u16ToFIFO(recordType_dummyPWRon | F_PWR_on, callerFunction);		
 		if ( RingBuffer_get_ch8(&byteADC[0]) == 0 )
 		{
 			spi_flash_StartProgramByteSequent(&byteADC[0], AddrNewRecord, 1);		

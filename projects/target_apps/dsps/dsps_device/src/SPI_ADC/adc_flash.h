@@ -34,6 +34,7 @@ void AF_V_WriteStartServiceRecord(uint8_t recodType, uint16_t callerFunction);
 void AF_V_WriteStopServiceRecord(uint8_t recodType, uint16_t callerFunction);
 
 		void AF_V_AddADCdataToFIFO(uint16_t A, uint16_t B);
+    void AF_V_Adddatau8u16ToFIFO(uint8_t A, uint16_t B);
 		void IRQ_wrByteFromRecord(void);
 		int AF_V_WriteStart(uint16_t callerFunction);
 		void AF_V_WriteStop(uint16_t callerFunction);

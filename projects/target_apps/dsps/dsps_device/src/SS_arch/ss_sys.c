@@ -26,12 +26,12 @@ static const user_config_elem_t SSS_conf_table[] =
 	{0x1001, sizeof(MS_i32_AlertLevel_C140dB_Peak), sizeof(MS_i32_AlertLevel_C140dB_Peak), &MS_i32_AlertLevel_C140dB_Peak, verify_value_cb, false},
 	{0x1002, sizeof(MS_i32_AlertLevel_Dose), sizeof(MS_i32_AlertLevel_Dose), &MS_i32_AlertLevel_Dose, verify_value_cb, false},
 	{0x1003, sizeof(MS_i32_AlertLevel_DoseM3dB), sizeof(MS_i32_AlertLevel_DoseM3dB), &MS_i32_AlertLevel_DoseM3dB, verify_value_cb, false},
-	{0x1004, sizeof(SSS_CalibrationMode), sizeof(SSS_CalibrationMode), &SSS_CalibrationMode, verify_value_cb, false},
-	{0x1005, sizeof(MS_i32_CalibrationFactor), sizeof(MS_i32_CalibrationFactor), &MS_i32_CalibrationFactor, verify_value_cb, false},
+	{0x1004, sizeof(MS_i32_CalibrationFactor), sizeof(MS_i32_CalibrationFactor), &MS_i32_CalibrationFactor, verify_value_cb, false},
+	{0x1005, sizeof(SSS_CalibrationMode), sizeof(SSS_CalibrationMode), &SSS_CalibrationMode, verify_value_cb, false},
 };
 static const user_config_elem_t SSS_RO_table[] = 
 {
-	{0x2000, sizeof(MS_i32_Level_FastA_dB), sizeof(MS_i32_Level_FastA_dB), &MS_i32_AlertLevel_FastA, verify_value_cb, false},
+	{0x2000, sizeof(MS_i32_Level_FastA_dB), sizeof(MS_i32_Level_FastA_dB), &MS_i32_Level_FastA_dB, verify_value_cb, false},
 	{0x2001, sizeof(MS_i32_Level_C_Peak_dB), sizeof(MS_i32_Level_C_Peak_dB), &MS_i32_Level_C_Peak_dB, verify_value_cb, false},
 	{0x2002, sizeof(MS_i32_Level_Dose_dB), sizeof(MS_i32_Level_Dose_dB), &MS_i32_Level_Dose_dB, verify_value_cb, false},
 };
@@ -50,36 +50,35 @@ void SSS_WriteToVar(void)
 void SSS_WriteTableToVar(const user_config_elem_t *t, uint8_t *var_index, uint8_t ms)
 {
 	SSS_u8_RW_vars_index_table=0;
-	uint8_t SSS_u8_index_vars=0;
 	while(SSS_u8_RW_vars_index_table<ms)
 	{
 		memcpy(vars+(SSS_u8_index_vars/2),
 		       t[SSS_u8_RW_vars_index_table].data, 
 		       t[SSS_u8_RW_vars_index_table].cur_size
 		      );
-		SSS_u8_RW_vars_index_table++;
 		SSS_u8_index_vars+=(((t[SSS_u8_RW_vars_index_table].cur_size)+1)&0xFE);
+		SSS_u8_RW_vars_index_table++;
 	}		
 }
 
 void SSS_ReadTableFromVar(const user_config_elem_t *t, uint8_t *var_index, uint8_t ms)
 {
 	SSS_u8_RW_vars_index_table=0;
-	uint8_t SSS_u8_index_vars=0;
+	
 	while(SSS_u8_RW_vars_index_table<ms)
 	{
 		memcpy(t[SSS_u8_RW_vars_index_table].data,
-		       vars+SSS_u8_index_vars, 
+		       vars+(SSS_u8_index_vars/2), 
 		       t[SSS_u8_RW_vars_index_table].cur_size
 		      );
+		SSS_u8_index_vars+=(((t[SSS_u8_RW_vars_index_table].cur_size)+1)&0xFE);
 		SSS_u8_RW_vars_index_table++;
-		SSS_u8_index_vars+=(((t[SSS_u8_RW_vars_index_table].cur_size)+1)>>1);
 	}		
 }
 
 void SSS_ReadFromVar(void)
 { SSS_u8_index_vars=SSS_u8_index_vars_start;
-  SSS_WriteTableToVar(SSS_conf_table,&SSS_u8_index_vars,sizeof(SSS_conf_table)/sizeof(user_config_elem_t));
+  SSS_ReadTableFromVar(SSS_conf_table,&SSS_u8_index_vars,sizeof(SSS_conf_table)/sizeof(user_config_elem_t));
 }
 
 

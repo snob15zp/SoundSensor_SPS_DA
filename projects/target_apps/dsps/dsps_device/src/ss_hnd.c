@@ -5,6 +5,7 @@
 #include "version.h"
 #include "SS_sys.h"
 #include "user_config_storage.h"
+#include "ADC_flash.h"
 
 int8_t on_int_rd(uint16_t var, uint16_t count, uint16_t out[9]) 
 {
@@ -40,10 +41,15 @@ int8_t on_int_wr(uint16_t var, uint16_t val)
 void on_blob_rd(uint32_t addr, uint8_t buf[16])
 {//TODO read from flash
  //shift is not needed	; 32 Mbit
-    if(addr < sizeof(blob))
-    {
-        memcpy(buf, &blob[addr], 16);
-    }
+	uint8_t m[16];
+	uint32_t as;
+//    if(addr < sizeof(blob))
+//    {
+//        memcpy(buf, &blob[addr], 16);
+//    }
+    spi_flash_read_data(m, addr+SPI_FLASH_ADDR_START_RECORD_ADC,
+                           16, &as);	
+		memcpy(buf, &blob[addr], 16);
 }
 
 int8_t on_blob_wr(uint32_t addr, uint8_t buf[16])

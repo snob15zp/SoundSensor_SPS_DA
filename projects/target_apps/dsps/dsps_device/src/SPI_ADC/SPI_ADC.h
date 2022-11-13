@@ -46,6 +46,8 @@ extern void SPI_ADC_init(void);
 extern void SPI_ADC_deinit(void);
 //extern void SPITreeByts (void);
 
+#if	(D_ADCMODE==3)
 extern void ADC_IRQ(void);
+#endif
 
 #endif

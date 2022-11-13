@@ -2,5 +2,5 @@
 -I.\RTE\_SoundSensor_Fix
 -IC:\Users\RD\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include
 -IC:\Keil_v5\ARM\CMSIS\Include
--D__UVISION_VERSION="528" -DARMCM0P -D__DA14531__ -D__SoundSensor__ -D__SSFix__ -D__NO_MATLAB__ -D__SS_EXT__
--o .\soundsensor_fix\rwble.o --omf_browse .\soundsensor_fix\rwble.crf --depend .\soundsensor_fix\rwble.d "..\..\..\..\..\sdk6\sdk\ble_stack\rwble\rwble.c"
+-D__UVISION_VERSION="528" -DARMCM0P -D__DA14531__ -D__SoundSensor__ -D__SSFix__ -D__NO_MATLAB__
+-o .\soundsensor_fix\app_security.o --omf_browse .\soundsensor_fix\app_security.crf --depend .\soundsensor_fix\app_security.d "..\..\..\..\..\sdk6\sdk\app_modules\src\app_sec\app_security.c"

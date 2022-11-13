@@ -157,6 +157,7 @@ volatile uint16_t SA_ui16_dataRead_index;
 uint8_t *SA_dataRead=(uint8_t*)(&(SA_dataRead_32[0]));
 #endif
 
+bool SA_b_ADCOn;
 
 #define ADC_SPI_WORD_LENGTH (7<<2)
 #define ADC_SPI_RX_TL (2<<4)
@@ -168,7 +169,7 @@ int16_t tmp_SPI_FIFO_CONFIG_REG;
 int16_t tmp_SPI_CS_CONFIG_REG;
 
 void SPI_ADC_deinit(void)
-{
+{ SA_b_ADCOn=false;
 	NVIC_DisableIRQ(GPIO0_IRQn);
 	GPIO_ResetIRQ(GPIO0_IRQn);	
 	NVIC_ClearPendingIRQ(GPIO0_IRQn);
@@ -182,6 +183,7 @@ void SPI_ADC_init(void)
   timer2_init();
 	intinit();
 #endif
+	SA_b_ADCOn=true;
 }	
 	
 void SA_SPI_init(void)
@@ -392,8 +394,19 @@ initiated immediately 1: wait for key release after interrupt was reset for IRQ0
 //}
 
 void GPIO0_Handler(void)
-//inline void ADC_IRQ(void)
 {
+#if	(D_ADCMODE==3)
+	 GPIO_ResetIRQ(GPIO0_IRQn);
+ NVIC_ClearPendingIRQ(GPIO0_IRQn);
+}
+
+
+
+inline void ADC_IRQ(void)
+	
+{ if (!SA_b_ADCOn)
+	 return;
+#endif	
 uni_int32_t SA_in;
 	
  // SetWord16(SPI_CS_CONFIG_REG,SPI_CS_NONE);	
@@ -435,7 +448,7 @@ uni_int32_t SA_in;
 	};
 #endif	
 	
-#if	(D_ADCMODE==2)
+#if	((D_ADCMODE==2)||(D_ADCMODE==3))
 	test_MF_main_ADCEmul();
 #endif
 #if	(D_ADCMODE==0)
@@ -448,11 +461,13 @@ uni_int32_t SA_in;
 //		};
 	SetWord16(SPI_CS_CONFIG_REG,SPI_CS_NONE);	
 	SetWord16(GPIO_BASE+2, 1 << SPI_EN_PIN);
-	if (SA_flashbit) 
-		SA_flashbit=false; 
 
+ if (SA_flashbit) 
+		SA_flashbit=false; 
+#if	(D_ADCMODE!=3)
  GPIO_ResetIRQ(GPIO0_IRQn);
  NVIC_ClearPendingIRQ(GPIO0_IRQn);
+#endif 
 }
 
 

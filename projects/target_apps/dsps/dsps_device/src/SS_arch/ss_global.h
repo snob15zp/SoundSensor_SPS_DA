@@ -4,7 +4,20 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+#define D_ADCMODE 3
+/*
+0 - work mode
+1 - live data
+2 - SIN in ADC_IRQ
+3 - SIN from timer
+*/
+
+
+#if	(D_ADCMODE!=3)
 #define D_SYSTICK_PERIOD_US   1000     // period for systick timer in us, so 1000000ticks = 1second
+#else
+#define D_SYSTICK_PERIOD_US   64     // period for systick timer in us, so 1000000ticks = 1second
+#endif
 #define D_PeriodSlowMath_us (1000000/8)
 #define D_PeriodSlowMath (D_PeriodSlowMath_us/(D_SYSTICK_PERIOD_US)) //ticks
 #define D_sx_takt_call
@@ -33,13 +46,6 @@ c000	49152	32768	Second copy
 */
 
 
-#define D_ADCMODE 0
-/*
-0 - work mode
-1 - live data
-2 - SIN in ADC_IRQ
-3 - SIN from timer
-*/
 
 
 

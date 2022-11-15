@@ -1091,7 +1091,7 @@ void system_init(void)
 #endif
 
     // Initialize the GPIOs
-    GPIO_init();
+    //GPIO_init();
 
     #if (BLE_SUOTA_RECEIVER)
     // SPI FLASH

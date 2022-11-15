@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Tue Nov 15 18:15:49 2022
+;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Tue Nov 15 21:32:25 2022
 ;VERSION 0.2
 ;FILE adc_531.o
 adc_correct_sample <= USED 0
@@ -186,7 +186,6 @@ spi_flash_is_sector_empty <= USED 0
 spi_flash_page_erase <= USED 0
 spi_flash_page_fill <= USED 0
 spi_flash_page_program_buffer <= USED 0
-spi_flash_power_down <= USED 0
 spi_flash_program_fail <= USED 0
 spi_flash_read_config_reg <= USED 0
 spi_flash_read_data_buffer <= USED 0
@@ -219,6 +218,7 @@ syscntl_por_vbat_low_cfg <= USED 0
 ;FILE system_da14531.o
 SystemCoreClockUpdate <= USED 0
 ;FILE systick.o
+systick_register_callback <= USED 0
 systick_value <= USED 0
 systick_wait <= USED 0
 ;FILE timer2.o
@@ -241,13 +241,7 @@ uart_wait_tx_finish <= USED 0
 uart_write_buffer <= USED 0
 uart_write_byte <= USED 0
 ;FILE user_config_storage.o
-user_conf_storage_init <= USED 0
-user_config_read_configuration_struct <= USED 0
-user_config_save <= USED 0
-user_config_storage_save_configuration <= USED 0
-user_config_write_configuration_struct <= USED 0
 ;FILE user_periph_setup.o
-user_spi_flash_release <= USED 0
 ;FILE user_sps_device_config.o
 user_sps_apply_uart_baudrate <= USED 0
 user_sps_config_verify_adv_channel_map_cb <= USED 0

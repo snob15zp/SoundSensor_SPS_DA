@@ -504,22 +504,6 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>247</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>133966058</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\..\..\..\..\sdk6\sdk\app_modules\src\app_suotar\app_suotar.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\SS_Fix\../../../../../sdk6/sdk/app_modules/src/app_suotar/app_suotar.c\247</Expression>
-        </Bp>
-        <Bp>
-          <Number>1</Number>
-          <Type>0</Type>
           <LineNumber>299</LineNumber>
           <EnabledFlag>1</EnabledFlag>
           <Address>133956360</Address>
@@ -534,7 +518,7 @@
           <Expression>\\SS_Fix\../../../../../sdk6/sdk/platform/arch/main/arch_main.c\299</Expression>
         </Bp>
         <Bp>
-          <Number>2</Number>
+          <Number>1</Number>
           <Type>0</Type>
           <LineNumber>1256</LineNumber>
           <EnabledFlag>1</EnabledFlag>

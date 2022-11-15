@@ -1083,7 +1083,7 @@ void set_system_clocks(void);
 void system_init(void)
 {
     // Initialize the Watchdog unit
-    //wdg_init(USER_WDG_CFG);
+    wdg_init(USER_WDG_CFG);
 
 #if (USE_RANGE_EXT)
     // Register range extender driver API

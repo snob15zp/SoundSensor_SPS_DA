@@ -313,40 +313,40 @@ int main(void)
     while(1)
 	  FSM_main(&s_FSM_main);
 	
-    while(1)
-    {
-			
-#ifdef __DEVKIT_EXT__					
-//					led_flash();
-#endif			
-		switch (ssm_main_state)
-		{
-			case 0: if (SSM_ADCStart())
-								ssm_main_state++;
-			        break;
-			case 1: if (!ssm_main_BLE_RDY) 
-								{ssm_main_state++;
-								};
-				      break;	
-			case 2: if (ss_main_init())
-								ssm_main_state++;
-			        break;					
-			case 3: if (ss_main())
-							{	ssm_main_state++;//RDD debug=6
-							}
-								break;
-			case 4: if (SSM_ADCStop())
-								ssm_main_state++;
-			        break;					
-			case 5: if (ssm_main_BLE_RDY) 
-								ssm_main_state++;
-			        break;
-			case 6: if (ss_main_BLE())
-							{	ssm_main_state=0;//RDD debug=6
-							};
-            // schedule all pending events
-              schedule_while_ble_on();
-					
+//    while(1)
+//    {
+//			
+//#ifdef __DEVKIT_EXT__					
+////					led_flash();
+//#endif			
+//		switch (ssm_main_state)
+//		{
+//			case 0: if (SSM_ADCStart())
+//								ssm_main_state++;
+//			        break;
+//			case 1: if (!ssm_main_BLE_RDY) 
+//								{ssm_main_state++;
+//								};
+//				      break;	
+//			case 2: if (ss_main_init())
+//								ssm_main_state++;
+//			        break;					
+//			case 3: if (ss_main())
+//							{	ssm_main_state++;//RDD debug=6
+//							}
+//								break;
+//			case 4: if (SSM_ADCStop())
+//								ssm_main_state++;
+//			        break;					
+//			case 5: if (ssm_main_BLE_RDY) 
+//								ssm_main_state++;
+//			        break;
+//			case 6: if (ss_main_BLE())
+//							{	ssm_main_state=0;//RDD debug=6
+//							};
+//            // schedule all pending events
+//              schedule_while_ble_on();
+//					
        
 //        while (app_asynch_proc() != GOTO_SLEEP);    //grant control to the application, try to go to power down
 //                                                    //if the application returns GOTO_SLEEP
@@ -399,17 +399,17 @@ int main(void)
 //            // restore interrupts
 //            GLOBAL_INT_START();
 //        }
-				break;
-//			case 7: if (ssm_main_BLE_prepare())
-//								SwitchOff();
 //				break;
-//			case 8:  if (ssm_main_ADC_prepare())
-//								SwitchOff();
-//				break;
-			default: ssm_main_state=0;
-		}
-    wdg_reload(WATCHDOG_DEFAULT_PERIOD);
-    };
+////			case 7: if (ssm_main_BLE_prepare())
+////								SwitchOff();
+////				break;
+////			case 8:  if (ssm_main_ADC_prepare())
+////								SwitchOff();
+////				break;
+//			default: ssm_main_state=0;
+//		}
+//    wdg_reload(WATCHDOG_DEFAULT_PERIOD);
+//    };
 }
 
 

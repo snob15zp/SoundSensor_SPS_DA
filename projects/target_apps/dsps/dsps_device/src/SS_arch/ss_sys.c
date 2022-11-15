@@ -17,7 +17,7 @@
 bool SSS_CalibrationMode=true;
 
 E_ADC_MODE_t	SS_ADC_MODE;
-static uint16_t vars[VARS_CNT] = {0};
+static uint16_t vars[VARS_CNT];// = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31};
 uint8_t verify_value_cb (uint8_t* param);
 
 static const user_config_elem_t SSS_conf_table[] = 
@@ -141,7 +141,7 @@ void SSS_SetUpTimeEvent(t_SSS_s_timeevent *s,uint32_t dt)
 	s->enable=true;
 };
 
-void systick_irq()
+void SysTick_Handler()
 {
     systick_time++;	  
 #ifdef __DEVKIT_EXT__
@@ -176,7 +176,7 @@ void test_hnd_init(void)
 {
 	  systick_stop();
 	  NVIC_SetPriority(SysTick_IRQn, 2);
-    systick_register_callback(systick_irq);
+    //systick_register_callback(systick_irq);
     systick_start(D_SYSTICK_PERIOD_US, SYSTICK_EXCEPTION);
     
     uint8_t version_len = strlen(SDK_VERSION);

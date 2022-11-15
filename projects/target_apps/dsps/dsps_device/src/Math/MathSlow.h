@@ -17,14 +17,25 @@
 #define MS_D_offset_FastA_dB 498.8 //0.1dB
 #define MS_D_offset_Dose_dB  (625.869) //0.1dB 74.53
 #define MS_D_offset_C_Peak_dB (-237.0202241) //0.1dB
-#define MS_D_dBscale 100.0
 
 
-#define MS_D_AlertLevel_C_140bB_peak 153144400 //ADC bits, factor 2, fp26
-#define MS_D_AlertLevel_FastA (85)//0.1dB
-#define MS_D_AlertLevel_Overload     102469853 //ADC bits, fp27
-#define MS_D_AlertLevel_Dose MS_D_AlertLevel_FastA//0.1dB
-#define MS_D_AlertLevel_DoseM3dB (MS_D_AlertLevel_Dose-3)//0.1dB	
+
+
+
+
+//#define MS_D_dBscale 10
+#define MS_D_AlertZone 30  //0.1dB
+#define MS_D_AlertLevel_C_140bB_peak (1400) //0.1dB -> 153144400 ADC bits, factor 2, fp26
+#define MS_D_AlertLevel_FastA        (850)//0.1dB
+#define MS_D_AlertLevel_Overload      102469853 //ADC bits, fp27
+#define MS_D_AlertLevel_Dose          MS_D_AlertLevel_FastA//0.1dB
+//#define MS_D_AlertLevel_DoseM3dB     (MS_D_AlertLevel_Dose-(MS_D_AlertZone*MS_D_dBscale))//0.1dB	
+#define MS_D_CalibrationFactor         (10000) // -> fp14
+
+extern float MS_d_offset_FastA_dB;  //0.1dB
+extern float MS_d_offset_Dose_dB;   //0.1dB 74.53
+extern float MS_d_offset_C_Peak_dB; //0.1dB
+
 
 extern int32_t MS_i32_AlertLevel_C140dB_Peak;//filterC bits
 extern int32_t MS_i32_AlertLevel_FastA;//0.1dB
@@ -60,6 +71,7 @@ extern bool MS_b_alert_FastA_out;
 #endif
 
 //for external call and matlab;
+void MS_SetUpDefaultValue(void);
 void MS_init(void);
 //for external call
 void MS_main(void);

@@ -156,8 +156,9 @@ int8_t dataRead_toy;
 volatile uint16_t SA_ui16_dataRead_index;
 uint8_t *SA_dataRead=(uint8_t*)(&(SA_dataRead_32[0]));
 #endif
-
+#if	(D_ADCMODE==3)
 bool SA_b_ADCOn;
+#endif
 
 #define ADC_SPI_WORD_LENGTH (7<<2)
 #define ADC_SPI_RX_TL (2<<4)
@@ -169,7 +170,10 @@ int16_t tmp_SPI_FIFO_CONFIG_REG;
 int16_t tmp_SPI_CS_CONFIG_REG;
 
 void SPI_ADC_deinit(void)
-{ SA_b_ADCOn=false;
+{ 
+#if	(D_ADCMODE==3)	
+	SA_b_ADCOn=false;
+#endif	
 	NVIC_DisableIRQ(GPIO0_IRQn);
 	GPIO_ResetIRQ(GPIO0_IRQn);	
 	NVIC_ClearPendingIRQ(GPIO0_IRQn);
@@ -183,7 +187,9 @@ void SPI_ADC_init(void)
   timer2_init();
 	intinit();
 #endif
+#if	(D_ADCMODE==3)	
 	SA_b_ADCOn=true;
+#endif	
 }	
 	
 void SA_SPI_init(void)

@@ -3,6 +3,8 @@
 #include "FilterC_s19s29_CG1.h"
 #include "FilterAC_s19s29_CG.h"
 
+
+#if	((D_ADCMODE==2)||(D_ADCMODE==3))	
 #define id_factor 1
 
 #define sin1000_len 32
@@ -41,12 +43,7 @@ int32_t sin1000[sin1000_len]={
   -25167023/id_factor,
 };
 
-
-//const int sin1000_len=sizeof(sin1000)/sizeof(int32_t);
-//	
-////int32_t r1[sin1000_len];
-////int32_t r2[sin1000_len];					
-//int64_t r64[sin1000_len];
+#endif
 
 
 int32_t MF_ADCOverLoad;
@@ -84,7 +81,7 @@ static uint8_t IntegratorIndex;
 //void mathtest(void);
 //void mathtest_FilterC(void);
 //void mathtest_FilterAC(void);
-void fast_init(void);
+//void fast_init(void);
 void fastA_init(void);
 void Int_fast_A(void);
 inline t_U_MF_int64 fastmulA(int32_t A);
@@ -98,16 +95,16 @@ void MF_Int_Init(void)
 	NVIC_SetPriority(KEYBRD_IRQn, 1);
   NVIC_EnableIRQ(KEYBRD_IRQn);	
 }
-void KEYBRD_Handler(void)
-{
- Int_fast_A();
-}
+//void KEYBRD_Handler(void)
+//{
+// Int_fast_A();
+//}
 
 
 void MF_main_init(void)
 {
 	MF_Int_Init();
-	fast_init();
+//	fast_init();
 	fastA_init();
   FilterAC_s19s29_CG_initialize();
 	FilterC_s19s29_CG1_initialize();
@@ -213,13 +210,10 @@ inline void MF_main(int32_t adcoutput)
 //	mathtest_fast();
 }
 ;
-inline void PeakC(int32_t in)
-{
-//	int32_t abs_in;
-};
 
 
 
+#if	((D_ADCMODE==2)||(D_ADCMODE==3))	
 inline void test_MF_main_ADCEmul(void)
 {
 	static uint8_t i;
@@ -227,7 +221,7 @@ inline void test_MF_main_ADCEmul(void)
 	i&=0x1f;
 	MF_main(sin1000[i]);
 }
-
+#endif
 
 
 
@@ -341,7 +335,8 @@ static t_U_MF_int64 IFA_integrator_Old;
 
 int32_t fastA(uint64_t in);
 
-void Int_fast_A(void)
+//void Int_fast_A(void)
+void KEYBRD_Handler(void)
 {
 // fast	
 	uint64_t t;
@@ -402,53 +397,53 @@ uint32_t uA;
 	return t;
 };	
 
-//----------------fast-------------------
-uint64_t fastDelay;
-t_U_MF_int64 MF_U_64_fastoutouter;
+////----------------fast-------------------
+//uint64_t fastDelay;
+//t_U_MF_int64 MF_U_64_fastoutouter;
 
-void fast_init(void)
-{
-  fastDelay=0;
-	MF_U_64_fastoutouter.i64=0;	
-}
+//void fast_init(void)
+//{
+//  fastDelay=0;
+//	MF_U_64_fastoutouter.i64=0;	
+//}
 
-inline int32_t fast(uint64_t in)
-{
-	t_U_MF_int64 MF_U_64_fastMulResult;
-	t_U_MF_int64 MF_U_64_fastoutinner;
-	MF_U_64_fastoutinner.i64=(in>>FastInShift)+fastDelay;
-	MF_U_64_fastMulResult=fastmul(MF_U_64_fastoutouter.i32[1]);
-	fastDelay=(in>>FastInShift)+(MF_U_64_fastoutouter.i64-MF_U_64_fastMulResult.i64);	
-	MF_U_64_fastoutouter.i64= MF_U_64_fastoutinner.i64;
-	return MF_U_64_fastoutouter.i32[1];	
-}
-#define fastFactor 33550	
-inline t_U_MF_int64 fastmul(int32_t A)
-{ 
-t_U_MF_int64 t;
-uint32_t r0,r1; 
-uint32_t uA;
-	if (A<0) 
-	{	uA=-A;
-		r1=(uA>>16)*fastFactor;
-		r0=(uA&0xffff)*fastFactor;
-		t.u32[0]=r0<<(5);
-		t.u32[1]=(r0>>(32-5))+(r1>>(16-5));
-		r1=r1<<(32-(16-5));
-		t.u64+=r1;		
-		t.i64=-t.i64;
-	}
-	else
-	{ uA=A;
-		r1=(uA>>16)*fastFactor;
-		r0=(uA&0xffff)*fastFactor;
-		t.u32[0]=r0<<(5);
-		t.u32[1]=(r0>>(32-5))+(r1>>(16-5));
-		r1=r1<<(32-(16-5));
-		t.u64+=r1;
-	}
-	return t;
-};
+//inline int32_t fast(uint64_t in)
+//{
+//	t_U_MF_int64 MF_U_64_fastMulResult;
+//	t_U_MF_int64 MF_U_64_fastoutinner;
+//	MF_U_64_fastoutinner.i64=(in>>FastInShift)+fastDelay;
+//	MF_U_64_fastMulResult=fastmul(MF_U_64_fastoutouter.i32[1]);
+//	fastDelay=(in>>FastInShift)+(MF_U_64_fastoutouter.i64-MF_U_64_fastMulResult.i64);	
+//	MF_U_64_fastoutouter.i64= MF_U_64_fastoutinner.i64;
+//	return MF_U_64_fastoutouter.i32[1];	
+//}
+//#define fastFactor 33550	
+//inline t_U_MF_int64 fastmul(int32_t A)
+//{ 
+//t_U_MF_int64 t;
+//uint32_t r0,r1; 
+//uint32_t uA;
+//	if (A<0) 
+//	{	uA=-A;
+//		r1=(uA>>16)*fastFactor;
+//		r0=(uA&0xffff)*fastFactor;
+//		t.u32[0]=r0<<(5);
+//		t.u32[1]=(r0>>(32-5))+(r1>>(16-5));
+//		r1=r1<<(32-(16-5));
+//		t.u64+=r1;		
+//		t.i64=-t.i64;
+//	}
+//	else
+//	{ uA=A;
+//		r1=(uA>>16)*fastFactor;
+//		r0=(uA&0xffff)*fastFactor;
+//		t.u32[0]=r0<<(5);
+//		t.u32[1]=(r0>>(32-5))+(r1>>(16-5));
+//		r1=r1<<(32-(16-5));
+//		t.u64+=r1;
+//	}
+//	return t;
+//};
 
 
 //inline t_U_MF_int64 fastmul64(uint16_t K,int32_t A)

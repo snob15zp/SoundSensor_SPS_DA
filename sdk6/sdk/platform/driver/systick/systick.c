@@ -20,10 +20,10 @@
 /// Callback function to be called within SysTick_Handler.
 systick_callback_function_t callback_function __SECTION_ZERO("retention_mem_area0");
 
-void systick_register_callback(systick_callback_function_t callback)
-{
-    callback_function = callback;
-}
+//void systick_register_callback(systick_callback_function_t callback)
+//{
+//    callback_function = callback;
+//}
 
 #if !defined (__EXCLUDE_SYSTICK_HANDLER__)
 void SysTick_Handler(void)

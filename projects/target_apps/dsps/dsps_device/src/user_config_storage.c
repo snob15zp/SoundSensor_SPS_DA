@@ -69,7 +69,8 @@ enum user_config_storage_error_codes user_conf_storage_init(user_config_elem_t *
     config_product_header_t product_header;
 
     user_spi_flash_init(gpio_map);
-
+	  uint8_t dev_id;spi_flash_auto_detect(&dev_id); //RDD debug
+    //while(1) 
     ret = user_config_storage_read_ext_mem( (uint8_t*)&product_header, (uint32_t)PRODUCT_HEADER_POSITION, (uint32_t)sizeof(config_product_header_t) );
     if(ret < 0) {
         return USER_CONFIG_STORAGE_PRODUCT_HEADER_FAILURE;
@@ -155,7 +156,7 @@ enum user_config_storage_error_codes user_conf_storage_init(user_config_elem_t *
     *version_length = sizeof(user_config_struct_header.version);
 
     ret = (int)user_config_read_configuration_struct(conf_data_pos, conf_table, conf_table_num_of_elmts);
-    user_spi_flash_release();
+    //user_spi_flash_release();
     if (ret != USER_CONFIG_STORAGE_SUCCESS) {
         return (enum user_config_storage_error_codes)ret;
     }
@@ -242,7 +243,7 @@ enum user_config_storage_error_codes user_config_storage_save_configuration(user
         data_size += (config_data->params[i].cur_size + 3);
 
     ret = (int)user_config_write_configuration_struct(config_data, config_offset, (uint32_t)sizeof(user_config_struct_header_t) + (uint32_t)data_size);
-    user_spi_flash_release();
+   // user_spi_flash_release();
     if (ret != USER_CONFIG_STORAGE_SUCCESS)
         return (enum user_config_storage_error_codes)ret;
 

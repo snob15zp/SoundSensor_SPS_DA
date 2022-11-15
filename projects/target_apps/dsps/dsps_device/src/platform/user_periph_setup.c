@@ -176,6 +176,7 @@ void periph_init(void)
 	 user_spi_flash_init(SPI_FLASH_GPIO_MAP);//RDD
 	 
 //====================SS initialization======================== 
+uint8_t dev_id;spi_flash_auto_detect(&dev_id); //RDD debug
 	test_hnd_init(); 	 
  // MS_main();//debug;
 #ifdef __SS_EXT__	
@@ -263,13 +264,13 @@ void user_spi_flash_init(uint32_t gpio_map)
 
 }
 
-void user_spi_flash_release(void)
-{
-    // Power down flash
-    spi_flash_power_down();
-    // Release SPI controller
-    spi_release();
-}
+//void user_spi_flash_release(void)
+//{
+//    // Power down flash
+//    spi_flash_power_down();
+//    // Release SPI controller
+//    spi_release();
+//}
 
 int8_t user_erase_flash_sectors(uint32_t starting_address, uint32_t size)
 {

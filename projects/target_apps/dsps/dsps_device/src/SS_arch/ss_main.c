@@ -30,6 +30,7 @@ t_SSS_s_timeevent SSM_erase_alarm_time_event;
 static int32_t time_start;
 e_FunctionReturnState SSM_ADCStart(void)
 {
+	user_spi_flash_init(SPI_FLASH_GPIO_MAP);//RDD
 #ifdef __SS_EXT__
 	SX_CalibrationOnOff(SSS_CalibrationMode);
 #endif	

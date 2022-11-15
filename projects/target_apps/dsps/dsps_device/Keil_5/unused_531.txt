@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Tue Nov 15 11:23:02 2022
+;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Tue Nov 15 16:36:55 2022
 ;VERSION 0.2
 ;FILE adc_531.o
 adc_correct_sample <= USED 0
@@ -45,6 +45,7 @@ app_easy_timer_modify <= USED 0
 ;FILE app_msg_utils.o
 app_msg_send_wakeup_ble <= USED 0
 ;FILE app_suotar.o
+on_suotar_status_change <= USED 0
 ;FILE app_suotar_task.o
 ;FILE app_task.o
 ;FILE arch_main.o
@@ -83,6 +84,7 @@ GPIO_GetPorTime <= USED 0
 GPIO_RegisterCallback <= USED 0
 GPIO_SetIRQInputLevel <= USED 0
 GPIO_SetPorTime <= USED 0
+GPIO_init <= USED 0
 GPIO_is_valid <= USED 0
 GPIOn_Handler <= USED 0
 ;FILE hardfault_handler.o
@@ -238,13 +240,7 @@ uart_wait_tx_finish <= USED 0
 uart_write_buffer <= USED 0
 uart_write_byte <= USED 0
 ;FILE user_config_storage.o
-user_conf_storage_init <= USED 0
-user_config_read_configuration_struct <= USED 0
-user_config_save <= USED 0
-user_config_storage_save_configuration <= USED 0
-user_config_write_configuration_struct <= USED 0
 ;FILE user_periph_setup.o
-user_spi_flash_release <= USED 0
 ;FILE user_sps_device_config.o
 user_sps_apply_uart_baudrate <= USED 0
 user_sps_config_verify_adv_channel_map_cb <= USED 0

@@ -9,6 +9,7 @@
 #include "ss_i2c.h"
 #include "SPI_ADC.h"
 #include "ring_buff.h"
+#include "da14531.h"
 
 
 
@@ -27,7 +28,7 @@ E_ADC_MODE_t SS_ADC_Active_MODE=EAM_ADCsystick;
 
 t_SSS_s_timeevent SSM_erase_alarm_time_event;
 
-static int32_t time_start;
+//static int32_t time_start;
 e_FunctionReturnState SSM_ADCStart(void)
 {
 	user_spi_flash_init(SPI_FLASH_GPIO_MAP);//RDD
@@ -35,7 +36,7 @@ e_FunctionReturnState SSM_ADCStart(void)
 	SX_CalibrationOnOff(SSS_CalibrationMode);
 #endif	
 	//systick_last=systick_time;
-  time_start=systick_time;
+  //time_start=systick_time;
 	AF_V_WriteStart((uint16_t) SSM_ADCStart);	
 
 	MS_init();
@@ -53,7 +54,7 @@ static uint8_t SM_FSM_state = 0;
 e_FunctionReturnState SSM_ADCStop(void)
 { e_FunctionReturnState b_rv;
 	b_rv=e_FRS_Not_Done;
-	time_start=systick_time;
+	//time_start=systick_time;
 	switch (SM_FSM_state)
 	{	case 0: // 
 			       SM_FSM_state++;
@@ -196,12 +197,16 @@ e_FunctionReturnState ss_main_BLE(void)
 e_FunctionReturnState SSM_BLEStop()
 {
 	SSS_ReadFromVar();
-	rwble_reset();
+	//rwble_reset();
+	//rwble_init();
+	//SetWord16(SYS_CTRL_REG,GetWord16(SYS_CTRL_REG)| SW_RESET );
+	//arch_ble_ext_wakeup_on();
 	return e_FRS_Done;
 };
 e_FunctionReturnState SSM_BLEStart()
 {
 	SSS_WriteToVar();
+	//arch_ble_ext_wakeup_off();
 	return e_FRS_Done;
 };
 

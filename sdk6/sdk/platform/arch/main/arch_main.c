@@ -238,9 +238,9 @@ e_FunctionReturnState TransitionFunction_M(void * FSM)
 											if (AM_switch_time_event.enable)
 											{	
 												if (systick_time-AM_switch_time_event.time>AM_switch_time_event.dtime)
-												{	//AM_switch_time_event.enable=false;
-													//((t_s_FSM*)FSM)->sign=1;
-											SSS_SetUpTimeEvent(&AM_switch_time_event,(1000000/D_SYSTICK_PERIOD_US));
+												{	AM_switch_time_event.enable=false;
+													((t_s_FSM*)FSM)->sign=1;
+//											SSS_SetUpTimeEvent(&AM_switch_time_event,(1000000/D_SYSTICK_PERIOD_US));
 //											user_send_ble_data(msgl, msg_szl);  //RDD debug
 												}
 											};
@@ -249,7 +249,9 @@ e_FunctionReturnState TransitionFunction_M(void * FSM)
 												 ((t_s_FSM*)FSM)->sign=0;
 												 btnCmd&=~BTN_SW3_LONG;
 											 };
+#ifdef __DEVKIT_EXT__												 
 											 LEDflash();
+#endif											 
 											 rstate=e_FRS_Done; break;
 		case e_M_SXmain:	 ss_main_BLE();												
 			rstate=e_FRS_Done; break;

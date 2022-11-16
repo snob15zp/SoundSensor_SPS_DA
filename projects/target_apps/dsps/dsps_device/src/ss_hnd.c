@@ -47,6 +47,7 @@ void on_blob_rd(uint32_t addr, uint8_t buf[16])
 //    {
 //        memcpy(buf, &blob[addr], 16);
 //    }
+	  user_spi_flash_init(SPI_FLASH_GPIO_MAP);
     spi_flash_read_data(m, addr+SPI_FLASH_ADDR_START_RECORD_ADC,
                            16, &as);	
 		memcpy(buf, &blob[addr], 16);

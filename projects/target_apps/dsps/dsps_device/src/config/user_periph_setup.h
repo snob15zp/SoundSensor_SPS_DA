@@ -226,15 +226,15 @@ extern uint8_t gpio_por_pin_timeout;
 /* UART configuration                                                                   */
 /****************************************************************************************/  
 #if defined (__DA14531__)    
-#define GPIO_UART1_TX_PORT   GPIO_PORT_0
-#define GPIO_UART1_TX_PIN    GPIO_PIN_6
-#define GPIO_UART1_RX_PORT   GPIO_PORT_0
-#define GPIO_UART1_RX_PIN    GPIO_PIN_5
+//#define GPIO_UART1_TX_PORT   GPIO_PORT_0
+//#define GPIO_UART1_TX_PIN    GPIO_PIN_6
+//#define GPIO_UART1_RX_PORT   GPIO_PORT_0
+//#define GPIO_UART1_RX_PIN    GPIO_PIN_5
 
-#define GPIO_UART1_RTS_PORT  GPIO_PORT_0
-#define GPIO_UART1_RTS_PIN   GPIO_PIN_7
-#define GPIO_UART1_CTS_PORT  GPIO_PORT_0
-#define GPIO_UART1_CTS_PIN   GPIO_PIN_8
+//#define GPIO_UART1_RTS_PORT  GPIO_PORT_0
+//#define GPIO_UART1_RTS_PIN   GPIO_PIN_7
+//#define GPIO_UART1_CTS_PORT  GPIO_PORT_0
+//#define GPIO_UART1_CTS_PIN   GPIO_PIN_8
 #else
 #define GPIO_UART1_TX_PORT   GPIO_PORT_0
 #define GPIO_UART1_TX_PIN    GPIO_PIN_4
@@ -283,10 +283,10 @@ extern uint8_t gpio_por_pin_timeout;
     #define  GPIO_UART2_RX_PIN      GPIO_PIN_2
 #endif
 
-#define GPIO_DBG1_PORT   GPIO_PORT_1
-#define GPIO_DBG1_PIN    GPIO_PIN_1
-#define GPIO_DBG2_PORT   GPIO_PORT_1
-#define GPIO_DBG2_PIN    GPIO_PIN_0
+//#define GPIO_DBG1_PORT   GPIO_PORT_1
+//#define GPIO_DBG1_PIN    GPIO_PIN_1
+//#define GPIO_DBG2_PORT   GPIO_PORT_1
+//#define GPIO_DBG2_PIN    GPIO_PIN_0
 
 /****************************************************************************************/
 /* SPI configuration                                                                    */

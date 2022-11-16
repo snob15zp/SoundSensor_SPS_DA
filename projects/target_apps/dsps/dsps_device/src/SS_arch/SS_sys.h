@@ -28,6 +28,7 @@ uint16_t* get_vars(void);
 uint64_t get_systime(void);
 
 void LEDinit (void);
+void LEDflash(void);
 void test_hnd_init(void);
 void ss_spi_init(uint32_t gpio_map,const spi_cfg_t *spi_cfg);
 void SS_spi_switchoff_pins(uint32_t gpio_map);

@@ -203,7 +203,7 @@ e_FunctionReturnState TransitionFunction_M(void * FSM)
 	  case e_M_BLEStop: rstate=SSM_BLEStop();					 
 			break;//1
 	  case e_M_ADCStart: 	rstate=SSM_ADCStart(); 	
-		                    //SSS_SetUpTimeEvent(&AM_switch_time_event,(10000000/D_SYSTICK_PERIOD_US));
+		                    SSS_SetUpTimeEvent(&AM_switch_time_event,(1000000/D_SYSTICK_PERIOD_US));
 			break;//2
 	  case e_M_BLEStart: 	rstate=SSM_BLEStart();	
                         //SSS_SetUpTimeEvent(&AM_switch_time_event,(10000000/D_SYSTICK_PERIOD_US));		
@@ -248,7 +248,8 @@ e_FunctionReturnState TransitionFunction_M(void * FSM)
 											 {
 												 ((t_s_FSM*)FSM)->sign=0;
 												 btnCmd&=~BTN_SW3_LONG;
-											 }
+											 };
+											 LEDflash();
 											 rstate=e_FRS_Done; break;
 		case e_M_SXmain:	 ss_main_BLE();												
 			rstate=e_FRS_Done; break;
@@ -303,7 +304,7 @@ int main(void)
 	  ss_main_init();
 	
     uint8_t dev_id;	
-	  spi_flash_auto_detect(&dev_id); //RDD debug
+	  //spi_flash_auto_detect(&dev_id); //RDD debug
 	
     /*
      ************************************************************************************

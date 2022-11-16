@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Tue Nov 15 20:28:44 2022
+;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Wed Nov 16 12:32:27 2022
 ;VERSION 0.2
 ;FILE adc_531.o
 __asm___9_adc_531_c_adc_init____REV16 <= USED 0
@@ -136,7 +136,6 @@ spi_flash_page_erase <= USED 0
 spi_flash_page_fill <= USED 0
 spi_flash_page_program <= USED 0
 spi_flash_page_program_buffer <= USED 0
-spi_flash_power_down <= USED 0
 spi_flash_program_fail <= USED 0
 spi_flash_read_config_reg <= USED 0
 spi_flash_read_data_buffer <= USED 0

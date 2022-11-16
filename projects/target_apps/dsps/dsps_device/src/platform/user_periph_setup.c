@@ -176,6 +176,11 @@ void periph_init(void)
 	 user_spi_flash_init(SPI_FLASH_GPIO_MAP);//RDD
 	 
 //====================SS initialization======================== 
+#ifdef __DEVKIT_EXT__	 
+   LEDinit();
+#endif	 
+	
+
 uint8_t dev_id;spi_flash_auto_detect(&dev_id); //RDD debug
 	test_hnd_init(); 	 
  // MS_main();//debug;
@@ -188,10 +193,7 @@ uint8_t dev_id;spi_flash_auto_detect(&dev_id); //RDD debug
 
 #endif	 
 
-#ifdef __DEVKIT_EXT__	 
-   LEDinit();
-#endif	 
-	 
+ 
     
 
     // Initialize UART2 controller

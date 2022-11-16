@@ -309,10 +309,10 @@ uint8_t user_adv_scan_resp_data_len = USER_ADVERTISE_SCAN_RESPONSE_DATA_LEN;
 char * spss_conf_struct_version = SPSS_CONF_STRUCT_VER;
 uint8_t spss_conf_struct_version_len = sizeof(SPSS_CONF_STRUCT_VER)-1;
 
-gpio_func_t gpio_uart1_rx = {GPIO_UART1_RX_PIN, GPIO_UART1_RX_PORT};
-gpio_func_t gpio_uart1_tx = {GPIO_UART1_TX_PIN, GPIO_UART1_TX_PORT};
-gpio_func_t gpio_uart1_cts = {GPIO_UART1_CTS_PIN, GPIO_UART1_CTS_PORT};
-gpio_func_t gpio_uart1_rts = {GPIO_UART1_RTS_PIN, GPIO_UART1_RTS_PORT};
+//gpio_func_t gpio_uart1_rx = {GPIO_UART1_RX_PIN, GPIO_UART1_RX_PORT};
+//gpio_func_t gpio_uart1_tx = {GPIO_UART1_TX_PIN, GPIO_UART1_TX_PORT};
+//gpio_func_t gpio_uart1_cts = {GPIO_UART1_CTS_PIN, GPIO_UART1_CTS_PORT};
+//gpio_func_t gpio_uart1_rts = {GPIO_UART1_RTS_PIN, GPIO_UART1_RTS_PORT};
 #if (EXTERNAL_WAKEUP)
 gpio_func_t gpio_ext_wakeup = {EXTERNAL_WAKEUP_GPIO_PIN, EXTERNAL_WAKEUP_GPIO_PORT};
 uint8_t gpio_ext_wakeup_polarity = 0;

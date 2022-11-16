@@ -321,7 +321,7 @@ void timer2_init(void)
 
 
 
-#endif
+
 
 
 
@@ -384,7 +384,7 @@ initiated immediately 1: wait for key release after interrupt was reset for IRQ0
   NVIC_EnableIRQ(GPIO0_IRQn);	
 
 }
-
+#endif
 //{
 // switch(SS_ADC_MODE)
 //	 {

@@ -178,6 +178,7 @@ void SysTick_Handler()
 
 void test_hnd_init(void)
 {
+
 	  systick_stop();
 	  NVIC_SetPriority(SysTick_IRQn, 2);
     //systick_register_callback(systick_irq);
@@ -193,16 +194,34 @@ void test_hnd_init(void)
 //    user_config_save((user_config_elem_t *)SSS_conf_table, sizeof(SSS_conf_table)/sizeof(user_config_elem_t), version, &version_len);
 }
 
+#ifdef __DEVKIT_EXT__
+void LEDflash(void)
+{	static uint8_t i;
+    if (i == 0)
+    {
+        GPIO_SetActive(LED_PORT, LED_PIN);
+        i = 1;
+    }
+    else
+    {
+        GPIO_SetInactive(LED_PORT, LED_PIN);
+        i = 0;
+    }
+
+}
+
+
+
 void LEDinit (void)
 {
-#ifdef __DEVKIT_EXT__	
-//GPIO_ConfigurePin(LED_PORT, LED_PIN, OUTPUT, PID_GPIO, false);
-//GPIO_set_pad_latch_en(true);
-//				GPIO_SetActive(LED_PORT, LED_PIN);
-//	      GPIO_SetInactive(LED_PORT, LED_PIN);
-#endif	
+	
+GPIO_ConfigurePin(LED_PORT, LED_PIN, OUTPUT, PID_GPIO, false);
+GPIO_set_pad_latch_en(true);
+				GPIO_SetActive(LED_PORT, LED_PIN);
+	      GPIO_SetInactive(LED_PORT, LED_PIN);
 	
 };
+#endif
 
 void SS_spi_switchoff_pins(uint32_t gpio_map)
 {

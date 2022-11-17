@@ -24,7 +24,7 @@ bool SSM_b_alert_hearing;
 
 uint8_t ssm_main_state;
 bool ssm_main_BLE_RDY;
-E_ADC_MODE_t SS_ADC_Active_MODE=EAM_ADCsystick;
+//E_ADC_MODE_t SS_ADC_Active_MODE=EAM_ADCsystick;
 
 t_SSS_s_timeevent SSM_erase_alarm_time_event;
 
@@ -45,7 +45,7 @@ e_FunctionReturnState SSM_ADCStart(void)
 	SS_spi_switchoff_pins(SPI_FLASH_GPIO_MAP);
 	
 	SPI_ADC_init();
-	SS_ADC_MODE=SS_ADC_Active_MODE;
+//	SS_ADC_MODE=SS_ADC_Active_MODE;
 	return e_FRS_Done;
 };
 

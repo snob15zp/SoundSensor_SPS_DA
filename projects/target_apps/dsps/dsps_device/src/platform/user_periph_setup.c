@@ -181,7 +181,7 @@ void periph_init(void)
 #endif	 
 	
 
-uint8_t dev_id;spi_flash_auto_detect(&dev_id); //RDD debug
+//uint8_t dev_id;spi_flash_auto_detect(&dev_id); //RDD debug
 	test_hnd_init(); 	 
  // MS_main();//debug;
 #ifdef __SS_EXT__	

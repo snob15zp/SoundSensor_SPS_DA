@@ -16,11 +16,12 @@
 
 bool SSS_CalibrationMode=true;
 
-E_ADC_MODE_t	SS_ADC_MODE;
+//E_ADC_MODE_t	SS_ADC_MODE;
 static uint16_t vars[VARS_CNT];// = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31};
+char SSS_version[16];
 uint8_t verify_value_cb (uint8_t* param);
 
-static  user_config_elem_t SSS_conf_table[] = 
+static const user_config_elem_t SSS_conf_table[] = 
 {
 	{0x1000, sizeof(MS_i32_AlertLevel_FastA), sizeof(MS_i32_AlertLevel_FastA), &MS_i32_AlertLevel_FastA, verify_value_cb, false},
 	{0x1001, sizeof(MS_i32_AlertLevel_C140dB_Peak), sizeof(MS_i32_AlertLevel_C140dB_Peak), &MS_i32_AlertLevel_C140dB_Peak, verify_value_cb, false},
@@ -29,11 +30,12 @@ static  user_config_elem_t SSS_conf_table[] =
 	{0x1004, sizeof(MS_i32_CalibrationFactor), sizeof(MS_i32_CalibrationFactor), &MS_i32_CalibrationFactor, verify_value_cb, false},
 	{0x1005, sizeof(SSS_CalibrationMode), sizeof(SSS_CalibrationMode), &SSS_CalibrationMode, verify_value_cb, false},
 };
-static  user_config_elem_t SSS_RO_table[] = 
+static const user_config_elem_t SSS_RO_table[] = 
 {
 	{0x2000, sizeof(MS_i32_Level_FastA_dB), sizeof(MS_i32_Level_FastA_dB), &MS_i32_Level_FastA_dB, verify_value_cb, false},
 	{0x2001, sizeof(MS_i32_Level_C_Peak_dB), sizeof(MS_i32_Level_C_Peak_dB), &MS_i32_Level_C_Peak_dB, verify_value_cb, false},
 	{0x2002, sizeof(MS_i32_Level_Dose_dB), sizeof(MS_i32_Level_Dose_dB), &MS_i32_Level_Dose_dB, verify_value_cb, false},
+	{0x2003, sizeof(SSS_version), sizeof(SSS_version), &SSS_version, verify_value_cb, false},
 };
 
 static uint8_t SSS_u8_RW_vars_index_table;
@@ -82,7 +84,7 @@ void SSS_ReadFromVar(void)
 	char version[16] = {0};
   strncpy(version, SDK_VERSION, sizeof(version));
 	uint8_t version_len = strlen(SDK_VERSION);
-	user_config_save(    SSS_conf_table,                   sizeof(SSS_conf_table)/sizeof(user_config_elem_t), version, &version_len);
+	user_config_save( (user_config_elem_t*)   SSS_conf_table,                   sizeof(SSS_conf_table)/sizeof(user_config_elem_t), version, &version_len);
 }
 
 
@@ -185,11 +187,11 @@ void test_hnd_init(void)
     systick_start(D_SYSTICK_PERIOD_US, SYSTICK_EXCEPTION);
     
     uint8_t version_len = strlen(SDK_VERSION);
-    char version[16] = {0};
-    strncpy(version, SDK_VERSION, sizeof(version));
-    user_spi_flash_init(SPI_FLASH_GPIO_MAP);//RDD
-		uint8_t dev_id;spi_flash_auto_detect(&dev_id); //RDD debug
-    user_conf_storage_init((user_config_elem_t *)SSS_conf_table, sizeof(SSS_conf_table)/sizeof(user_config_elem_t), version, &version_len);
+//    char version[16] = {0};
+    strncpy(SSS_version, SDK_VERSION, sizeof(SSS_version));
+     user_spi_flash_init(SPI_FLASH_GPIO_MAP);//RDD
+		//uint8_t dev_id;spi_flash_auto_detect(&dev_id); //RDD debug
+    user_conf_storage_init((user_config_elem_t *)SSS_conf_table, sizeof(SSS_conf_table)/sizeof(user_config_elem_t), SSS_version, &version_len);
     vars[0] += 1;
 //    user_config_save((user_config_elem_t *)SSS_conf_table, sizeof(SSS_conf_table)/sizeof(user_config_elem_t), version, &version_len);
 }

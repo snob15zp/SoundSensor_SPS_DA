@@ -11,7 +11,7 @@
     #define LED_PIN                 GPIO_PIN_9
 #endif
 
-typedef enum {EAM_IDLE, EAM_ADCLIVE, EAM_ADC_WORK,EAM_ADC_sin, EAM_ADCsystick} E_ADC_MODE_t;
+//typedef enum {EAM_IDLE, EAM_ADCLIVE, EAM_ADC_WORK,EAM_ADC_sin, EAM_ADCsystick} E_ADC_MODE_t;
 
 typedef struct
 { bool enable;
@@ -21,7 +21,7 @@ typedef struct
 
 void SSS_SetUpTimeEvent(t_SSS_s_timeevent *s,uint32_t dt);
 
-extern E_ADC_MODE_t	SS_ADC_MODE;
+//extern E_ADC_MODE_t	SS_ADC_MODE;
 extern bool SSS_CalibrationMode;
 extern volatile uint32_t systick_time;
 uint16_t* get_vars(void);

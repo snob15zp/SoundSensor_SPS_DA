@@ -4,7 +4,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#define D_ADCMODE 0
+#define D_ADCMODE 3
 /*
 0 - work mode
 1 - live data
@@ -27,8 +27,8 @@
 //    uint32_t data_u32;
 //} uni_uint32_t;
 
-#define D_FlashMap 531
-//#define D_FlashMap 585
+//#define D_FlashMap 531
+#define D_FlashMap 585
 /*
 Standat 585			
 Address		Size	

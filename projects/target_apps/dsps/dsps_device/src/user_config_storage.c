@@ -69,7 +69,7 @@ enum user_config_storage_error_codes user_conf_storage_init(user_config_elem_t *
     config_product_header_t product_header;
 
     user_spi_flash_init(gpio_map);
-	  uint8_t dev_id;spi_flash_auto_detect(&dev_id); //RDD debug
+	  //uint8_t dev_id;spi_flash_auto_detect(&dev_id); //RDD debug
     //while(1) 
     ret = user_config_storage_read_ext_mem( (uint8_t*)&product_header, (uint32_t)PRODUCT_HEADER_POSITION, (uint32_t)sizeof(config_product_header_t) );
     if(ret < 0) {

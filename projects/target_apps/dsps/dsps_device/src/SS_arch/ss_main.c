@@ -201,6 +201,13 @@ e_FunctionReturnState SSM_BLEStop()
 	//rwble_init();
 	//SetWord16(SYS_CTRL_REG,GetWord16(SYS_CTRL_REG)| SW_RESET );
 	//arch_ble_ext_wakeup_on();
+	    uint16_t tmp;
+    // Trigger SW reset
+    tmp = GetWord16(SYS_CTRL_REG);
+    tmp = (tmp & ~REMAP_ADR0) | 0; // Map ROM at address 0
+    tmp |= SW_RESET;
+    SetWord16(SYS_CTRL_REG, tmp);
+
 	return e_FRS_Done;
 };
 e_FunctionReturnState SSM_BLEStart()

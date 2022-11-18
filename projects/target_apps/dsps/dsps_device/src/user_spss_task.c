@@ -113,7 +113,7 @@ int user_sps_server_data_write_ind_handler(ke_msg_id_t const msgid,
             user_send_ble_data(msg, msg_sz);
         }
     }
-    return (KE_MSG_NO_FREE);
+    return (KE_MSG_CONSUMED);
 }
 
 int user_sps_server_tx_flow_ctrl_ind_handler(ke_msg_id_t const msgid,

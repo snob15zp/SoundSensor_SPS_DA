@@ -43,14 +43,14 @@ void on_blob_rd(uint32_t addr, uint8_t buf[16])
  //shift is not needed	; 32 Mbit
 	uint8_t m[16];
 	uint32_t as;
-//    if(addr < sizeof(blob))
-//    {
-//        memcpy(buf, &blob[addr], 16);
-//    }
-	  user_spi_flash_init(SPI_FLASH_GPIO_MAP);
-    spi_flash_read_data(m, addr+SPI_FLASH_ADDR_START_RECORD_ADC,
-                           16, &as);	
-		memcpy(buf, m, 16);
+    if(addr < sizeof(blob))
+    {
+        memcpy(buf, &blob[addr], 16);
+    }
+//	  user_spi_flash_init(SPI_FLASH_GPIO_MAP);
+//    spi_flash_read_data(m, addr+SPI_FLASH_ADDR_START_RECORD_ADC,
+//                           16, &as);	
+//		memcpy(buf, m, 16);
 }
 
 int8_t on_blob_wr(uint32_t addr, uint8_t buf[16])

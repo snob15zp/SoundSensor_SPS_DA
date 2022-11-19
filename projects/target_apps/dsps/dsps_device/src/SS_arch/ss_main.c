@@ -221,13 +221,13 @@ e_FunctionReturnState SSM_BLEStart()
 //================================ALARM===============================================
 //#define  MS_b_alert_C140dBPeakD true
 //#define  MS_b_alert_FastAD true
-//#define  MS_b_alert_liveD false
-//#define MS_b_alert_OverloadD false
-//#define  MS_b_alert_DoseM3dBD	true
-//#define  MS_b_alert_DoseD false
-//#define MS_b_alert_hearingD false
-
-
+//#define  MS_b_alert_liveD false   1 e 
+//#define MS_b_alert_OverloadD false  2 e
+//#define  MS_b_alert_DoseM3dBD	true    6 r
+//#define  MS_b_alert_DoseD false      5  r
+//#define MS_b_alert_hearingD false  4     r
+//SSS_CalibrationMode                3    r
+//full memoy                             r 
 
 void DisplayAlarm(void)
 {

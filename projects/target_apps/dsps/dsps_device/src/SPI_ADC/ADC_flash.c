@@ -30,6 +30,7 @@ typedef union {
 static dc_t dc; 	 
 static uint32_t my_ssize;
 uint32_t AddrNewRecord;
+uint32_t AddrNewRecordWithOffset;
 static uint16_t F_PWR_on = 0;
 static uint16_t F_Erase_on = 0;
 static uint8_t byteADC[4];
@@ -172,6 +173,7 @@ uint32_t actual_size;
 		datal.u16[0]=(systick_time_tek>>16);
 		spi_flash_write_data(&(datal.u8[0]),AddrNewRecord,3,&actual_size);
 		AddrNewRecord+=3;
+		AddrNewRecordWithOffset=AddrNewRecord-SPI_FLASH_ADDR_START_RECORD_ADC;
 	}
 	else
 	{

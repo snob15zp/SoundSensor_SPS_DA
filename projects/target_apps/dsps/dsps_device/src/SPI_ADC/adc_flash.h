@@ -40,6 +40,7 @@ typedef union {
 
 
 extern uint32_t AddrNewRecord;
+extern uint32_t AddrNewRecordWithOffset;
 
 void AF_V_WriteTimestamp(void);
 void AF_V_WriteStartServiceRecord(uint8_t recodType, uint16_t callerFunction);

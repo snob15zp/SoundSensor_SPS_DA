@@ -267,6 +267,10 @@
       <TargetDriverDllRegistry>
         <SetRegEntry>
           <Number>0</Number>
+          <Key>DLGUARM</Key>
+        </SetRegEntry>
+        <SetRegEntry>
+          <Number>0</Number>
           <Key>ARMRTXEVENTFLAGS</Key>
           <Name>-L70 -Z18 -C0 -M0 -T1</Name>
         </SetRegEntry>
@@ -295,18 +299,18 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>50</LineNumber>
+          <LineNumber>215</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>0</Address>
+          <Address>133973086</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>0</BreakIfRCount>
-          <Filename>..\src\ss_hnd.c</Filename>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>..\src\SS_arch\ss_main.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression></Expression>
+          <Expression>\\dsps_device_531\../src/SS_arch/ss_main.c\215</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -324,6 +328,11 @@
           <count>2</count>
           <WinNumber>1</WinNumber>
           <ItemText>SSS_version</ItemText>
+        </Ww>
+        <Ww>
+          <count>3</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>systick_time</ItemText>
         </Ww>
       </WatchWindow1>
       <WatchWindow2>
@@ -780,7 +789,7 @@
 
   <Group>
     <GroupName>sdk_arch</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -1980,7 +1989,7 @@
 
   <Group>
     <GroupName>user_dsps_service</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -2168,7 +2177,7 @@
       <GroupNumber>14</GroupNumber>
       <FileNumber>114</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\src\SPI_ADC\ADC_flash.c</PathWithFileName>

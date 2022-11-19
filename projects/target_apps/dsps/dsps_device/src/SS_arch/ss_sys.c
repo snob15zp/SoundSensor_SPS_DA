@@ -35,7 +35,8 @@ static const user_config_elem_t SSS_RO_table[] =
 	{0x2000, sizeof(MS_i32_Level_FastA_dB), sizeof(MS_i32_Level_FastA_dB), &MS_i32_Level_FastA_dB, verify_value_cb, false},
 	{0x2001, sizeof(MS_i32_Level_C_Peak_dB), sizeof(MS_i32_Level_C_Peak_dB), &MS_i32_Level_C_Peak_dB, verify_value_cb, false},
 	{0x2002, sizeof(MS_i32_Level_Dose_dB), sizeof(MS_i32_Level_Dose_dB), &MS_i32_Level_Dose_dB, verify_value_cb, false},
-	{0x2003, sizeof(SSS_version), sizeof(SSS_version), &SSS_version, verify_value_cb, false},
+	{0x2003, sizeof(AddrNewRecordWithOffset), sizeof(AddrNewRecordWithOffset), &AddrNewRecordWithOffset, verify_value_cb, false},
+	{0x2004, sizeof(SSS_version), sizeof(SSS_version), &SSS_version, verify_value_cb, false},
 };
 
 static uint8_t SSS_u8_RW_vars_index_table;
@@ -56,9 +57,9 @@ void SSS_WriteTableToVar(const user_config_elem_t *t, uint8_t *var_index, uint8_
 	{
 		memcpy(vars+(SSS_u8_index_vars/2),
 		       t[SSS_u8_RW_vars_index_table].data, 
-		       t[SSS_u8_RW_vars_index_table].cur_size
+		       t[SSS_u8_RW_vars_index_table].max_size
 		      );
-		SSS_u8_index_vars+=(((t[SSS_u8_RW_vars_index_table].cur_size)+1)&0xFE);
+		SSS_u8_index_vars+=(((t[SSS_u8_RW_vars_index_table].max_size)+1)&0xFE);
 		SSS_u8_RW_vars_index_table++;
 	}		
 }
@@ -71,9 +72,9 @@ void SSS_ReadTableFromVar(const user_config_elem_t *t, uint8_t *var_index, uint8
 	{
 		memcpy(t[SSS_u8_RW_vars_index_table].data,
 		       vars+(SSS_u8_index_vars/2), 
-		       t[SSS_u8_RW_vars_index_table].cur_size
+		       t[SSS_u8_RW_vars_index_table].max_size
 		      );
-		SSS_u8_index_vars+=(((t[SSS_u8_RW_vars_index_table].cur_size)+1)&0xFE);
+		SSS_u8_index_vars+=(((t[SSS_u8_RW_vars_index_table].max_size)+1)&0xFE);
 		SSS_u8_RW_vars_index_table++;
 	}		
 }

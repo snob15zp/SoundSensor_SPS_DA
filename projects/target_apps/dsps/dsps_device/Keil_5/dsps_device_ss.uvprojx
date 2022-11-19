@@ -1550,6 +1550,16 @@
               <FileType>5</FileType>
               <FilePath>..\src\ss_hnd.h</FilePath>
             </File>
+            <File>
+              <FileName>SS_ADC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\SS_arch\SS_ADC.c</FilePath>
+            </File>
+            <File>
+              <FileName>SS_ADC.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\SS_arch\SS_ADC.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
@@ -3149,6 +3159,16 @@
               <FileType>5</FileType>
               <FilePath>..\src\ss_hnd.h</FilePath>
             </File>
+            <File>
+              <FileName>SS_ADC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\SS_arch\SS_ADC.c</FilePath>
+            </File>
+            <File>
+              <FileName>SS_ADC.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\SS_arch\SS_ADC.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
@@ -4747,6 +4767,16 @@
               <FileName>ss_hnd.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\src\ss_hnd.h</FilePath>
+            </File>
+            <File>
+              <FileName>SS_ADC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\SS_arch\SS_ADC.c</FilePath>
+            </File>
+            <File>
+              <FileName>SS_ADC.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\SS_arch\SS_ADC.h</FilePath>
             </File>
           </Files>
         </Group>

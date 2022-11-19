@@ -43,14 +43,14 @@ static const i2c_eeprom_cfg_t sx1502_cfg = {
 ledTimeSlot_t const LED_ALARM_Empty              ={false,0,0};
 ledTimeSlot_t const LED_ALARM_LiveSPL	          ={true,D_pulseWidthMs,CL_RED};
 ledTimeSlot_t const LED_ALARM_Operatingstate	    ={true,D_pulseWidthMs,CL_BLUE};
-ledTimeSlot_t const LED_ALARM_Overloadindicator	={true,LED_SLOT_TIME,CL_RED};
+ledTimeSlot_t const LED_ALARM_Overloadindicator	={true,D_pulseWidth875ms,CL_RED};
 ledTimeSlot_t const LED_ALARM_LAeqM3dB	          ={true,D_pulseWidthMs,CL_LD1};
-ledTimeSlot_t const LED_ALARM_LAeq    	          ={true,LED_SLOT_TIME ,CL_LD1};
-ledTimeSlot_t const LED_ALARM_hearing 	          ={true,LED_SLOT_TIME ,CL_GREEN};
-ledTimeSlot_t const LED_ALARM_BLE     	          ={true,LED_SLOT_TIME ,CL_WHITE};
-ledTimeSlot_t const LED_ALARM_CalibrationLong     ={true,LED_SLOT_TIME ,CL_BR};
+ledTimeSlot_t const LED_ALARM_LAeq    	          ={true,D_pulseWidth875ms ,CL_LD1};
+ledTimeSlot_t const LED_ALARM_hearing 	          ={true,D_pulseWidth875ms ,CL_GREEN};
+ledTimeSlot_t const LED_ALARM_BLE     	          ={true,D_pulseWidth875ms ,CL_RG};
+ledTimeSlot_t const LED_ALARM_CalibrationLong     ={true,D_pulseWidth875ms ,CL_BR};
 ledTimeSlot_t const LED_ALARM_CalibrationShort    ={true,D_pulseWidthMs ,CL_BR};
-ledTimeSlot_t const LED_ALARM_erase               ={true,D_pulseWidthMs ,CL_RG};
+ledTimeSlot_t const LED_ALARM_erase               ={true,D_pulseWidth125ms ,CL_WHITE};
 //======================================================================================
 #ifdef D_sx_takt_call
 #define sx_time sx_encounter
@@ -64,9 +64,9 @@ static uint32_t sx_encounter;
 
 static uint8_t   inpData;                                                      // ???? ?????? ?????? ?? ?????? SX1502 
 static uint8_t   outData;                                                      // ????? ?????? ?????? ??? ?????? SX1502
-static uint8_t   buttonsState;
+//static uint8_t   buttonsState;
 
-static uint32_t systick_last_LED;//TODO to init
+//static uint32_t systick_last_LED;//TODO to init
 static uint32_t systick_last_SCAN;
 //static uint32_t ledsTime;     // таймер светодиодов ()
 /*****************************************************************************************
@@ -85,7 +85,7 @@ static void ssi2c_set_pad_functions(void)
 
 
 static uint8_t i2cBuff[32];
-static uint8_t* ptrBuff;
+//static uint8_t* ptrBuff;
 static uint8_t cnt;
 static i2c_error_code err;
 
@@ -111,11 +111,11 @@ i2c_error_code sx1502_init(void)
 
 void ssi2c_init(void)
 {
-systick_last_LED=sx_time;
+//systick_last_LED=sx_time;
 systick_last_SCAN=sx_time;    
 rgbLedTaskD1.ledsTime = sx_time;	
 rgbLedTaskLD1.ledsTime = sx_time;
-rgbLedTaskD1.LEDS_NUM=2;
+rgbLedTaskD1.LEDS_NUM=3;
 rgbLedTaskLD1.LEDS_NUM=1;	
 rgbLedTaskD1.colormask=SX_D_L1MASK;	
 rgbLedTaskLD1.colormask=SX_D_LD1MASK;	

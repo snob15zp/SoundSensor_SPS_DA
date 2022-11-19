@@ -1,5 +1,6 @@
 
 #include "SPI_ADC.h"
+#include "ADC_flash.h"
 #include "ring_buff.h"
 
 #define RING_BUFF_MASK			(RING_BUFF_SIZE - 1)  
@@ -25,6 +26,8 @@ typedef struct
 	enum_ovr_buff_t ovr_buff;
 	enum_lockRecord_t lockRecord;	
 } RING_sBuf_t;
+
+bool RB_b_MemoryFull;
 
 static uint8_t byteFlash;
 static RING_sBuf_t sBuf;
@@ -129,7 +132,8 @@ int32_t rd;
 int RingBuffer_add_u32(uint32_t data,uint32_t *adr, uint32_t margin)
 {
 	  (*adr)+=3;
-	  if (*adr>margin)
+	  RB_b_MemoryFull=(*adr>(margin-3))||(*adr<(SPI_FLASH_ADDR_START_RECORD_ADC));
+	  if (RB_b_MemoryFull)
 			return -3;
     if ( ptr->lockRecord == LOCK_RECORD_ACTIVE )
         return -1;    		

@@ -76,11 +76,12 @@
 #endif
 
 #include "ss_i2c.h"
-#include "SS_InterfaceToBLE.h"
 #include "ss_main.h"	
 #include "SS_sys.h"
 
 #include "spi_flash.h"//debug
+
+#include "SS_ADC.h"
 
 
 
@@ -203,7 +204,7 @@ e_FunctionReturnState TransitionFunction_M(void * FSM)
 	  case e_M_BLEStop: rstate=SSM_BLEStop();					 
 			break;//1
 	  case e_M_ADCStart: 	rstate=SSM_ADCStart(); 	
-		                    SSS_SetUpTimeEvent(&AM_switch_time_event,(1000000/D_SYSTICK_PERIOD_US));
+		                    SSS_SetUpTimeEvent(&AM_switch_time_event,(2000000/D_SYSTICK_PERIOD_US));
 			break;//2
 	  case e_M_BLEStart: 	rstate=SSM_BLEStart();	
                         //SSS_SetUpTimeEvent(&AM_switch_time_event,(10000000/D_SYSTICK_PERIOD_US));		
@@ -293,7 +294,7 @@ t_s_FSM s_FSM_main=
 
 int main(void)
 {
-    sleep_mode_t sleep_mode;
+//    sleep_mode_t sleep_mode;
 
     // initialize retention mode
     init_retention_mode();
@@ -305,8 +306,10 @@ int main(void)
 	
 	  ss_main_init();
 	
-    uint8_t dev_id;	
-	  //spi_flash_auto_detect(&dev_id); //RDD debug
+	  SSA_init();
+	
+    	
+	  //uint8_t dev_id; spi_flash_auto_detect(&dev_id); //RDD debug
 	
     /*
      ************************************************************************************

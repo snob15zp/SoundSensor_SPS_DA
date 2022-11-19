@@ -11,13 +11,7 @@
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
 
-#define recordType_FirstPWRon			0x80
-#define recordType_NextPWRon        	0x81
-#define recordType_dummyPWRon        	0x80
-#define recordType_StopPWRon        	0x82
-#define recordType_StopPWRoff       	0x83
-#define recordType_TimeStampL       	0x84
-#define recordType_TimeStampH       	0x85
+
 
 #define SPI_FLASH_OP_ByteProgramSec		((uint32_t)0xAD)
 
@@ -93,9 +87,9 @@ int rezult_Start;
 	}
 	else
 	{
-		if ( F_Erase_on == 0 )
+/*		if ( F_Erase_on == 0 )
 		{
-/*			
+			
 			F_Erase_on = 1;
 //Block64 erase			
 			spi_flash_block_erase(SPI_FLASH_ADDR_START_RECORD_ADC, SPI_FLASH_OP_BE64);
@@ -112,7 +106,7 @@ int rezult_Start;
 			if ( RingBuffer_get_ch8(&byteADC[0]) == 0 )  
 				spi_flash_StartByteProgramSequent(&byteADC[0], SPI_FLASH_ADDR_START_RECORD_ADC, 1);
 
-*/			
+			
 			rezult_Start = 0;			
 		}
 		else
@@ -120,9 +114,9 @@ int rezult_Start;
 			AddrNewRecord = SPI_FLASH_ADDR_END_RECORD_ADC; 
 			rezult_Start = -1;
 		}
+*/	AddrNewRecord = SPI_FLASH_ADDR_END_RECORD_ADC;
 	}
 	F_PWR_on = 1;
-	
 	return rezult_Start;
 }
 

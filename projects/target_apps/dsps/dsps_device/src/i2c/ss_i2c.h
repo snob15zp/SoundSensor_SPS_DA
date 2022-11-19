@@ -11,12 +11,14 @@
 #define D_sx_takt_period  D_SYSTICK_PERIOD_US
 #endif
 
-#define    maxLEDS_NUM               2                                     // количество светодиодов в последовательности
+#define    maxLEDS_NUM               3                                     // количество светодиодов в последовательности
 //#define    LED_PULSE_TIME         (3000000/D_sx_takt_period)     //us                             // время цикла обработки всех светодиодов
 #define    LED_SLOT_TIME          (1000000/D_sx_takt_period) // время работы одного светодиода 
 #define DEB_CNT         ((uint8_t)2)                                      // 믫鸥񲢮 ౮㦰猪嬿 𨪱ᷨ衱ﲲ-鿍
 #define SCAN_TIME       (125000/D_sx_takt_period)// 
 #define D_pulseWidthMs (500000/D_sx_takt_period)
+#define D_pulseWidth125ms (125000/D_sx_takt_period)
+#define D_pulseWidth875ms (875000/D_sx_takt_period)
 #define D_KL_long (5000000/D_sx_takt_period)
 
 
@@ -108,6 +110,6 @@ void ss_i2c_test (void);
 void ssi2c_init(void);
 i2c_error_code sx1502_init(void);//for inner
 void sx_main(void);
-void SX_PowerOff();
+void SX_PowerOff(void);
 void SX_CalibrationOnOff(bool cal);
 #endif

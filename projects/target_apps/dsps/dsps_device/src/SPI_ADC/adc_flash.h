@@ -25,12 +25,22 @@
 #define SPI_FLASH_DATA_FLASH_ERASE				((uint32_t)0x00FFFFFF) 
 #define SPI_FLASH_FLAG_FLASH_FULL				(-1)
 
-#define AF_D_StartFirstRecording 1
-#define AF_D_StartContinueRecording 2
-#define AF_D_StopPowerOn 3
-#define AF_D_StopPoewrOff 4 
-#define AF_D_timestampLo 5
-#define AF_D_timestampHi 6
+//#define AF_D_StartFirstRecording 1
+//#define AF_D_StartContinueRecording 2
+//#define AF_D_StopPowerOn 3
+//#define AF_D_StopPoewrOff 4 
+//#define AF_D_timestampLo 5
+//#define AF_D_timestampHi 6
+
+#define recordType_FirstPWRon			0x80
+#define recordType_NextPWRon        	0x81
+#define recordType_dummyPWRon        	0x80
+#define recordType_StopPWRon        	0x82
+#define recordType_StopPWRoff       	0x83
+#define recordType_TimeStampL       	0x84
+#define recordType_TimeStampH       	0x85
+#define recordType_Vdd              	0x86
+#define recordType_AlarmStatus       	0x87
 
 typedef union {
     uint32_t u32;
@@ -38,7 +48,7 @@ typedef union {
 	  uint8_t	 u8[4];
 } uni_u32_t;
 
-
+extern bool RB_b_MemoryFull;
 extern uint32_t AddrNewRecord;
 extern uint32_t AddrNewRecordWithOffset;
 

@@ -1,14 +1,11 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Fri Nov 18 21:31:49 2022
+;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Sat Nov 19 21:38:56 2022
 ;VERSION 0.2
 ;FILE adc_531.o
-adc_correct_sample <= USED 0
 adc_disable <= USED 0
-adc_get_sample <= USED 0
 adc_get_temp_async <= USED 0
 adc_input_shift_config <= USED 0
 adc_input_shift_disable <= USED 0
 adc_input_shift_enable <= USED 0
-adc_offset_calibrate <= USED 0
 adc_register_interrupt <= USED 0
 adc_reset <= USED 0
 adc_unregister_interrupt <= USED 0
@@ -76,7 +73,6 @@ FilterC_s19s29_CG1_terminate <= USED 0
 ;FILE gpio.o
 GPIO_ConfigurePinPower <= USED 0
 GPIO_DisablePorPin <= USED 0
-GPIO_EnableIRQ <= USED 0
 GPIO_EnablePorPin <= USED 0
 GPIO_GetIRQInputLevel <= USED 0
 GPIO_GetPinFunction <= USED 0
@@ -100,25 +96,19 @@ hw_otpc_read <= USED 0
 hw_otpc_word_prog_and_verify <= USED 0
 hw_otpc_word_read <= USED 0
 ;FILE i2c.o
-i2c_init <= USED 0
 i2c_master_receive_buffer_async <= USED 0
 i2c_master_receive_buffer_sync <= USED 0
 i2c_master_transmit_buffer_async <= USED 0
 i2c_master_transmit_buffer_sync <= USED 0
 i2c_register_int <= USED 0
 i2c_release <= USED 0
-i2c_setup_master <= USED 0
-i2c_setup_slave <= USED 0
 i2c_slave_receive_buffer_async <= USED 0
 i2c_slave_receive_buffer_sync <= USED 0
 i2c_slave_transmit_buffer_async <= USED 0
 i2c_slave_transmit_buffer_sync <= USED 0
 i2c_unregister_int <= USED 0
 ;FILE i2c_eeprom.o
-i2c_eeprom_configure <= USED 0
 i2c_eeprom_get_configuration <= USED 0
-i2c_eeprom_initialize <= USED 0
-i2c_eeprom_read_byte <= USED 0
 i2c_eeprom_read_data <= USED 0
 i2c_eeprom_release <= USED 0
 i2c_eeprom_update_slave_address <= USED 0
@@ -137,12 +127,6 @@ mul_wide_s32 <= USED 0
 MS_EvaluteLogLevel <= USED 0
 ;FILE nmi_handler.o
 ;FILE otp_cs.o
-otp_cs_get_adc_diff_ge <= USED 0
-otp_cs_get_adc_diff_offset <= USED 0
-otp_cs_get_adc_offsh_ge <= USED 0
-otp_cs_get_adc_offsh_offset <= USED 0
-otp_cs_get_adc_single_ge <= USED 0
-otp_cs_get_adc_single_offset <= USED 0
 otp_cs_get_low_power_clock <= USED 0
 ;FILE prf.o
 ;FILE rf_531.o
@@ -206,14 +190,11 @@ spi_flash_write_data_buffer <= USED 0
 spi_flash_write_enable_volatile <= USED 0
 spi_flash_write_status_config_reg <= USED 0
 ;FILE sps_server.o
+;FILE ss_adc.o
 ;FILE ss_global.o
 ;FILE ss_hnd.o
 ;FILE ss_i2c.o
-SX_CalibrationOnOff <= USED 0
 ss_i2c_test <= USED 0
-ssi2c_init <= USED 0
-sx1502_init <= USED 0
-sx_main <= USED 0
 ;FILE ss_main.o
 ;FILE ss_sys.o
 ;FILE startup_da14531.o
@@ -232,9 +213,6 @@ systick_register_callback <= USED 0
 systick_value <= USED 0
 systick_wait <= USED 0
 ;FILE timer2.o
-timer2_config <= USED 0
-timer2_pwm_freq_set <= USED 0
-timer2_pwm_signal_config <= USED 0
 ;FILE trng.o
 ;FILE uart.o
 uart_baudrate_setf <= USED 0

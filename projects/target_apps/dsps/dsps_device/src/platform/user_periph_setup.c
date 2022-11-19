@@ -38,7 +38,7 @@
 #include "SPI_ADC.h"
 #include "ADC_flash.h"
 #include "ss_i2c.h"
-#include "SS_InterfaceToBLE.h"
+//#include "SS_InterfaceToBLE.h"
 #include "MathFast.h"
 #include "MathSlow.h"
 #include "SS_sys.h"

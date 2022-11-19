@@ -4,14 +4,17 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#define D_ADCMODE 3
+#define D_ADCMODE 0
 /*
 0 - work mode
 1 - live data
 2 - SIN in ADC_IRQ
 3 - SIN from timer
 */
+#define D_FlashMap 531
+//#define D_FlashMap 585
 
+#define SSG_D_VddLow 2750
 
 #if	(D_ADCMODE!=3)
 #define D_SYSTICK_PERIOD_US   1000     // period for systick timer in us, so 1000000ticks = 1second
@@ -27,8 +30,8 @@
 //    uint32_t data_u32;
 //} uni_uint32_t;
 
-//#define D_FlashMap 531
-#define D_FlashMap 585
+
+
 /*
 Standat 585			
 Address		Size	

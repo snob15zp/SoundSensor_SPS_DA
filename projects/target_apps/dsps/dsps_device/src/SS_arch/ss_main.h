@@ -13,9 +13,10 @@ e_FunctionReturnState ss_main_init(void);
 e_FunctionReturnState SSM_ADCStop(void);
 e_FunctionReturnState SSM_ADCStart(void);
 
-e_FunctionReturnState SSM_BLEStop();
-e_FunctionReturnState SSM_BLEStart();
+e_FunctionReturnState SSM_BLEStop(void);
+e_FunctionReturnState SSM_BLEStart(void);
 void DisplayAlarm(void);
+uint16_t BuildAlarmRecord(void);
 
 
 

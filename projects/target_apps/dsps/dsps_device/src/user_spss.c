@@ -41,7 +41,7 @@
 #include "user_periph_setup.h"
 #include "user_sps_utils.h"
 
-#include "SS_InterfaceToBLE.h"//RDD
+//#include "SS_InterfaceToBLE.h"//RDD
 /*
  * FUNCTION DEFINITIONS
  ****************************************************************************************

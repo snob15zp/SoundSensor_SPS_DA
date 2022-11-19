@@ -1,6 +1,6 @@
 #include "ss_global.h"
 #include "ss_main.h"
-#include "SS_InterfaceToBLE.h"
+//#include "SS_InterfaceToBLE.h"
 #include "SS_sys.h"
 #include "MathFast.h"
 #include "MathSlow.h"
@@ -10,7 +10,7 @@
 #include "SPI_ADC.h"
 #include "ring_buff.h"
 #include "da14531.h"
-
+#include "SS_ADC.h"
 
 
 //---------------------------------------------------------------------
@@ -21,8 +21,11 @@
 //---------------------------------------------------------------------
 
 bool SSM_b_alert_hearing;
-
-uint8_t ssm_main_state;
+static int32_t RareProcedureCalc;
+static uint32_t systick_last;
+int16_t SSM_Vdd;
+//uint8_t ssm_main_state;
+bool SSM_b_AlarmVddLow;
 bool ssm_main_BLE_RDY;
 //E_ADC_MODE_t SS_ADC_Active_MODE=EAM_ADCsystick;
 
@@ -46,6 +49,8 @@ e_FunctionReturnState SSM_ADCStart(void)
 	
 	SPI_ADC_init();
 //	SS_ADC_MODE=SS_ADC_Active_MODE;
+	systick_last=systick_time;
+	RareProcedureCalc=0;
 	return e_FRS_Done;
 };
 
@@ -93,7 +98,7 @@ e_FunctionReturnState SSM_ADCStop(void)
 	return b_rv;
 };
 
-static uint32_t systick_last;
+
 
 e_FunctionReturnState ss_main_init(void)
 {
@@ -119,8 +124,8 @@ e_FunctionReturnState ss_main(void)
 #ifdef __NO_MATLAB__		
 		MS_main();
 #endif		
-//		AF_V_AddADCdataToFIFO((uint16_t) MS_i32_Level_FastA_dB, (uint16_t) MS_i32_Level_C_Peak_dB);
-		AF_V_AddADCdataToFIFO((uint16_t) (fifodebugcalc), (uint16_t) (fifodebugcalc+1));fifodebugcalc+=2;
+		AF_V_AddADCdataToFIFO((uint16_t) MS_i32_Level_FastA_dB, (uint16_t) MS_i32_Level_C_Peak_dB);
+//		AF_V_AddADCdataToFIFO((uint16_t) (fifodebugcalc), (uint16_t) (fifodebugcalc+1));fifodebugcalc+=2;
 		
 #ifdef __DEVKIT_EXT__					
 //					led_flash();
@@ -146,7 +151,18 @@ e_FunctionReturnState ss_main(void)
 			MS_b_alert_hearing=!MS_b_alert_hearing;
 			btnCmd=0;
 		}
-   
+		
+		if (!((RareProcedureCalc++)&0x7))
+		{
+		   SSM_Vdd=SSA_getVdd();
+			 SSM_b_AlarmVddLow=(SSG_D_VddLow>SSM_Vdd);
+			 AF_V_Adddatau8u16ToFIFO(recordType_Vdd,SSM_Vdd);
+//       uint32_t rec=BuildRareRecord();
+			uint16_t AlarmStatus=BuildAlarmRecord();
+			AF_V_Adddatau8u16ToFIFO(recordType_AlarmStatus,AlarmStatus);
+			
+//			 AF_V_Addu32ToFIFO(rec);
+		}
 		
 	};
 	
@@ -229,36 +245,68 @@ e_FunctionReturnState SSM_BLEStart()
 //SSS_CalibrationMode                3    r
 //full memoy                             r 
 
+#define MS_D_alert_live 0
+#define MS_D_alert_Overload 1
+#define SSS_D_CalibrationMode 2
+#define MS_D_alert_hearing 3
+#define MS_D_alert_DoseM3dB 4
+#define MS_D_alert_Dose 5
+#define SSM_D_AlarmVddLow 6
+//#define MS_D_MemoryFull 7
+
+//bool MS_b_MemoryFull;
+
+uint16_t BuildAlarmRecord(void)
+{ uint16_t AlamStatus=0;
+	if (SSS_CalibrationMode)
+		AlamStatus|=1<<SSS_D_CalibrationMode;
+	if (SSM_b_AlarmVddLow)
+		AlamStatus|=1<<SSM_D_AlarmVddLow;
+	if (MS_b_alert_live)
+		AlamStatus|=1<<MS_D_alert_live;
+	if (MS_b_alert_Overload)
+		AlamStatus|=1<<MS_D_alert_Overload;
+	if (MS_b_alert_hearing) 
+		AlamStatus|=1<<MS_D_alert_hearing;
+	return AlamStatus;
+}
+
+
+
+
 void DisplayAlarm(void)
 {
 	rgbLedTaskD1.ledTimeSlot[0]=LED_ALARM_Operatingstate;
-  if (MS_b_alert_live) 
-		                     rgbLedTaskD1.ledTimeSlot[0]=LED_ALARM_LiveSPL;
-	if (MS_b_alert_Overload) 
-		                     rgbLedTaskD1.ledTimeSlot[0]=LED_ALARM_Overloadindicator;
+	if (SSS_CalibrationMode)
+		      rgbLedTaskD1.ledTimeSlot[0].color|=RED_LED_OUT;
+	if (RB_b_MemoryFull)
+		      rgbLedTaskD1.ledTimeSlot[0].color|=GREEN_LED_OUT;
 	if (ssm_main_BLE_RDY) 
 		                     rgbLedTaskD1.ledTimeSlot[0]=LED_ALARM_BLE;
+	if (SSM_b_AlarmVddLow)
+	{	rgbLedTaskD1.ledTimeSlot[0].pulseWidthMs=D_pulseWidthMs;}
+	else
+	{	rgbLedTaskD1.ledTimeSlot[0].pulseWidthMs=D_pulseWidth875ms;};
+
+		
+
+	rgbLedTaskD1.ledTimeSlot[1]=LED_ALARM_Empty;
+  if (MS_b_alert_live) 
+		                     rgbLedTaskD1.ledTimeSlot[1]=LED_ALARM_LiveSPL;
+	if (MS_b_alert_Overload) 
+		                     rgbLedTaskD1.ledTimeSlot[1]=LED_ALARM_Overloadindicator;
+
+	rgbLedTaskD1.ledTimeSlot[2]=LED_ALARM_Empty;
+		if (MS_b_alert_hearing) 
+			                    rgbLedTaskD1.ledTimeSlot[2]=LED_ALARM_hearing;
+	
 	if (SSM_erase_alarm_time_event.enable)
-	{	rgbLedTaskD1.ledTimeSlot[0]=LED_ALARM_erase;
+		{	rgbLedTaskD1.ledTimeSlot[0]=LED_ALARM_erase;
+			rgbLedTaskD1.ledTimeSlot[1]=LED_ALARM_erase;
+			rgbLedTaskD1.ledTimeSlot[2]=LED_ALARM_erase;
 		if (systick_time-SSM_erase_alarm_time_event.time>SSM_erase_alarm_time_event.dtime)
 			SSM_erase_alarm_time_event.enable=false;
 	};
-
-	rgbLedTaskD1.ledTimeSlot[1]=LED_ALARM_Empty;
-	if (SSS_CalibrationMode)
-	{
-		if (MS_b_alert_hearing) 
-		{rgbLedTaskD1.ledTimeSlot[1]=LED_ALARM_CalibrationLong;
-		}
-		else
-		{rgbLedTaskD1.ledTimeSlot[1]=LED_ALARM_CalibrationShort; 
-		}
-	}
-	else
-	{
-		if (MS_b_alert_hearing) 
-			                    rgbLedTaskD1.ledTimeSlot[1]=LED_ALARM_hearing;
-	}
 
 
 

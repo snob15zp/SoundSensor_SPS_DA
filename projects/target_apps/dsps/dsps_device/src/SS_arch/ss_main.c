@@ -121,11 +121,14 @@ e_FunctionReturnState ss_main(void)
 	if ((get_systime()-systick_last)>D_PeriodSlowMath)
 	{ 
 		systick_last+=D_PeriodSlowMath;
+		if (!ssm_main_BLE_RDY)
+		{	
 #ifdef __NO_MATLAB__		
-		MS_main();
+			MS_main();
 #endif		
-		AF_V_AddADCdataToFIFO((uint16_t) MS_i32_Level_FastA_dB, (uint16_t) MS_i32_Level_C_Peak_dB);
+			AF_V_AddADCdataToFIFO((uint16_t) MS_i32_Level_FastA_dB, (uint16_t) MS_i32_Level_C_Peak_dB);
 //		AF_V_AddADCdataToFIFO((uint16_t) (fifodebugcalc), (uint16_t) (fifodebugcalc+1));fifodebugcalc+=2;
+		};	
 		
 #ifdef __DEVKIT_EXT__					
 //					led_flash();
@@ -139,29 +142,35 @@ e_FunctionReturnState ss_main(void)
 //#endif		
 #endif					
 		
-		//TODO call ADC
-		
-		if ((BTN_SW1_SHORT&btnCmd)!=0)		
+    if (!ssm_main_BLE_RDY)
 		{	
-			MS_b_alert_hearing=!MS_b_alert_hearing;
-			btnCmd=0;
+			if ((BTN_SW1_SHORT&btnCmd)!=0)		
+			{	
+				MS_b_alert_hearing=!MS_b_alert_hearing;
+				btnCmd=0;
+			}
 		}
-		if ((BTN_SW3_SHOR&btnCmd)!=0)		
-		{	
-			MS_b_alert_hearing=!MS_b_alert_hearing;
-			btnCmd=0;
+    else		
+		{
+			if ((BTN_SW1_DBL_CLICK&btnCmd)!=0)		
+			{	
+				SSS_SetUpTimeEvent(&SSM_erase_alarm_time_event,(5000000/D_SYSTICK_PERIOD_US));
+				AF_V_ERASE_FILE_DataADC();//Done TODO erase flash file
+				btnCmd=0;
+			}	
 		}
 		
 		if (!((RareProcedureCalc++)&0x7))
 		{
 		   SSM_Vdd=SSA_getVdd();
 			 SSM_b_AlarmVddLow=(SSG_D_VddLow>SSM_Vdd);
-			 AF_V_Adddatau8u16ToFIFO(recordType_Vdd,SSM_Vdd);
-//       uint32_t rec=BuildRareRecord();
-			uint16_t AlarmStatus=BuildAlarmRecord();
-			AF_V_Adddatau8u16ToFIFO(recordType_AlarmStatus,AlarmStatus);
+			 uint16_t AlarmStatus=BuildAlarmRecord();
+       if (!ssm_main_BLE_RDY)
+			 {	AF_V_Adddatau8u16ToFIFO(recordType_Vdd,SSM_Vdd);
+					AF_V_Adddatau8u16ToFIFO(recordType_AlarmStatus,AlarmStatus);
+			 };	 
 			
-//			 AF_V_Addu32ToFIFO(rec);
+
 		}
 		
 	};

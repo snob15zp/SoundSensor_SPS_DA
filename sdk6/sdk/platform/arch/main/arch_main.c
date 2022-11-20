@@ -254,7 +254,7 @@ e_FunctionReturnState TransitionFunction_M(void * FSM)
 											 LEDflash();
 #endif											 
 											 rstate=e_FRS_Done; break;
-		case e_M_SXmain:	 ss_main_BLE();												
+		case e_M_SXmain:	 ss_main();//ss_main_BLE();												
 			rstate=e_FRS_Done; break;
 		case e_M_PwrSwitchOff:	  ((t_s_FSM*)FSM)->sign=1;       													
 			rstate=e_FRS_Done; break;

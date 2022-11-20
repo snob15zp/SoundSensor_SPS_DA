@@ -26,12 +26,12 @@ float MS_d_offset_C_Peak_dB; //0.1dB
 //MS_i32_AlertLevel_Dose=(MS_D_AlertLevel_Dose);//0.1dB
 
 
-int32_t MS_i32_AlertLevel_C140dB_Peak=MS_D_AlertLevel_C_140bB_peak;//filterC 0.1 dB
+//int32_t MS_i32_AlertLevel_C140dB_Peak=MS_D_AlertLevel_C_140bB_peak;//filterC 0.1 dB
 int32_t MS_i32_AlertLevel_Cbits_Peak=153144400;//filterC bits
 int32_t MS_i32_AlertLevel_FastA=(MS_D_AlertLevel_FastA);//0.1dB
 //extern int32_t MS_i32_AlertLevel_Overload;//ADC bits
 int32_t MS_i32_AlertLevel_Dose=(MS_D_AlertLevel_Dose);//0.1dB
-int32_t MS_i32_AlertLevel_DoseM3dB;//0.1dB	
+int32_t MS_i32_AlertLevel_DoseM3dB=((MS_D_AlertLevel_Dose)-(MS_D_AlertZone));//0.1dB;
 
 int32_t MS_i32_Level_C_Peak_dB;//0.1dB
 int32_t MS_i32_Level_FastA_dB;//0.1dB
@@ -176,7 +176,7 @@ MS_d_CalibrationFactor=((float)MS_i32_CalibrationFactor)/((float)(MS_D_Calibrati
 //MS_i32_AlertLevel_Cbits_Peak=powf(10,((float)MS_i32_AlertLevel_C140dB_Peak)/(200.0))
 //	                           *D_PeakFactor/MS_d_CalibrationFactor;	
 	
-MS_i32_AlertLevel_DoseM3dB=MS_i32_AlertLevel_Dose-MS_D_AlertZone;//0.1dB	
+//MS_i32_AlertLevel_DoseM3dB=MS_i32_AlertLevel_Dose-MS_D_AlertZone;//0.1dB	
 
 cflog=100.0*log10(MS_d_CalibrationFactor);
 

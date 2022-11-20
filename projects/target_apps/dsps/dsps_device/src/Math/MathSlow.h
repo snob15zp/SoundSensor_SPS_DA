@@ -37,7 +37,8 @@ extern float MS_d_offset_Dose_dB;   //0.1dB 74.53
 extern float MS_d_offset_C_Peak_dB; //0.1dB
 
 
-extern int32_t MS_i32_AlertLevel_C140dB_Peak;//filterC bits
+//extern int32_t MS_i32_AlertLevel_C140dB_Peak;//0.1dB
+extern int32_t MS_i32_AlertLevel_Cbits_Peak;//filterC bits
 extern int32_t MS_i32_AlertLevel_FastA;//0.1dB
 //extern int32_t MS_i32_AlertLevel_Overload;//ADC bits
 extern int32_t MS_i32_AlertLevel_Dose;//0.1dB

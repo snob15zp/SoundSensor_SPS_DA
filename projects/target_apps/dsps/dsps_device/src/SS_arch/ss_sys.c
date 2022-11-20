@@ -24,7 +24,7 @@ uint8_t verify_value_cb (uint8_t* param);
 static const user_config_elem_t SSS_conf_table[] = 
 {
 	{0x1000, sizeof(MS_i32_AlertLevel_FastA), sizeof(MS_i32_AlertLevel_FastA), &MS_i32_AlertLevel_FastA, verify_value_cb, false},
-	{0x1001, sizeof(MS_i32_AlertLevel_C140dB_Peak), sizeof(MS_i32_AlertLevel_C140dB_Peak), &MS_i32_AlertLevel_C140dB_Peak, verify_value_cb, false},
+	{0x1001, sizeof(MS_i32_AlertLevel_Cbits_Peak), sizeof(MS_i32_AlertLevel_Cbits_Peak), &MS_i32_AlertLevel_Cbits_Peak, verify_value_cb, false},
 	{0x1002, sizeof(MS_i32_AlertLevel_Dose), sizeof(MS_i32_AlertLevel_Dose), &MS_i32_AlertLevel_Dose, verify_value_cb, false},
 	{0x1003, sizeof(MS_i32_AlertLevel_DoseM3dB), sizeof(MS_i32_AlertLevel_DoseM3dB), &MS_i32_AlertLevel_DoseM3dB, verify_value_cb, false},
 	{0x1004, sizeof(MS_i32_CalibrationFactor), sizeof(MS_i32_CalibrationFactor), &MS_i32_CalibrationFactor, verify_value_cb, false},
@@ -94,7 +94,7 @@ void SSS_ReadFromVar(void)
 1	LiveWarningLevelAF	Live warning level, weighting A, time weighting fast	xxx.x	dB(A)
 extern int32_t MS_i32_AlertLevel_FastA;//0.1dB MODBUS ADDRESS 2
 2	LiveWarningLevelCP	Live warning level, weighting C, peak	xxx.x	dB(C)
-extern int32_t MS_i32_AlertLevel_C140dB_Peak; MODBUS ADDRESS 4
+* extern int32_t MS_i32_AlertLevel_Cbits_Peak;//filterC bits; MODBUS ADDRESS 4
 3	LAeqLimit	The normalized 8-hour equivalentexposure limit	xxx.x	dB(A)
 extern int32_t MS_i32_AlertLevel_Dose; MODBUS ADDRESS 6
 4
@@ -152,7 +152,7 @@ void SysTick_Handler()
 {
     systick_time++;	  
 #ifdef __DEVKIT_EXT__
-	  GPIO_SetActive(LED_PORT, LED_PIN); 
+//	  GPIO_SetActive(LED_PORT, LED_PIN); 
 #endif	
 #if	(D_ADCMODE==3)	
 //	  if (SS_ADC_MODE==EAM_ADC_WORK)
@@ -160,7 +160,7 @@ void SysTick_Handler()
 		ADC_IRQ();
 #endif	
 #ifdef __DEVKIT_EXT__	
-	  GPIO_SetInactive(LED_PORT, LED_PIN);
+//	  GPIO_SetInactive(LED_PORT, LED_PIN);
 #endif	
 
 //#ifndef

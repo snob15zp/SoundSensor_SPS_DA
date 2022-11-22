@@ -87,7 +87,7 @@ static void ssi2c_set_pad_functions(void)
 static uint8_t i2cBuff[32];
 //static uint8_t* ptrBuff;
 static uint8_t cnt;
-static i2c_error_code err;
+//static i2c_error_code err;
 
 #define board_calibration_control 0x10
 

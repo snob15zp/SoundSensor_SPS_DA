@@ -7,6 +7,8 @@
 #define  D_LogLevelC_offset	0
 #define  D_LogLevelIntegrator_offset 0
 
+t_SSS_s_timeevent MS_Ovrload_time_event;
+
 bool MS_b_alert_C140dBPeak;
 bool MS_b_alert_FastA;
 bool MS_b_alert_live;
@@ -96,7 +98,7 @@ void MS_EvaluteLogLevel(void)
 }
 
 uint32_t MF_ADCOverLoad_Flag_old;
-uint32_t MF_ADCOverLoad_Flag_time;
+//uint32_t MF_ADCOverLoad_Flag_time;
 
 void MS_EvaluteLogLevel_A(uint32_t c, int32_t a, uint32_t i)
 {
@@ -125,17 +127,15 @@ MS_b_alert_C140dBPeak_out=MS_b_alert_C140dBPeak;
 	if (MF_ADCOverLoad_Flag_old!=MF_ADCOverLoad_Flag)
 	{ 
 		MF_ADCOverLoad_Flag_old=MF_ADCOverLoad_Flag;
-		MF_ADCOverLoad_Flag_time=time;
+		SSS_SetUpTimeEvent(&MS_Ovrload_time_event,MF_ADCOverLoad_Flag_duration_US);
 	}
-	if ((time-MF_ADCOverLoad_Flag_time)<(MF_ADCOverLoad_Flag_duration_US/D_SYSTICK_PERIOD_US))
-	{
-	 MS_b_alert_Overload=true;
+	MS_b_alert_Overload=false;
+	if (MS_Ovrload_time_event.enable)
+	{	MS_b_alert_Overload=true;
+		if (systick_time-MS_Ovrload_time_event.time>MS_Ovrload_time_event.dtime)
+			MS_Ovrload_time_event.enable=false;
 	}
-	else
-	{ 
-		MS_b_alert_Overload=false;
-		MF_ADCOverLoad_Flag_time=time-(MF_ADCOverLoad_Flag_duration_US/D_SYSTICK_PERIOD_US)*2;
-	}
+
 	
 	MS_b_alert_DoseM3dB=(MS_i32_Level_Dose_dB>(MS_i32_AlertLevel_DoseM3dB));
 	

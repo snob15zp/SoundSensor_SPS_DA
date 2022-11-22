@@ -101,10 +101,10 @@ i.e.
 #endif
 #if (BLE_SPS_SERVER)
     // UART1
-    RESERVE_GPIO( UART1_TX, gpio_uart1_tx.port,  gpio_uart1_tx.pin, PID_UART1_TX);
-    RESERVE_GPIO( UART1_RX, gpio_uart1_rx.port,  gpio_uart1_rx.pin, PID_UART1_RX);
-    RESERVE_GPIO( UART1_RTS, gpio_uart1_rts.port,  gpio_uart1_rts.pin, PID_GPIO);
-    RESERVE_GPIO( UART1_CTS, gpio_uart1_cts.port,  gpio_uart1_cts.pin, PID_UART1_CTSN);
+//    RESERVE_GPIO( UART1_TX, gpio_uart1_tx.port,  gpio_uart1_tx.pin, PID_UART1_TX);
+//    RESERVE_GPIO( UART1_RX, gpio_uart1_rx.port,  gpio_uart1_rx.pin, PID_UART1_RX);
+//    RESERVE_GPIO( UART1_RTS, gpio_uart1_rts.port,  gpio_uart1_rts.pin, PID_GPIO);
+//    RESERVE_GPIO( UART1_CTS, gpio_uart1_cts.port,  gpio_uart1_cts.pin, PID_UART1_CTSN);
 #endif
 #ifdef __DA14531__
     RESERVE_GPIO( ACTIVE_STATUS, gpio_reset_status.port,  gpio_reset_status.pin, PID_GPIO);

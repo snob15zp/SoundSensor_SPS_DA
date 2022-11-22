@@ -6,9 +6,8 @@
 
 #if	((D_ADCMODE==2)||(D_ADCMODE==3))	
 #define id_factor 1
-
 #define sin1000_len 32
-int32_t sin1000[sin1000_len]={          
+int32_t sin1000[sin1000_len]={     //140dB RMS     
           0/id_factor,
    25167023/id_factor,
    49366891/id_factor,

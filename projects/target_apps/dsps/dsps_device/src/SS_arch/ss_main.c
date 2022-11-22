@@ -155,7 +155,7 @@ e_FunctionReturnState ss_main(void)
 			if ((BTN_SW1_DBL_CLICK&btnCmd)!=0)		
 			{	
 				SSS_SetUpTimeEvent(&SSM_erase_alarm_time_event,(5000000/D_SYSTICK_PERIOD_US));
-				AF_V_ERASE_FILE_DataADC();//Done TODO erase flash file
+				AF_V_ERASE_FILE_DataADC2();//Done TODO erase flash file
 				btnCmd=0;
 			}	
 		}
@@ -169,23 +169,21 @@ e_FunctionReturnState ss_main(void)
 			 {	AF_V_Adddatau8u16ToFIFO(recordType_Vdd,SSM_Vdd);
 					AF_V_Adddatau8u16ToFIFO(recordType_AlarmStatus,AlarmStatus);
 			 };	 
-			
-
 		}
-		
 	};
 	
 	poll_newBytetoWriteFlash();
-	
-	
 
 //	if ((systick_time-time_start)>((10000000)/D_SYSTICK_PERIOD_US))
 //	  	b_rv=e_FRS_Done;
+	
 	return b_rv; 
-//-------------------------------------------------------------------
-//-------------------------------------------------------------------
 };
 
+//-------------------------------------------------------------------
+//-------------------------------------------------------------------
+
+/*
 e_FunctionReturnState ss_main_BLE(void)
 {
 	e_FunctionReturnState b_rv;
@@ -217,7 +215,7 @@ e_FunctionReturnState ss_main_BLE(void)
 // 	  	b_rv=e_FRS_Done;
 	return b_rv; 
 }
-
+*/
 
 e_FunctionReturnState SSM_BLEStop()
 {
@@ -277,6 +275,11 @@ uint16_t BuildAlarmRecord(void)
 		AlamStatus|=1<<MS_D_alert_Overload;
 	if (MS_b_alert_hearing) 
 		AlamStatus|=1<<MS_D_alert_hearing;
+	if (MS_b_alert_Dose) 
+		AlamStatus|=1<<MS_D_alert_Dose;
+	if (MS_b_alert_DoseM3dB) 
+		AlamStatus|=1<<MS_D_alert_DoseM3dB;
+	
 	return AlamStatus;
 }
 

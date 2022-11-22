@@ -63,6 +63,7 @@ void AF_V_WriteStopServiceRecord(uint8_t recodType, uint16_t callerFunction);
 		void AF_V_WriteStop(uint16_t callerFunction);
 
 void AF_V_ERASE_FILE_DataADC(void);
+void AF_V_ERASE_FILE_DataADC2(void);
 
 void delay_10ms(void);
 void delay_100ms(void);

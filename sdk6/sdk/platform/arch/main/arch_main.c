@@ -83,6 +83,8 @@
 
 #include "SS_ADC.h"
 
+#include "ss_hnd.h" //debug
+
 
 
 /**
@@ -254,7 +256,9 @@ e_FunctionReturnState TransitionFunction_M(void * FSM)
 											 LEDflash();
 #endif											 
 											 rstate=e_FRS_Done; break;
-		case e_M_SXmain:	 ss_main();//ss_main_BLE();												
+		case e_M_SXmain:	 ss_main();//ss_main_BLE();	
+//												uint8_t buf[16]											 ;
+//                        on_blob_rd( 16,buf)	;										 
 			rstate=e_FRS_Done; break;
 		case e_M_PwrSwitchOff:	  ((t_s_FSM*)FSM)->sign=1;       													
 			rstate=e_FRS_Done; break;

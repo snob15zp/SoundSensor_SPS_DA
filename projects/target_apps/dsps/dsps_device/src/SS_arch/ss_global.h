@@ -81,31 +81,33 @@ typedef
 	
 e_FunctionReturnState  FSM_main(t_s_FSM *FSM);
 		
-//typedef e_FunctionReturnState (*fp_FSM_Transition)(t_s_FSM_Data * pFDMD_Power,key_type key,fp_FSM_Functions fp);
-//extern e_FunctionReturnState  FSM_MainTransition(t_s_FSM_Data * pFDMD_Power,key_type key);		
 
-/* parametes
-extern bool ;
-exten  bool 
-
-1	LiveWarningLevelAF	Live warning level, weighting A, time weighting fast	xxx.x	dB(A)
-extern int32_t MS_i32_AlertLevel_FastA;//0.1dB
-2	LiveWarningLevelCP	Live warning level, weighting C, peak	xxx.x	dB(C)
-3	LAeqLimit	The normalized 8-hour equivalentexposure limit	xxx.x	dB(A)
-extern int32_t MS_i32_AlertLevel_Dose;
-4	ClibrationMode	Turning on the calibration mode	Check box	-
-5	CalibrationFactor	Calibration factor	x.xxxxx	 -
-
-Table of reading parameters
-#	Variable name	Description	Format	Units
-1	LiveLevelAF	Live level, weighting A, time weighting fast	xxx.x	dB(A)
-extern int32_t MS_i32_Level_FastA_dB;//0.1dB
-2	LiveLevelCP	Live level, weighting C, peak	xxx.x	dB(C)
-extern int32_t MS_i32_Level_C_Peak_dB;//0.1dB
-3	LAeq	The normalized 8-hour equivalentexposure	xxx.x	dB(A)
-extern int32_t MS_i32_Level_Dose_dB;//0.1dB
-
-
+/* Android parametes
+*		
+*		
+*  1	LiveWarningLevelAF	Live warning level, weighting A, time weighting fast	xxx.x	dB(A)
+*  extern int32_t MS_i32_AlertLevel_FastA;//0.1dB MODBUS ADDRESS 2
+*  2	LiveWarningLevelCP	Live warning level, weighting C, peak	xxx.x	dB(C)
+*  extern int32_t MS_i32_AlertLevel_C140dB_Peak; MODBUS ADDRESS 4
+*  3	LAeqLimit	The normalized 8-hour equivalentexposure limit	xxx.x	dB(A)
+*  extern int32_t MS_i32_AlertLevel_Dose; MODBUS ADDRESS 6
+*  4 The normalized 8-hour equivalentexposure limit alert
+*  extern int32_t MS_i32_AlertLevel_DoseM3dB MODBUS ADDRESS 8
+*  5	CalibrationFactor	Calibration factor	x.xxxxx	 -
+*  int32_t MS_i32_CalibrationFactor; MODBUS ADDRESS 10
+*  6	ClibrationMode	Turning on the calibration mode	Check box	-
+*  uint16_t SSS_calibration MODBUS ADDRESS 12
+*  
+*  Table of reading parameters
+*  #	Variable name	Description	Format	Units
+*  1	LiveLevelAF	Live level, weighting A, time weighting fast	xxx.x	dB(A)
+*  extern int32_t MS_i32_Level_FastA_dB;//0.1dB MODBUS ADDRESS 13
+*  2	LiveLevelCP	Live level, weighting C, peak	xxx.x	dB(C)
+*  extern int32_t MS_i32_Level_C_Peak_dB;//0.1dB MODBUS ADDRESS 15
+*  3	LAeq	The normalized 8-hour equivalentexposure	xxx.x	dB(A)
+*  extern int32_t MS_i32_Level_Dose_dB;//0.1dB MODBUS ADDRESS 17
+*  4. uint32_t AddrNewRecord; //MODBUS ADDRESS 19
+*  5. char SSS_version[16]; //MODBUS ADDRESS 21
 
 */
 

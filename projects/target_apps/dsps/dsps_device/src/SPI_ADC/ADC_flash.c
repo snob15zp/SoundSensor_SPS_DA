@@ -26,7 +26,7 @@ static uint32_t my_ssize;
 uint32_t AddrNewRecord;
 uint32_t AddrNewRecordWithOffset;
 static uint16_t F_PWR_on = 0;
-static uint16_t F_Erase_on = 0;
+//static uint16_t F_Erase_on = 0;
 static uint8_t byteADC[4];
 const void *databyteADC = byteADC;
 
@@ -138,11 +138,53 @@ uint32_t indx_sec4096;
 	}
 }
 
+void delay_200ms(void)
+{
+    uint16_t i;
+    for (i = 20; i != 0; --i)
+		delay_10ms();
+}
+
+void AF_V_ERASE_FILE_DataADC2(void)
+{
+uint32_t N65;// N4096;
+uint32_t N65_start;	
+uint32_t adr_4096;
+uint32_t adr_65536;	
+uint32_t ea;	
+	
+	N65 = SPI_FLASH_ADDR_START_RECORD_ADC / 65536;
+	if ( N65 * 65536 == SPI_FLASH_ADDR_START_RECORD_ADC )
+	{
+		N65_start = N65;
+	}
+	else
+		{ ea=(N65_start*65536<SPI_FLASH_ADDR_END_RECORD_ADC ? N65_start*65536<SPI_FLASH_ADDR_END_RECORD_ADC :SPI_FLASH_ADDR_END_RECORD_ADC);
+		N65_start = N65+1;
+		//N4096 = (N65_start*65536 - SPI_FLASH_ADDR_START_RECORD_ADC) / 4096; 
+		for ( adr_4096 = SPI_FLASH_ADDR_START_RECORD_ADC; adr_4096 < N65_start*65536; adr_4096 += 4096)
+		{	
+			spi_flash_block_erase(adr_4096, SPI_FLASH_OP_SE);
+			delay_200ms();		
+		}		
+	}
+	ea=(SPI_FLASH_ADDR_END_RECORD_ADC/65536)*65536;
+	for ( adr_65536 = N65_start*65536; adr_65536 < ea; adr_65536 += 65536)	
+	{
+			spi_flash_block_erase(adr_65536, SPI_FLASH_OP_BE64);
+			delay_200ms();
+			delay_200ms();
+			delay_200ms();		
+	}
+}
+
+
+
 void AF_V_WriteStop(uint16_t callerFunction)
 {
 uint32_t systick_time_tek;
-uint8_t byteFlash;
-uint8_t dummy;	
+//uint8_t byteFlash;
+//uint8_t dummy;	
 	
 uni_u32_t datal;	
 uint32_t actual_size;	

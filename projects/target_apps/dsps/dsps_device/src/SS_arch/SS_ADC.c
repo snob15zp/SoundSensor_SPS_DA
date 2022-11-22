@@ -29,4 +29,4 @@ void SSA_init(void)
   adc_init(&adc_cfg); 	
 }	
 
-	
+

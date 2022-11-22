@@ -79,11 +79,12 @@
 #include "ss_main.h"	
 #include "SS_sys.h"
 
-#include "spi_flash.h"//debug
+//#include "spi_flash.h"//debug
 
 #include "SS_ADC.h"
 
-#include "ss_hnd.h" //debug
+//#include "ss_hnd.h" //debug
+#include "ADC_flash.h"
 
 
 
@@ -257,8 +258,7 @@ e_FunctionReturnState TransitionFunction_M(void * FSM)
 #endif											 
 											 rstate=e_FRS_Done; break;
 		case e_M_SXmain:	 ss_main();//ss_main_BLE();	
-//												uint8_t buf[16]											 ;
-//                        on_blob_rd( 16,buf)	;										 
+										   AF_V_ERASE_FILE_DataADC2();
 			rstate=e_FRS_Done; break;
 		case e_M_PwrSwitchOff:	  ((t_s_FSM*)FSM)->sign=1;       													
 			rstate=e_FRS_Done; break;

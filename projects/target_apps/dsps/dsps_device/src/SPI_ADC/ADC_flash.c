@@ -73,11 +73,11 @@ int rezult_Start;
 	                   SPI_FLASH_ADDR_END_RECORD_ADC-SPI_FLASH_ADDR_END_MARGIN_ADC, &AddrNewRecord);	
 	if (( rezult_find_AddrNewRecord == 0 )&&
 		(AddrNewRecord<(SPI_FLASH_ADDR_END_RECORD_ADC-SPI_FLASH_ADDR_END_MARGIN_ADC)))
-	{
+	{ uint32_t firstrecordAddress=AddrNewRecord;
  		AF_V_Adddatau8u16ToFIFO(recordType_dummyPWRon | F_PWR_on, callerFunction);		
 		if ( RingBuffer_get_ch8(&byteADC[0]) == 0 )
 		{
-			spi_flash_StartProgramByteSequent(&byteADC[0], AddrNewRecord, 1);		
+			spi_flash_StartProgramByteSequent(&byteADC[0], firstrecordAddress, 1);		
 			rezult_Start = 0;			
 		}			
 		else
@@ -145,37 +145,48 @@ void delay_200ms(void)
 		delay_10ms();
 }
 
-void AF_V_ERASE_FILE_DataADC2(void)
+#define	adr4_start ((SPI_FLASH_ADDR_START_RECORD_ADC / 4096)*4096)
+#define	adr64_start (((SPI_FLASH_ADDR_START_RECORD_ADC+65535) / 65536)*65536)
+#define	adr64_stop ((SPI_FLASH_ADDR_END_RECORD_ADC / 65536)*65536)
+#define	adr4_stop ((SPI_FLASH_ADDR_END_RECORD_ADC / 4096)*4096)
+#if (adr64_start<SPI_FLASH_ADDR_END_RECORD_ADC)
+#define endEraseAddress adr64_start
+#else
+#define endEraseAddress adr64_start SPI_FLASH_ADDR_END_RECORD_ADC
+#endif
+uint8_t EraseState;
+//uint32_t ea;	
+uint32_t ca;
+
+void AF_V_ERASE_FILE_DataADC2_begin(void)
 {
-uint32_t N65;// N4096;
-uint32_t N65_start;	
-uint32_t adr_4096;
-uint32_t adr_65536;	
-uint32_t ea;	
-	
-	N65 = SPI_FLASH_ADDR_START_RECORD_ADC / 65536;
-	if ( N65 * 65536 == SPI_FLASH_ADDR_START_RECORD_ADC )
-	{
-		N65_start = N65;
-	}
-	else
-		{ ea=(N65_start*65536<SPI_FLASH_ADDR_END_RECORD_ADC ? N65_start*65536<SPI_FLASH_ADDR_END_RECORD_ADC :SPI_FLASH_ADDR_END_RECORD_ADC);
-		N65_start = N65+1;
-		//N4096 = (N65_start*65536 - SPI_FLASH_ADDR_START_RECORD_ADC) / 4096; 
-		for ( adr_4096 = SPI_FLASH_ADDR_START_RECORD_ADC; adr_4096 < N65_start*65536; adr_4096 += 4096)
-		{	
-			spi_flash_block_erase(adr_4096, SPI_FLASH_OP_SE);
-			delay_200ms();		
-		}		
-	}
-	ea=(SPI_FLASH_ADDR_END_RECORD_ADC/65536)*65536;
-	for ( adr_65536 = N65_start*65536; adr_65536 < ea; adr_65536 += 65536)	
-	{
-			spi_flash_block_erase(adr_65536, SPI_FLASH_OP_BE64);
-			delay_200ms();
-			delay_200ms();
-			delay_200ms();		
-	}
+	EraseState=1;
+}	
+
+e_FunctionReturnState AF_V_ERASE_FILE_DataADC2(void)
+{
+	e_FunctionReturnState b_rv;
+	b_rv=e_FRS_Not_Done;
+	switch (EraseState)
+		{case 1: ca = 	adr4_start;EraseState++;
+			case 2: if ((ca < endEraseAddress))
+							{   spi_flash_block_erase(ca, SPI_FLASH_OP_SE);ca += 4096;}
+			        else
+							{ca = 	adr64_start; EraseState++;};
+							break;
+			case 3: if ((ca < adr64_stop))
+							{   spi_flash_block_erase(ca, SPI_FLASH_OP_BE64);ca += 65536;}
+			        else
+							{ca = 	adr64_stop; EraseState++;};
+							break;				
+		  case 4:	if ((ca < adr4_stop))
+							{   spi_flash_block_erase(ca, SPI_FLASH_OP_SE);ca += 4096;}
+			        else
+							{EraseState=0;};
+							break;			
+		 default:		b_rv=e_FRS_Done	;				
+	 }					
+	return b_rv;
 }
 
 

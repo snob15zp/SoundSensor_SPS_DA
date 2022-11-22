@@ -12,7 +12,7 @@
 
 #if (D_FlashMap==531)
 #define SPI_FLASH_ADDR_START_RECORD_ADC			 (0x22000) 
-#define SPI_FLASH_ADDR_END_RECORD_ADC			  (0x40000)//(0x23000)// 
+#define SPI_FLASH_ADDR_END_RECORD_ADC			  (0x400000)//(0x23000)// 
 #endif
 
 #define SPI_FLASH_ADDR_END_MARGIN_ADC   		(0x200)
@@ -51,6 +51,7 @@ typedef union {
 extern bool RB_b_MemoryFull;
 extern uint32_t AddrNewRecord;
 extern uint32_t AddrNewRecordWithOffset;
+extern uint8_t EraseState;
 
 void AF_V_WriteTimestamp(void);
 void AF_V_WriteStartServiceRecord(uint8_t recodType, uint16_t callerFunction);
@@ -63,7 +64,8 @@ void AF_V_WriteStopServiceRecord(uint8_t recodType, uint16_t callerFunction);
 		void AF_V_WriteStop(uint16_t callerFunction);
 
 void AF_V_ERASE_FILE_DataADC(void);
-void AF_V_ERASE_FILE_DataADC2(void);
+void AF_V_ERASE_FILE_DataADC2_begin(void);
+e_FunctionReturnState AF_V_ERASE_FILE_DataADC2(void);
 
 void delay_10ms(void);
 void delay_100ms(void);

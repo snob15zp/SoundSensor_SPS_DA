@@ -3,4 +3,4 @@
 -IC:\Users\RD\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\Device\ARM\ARMCM0plus\Include
 -IC:\Keil_v5\ARM\CMSIS\Include
 -D__UVISION_VERSION="528" -DARMCM0P -D__DA14531__ -D__SoundSensor__ -D__SSFix__ -D__NO_MATLAB__ -D__SS_EXT__
--o .\soundsensor_fix\app_easy_security.o --omf_browse .\soundsensor_fix\app_easy_security.crf --depend .\soundsensor_fix\app_easy_security.d "..\..\..\..\..\sdk6\sdk\app_modules\src\app_easy\app_easy_security.c"
+-o .\soundsensor_fix\ble_arp.o --omf_browse .\soundsensor_fix\ble_arp.crf --depend .\soundsensor_fix\ble_arp.d "..\..\..\..\..\sdk6\sdk\platform\core_modules\rf\src\ble_arp.c"

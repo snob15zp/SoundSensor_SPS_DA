@@ -154,8 +154,9 @@ e_FunctionReturnState ss_main(void)
 		{
 			if ((BTN_SW1_DBL_CLICK&btnCmd)!=0)		
 			{	
-				SSS_SetUpTimeEvent(&SSM_erase_alarm_time_event,(5000000/D_SYSTICK_PERIOD_US));
-				AF_V_ERASE_FILE_DataADC2();//Done TODO erase flash file
+				//SSS_SetUpTimeEvent(&SSM_erase_alarm_time_event,(5000000/D_SYSTICK_PERIOD_US));
+				//AF_V_ERASE_FILE_DataADC2();//Done TODO erase flash file
+				AF_V_ERASE_FILE_DataADC2_begin();
 				btnCmd=0;
 			}	
 		}
@@ -312,13 +313,6 @@ void DisplayAlarm(void)
 		if (MS_b_alert_hearing) 
 			                    rgbLedTaskD1.ledTimeSlot[2]=LED_ALARM_hearing;
 	
-	if (SSM_erase_alarm_time_event.enable)
-		{	rgbLedTaskD1.ledTimeSlot[0]=LED_ALARM_erase;
-			rgbLedTaskD1.ledTimeSlot[1]=LED_ALARM_erase;
-			rgbLedTaskD1.ledTimeSlot[2]=LED_ALARM_erase;
-		if (systick_time-SSM_erase_alarm_time_event.time>SSM_erase_alarm_time_event.dtime)
-			SSM_erase_alarm_time_event.enable=false;
-	};
 
 
 
@@ -327,5 +321,15 @@ void DisplayAlarm(void)
 		                       rgbLedTaskLD1.ledTimeSlot[0]=LED_ALARM_LAeqM3dB;
 	if (MS_b_alert_Dose)     
 		                       rgbLedTaskLD1.ledTimeSlot[0]=LED_ALARM_LAeq;
+	
+	
+	if (0!=EraseState) //SSM_erase_alarm_time_event.enable)
+		{	rgbLedTaskD1.ledTimeSlot[0]=LED_ALARM_erase;
+			rgbLedTaskD1.ledTimeSlot[1]=LED_ALARM_erase;
+			rgbLedTaskD1.ledTimeSlot[2]=LED_ALARM_erase;
+			rgbLedTaskLD1.ledTimeSlot[0]=LED_ALARM_erase1;
+//		if (systick_time-SSM_erase_alarm_time_event.time>SSM_erase_alarm_time_event.dtime)
+//			SSM_erase_alarm_time_event.enable=false;
+	};
 	
 };

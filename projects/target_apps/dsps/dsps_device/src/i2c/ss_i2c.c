@@ -51,6 +51,7 @@ ledTimeSlot_t const LED_ALARM_BLE     	          ={true,D_pulseWidth875ms ,CL_RG
 ledTimeSlot_t const LED_ALARM_CalibrationLong     ={true,D_pulseWidth875ms ,CL_BR};
 ledTimeSlot_t const LED_ALARM_CalibrationShort    ={true,D_pulseWidthMs ,CL_BR};
 ledTimeSlot_t const LED_ALARM_erase               ={true,D_pulseWidth125ms ,CL_WHITE};
+ledTimeSlot_t const LED_ALARM_erase1               ={true,D_pulseWidth125ms ,CL_LD1};
 //======================================================================================
 #ifdef D_sx_takt_call
 #define sx_time sx_encounter

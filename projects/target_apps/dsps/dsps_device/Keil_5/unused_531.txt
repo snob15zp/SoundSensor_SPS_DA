@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Tue Nov 22 21:56:03 2022
+;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Wed Nov 23 01:37:19 2022
 ;VERSION 0.2
 ;FILE adc_531.o
 adc_disable <= USED 0
@@ -11,6 +11,7 @@ adc_reset <= USED 0
 adc_unregister_interrupt <= USED 0
 ;FILE adc_flash.o
 AF_V_ERASE_FILE_DataADC <= USED 0
+delay_200ms <= USED 0
 ;FILE app.o
 app_easy_gap_advertise_with_timeout_stop <= USED 0
 app_easy_gap_dev_config_get_active <= USED 0

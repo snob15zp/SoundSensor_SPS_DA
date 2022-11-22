@@ -11,8 +11,8 @@
 #endif
 
 #if (D_FlashMap==531)
-#define SPI_FLASH_ADDR_START_RECORD_ADC			(0x22000) 
-#define SPI_FLASH_ADDR_END_RECORD_ADC			  (0x23000)// (0x400000)
+#define SPI_FLASH_ADDR_START_RECORD_ADC			 (0x22000) 
+#define SPI_FLASH_ADDR_END_RECORD_ADC			  (0x40000)//(0x23000)// 
 #endif
 
 #define SPI_FLASH_ADDR_END_MARGIN_ADC   		(0x200)

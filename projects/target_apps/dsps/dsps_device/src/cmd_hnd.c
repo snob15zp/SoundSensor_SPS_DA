@@ -124,8 +124,8 @@ int16_t __on_blob_rd(uint8_t *data, size_t sz)
 {
     CHECK_SZ(sz, __blob_rd_cmd_t);
 
-    //uint32_t addr = ((__blob_rd_cmd_t *)data)->addr[2] | (((__blob_rd_cmd_t *)data)->addr[1] << 8) | (((__blob_rd_cmd_t *)data)->addr[0] << 16);
-	    uint32_t addr = ((__blob_rd_cmd_t *)data)->addr[0] | (((__blob_rd_cmd_t *)data)->addr[1] << 8) | (((__blob_rd_cmd_t *)data)->addr[2] << 16); 
+    uint32_t addr = ((__blob_rd_cmd_t *)data)->addr[2] | (((__blob_rd_cmd_t *)data)->addr[1] << 8) | (((__blob_rd_cmd_t *)data)->addr[0] << 16);
+	  //uint32_t addr = ((__blob_rd_cmd_t *)data)->addr[0] | (((__blob_rd_cmd_t *)data)->addr[1] << 8) | (((__blob_rd_cmd_t *)data)->addr[2] << 16); 
     addr <<= 4;
     on_blob_rd(addr, ((__blob_rd_rsp_t *)data)->data);
     return sizeof(__blob_rd_rsp_t);

@@ -213,6 +213,7 @@ uint32_t actual_size;
 	}
 	else
 	{
+		AddrNewRecord=SPI_FLASH_ADDR_END_RECORD_ADC-SPI_FLASH_ADDR_END_MARGIN_STAMP;
 		strcpy(SSG_ch_Error,"Error AF_V_WriteStop find_AddrNewRecord " );
 	}
 }

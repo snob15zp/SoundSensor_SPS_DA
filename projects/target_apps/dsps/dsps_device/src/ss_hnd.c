@@ -56,8 +56,12 @@ void on_blob_rd(uint32_t addr, uint8_t buf[16])
 {//TODO read from flash
  //shift is not needed	; 32 Mbit
 	uint32_t as = 0;
+	uint32_t addrFl =addr+SPI_FLASH_ADDR_START_RECORD_ADC;
+	if ((addrFl>=SPI_FLASH_ADDR_START_RECORD_ADC)&&(addrFl<=SPI_FLASH_ADDR_END_RECORD_ADC-16))
+	{
     user_spi_flash_init(SPI_FLASH_GPIO_MAP);
     spi_flash_read_data(buf, addr+SPI_FLASH_ADDR_START_RECORD_ADC, 16, &as);	
+	};	
 }
 int8_t on_blob_wr(uint32_t addr, uint8_t buf[16])
 {

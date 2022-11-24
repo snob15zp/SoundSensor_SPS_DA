@@ -7,6 +7,7 @@
 #include "ring_buff.h"
 #include "ADC_flash.h"
 #include "SPI_ADC.h"
+#include "MathSlow.h"
 //
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
@@ -41,6 +42,8 @@ void AF_V_AddADCdataToFIFO(uint16_t A, uint16_t B)
 {
 	dc.data_u32 = A& 0x7ff;		
 	dc.data_u32= dc.data_u32|((B& 0x7ff)<<11);
+	if (MS_b_alert_hearing)
+		dc.data_u32|=(1<<22);
 	RingBuffer_add_u32(dc.data_u32,&AddrNewRecord,SPI_FLASH_ADDR_END_RECORD_ADC-SPI_FLASH_ADDR_END_MARGIN_ADC);
 	
 }

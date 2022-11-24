@@ -207,7 +207,7 @@ e_FunctionReturnState TransitionFunction_M(void * FSM)
 	  case e_M_BLEStop: rstate=SSM_BLEStop();					 
 			break;//1
 	  case e_M_ADCStart: 	rstate=SSM_ADCStart(); 	
-		                    SSS_SetUpTimeEvent(&AM_switch_time_event,(10000000/D_SYSTICK_PERIOD_US));
+		                    //SSS_SetUpTimeEvent(&AM_switch_time_event,(10000000/D_SYSTICK_PERIOD_US));
 			break;//2
 	  case e_M_BLEStart: 	rstate=SSM_BLEStart();	
                         //SSS_SetUpTimeEvent(&AM_switch_time_event,(10000000/D_SYSTICK_PERIOD_US));		
@@ -220,13 +220,13 @@ e_FunctionReturnState TransitionFunction_M(void * FSM)
 											{	((t_s_FSM*)FSM)->sign=2;
 											  btnCmd&=~BTN_SW1_ONE_CLICK;
 											};
-											if (AM_switch_time_event.enable)
-											{	
-												if (systick_time-AM_switch_time_event.time>AM_switch_time_event.dtime)
-												{	AM_switch_time_event.enable=false;
-													((t_s_FSM*)FSM)->sign=2;
-												}
-											};
+//											if (AM_switch_time_event.enable)
+//											{	
+//												if (systick_time-AM_switch_time_event.time>AM_switch_time_event.dtime)
+//												{	AM_switch_time_event.enable=false;
+//													((t_s_FSM*)FSM)->sign=2;
+//												}
+//											};
 											if ((BTN_SW3_LONG&btnCmd)!=0)
 											{
 											 ((t_s_FSM*)FSM)->sign=0;
@@ -239,15 +239,15 @@ e_FunctionReturnState TransitionFunction_M(void * FSM)
 											 {	((t_s_FSM*)FSM)->sign=1;
 												  btnCmd&=~BTN_SW1_ONE_CLICK;
 											 }
-											if (AM_switch_time_event.enable)
-											{	
-												if (systick_time-AM_switch_time_event.time>AM_switch_time_event.dtime)
-												{	AM_switch_time_event.enable=false;
-													((t_s_FSM*)FSM)->sign=1;
-//											SSS_SetUpTimeEvent(&AM_switch_time_event,(1000000/D_SYSTICK_PERIOD_US));
-//											user_send_ble_data(msgl, msg_szl);  //RDD debug
-												}
-											};
+//											if (AM_switch_time_event.enable)
+//											{	
+//												if (systick_time-AM_switch_time_event.time>AM_switch_time_event.dtime)
+//												{	AM_switch_time_event.enable=false;
+//													((t_s_FSM*)FSM)->sign=1;
+////											SSS_SetUpTimeEvent(&AM_switch_time_event,(1000000/D_SYSTICK_PERIOD_US));
+////											user_send_ble_data(msgl, msg_szl);  //RDD debug
+//												}
+//											};
 											 if ((BTN_SW3_LONG&btnCmd)!=0)
 											 {
 												 ((t_s_FSM*)FSM)->sign=0;
@@ -1095,11 +1095,11 @@ __STATIC_INLINE arch_main_loop_callback_ret_t app_asynch_proc(void)
  * @brief Used for updating the state of the application just before sleep checking starts.
  ****************************************************************************************
  */
-__STATIC_INLINE void app_asynch_sleep_proc(void)
-{
-    if (user_app_main_loop_callbacks.app_before_sleep != NULL)
-        user_app_main_loop_callbacks.app_before_sleep();
-}
+//__STATIC_INLINE void app_asynch_sleep_proc(void)
+//{
+//    if (user_app_main_loop_callbacks.app_before_sleep != NULL)
+//        user_app_main_loop_callbacks.app_before_sleep();
+//}
 
 /**
  ****************************************************************************************

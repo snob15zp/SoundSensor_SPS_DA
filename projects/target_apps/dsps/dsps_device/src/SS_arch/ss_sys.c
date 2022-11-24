@@ -193,6 +193,8 @@ void test_hnd_init(void)
      user_spi_flash_init(SPI_FLASH_GPIO_MAP);//RDD
 		//uint8_t dev_id;spi_flash_auto_detect(&dev_id); //RDD debug
     user_conf_storage_init((user_config_elem_t *)SSS_conf_table, sizeof(SSS_conf_table)/sizeof(user_config_elem_t), SSS_version, &version_len);
+    strncpy(SSS_version, SDK_VERSION, sizeof(SSS_version));
+
     vars[0] += 1;
 //    user_config_save((user_config_elem_t *)SSS_conf_table, sizeof(SSS_conf_table)/sizeof(user_config_elem_t), version, &version_len);
 }

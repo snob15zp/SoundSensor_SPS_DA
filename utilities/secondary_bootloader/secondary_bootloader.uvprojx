@@ -1275,7 +1275,7 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls>--thumb -c --preinclude da1458x_config_basic.h --feedback=".\unused_531.txt"</MiscControls>
-              <Define>__DA14531__  __NON_BLE_EXAMPLE__</Define>
+              <Define>__DA14531__  __NON_BLE_EXAMPLE__ __SoundSensor__</Define>
               <Undefine></Undefine>
               <IncludePath>.\includes;..\..\sdk6\sdk\platform\include;..\..\sdk6\sdk\platform\driver\spi;..\..\sdk6\sdk\platform\driver\i2c_eeprom;..\..\sdk6\sdk\platform\driver\i2c;..\..\sdk6\sdk\platform\driver\spi_flash;..\..\sdk6\sdk\platform\driver\gpio;..\..\sdk6\sdk\platform\driver\dma;..\..\sdk6\sdk\platform\arch;..\..\sdk6\sdk\platform\arch\compiler;..\..\sdk6\sdk\platform\arch\ll;..\..\sdk6\sdk\platform\driver\reg;..\..\sdk6\sdk\platform\driver\syscntl;..\..\sdk6\sdk\platform\driver\uart;..\..\sdk6\sdk\platform\driver\timer;..\..\sdk6\sdk\platform\core_modules\crypto;..\..\sdk6\sdk\platform\driver\systick;..\..\sdk6\sdk\platform\driver\hw_otpc;..\..\sdk6\sdk\platform\utilities\otp_cs;..\..\sdk6\sdk\platform\driver\adc;..\..\sdk6\sdk\platform\core_modules\rf\api;..\..\sdk6\sdk\platform\arch\main;..\..\sdk6\sdk\platform\core_modules\nvds\api;..\..\sdk6\sdk\platform\utilities\otp_hdr;..\..\sdk6\sdk\platform\arch\main;..\..\sdk6\sdk\platform\include\CMSIS\5.6.0\Include</IncludePath>
             </VariousControls>

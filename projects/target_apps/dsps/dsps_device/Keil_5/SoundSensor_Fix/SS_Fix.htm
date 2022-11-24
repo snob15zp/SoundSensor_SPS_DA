@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\SoundSensor_Fix\SS_Fix.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\SoundSensor_Fix\SS_Fix.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Wed Nov 23 01:37:18 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Nov 24 13:44:40 2022
 <BR><P>
-<H3>Maximum Stack Usage =        652 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        644 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 main &rArr; system_init &rArr; periph_init &rArr; test_hnd_init &rArr; user_conf_storage_init &rArr; user_config_storage_save_configuration &rArr; user_config_write_configuration_struct &rArr; user_flash_write_data &rArr; spi_flash_write_data &rArr; spi_flash_page_program &rArr; spi_flash_write_enable &rArr; spi_flash_wait_till_ready &rArr; spi_flash_read_status_reg &rArr; spi_transaction &rArr; spi_access
 <P>
@@ -669,6 +669,7 @@ Global Symbols
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ble_init_arp_func
 <LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_flash_auto_detect
 <LI><a href="#[1c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_conf_storage_init
+<LI><a href="#[1be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_write_configuration_struct
 </UL>
 
 <P><STRONG><a name="[193]"></a>__aeabi_memset</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, da14531_symbols.txt(ABSOLUTE))
@@ -992,7 +993,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> arch_main.o(.data)
 </UL>
 <P><STRONG><a name="[1e]"></a>main</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, arch_main.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 652<LI>Call Chain = main &rArr; system_init &rArr; periph_init &rArr; test_hnd_init &rArr; user_conf_storage_init &rArr; user_config_storage_save_configuration &rArr; user_config_write_configuration_struct &rArr; user_flash_write_data &rArr; spi_flash_write_data &rArr; spi_flash_page_program &rArr; spi_flash_write_enable &rArr; spi_flash_wait_till_ready &rArr; spi_flash_read_status_reg &rArr; spi_transaction &rArr; spi_access
+<BR><BR>[Stack]<UL><LI>Max Depth = 644<LI>Call Chain = main &rArr; system_init &rArr; periph_init &rArr; test_hnd_init &rArr; user_conf_storage_init &rArr; user_config_storage_save_configuration &rArr; user_config_write_configuration_struct &rArr; user_flash_write_data &rArr; spi_flash_write_data &rArr; spi_flash_page_program &rArr; spi_flash_write_enable &rArr; spi_flash_wait_till_ready &rArr; spi_flash_read_status_reg &rArr; spi_transaction &rArr; spi_access
 </UL>
 <BR>[Calls]<UL><LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;system_init_post
 <LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;system_init
@@ -1151,7 +1152,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[e3]"></a>system_init</STRONG> (Thumb, 544 bytes, Stack size 24 bytes, arch_system.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 652<LI>Call Chain = system_init &rArr; periph_init &rArr; test_hnd_init &rArr; user_conf_storage_init &rArr; user_config_storage_save_configuration &rArr; user_config_write_configuration_struct &rArr; user_flash_write_data &rArr; spi_flash_write_data &rArr; spi_flash_page_program &rArr; spi_flash_write_enable &rArr; spi_flash_wait_till_ready &rArr; spi_flash_read_status_reg &rArr; spi_transaction &rArr; spi_access
+<BR><BR>[Stack]<UL><LI>Max Depth = 644<LI>Call Chain = system_init &rArr; periph_init &rArr; test_hnd_init &rArr; user_conf_storage_init &rArr; user_config_storage_save_configuration &rArr; user_config_write_configuration_struct &rArr; user_flash_write_data &rArr; spi_flash_write_data &rArr; spi_flash_page_program &rArr; spi_flash_write_enable &rArr; spi_flash_wait_till_ready &rArr; spi_flash_read_status_reg &rArr; spi_transaction &rArr; spi_access
 </UL>
 <BR>[Calls]<UL><LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;read_rcx_freq
 <LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;reset_indication (Weak Reference)
@@ -2460,7 +2461,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[ff]"></a>periph_init</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, user_periph_setup.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 628<LI>Call Chain = periph_init &rArr; test_hnd_init &rArr; user_conf_storage_init &rArr; user_config_storage_save_configuration &rArr; user_config_write_configuration_struct &rArr; user_flash_write_data &rArr; spi_flash_write_data &rArr; spi_flash_page_program &rArr; spi_flash_write_enable &rArr; spi_flash_wait_till_ready &rArr; spi_flash_read_status_reg &rArr; spi_transaction &rArr; spi_access
+<BR><BR>[Stack]<UL><LI>Max Depth = 620<LI>Call Chain = periph_init &rArr; test_hnd_init &rArr; user_conf_storage_init &rArr; user_config_storage_save_configuration &rArr; user_config_write_configuration_struct &rArr; user_flash_write_data &rArr; spi_flash_write_data &rArr; spi_flash_page_program &rArr; spi_flash_write_enable &rArr; spi_flash_wait_till_ready &rArr; spi_flash_read_status_reg &rArr; spi_transaction &rArr; spi_access
 </UL>
 <BR>[Calls]<UL><LI><a href="#[186]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_spi_flash_init
 <LI><a href="#[1b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;test_hnd_init
@@ -2628,10 +2629,11 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[1c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_conf_storage_init
 </UL>
 
-<P><STRONG><a name="[1be]"></a>user_config_write_configuration_struct</STRONG> (Thumb, 196 bytes, Stack size 288 bytes, user_config_storage.o(.text))
+<P><STRONG><a name="[1be]"></a>user_config_write_configuration_struct</STRONG> (Thumb, 200 bytes, Stack size 288 bytes, user_config_storage.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 428<LI>Call Chain = user_config_write_configuration_struct &rArr; user_flash_write_data &rArr; spi_flash_write_data &rArr; spi_flash_page_program &rArr; spi_flash_write_enable &rArr; spi_flash_wait_till_ready &rArr; spi_flash_read_status_reg &rArr; spi_transaction &rArr; spi_access
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+<BR>[Calls]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
+<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 <LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ke_free
 <LI><a href="#[188]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_flash_write_data
 <LI><a href="#[1bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_config_storage_read_ext_mem
@@ -3158,8 +3160,8 @@ Global Symbols
 <P><STRONG><a name="[5]"></a>SysTick_Handler</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, ss_sys.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_da14531.o(RESET)
 </UL>
-<P><STRONG><a name="[1b4]"></a>test_hnd_init</STRONG> (Thumb, 80 bytes, Stack size 16 bytes, ss_sys.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 620<LI>Call Chain = test_hnd_init &rArr; user_conf_storage_init &rArr; user_config_storage_save_configuration &rArr; user_config_write_configuration_struct &rArr; user_flash_write_data &rArr; spi_flash_write_data &rArr; spi_flash_page_program &rArr; spi_flash_write_enable &rArr; spi_flash_wait_till_ready &rArr; spi_flash_read_status_reg &rArr; spi_transaction &rArr; spi_access
+<P><STRONG><a name="[1b4]"></a>test_hnd_init</STRONG> (Thumb, 92 bytes, Stack size 8 bytes, ss_sys.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 612<LI>Call Chain = test_hnd_init &rArr; user_conf_storage_init &rArr; user_config_storage_save_configuration &rArr; user_config_write_configuration_struct &rArr; user_flash_write_data &rArr; spi_flash_write_data &rArr; spi_flash_page_program &rArr; spi_flash_write_enable &rArr; spi_flash_wait_till_ready &rArr; spi_flash_read_status_reg &rArr; spi_transaction &rArr; spi_access
 </UL>
 <BR>[Calls]<UL><LI><a href="#[208]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;systick_stop
 <LI><a href="#[209]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;systick_start

@@ -207,7 +207,7 @@ e_FunctionReturnState TransitionFunction_M(void * FSM)
 	  case e_M_BLEStop: rstate=SSM_BLEStop();					 
 			break;//1
 	  case e_M_ADCStart: 	rstate=SSM_ADCStart(); 	
-		                    //SSS_SetUpTimeEvent(&AM_switch_time_event,(2000000/D_SYSTICK_PERIOD_US));
+		                    SSS_SetUpTimeEvent(&AM_switch_time_event,(10000000/D_SYSTICK_PERIOD_US));
 			break;//2
 	  case e_M_BLEStart: 	rstate=SSM_BLEStart();	
                         //SSS_SetUpTimeEvent(&AM_switch_time_event,(10000000/D_SYSTICK_PERIOD_US));		

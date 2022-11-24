@@ -152,7 +152,7 @@ void delay_200ms(void)
 #if (adr64_start<SPI_FLASH_ADDR_END_RECORD_ADC)
 #define endEraseAddress adr64_start
 #else
-#define endEraseAddress adr64_start SPI_FLASH_ADDR_END_RECORD_ADC
+#define endEraseAddress  SPI_FLASH_ADDR_END_RECORD_ADC
 #endif
 uint8_t EraseState;
 //uint32_t ea;	

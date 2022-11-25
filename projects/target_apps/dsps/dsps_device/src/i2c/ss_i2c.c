@@ -444,7 +444,7 @@ static void rgbLedServer(rgbLedTask_t * rgbLedTask )
   {
     case TSM_STRT:
       
-      if(rgbLedTask->ledTimeSlot[rgbLedTask->itemIndex].isEnabled)                   // если выбранный слот активен
+     // if(rgbLedTask->ledTimeSlot[rgbLedTask->itemIndex].isEnabled)                   // если выбранный слот активен
       {
         outData |= rgbLedTask->colormask;          // замаскировать выходы для RGB светодиода
         outData &= ~(rgbLedTask->ledTimeSlot[rgbLedTask->itemIndex].color);            // снять бит для включения нужного светодиода
@@ -453,10 +453,10 @@ static void rgbLedServer(rgbLedTask_t * rgbLedTask )
 //        i2c_eeprom_write_byte(SX1502_REGDATA_ADDR, outData);            // записать данные в порт
         rgbLedTask->timeSlotMode = TSM_BUSY;                             // переключить режим работы слота
       } 
-      else 
-      {
-        rgbLedTask->timeSlotMode = TSM_IDLE;                             // переключить режим работы слота
-      }
+//      else 
+//      {
+//        rgbLedTask->timeSlotMode = TSM_IDLE;                             // переключить режим работы слота
+//      }
     break;
     
     case TSM_BUSY:

@@ -57,7 +57,7 @@
 // Define ALLOW_NO_HEADER to enable loading 0x7f00 bytes from memory offset 0
 // in case no valid AN-B-001 header is found.
 #undef ALLOW_NO_HEADER
-
+ 
 #if  defined (SUPPORT_AN_B_001) && AES_ENCRYPTED_IMAGE_SUPPORTED == 1
      #warning "Encryption is not supported by the secondary bootloader"
 #endif
@@ -97,13 +97,12 @@ typedef struct __bootHeader585_i2c{
 } s_bootHeader585_i2c;
 
 /************** Dual Image bootloader section**************/
- 
-// product header flags 
-#if defined (__DA14531__)
-#define PRODUCT_HEADER_POSITION     0x1F000
+
+#ifdef __SoundSensor__
+#define PRODUCT_HEADER_POSITION     0x1f000
 #else
-#define PRODUCT_HEADER_POSITION     0x39000
-#endif
+#define PRODUCT_HEADER_POSITION     0x38000
+#endif 
 
 #define PRODUCT_HEADER_SIGNATURE1   0x70
 #define PRODUCT_HEADER_SIGNATURE2   0x52

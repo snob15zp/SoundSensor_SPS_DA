@@ -35,33 +35,40 @@
 #include "arch.h"
 #include "da1458x_periph_setup.h"
 #include "dma.h"
-#include "dma_uart_sps.h"
+
+#include "ss_global.h"
+
 /*
  * DEFINES
  ****************************************************************************************
  */
+#define VARS_CNT 32
 
-#ifndef PRODUCT_HEADER_POSITION
-#if defined (__DA14531__)
-#define PRODUCT_HEADER_POSITION     0x1F000
-#else
-#define PRODUCT_HEADER_POSITION     0x39000
+#if (D_FlashMap==585)
+#define PRODUCT_HEADER_POSITION     0x38000
+#define CFG1_DEFAULT_POSITION 0x39000
+#define CFG2_DEFAULT_POSITION 0x3A000
 #endif
+#if (D_FlashMap==531)
+#define PRODUCT_HEADER_POSITION     0x1f000
+#define CFG1_DEFAULT_POSITION 0x1d000 //0x1d000- 0x10000 = 0d53000
+#define CFG2_DEFAULT_POSITION 0x1e000
 #endif
+
 
 #define HW_CONFIG_PRO_DK 1
 //*** <<< Use Configuration Wizard in Context Menu >>> ***
 
 // <o> Baud Rate selection <1=> 9600 <2=> 19200 <3=> 38400 <4=> 57600 <5=> 115200 <6=> 230400 <7=> 460800 <8=> 921600
-#define BAUDRATE_CONFIG 8
-#define BAUDRATE_9K6 (BAUDRATE_CONFIG==1)
-#define BAUDRATE_19K2 (BAUDRATE_CONFIG==2)
-#define BAUDRATE_38K4 (BAUDRATE_CONFIG==3)
-#define BAUDRATE_57K6 (BAUDRATE_CONFIG==4)
-#define BAUDRATE_115K2 (BAUDRATE_CONFIG==5)
-#define BAUDRATE_230K4 (BAUDRATE_CONFIG==6)
-#define BAUDRATE_460K8 (BAUDRATE_CONFIG==7)
-#define BAUDRATE_921K6 (BAUDRATE_CONFIG==8)
+//#define BAUDRATE_CONFIG 8
+//#define BAUDRATE_9K6 (BAUDRATE_CONFIG==1)
+//#define BAUDRATE_19K2 (BAUDRATE_CONFIG==2)
+//#define BAUDRATE_38K4 (BAUDRATE_CONFIG==3)
+//#define BAUDRATE_57K6 (BAUDRATE_CONFIG==4)
+//#define BAUDRATE_115K2 (BAUDRATE_CONFIG==5)
+//#define BAUDRATE_230K4 (BAUDRATE_CONFIG==6)
+//#define BAUDRATE_460K8 (BAUDRATE_CONFIG==7)
+//#define BAUDRATE_921K6 (BAUDRATE_CONFIG==8)
 
 
 #if BAUDRATE_9K6
@@ -180,6 +187,8 @@ extern UART_BAUD cfg_uart_sps_baud;
 extern uint32_t uart_wait_byte_time;
 extern uint32_t uart_wait_byte_counter;
 
+extern const spi_cfg_t UPS_spi_cfg;
+
 /* Enable WKUPCT. Required by wkupct_quadec driver. */
 #define WKUP_ENABLED
 #define nAUTO_RTS
@@ -217,15 +226,15 @@ extern uint8_t gpio_por_pin_timeout;
 /* UART configuration                                                                   */
 /****************************************************************************************/  
 #if defined (__DA14531__)    
-#define GPIO_UART1_TX_PORT   GPIO_PORT_0
-#define GPIO_UART1_TX_PIN    GPIO_PIN_6
-#define GPIO_UART1_RX_PORT   GPIO_PORT_0
-#define GPIO_UART1_RX_PIN    GPIO_PIN_5
+//#define GPIO_UART1_TX_PORT   GPIO_PORT_0
+//#define GPIO_UART1_TX_PIN    GPIO_PIN_6
+//#define GPIO_UART1_RX_PORT   GPIO_PORT_0
+//#define GPIO_UART1_RX_PIN    GPIO_PIN_5
 
-#define GPIO_UART1_RTS_PORT  GPIO_PORT_0
-#define GPIO_UART1_RTS_PIN   GPIO_PIN_7
-#define GPIO_UART1_CTS_PORT  GPIO_PORT_0
-#define GPIO_UART1_CTS_PIN   GPIO_PIN_8
+//#define GPIO_UART1_RTS_PORT  GPIO_PORT_0
+//#define GPIO_UART1_RTS_PIN   GPIO_PIN_7
+//#define GPIO_UART1_CTS_PORT  GPIO_PORT_0
+//#define GPIO_UART1_CTS_PIN   GPIO_PIN_8
 #else
 #define GPIO_UART1_TX_PORT   GPIO_PORT_0
 #define GPIO_UART1_TX_PIN    GPIO_PIN_4
@@ -274,10 +283,10 @@ extern uint8_t gpio_por_pin_timeout;
     #define  GPIO_UART2_RX_PIN      GPIO_PIN_2
 #endif
 
-#define GPIO_DBG1_PORT   GPIO_PORT_1
-#define GPIO_DBG1_PIN    GPIO_PIN_1
-#define GPIO_DBG2_PORT   GPIO_PORT_1
-#define GPIO_DBG2_PIN    GPIO_PIN_0
+//#define GPIO_DBG1_PORT   GPIO_PORT_1
+//#define GPIO_DBG1_PIN    GPIO_PIN_1
+//#define GPIO_DBG2_PORT   GPIO_PORT_1
+//#define GPIO_DBG2_PIN    GPIO_PIN_0
 
 /****************************************************************************************/
 /* SPI configuration                                                                    */
@@ -285,12 +294,8 @@ extern uint8_t gpio_por_pin_timeout;
 // Define SPI Pads
 #if defined (__DA14531__)
     #define SPI_EN_PORT             GPIO_PORT_0
-		
-#ifdef	__ADCTEST__	
-    #define SPI_EN_PIN              GPIO_PIN_11
-#else
+
     #define SPI_EN_PIN              GPIO_PIN_1
-#endif
 
     #define SPI_CLK_PORT            GPIO_PORT_0
     #define SPI_CLK_PIN             GPIO_PIN_4
@@ -318,7 +323,7 @@ extern uint8_t gpio_por_pin_timeout;
 // Define SPI Configuration
     #define SPI_MS_MODE             SPI_MS_MODE_MASTER
     #define SPI_CP_MODE             SPI_CP_MODE_0
-    #define SPI_WSZ                 SPI_MODE_8BIT
+    #define SPI_WSZ                 SPI_MODE_16BIT
     #define SPI_CS                  SPI_CS_0
 
 #if defined(__DA14531__)
@@ -339,7 +344,11 @@ extern uint8_t gpio_por_pin_timeout;
 /* SPI Flash configuration                                                              */
 /****************************************************************************************/
 #if !defined (__DA14586__)
-#define SPI_FLASH_DEV_SIZE          (4 * 1024*1024) //RDD?
+#ifdef __SoundSensor__
+#define SPI_FLASH_DEV_SIZE          ((32/4) * 1024*1024) //RDD?
+#else
+#define SPI_FLASH_DEV_SIZE          (2*1024*(1024/8)) //RDD?
+#endif
 #endif
 
 /*

@@ -78,11 +78,12 @@
  #define BLUE_LED_OUT                         0x20 
  #define CONTROL_OUT                          0x10
  #define PWR_FIX_OUT                          0x08
- #define BTN_PWR_IN                           0x04
- #define BTN_BT_IN                            0x02
- #define SINGLE_LED_OUT                       0x01
- 
-//extern i2c_error_code sx1502_init(void);
- 
+ #define BTN_SW3_IN                           0x04
+ #define BTN_SW1_IN                           0x02
+ #define SINGLE_LED_OUT                       0x01 
 
+ #define SX_D_LED_MASK (RED_LED_OUT|GREEN_LED_OUT|BLUE_LED_OUT|SINGLE_LED_OUT)
+ #define SX_D_L1MASK (RED_LED_OUT|GREEN_LED_OUT|BLUE_LED_OUT)
+ #define SX_D_LD1MASK (SINGLE_LED_OUT)
+ 
 #endif // _SX1502_H_

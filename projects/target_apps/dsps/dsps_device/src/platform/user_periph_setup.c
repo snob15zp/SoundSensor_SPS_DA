@@ -36,12 +36,19 @@
 #endif
 #include "spi_flash.h"
 #include "SPI_ADC.h"
+#include "ADC_flash.h"
 #include "ss_i2c.h"
-#include "SS_InterfaceToBLE.h"
+//#include "SS_InterfaceToBLE.h"
+#include "MathFast.h"
+#include "MathSlow.h"
+#include "SS_sys.h"
+
+
+//#include "my_proj.h"
 
 #if defined (CFG_SPI_FLASH_ENABLE)
 // Configuration struct for SPI
-static const spi_cfg_t spi_cfg = {
+const spi_cfg_t UPS_spi_cfg = {
     .spi_ms = SPI_MS_MODE,
     .spi_cp = SPI_CP_MODE,
     .spi_speed = SPI_SPEED_MODE,
@@ -94,10 +101,10 @@ i.e.
 #endif
 #if (BLE_SPS_SERVER)
     // UART1
-    RESERVE_GPIO( UART1_TX, gpio_uart1_tx.port,  gpio_uart1_tx.pin, PID_UART1_TX);
-    RESERVE_GPIO( UART1_RX, gpio_uart1_rx.port,  gpio_uart1_rx.pin, PID_UART1_RX);
-    RESERVE_GPIO( UART1_RTS, gpio_uart1_rts.port,  gpio_uart1_rts.pin, PID_GPIO);
-    RESERVE_GPIO( UART1_CTS, gpio_uart1_cts.port,  gpio_uart1_cts.pin, PID_UART1_CTSN);
+//    RESERVE_GPIO( UART1_TX, gpio_uart1_tx.port,  gpio_uart1_tx.pin, PID_UART1_TX);
+//    RESERVE_GPIO( UART1_RX, gpio_uart1_rx.port,  gpio_uart1_rx.pin, PID_UART1_RX);
+//    RESERVE_GPIO( UART1_RTS, gpio_uart1_rts.port,  gpio_uart1_rts.pin, PID_GPIO);
+//    RESERVE_GPIO( UART1_CTS, gpio_uart1_cts.port,  gpio_uart1_cts.pin, PID_UART1_CTSN);
 #endif
 #ifdef __DA14531__
     RESERVE_GPIO( ACTIVE_STATUS, gpio_reset_status.port,  gpio_reset_status.pin, PID_GPIO);
@@ -130,11 +137,11 @@ void set_pad_functions(void)        // set gpio port function mode
     #endif
 
 #if defined (__DA14531__)
-    if ((gpio_reset_status.port != GPIO_PORT_INVALID) && (gpio_reset_status.pin != GPIO_PIN_INVALID))
-        GPIO_ConfigurePin( gpio_reset_status.port, gpio_reset_status.pin, INPUT_PULLUP, PID_GPIO, true );
+//    if ((gpio_reset_status.port != GPIO_PORT_INVALID) && (gpio_reset_status.pin != GPIO_PIN_INVALID))
+//        GPIO_ConfigurePin( gpio_reset_status.port, gpio_reset_status.pin, INPUT_PULLUP, PID_GPIO, true );
 #endif
-    if ((gpio_por_pin.port != GPIO_PORT_INVALID) && (gpio_por_pin.pin != GPIO_PIN_INVALID))
-        GPIO_EnablePorPin(gpio_por_pin.port, gpio_por_pin.pin, (GPIO_POR_PIN_POLARITY)gpio_por_pin_polarity, gpio_por_pin_timeout);
+//    if ((gpio_por_pin.port != GPIO_PORT_INVALID) && (gpio_por_pin.pin != GPIO_PIN_INVALID))
+//        GPIO_EnablePorPin(gpio_por_pin.port, gpio_por_pin.pin, (GPIO_POR_PIN_POLARITY)gpio_por_pin_polarity, gpio_por_pin_timeout);
 
 #ifdef CFG_PRINTF_UART2
     GPIO_ConfigurePin( GPIO_UART2_TX_PORT, GPIO_UART2_TX_PIN, OUTPUT, PID_UART2_TX, false );
@@ -144,7 +151,7 @@ void set_pad_functions(void)        // set gpio port function mode
 
 void periph_init(void)
 {
-	LEDinit();
+//	LEDinit();
 	
     // Power up peripherals' power domain
 #if !defined (__DA14531__)
@@ -167,26 +174,27 @@ void periph_init(void)
     set_pad_functions();
 	
 	 user_spi_flash_init(SPI_FLASH_GPIO_MAP);//RDD
-#ifdef __SoundSensor__	
-#ifdef __ADCTEST__
-   ssi2c_init();
+	 
+//====================SS initialization======================== 
+#ifdef __DEVKIT_EXT__	 
+   LEDinit();
+#endif	 
+	
 
-	 timer2_init();//RDD
-	 
-	 SPI_ADC_init();//RDD
-	 
-	 intinit();
-	 
-	 while(1)
-	 {
-		  //ss_i2c_test();
-	 }
-#else
-	 sx1502_init();//ssi2c_init();
+//uint8_t dev_id;spi_flash_auto_detect(&dev_id); //RDD debug
+	test_hnd_init(); 	 
+ // MS_main();//debug;
+#ifdef __SS_EXT__	
+	 ssi2c_init();//
+//#ifndef __ADCTEST__	 
 	 sx_main();//  ss_i2c_test();
-#endif		 
+//#else
+//#endif
 
-#endif
+#endif	 
+
+ 
+    
 
     // Initialize UART2 controller
 #ifdef CFG_PRINTF_UART2
@@ -246,7 +254,7 @@ void user_spi_flash_init(uint32_t gpio_map)
     spi_flash_configure_env(&spi_flash_cfg);
 
     // Initialize SPI
-    spi_initialize(&spi_cfg);
+    spi_initialize(&UPS_spi_cfg);
 #endif
 
     // Release Flash from power down
@@ -258,13 +266,13 @@ void user_spi_flash_init(uint32_t gpio_map)
 
 }
 
-void user_spi_flash_release(void)
-{
-    // Power down flash
-    spi_flash_power_down();
-    // Release SPI controller
-    spi_release();
-}
+//void user_spi_flash_release(void)
+//{
+//    // Power down flash
+//    spi_flash_power_down();
+//    // Release SPI controller
+//    spi_release();
+//}
 
 int8_t user_erase_flash_sectors(uint32_t starting_address, uint32_t size)
 {

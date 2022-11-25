@@ -1,17 +1,17 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Wed Sep 28 21:53:10 2022
+;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Thu Nov 24 20:34:41 2022
 ;VERSION 0.2
 ;FILE adc_531.o
-adc_correct_sample <= USED 0
 adc_disable <= USED 0
-adc_get_sample <= USED 0
 adc_get_temp_async <= USED 0
 adc_input_shift_config <= USED 0
 adc_input_shift_disable <= USED 0
 adc_input_shift_enable <= USED 0
-adc_offset_calibrate <= USED 0
 adc_register_interrupt <= USED 0
 adc_reset <= USED 0
 adc_unregister_interrupt <= USED 0
+;FILE adc_flash.o
+AF_V_ERASE_FILE_DataADC <= USED 0
+delay_200ms <= USED 0
 ;FILE app.o
 app_easy_gap_advertise_with_timeout_stop <= USED 0
 app_easy_gap_dev_config_get_active <= USED 0
@@ -29,9 +29,6 @@ app_easy_gap_undirected_advertise_with_timeout_start <= USED 0
 default_advertise_operation <= USED 0
 default_app_generate_static_random_addr <= USED 0
 default_app_generate_unique_static_random_addr <= USED 0
-default_app_on_disconnect <= USED 0
-;FILE app_diss.o
-;FILE app_diss_task.o
 ;FILE app_easy_msg_utils.o
 app_easy_msg_free_callback <= USED 0
 app_easy_msg_modify <= USED 0
@@ -47,27 +44,38 @@ app_easy_timer_modify <= USED 0
 ;FILE app_msg_utils.o
 app_msg_send_wakeup_ble <= USED 0
 ;FILE app_suotar.o
+on_suotar_status_change <= USED 0
 ;FILE app_suotar_task.o
 ;FILE app_task.o
 ;FILE arch_main.o
 ;FILE arch_rom.o
 ;FILE arch_sleep.o
+arch_ble_ext_wakeup_get <= USED 0
 arch_ble_ext_wakeup_off <= USED 0
 arch_ble_ext_wakeup_on <= USED 0
 arch_force_active_mode <= USED 0
+arch_get_sleep_mode <= USED 0
 arch_last_rwble_evt_get <= USED 0
 arch_restore_sleep_mode <= USED 0
 arch_set_deep_sleep <= USED 0
 ;FILE arch_system.o
+app_use_lower_clocks_check <= USED 0
 arch_set_pxact_gpio <= USED 0
 arch_wkupct_tweak_deb_time <= USED 0
 check_sys_startup_period <= USED 0
 ;FILE ble_arp.o
+;FILE cmd_hnd.o
+;FILE cmd_mux.o
 ;FILE crc32.o
 crc32 <= USED 0
+;FILE filterac_s19s29_cg.o
+FilterAC_s19s29_CG_terminate <= USED 0
+;FILE filterc_s19s29_cg1.o
+FilterC_s19s29_CG1_terminate <= USED 0
 ;FILE gpio.o
 GPIO_ConfigurePinPower <= USED 0
 GPIO_DisablePorPin <= USED 0
+GPIO_EnablePorPin <= USED 0
 GPIO_GetIRQInputLevel <= USED 0
 GPIO_GetPinFunction <= USED 0
 GPIO_GetPinStatus <= USED 0
@@ -75,6 +83,7 @@ GPIO_GetPorTime <= USED 0
 GPIO_RegisterCallback <= USED 0
 GPIO_SetIRQInputLevel <= USED 0
 GPIO_SetPorTime <= USED 0
+GPIO_init <= USED 0
 GPIO_is_valid <= USED 0
 GPIOn_Handler <= USED 0
 ;FILE hardfault_handler.o
@@ -110,17 +119,18 @@ i2c_eeprom_write_page <= USED 0
 ;FILE jump_table.o
 dummyf <= USED 0
 ;FILE lld.o
+;FILE mathfast.o
+MF_main_reset <= USED 0
+mul_s32_loSR <= USED 0
+mul_u18s29sh <= USED 0
+mul_u18s29shl <= USED 0
+mul_wide_s32 <= USED 0
+;FILE mathslow.o
+MS_EvaluteLogLevel <= USED 0
 ;FILE nmi_handler.o
 ;FILE otp_cs.o
-otp_cs_get_adc_diff_ge <= USED 0
-otp_cs_get_adc_diff_offset <= USED 0
-otp_cs_get_adc_offsh_ge <= USED 0
-otp_cs_get_adc_offsh_offset <= USED 0
-otp_cs_get_adc_single_ge <= USED 0
-otp_cs_get_adc_single_offset <= USED 0
 otp_cs_get_low_power_clock <= USED 0
 ;FILE prf.o
-;FILE remote_config.o
 ;FILE rf_531.o
 dcoff_calibration <= USED 0
 dis_kdco_cal <= USED 0
@@ -135,8 +145,14 @@ rf_ldo_cont_mode_en <= USED 0
 rf_nfm_disable <= USED 0
 rf_nfm_enable <= USED 0
 rf_power_down <= USED 0
+;FILE ring_buff.o
+RingBuffer_Clr <= USED 0
+RingBuffer_get_qntNode <= USED 0
+RingBuffer_is_full <= USED 0
 ;FILE rwble.o
 ;FILE rwip.o
+patched_ble_regs_push <= USED 0
+rwip_sleep <= USED 0
 ;FILE spi_531.o
 spi_master_transfer <= USED 0
 spi_receive <= USED 0
@@ -172,20 +188,17 @@ spi_flash_read_unique_id <= USED 0
 spi_flash_release_from_power_down <= USED 0
 spi_flash_set_power_mode <= USED 0
 spi_flash_set_write_disable <= USED 0
-spi_flash_set_write_enable <= USED 0
 spi_flash_write_data_buffer <= USED 0
 spi_flash_write_enable_volatile <= USED 0
 spi_flash_write_status_config_reg <= USED 0
-spi_flash_write_status_reg <= USED 0
 ;FILE sps_server.o
+;FILE ss_adc.o
+;FILE ss_global.o
+;FILE ss_hnd.o
 ;FILE ss_i2c.o
 ss_i2c_test <= USED 0
-sx1502_init <= USED 0
-;FILE ss_interfacetoble.o
-SS_InterfaceToBLE_SendThreeBytes <= USED 0
-SS_InterfaceToBLE_init <= USED 0
-led_flash <= USED 0
-user_app_adv_start <= USED 0
+;FILE ss_main.o
+;FILE ss_sys.o
 ;FILE startup_da14531.o
 ;FILE syscntl.o
 syscntl_dcdc_get_level <= USED 0
@@ -197,6 +210,10 @@ syscntl_por_vbat_high_cfg <= USED 0
 syscntl_por_vbat_low_cfg <= USED 0
 ;FILE system_da14531.o
 SystemCoreClockUpdate <= USED 0
+;FILE systick.o
+systick_register_callback <= USED 0
+systick_value <= USED 0
+systick_wait <= USED 0
 ;FILE timer2.o
 ;FILE trng.o
 ;FILE uart.o
@@ -218,22 +235,26 @@ uart_write_buffer <= USED 0
 uart_write_byte <= USED 0
 ;FILE user_config_storage.o
 ;FILE user_periph_setup.o
-;FILE user_remote_config.o
-;FILE user_remote_config_task.o
-;FILE user_sps_buffer_dma.o
-user_ble_to_dma_uart <= USED 0
-user_init_queues <= USED 0
 ;FILE user_sps_device_config.o
 user_sps_apply_uart_baudrate <= USED 0
+user_sps_config_verify_adv_channel_map_cb <= USED 0
+user_sps_config_verify_adv_int_max_cb <= USED 0
+user_sps_config_verify_adv_int_min_cb <= USED 0
+user_sps_config_verify_ci_max_cb <= USED 0
+user_sps_config_verify_ci_min_cb <= USED 0
+user_sps_config_verify_gpio_config_cb <= USED 0
+user_sps_config_verify_mtu_cb <= USED 0
+user_sps_config_verify_polarity_cb <= USED 0
+user_sps_config_verify_por_pin_timeout_cb <= USED 0
+user_sps_config_verify_sl_cb <= USED 0
+user_sps_config_verify_sup_to_cb <= USED 0
+user_sps_config_verify_uart_baudrate_cb <= USED 0
 ;FILE user_sps_device_dma.o
+user_before_sleep <= USED 0
 user_on_connect_failed <= USED 0
-;FILE user_sps_schedule_dma.o
-user_dma_sps_sleep_check <= USED 0
 ;FILE user_sps_utils.o
-ke_msg_alloc_no_init <= USED 0
 user_rwip_sleep_check <= USED 0
 ;FILE user_spss.o
-user_send_ble_data <= USED 0
 user_send_ble_flow_ctrl <= USED 0
 user_send_dummy_ble_data <= USED 0
 ;FILE user_spss_task.o

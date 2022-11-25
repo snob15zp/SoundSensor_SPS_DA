@@ -76,8 +76,15 @@
 #endif
 
 #include "ss_i2c.h"
-#include "SS_InterfaceToBLE.h"
+#include "ss_main.h"	
+#include "SS_sys.h"
 
+//#include "spi_flash.h"//debug
+
+#include "SS_ADC.h"
+
+//#include "ss_hnd.h" //debug
+#include "ADC_flash.h"
 
 
 
@@ -161,9 +168,137 @@ __STATIC_INLINE uint8_t get_retention_mode_non_ret_heap(void);
  */
 int main(void);
 
+typedef enum  {e_M_ADCStop,e_M_BLEStop // 3 interface pins
+	            ,e_M_ADCStart,e_M_BLEStart,e_M_PwrSwitchStart
+	            ,e_M_ADCmain,e_M_BLEmain, e_M_SXmain,e_M_PwrSwitchOff //PWR 4+6=10
+,e_M_NumOfel} e_TransitionFunctionType;// 13+1=14
+
+#define d_ADCStop (1<<e_M_ADCStop)   // digital pins and PWR
+#define d_BLEStop (1<<e_M_BLEStop) 
+
+#define d_ADCStart (1<<e_M_ADCStart)
+#define d_BLEStart (1<<e_M_BLEStart)
+#define d_PwrSwitchStart (1<<e_M_PwrSwitchStart)
+
+#define d_ADCmain (1<<e_M_ADCmain)
+#define d_BLEmain (1<<e_M_BLEmain)
+#define d_SXmain  (1<<e_M_SXmain)
+#define d_PwrSwitchOff (1<<e_M_PwrSwitchOff)
+
+
+#define FSM_main_TransitionKeys_size 3
+
+static key_type FSM_main_TransitionKeys[FSM_main_TransitionKeys_size][FSM_main_TransitionKeys_size]=  //int a[ROWS][COLS] // NEW OLD 
+{//                  PwrSwitchOff            ADCmain                    BLEmain      
+/*PwrSwitchOff*/ {d_PwrSwitchOff,     d_ADCStop|d_PwrSwitchStart,        d_BLEStop|d_PwrSwitchStart		},
+/*ADCmain*/      {d_ADCStart          ,   		d_ADCmain,                 d_BLEStop|d_ADCStart     		},
+/*BLEmain*/      {d_BLEStart,   	    d_ADCStop|d_BLEStart,              d_BLEmain|d_SXmain },
+};
+
+t_SSS_s_timeevent AM_switch_time_event;
+uint8_t msgl[]={33,34,35,36}; 
+uint8_t msg_szl=2;
+e_FunctionReturnState TransitionFunction_M(void * FSM)
+{   e_FunctionReturnState rstate;
+	switch (((t_s_FSM*)FSM)->state)
+	{ int currl;
+	  case e_M_ADCStop:	rstate=SSM_ADCStop(); 				 
+			break;//0
+	  case e_M_BLEStop: rstate=SSM_BLEStop();					 
+			break;//1
+	  case e_M_ADCStart: 	rstate=SSM_ADCStart(); 	
+		                    //SSS_SetUpTimeEvent(&AM_switch_time_event,(10000000/D_SYSTICK_PERIOD_US));
+			break;//2
+	  case e_M_BLEStart: 	rstate=SSM_BLEStart();	
+                        //SSS_SetUpTimeEvent(&AM_switch_time_event,(10000000/D_SYSTICK_PERIOD_US));		
+		  break;//2
+	  case e_M_PwrSwitchStart: SX_PowerOff();rstate=e_FRS_Not_Done;
+			break;//3
+		
+		case e_M_ADCmain:	ss_main();	
+                      if ((BTN_SW1_ONE_CLICK&btnCmd)!=0)		
+											{	((t_s_FSM*)FSM)->sign=2;
+											  btnCmd&=~BTN_SW1_ONE_CLICK;
+											};
+//											if (AM_switch_time_event.enable)
+//											{	
+//												if (systick_time-AM_switch_time_event.time>AM_switch_time_event.dtime)
+//												{	AM_switch_time_event.enable=false;
+//													((t_s_FSM*)FSM)->sign=2;
+//												}
+//											};
+											if ((BTN_SW3_LONG&btnCmd)!=0)
+											{
+											 ((t_s_FSM*)FSM)->sign=0;
+											 btnCmd&=~BTN_SW3_LONG;
+											};
+
+			rstate=e_FRS_Done; break;
+		case e_M_BLEmain:	 schedule_while_ble_on();	
+                       if ((BTN_SW1_ONE_CLICK&btnCmd)!=0)		
+											 {	((t_s_FSM*)FSM)->sign=1;
+												  btnCmd&=~BTN_SW1_ONE_CLICK;
+											 }
+//											if (AM_switch_time_event.enable)
+//											{	
+//												if (systick_time-AM_switch_time_event.time>AM_switch_time_event.dtime)
+//												{	AM_switch_time_event.enable=false;
+//													((t_s_FSM*)FSM)->sign=1;
+////											SSS_SetUpTimeEvent(&AM_switch_time_event,(1000000/D_SYSTICK_PERIOD_US));
+////											user_send_ble_data(msgl, msg_szl);  //RDD debug
+//												}
+//											};
+											 if ((BTN_SW3_LONG&btnCmd)!=0)
+											 {
+												 ((t_s_FSM*)FSM)->sign=0;
+												 btnCmd&=~BTN_SW3_LONG;
+											 };
+#ifdef __DEVKIT_EXT__												 
+											 LEDflash();
+#endif											 
+											 rstate=e_FRS_Done; break;
+		case e_M_SXmain:	 ss_main();//ss_main_BLE();	
+										   AF_V_ERASE_FILE_DataADC2();
+			rstate=e_FRS_Done; break;
+		case e_M_PwrSwitchOff:	  ((t_s_FSM*)FSM)->sign=1;       													
+			rstate=e_FRS_Done; break;
+
+  	default: 																												rstate=e_FRS_DoneError;
+	}
+	return rstate;
+}
+//typedef
+//   struct { 
+//			key_type mFSM_Error;
+//		  uint8_t state;
+//		  uint8_t NumOfel;
+//		  uint8_t mainFMSstate;
+//		  uint8_t sign;
+//      key_type **keys;		 
+//		  fp_FSM_Functions fs;
+//    } t_s_FSM;
+
+
+t_s_FSM s_FSM_main=
+{
+	0,
+	0,
+	e_M_NumOfel,
+	0,
+	1,
+	FSM_main_TransitionKeys_size,
+	&FSM_main_TransitionKeys[0][0],
+	TransitionFunction_M,
+};
+
+
+
+
+
+
 int main(void)
 {
-    sleep_mode_t sleep_mode;
+//    sleep_mode_t sleep_mode;
 
     // initialize retention mode
     init_retention_mode();
@@ -173,84 +308,122 @@ int main(void)
 
     system_init_post();
 	
-		  
-
+	  ss_main_init();
+	
+	  SSA_init();
+	
+    	
+	  //uint8_t dev_id; spi_flash_auto_detect(&dev_id); //RDD debug
+	
     /*
      ************************************************************************************
      * Platform initialization
      ************************************************************************************
      */
-
     while(1)
-    {
-#ifndef __SoundSensor__					
-					led_flash();
-#endif					
-			
-        do {
-            // schedule all pending events
-            schedule_while_ble_on();
-#ifdef __SoundSensor__			
-					sx_main();
-#endif					
-#ifndef __SoundSensor__					
-					led_flash();
-#endif					
-        }
-        while (app_asynch_proc() != GOTO_SLEEP);    //grant control to the application, try to go to power down
-                                                    //if the application returns GOTO_SLEEP
+	  FSM_main(&s_FSM_main);
+	
+//    while(1)
+//    {
+//			
+//#ifdef __DEVKIT_EXT__					
+////					led_flash();
+//#endif			
+//		switch (ssm_main_state)
+//		{
+//			case 0: if (SSM_ADCStart())
+//								ssm_main_state++;
+//			        break;
+//			case 1: if (!ssm_main_BLE_RDY) 
+//								{ssm_main_state++;
+//								};
+//				      break;	
+//			case 2: if (ss_main_init())
+//								ssm_main_state++;
+//			        break;					
+//			case 3: if (ss_main())
+//							{	ssm_main_state++;//RDD debug=6
+//							}
+//								break;
+//			case 4: if (SSM_ADCStop())
+//								ssm_main_state++;
+//			        break;					
+//			case 5: if (ssm_main_BLE_RDY) 
+//								ssm_main_state++;
+//			        break;
+//			case 6: if (ss_main_BLE())
+//							{	ssm_main_state=0;//RDD debug=6
+//							};
+//            // schedule all pending events
+//              schedule_while_ble_on();
+//					
+       
+//        while (app_asynch_proc() != GOTO_SLEEP);    //grant control to the application, try to go to power down
+//                                                    //if the application returns GOTO_SLEEP
 
-        //wait for interrupt and go to sleep if this is allowed
-        if (((!BLE_APP_PRESENT) && (check_gtl_state())) || (BLE_APP_PRESENT))
-        {
-            //Disable the interrupts
-            GLOBAL_INT_STOP();
+//        //wait for interrupt and go to sleep if this is allowed
+//        if (((!BLE_APP_PRESENT) && (check_gtl_state())) || (BLE_APP_PRESENT))
+//        {
+//            //Disable the interrupts
+//            GLOBAL_INT_STOP();
 
-            app_asynch_sleep_proc();
+//            app_asynch_sleep_proc();
 
-            // get the allowed sleep mode
-            // time from rwip_power_down() to __WFI() must be kept as short as possible!!
-            sleep_mode = rwip_power_down();
+//            // get the allowed sleep mode
+//            // time from rwip_power_down() to __WFI() must be kept as short as possible!!
+//            sleep_mode = rwip_power_down();
 
-            if ((sleep_mode == mode_ext_sleep) || (sleep_mode == mode_ext_sleep_otp_copy))
-            {
-                //power down the radio and whatever is allowed
-                arch_goto_sleep(sleep_mode);
+//            if ((sleep_mode == mode_ext_sleep) || (sleep_mode == mode_ext_sleep_otp_copy))
+//            {
+//                //power down the radio and whatever is allowed
+//                arch_goto_sleep(sleep_mode);
 
-                // In extended sleep mode the watchdog timer is disabled
-                // (power domain PD_SYS is automatically OFF). However, if the debugger
-                // is attached the watchdog timer remains enabled and must be explicitly
-                // disabled.
-                if ((GetWord16(SYS_STAT_REG) & DBG_IS_UP) == DBG_IS_UP)
-                {
-                    wdg_freeze();    // Stop watchdog timer
-                }
+//                // In extended sleep mode the watchdog timer is disabled
+//                // (power domain PD_SYS is automatically OFF). However, if the debugger
+//                // is attached the watchdog timer remains enabled and must be explicitly
+//                // disabled.
+//                if ((GetWord16(SYS_STAT_REG) & DBG_IS_UP) == DBG_IS_UP)
+//                {
+//                    wdg_freeze();    // Stop watchdog timer
+//                }
 
-                //wait for an interrupt to resume operation
-                __WFI();
+//                //wait for an interrupt to resume operation
+//                __WFI();
 
-                if ((GetWord16(SYS_STAT_REG) & DBG_IS_UP) == DBG_IS_UP)
-                {
-                    wdg_resume();    // Resume watchdog timer
-                }
+//                if ((GetWord16(SYS_STAT_REG) & DBG_IS_UP) == DBG_IS_UP)
+//                {
+//                    wdg_resume();    // Resume watchdog timer
+//                }
 
-                //resume operation
-                arch_resume_from_sleep();
-            }
-            else if (sleep_mode == mode_idle)
-            {
-                if (((!BLE_APP_PRESENT) && check_gtl_state()) || (BLE_APP_PRESENT))
-                {
-                    //wait for an interrupt to resume operation
-                    __WFI();
-                }
-            }
-            // restore interrupts
-            GLOBAL_INT_START();
-        }
-        wdg_reload(WATCHDOG_DEFAULT_PERIOD);
-    }
+//                //resume operation
+//                arch_resume_from_sleep();
+//            }
+//            else if (sleep_mode == mode_idle)
+//            {
+//                if (((!BLE_APP_PRESENT) && check_gtl_state()) || (BLE_APP_PRESENT))
+//                {
+//                    //wait for an interrupt to resume operation
+//                    __WFI();
+//                }
+//            }
+//            // restore interrupts
+//            GLOBAL_INT_START();
+//        }
+//				break;
+////			case 7: if (ssm_main_BLE_prepare())
+////								SwitchOff();
+////				break;
+////			case 8:  if (ssm_main_ADC_prepare())
+////								SwitchOff();
+////				break;
+//			default: ssm_main_state=0;
+//		}
+//    wdg_reload(WATCHDOG_DEFAULT_PERIOD);
+//    };
 }
+
+
+
 
 /**
  ****************************************************************************************
@@ -922,11 +1095,11 @@ __STATIC_INLINE arch_main_loop_callback_ret_t app_asynch_proc(void)
  * @brief Used for updating the state of the application just before sleep checking starts.
  ****************************************************************************************
  */
-__STATIC_INLINE void app_asynch_sleep_proc(void)
-{
-    if (user_app_main_loop_callbacks.app_before_sleep != NULL)
-        user_app_main_loop_callbacks.app_before_sleep();
-}
+//__STATIC_INLINE void app_asynch_sleep_proc(void)
+//{
+//    if (user_app_main_loop_callbacks.app_before_sleep != NULL)
+//        user_app_main_loop_callbacks.app_before_sleep();
+//}
 
 /**
  ****************************************************************************************

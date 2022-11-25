@@ -34,7 +34,6 @@
 #include "user_spss_task.h"
 
 #include "user_sps_device_dma.h"
-#include "user_sps_schedule_dma.h"
 #include "user_remote_config.h"
 
 /*
@@ -124,6 +123,8 @@ static const struct default_app_operations user_default_app_operations = {
 };
 
 #define app_process_catch_rest_cb user_catch_rest_hndl
+
+arch_main_loop_callback_ret_t user_on_ble_powered(void);
 
 static const struct arch_main_loop_callbacks user_app_main_loop_callbacks = {
     .app_on_init            = user_on_init,

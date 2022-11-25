@@ -201,7 +201,7 @@
 /* Maximum retention memory in bytes. The base address of the retention data is calculated from the selected    */
 /* size.                                                                                                        */
 /****************************************************************************************************************/
-#define CFG_RET_DATA_SIZE    (1536)
+#define CFG_RET_DATA_SIZE    (1536)// (2000)//
 
 /****************************************************************************************************************/
 /* Maximum uninitialized retained data required by the application.                                             */
@@ -277,6 +277,7 @@
 #define __EXCLUDE_GPIO2_HANDLER__
 #define __EXCLUDE_GPIO3_HANDLER__
 #define __EXCLUDE_GPIO4_HANDLER__
+#define __EXCLUDE_SYSTICK_HANDLER__
 
 #define CFG_POWER_MODE_BYPASS
 

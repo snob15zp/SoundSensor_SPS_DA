@@ -4,19 +4,10 @@
 #include "timer2.h"
 #include "SPI_ADC.h"
 #include "user_periph_setup.h"
+#include "ring_buff.h"
+#include "mathfast.h"
+#include "ss_sys.h"
 
-#ifndef __NON_BLE_EXAMPLE__
-#define def_dataRead_Size (1024*3)
-#else
-#define def_dataRead_Size (1024*16)
-#endif
-
-int32_t SA_dataRead_32[def_dataRead_Size/4];
-int8_t dataRead_toy;
-//bool SA_b_dataRead_full;
-//bool SA_b_dataRead_empty;
-volatile uint16_t SA_ui16_dataRead_index;
-uint8_t *SA_dataRead=(uint8_t*)(&(SA_dataRead_32[0]));
 /*
 To configure the SPI controller in master mode, follow the steps below:
 1. Set the appropriate GPIO ports in SPI clock mode (output), SPI Chip Select mode (output), SPI
@@ -135,7 +126,40 @@ static const spi_cfg_t spi_cfg = {
     0x50001228 SPI_FIFO_HIGH_REG Spi TX/RX High 16bit word
     0x5000122C SPI_TXBUFFER_FORCE_L_REG SPI TX buffer force low value
     0x50001230 SPI_TXBUFFER_FOR CE_H_REG SPI TX buffer force high value
-*/
+*///==============================================================================================
+
+static const spi_cfg_t spi_cfg_ADC = {
+    .spi_ms = SPI_MS_MODE,
+    .spi_cp = SPI_CP_MODE,
+    .spi_speed = SPI_SPEED_MODE,
+    .spi_wsz = SPI_WSZ,
+    .spi_cs = SPI_CS,
+    .cs_pad.port = ADC_EN_PORT,
+    .cs_pad.pin = ADC_EN_PIN,
+#if defined (__DA14531__)
+    .spi_capture = SPI_EDGE_CAPTURE,
+#endif
+};
+
+
+volatile bool SA_flashbit = false;
+uni_int32_t SA_out;
+
+
+#if	(D_ADCMODE==1)
+#define def_dataRead_Size (512*1)
+
+int32_t SA_dataRead_32[def_dataRead_Size/4];
+int8_t dataRead_toy;
+//bool SA_b_dataRead_full;
+//bool SA_b_dataRead_empty;
+volatile uint16_t SA_ui16_dataRead_index;
+uint8_t *SA_dataRead=(uint8_t*)(&(SA_dataRead_32[0]));
+#endif
+#if	(D_ADCMODE==3)
+bool SA_b_ADCOn;
+#endif
+
 #define ADC_SPI_WORD_LENGTH (7<<2)
 #define ADC_SPI_RX_TL (2<<4)
 #define ADC_SPI_TX_TL 0
@@ -145,17 +169,42 @@ int16_t tmp_SPI_CONFIG_REG;
 int16_t tmp_SPI_FIFO_CONFIG_REG;
 int16_t tmp_SPI_CS_CONFIG_REG;
 
+void SPI_ADC_deinit(void)
+{ 
+#if	(D_ADCMODE==3)	
+	SA_b_ADCOn=false;
+#endif	
+	NVIC_DisableIRQ(GPIO0_IRQn);
+	GPIO_ResetIRQ(GPIO0_IRQn);	
+	NVIC_ClearPendingIRQ(GPIO0_IRQn);
+  SS_spi_switchoff_pins(SPI_ADC_GPIO_MAP);
+}
+
 void SPI_ADC_init(void)
 {
+  SA_SPI_init();
+#ifdef __SS_EXT__ 
+  timer2_init();
+	intinit();
+#endif
+#if	(D_ADCMODE==3)	
+	SA_b_ADCOn=true;
+#endif	
+}	
+	
+void SA_SPI_init(void)
+{
 	//SA_dataRead_32=(int32_t*)(&(SA_dataRead[0]));
+#if	(D_ADCMODE==1)	
   SA_dataRead_32[0]=45;	
 	SA_ui16_dataRead_index=4;
-	
-#ifdef __SoundSensor__	
-//user_spi_init(SPI_FLASH_GPIO_MAP);	
+#endif	
+
+//user_spi_init(SPI_ADC_GPIO_MAP);
+  ss_spi_init(SPI_ADC_GPIO_MAP,&spi_cfg_ADC);
 
 	SetWord16(SPI_CTRL_REG, SPI_FIFO_RESET|SPI_RX_EN|SPI_TX_EN|SPI_EN); 
-	SetWord16(SPI_CONFIG_REG, ADC_SPI_WORD_LENGTH);
+	//SetWord16(SPI_CONFIG_REG, ADC_SPI_WORD_LENGTH);
 	//SetWord16(SPI_CLOCK_REG, );
 	SetWord16(SPI_FIFO_CONFIG_REG,ADC_SPI_RX_TL|ADC_SPI_TX_TL );
 	//SetWord16(SPI_IRQ_MASK_REG, );
@@ -184,18 +233,18 @@ void SPI_ADC_init(void)
 ////    SetBits16(&spi->SPI_CTRL_REGF, SPI_EN | SPI_TX_EN | SPI_RX_EN| SPI_DMA_TX_EN | SPI_DMA_RX_EN, 0);		
 //    SetWord16(SPI_CTRL_REG, 0x07);			
 ////========================================================================================================
-tmp_SPI_CTRL_REG=GetWord16(SPI_CTRL_REG);
-tmp_SPI_CONFIG_REG=GetWord16(SPI_CONFIG_REG);
-tmp_SPI_FIFO_CONFIG_REG=GetWord16(SPI_FIFO_CONFIG_REG);
-tmp_SPI_CS_CONFIG_REG=GetWord16(SPI_CS_CONFIG_REG);
+//tmp_SPI_CTRL_REG=GetWord16(SPI_CTRL_REG);
+//tmp_SPI_CONFIG_REG=GetWord16(SPI_CONFIG_REG);
+//tmp_SPI_FIFO_CONFIG_REG=GetWord16(SPI_FIFO_CONFIG_REG);
+//tmp_SPI_CS_CONFIG_REG=GetWord16(SPI_CS_CONFIG_REG);
 
 
 	
 ////	while(1)
 //{	
 //	
-	SetWord16(SPI_CS_CONFIG_REG,SPI_CS_0);
-    SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x55));	
+//	SetWord16(SPI_CS_CONFIG_REG,SPI_CS_0);
+ //   SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x55));	
 //    SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x33));
 //    SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x44));
 //		
@@ -206,7 +255,7 @@ tmp_SPI_CS_CONFIG_REG=GetWord16(SPI_CS_CONFIG_REG);
 //	SetWord16(SPI_CS_CONFIG_REG,SPI_CS_1);	
 //	}		
 //		//SetWord16(SPI_CS_CONFIG_REG, SPI_CS_NONE);
-#endif	
+
 }
 
 //void SPITreeByts (void)
@@ -220,7 +269,7 @@ tmp_SPI_CS_CONFIG_REG=GetWord16(SPI_CS_CONFIG_REG);
 //#endif	
 //}
 
-#ifdef __SoundSensor__ 
+#ifdef __SS_EXT__ 
 static tim0_2_clk_div_config_t clk_div_config =
 {
     .clk_div  = TIM0_2_CLK_DIV_8
@@ -253,7 +302,8 @@ void timer2_init(void)
     // to the clk_div_config struct above).
 //    timer2_pwm_freq_set(PWM_FREQUENCY, 16000000 / 8);
     timer2_pwm_freq_set(4000000U, 16000000/2);
-
+   // timer2_pwm_freq_set(1000000U, 16000000/2);//RDD 500 Hz?
+	
     timer2_start();
 	
 	
@@ -271,7 +321,7 @@ void timer2_init(void)
 
 
 
-#endif
+
 
 
 
@@ -329,44 +379,139 @@ false,/* 0= selected input will generate GPIO IRQ0 if that input is high.
 initiated immediately 1: wait for key release after interrupt was reset for IRQ0*/
 		0);//GPIO_DEBOUNCE_REG
 //
-	
+	NVIC_DisableIRQ(GPIO0_IRQn);
+	NVIC_SetPriority(GPIO0_IRQn, 0);
+  NVIC_EnableIRQ(GPIO0_IRQn);	
+
 }
+#endif
+//{
+// switch(SS_ADC_MODE)
+//	 {
+//	  case EAM_ADC_sin:
+//		case EAM_ADC_WORK: 
+//		  	ADC_IRQ();
+//	      break;
+////	  case EAM_ADCLIVE: ADC_IRQ_adctest();break;
+//	 default:;
+//	 };
+// GPIO_ResetIRQ(GPIO0_IRQn);
+// NVIC_ClearPendingIRQ(GPIO0_IRQn);
+//}
 
 void GPIO0_Handler(void)
 {
+#if	(D_ADCMODE==3)
+	 GPIO_ResetIRQ(GPIO0_IRQn);
+ NVIC_ClearPendingIRQ(GPIO0_IRQn);
+}
 
- SetWord16(SPI_CS_CONFIG_REG,SPI_CS_NONE);	
+
+
+inline void ADC_IRQ(void)
 	
+{ if (!SA_b_ADCOn)
+	 return;
+#endif	
+uni_int32_t SA_in;
+	
+ // SetWord16(SPI_CS_CONFIG_REG,SPI_CS_NONE);	
+	
+//    spi_set_bitmode(SPI_MODE_8BIT);	
+//	SetWord16(SPI_CONFIG_REG, 0x1C); 	
+	
+#if	(D_ADCMODE!=2)	
+	SA_in.u16[1] = GetWord16(&spi->SPI_FIFO_READ_REGF) ;    
+	SA_in.u16[0] = GetWord16(&spi->SPI_FIFO_READ_REGF) ;   
+	SA_in.masByte[0] = 0 ;	
+#endif	
+	SetWord16(SPI_CTRL_REG, SPI_FIFO_RESET|SPI_RX_EN|SPI_TX_EN|SPI_EN);
+	SetWord16(SPI_CTRL_REG, SPI_RX_EN|SPI_TX_EN|SPI_EN);	
+	
+//	SA_flashbit = false;
+	if (SA_flashbit)
+//		      SetWord16(GPIO_BASE+4, 1 << SPI_EN_PIN);
+		      SetWord16(P0_RESET_DATA_REG, 0x0002);	
+	SetWord16(SPI_CS_CONFIG_REG,SPI_CS_0); 	
+	
+	SetWord16(&spi->SPI_FIFO_WRITE_REGF, 0xADaa);//	SA_out.masByte[0]
+//	SetWord16(&spi->SPI_FIFO_WRITE_REGF, 0x22);//	SA_out.masByte[1]
+	SetWord16(&spi->SPI_FIFO_WRITE_REGF, SA_out.masByte[2]);	
+
+	
+#if	(D_ADCMODE==1)
 	if (SA_ui16_dataRead_index<(def_dataRead_Size-10))
 	{
-    
-		SA_dataRead[SA_ui16_dataRead_index+3] = GetWord16(&spi->SPI_FIFO_READ_REGF) ;				
-    SA_dataRead[SA_ui16_dataRead_index+2] = GetWord16(&spi->SPI_FIFO_READ_REGF) ;				
-		SA_dataRead[SA_ui16_dataRead_index+1]= GetWord16(&spi->SPI_FIFO_READ_REGF) ;	
-		SA_dataRead[SA_ui16_dataRead_index]=0;
+		SA_dataRead[SA_ui16_dataRead_index+3] = SA_in.masByte[3] ;				
+    SA_dataRead[SA_ui16_dataRead_index+2] = SA_in.masByte[2] ;				
+		SA_dataRead[SA_ui16_dataRead_index+1]= SA_in.masByte[1] ;	
+		SA_dataRead[SA_ui16_dataRead_index]=SA_in.masByte[0];
 		SA_ui16_dataRead_index+=4;
 	}	
 	else 
-	{ //SA_b_dataRead_full=true;
-		dataRead_toy = GetWord16(&spi->SPI_FIFO_READ_REGF) ;				
-    dataRead_toy = GetWord16(&spi->SPI_FIFO_READ_REGF) ;				
-		dataRead_toy = GetWord16(&spi->SPI_FIFO_READ_REGF) ;	
-	};	
-	SetWord16(SPI_CTRL_REG, SPI_FIFO_RESET|SPI_RX_EN|SPI_TX_EN|SPI_EN);
-	SetWord16(SPI_CTRL_REG,                SPI_RX_EN|SPI_TX_EN|SPI_EN);
- SetWord16(SPI_CS_CONFIG_REG,SPI_CS_0); 	
- SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x55));//SPITreeByts();
- SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0xff));
- SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x55));	
- while ( GetWord16(SPI_FIFO_STATUS_REG) & SPI_TRANSACTION_ACTIVE )
-		{
-		};
- SetWord16(SPI_CS_CONFIG_REG,SPI_CS_NONE);		
-	//    SetWord16(SPI_CS_CONFIG_REG,SPI_CS_0); 
+	{
+		SA_ui16_dataRead_index=0;//def_dataRead_Size-1;
+	};
+#endif	
+	
+#if	((D_ADCMODE==2)||(D_ADCMODE==3))
+	test_MF_main_ADCEmul();
+#endif
+#if	((D_ADCMODE==0)||(D_ADCMODE==1))
+	MF_main(SA_in.data_u32>>4);
+#endif
+	
+	
+// while ( GetWord16(SPI_FIFO_STATUS_REG) & SPI_TRANSACTION_ACTIVE )
+//		{
+//		};
+	SetWord16(SPI_CS_CONFIG_REG,SPI_CS_NONE);	
+	SetWord16(GPIO_BASE+2, 1 << SPI_EN_PIN);
+
+ if (SA_flashbit) 
+		SA_flashbit=false; 
+#if	(D_ADCMODE!=3)
  GPIO_ResetIRQ(GPIO0_IRQn);
  NVIC_ClearPendingIRQ(GPIO0_IRQn);
-
+#endif 
 }
+
+
+//void ADC_IRQ_adctest(void)
+//{
+//SetWord16(SPI_CS_CONFIG_REG,SPI_CS_NONE);	
+//	
+//	if (SA_ui16_dataRead_index<(def_dataRead_Size-10))
+//	{
+//    
+//		SA_dataRead[SA_ui16_dataRead_index+3] = GetWord16(&spi->SPI_FIFO_READ_REGF) ;				
+//    SA_dataRead[SA_ui16_dataRead_index+2] = GetWord16(&spi->SPI_FIFO_READ_REGF) ;				
+//		SA_dataRead[SA_ui16_dataRead_index+1]= GetWord16(&spi->SPI_FIFO_READ_REGF) ;	
+//		SA_dataRead[SA_ui16_dataRead_index]=0;
+//		SA_ui16_dataRead_index+=4;
+//	}	
+//	else 
+//	{ //SA_b_dataRead_full=true;
+//		dataRead_toy = GetWord16(&spi->SPI_FIFO_READ_REGF) ;				
+//    dataRead_toy = GetWord16(&spi->SPI_FIFO_READ_REGF) ;				
+//		dataRead_toy = GetWord16(&spi->SPI_FIFO_READ_REGF) ;	
+//	};	
+//	SetWord16(SPI_CTRL_REG, SPI_FIFO_RESET|SPI_RX_EN|SPI_TX_EN|SPI_EN);
+//	SetWord16(SPI_CTRL_REG,                SPI_RX_EN|SPI_TX_EN|SPI_EN);
+// SetWord16(SPI_CS_CONFIG_REG,SPI_CS_0); 	
+// SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x55));//SPITreeByts();
+// SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0xff));
+// SetWord16(&spi->SPI_FIFO_WRITE_REGF, (uint16_t)(0x55));	
+// while ( GetWord16(SPI_FIFO_STATUS_REG) & SPI_TRANSACTION_ACTIVE )
+//		{
+//		};
+// SetWord16(SPI_CS_CONFIG_REG,SPI_CS_NONE);		
+//	//    SetWord16(SPI_CS_CONFIG_REG,SPI_CS_0); 
+
+
+//}
+
+
 
 //void SPI_Handler(void)
 //{

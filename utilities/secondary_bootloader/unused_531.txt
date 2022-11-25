@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Tue Sep 27 20:20:48 2022
+;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Thu Nov 24 15:20:47 2022
 ;VERSION 0.2
 ;FILE adc_531.o
 __asm___9_adc_531_c_adc_init____REV16 <= USED 0
@@ -39,6 +39,7 @@ GPIO_GetPinFunction <= USED 0
 GPIO_GetPinStatus <= USED 0
 GPIO_GetPorTime <= USED 0
 GPIO_SetPorTime <= USED 0
+GPIO_init <= USED 0
 GPIO_is_valid <= USED 0
 __asm___6_gpio_c_7b3262c7____REV16 <= USED 0
 __asm___6_gpio_c_7b3262c7____REVSH <= USED 0
@@ -135,7 +136,6 @@ spi_flash_page_erase <= USED 0
 spi_flash_page_fill <= USED 0
 spi_flash_page_program <= USED 0
 spi_flash_page_program_buffer <= USED 0
-spi_flash_power_down <= USED 0
 spi_flash_program_fail <= USED 0
 spi_flash_read_config_reg <= USED 0
 spi_flash_read_data_buffer <= USED 0

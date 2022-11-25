@@ -304,15 +304,15 @@ char user_advertise_data[28] = USER_ADVERTISE_DATA;
 uint8_t user_advertise_data_len = USER_ADVERTISE_DATA_LEN;
 char user_adv_scan_resp_data[31] = USER_ADVERTISE_SCAN_RESPONSE_DATA;
 uint8_t user_adv_scan_resp_data_len = USER_ADVERTISE_SCAN_RESPONSE_DATA_LEN;
-uint8_t uart_baudrate_param = BAUDRATE_CONFIG;
+//uint8_t uart_baudrate_param = BAUDRATE_CONFIG;
 
 char * spss_conf_struct_version = SPSS_CONF_STRUCT_VER;
 uint8_t spss_conf_struct_version_len = sizeof(SPSS_CONF_STRUCT_VER)-1;
 
-gpio_func_t gpio_uart1_rx = {GPIO_UART1_RX_PIN, GPIO_UART1_RX_PORT};
-gpio_func_t gpio_uart1_tx = {GPIO_UART1_TX_PIN, GPIO_UART1_TX_PORT};
-gpio_func_t gpio_uart1_cts = {GPIO_UART1_CTS_PIN, GPIO_UART1_CTS_PORT};
-gpio_func_t gpio_uart1_rts = {GPIO_UART1_RTS_PIN, GPIO_UART1_RTS_PORT};
+//gpio_func_t gpio_uart1_rx = {GPIO_UART1_RX_PIN, GPIO_UART1_RX_PORT};
+//gpio_func_t gpio_uart1_tx = {GPIO_UART1_TX_PIN, GPIO_UART1_TX_PORT};
+//gpio_func_t gpio_uart1_cts = {GPIO_UART1_CTS_PIN, GPIO_UART1_CTS_PORT};
+//gpio_func_t gpio_uart1_rts = {GPIO_UART1_RTS_PIN, GPIO_UART1_RTS_PORT};
 #if (EXTERNAL_WAKEUP)
 gpio_func_t gpio_ext_wakeup = {EXTERNAL_WAKEUP_GPIO_PIN, EXTERNAL_WAKEUP_GPIO_PORT};
 uint8_t gpio_ext_wakeup_polarity = 0;
@@ -324,9 +324,9 @@ gpio_func_t gpio_reset_status = {GPIO_ACTIVE_STATUS_PIN, GPIO_ACTIVE_STATUS_PORT
 #if WKUP_EXT_PROCESSOR
 gpio_func_t gpio_wakeup_ext_host = {WKUP_EXT_PROC_GPIO_PIN, WKUP_EXT_PROC_GPIO_PORT};
 #endif
-gpio_func_t gpio_por_pin = {GPIO_POR_PIN, GPIO_POR_PORT};
-uint8_t gpio_por_pin_polarity = GPIO_POR_PIN_POLARITY_HIGH;
-uint8_t gpio_por_pin_timeout = 0;
+//gpio_func_t gpio_por_pin = {GPIO_POR_PIN, GPIO_POR_PORT};
+//uint8_t gpio_por_pin_polarity = GPIO_POR_PIN_POLARITY_HIGH;
+//uint8_t gpio_por_pin_timeout = 0;
 #if BLE_REMOTE_CONFIG
 bool mtu_reset = false;
 #endif
@@ -347,11 +347,6 @@ user_config_elem_t    spss_configuration_table[USER_CONF_ELEMENTS_NUM] = {
                                                 {ELEM_ID_USER_ADV_SCAN_RESP_DATA_LEN, 1, 1, &user_adv_scan_resp_data_len, NULL, false},
                                                 {ELEM_ID_USER_DEVICE_NAME, 32, USER_DEVICE_NAME_LEN, device_info.dev_name.name, NULL, false},
                                                 {ELEM_ID_USER_DEVICE_NAME_LEN, 1, 1, &device_info.dev_name.length, NULL, false},
-                                                {ELEM_ID_PERIPH_UART_BAUDRATE, 1, 1, &uart_baudrate_param, user_sps_config_verify_uart_baudrate_cb, false},
-                                                {ELEM_ID_GPIO_UART1_RX, 2, 2, &gpio_uart1_rx, user_sps_config_verify_gpio_config_cb, false},
-                                                {ELEM_ID_GPIO_UART1_TX, 2, 2, &gpio_uart1_tx, user_sps_config_verify_gpio_config_cb, false},
-                                                {ELEM_ID_GPIO_UART1_CTS, 2, 2, &gpio_uart1_cts, user_sps_config_verify_gpio_config_cb, false},
-                                                {ELEM_ID_GPIO_UART1_RTS, 2, 2, &gpio_uart1_rts, user_sps_config_verify_gpio_config_cb, false},
 #if (EXTERNAL_WAKEUP)
                                                 {ELEM_ID_GPIO_EXT_WAKEUP, 2, 2, &gpio_ext_wakeup, user_sps_config_verify_gpio_config_cb, false},
                                                 {ELEM_ID_GPIO_EXT_WAKEUP_POLARITY, 1, 1, &gpio_ext_wakeup_polarity, user_sps_config_verify_polarity_cb, false},
@@ -361,93 +356,12 @@ user_config_elem_t    spss_configuration_table[USER_CONF_ELEMENTS_NUM] = {
 #if WKUP_EXT_PROCESSOR
                                                 {ELEM_ID_GPIO_WAKEUP_EXT_HOST, 2, 2, &gpio_wakeup_ext_host, user_sps_config_verify_gpio_config_cb, false},
 #endif
-                                                {ELEM_ID_GPIO_POR_PIN, 2, 2, &gpio_por_pin, user_sps_config_verify_gpio_config_cb, false},
-                                                {ELEM_ID_GPIO_POR_PIN_POLARITY, 1, 1, &gpio_por_pin_polarity, user_sps_config_verify_polarity_cb, false},
-                                                {ELEM_ID_GPIO_POR_PIN_TIMEOUT, 1, 1, &gpio_por_pin_timeout, user_sps_config_verify_por_pin_timeout_cb, false},
 };
 
-#if BLE_REMOTE_CONFIG
-/**
- ****************************************************************************************
- * @brief Checks if a GPIO related Configuration parameter has changed
- * @param[in] config_data    Pointer to the latest Configuration parameters table
- * @return True if there is a change, else False
- ****************************************************************************************
- */
-static uint8_t user_sps_check_gpio_conf_change(user_config_elem_t* params)
-{
-    for (int i = USER_SPS_GPIO_UART1_RX; i <= USER_SPS_GPIO_POR_PIN_TIMEOUT; i++)
-    {
-        if (spss_configuration_table[i].changed)
-        {
-            return 1;
-        }
-    }
-    return 0;
-}
-
-uint8_t user_sps_apply_config(user_configuration_struct_tag* config_data)
-{
-	uint16_t i;
-    uint8_t status = 0;
-    uint8_t reset = 0;
-#ifdef CFG_CONFIG_STORAGE
-    status = user_config_storage_save_configuration(config_data);
-#endif
-    if (status == 0)
-    {
-        for (int i = USER_SPS_PARAM_CONN_INTERVAL_MIN; i <= USER_SPS_PARAM_CONN_TIME_OUT; i++)
-        {
-            if (spss_configuration_table[i].changed)
-            {
-                app_easy_gap_param_update_start(app_env[0].conidx);
-                break;
-            }
-        }
-
-        if( spss_configuration_table[USER_SPS_PARAM_GAP_MTU].changed)
-        {
-            mtu_reset = true;
-        }
-
-        if (user_sps_check_gpio_conf_change(config_data->params))
-            reset = 1;
-
-        if (spss_configuration_table[USER_SPS_PARAM_PERIPH_UART_BAUDRATE].changed)
-        {
-            reset = 1;
-        }
-
-        if (reset)
-        {
-            platform_reset(RESET_NO_ERROR);
-        }
-
-        for (i=0; i < USER_CONF_ELEMENTS_NUM; i++)
-        {
-            spss_configuration_table[i].changed = false;
-        }
-    }
-#ifdef CFG_CONFIG_STORAGE
-    else
-    {
-        user_conf_storage_init((user_config_elem_t *)spss_configuration_table, sizeof(spss_configuration_table)/sizeof(user_config_elem_t),
-        spss_conf_struct_version, &spss_conf_struct_version_len);
-    }
-#endif
-    return status;
-}
-#endif
 
 void user_sps_apply_uart_baudrate(void)
 {
-//    cfg_uart_sps_baudrate = uart_baudrate_t[uart_baudrate_param];
-//    cfg_uart_sps_baud = uart_baud_t[uart_baudrate_param];
-//    // 8 bits + start bit + stop bit, uart_wait_byte_time in usec
-//    uart_wait_byte_time = (1000000/cfg_uart_sps_baud) * 10;
-//    // In order to calculate a wait for loop equal to 1 byte duration.
-//    // Duration of 1 iteration in a for loop is 0.25 usec
-//    uart_wait_byte_counter = (uart_wait_byte_time * 4) + 30;
+
 }
 
 /**

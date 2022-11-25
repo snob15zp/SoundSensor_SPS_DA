@@ -29,15 +29,13 @@
 #include "arch_console.h"
 #include "gattc.h"
 #include "user_sps_device_dma.h"
-#include "dma_uart_sps.h"
-#include "user_sps_buffer_dma.h"
-#include "user_sps_schedule_dma.h"
 #include "gapc_task.h"
 #include "prf_utils.h"
 #include "user_remote_config.h"
 #include "user_remote_config_task.h"
 #include "user_config_storage.h"
 #include "user_sps_device_config.h"
+#include "user_periph_setup.h"
 #include "app.h"
 
 extern user_config_elem_t spss_configuration_table[USER_CONF_ELEMENTS_NUM];
@@ -56,7 +54,7 @@ extern bool mtu_reset;
 #if defined(CFG_BLE_METRICS) && defined(CFG_PRINTF)
 extern struct sps_counter ble_data_counter;     
 #endif
-extern struct dma_uart_tag dma_uart;                                                                                 
+                                                                 
 /*
  * FUNCTION DEFINITIONS
  ****************************************************************************************
@@ -81,71 +79,24 @@ static void user_gattc_exc_mtu_cmd(uint8_t conidx)
     ke_msg_send(cmd);
 }
 
-/**
- ****************************************************************************************
- * @brief  Gets the peer device fatures
- * @return void
-  ****************************************************************************************
- */
-//static void get_features(void)
-//{
-//    struct spss_env_tag *sps_env = PRF_ENV_GET(SPS_SERVER, spss);
-//    sps_env->peer_supports_dle = 0;
-//    
-//    struct gapc_get_info_cmd* info_cmd = KE_MSG_ALLOC(GAPC_GET_INFO_CMD,
-//                                                      KE_BUILD_ID(TASK_GAPC,conn_idx),
-//                                                      TASK_APP, 
-//                                                      gapc_get_info_cmd);
-//    // request peer device name.
-//    info_cmd->operation = GAPC_GET_PEER_FEATURES;
-//    
-//    // send command
-//    ke_msg_send(info_cmd);
-//} 
-
 void user_on_connection(uint8_t connection_idx, struct gapc_connection_req_ind const *param)
 {
     default_app_on_connection(connection_idx, param);
-    
-    conn_idx = connection_idx;
-    
-    //features_timer = app_easy_timer(60, get_features);//RDD https://www.cxybb.com/article/weixin_38933763/108622509
-    
-    //dma_uart_on_connect();//RDD
-
+    conn_idx = connection_idx;    
     dev_connected = true;
 }
 
 void user_on_disconnect( struct gapc_disconnect_ind const *param )
 {
-#if BLE_REMOTE_CONFIG
-    if (mtu_reset)
-        platform_reset(RESET_NO_ERROR);
-#endif
 #if BLE_SUOTA_RECEIVER
     if (suota_state.reboot_requested)
         platform_reset(RESET_AFTER_SUOTA_UPDATE);
 #endif
-
-    //dma_uart_set_tx_size(23);
-   // default_app_on_disconnect(param);
-//    if( dma_uart.p_rx_ready_active!=NULL)
-//    {    
-//        __disable_irq();
-//        co_list_push_front(&dma_uart.rx_list_ready, &dma_uart.p_rx_ready_active->hdr);
-//        dma_uart.p_rx_ready_active=NULL;
-//        __enable_irq();
-//    }    
-//    
-//    dma_uart_deassert_rts();  
-//    dma_uart_rx_disable();
+		default_app_on_disconnect(param);
 }
 
 void user_on_connect_failed (void)
 {
-    ASSERT_WARNING(0);
-//    dma_uart_deassert_rts();//RDD  GPIO_SetActive( gpio_uart1_rts.port, gpio_uart1_rts.pin );
-//    dma_uart_rx_disable(); 
 }
 
 /*
@@ -155,30 +106,10 @@ void user_on_connect_failed (void)
 
 void user_on_init(void)
 {
-#if BLE_REMOTE_CONFIG
-    user_rem_config_function_t callback = NULL;
-#endif
-#ifdef CFG_CONFIG_STORAGE
-    spss_conf_struct_version_len = strlen(spss_conf_struct_version);
-#endif
-
     // SPS application initialization
     default_app_on_init();
-
-#ifdef CFG_CONFIG_STORAGE
-    user_conf_storage_init((user_config_elem_t *)spss_configuration_table, sizeof(spss_configuration_table)/sizeof(user_config_elem_t),
-        spss_conf_struct_version, &spss_conf_struct_version_len);
-#endif
-
     //user_sps_apply_uart_baudrate();//RDD
-    periph_init();//RDD?
-
-#if BLE_REMOTE_CONFIG
-    callback = user_sps_apply_config;
-    user_remote_config_init((user_config_elem_t *)spss_configuration_table, sizeof(spss_configuration_table)/sizeof(user_config_elem_t),
-                            spss_conf_struct_version, spss_conf_struct_version_len, callback);
-#endif
-
+   // periph_init();//RDD?
 }
 
 void user_on_db_init_complete(void)
@@ -381,42 +312,39 @@ static void user_append_device_name(struct gapm_start_advertise_cmd* cmd)
 
 void user_on_adv_undirect_complete(uint8_t status)
 {
-	
-	if ((status == GAP_ERR_INVALID_PARAM) || (status == GAP_ERR_ADV_DATA_INVALID))
+    if ((status == GAP_ERR_INVALID_PARAM) || (status == GAP_ERR_ADV_DATA_INVALID))
 	{
-				struct gapm_start_advertise_cmd* cmd;
-				cmd = app_easy_gap_undirected_advertise_get_active();
-		
-				user_append_device_name(cmd); 
-				// Send the message
-				app_easy_gap_undirected_advertise_start();
-				 
-				// We are now connectable
-				ke_state_set(TASK_APP, APP_CONNECTABLE);
+        struct gapm_start_advertise_cmd* cmd;
+        cmd = app_easy_gap_undirected_advertise_get_active();
+
+        user_append_device_name(cmd); 
+        // Send the message
+        app_easy_gap_undirected_advertise_start();
+         
+        // We are now connectable
+        ke_state_set(TASK_APP, APP_CONNECTABLE);
 	}
 }
 
 void user_advertise_operation(void)
 {
+    struct gapm_start_advertise_cmd* cmd;
+    cmd = app_easy_gap_undirected_advertise_get_active();
 
-        struct gapm_start_advertise_cmd* cmd;
-				cmd = app_easy_gap_undirected_advertise_get_active();
+    cmd->channel_map = user_adv_conf.channel_map;
+    cmd->intv_max = user_adv_conf.intv_max;
+    cmd->intv_min = user_adv_conf.intv_min;
+    cmd->info.host.adv_data_len = user_advertise_data_len;
+    memcpy(cmd->info.host.adv_data, user_advertise_data, cmd->info.host.adv_data_len);
+    cmd->info.host.scan_rsp_data_len = user_adv_scan_resp_data_len;
+    memcpy(cmd->info.host.scan_rsp_data, user_adv_scan_resp_data, cmd->info.host.scan_rsp_data_len);
 
-			  cmd->channel_map = user_adv_conf.channel_map;
-			  cmd->intv_max = user_adv_conf.intv_max;
-			  cmd->intv_min = user_adv_conf.intv_min;
-			  cmd->info.host.adv_data_len = user_advertise_data_len;
-				memcpy(cmd->info.host.adv_data, user_advertise_data, cmd->info.host.adv_data_len);
-			  cmd->info.host.scan_rsp_data_len = user_adv_scan_resp_data_len;
-			  memcpy(cmd->info.host.scan_rsp_data, user_adv_scan_resp_data, cmd->info.host.scan_rsp_data_len);
-	
-				user_append_device_name(cmd); 
-				// Send the message
-				app_easy_gap_undirected_advertise_start();
-				 
-				// We are now connectable
-				ke_state_set(TASK_APP, APP_CONNECTABLE);
-    
+    user_append_device_name(cmd); 
+    // Send the message
+    app_easy_gap_undirected_advertise_start();
+     
+    // We are now connectable
+    ke_state_set(TASK_APP, APP_CONNECTABLE);   
 }
 
 /// @} DSPS_DEVICE_CONFIG

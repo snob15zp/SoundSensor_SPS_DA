@@ -242,7 +242,7 @@ void on_suotar_status_change(const uint8_t suotar_event)
     if (suotar_event == SUOTAR_END)
     {
         // Power down SPI Flash
-        spi_flash_power_down();
+      //  spi_flash_power_down();
     }
     user_spi_flash_init(SPI_FLASH_GPIO_MAP);
 

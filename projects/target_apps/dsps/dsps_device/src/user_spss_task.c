@@ -42,8 +42,7 @@
 #include "user_sps_device_dma.h"
 #include "prf_utils.h"
 #include "app_entry_point.h"
-#include "user_sps_buffer_dma.h"
-#include "dma_uart_sps.h"
+#include "cmd_mux.h"
 
 /*
 * GLOBAL VARIABLE DEFINITIONS
@@ -87,8 +86,6 @@ int user_sps_server_enable_cfm_handler(ke_msg_id_t const msgid,
                                       ke_task_id_t const dest_id,
                                       ke_task_id_t const src_id)
 {
-    //user_dma_uart_to_ble();//RDD
-
     return (KE_MSG_CONSUMED);
 }
 
@@ -97,12 +94,6 @@ int user_sps_server_data_tx_cfm_handler(ke_msg_id_t const msgid,
                                       ke_task_id_t const dest_id,
                                       ke_task_id_t const src_id)
 {
-    if(param->status == ATT_ERR_NO_ERROR){
-        user_dma_uart_to_ble_confirm(true);
-    } else {
-        user_dma_uart_to_ble_confirm(false);
-    }    
-
     return (KE_MSG_CONSUMED);
 }
 
@@ -111,9 +102,18 @@ int user_sps_server_data_write_ind_handler(ke_msg_id_t const msgid,
                                            ke_task_id_t const dest_id,
                                            ke_task_id_t const src_id)
 {
-//    user_ble_to_dma_uart( (void *)param ); 
-//    dma_uart_tx_async();
-    return (KE_MSG_NO_FREE);
+    if (param->length <= CMD_MUX_MSG_MAX_SZ)
+    {
+        uint8_t msg[CMD_MUX_MSG_MAX_SZ] = {0};
+        size_t msg_sz = param->length;
+        memcpy(msg, param->data, param->length);
+        cmd_mux(msg, &msg_sz);
+        if(msg_sz > 0)
+        {
+            user_send_ble_data(msg, msg_sz);
+        }
+    }
+    return (KE_MSG_CONSUMED);
 }
 
 int user_sps_server_tx_flow_ctrl_ind_handler(ke_msg_id_t const msgid,
@@ -145,7 +145,6 @@ int user_on_updated_params_complete(ke_msg_id_t const msgid,
 int gattc_mtu_changed_ind_handler(ke_msg_id_t const msgid, const struct gattc_mtu_changed_ind *param,
                                       ke_task_id_t const dest_id, ke_task_id_t const src_id)
 {
-//    dma_uart_set_tx_size(param->mtu);RDD!!!
     return (KE_MSG_CONSUMED);
 };
 #endif //(BLE_SPS_SERVER)

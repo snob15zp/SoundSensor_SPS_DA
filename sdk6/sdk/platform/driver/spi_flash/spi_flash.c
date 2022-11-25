@@ -110,6 +110,7 @@ int8_t spi_flash_auto_detect(uint8_t *dev_id)
     uint8_t supported_spi_flash_count;
 
     // Read JEDEC ID
+		//while(1)//RDD debug
     status = spi_flash_read_jedec_id(&jedec_id);
     if (status != SPI_FLASH_ERR_OK)
     {
@@ -146,21 +147,21 @@ int8_t spi_flash_auto_detect(uint8_t *dev_id)
  ****************************************************************************************
  */
 
-int8_t spi_flash_power_down(void)
-{
-    // Check if SPI Flash is ready
-    int8_t status = spi_flash_is_busy();
-    if (status != SPI_FLASH_ERR_OK)
-    {
-        return status;
-    }
+//int8_t spi_flash_power_down(void)
+//{
+//    // Check if SPI Flash is ready
+//    int8_t status = spi_flash_is_busy();
+//    if (status != SPI_FLASH_ERR_OK)
+//    {
+//        return status;
+//    }
 
-    // Send command
-    spi_set_bitmode(SPI_MODE_8BIT);
-    spi_transaction(SPI_FLASH_OP_DP);
+//    // Send command
+//    spi_set_bitmode(SPI_MODE_8BIT);
+//    spi_transaction(SPI_FLASH_OP_DP);
 
-    return SPI_FLASH_ERR_OK;
-}
+//    return SPI_FLASH_ERR_OK;
+//}
 
 int8_t spi_flash_release_from_power_down(void)
 {

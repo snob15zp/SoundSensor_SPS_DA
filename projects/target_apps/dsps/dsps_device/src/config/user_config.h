@@ -129,7 +129,7 @@ extern char user_advertise_data[28];
 extern uint8_t user_advertise_data_len;
 extern char user_adv_scan_resp_data[31];
 extern uint8_t user_adv_scan_resp_data_len;
-extern uint8_t uart_baudrate_param;
+//extern uint8_t uart_baudrate_param;
 
 /*
  ****************************************************************************************

@@ -102,17 +102,16 @@ int user_sps_server_data_write_ind_handler(ke_msg_id_t const msgid,
                                            ke_task_id_t const dest_id,
                                            ke_task_id_t const src_id)
 {
-    if (param->length <= CMD_MUX_MSG_MAX_SZ)
+
+    uint8_t msg[DEFAULT_MTU] = {0};
+    size_t msg_sz = param->length;
+    memcpy(msg, param->data, param->length);
+    cmd_mux(msg, &msg_sz);
+    if(msg_sz > 0)
     {
-        uint8_t msg[CMD_MUX_MSG_MAX_SZ] = {0};
-        size_t msg_sz = param->length;
-        memcpy(msg, param->data, param->length);
-        cmd_mux(msg, &msg_sz);
-        if(msg_sz > 0)
-        {
-            user_send_ble_data(msg, msg_sz);
-        }
+        user_send_ble_data(msg, msg_sz);
     }
+
     return (KE_MSG_CONSUMED);
 }
 

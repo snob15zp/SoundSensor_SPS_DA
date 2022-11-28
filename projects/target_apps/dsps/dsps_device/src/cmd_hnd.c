@@ -2,6 +2,7 @@
 
 #include "cmd_hnd.h"
 #include "cmd_mux.h"
+#include "ss_hnd.h"
 
 #define CHECK_SZ(S, T)      \
     do                      \
@@ -26,6 +27,7 @@ typedef enum
     CMD_INT_WR = 0x06,  /**< Integer write */
     CMD_BLOB_RD = 0x12, /**< BLOB (binary large object) read */
     CMD_BLOB_WR = 0x13, /**< BLOB (binary large object) write */
+    CMD_BLOB_RD240 = 0x14, /**< BLOB (binary large object) read */
 } cmds_t;
 
 typedef struct
@@ -142,6 +144,41 @@ __weak void on_blob_rd(uint32_t addr, uint8_t buf[16])
 typedef struct __packed
 {
     uint8_t addr[3];
+    uint8_t sz;
+} __blob_rd240_cmd_t;
+
+typedef struct
+{
+    uint8_t addr[3];
+    uint8_t sz;
+    uint8_t data[240];
+} __blob_rd240_rsp_t;
+
+int16_t __on_blob_rd240(uint8_t *data, size_t sz)
+{
+    CHECK_SZ(sz, __blob_rd240_cmd_t);
+
+    uint32_t addr = ((__blob_rd240_cmd_t *)data)->addr[2] | (((__blob_rd240_cmd_t *)data)->addr[1] << 8) | (((__blob_rd240_cmd_t *)data)->addr[0] << 16);
+
+    if (((__blob_rd240_cmd_t *)data)->sz > 240) {
+        ((__blob_rd240_cmd_t *)data)->sz = 240;
+    }
+    on_blob_rd240(addr, ((__blob_rd240_cmd_t *)data)->sz, ((__blob_rd240_rsp_t *)data)->data);
+    return ((__blob_rd240_cmd_t *)data)->sz + offsetof(__blob_rd240_rsp_t, data);
+}
+
+#ifdef __GNUC__
+__weak void on_blob_rd240(uint32_t addr, uint8_t sz, uint8_t buf[240])
+{
+    (void)addr;
+    memset(buf, 0, sz);
+}
+#endif
+
+
+typedef struct __packed
+{
+    uint8_t addr[3];
     uint8_t data[16];
 } __blob_wr_cmd_t;
 
@@ -171,4 +208,5 @@ CMD_LIST_REG_HND(CMD_INT_RD, __on_int_rd)
 CMD_LIST_REG_HND(CMD_INT_WR, __on_int_wr)
 CMD_LIST_REG_HND(CMD_BLOB_RD, __on_blob_rd)
 CMD_LIST_REG_HND(CMD_BLOB_WR, __on_blob_wr)
+CMD_LIST_REG_HND(CMD_BLOB_RD240, __on_blob_rd240)
 CMD_LIST_END

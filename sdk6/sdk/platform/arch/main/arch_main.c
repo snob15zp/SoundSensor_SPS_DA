@@ -207,10 +207,15 @@ e_FunctionReturnState TransitionFunction_M(void * FSM)
 	  case e_M_BLEStop: rstate=SSM_BLEStop();					 
 			break;//1
 	  case e_M_ADCStart: 	rstate=SSM_ADCStart(); 	
-		                    //SSS_SetUpTimeEvent(&AM_switch_time_event,(10000000/D_SYSTICK_PERIOD_US));
+#ifndef __SoundSensor__
+         SSS_SetUpTimeEvent(&AM_switch_time_event,(10000000/D_SYSTICK_PERIOD_US));
+#endif
+		                    
 			break;//2
 	  case e_M_BLEStart: 	rstate=SSM_BLEStart();	
-                        //SSS_SetUpTimeEvent(&AM_switch_time_event,(10000000/D_SYSTICK_PERIOD_US));		
+#ifndef __SoundSensor__
+         //SSS_SetUpTimeEvent(&AM_switch_time_event,(10000000/D_SYSTICK_PERIOD_US));
+#endif
 		  break;//2
 	  case e_M_PwrSwitchStart: SX_PowerOff();rstate=e_FRS_Not_Done;
 			break;//3
@@ -220,13 +225,17 @@ e_FunctionReturnState TransitionFunction_M(void * FSM)
 											{	((t_s_FSM*)FSM)->sign=2;
 											  btnCmd&=~BTN_SW1_ONE_CLICK;
 											};
-//											if (AM_switch_time_event.enable)
-//											{	
-//												if (systick_time-AM_switch_time_event.time>AM_switch_time_event.dtime)
-//												{	AM_switch_time_event.enable=false;
-//													((t_s_FSM*)FSM)->sign=2;
-//												}
-//											};
+#ifndef __SoundSensor__
+											if (AM_switch_time_event.enable)
+											{	
+												if (systick_time-AM_switch_time_event.time>AM_switch_time_event.dtime)
+												{	AM_switch_time_event.enable=false;
+													((t_s_FSM*)FSM)->sign=2;
+												}
+											};         
+#endif
+											
+
 											if ((BTN_SW3_LONG&btnCmd)!=0)
 											{
 											 ((t_s_FSM*)FSM)->sign=0;
@@ -239,15 +248,18 @@ e_FunctionReturnState TransitionFunction_M(void * FSM)
 											 {	((t_s_FSM*)FSM)->sign=1;
 												  btnCmd&=~BTN_SW1_ONE_CLICK;
 											 }
-//											if (AM_switch_time_event.enable)
-//											{	
-//												if (systick_time-AM_switch_time_event.time>AM_switch_time_event.dtime)
-//												{	AM_switch_time_event.enable=false;
-//													((t_s_FSM*)FSM)->sign=1;
-////											SSS_SetUpTimeEvent(&AM_switch_time_event,(1000000/D_SYSTICK_PERIOD_US));
-////											user_send_ble_data(msgl, msg_szl);  //RDD debug
-//												}
-//											};
+#ifndef __SoundSensor__
+											if (AM_switch_time_event.enable)
+											{	
+												if (systick_time-AM_switch_time_event.time>AM_switch_time_event.dtime)
+												{	AM_switch_time_event.enable=false;
+													((t_s_FSM*)FSM)->sign=1;
+//											SSS_SetUpTimeEvent(&AM_switch_time_event,(1000000/D_SYSTICK_PERIOD_US));
+//											user_send_ble_data(msgl, msg_szl);  //RDD debug
+												}
+											};
+#endif
+
 											 if ((BTN_SW3_LONG&btnCmd)!=0)
 											 {
 												 ((t_s_FSM*)FSM)->sign=0;

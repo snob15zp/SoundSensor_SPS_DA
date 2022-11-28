@@ -5,7 +5,7 @@
 typedef struct __packed
 {
     uint8_t nb;
-    uint8_t data[19];
+    uint8_t data[243];
 } cmd_t;
 
 extern const cmd_list_t _cmd_list[];

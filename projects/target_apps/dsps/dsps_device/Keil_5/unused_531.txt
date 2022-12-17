@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Mon Nov 28 19:03:42 2022
+;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Sat Dec 17 19:51:23 2022
 ;VERSION 0.2
 ;FILE adc_531.o
 adc_disable <= USED 0
@@ -75,7 +75,6 @@ FilterC_s19s29_CG1_terminate <= USED 0
 ;FILE gpio.o
 GPIO_ConfigurePinPower <= USED 0
 GPIO_DisablePorPin <= USED 0
-GPIO_EnableIRQ <= USED 0
 GPIO_EnablePorPin <= USED 0
 GPIO_GetIRQInputLevel <= USED 0
 GPIO_GetPinFunction <= USED 0
@@ -99,25 +98,19 @@ hw_otpc_read <= USED 0
 hw_otpc_word_prog_and_verify <= USED 0
 hw_otpc_word_read <= USED 0
 ;FILE i2c.o
-i2c_init <= USED 0
 i2c_master_receive_buffer_async <= USED 0
 i2c_master_receive_buffer_sync <= USED 0
 i2c_master_transmit_buffer_async <= USED 0
 i2c_master_transmit_buffer_sync <= USED 0
 i2c_register_int <= USED 0
 i2c_release <= USED 0
-i2c_setup_master <= USED 0
-i2c_setup_slave <= USED 0
 i2c_slave_receive_buffer_async <= USED 0
 i2c_slave_receive_buffer_sync <= USED 0
 i2c_slave_transmit_buffer_async <= USED 0
 i2c_slave_transmit_buffer_sync <= USED 0
 i2c_unregister_int <= USED 0
 ;FILE i2c_eeprom.o
-i2c_eeprom_configure <= USED 0
 i2c_eeprom_get_configuration <= USED 0
-i2c_eeprom_initialize <= USED 0
-i2c_eeprom_read_byte <= USED 0
 i2c_eeprom_read_data <= USED 0
 i2c_eeprom_release <= USED 0
 i2c_eeprom_update_slave_address <= USED 0
@@ -203,11 +196,7 @@ spi_flash_write_status_config_reg <= USED 0
 ;FILE ss_global.o
 ;FILE ss_hnd.o
 ;FILE ss_i2c.o
-SX_CalibrationOnOff <= USED 0
 ss_i2c_test <= USED 0
-ssi2c_init <= USED 0
-sx1502_init <= USED 0
-sx_main <= USED 0
 ;FILE ss_main.o
 ;FILE ss_sys.o
 ;FILE startup_da14531.o
@@ -226,9 +215,6 @@ systick_register_callback <= USED 0
 systick_value <= USED 0
 systick_wait <= USED 0
 ;FILE timer2.o
-timer2_config <= USED 0
-timer2_pwm_freq_set <= USED 0
-timer2_pwm_signal_config <= USED 0
 ;FILE trng.o
 ;FILE uart.o
 uart_baudrate_setf <= USED 0

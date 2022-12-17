@@ -220,7 +220,7 @@ e_FunctionReturnState ss_main_BLE(void)
 
 e_FunctionReturnState SSM_BLEStop()
 {
-	SSS_ReadFromVar();
+  	SSS_ReadFromVar();
 	//rwble_reset();
 	//rwble_init();
 	//SetWord16(SYS_CTRL_REG,GetWord16(SYS_CTRL_REG)| SW_RESET );

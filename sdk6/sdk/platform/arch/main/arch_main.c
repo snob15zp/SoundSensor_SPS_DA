@@ -201,21 +201,21 @@ uint8_t msg_szl=2;
 e_FunctionReturnState TransitionFunction_M(void * FSM)
 {   e_FunctionReturnState rstate;
 	switch (((t_s_FSM*)FSM)->state)
-	{ int currl;
+	{ //int currl;
 	  case e_M_ADCStop:	rstate=SSM_ADCStop(); 				 
 			break;//0
 	  case e_M_BLEStop: rstate=SSM_BLEStop();					 
 			break;//1
 	  case e_M_ADCStart: 	rstate=SSM_ADCStart(); 	
-#ifndef __SoundSensor__
-         SSS_SetUpTimeEvent(&AM_switch_time_event,(10000000/D_SYSTICK_PERIOD_US));
-#endif
+//#ifndef __SoundSensor__
+         SSS_SetUpTimeEvent(&AM_switch_time_event,(125000/D_SYSTICK_PERIOD_US));
+//#endif
 		                    
 			break;//2
 	  case e_M_BLEStart: 	rstate=SSM_BLEStart();	
-#ifndef __SoundSensor__
-         //SSS_SetUpTimeEvent(&AM_switch_time_event,(10000000/D_SYSTICK_PERIOD_US));
-#endif
+//#ifndef __SoundSensor__
+         SSS_SetUpTimeEvent(&AM_switch_time_event,(125000/D_SYSTICK_PERIOD_US));
+//#endif
 		  break;//2
 	  case e_M_PwrSwitchStart: SX_PowerOff();rstate=e_FRS_Not_Done;
 			break;//3
@@ -225,7 +225,7 @@ e_FunctionReturnState TransitionFunction_M(void * FSM)
 											{	((t_s_FSM*)FSM)->sign=2;
 											  btnCmd&=~BTN_SW1_ONE_CLICK;
 											};
-#ifndef __SoundSensor__
+//#ifndef __SoundSensor__
 											if (AM_switch_time_event.enable)
 											{	
 												if (systick_time-AM_switch_time_event.time>AM_switch_time_event.dtime)
@@ -233,7 +233,7 @@ e_FunctionReturnState TransitionFunction_M(void * FSM)
 													((t_s_FSM*)FSM)->sign=2;
 												}
 											};         
-#endif
+//#endif
 											
 
 											if ((BTN_SW3_LONG&btnCmd)!=0)
@@ -248,7 +248,7 @@ e_FunctionReturnState TransitionFunction_M(void * FSM)
 											 {	((t_s_FSM*)FSM)->sign=1;
 												  btnCmd&=~BTN_SW1_ONE_CLICK;
 											 }
-#ifndef __SoundSensor__
+//#ifndef __SoundSensor__
 											if (AM_switch_time_event.enable)
 											{	
 												if (systick_time-AM_switch_time_event.time>AM_switch_time_event.dtime)
@@ -258,7 +258,7 @@ e_FunctionReturnState TransitionFunction_M(void * FSM)
 //											user_send_ble_data(msgl, msg_szl);  //RDD debug
 												}
 											};
-#endif
+//#endif
 
 											 if ((BTN_SW3_LONG&btnCmd)!=0)
 											 {
@@ -444,57 +444,57 @@ int main(void)
  * @param[in] current_sleep_mode The current sleep mode proposed by the application.
  ****************************************************************************************
  */
-__STATIC_INLINE void arch_goto_sleep(sleep_mode_t current_sleep_mode)
-{
-    sleep_mode_t sleep_mode = current_sleep_mode;
-#if (USE_RANGE_EXT)
-    // Disable range extender
-    range_ext.disable(NULL);
-#endif
+//__STATIC_INLINE void arch_goto_sleep(sleep_mode_t current_sleep_mode)
+//{
+//    sleep_mode_t sleep_mode = current_sleep_mode;
+//#if (USE_RANGE_EXT)
+//    // Disable range extender
+//    range_ext.disable(NULL);
+//#endif
 
-#if (WLAN_COEX_ENABLED)
-    // Drive to inactive state the pin used for the BLE event in progress signal
-    wlan_coex_set_ble_eip_pin_inactive();
-#endif
+//#if (WLAN_COEX_ENABLED)
+//    // Drive to inactive state the pin used for the BLE event in progress signal
+//    wlan_coex_set_ble_eip_pin_inactive();
+//#endif
 
-    // Turn the radio off
-    ble_turn_radio_off();
+//    // Turn the radio off
+//    ble_turn_radio_off();
 
-    // Grant access to the application to check if we can go to sleep
-    app_sleep_prepare_proc(&sleep_mode); // SDK Improvements for uniformity this one should be changed?
+//    // Grant access to the application to check if we can go to sleep
+//    app_sleep_prepare_proc(&sleep_mode); // SDK Improvements for uniformity this one should be changed?
 
-//#if ((EXTERNAL_WAKEUP) && (!BLE_APP_PRESENT)) // External wake up, only in external processor designs
-#if (EXTERNAL_WAKEUP)
-    //Set a GPIO as external wake-up trigger
-    //By default external wakeup interrupt is at UART CTS , active high
-    if ((gpio_ext_wakeup.port != GPIO_PORT_INVALID) && (gpio_ext_wakeup.pin != GPIO_PIN_INVALID))
-        ext_wakeup_enable(gpio_ext_wakeup.port, gpio_ext_wakeup.pin, gpio_ext_wakeup_polarity, gpio_ext_wakeup_debounce);
-#endif
+////#if ((EXTERNAL_WAKEUP) && (!BLE_APP_PRESENT)) // External wake up, only in external processor designs
+//#if (EXTERNAL_WAKEUP)
+//    //Set a GPIO as external wake-up trigger
+//    //By default external wakeup interrupt is at UART CTS , active high
+//    if ((gpio_ext_wakeup.port != GPIO_PORT_INVALID) && (gpio_ext_wakeup.pin != GPIO_PIN_INVALID))
+//        ext_wakeup_enable(gpio_ext_wakeup.port, gpio_ext_wakeup.pin, gpio_ext_wakeup_polarity, gpio_ext_wakeup_debounce);
+//#endif
 
-    // Turn the peripherals off according to the current sleep mode
-    arch_turn_peripherals_off(sleep_mode);
+//    // Turn the peripherals off according to the current sleep mode
+//    arch_turn_peripherals_off(sleep_mode);
 
-    // Hook for app specific tasks just before sleeping
-    app_sleep_entry_proc(sleep_mode);
+//    // Hook for app specific tasks just before sleeping
+//    app_sleep_entry_proc(sleep_mode);
 
-#if defined (__DA14531__)
-    // Buck mode: switch on LDO_LOW (DC/DC will be automatically disabled in sleep)
-    if (!GetBits16(ANA_STATUS_REG, BOOST_SELECTED))
-    {
-        /*
-            In buck mode make sure that LDO_LOW is on before going to sleep.
-            Set the LDO_LOW in low current mode.
-        */
-        SetBits16(POWER_CTRL_REG, LDO_LOW_CTRL_REG, 2);
-    }
+//#if defined (__DA14531__)
+//    // Buck mode: switch on LDO_LOW (DC/DC will be automatically disabled in sleep)
+//    if (!GetBits16(ANA_STATUS_REG, BOOST_SELECTED))
+//    {
+//        /*
+//            In buck mode make sure that LDO_LOW is on before going to sleep.
+//            Set the LDO_LOW in low current mode.
+//        */
+//        SetBits16(POWER_CTRL_REG, LDO_LOW_CTRL_REG, 2);
+//    }
 
-    // Set for proper RCX operation
-    SetBits16(GP_DATA_REG, 0x60, 2);
-#endif
+//    // Set for proper RCX operation
+//    SetBits16(GP_DATA_REG, 0x60, 2);
+//#endif
 
-    // Do the last house keeping of the clocks and go to sleep
-    arch_switch_clock_goto_sleep(sleep_mode);
-}
+//    // Do the last house keeping of the clocks and go to sleep
+//    arch_switch_clock_goto_sleep(sleep_mode);
+//}
 
 /**
  ****************************************************************************************
@@ -502,90 +502,90 @@ __STATIC_INLINE void arch_goto_sleep(sleep_mode_t current_sleep_mode)
  * @param[in] current_sleep_mode The current sleep mode proposed by the system so far
  ****************************************************************************************
  */
-__STATIC_INLINE void arch_switch_clock_goto_sleep(sleep_mode_t current_sleep_mode)
-{
-    if ( (current_sleep_mode == mode_ext_sleep) || (current_sleep_mode == mode_ext_sleep_otp_copy) )
-    {
-#if !defined (__DA14531__)
-        SetBits16(CLK_16M_REG, XTAL16_BIAS_SH_ENABLE, 0);      // Set BIAS to '0' if sleep has been decided
-#endif
+//__STATIC_INLINE void arch_switch_clock_goto_sleep(sleep_mode_t current_sleep_mode)
+//{
+//    if ( (current_sleep_mode == mode_ext_sleep) || (current_sleep_mode == mode_ext_sleep_otp_copy) )
+//    {
+//#if !defined (__DA14531__)
+//        SetBits16(CLK_16M_REG, XTAL16_BIAS_SH_ENABLE, 0);      // Set BIAS to '0' if sleep has been decided
+//#endif
 
-#if (USE_POWER_OPTIMIZATIONS)
-#if defined (__DA14531__)
-    SetBits16(CLK_RC32M_REG, RC32M_DISABLE, 0);             // Enable RC32M
-#else
-    SetBits16(CLK_16M_REG, RC16M_ENABLE, 1);                // Enable RC16M
-#endif
+//#if (USE_POWER_OPTIMIZATIONS)
+//#if defined (__DA14531__)
+//    SetBits16(CLK_RC32M_REG, RC32M_DISABLE, 0);             // Enable RC32M
+//#else
+//    SetBits16(CLK_16M_REG, RC16M_ENABLE, 1);                // Enable RC16M
+//#endif
 
-    for (volatile int i = 0; i < 20; i++);
+//    for (volatile int i = 0; i < 20; i++);
 
-    SetBits16(CLK_CTRL_REG, SYS_CLK_SEL, 1);                // Switch to RC16M (DA14585/586) or RC32M (DA14531)
+//    SetBits16(CLK_CTRL_REG, SYS_CLK_SEL, 1);                // Switch to RC16M (DA14585/586) or RC32M (DA14531)
 
-#if defined (__DA14531__)
-    while( (GetWord16(CLK_CTRL_REG) & RUNNING_AT_RC32M) == 0 );
-#else
-    while( (GetWord16(CLK_CTRL_REG) & RUNNING_AT_RC16M) == 0 );
-#endif
-    SetWord16(CLK_FREQ_TRIM_REG, 0);                        // Set zero value to CLK_FREQ_TRIM_REG
-    // Do not disable the XTAL16M (DA14585/586) or XTAL32M (DA14531).
-    // It will be disabled when we sleep...
-#endif // (USE_POWER_OPTIMIZATIONS)
-    }
-}
+//#if defined (__DA14531__)
+//    while( (GetWord16(CLK_CTRL_REG) & RUNNING_AT_RC32M) == 0 );
+//#else
+//    while( (GetWord16(CLK_CTRL_REG) & RUNNING_AT_RC16M) == 0 );
+//#endif
+//    SetWord16(CLK_FREQ_TRIM_REG, 0);                        // Set zero value to CLK_FREQ_TRIM_REG
+//    // Do not disable the XTAL16M (DA14585/586) or XTAL32M (DA14531).
+//    // It will be disabled when we sleep...
+//#endif // (USE_POWER_OPTIMIZATIONS)
+//    }
+//}
 
 /**
  ****************************************************************************************
  * @brief  An interrupt came, resume from sleep.
  ****************************************************************************************
  */
-__STATIC_INLINE void arch_resume_from_sleep(void)
-{
-#if defined (__DA14531__)
-    if (arch_get_sleep_mode() == ARCH_EXT_SLEEP_OTP_COPY_ON)
-    {
-        // When waking up from extended sleep with OTP copy, structure content
-        // shall be restored.
-        booter_val.dbg_cfg = GetBits16(SYS_CTRL_REG, DEBUGGER_ENABLE);
-        booter_val.bandgap_reg = GetWord16(BANDGAP_REG);
-        booter_val.clk_rc32m_reg = GetWord16(CLK_RC32M_REG);
-        booter_val.clk_rc32k_reg = GetWord16(CLK_RC32K_REG);
-    }
+//__STATIC_INLINE void arch_resume_from_sleep(void)
+//{
+//#if defined (__DA14531__)
+//    if (arch_get_sleep_mode() == ARCH_EXT_SLEEP_OTP_COPY_ON)
+//    {
+//        // When waking up from extended sleep with OTP copy, structure content
+//        // shall be restored.
+//        booter_val.dbg_cfg = GetBits16(SYS_CTRL_REG, DEBUGGER_ENABLE);
+//        booter_val.bandgap_reg = GetWord16(BANDGAP_REG);
+//        booter_val.clk_rc32m_reg = GetWord16(CLK_RC32M_REG);
+//        booter_val.clk_rc32k_reg = GetWord16(CLK_RC32K_REG);
+//    }
 
-    if (!GetBits16(ANA_STATUS_REG, BOOST_SELECTED) && GetBits16(DCDC_CTRL_REG, DCDC_ENABLE))
-    {
-        /* In buck mode turn off LDO_LOW if DC/DC converter is enabled to allow the
-           DC/DC converter to power VBAT_LOW rail. */
-        SetBits16(POWER_CTRL_REG, LDO_LOW_CTRL_REG, 1);
-    }
+//    if (!GetBits16(ANA_STATUS_REG, BOOST_SELECTED) && GetBits16(DCDC_CTRL_REG, DCDC_ENABLE))
+//    {
+//        /* In buck mode turn off LDO_LOW if DC/DC converter is enabled to allow the
+//           DC/DC converter to power VBAT_LOW rail. */
+//        SetBits16(POWER_CTRL_REG, LDO_LOW_CTRL_REG, 1);
+//    }
 
-    // Set for proper RCX operation
-    SetBits16(GP_DATA_REG, 0x60, 1);
-#endif
+//    // Set for proper RCX operation
+//    SetBits16(GP_DATA_REG, 0x60, 1);
+//#endif
 
-    // Check if non retained heap should be re-initialized
-    if (reinit_non_ret_heap)
-    {
-        ke_mem_init(KE_MEM_NON_RETENTION, (uint8_t*)(rom_cfg_table[rwip_heap_non_ret_pos]), rom_cfg_table[rwip_heap_non_ret_size]);
-    }
+//    // Check if non retained heap should be re-initialized
+//    if (reinit_non_ret_heap)
+//    {
+//        ke_mem_init(KE_MEM_NON_RETENTION, (uint8_t*)(rom_cfg_table[rwip_heap_non_ret_pos]), rom_cfg_table[rwip_heap_non_ret_size]);
+//    }
 
-#if defined (__DA14531__)
-    // Re-initialize peripherals and pads
-    periph_init();
-#endif
+//#if defined (__DA14531__)
+//    // Re-initialize peripherals and pads
+//    periph_init();
+//#endif
 
-    // Hook for app specific tasks just after waking up
-    app_sleep_exit_proc( );
+//    // Hook for app specific tasks just after waking up
+//    app_sleep_exit_proc( );
 
-//#if ((EXTERNAL_WAKEUP) && (!BLE_APP_PRESENT)) // external wake up, only in external processor designs
-#if (EXTERNAL_WAKEUP)
-    ext_wakeup_resume_from_sleep();
-#endif
+////#if ((EXTERNAL_WAKEUP) && (!BLE_APP_PRESENT)) // external wake up, only in external processor designs
+//#if (EXTERNAL_WAKEUP)
+//    ext_wakeup_resume_from_sleep();
+//#endif
 
-    // restore ARM Sleep mode
-    // reset SCR[2]=SLEEPDEEP bit else the mode=idle __WFI() will cause a deep sleep
-    // instead of a processor halt
-    SCB->SCR &= ~(1<<2);
-}
+//    // restore ARM Sleep mode
+//    // reset SCR[2]=SLEEPDEEP bit else the mode=idle __WFI() will cause a deep sleep
+//    // instead of a processor halt
+//    SCB->SCR &= ~(1<<2);
+//}
 
 /**
  ****************************************************************************************
@@ -665,50 +665,50 @@ __STATIC_INLINE void schedule_while_ble_on(void)
  * @return sleep_mode_t return the current sleep mode
  ****************************************************************************************
  */
-__STATIC_INLINE sleep_mode_t rwip_power_down(void)
-{
-    sleep_mode_t sleep_mode;
+//__STATIC_INLINE sleep_mode_t rwip_power_down(void)
+//{
+//    sleep_mode_t sleep_mode;
 
-#if ((EXTERNAL_WAKEUP) && (!BLE_APP_PRESENT)) // External wake up, only in external processor designs
-    ext_wakeup_enable(EXTERNAL_WAKEUP_GPIO_PORT, EXTERNAL_WAKEUP_GPIO_PIN, EXTERNAL_WAKEUP_GPIO_POLARITY);
-#endif
+//#if ((EXTERNAL_WAKEUP) && (!BLE_APP_PRESENT)) // External wake up, only in external processor designs
+//    ext_wakeup_enable(EXTERNAL_WAKEUP_GPIO_PORT, EXTERNAL_WAKEUP_GPIO_PIN, EXTERNAL_WAKEUP_GPIO_POLARITY);
+//#endif
 
-    // if app has turned sleep off, rwip_sleep() will act accordingly
-    // time from rwip_sleep() to __WFI() must be kept as short as possible!
-    sleep_mode = rwip_sleep();
+//    // if app has turned sleep off, rwip_sleep() will act accordingly
+//    // time from rwip_sleep() to __WFI() must be kept as short as possible!
+//    sleep_mode = rwip_sleep();
 
-    // BLE is sleeping ==> app defines the mode
-    if (sleep_mode == mode_sleeping)
-    {
-        if (sleep_env.slp_state == ARCH_EXT_SLEEP_ON)
-        {
-            sleep_mode = mode_ext_sleep;
-        }
-        else
-        {
-            sleep_mode = mode_ext_sleep_otp_copy;
-        }
-    }
-#if ((EXTERNAL_WAKEUP) && (!BLE_APP_PRESENT))
-    else
-    {
-        // Disable external wake up
-        ext_wakeup_disable();
-    }
-#endif
+//    // BLE is sleeping ==> app defines the mode
+//    if (sleep_mode == mode_sleeping)
+//    {
+//        if (sleep_env.slp_state == ARCH_EXT_SLEEP_ON)
+//        {
+//            sleep_mode = mode_ext_sleep;
+//        }
+//        else
+//        {
+//            sleep_mode = mode_ext_sleep_otp_copy;
+//        }
+//    }
+//#if ((EXTERNAL_WAKEUP) && (!BLE_APP_PRESENT))
+//    else
+//    {
+//        // Disable external wake up
+//        ext_wakeup_disable();
+//    }
+//#endif
 
-    return (sleep_mode);
-}
+//    return (sleep_mode);
+//}
 
 /**
  ****************************************************************************************
  * @brief Turn the radio off.
  ****************************************************************************************
  */
-__STATIC_INLINE void ble_turn_radio_off(void)
-{
-    SetBits16(PMU_CTRL_REG, RADIO_SLEEP, 1); // turn off radio
-}
+//__STATIC_INLINE void ble_turn_radio_off(void)
+//{
+//    SetBits16(PMU_CTRL_REG, RADIO_SLEEP, 1); // turn off radio
+//}
 
 /**
  ****************************************************************************************
@@ -954,79 +954,79 @@ __STATIC_INLINE void set_ldo_ret_trim(uint8_t retained_ram_blocks)
  * @param[in] current_sleep_mode The current sleep mode proposed by the system so far
  ****************************************************************************************
  */
-__STATIC_INLINE void arch_turn_peripherals_off(sleep_mode_t current_sleep_mode)
-{
-    if (current_sleep_mode == mode_ext_sleep || current_sleep_mode == mode_ext_sleep_otp_copy)
-    {
-        uint8_t retained_ram_blocks = 0;
-        SCB->SCR |= 1<<2; // enable deep sleep  mode bit in System Control Register (SCR[2]=SLEEPDEEP)
+//__STATIC_INLINE void arch_turn_peripherals_off(sleep_mode_t current_sleep_mode)
+//{
+//    if (current_sleep_mode == mode_ext_sleep || current_sleep_mode == mode_ext_sleep_otp_copy)
+//    {
+//        uint8_t retained_ram_blocks = 0;
+//        SCB->SCR |= 1<<2; // enable deep sleep  mode bit in System Control Register (SCR[2]=SLEEPDEEP)
 
-#if defined (__DA14531__)
-        SetBits16(PAD_LATCH_REG, PAD_LATCH_EN, 0);
-#else
-        SetBits16(SYS_CTRL_REG, PAD_LATCH_EN, 0);          // activate PAD latches
+//#if defined (__DA14531__)
+//        SetBits16(PAD_LATCH_REG, PAD_LATCH_EN, 0);
+//#else
+//        SetBits16(SYS_CTRL_REG, PAD_LATCH_EN, 0);          // activate PAD latches
 
-        SetBits16(PMU_CTRL_REG, PERIPH_SLEEP, 1);          // turn off peripheral power domain
-#endif
-        if (current_sleep_mode == mode_ext_sleep)
-        {
-            /*
-             * Sleep mode: EXTENDED - image kept at external resource
-             *
-             * The RAM blocks that hold the code and the retention data
-             * must be retained.
-             */
+//        SetBits16(PMU_CTRL_REG, PERIPH_SLEEP, 1);          // turn off peripheral power domain
+//#endif
+//        if (current_sleep_mode == mode_ext_sleep)
+//        {
+//            /*
+//             * Sleep mode: EXTENDED - image kept at external resource
+//             *
+//             * The RAM blocks that hold the code and the retention data
+//             * must be retained.
+//             */
 
-            // OTP copy and OTP copy emulation will be disabled
-            SetBits16(SYS_CTRL_REG, OTP_COPY, 0);
-            retained_ram_blocks = ret_mode;
-        }
-        else
-        {
-            /*
-             * Sleep mode: EXTENDED - image kept at OTP (OTP mirroring takes place on wake-up)
-             *
-             * The RAM blocks that hold the retention data must be retained.
-             */
+//            // OTP copy and OTP copy emulation will be disabled
+//            SetBits16(SYS_CTRL_REG, OTP_COPY, 0);
+//            retained_ram_blocks = ret_mode;
+//        }
+//        else
+//        {
+//            /*
+//             * Sleep mode: EXTENDED - image kept at OTP (OTP mirroring takes place on wake-up)
+//             *
+//             * The RAM blocks that hold the retention data must be retained.
+//             */
 
-#if (DEVELOPMENT_DEBUG)
+//#if (DEVELOPMENT_DEBUG)
 
-            // enable OTP copy emulation
-            SetBits16(SYS_CTRL_REG, OTP_COPY, 1);
-            SetBits16(SYS_CTRL_REG, DEV_PHASE, 1);
-            retained_ram_blocks = ret_mode;
-#else
-            // enable OTP copy
-            SetBits16(SYS_CTRL_REG, DEV_PHASE, 0);
-            retained_ram_blocks = ret_mode_for_ret_data;
-#endif
-            otp_prepare((code_size + 3) >> 2);       // convert function argument from bytes to 32-bit words
-        }
+//            // enable OTP copy emulation
+//            SetBits16(SYS_CTRL_REG, OTP_COPY, 1);
+//            SetBits16(SYS_CTRL_REG, DEV_PHASE, 1);
+//            retained_ram_blocks = ret_mode;
+//#else
+//            // enable OTP copy
+//            SetBits16(SYS_CTRL_REG, DEV_PHASE, 0);
+//            retained_ram_blocks = ret_mode_for_ret_data;
+//#endif
+//            otp_prepare((code_size + 3) >> 2);       // convert function argument from bytes to 32-bit words
+//        }
 
-        // manage the non-retained heap
-        // Note: non-retained heap is either empty or not. If it is non empty it must be retained.
-        if (!ke_mem_is_empty(KE_MEM_NON_RETENTION))
-        {
-            reinit_non_ret_heap = 0;
-#if defined (__DA14531__)
-            retained_ram_blocks &= ret_mode_for_non_ret_heap;
-#else
-            retained_ram_blocks |= ret_mode_for_non_ret_heap;
-#endif
-        }
-        else
-        {
-            reinit_non_ret_heap = 1;
-        }
+//        // manage the non-retained heap
+//        // Note: non-retained heap is either empty or not. If it is non empty it must be retained.
+//        if (!ke_mem_is_empty(KE_MEM_NON_RETENTION))
+//        {
+//            reinit_non_ret_heap = 0;
+//#if defined (__DA14531__)
+//            retained_ram_blocks &= ret_mode_for_non_ret_heap;
+//#else
+//            retained_ram_blocks |= ret_mode_for_non_ret_heap;
+//#endif
+//        }
+//        else
+//        {
+//            reinit_non_ret_heap = 1;
+//        }
 
-        // dynamically select the retained RAM blocks
-        arch_ram_set_retention_mode(retained_ram_blocks);
+//        // dynamically select the retained RAM blocks
+//        arch_ram_set_retention_mode(retained_ram_blocks);
 
-#if !defined (__DA14531__)
-        set_ldo_ret_trim(retained_ram_blocks);
-#endif
-    }
-}
+//#if !defined (__DA14531__)
+//        set_ldo_ret_trim(retained_ram_blocks);
+//#endif
+//    }
+//}
 
 /**
  ****************************************************************************************
@@ -1121,11 +1121,11 @@ __STATIC_INLINE arch_main_loop_callback_ret_t app_asynch_proc(void)
  * @param[in] sleep_mode     Sleep Mode
  ****************************************************************************************
  */
-__STATIC_INLINE void app_sleep_prepare_proc(sleep_mode_t *sleep_mode)
-{
-    if (user_app_main_loop_callbacks.app_validate_sleep != NULL)
-        (*sleep_mode) = user_app_main_loop_callbacks.app_validate_sleep(*sleep_mode);
-}
+//__STATIC_INLINE void app_sleep_prepare_proc(sleep_mode_t *sleep_mode)
+//{
+//    if (user_app_main_loop_callbacks.app_validate_sleep != NULL)
+//        (*sleep_mode) = user_app_main_loop_callbacks.app_validate_sleep(*sleep_mode);
+//}
 
 /**
  ****************************************************************************************
@@ -1133,11 +1133,11 @@ __STATIC_INLINE void app_sleep_prepare_proc(sleep_mode_t *sleep_mode)
  * @param[in] sleep_mode     Sleep Mode
  ****************************************************************************************
  */
-__STATIC_INLINE void app_sleep_entry_proc(sleep_mode_t sleep_mode)
-{
-    if (user_app_main_loop_callbacks.app_going_to_sleep != NULL)
-        user_app_main_loop_callbacks.app_going_to_sleep(sleep_mode);
-}
+//__STATIC_INLINE void app_sleep_entry_proc(sleep_mode_t sleep_mode)
+//{
+//    if (user_app_main_loop_callbacks.app_going_to_sleep != NULL)
+//        user_app_main_loop_callbacks.app_going_to_sleep(sleep_mode);
+//}
 
 /**
  ****************************************************************************************
@@ -1145,11 +1145,11 @@ __STATIC_INLINE void app_sleep_entry_proc(sleep_mode_t sleep_mode)
  * @param[in] sleep_mode     Sleep Mode
  ****************************************************************************************
  */
-__STATIC_INLINE void app_sleep_exit_proc(void)
-{
-    if (user_app_main_loop_callbacks.app_resume_from_sleep != NULL)
-        user_app_main_loop_callbacks.app_resume_from_sleep();
-}
+//__STATIC_INLINE void app_sleep_exit_proc(void)
+//{
+//    if (user_app_main_loop_callbacks.app_resume_from_sleep != NULL)
+//        user_app_main_loop_callbacks.app_resume_from_sleep();
+//}
 
 #if defined (__GNUC__)
 // Defining these functions forces the linker to ignore unwind functions

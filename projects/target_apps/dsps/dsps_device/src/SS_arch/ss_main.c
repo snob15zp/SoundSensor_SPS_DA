@@ -227,10 +227,10 @@ e_FunctionReturnState SSM_BLEStop()
 	//arch_ble_ext_wakeup_on();
 	    uint16_t tmp;
     // Trigger SW reset
-    tmp = GetWord16(SYS_CTRL_REG);
-    tmp = (tmp & ~REMAP_ADR0) | 0; // Map ROM at address 0
-    tmp |= SW_RESET;
-    SetWord16(SYS_CTRL_REG, tmp);
+//    tmp = GetWord16(SYS_CTRL_REG);
+//    tmp = (tmp & ~REMAP_ADR0) | 0; // Map ROM at address 0
+//    tmp |= SW_RESET;
+//    SetWord16(SYS_CTRL_REG, tmp);
 
 	return e_FRS_Done;
 };
@@ -303,33 +303,33 @@ void DisplayAlarm(void)
 
 		
 
-	rgbLedTaskD1.ledTimeSlot[1]=LED_ALARM_Empty;
-  if (MS_b_alert_live) 
-		                     rgbLedTaskD1.ledTimeSlot[1]=LED_ALARM_LiveSPL;
-	if (MS_b_alert_Overload) 
-		                     rgbLedTaskD1.ledTimeSlot[1]=LED_ALARM_Overloadindicator;
+//	rgbLedTaskD1.ledTimeSlot[1]=LED_ALARM_Empty;
+//  if (MS_b_alert_live) 
+//		                     rgbLedTaskD1.ledTimeSlot[1]=LED_ALARM_LiveSPL;
+//	if (MS_b_alert_Overload) 
+//		                     rgbLedTaskD1.ledTimeSlot[1]=LED_ALARM_Overloadindicator;
 
-	rgbLedTaskD1.ledTimeSlot[2]=LED_ALARM_Empty;
-		if (MS_b_alert_hearing) 
-			                    rgbLedTaskD1.ledTimeSlot[2]=LED_ALARM_hearing;
-	
+//	rgbLedTaskD1.ledTimeSlot[2]=LED_ALARM_Empty;
+//		if (MS_b_alert_hearing) 
+//			                    rgbLedTaskD1.ledTimeSlot[2]=LED_ALARM_hearing;
+//	
 
 
 
-	rgbLedTaskLD1.ledTimeSlot[0]=LED_ALARM_Empty;
-	if (MS_b_alert_DoseM3dB) 
-		                       rgbLedTaskLD1.ledTimeSlot[0]=LED_ALARM_LAeqM3dB;
-	if (MS_b_alert_Dose)     
-		                       rgbLedTaskLD1.ledTimeSlot[0]=LED_ALARM_LAeq;
-	
-	
-	if (0!=EraseState) //SSM_erase_alarm_time_event.enable)
-		{	rgbLedTaskD1.ledTimeSlot[0]=LED_ALARM_erase;
-			rgbLedTaskD1.ledTimeSlot[1]=LED_ALARM_erase;
-			rgbLedTaskD1.ledTimeSlot[2]=LED_ALARM_erase;
-			rgbLedTaskLD1.ledTimeSlot[0]=LED_ALARM_erase1;
-//		if (systick_time-SSM_erase_alarm_time_event.time>SSM_erase_alarm_time_event.dtime)
-//			SSM_erase_alarm_time_event.enable=false;
-	};
+//	rgbLedTaskLD1.ledTimeSlot[0]=LED_ALARM_Empty;
+//	if (MS_b_alert_DoseM3dB) 
+//		                       rgbLedTaskLD1.ledTimeSlot[0]=LED_ALARM_LAeqM3dB;
+//	if (MS_b_alert_Dose)     
+//		                       rgbLedTaskLD1.ledTimeSlot[0]=LED_ALARM_LAeq;
+//	
+//	
+//	if (0!=EraseState) //SSM_erase_alarm_time_event.enable)
+//		{	rgbLedTaskD1.ledTimeSlot[0]=LED_ALARM_erase;
+//			rgbLedTaskD1.ledTimeSlot[1]=LED_ALARM_erase;
+//			rgbLedTaskD1.ledTimeSlot[2]=LED_ALARM_erase;
+//			rgbLedTaskLD1.ledTimeSlot[0]=LED_ALARM_erase1;
+////		if (systick_time-SSM_erase_alarm_time_event.time>SSM_erase_alarm_time_event.dtime)
+////			SSM_erase_alarm_time_event.enable=false;
+//	};
 	
 };

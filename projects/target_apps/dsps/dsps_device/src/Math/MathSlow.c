@@ -7,7 +7,9 @@
 #define  D_LogLevelC_offset	0
 #define  D_LogLevelIntegrator_offset 0
 
+#ifdef __NO_MATLAB__
 t_SSS_s_timeevent MS_Ovrload_time_event;
+#endif
 
 bool MS_b_alert_C140dBPeak;
 bool MS_b_alert_FastA;
@@ -123,7 +125,8 @@ void MS_Alerts(uint32_t time)
 MS_b_alert_FastA_out=MS_b_alert_FastA;
 MS_b_alert_C140dBPeak_out=MS_b_alert_C140dBPeak;
 #endif
-	
+
+#ifdef __NO_MATLAB__	
 	if (MF_ADCOverLoad_Flag_old!=MF_ADCOverLoad_Flag)
 	{ 
 		MF_ADCOverLoad_Flag_old=MF_ADCOverLoad_Flag;
@@ -135,7 +138,7 @@ MS_b_alert_C140dBPeak_out=MS_b_alert_C140dBPeak;
 		if (systick_time-MS_Ovrload_time_event.time>MS_Ovrload_time_event.dtime)
 			MS_Ovrload_time_event.enable=false;
 	}
-
+#endif
 	
 	MS_b_alert_DoseM3dB=(MS_i32_Level_Dose_dB>(MS_i32_AlertLevel_DoseM3dB));
 	

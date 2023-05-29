@@ -91,8 +91,10 @@ inline t_U_MF_int64 fastmulA(int32_t A);
 #define D_FAST_NEW 1
 void MF_Int_Init(void)
 {
+#ifdef __NO_MATLAB__
 	NVIC_SetPriority(KEYBRD_IRQn, 1);
   NVIC_EnableIRQ(KEYBRD_IRQn);	
+#endif
 }
 //void KEYBRD_Handler(void)
 //{

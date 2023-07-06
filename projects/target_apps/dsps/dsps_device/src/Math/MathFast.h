@@ -13,10 +13,10 @@
 //--------------Alt Integrator & Fast Defines---------------------------
 
 #define IntegratorIndexMask 0x7
-#define FastMulAdditionalShift 3
+#define FastMulAdditionalShift 4
 
 #define ForIntegratorShift 2
-#define FastInShift (4+7)
+#define FastInShift (4+7-1)
 
 
 //======================================================================
@@ -72,11 +72,11 @@ int32_T mul_u18s29sh12(int32_T a, int32_T b); //aShift=0 ->
 uint64_t MF_sqr(int32_T a);
 int32_T mul_s32_loSR(int32_T a, int32_T b, uint32_T aShift);
 //========================for test in MATLAB=========================================
-int32_t filterC(int32_t in);
-int32_t filterAC(int32_t in); //for test in matlab
-t_U_MF_int64 fastmul(int32_t A);
-int32_t fast(uint64_t in);
-void PeakC(int32_t in);
+//int32_t filterC(int32_t in);
+//int32_t filterAC(int32_t in); //for test in matlab
+//t_U_MF_int64 fastmul(int32_t A);
+//int32_t fast(uint64_t in);
+//void PeakC(int32_t in);
 //=========================for test in keil==========================================
-void test_MF_main(void);
+//void test_MF_main(void);
 #endif

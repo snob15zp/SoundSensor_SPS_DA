@@ -1,7 +1,14 @@
+#ifdef __debug__
+#include "main.h"
+#endif
+
 #include "MathFast.h"
 #include "MathSlow.h"
 #include "FilterC_s19s29_CG1.h"
 #include "FilterAC_s19s29_CG.h"
+
+
+
 
 
 #if	((D_ADCMODE==2)||(D_ADCMODE==3))	
@@ -195,7 +202,7 @@ inline void MF_main(int32_t adcoutput)
 	if (!((IntegratorIndex++)&IntegratorIndexMask))
 	{ IntegratorData.u64=Integrator.u64;
 #ifndef __NO_MATLAB__	
-		Int_fast_A();
+		Int_fast_A();//TODO FOR MATLAB
 #else
    NVIC_SetPendingIRQ(KEYBRD_IRQn);	
 #endif	
@@ -330,14 +337,16 @@ inline void test_MF_main_ADCEmul(void)
 
 //------------------------ALT fast integrator ---------------------------
 static uint64_t fastDelayA;
-static t_U_MF_int64 MF_U_64_fastoutouterA;
+ t_U_MF_int64 MF_U_64_fastoutouterA;
 static t_U_MF_int64 IFA_integrator_Old;
 
 
 int32_t fastA(uint64_t in);
-
-//void Int_fast_A(void)
+#ifndef __NO_MATLAB__
+void Int_fast_A(void)
+#else
 void KEYBRD_Handler(void)
+#endif
 {
 // fast	
 	uint64_t t;
@@ -358,8 +367,10 @@ IntegratorA_Hi_out=IntegratorA_Hi;
 
 void fastA_init(void)
 {
-  fastDelayA=0;
+  
 	MF_U_64_fastoutouterA.i64=0;	
+	//MF_U_64_fastoutouterA.i32[1]=100000;
+	fastDelayA=MF_U_64_fastoutouterA.u64;
 }
 
 inline int32_t fastA(uint64_t in)
@@ -370,9 +381,12 @@ inline int32_t fastA(uint64_t in)
 	MF_U_64_fastMulResult=fastmulA(MF_U_64_fastoutouterA.i32[1]);
 	fastDelayA=(in>>FastInShift)+(MF_U_64_fastoutouterA.i64-MF_U_64_fastMulResult.i64);	
 	MF_U_64_fastoutouterA.i64= MF_U_64_fastoutinner.i64;
+#ifdef __debug__
+	writetoarray(MF_U_64_fastoutouterA,fastDelayA,MF_U_64_fastoutinner,MF_U_64_fastMulResult);
+#endif
 	return MF_U_64_fastoutouterA.i32[1];	
 }
-#define fastFactor 33550	
+#define fastFactor (33550)	
 inline t_U_MF_int64 fastmulA(int32_t A)
 {  
 t_U_MF_int64 t;

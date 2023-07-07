@@ -1,11 +1,14 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Mon Jun 26 17:17:37 2023
+;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Fri Jul 07 08:44:39 2023
 ;VERSION 0.2
 ;FILE adc_531.o
+adc_correct_sample <= USED 0
 adc_disable <= USED 0
+adc_get_sample <= USED 0
 adc_get_temp_async <= USED 0
 adc_input_shift_config <= USED 0
 adc_input_shift_disable <= USED 0
 adc_input_shift_enable <= USED 0
+adc_offset_calibrate <= USED 0
 adc_register_interrupt <= USED 0
 adc_reset <= USED 0
 adc_unregister_interrupt <= USED 0
@@ -129,6 +132,12 @@ mul_wide_s32 <= USED 0
 MS_EvaluteLogLevel <= USED 0
 ;FILE nmi_handler.o
 ;FILE otp_cs.o
+otp_cs_get_adc_diff_ge <= USED 0
+otp_cs_get_adc_diff_offset <= USED 0
+otp_cs_get_adc_offsh_ge <= USED 0
+otp_cs_get_adc_offsh_offset <= USED 0
+otp_cs_get_adc_single_ge <= USED 0
+otp_cs_get_adc_single_offset <= USED 0
 otp_cs_get_low_power_clock <= USED 0
 ;FILE prf.o
 ;FILE rf_531.o

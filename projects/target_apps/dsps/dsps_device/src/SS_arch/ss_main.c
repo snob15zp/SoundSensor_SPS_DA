@@ -167,7 +167,8 @@ e_FunctionReturnState ss_main(void)
 			 SSM_b_AlarmVddLow=(SSG_D_VddLow>SSM_Vdd);
 			 uint16_t AlarmStatus=BuildAlarmRecord();
        if (!ssm_main_BLE_RDY)
-			 {	AF_V_Adddatau8u16ToFIFO(recordType_Vdd,SSM_Vdd);
+			 {	//AF_V_Adddatau8u16ToFIFO(recordType_Vdd,SSM_Vdd);MS_i32_Level_Dose_dB
+				  AF_V_Adddatau8u16ToFIFO(recordType_Vdd,MS_i32_Level_Dose_dB);//out dose to file for debug
 					AF_V_Adddatau8u16ToFIFO(recordType_AlarmStatus,AlarmStatus);
 			 };	 
 		}

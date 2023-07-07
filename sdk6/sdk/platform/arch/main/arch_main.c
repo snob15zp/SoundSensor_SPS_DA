@@ -225,7 +225,7 @@ e_FunctionReturnState TransitionFunction_M(void * FSM)
 											{	((t_s_FSM*)FSM)->sign=2;
 											  btnCmd&=~BTN_SW1_ONE_CLICK;
 											};
-#ifndef __SoundSensor__
+//#ifndef __SoundSensor__
 											if (AM_switch_time_event.enable)
 											{	
 												if (systick_time-AM_switch_time_event.time>AM_switch_time_event.dtime)
@@ -233,7 +233,7 @@ e_FunctionReturnState TransitionFunction_M(void * FSM)
 													((t_s_FSM*)FSM)->sign=2;
 												}
 											};         
-#endif
+//#endif
 											
 
 											if ((BTN_SW3_LONG&btnCmd)!=0)
